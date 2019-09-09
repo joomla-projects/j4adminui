@@ -1,13 +1,16 @@
 // Header
 
 .header {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
   background: $white;
   box-shadow: $atum-box-shadow;
   z-index: $zindex-header;
-  border-top: 3px solid var(--atum-bg-dark);
   color: var(--atum-special-color);
-
+  padding-left: 250px;
+  z-index: 999;
   .header-title {
     width: 50%;
 

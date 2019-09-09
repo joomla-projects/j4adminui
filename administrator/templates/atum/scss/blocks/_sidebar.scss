@@ -1,8 +1,9 @@
 // Sidebar
 
 .wrapper {
+  padding-left: $sidebar-width;
+  padding-top: 80px;
   transition: all .3s ease;
-
   @include media-breakpoint-down(sm) {
     padding-left: 0;
   }
@@ -23,12 +24,14 @@
 }
 
 .sidebar-wrapper {
-  position: relative;
+  position: fixed;
+  width: $sidebar-width;
+  left: 0;
   top: 0;
   z-index: $zindex-sidebar;
-  background-color: var(--atum-bg-dark);
-  box-shadow: $atum-box-shadow;
+  background-color: #ffffff;
   overflow: hidden;
+  height: 100vh;
   @include media-breakpoint-up(sm) {
     display: flex;
     flex-direction: column;
@@ -50,6 +53,12 @@
       max-width: $sidebar-width;
       transition: all .3s ease;
     }
+  }
+  
+  #sidebarmenu{
+    width: calc(100% + 15px);
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   .main-brand {
@@ -126,18 +135,13 @@
 .main-nav {
   width: $sidebar-width;
   opacity: 1;
-
   @include media-breakpoint-down(xs) {
     width: 100%;
   }
 
-  .open > a {
-    box-shadow: 0 2px 4px -4px rgba(0, 0, 0, 0.5);
-  }
-
   // All list items
   li {
-    color: var(--atum-text-light);
+    //color: var(--atum-text-light);
     list-style-type: none;
     position: relative;
     display: flex;
@@ -146,10 +150,10 @@
     > a {
       flex-grow: 2;
     }
-
+  
     .menu-dashboard, .menu-quicktask {
       position: relative;
-      display: inline-block;
+      display: none; // @TODO: Must remove from markup
 
       > a {
         padding: 0;
@@ -199,15 +203,34 @@
         }
       }
     }
+    
+    > ul{
+      padding: 0.536rem 0;
+      > li > a{
+        padding-left: 67px;
+      }
+    }
+    
+    &.dropdown-submenu > ul{
+      > li > a{
+        color: var(--secondary-color);
+        padding-left: 75px;
+        &.active,
+        &:hover{
+          color: var(--link-color);
+        }
+      }
+    }
+    
   }
 
   span.fa {
-    padding: 1rem 0;
+    //padding: 1rem 0;
   }
 
   .sidebar-item-title {
     word-break: break-word;
-    padding: 0.6rem 0;
+    //padding: 0.6rem 0;
 
     @include media-breakpoint-up(sm) {
       max-width: 11rem !important;
@@ -222,40 +245,57 @@
   // All links
   a {
     position: relative;
-    color: var(--atum-text-light);
-
-    &:hover {
-      color: var(--atum-text-light);
+    color: var(--color);
+    font-size: 1rem;
+    line-height: 1.786rem;
+    padding-top: 0.393rem;
+    padding-bottom: 0.393rem;
+    transition: 300ms;
+    &.active,
+    &:hover{
+      color: var(--link-color);
       text-decoration: none;
+      &.has-arrow::after{
+        color: var(--link-color);
+      }
     }
   }
 
   // 1st level items
   > li {
-
-    > ul {
-      background-color: var(--atum-bg-dark-70);
-    }
-
     > a {
       display: block;
-      padding: 0 0.35rem;
-
-      &:hover {
-        background-color: var(--atum-bg-dark-80);
-        text-decoration: none;
+      padding: 0.857rem 0 0.857rem 1.500rem;
+      line-height: 1.857rem;
+      font-size: 1.143rem;
+      border-left: 2px solid transparent;
+      transition: all .2s ease-in-out;
+      border-bottom: 1px solid var(--background);
+    }
+    
+    &.active > a,
+    > a:hover{
+      color: var(--link-color);
+      text-decoration: none;
+      background-color: var(--button-background);
+      border-bottom-color: var(--button-background);
+      border-left-color: var(--link-color);
+      span.fa{
+        color: var(--link-color);
+      }
+      &.has-arrow::after{
+        color: var(--link-color);
       }
     }
-
-    &.active {
-      box-shadow: 0 0 6px -6px rgba(0, 0, 0, .8)
+    
+    &:not(:last-child) > a{
+      border-bottom: none;
     }
   }
 
   // 2nd level items
   ul {
     padding: 0;
-    background-color: var(--atum-bg-dark-70);
     width: 100%;
 
     li {
@@ -270,63 +310,6 @@
 
     a {
       display: block;
-      padding: 0 1rem 0 2.4rem;
-      color: var(--atum-text-light);
-      font-size: 0.9rem;
-
-      &[href]:hover:not(.menu-dashboard):not(.menu-quicktask) {
-        color: $white;
-        background-color: rgba(0, 0, 0, .4);
-      }
-
-      &.active {
-        color: $white;
-        background-color: var(--atum-bg-dark-80);
-
-        &::before {
-          position: absolute;
-          top: 0.15rem;
-          bottom: 0.15rem;
-          left: 0;
-          width: 0.25rem;
-          content: "";
-          background-color: var(--atum-contrast);
-        }
-      }
-    }
-
-    // 3rd level items
-    ul {
-      background-color: var(--atum-bg-dark-80);
-
-      a {
-        padding-left: 3rem;
-
-        &.active {
-          color: $white;
-          background-color: var(--atum-bg-dark-90);
-          box-shadow: 0 1px 4px -1px rgba(0, 0, 0, .5);
-
-          &::before {
-            position: absolute;
-            top: 0.15rem;
-            bottom: 0.15rem;
-            left: 0;
-            width: 0.275rem;
-            content: "";
-            background-color: var(--atum-contrast);
-          }
-        }
-      }
-
-      a::before {
-        left: 1.25rem;
-      }
-
-      //4th level
-      ul {
-        background-color: var(--atum-bg-dark-90);
-      }
     }
   }
 
@@ -337,13 +320,6 @@
     a::before {
       display: none;
     }
-  }
-
-  .divider {
-    height: 1px;
-    margin: 4px 18px;
-    background-color: var(--atum-bg-dark-40);
-    opacity: .7;
   }
 
   .menuitem-group {
@@ -372,23 +348,26 @@
   // Dropdown indicator
   .has-arrow::after {
     position: absolute;
-    top: 0.8rem;
-    right: 1.4rem;
-    width: .5rem;
-    height: .5rem;
-    color: var(--atum-text-light);
+    color: var(--secondary-icon-color);
     content: "\f054";
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
     transition: all .3s ease-out;
+    font-size: 0.714rem;
+    right: 1.093rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0.714rem;
+    width: 0.714rem;
+    line-height: 1em;
+    text-align: center;
   }
 
   .active {
 
     > .has-arrow::after {
-      filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-      transform: rotate(90deg);
-      transform-origin: 0.4rem 0.7rem;
+      -webkit-transform: translateY(-50%) rotate(90deg);
+      transform: translateY(-50%) rotate(90deg);
     }
   }
 
@@ -396,11 +375,13 @@
   .fa {
     position: relative;
     display: inline-block;
-    margin: 0 0.6rem;
-    font-size: 0.8rem;
     text-align: center;
     vertical-align: top;
     transition: all .2s ease-in-out;
+    font-size: 1.429rem;
+    line-height: 1.857rem;
+    color: var(--secondary-icon-color);
+    margin-right: 1.071rem;
   }
 }
 
@@ -418,16 +399,13 @@
 .closed {
 
   .main-nav span.fa {
-    transform: scale(1.3);
     transition: all .2s ease-in-out;
   }
 
 
-  .sidebar-wrapper {
+  /*.sidebar-wrapper {
     flex: 1 0 $sidebar-width-closed;
     max-width: $sidebar-width-closed;
-
-
     &.transit-wider-closed {
       flex: 1 0 33%;
       max-width: $sidebar-width-login;
@@ -437,7 +415,7 @@
         @include fadein-page;
       }
     }
-  }
+  }*/
 
   .sidebar-item-title,
   .has-arrow::after {

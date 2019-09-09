@@ -1,6 +1,7 @@
 const watch = require('watch');
 const Path = require('path');
 const HandleJsFile = require('./javascript/handle-file.es6.js');
+const CompileScss = require('./stylesheets/scss-transform.es6.js');
 const RootPath = require('./utils/rootpath.es6.js')._();
 
 /**
@@ -14,7 +15,7 @@ const RootPath = require('./utils/rootpath.es6.js')._();
 // eslint-disable-next-line max-len, no-param-reassign, no-return-assign
 const debounce = (callback, time = 250, interval) => (...args) => clearTimeout(interval, interval = setTimeout(callback, time, ...args));
 
-module.exports.run = () => {
+const run = () => {
   watch.createMonitor(Path.join(RootPath, 'build/media_source'), (monitor) => {
     monitor.on('created', (file) => {
       if (file.match(/\.js/) && (file.match(/\.es5\.js/) || file.match(/\.es6\.js/) || file.match(/\.w-c\.es6\.js/))) {
@@ -34,4 +35,34 @@ module.exports.run = () => {
       console.log(file);
     });
   });
+};
+
+
+const runScss = () => {
+  watch.createMonitor(RootPath, (monitor) => {
+    monitor.on('created', (file) => {
+      if (file.match(/\.scss/)) {
+        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        debounce(CompileScss.compile(templatesSccs), 300);
+      }
+      // @todo css and scss
+    });
+    monitor.on('changed', (file) => {
+      if (file.match(/\.scss/)) {
+        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        debounce(CompileScss.compile(templatesSccs), 300);
+      }
+      // @todo css and scss
+    });
+    monitor.on('removed', (file) => {
+      // Handle this case as well
+      // eslint-disable-next-line no-console
+      console.log('scss remove: ', file);
+    });
+  });
+};
+
+module.exports = {
+  run,
+  runScss,
 };

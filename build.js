@@ -101,4 +101,5 @@ if (Program.compileJs) {
 // Compress/transpile the javascript files
 if (Program.watch) {
   watch.run();
+  watch.runScss();
 }
