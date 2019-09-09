@@ -111,7 +111,18 @@
       }
 
       .form-control{
-        height:auto;
+        height: 2.86rem;
+      }
+      .input-group-append{
+        .btn{
+          &:focus,
+          &:active{
+            background-color: transparent;
+            box-shadow: none;
+            border: none;
+            color: var(--primary-color);
+          }
+        }
       }
     }
 

@@ -261,3 +261,27 @@ $zindex-tooltip:                   1070;
 $zindex-mobil-bottom:              8000;
 $zindex-mobil-toggle:              9999;
 $zindex-mobil-menu:                9000;
+
+//Custom CSS variable
+:root{
+  --background: #f4f7fc;
+  --inverse-background: #1d2427;
+  --color: #252732;
+  --inverse-color: #ffffff;
+  --secondary-color: #5e727c;
+  --icon-color: #808f94;
+  --secondary-icon-color: #bdc5c8;
+  --button-background: #e6f2ff;
+  --cancel-button-background: #f0f3f8;
+  --disabled-button-background: #dcdcdc;
+  --link-color: #0184ff;
+  --primary-color: #0184ff;
+  --primary-gradient-color: #198df8;
+  --success-color: #7ac143;
+  --warning-color: #f9a541;
+  --danger-color: #f44321;
+  --overlay: rgba(23, 23, 23, 0.5);
+  --input-background-color: #f4f5f9;
+  --font-size-sm: .8rem;
+  --transparent-bg: transparent;
+}
