@@ -5,8 +5,9 @@
   z-index: $zindex-popover !important;
   margin: 0 !important;
   cursor: move;
-  background-color: $teal;
+  background-color: var(--tr-hover-background);
   opacity: .8;
+  box-shadow: 10px 20px 40px -5px rgba(0, 28, 73, 0.25);
 
   &.table {
     display: table;

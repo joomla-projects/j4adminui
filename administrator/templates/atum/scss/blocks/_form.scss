@@ -218,3 +218,14 @@ input {
 .col-md-12 .switcher__legend {
   margin-left: -170px;
 }
+
+//When container background not white this CSS will apply for form fields
+.j-main-container {
+  .custom-select,
+  .form-control {
+    background-color: var(--input-background-color-white);
+  }
+  .custom-select{
+    background-image: url(../images/select-bg-white.svg)
+  }
+}
