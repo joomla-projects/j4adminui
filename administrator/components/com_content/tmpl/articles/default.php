@@ -379,7 +379,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</span>
 									</td>
 								<?php endif; ?>
-								<td class="d-none d-lg-table-cell">
+								<td class="d-none d-lg-table-cell j-article-id-number">
 									<?php echo (int) $item->id; ?>
 								</td>
 							</tr>

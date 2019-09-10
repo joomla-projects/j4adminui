@@ -61,11 +61,13 @@ label {
       .switcher__legend {
         float:none;
         margin-left: 0;
+        width: auto;
       }
     }
     
     .control-label {
       float: none;
+      width: auto;
     }
   }
 }
@@ -166,6 +168,7 @@ select{
 .switcher__legend {
   font-size: $label-font-size;
   color: var(--secondary-color);
+  width: 170px;
 }
 [class^="icon-"]:not(.input-group-text),
 [class*=" icon-"]:not(.input-group-text) {
@@ -179,7 +182,7 @@ textarea.form-control {
 }
 .custom-select {
   @include input-style;
-  background: $custom-select-indicator no-repeat 100%/116rem;
+  background: $custom-select-indicator no-repeat 100%/100rem;
   background-color: var(--input-background-color);
   padding: 0 1.2rem;
   font-size: var(--font-size-sm);
@@ -217,6 +220,31 @@ input {
 .col-md-9 .switcher__legend,
 .col-md-12 .switcher__legend {
   margin-left: -170px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  .custom-select,
+  .input-group {
+    min-width: auto;
+  }
+}
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem;
+  .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: .3125rem;
+    margin-left: 0;
+  }
+  label {
+    margin-bottom: 0;
+  }
 }
 
 //When container background not white this CSS will apply for form fields

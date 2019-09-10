@@ -1,0 +1,9 @@
+//Custom badge style
+.badge {
+    &.badge-info {
+        font-weight: $normal-weight;
+        background-color: transparent;
+        color: var(--inverse-background);
+        font-size: 1rem;
+    }
+}
