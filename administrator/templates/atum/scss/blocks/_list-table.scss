@@ -1,5 +1,5 @@
 //Custom article table
-table.table {
+table.j-list-table {
     border-collapse:separate; 
     border-spacing: 0 10px;
     background-color: transparent;
@@ -63,13 +63,26 @@ table.table {
             }
             .has-context {
                 .break-word {
-                    > a{
-                        color: var(--inverse-background);
-                        font-weight: $normal-weight;
-                        text-decoration: none;
-                    }
                     .small.break-word{
                         color: var(--secondary-color);
+                    }
+                }
+            }
+            th,
+            td {
+                a {
+                    &:not(.badge) {
+                        text-decoration: none;
+                    }
+                    color: var(--inverse-background);
+                    font-weight: $normal-weight;
+                    text-decoration: none;
+                    color: var(--inverse-background);
+                    &:hover,
+                    &:focus,
+                    &:active{
+                        color: var(--primary-color);
+                        text-decoration: underline;
                     }
                 }
             }
