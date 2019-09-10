@@ -41,6 +41,9 @@
             labelElement: {
                 type: String,
                 required: true
+            },
+            className: {
+                type: String
             }
         },
         computed: {
@@ -48,6 +51,7 @@
             modalClass() {
                 return {
                     'modal-sm': this.size === 'sm',
+                    [this.className]: this.className
                 }
             },
         },

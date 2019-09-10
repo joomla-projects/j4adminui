@@ -155,6 +155,12 @@ export default {
                 files: [...parentDirectory.files, file.path]
             }));
         }
+
+        // Find file from last uploaded queue and set success ture
+        const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === file.name.toLowerCase() );
+        if (fileIndex !== -1) {
+            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], { success: true }) );
+        }
     },
 
     /**
@@ -411,5 +417,59 @@ export default {
      */
     [types.HIDE_CONFIRM_DELETE_MODAL]: (state) => {
         state.showConfirmDeleteModal = false;
+    },
+
+     /**
+     * Show the upload media modal
+     * @param state
+     */
+    [types.SHOW_UPLOAD_MEDIA_MODAL]: (state) => {
+        state.showUploadMediaModal = true;
+    },
+
+    /**
+     * Hide the create folder modal
+     * @param state
+     */
+    [types.HIDE_UPLOAD_MEDIA_MODAL]: (state) => {
+        state.showUploadMediaModal = false;
+    },
+
+    /**
+     * Add uploaded file to the queue
+     * @param state
+     * @param payload
+     */
+    [types.SET_LAST_UPLOADED_FILES]: (state, payload) => {
+        const file = payload
+        state.lastUploadedFile.push(file)
+    },
+    /**
+     * Remove single file from the queue or empty queue
+     * @param state
+     * @param payload
+     */
+    [types.REMOVE_LAST_UPLOADED_FILES]: (state, payload) => {
+        const {file, empty} = payload;
+        if (typeof empty !== 'undefined' && empty === true) {
+            state.lastUploadedFile = [];
+        } else {
+            const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === file.name.toLowerCase() );
+            state.lastUploadedFile.splice(fileIndex, 1);
+        }
+    },
+
+    /**
+     * Update single file properties or add properties from the queue
+     * @param state
+     * @param payload
+     */
+    [types.UPDATE_LAST_UPLOADED_FILES]: (state, payload) => {
+        const {fileName, fieldName, fieldValue} = payload
+        // update last uploaded file object
+        const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === fileName.toLowerCase() );
+        if (fileIndex !== -1) {
+            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], { [fieldName]: fieldValue }) );
+        }
     },
 }
