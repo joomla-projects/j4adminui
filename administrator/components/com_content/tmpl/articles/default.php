@@ -328,10 +328,10 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 									</div>
 								</td>
 
-								<td class="small d-none d-md-table-cell">
+								<td class="d-none d-md-table-cell">
 									<?php echo $this->escape($item->access_level); ?>
 								</td>
-								<td class="small d-none d-md-table-cell">
+								<td class="d-none d-md-table-cell">
 									<?php if ((int) $item->created_by != 0) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>">
 											<?php echo $this->escape($item->author_name); ?>
@@ -351,11 +351,11 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 									</td>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<td class="small d-none d-md-table-cell">
+									<td class="d-none d-md-table-cell">
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 									</td>
 								<?php endif; ?>
-								<td class="small d-none d-md-table-cell text-center">
+								<td class="d-none d-md-table-cell text-center">
 									<?php
 									$date = $item->{$orderingColumn};
 									echo $date > 0 ? HTMLHelper::_('date', $date, Text::_('DATE_FORMAT_LC4')) : '-';

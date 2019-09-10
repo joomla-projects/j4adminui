@@ -15,6 +15,7 @@ table.j-list-table {
         th {
             border:none;
             padding-bottom: 0;
+            font-size: 1rem;
         }
         a{
             color: var(--secondary-color);
@@ -71,13 +72,14 @@ table.j-list-table {
             th,
             td {
                 a {
-                    &:not(.badge) {
-                        text-decoration: none;
-                    }
+                    
                     color: var(--inverse-background);
                     font-weight: $normal-weight;
                     text-decoration: none;
                     color: var(--inverse-background);
+                    &:not(.badge) {
+                        text-decoration: none;
+                    }
                     &:hover,
                     &:focus,
                     &:active{
