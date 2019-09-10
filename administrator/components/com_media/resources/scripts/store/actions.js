@@ -164,7 +164,7 @@ export const uploadFile = (context, payload) => {
             headers: {'Content-Type': 'application/json'},
             onProgress: (progress) => {
                 const percentComplete = Math.round((progress.loaded / progress.total)*100);
-                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: data.name, fieldName:'progress', fieldValue: percentComplete })
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: data.name, properties: {progress: percentComplete} })
             },
             onSuccess: (response) => {
                 notifications.success('COM_MEDIA_UPLOAD_SUCCESS');
@@ -175,7 +175,7 @@ export const uploadFile = (context, payload) => {
             }
         });
         setTimeout(()=>{
-            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: data.name, fieldName:'xhrRequest', fieldValue: xhrRequest })
+            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: data.name, properties:{xhrRequest} })
         },300)
     })
     .then(file => {
@@ -184,12 +184,11 @@ export const uploadFile = (context, payload) => {
     })
     .catch(error => {
         context.commit(types.SET_IS_LOADING, false);
-        console.log("upload error: ", error)
         // Handle file exists
         if (error.status === 409) {
             if (notifications.ask(translate.sprintf('COM_MEDIA_FILE_EXISTS_AND_OVERRIDE', payload.name), {})) {
                 payload.override = true;
-                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: payload.name, fieldName:'progress', fieldValue: 0 })
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: payload.name, properties:{progress:0}})
                 uploadFile(context, payload);
             } else {
                 context.commit(types.REMOVE_LAST_UPLOADED_FILES, {file})
@@ -235,6 +234,7 @@ export const deleteSelectedItems = (context) => {
             api.delete(item.path)
                 .then(() => {
                     context.commit(types.DELETE_SUCCESS, item);
+                    context.commit(types.REMOVE_LAST_UPLOADED_FILES, {file: item});
                     context.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
                     context.commit(types.SET_IS_LOADING, false);
                 })

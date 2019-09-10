@@ -159,7 +159,8 @@ export default {
         // Find file from last uploaded queue and set success ture
         const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === file.name.toLowerCase() );
         if (fileIndex !== -1) {
-            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], { success: true }) );
+            file.success = true
+            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], file) );
         }
     },
 
@@ -218,6 +219,7 @@ export default {
             state.files.splice(state.files.findIndex(
                 file => file.path === item.path
             ), 1);
+
         }
 
         // Delete dir
@@ -465,11 +467,11 @@ export default {
      * @param payload
      */
     [types.UPDATE_LAST_UPLOADED_FILES]: (state, payload) => {
-        const {fileName, fieldName, fieldValue} = payload
+        const {fileName, properties } = payload
         // update last uploaded file object
         const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === fileName.toLowerCase() );
         if (fileIndex !== -1) {
-            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], { [fieldName]: fieldValue }) );
+            state.lastUploadedFile.splice(fileIndex, 1, Object.assign({}, state.lastUploadedFile[fileIndex], properties ) );
         }
     },
 }

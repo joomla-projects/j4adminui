@@ -3,11 +3,13 @@
         <div slot="body">
             <div class="joomla-recent-uploaded-media" v-if="uploadedItems.length > 0">
                 <div class="joomla-recent-uploaded-media-item" v-for="image in uploadedItems">
-                    <!-- <img :src="image.src" /> -->
                     <span :class="image.mediaClass"></span>
-                    <span v-if="image.success"> Success </span>
-                    <span>{{ image.progress }}</span>
+                    <span class="joomla-upload-file-name">{{image.name}}</span>
+                    <div class="joomla-progress">
+                        <div class="joomla-progress-bar" :style="{width:image.progress+'%'}"></div>
+                    </div>
                     <a v-if="!image.success" href="#" @click="onCancelUploadProcess(image, $event)"> Cancel </a>
+                    <a v-if="image.success" href="#" @click="onRemoveFile(image, $event)"> Remove </a>
                 </div>
             </div>
             <div 
@@ -17,7 +19,6 @@
                 @dragover="onDragOver"
                 @dragleave="onDragLeave"
                 >
-                
                 <button class="btn btn-success" @click="chooseFiles"> Upload File </button>
             </div>
             <input type="file" class="hidden"
@@ -58,10 +59,6 @@
             },
             uploadedItems(){
                 return this.$store.state.lastUploadedFile;
-            },
-            fineMe(){
-                console.log(this)
-                return 'fa-fa';
             }
         },
         methods: {
@@ -72,6 +69,11 @@
                     xhrRequest.abort();
                     this.$store.commit(types.REMOVE_LAST_UPLOADED_FILES, { file: item });
                 }
+            },
+            onRemoveFile(item, event) {
+                this.$store.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
+	            this.$store.commit(types.SELECT_BROWSER_ITEM, item);
+                this.$store.commit(types.SHOW_CONFIRM_DELETE_MODAL);
             },
             /* Close modal */
             close() {
@@ -168,13 +170,13 @@
                 const mediaExtension = ['mp4'];
                 const docExtension = ['pdf','docs','zip'];
                 if (this.isExtensionMatched(imageExtension, extension)) { 
-                    return 'fa fa-file-image-o';
+                    return 'fa fa-file-image';
                 }
                 if (this.isExtensionMatched(mediaExtension, extension)) { 
-                    return 'fa-file-audio-o';
+                    return 'fa-file-audio';
                 }
                 if (this.isExtensionMatched(docExtension, extension)) { 
-                    return 'fa fa-file-image-o';
+                    return 'fa fa-file-text';
                 }
                 return 'fa-exclamation-circle';
             }
