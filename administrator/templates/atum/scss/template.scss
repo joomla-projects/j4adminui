@@ -73,6 +73,27 @@
 @import "pages/com_templates";
 @import "pages/com_users";
 
+.joomla-progress {
+    display: flex;
+    height: .5rem;
+    overflow: hidden;
+    font-size: .75rem;
+    border-radius: .25rem;
+    border: 1px solid #5fac23;
+    width: 100%;
+    .joomla-progress-bar {
+        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+        background-size: .5rem .5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #5fac23;
+        transition: width .6s ease;
+    }
+}
 
 //Custom Design for modal
 .joomla-upload-modal {
@@ -91,62 +112,60 @@
     &.active {
         border-color: pink;
     }
-    .joomla-recent-uploaded-media {
+}
+.joomla-recent-uploaded-media {
+    .joomla-recent-uploaded-media-item {
         display: flex;
-        min-height: 100px;
-        .joomla-recent-uploaded-media-item {
-            flex: 1 auto;
-            max-width: 237px;
-            margin: 4px;
-            position: relative;
-
-                .joomla-media-loader-box {
-                    position: absolute;
-                    height: 100%;
-                    width: 100%;
-                    background: rgba(90, 90, 90, 0.63);
-                    top: 0;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-content: center;
-                        .joomla-media-loader-box-inner {
-                            position: absolute;
-                            height: 100%;
-                            width: 100%;
-                        }
-                        .media-loader {
-                            bottom: 50%;
-                            margin: 0 auto;
-                            height: 4px;
-                            border-radius: 3px;
-                        }
-                }
-                img {
-                    width: 100%;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #f4f7fc;
+        padding: 5px;
+        .joomla-progress-container {
+            width: 250px;
+            display: flex;
+            align-items: center;
+                span {
+                    padding-left: 20px;
+                    color: #5e727c;
                 }
         }
-    }
-}
-.joomla-progress {
-    display: flex;
-    height: 1rem;
-    overflow: hidden;
-    font-size: .75rem;
-    background-color: #e9ecef;
-    border-radius: .25rem;
-    .joomla-progress-bar {
-        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-        background-size: 1rem 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        background-color: #28a745;
-        transition: width .6s ease;
+        .joomla-recent-upload-file {
+            display: flex;
+            align-items: center;
+            span {
+                &:first-child {
+                    font-size: 28px;
+                    padding-right: 5px;
+                }
+                &.joomla-image-item {
+                    color: #5AD5B9;    
+                }
+                &.joomla-media-item {
+                    color: #FDC547;    
+                }
+                &.joomla-file-item {
+                    color: #4D8DFC;    
+                }
+            }
+        }
+        .joomla-upload-complete {
+            display: flex;
+            align-items: center;
+            i {
+                color: #5fac23;
+            }
+            span {
+                padding-left: 5px;
+            }
+        }
+        .joomla-file-upload-cancel-btn{
+            font-size: 14px;
+            font-weight: 500;
+            color: #5e727c;
+        }
+        &:last-child {
+            border: none;
+        }
     }
 }

@@ -54,7 +54,7 @@ const runScss = () => {
     monitor.on('removed', (file) => {
       // Handle this case as well
       // eslint-disable-next-line no-console
-      console.log("scss remove: ",file);
+      console.log('scss remove: ', file);
     });
   });
 };
@@ -62,5 +62,5 @@ const runScss = () => {
 
 module.exports = {
   run,
-  runScss
-}
+  runScss,
+};
