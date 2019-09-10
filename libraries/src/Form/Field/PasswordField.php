@@ -10,8 +10,6 @@ namespace Joomla\CMS\Form\Field;
 
 defined('JPATH_PLATFORM') or die;
 
-use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
 
 /**
@@ -47,6 +45,47 @@ class PasswordField extends FormField
 	 * @since  3.2
 	 */
 	protected $maxLength;
+
+	/**
+	 * The minimum length of password
+	 * 
+	 * @var integer
+	 * @since 4.0.0
+	 */
+	protected $minLength;
+
+	/**
+	 * The minimum integer required to validate the password
+	 * 
+	 * @var integer
+	 * @since 4.0.0
+	 */
+	protected $minIntegers;
+
+	/**
+	 * The minimum number of sysmbols are needed to validate the password
+	 * 
+	 * @var integer
+	 * @since 4.0.0
+	 */
+	protected $minSymbols;
+
+	/**
+	 * The minimum number of uppercase characters are needed to validate the password
+	 * 
+	 * @var integer
+	 * @since 4.0.0
+	 */
+	protected $minUppercase;
+
+	/**
+	 * The minimum number of lowercase characters are needed to validate the password
+	 * 
+	 * @var integer
+	 * @since 4.0.0
+	 */
+	protected $minLowercase;
+
 
 	/**
 	 * Whether to attach a password strength meter or not.
@@ -87,6 +126,11 @@ class PasswordField extends FormField
 		{
 			case 'threshold':
 			case 'maxLength':
+			case 'minLength':
+			case 'minIntegers':
+			case 'minSymbols':
+			case 'minUppercase':
+			case 'minLowercase':
 			case 'meter':
 			case 'force':
 				return $this->$name;
@@ -113,6 +157,11 @@ class PasswordField extends FormField
 		{
 			case 'maxLength':
 			case 'threshold':
+			case 'minLength':
+			case 'minIntegers':
+			case 'minSymbols':
+			case 'minUppercase':
+			case 'minLowercase':
 				$this->$name = $value;
 				break;
 
@@ -148,26 +197,15 @@ class PasswordField extends FormField
 		{
 			$this->maxLength    = $this->element['maxlength'] ? (int) $this->element['maxlength'] : 99;
 			$this->threshold    = $this->element['threshold'] ? (int) $this->element['threshold'] : 66;
+			$this->minLength 	= $this->element['minLength'] ? (int) $this->element['minLength'] : 8;
+			$this->minIntegers 	= $this->element['minIntegers'] ? (int) $this->element['minIntegers'] : 0;
+			$this->minSymbols 	= $this->element['minSymbols'] ? (int) $this->element['minSymbols'] : 0;
+			$this->minUppercase = $this->element['minUppercase'] ? (int) $this->element['minUppercase'] : 0;
+			$this->minLowercase = $this->element['minLowercase'] ? (int) $this->element['minLowercase'] : 0;
 			$meter              = (string) $this->element['strengthmeter'];
 			$this->meter        = ($meter == 'true' || $meter == 'on' || $meter == '1');
 			$force              = (string) $this->element['forcePassword'];
 			$this->force        = (($force == 'true' || $force == 'on' || $force == '1') && $this->meter === true);
-
-			// Set some initial values
-			$this->minLength    = 4;
-			$this->minIntegers  = 0;
-			$this->minSymbols   = 0;
-			$this->minUppercase = 0;
-			$this->minLowercase = 0;
-
-			if (Factory::getApplication()->get('db') != '')
-			{
-				$this->minLength    = (int) ComponentHelper::getParams('com_users')->get('minimum_length', 4);
-				$this->minIntegers  = (int) ComponentHelper::getParams('com_users')->get('minimum_integers', 0);
-				$this->minSymbols   = (int) ComponentHelper::getParams('com_users')->get('minimum_symbols', 0);
-				$this->minUppercase = (int) ComponentHelper::getParams('com_users')->get('minimum_uppercase', 0);
-				$this->minLowercase = (int) ComponentHelper::getParams('com_users')->get('minimum_lowercase', 0);
-			}
 		}
 
 		return $return;
@@ -199,15 +237,15 @@ class PasswordField extends FormField
 
 		// Initialize some field attributes.
 		$extraData = array(
-			'maxLength' => $this->maxLength,
-			'meter'     => $this->meter,
-			'threshold' => $this->threshold,
-			'minLength'     => $this->minLength,
-			'minIntegers'     => $this->minIntegers,
-			'minSymbols'     => $this->minSymbols,
-			'minUppercase'     => $this->minUppercase,
-			'minLowercase'     => $this->minLowercase,
-			'forcePassword'    => $this->force,
+			'maxLength' 	=> $this->maxLength,
+			'meter'     	=> $this->meter,
+			'threshold' 	=> $this->threshold,
+			'minLength'    	=> $this->minLength,
+			'minIntegers'    	=> $this->minIntegers,
+			'minSymbols'    	=> $this->minSymbols,
+			'minUppercase'    	=> $this->minUppercase,
+			'minLowercase'    	=> $this->minLowercase,
+			'forcePassword'   	=> $this->force,
 		);
 
 		return array_merge($data, $extraData);
