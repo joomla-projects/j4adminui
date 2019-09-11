@@ -13,7 +13,6 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
-use Joomla\Plugin\Quickicon\Joomlaupdate\Extension\Joomlaupdate;
 
 /** @var JDocumentHtml $this */
 
@@ -144,11 +143,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 					</div>
 
                     <!--@TODO: must be dynamic text & update link -->
-                    <a href="#" class="sidebar-update-status warning">
-                        <?php
-
-                        ?>
-                    </a>
+                    <a href="#" class="sidebar-update-status warning"> Your Joomla is not up to date </a>
 				</div>
 				<jdoc:include type="modules" name="menu" style="none" />
 			</div>
