@@ -55,7 +55,6 @@
                 }).filter( file => {
                     return file.name.toLowerCase().includes(this.$store.state.search.toLowerCase())
                 });
-
                 return [...directories, ...files];
             },
             /* The styles for the media-browser element */
