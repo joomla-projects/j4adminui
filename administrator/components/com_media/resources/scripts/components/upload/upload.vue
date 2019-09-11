@@ -32,7 +32,8 @@
                 @dragover="onDragOver"
                 @dragleave="onDragLeave"
                 >
-                <button class="btn btn-success" @click="chooseFiles"> Upload File </button>
+                <div class="joomla-upload-img"></div>
+                <button class="btn btn-primary" @click="chooseFiles"> Upload File </button>
                 <p class="joomla-upload-tips"> or drop files to upload (max 30MB) </p>
             </div>
             <input type="file" class="hidden"
