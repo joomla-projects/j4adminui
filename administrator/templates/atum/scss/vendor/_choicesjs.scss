@@ -6,7 +6,8 @@
 
 .choices__inner {
 	border-radius: 0;
-	border-color: $gray-400;
+    border-color: $gray-400;
+    min-height: 40px;
 }
 
 // Fix position
@@ -24,15 +25,18 @@
 	appearance: none;
 
 	&::before {
+		content: "\00d7";
 		position: absolute;
-		top: 0;
+		top: -2px;
 		right: 0;
 		bottom: 0;
-		left: 0;
 		display: block;
 		text-align: center;
 		text-indent: 0;
-		content: "\00d7";
+		left: 1px;
+		font-size: 14px;
+		line-height: 1;
+		color: #fff;
 	}
 
 	&:focus {
@@ -44,15 +48,13 @@
 
 	.choices__button_joomla {
 		position: absolute;
-		top: 50%;
-		right: 0;
-		width: 20px;
-		height: 20px;
+		top: 40%;
+		right: 2.2rem;
+		width: 12px;
+		height: 12px;
 		padding: 0;
-		margin-top: -10px;
-		margin-right: 3rem;
 		border-radius: 10em;
-		opacity: .5;
+		background-color: var(--secondary-color);
 
 		&:hover,
 		&:focus {
@@ -79,9 +81,15 @@
 	}
 
 	.choices__inner {
-		padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-		background: $custom-select-background;
-		background-color: $custom-select-bg;
+		padding: .5rem 4rem .4rem 1rem;
+		min-height: 40px;
+		border-style: solid;
+		border-width: 0 0 2px 0;
+		border-color: var(--secondary-icon-color);
+		border-radius: 3px;
+		position: relative;
+		background: url(../images/select-bg.svg) no-repeat 100%/100rem;
+		background-color: var(--input-background-color);
 	}
 }
 
@@ -89,17 +97,18 @@
 .choices[data-type*="text"] {
 
 	.choices__button_joomla {
-		position: absolute;
-		right: 0;
-		top: 0;
-		display: block;
-		width: 0.5rem;
-		padding: 0.8125rem;
-		height: 1.625rem;
-		line-height: 2;
-		border: 0;
-		opacity: 1;
-		background-color: rgba(0, 0, 0, .2);
+        position: absolute;
+        right: 2px;
+        top: 1px;
+        display: block;
+        width: .5rem;
+        padding: .5rem;
+        height: .2rem;
+        line-height: 1;
+        border: 0;
+        opacity: 1;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
 
 		&:hover,
 		&:focus {
@@ -107,48 +116,97 @@
 		}
 
 		&::before {
-			color: $white;
+            top: 1px;
+            color: var(--white);
 		}
 	}
 
 	.choices__inner {
-		padding: 0.4rem 1rem 0.256rem;
+        background-color: var(--input-background-color);
+        padding: .4rem 1rem .1rem;
+        border: 0;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+        border-radius: 3px;
 	}
 	.choices__input {
 		padding: 0.2rem 0 0.356rem;
-		color: $custom-select-color;
+        color: var(--icon-color);
 	}
 }
 
 .choices__list--multiple .choices__item {
-	position: relative;
-	background-color: var(--atum-bg-dark);
-	border: 1px solid var(--atum-bg-dark);
-	border-radius: 0;
+    position: relative;
+    background-color: #e5f2ff;
+    border: 1px solid #ccd3d7;
+    color: var(--color);
+    border-radius: 10px;
+    padding: 0px 4px;
+    font-weight: 400;
+    font-size: .75rem;
 
 	&.is-highlighted {
-		background-color: var(--atum-bg-dark);
-		border: 1px solid var(--atum-bg-dark);
-		opacity: 0.9;
+		background-color: #e5f2ff;
+        border-color: #ccd3d7;
+		opacity: 1;
 	}
 
 	&[data-deletable] {
-		padding-right: 1.8125rem;
+		padding-right: 1.4rem;
 	}
 }
 
 .choices__input {
 	margin-bottom: 0;
 	padding: 0;
-	font-size: 1rem;
+    font-size: .89rem;
+    &::placeholder {
+        color: var(--icon-color);
+    }
 }
 
 .choices__inner, .choices__input {
-	background-color: var(--white);
+	background-color: var(--input-background-color);
 }
 
 .choices__list--single {
 	padding: 0;
-	font-size: 1rem;
-	color: var(--atum-text-dark);
+	font-size: var(--font-size-sm);
+	color: var(--icon-color);
 }
+
+//Toggle Button
+.switcher .toggle-inside {
+    height: 20px;
+    width: 20px;
+    background: #f0f3f8;
+    position: absolute;
+    transition: all .4s ease;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+    top: -3px;
+}
+.switcher .toggle-outside {
+    transition: all .2s ease;
+    background: rgba(189, 197, 200, .5);
+    position: absolute;
+    width: 36px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 10px;
+    height: 15px;
+    overflow: visible;
+}
+.switcher input~input:checked~.toggle-outside .toggle-inside {
+    left: 16px;
+}
+.switcher input~input:checked~.toggle-outside {
+    background: rgba(1, 132, 255, .5);
+}
+.switcher input~input:checked~.toggle-outside .toggle-inside {
+    background: var(--primary-color)
+}
+.switcher label {
+    line-height: 1.2;
+    margin-left: 45px;
+}
+

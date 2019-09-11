@@ -102,7 +102,7 @@ abstract class JHtmlSearchtools
 	)
 	{
 		$direction = strtolower($direction);
-		$orderIcons = array('icon-arrow-up-3', 'icon-arrow-down-3');
+		$orderIcons = array('icon-chevron-up', 'icon-chevron-down');
 		$index = (int) ($direction === 'desc');
 
 		if ($order !== $selected)

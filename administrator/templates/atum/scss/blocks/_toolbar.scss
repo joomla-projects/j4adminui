@@ -330,24 +330,90 @@ joomla-toolbar-button {
   }
 }
 
-.btn-toolbar{
-
+.input-group {
+  position: relative;
+  display: block;
   .input-group-append {
-    .btn-primary {
-      background-color: var(--atum-bg-dark-70);
-      color:rgba(255,255,255,0.90);
+    position: absolute;
+    right: 1.1rem;
+    top: 0;
+    height: 1.5rem;
+    bottom: 0;
+    margin: auto;
+    z-index: 4;
+    .btn{
+      background: var(--transparent-bg);
+      border: 0;
+      padding: 0 0 0 10px;
+      color: var(--icon-color);
+      box-shadow: none;
+      line-height: 1;
+      &.hidden{
+        display: none;
+      }
+      span{
+        margin-right: 0;
+      }
+    }
+    .input-group-text{
+      background: var(--transparent-bg);
+      color: var(--icon-color);
+      &.input-password-toggle{
+        padding: 0;
+        border: 0;
+      }
     }
   }
-  > joomla-toolbar-button,
-  > .btn-group {
-    @include media-breakpoint-down(lg) {
+}
+.control-group {
+  .controls {
+    .input-group {
+      .input-group-append {
+        .btn{
+          &.btn-primary,
+          &.button-select,
+          &:not(:disabled),
+          &.btn-secondary{
+            &:hover,
+            &:focus,
+            &:active{
+              background-color: transparent;
+              border-color: transparent;
+              box-shadow: none;
+              outline: none;
+              color: var(--primary-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  
+.btn-toolbar{
+	
+	.input-group-append {
+    height: 1rem;
+    line-height: 1;
+    margin: 0;
+    top: .98rem;
+	  .btn-primary {
+      background: var(--transparent-bg);
+      color: var(--secondary-icon-color);
+      box-shadow: none;
+      line-height: 1;
+	  }
+	}
+	> joomla-toolbar-button,
+	> .btn-group {
+	  @include media-breakpoint-down(lg) {
       margin-left:0 !important;
       margin-right:0.75rem;
       margin-bottom:0.75rem;
-    }    
-  }
-
-
+    }   
+    display: inline-block; 
+	}
+	
 }
 
 .js-stools{
@@ -355,7 +421,7 @@ joomla-toolbar-button {
     justify-content:flex-start;
     .js-stools-container-bar{
         .btn-toolbar{
-             justify-content:flex-start;
+          justify-content:flex-start;
         }
     }
   }
@@ -394,4 +460,11 @@ joomla-toolbar-button {
         }
      }
   }
+}
+.js-calendar{
+	.calendar-container{
+		.btn{
+			padding: 0 1.75rem;
+		}
+	}
 }
