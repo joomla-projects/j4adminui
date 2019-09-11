@@ -48,7 +48,7 @@
         flex-direction: column;
         justify-content: flex-end;
         &.active {
-            border-color: pink;
+            border-color: #0184ff;
         }
         .btn {
             &.btn-primary {
@@ -104,6 +104,8 @@
 }
 .joomla-recent-uploaded-media {
     color: #1d2427;
+    max-height: 300px;
+    overflow-y: scroll;
     .joomla-recent-uploaded-media-item {
         display: flex;
         position: relative;

@@ -36,8 +36,8 @@
                 @dragleave="onDragLeave"
                 >
                 <div class="joomla-upload-img" v-if="uploadedItems.length < 1"></div>
-                <button class="btn btn-primary" @click="chooseFiles"> Upload File </button>
-                <p class="joomla-upload-tips"> or drop files to upload (max 30MB) </p>
+                <button class="btn btn-primary" @click="chooseFiles"> {{ translate('COM_MEDIA_UPLOAD_FILE') }} </button>
+                <p class="joomla-upload-tips"> {{translate('COM_MEDIA_MAX_DROP_FILE')}} </p>
             </div>
             <input type="file" class="hidden"
                 :name="name"
