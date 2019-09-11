@@ -143,6 +143,7 @@ export const createDirectory = (context, payload) => {
  * @param payload object with the new folder name and its parent directory
  */
 export const uploadFile = (context, payload) => {
+    const fileName = payload.name.replace(/[\])}[{(]/g, '');
     new Promise((resolve, reject) => {
         context.commit(types.SET_IS_LOADING, true);
         const url = api._baseUrl + '&task=api.files&path=' + payload.parent;
@@ -151,7 +152,6 @@ export const uploadFile = (context, payload) => {
             name: payload.name,
             content: payload.content,
         };
-        const fileName = data.name.replace(/[\])}[{(]/g, '');
         const override = payload.override || false
         // Append override
         if (override === true) {
@@ -190,14 +190,14 @@ export const uploadFile = (context, payload) => {
         if (error.status === 409) {
             if (notifications.ask(translate.sprintf('COM_MEDIA_FILE_EXISTS_AND_OVERRIDE', payload.name), {})) {
                 payload.override = true;
-                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: payload.name, properties:{progress:0, error:''}})
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{progress:0, error:''}})
                 uploadFile(context, payload);
             } else {
                 context.commit(types.REMOVE_LAST_UPLOADED_FILES, {file})
             }
         }else{
             let error_message = JSON.parse(error.response).message
-            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName: payload.name, properties:{error: error.status, error_message}})
+            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{error: error.status, error_message}})
         }
     }).catch(api._handleError);
 }

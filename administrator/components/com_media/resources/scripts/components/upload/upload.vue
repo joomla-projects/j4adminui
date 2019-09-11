@@ -1,5 +1,8 @@
 <template>
     <media-modal v-if="$store.state.showUploadMediaModal" :className="'joomla-upload-modal'" :size="'sm'" @close="close()" :showClose="false" label-element="uploadMediaTitle">
+        <div slot="header">
+            <a href="#" @click="close()" class="joomla-upload-modal-cancel-btn"> <i class="fas fa-times"></i></a>
+        </div>
         <div slot="body">
             <div class="joomla-recent-uploaded-media" v-if="uploadedItems.length > 0">
                 <div class="joomla-recent-uploaded-media-item" v-for="image in uploadedItems">
@@ -32,7 +35,7 @@
                 @dragover="onDragOver"
                 @dragleave="onDragLeave"
                 >
-                <div class="joomla-upload-img"></div>
+                <div class="joomla-upload-img" v-if="uploadedItems.length < 1"></div>
                 <button class="btn btn-primary" @click="chooseFiles"> Upload File </button>
                 <p class="joomla-upload-tips"> or drop files to upload (max 30MB) </p>
             </div>
