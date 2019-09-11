@@ -5,9 +5,9 @@
                 <div class="joomla-recent-uploaded-media-item" v-for="image in uploadedItems">
                     <div class="joomla-recent-upload-file">
                         <span :class="image.mediaClass"></span>
-                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 15, 3, 17)}}</span>
+                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 10, 5, 15)}}</span>
                     </div>
-                    <div class="joomla-progress-container" v-if="typeof image.error === 'undefined' || image.error===''">
+                    <div class="joomla-progress-container" v-if="(typeof image.error === 'undefined' || image.error === '') && !image.success">
                         <div class="joomla-progress">
                             <div class="joomla-progress-bar" :style="{width:image.progress+'%'}"></div>
                         </div>
@@ -185,13 +185,13 @@
                 const mediaExtension = ['mp4'];
                 const docExtension = ['pdf','docs','zip'];
                 if (this.isExtensionMatched(imageExtension, extension)) { 
-                    return 'joomla-image-item fas fa-image';
+                    return 'joomla-image-item';
                 }
                 if (this.isExtensionMatched(mediaExtension, extension)) { 
-                    return 'joomla-media-item fas fa-file-audio';
+                    return 'joomla-media-item';
                 }
                 if (this.isExtensionMatched(docExtension, extension)) { 
-                    return 'joomla-docs-item fas fa-file-alt';
+                    return 'joomla-docs-item';
                 }
                 return 'joomla-ban-item fas fa-ban';
             },
