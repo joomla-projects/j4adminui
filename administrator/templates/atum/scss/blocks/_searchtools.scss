@@ -128,13 +128,45 @@
 
     .js-stools-field-list{
       margin-bottom:0;
+      display: flex;
+      align-items: center;
+      border: 1px solid #e8ebf4;
+      background: #fff;
+      padding: 0px 5px 0px 15px;
+      margin-right: 10px;
+      .js-stools-sort-by-label{
+        font-size: 1rem;
+        color: var(--secondary-color);
+        border-right: 1px solid var(--background);
+        padding-right: 10px;
+        margin-right: 10px;
+      }
       .custom-select{
         box-shadow: none;
+        border: none;
+        height: auto;
+        padding-right: 0;
+        font-size: 1rem;
+        color: var(--inverse-background);
+        padding: 0;
       }
     }
 
     .input-append {
       margin-bottom: 0;
+    }
+    .ordering-select{
+      display: flex;
+      .btn{
+        padding: 0;
+        color: var(--secondary-icon-color);
+        background: transparent;
+        box-shadow: none;
+        font-size: 20px;
+      }
+    }
+    .btn {
+      line-height: 1;
     }
   }
 }
