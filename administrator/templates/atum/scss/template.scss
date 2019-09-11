@@ -40,18 +40,17 @@
 @import "blocks/toolbar";
 @import "blocks/treeselect";
 @import "blocks/utilities";
+@import "blocks/list-table";
+@import "blocks/badge";
 @import "blocks/tabs";
+@import "blocks/buttons";
 @import "blocks/media";
 
 // Vendor overrides
 @import "vendor/awesomplete";
-@import "vendor/bootstrap/badge";
-@import "vendor/bootstrap/buttons";
 @import "vendor/bootstrap/card";
-@import "vendor/bootstrap/custom-forms";
 @import "vendor/bootstrap/collapse";
 @import "vendor/bootstrap/dropdown";
-@import "vendor/bootstrap/form";
 @import "vendor/bootstrap/lists";
 @import "vendor/bootstrap/modal";
 @import "vendor/bootstrap/nav";

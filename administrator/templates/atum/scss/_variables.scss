@@ -241,7 +241,7 @@ $grid-gutter-width-s:              15px;
 $breadcrumb-bg:                    var(--white);
 
 // Links
-$link-color:                       var(--atum-link-color);
+$link-color:                       var(--link-color);
 $link-hover-color:                 var(--atum-link-hover-color);
 
 // Time for fade effect
@@ -261,3 +261,31 @@ $zindex-tooltip:                   1070;
 $zindex-mobil-bottom:              8000;
 $zindex-mobil-toggle:              9999;
 $zindex-mobil-menu:                9000;
+
+
+// New Styles
+
+:root{
+	--background: #f4f7fc;
+	--inverse-background: #1d2427;
+	--color: #252732;
+	--color-rgb: 37, 39, 50;
+	--inverse-color: #ffffff;
+	--secondary-color: #5e727c;
+	--icon-color: #808f94;
+	--secondary-icon-color: #bdc5c8;
+	--button-background: #e5f2ff;
+	--cancel-button-background: #f0f3f8;
+	--disabled-button-background: #eaeaea;
+	--link-color: #0184ff;
+	--link-color-light-rgb: 229, 242, 255;
+	--primary-color: #0184ff;
+	--primary-gradient-color: #198df8;
+	--success-color: #7ac143;
+	--warning-color: #f9a541;
+	--danger-color: #f44321;
+	--overlay: rgba(23, 23, 23, 0.5);
+}
+
+
+$sidebar-width:                    17.857rem;

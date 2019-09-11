@@ -1,0 +1,93 @@
+//Custom article table
+table.j-list-table {
+    border-collapse:separate; 
+    border-spacing: 0 10px;
+    background-color: transparent;
+    color: var(--inverse-background);
+    td,
+    th {
+        border:none;
+        padding: 1rem;
+    }
+    thead {
+        border-spacing: 0;
+        td,
+        th {
+            border:none;
+            padding-bottom: 0;
+            font-size: 1rem;
+        }
+        a{
+            color: var(--secondary-color);
+            font-weight: $normal-weight;
+            text-decoration: none;
+            &#sorted{
+                color: var(--primary-color);
+                font-weight: $normal-weight;
+                .icon-chevron-down,
+                .icon-chevron-up{
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+    tbody{
+        tr{
+            background: #fff;
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+            transition: .35s;
+            border-radius: 3px;
+            &.gu-mirror,
+            &:active,
+            &:focus,
+            &:hover {
+                background-color: var(--tr-hover-background);
+                box-shadow: 10px 20px 40px -5px rgba(0, 28, 73, 0.25);
+                position: relative;
+                z-index: 1;
+            }
+            td:first-child { 
+                border-top-left-radius: 3px; 
+            }
+            td:last-child { 
+                border-top-right-radius: 3px; 
+            }
+            td:first-child { 
+                border-bottom-left-radius: 3px; 
+            }
+            td:last-child { 
+                border-bottom-right-radius: 3px; 
+            }
+            .j-article-id-number{
+                font-weight: $medium-weight;
+                font-size: 1rem;
+            }
+            .has-context {
+                .break-word {
+                    .small.break-word{
+                        color: var(--secondary-color);
+                    }
+                }
+            }
+            th,
+            td {
+                a {
+                    
+                    color: var(--inverse-background);
+                    font-weight: $normal-weight;
+                    text-decoration: none;
+                    color: var(--inverse-background);
+                    &:not(.badge) {
+                        text-decoration: none;
+                    }
+                    &:hover,
+                    &:focus,
+                    &:active{
+                        color: var(--primary-color);
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -55,6 +55,10 @@ Joomla = window.Joomla || {};
         // Global container
         mainContainerSelector: '.js-stools',
 
+        // Client Filter field
+        clientIdSelector: '.js-stools-selector-btn',
+        clientIdFieldSelector: '.js-stools-selector-client-id-field',
+
         // Filter fields
         searchBtnSelector: '.js-stools-btn-search',
         filterBtnSelector: '.js-stools-btn-filter',
@@ -70,9 +74,13 @@ Joomla = window.Joomla || {};
         orderColumnSelector: '.js-stools-column-order',
         orderBtnSelector: '.js-stools-btn-order',
         orderFieldSelector: '.js-stools-field-order',
+        orderTogglerBtn: '.js-stools-order-toggler',
         orderFieldName: 'list[fullordering]',
-        limitFieldSelector: '.js-stools-field-limit',
+        limitFieldSelector: '.js-stools-field-limit-link',
         defaultLimit: 20,
+
+        // List limit
+        listLimitFieldName: 'list[limit]',
 
         activeOrder: null,
         activeDirection: 'ASC',
@@ -86,12 +94,17 @@ Joomla = window.Joomla || {};
 
       // Initialise selectors
       this.theForm = document.querySelector(this.options.formSelector);
-
+      
       // Filters
       this.filterButton = document.querySelector(`${this.options.formSelector} ${this.options.filterBtnSelector}`);
       this.filterContainer = document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) ? document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) : '';
       this.filtersHidden = this.options.filtersHidden;
 
+      // Client filter 
+      this.clientFieldBtns = Array.prototype.slice.call(document.querySelectorAll(`${this.options.mainContainerSelector} ${this.options.clientIdSelector}`));
+      this.clientFieldInput = document.querySelector(`${this.options.mainContainerSelector} ${this.options.clientIdFieldSelector}`);
+      console.log('field', this.clientFieldInput);
+      
       // List fields
       this.listButton = document.querySelector(this.options.listBtnSelector);
       this.listContainer = document.querySelector(`${this.options.formSelector} ${this.options.listContainerSelector}`);
@@ -109,10 +122,14 @@ Joomla = window.Joomla || {};
       // Ordering
       this.orderCols = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.orderColumnSelector}`));
       this.orderField = document.querySelector(`${this.options.formSelector} ${this.options.orderFieldSelector}`);
+      this.orderToggler = document.querySelector(`${this.options.mainContainerSelector} ${this.options.orderTogglerBtn}`); 
+      this.fullOrdering = document.querySelector(`${this.options.mainContainerSelector} [name="${this.options.orderFieldName}"]`);
+      
 
       // Limit
-      this.limitField = document.querySelector(`${this.options.formSelector} ${this.options.limitFieldSelector}`);
-
+      this.limitField = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.limitFieldSelector}`));
+      this.listLimitFieldName = document.querySelector(`input[name="${this.options.listLimitFieldName}"]`);
+      
       // Init trackers
       this.activeColumn = null;
       this.activeDirection = this.options.activeDirection;
@@ -219,6 +236,9 @@ Joomla = window.Joomla || {};
       });
 
       this.checkActiveStatus(this);
+      this.listLimitFilter();
+      this.handleToggleClick();
+      this.handleOnChangeRadio();
     }
 
     checkFilter(element) {
@@ -491,7 +511,61 @@ Joomla = window.Joomla || {};
         }
       }
     }
+
+    // eslint-disable-next-line class-methods-use-this
+    listLimitFilter() {
+      const self = this;
+      if (this.limitField) {
+        this.limitField.forEach((elem) => {
+          elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const limit = event.target.getAttribute('value');
+            self.listLimitFieldName.value = limit;
+            self.theForm.submit();
+          }, false);
+        });
+      }
+    }
+
+    handleToggleClick() {
+      if (this.orderToggler) {
+        this.orderToggler.addEventListener('click', (event) => {
+          event.preventDefault();
+          let selectValue = this.fullOrdering.value;
+          
+          let orderValue = [];
+
+          if (!!selectValue) {
+            orderValue = selectValue.split(' ');
+            
+            if (!!orderValue[1] && orderValue[1].toUpperCase() === 'ASC') {
+                orderValue[1] = 'DESC';
+            } else if (!!orderValue[1] && orderValue[1].toUpperCase() === 'DESC') {
+                orderValue[1] = 'ASC';
+            }
+          }
+
+            this.fullOrdering.value = orderValue.join(' ');
+            this.theForm.submit();
+        }, false);
+      }
+    }
+
+    handleOnChangeRadio() {
+      const self = this;
+      if (this.clientFieldBtns) {
+        this.clientFieldBtns.forEach((elem) => {
+            elem.addEventListener('click', event => {
+              event.preventDefault();
+              const value = event.target.getAttribute('value');
+              self.clientFieldInput.value = value;
+              self.theForm.submit();
+            }); 
+        });
+      }
+    }
   }
+
 
   const onBoot = () => {
     if (Joomla.getOptions('searchtools')) {
