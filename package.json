@@ -27,6 +27,7 @@
     "not ie < 11"
   ],
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@claviska/jquery-minicolors": "2.2.6",
     "@webcomponents/webcomponentsjs": "2.1.2",
     "awesomplete": "1.1.4",
@@ -46,8 +47,8 @@
     "metismenujs": "^1.0.3",
     "popper.js": "^1.15.0",
     "punycode": "1.4.1",
-    "roboto-fontface": "^0.10.0",
     "qrcode-generator": "^1.4.3",
+    "roboto-fontface": "^0.10.0",
     "skipto": "^2.0.4",
     "tinymce": "5.0.1"
   },

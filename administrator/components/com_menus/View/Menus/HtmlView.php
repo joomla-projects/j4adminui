@@ -117,9 +117,18 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_MENUS_VIEW_MENUS_TITLE'), 'list menumgr');
 
-		if ($canDo->get('core.create'))
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
-			ToolbarHelper::addNew('menu.add');
+			ToolbarHelper::divider();
+			ToolbarHelper::preferences('com_menus');
+		}
+
+		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER');
+		ToolbarHelper::divider();
+
+		if ($canDo->get('core.admin') && $this->state->get('client_id') == 1)
+		{
+			ToolbarHelper::custom('menu.exportXml', 'download', 'download', 'COM_MENUS_MENU_EXPORT_BUTTON', true);
 		}
 
 		if ($canDo->get('core.delete'))
@@ -130,18 +139,10 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::custom('menus.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
 
-		if ($canDo->get('core.admin') && $this->state->get('client_id') == 1)
+		if ($canDo->get('core.create'))
 		{
-			ToolbarHelper::custom('menu.exportXml', 'download', 'download', 'COM_MENUS_MENU_EXPORT_BUTTON', true);
+			ToolbarHelper::addNew('menu.add');
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			ToolbarHelper::divider();
-			ToolbarHelper::preferences('com_menus');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER');
 	}
 }
