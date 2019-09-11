@@ -13,7 +13,7 @@
     margin-left: 15px;
     .joomla-progress-bar {
         background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-        background-size: .5rem .5rem;
+        background-size: 1rem 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -37,6 +37,7 @@
     max-width: 40vw;
     .modal-header {
         border: none;
+        position: relative;
     }
     .body {
         padding: 10px;
@@ -86,8 +87,23 @@
         background: url(../images/image-upload.svg) no-repeat scroll center center;
         margin: 30px auto 20px;
     }
+    .joomla-upload-modal-cancel-btn {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        background: #f44321;
+        color: #e5f2ff;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 1.25rem;
+        line-height: 2.1rem;
+        width: 2rem;
+        height: 2rem;
+        z-index: 1;
+    }
 }
 .joomla-recent-uploaded-media {
+    color: #1d2427;
     .joomla-recent-uploaded-media-item {
         display: flex;
         position: relative;
@@ -122,6 +138,7 @@
                     width: 25px;
                     height: 30px;
                 }
+                &.joomla-docs-item,
                 &.joomla-file-item {
                     background: url(../images/files-icon-docx.svg);
                     width: 25px;
@@ -134,22 +151,61 @@
             align-items: center;
             i {
                 color: #5fac23;
+                font-size: 1.15rem;
             }
             span {
                 padding-left: 5px;
+                color: #5e727c;
             }
         }
         .joomla-file-upload-cancel-btn{
-            font-size: 14px;
-            font-weight: 500;
             color: #5e727c;
+            text-decoration: none;
+        }
+        .joomla-media-upload-error {
+            i {
+                color: #f44321;
+                font-size: 1.15rem;
+            }
+            span {
+                padding-left: 5px;
+                color: #f44321;
+            }
+        }
+        .joomla-file-remove-btn {
+            border-radius: 3px;
+            border: solid 1px #bdc5c8;
+            color: #5e727c;
+            text-decoration: none;
+            line-height: 1.9rem;
+            padding-right: 23px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            transition: .35s;
+            &:hover {
+                border-color: #f44321;
+                background-color: #f44321;
+                color: #fff;
+                i {
+                    color: #fff;
+                }
+            }
+            i {
+                color: #bdc5c8;
+                font-size: 1.15rem;
+                line-height: 1;
+                display: inline-block;
+                margin-right: 14px;
+                transition: .35s;
+            }
         }
         &:first-child {
             padding-top: 10px;
         }
         &:last-child {
             border: none;
-            padding-bottom: 10px;
+            padding-bottom: 35px;
         }
     }
 }

@@ -444,7 +444,7 @@ export default {
      */
     [types.SET_LAST_UPLOADED_FILES]: (state, payload) => {
         const file = payload
-        state.lastUploadedFile.push(file)
+        state.lastUploadedFile.unshift(file)
     },
     /**
      * Remove single file from the queue or empty queue
@@ -452,11 +452,11 @@ export default {
      * @param payload
      */
     [types.REMOVE_LAST_UPLOADED_FILES]: (state, payload) => {
-        const {file, empty} = payload;
+        const {fileName, empty} = payload;
         if (typeof empty !== 'undefined' && empty === true) {
             state.lastUploadedFile = [];
         } else {
-            const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === file.name.toLowerCase() );
+            const fileIndex = state.lastUploadedFile.findIndex(_file => _file.name.toLowerCase() === fileName.toLowerCase() );
             state.lastUploadedFile.splice(fileIndex, 1);
         }
     },

@@ -1,16 +1,16 @@
 <template>
     <media-modal v-if="$store.state.showUploadMediaModal" :className="'joomla-upload-modal'" :size="'sm'" @close="close()" :showClose="false" label-element="uploadMediaTitle">
         <div slot="header">
-            <a href="#" @click="close()" class="joomla-upload-modal-cancel-btn"> <i class="fas fa-times"></i></a>
+            <a href="#" @click="close()" class="joomla-upload-modal-cancel-btn"><i class="fas fa-times"></i></a>
         </div>
         <div slot="body">
             <div class="joomla-recent-uploaded-media" v-if="uploadedItems.length > 0">
                 <div class="joomla-recent-uploaded-media-item" v-for="image in uploadedItems">
                     <div class="joomla-recent-upload-file">
                         <span :class="image.mediaClass"></span>
-                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 10, 5, 15)}}</span>
+                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 18, 6, 22)}}</span>
                     </div>
-                    <div class="joomla-progress-container" v-if="(typeof image.error === 'undefined' || image.error === '') && !image.success">
+                    <div class="joomla-progress-container" v-if="image.error === '' && !image.success">
                         <div class="joomla-progress">
                             <div class="joomla-progress-bar" :style="{width:image.progress+'%'}"></div>
                         </div>
@@ -18,14 +18,14 @@
                     </div>
                     <div class="joomla-media-upload-error" v-if="image.error && image.error!==''">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <span> {{ (image.error_message && image.error_message !== '') ? translate(image.error_message) : translate(getErrorMessage(image.error))}} </span>
+                        <span> {{ (image.error_message && image.error_message !== '') ? translate(image.error_message) : translate(getErrorMessage(image))}} </span>
                     </div>
                     <div class="joomla-upload-complete" v-if="(!image.error || image.error==='') && image.success === true">
                         <i class="fa fa-check-circle"></i>
                         <span> Done </span>
                     </div>
                     <a v-if="!image.success" class="joomla-file-upload-cancel-btn" href="#" @click="onCancelUploadProcess(image, $event)"> Cancel </a>
-                    <a v-if="image.success" class="joomla-file-remove-btn" href="#" @click="onRemoveFile(image, $event)"> Remove </a>
+                    <a v-if="image.success" class="joomla-file-remove-btn" href="#" @click="onRemoveFile(image, $event)"><i class="fas fa-times-circle"></i> Remove </a>
                 </div>
             </div>
             <div 
@@ -85,7 +85,7 @@
                 const {xhrRequest} = this.$store.state.lastUploadedFile[index]
                 if (typeof xhrRequest !== 'undefined' && xhrRequest !== null) { 
                     xhrRequest.abort();
-                    this.$store.commit(types.REMOVE_LAST_UPLOADED_FILES, { file: item });
+                    this.$store.commit(types.REMOVE_LAST_UPLOADED_FILES, { fileName: item.name });
                 }
             },
             onRemoveFile(item, event) {
@@ -140,6 +140,7 @@
                         content = result.slice(splitIndex, result.length),
                         payload = {src:result, name:file.name, success: false, progress: 0, xhrRequest: null, extension, mediaClass };
                         payload.name = payload.name.replace(/[\])}[{(]/g, '');
+                        
                     // Add file to the upload queue
                     this.$store.commit(types.SET_LAST_UPLOADED_FILES, payload )
                     // Dispatch file for Upload process
@@ -185,7 +186,7 @@
 
             getMediaClass(extension){
                 const imageExtension = ['jpg', 'jpeg', 'png', 'gif', 'mp4'];
-                const mediaExtension = ['mp4'];
+                const mediaExtension = ['mp4','mp3'];
                 const docExtension = ['pdf','docs','zip'];
                 if (this.isExtensionMatched(imageExtension, extension)) { 
                     return 'joomla-image-item';
@@ -196,7 +197,7 @@
                 if (this.isExtensionMatched(docExtension, extension)) { 
                     return 'joomla-docs-item';
                 }
-                return 'joomla-ban-item fas fa-ban';
+                return 'joomla-file-item';
             },
             stringTruncate(txt, start, end, maxLength) {
                 const txt_trim = txt.split('.'),
@@ -209,11 +210,11 @@
                 }
                 return txt; 
             },
-            getErrorMessage(errorStatus){
-                if( errorStatus === '')
+            getErrorMessage(item){
+                if( item.error === '')
                     return ''
                 let error = ''
-                switch (errorStatus) {
+                switch (item.error) {
                     case 409:
                         error = 'COM_MEDIA_FILE_EXISTS_AND_OVERRIDE';
                         break;

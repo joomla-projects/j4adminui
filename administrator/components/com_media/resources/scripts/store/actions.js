@@ -177,14 +177,15 @@ export const uploadFile = (context, payload) => {
         });
         setTimeout(()=>{
             context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{xhrRequest, error:''} })
-        },300)
+        },100)
     })
     .then(file => {
         context.commit(types.UPLOAD_SUCCESS, file);
         context.commit(types.SET_IS_LOADING, false);
     })
     .catch(error => {
-        console.log("upload error: ", error)
+        console.log("upload error: ",error)
+
         context.commit(types.SET_IS_LOADING, false);
         // Handle file exists
         if (error.status === 409) {
@@ -193,9 +194,9 @@ export const uploadFile = (context, payload) => {
                 context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{progress:0, error:''}})
                 uploadFile(context, payload);
             } else {
-                context.commit(types.REMOVE_LAST_UPLOADED_FILES, {file})
+                context.commit(types.REMOVE_LAST_UPLOADED_FILES, {fileName: fileName})
             }
-        }else{
+        }else if (error.response !== '') {
             let error_message = JSON.parse(error.response).message
             context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{error: error.status, error_message}})
         }
@@ -239,7 +240,7 @@ export const deleteSelectedItems = (context) => {
             api.delete(item.path)
                 .then(() => {
                     context.commit(types.DELETE_SUCCESS, item);
-                    context.commit(types.REMOVE_LAST_UPLOADED_FILES, {file: item});
+                    context.commit(types.REMOVE_LAST_UPLOADED_FILES, {fileName: item.name});
                     context.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
                     context.commit(types.SET_IS_LOADING, false);
                 })
