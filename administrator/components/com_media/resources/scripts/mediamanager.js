@@ -1,9 +1,9 @@
 import Vue from "vue";
 import Event from './app/Event';
 import App from "./components/app.vue";
-import Disk from "./components/tree/disk.vue";
-import Drive from "./components/tree/drive.vue";
-import Tree from "./components/tree/tree.vue";
+// import Disk from "./components/tree/disk.vue";
+// import Drive from "./components/tree/drive.vue";
+// import Tree from "./components/tree/tree.vue";
 import TreeItem from "./components/tree/item.vue";
 import Toolbar from "./components/toolbar/toolbar.vue";
 import Breadcrumb from "./components/breadcrumb/breadcrumb.vue";
@@ -26,9 +26,9 @@ import Lock from 'vue-focus-lock';
 Vue.use(Translate);
 
 // Register the vue components
-Vue.component('media-drive', Drive);
-Vue.component('media-disk', Disk);
-Vue.component('media-tree', Tree);
+// Vue.component('media-drive', Drive);
+// Vue.component('media-disk', Disk);
+// Vue.component('media-tree', Tree);
 Vue.component('media-tree-item', TreeItem);
 Vue.component('media-toolbar', Toolbar);
 Vue.component('media-breadcrumb', Breadcrumb);
