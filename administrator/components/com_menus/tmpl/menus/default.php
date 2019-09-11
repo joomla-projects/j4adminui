@@ -48,7 +48,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 					</div>
 				<?php else : ?>
-					<table class="table" id="menuList">
+					<table class="table j-list-table" id="menuList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_MENUS_MENUS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -116,28 +116,28 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 								
 								<td class="text-center btns d-none d-md-table-cell">
 									<?php if ($canManageItems) : ?>
-										<a class="badge<?php echo ($item->count_published > 0) ? ' badge-success' : ' badge-secondary'; ?>" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=1'); ?>">
+										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=1'); ?>">
 											<?php echo $item->count_published; ?></a>
 									<?php else : ?>
-										<span class="badge<?php echo ($item->count_published > 0) ? ' badge-success' : ' badge-secondary'; ?>">
+										<span class="">
 											<?php echo $item->count_published; ?></span>
 									<?php endif; ?>
 								</td>
 								<td class="text-center btns d-none d-md-table-cell">
 									<?php if ($canManageItems) : ?>
-										<a class="badge<?php echo ($item->count_unpublished > 0) ? ' badge-danger' : ' badge-secondary'; ?>" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=0'); ?>">
+										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=0'); ?>">
 											<?php echo $item->count_unpublished; ?></a>
 									<?php else : ?>
-										<span class="badge<?php echo ($item->count_unpublished > 0) ? ' badge-danger' : ' badge-secondary'; ?>">
+										<span class="">
 											<?php echo $item->count_unpublished; ?></span>
 									<?php endif; ?>
 								</td>
 								<td class="text-center btns d-none d-md-table-cell">
 									<?php if ($canManageItems) : ?>
-										<a class="badge<?php echo ($item->count_trashed > 0) ? ' badge-danger' : ' badge-secondary'; ?>" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=-2'); ?>">
+										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=-2'); ?>">
 											<?php echo $item->count_trashed; ?></a>
 									<?php else : ?>
-										<span class="badge<?php echo ($item->count_trashed > 0) ? ' badge-danger' : ' badge-secondary'; ?>">
+										<span class="">
 											<?php echo $item->count_trashed; ?></span>
 									<?php endif; ?>
 								</td>
@@ -230,7 +230,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 						</tbody>
 					</table>
 
-					<?php // load the pagination. ?>
+					<!-- load the pagination. -->
 					<?php echo $this->pagination->getListFooter(); ?>
 
 				<?php endif; ?>
