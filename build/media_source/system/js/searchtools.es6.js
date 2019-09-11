@@ -55,6 +55,10 @@ Joomla = window.Joomla || {};
         // Global container
         mainContainerSelector: '.js-stools',
 
+        // Client Filter field
+        clientIdSelector: '.js-stools-selector-btn',
+        clientIdFieldSelector: '.js-stools-selector-client-id-field',
+
         // Filter fields
         searchBtnSelector: '.js-stools-btn-search',
         filterBtnSelector: '.js-stools-btn-filter',
@@ -90,12 +94,17 @@ Joomla = window.Joomla || {};
 
       // Initialise selectors
       this.theForm = document.querySelector(this.options.formSelector);
-
+      
       // Filters
       this.filterButton = document.querySelector(`${this.options.formSelector} ${this.options.filterBtnSelector}`);
       this.filterContainer = document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) ? document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) : '';
       this.filtersHidden = this.options.filtersHidden;
 
+      // Client filter 
+      this.clientFieldBtns = Array.prototype.slice.call(document.querySelectorAll(`${this.options.mainContainerSelector} ${this.options.clientIdSelector}`));
+      this.clientFieldInput = document.querySelector(`${this.options.mainContainerSelector} ${this.options.clientIdFieldSelector}`);
+      console.log('field', this.clientFieldInput);
+      
       // List fields
       this.listButton = document.querySelector(this.options.listBtnSelector);
       this.listContainer = document.querySelector(`${this.options.formSelector} ${this.options.listContainerSelector}`);
@@ -113,15 +122,14 @@ Joomla = window.Joomla || {};
       // Ordering
       this.orderCols = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.orderColumnSelector}`));
       this.orderField = document.querySelector(`${this.options.formSelector} ${this.options.orderFieldSelector}`);
-      this.orderToggler = document.querySelector(`${this.options.orderTogglerBtn}`); 
-      this.fullOrdering = document.querySelector(`[name="${this.options.orderFieldName}"]`);
+      this.orderToggler = document.querySelector(`${this.options.mainContainerSelector} ${this.options.orderTogglerBtn}`); 
+      this.fullOrdering = document.querySelector(`${this.options.mainContainerSelector} [name="${this.options.orderFieldName}"]`);
       
-      
+
       // Limit
       this.limitField = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.limitFieldSelector}`));
       this.listLimitFieldName = document.querySelector(`input[name="${this.options.listLimitFieldName}"]`);
-
-
+      
       // Init trackers
       this.activeColumn = null;
       this.activeDirection = this.options.activeDirection;
@@ -230,6 +238,7 @@ Joomla = window.Joomla || {};
       this.checkActiveStatus(this);
       this.listLimitFilter();
       this.handleToggleClick();
+      this.handleOnChangeRadio();
     }
 
     checkFilter(element) {
@@ -539,6 +548,20 @@ Joomla = window.Joomla || {};
             this.fullOrdering.value = orderValue.join(' ');
             this.theForm.submit();
         }, false);
+      }
+    }
+
+    handleOnChangeRadio() {
+      const self = this;
+      if (this.clientFieldBtns) {
+        this.clientFieldBtns.forEach((elem) => {
+            elem.addEventListener('click', event => {
+              event.preventDefault();
+              const value = event.target.getAttribute('value');
+              self.clientFieldInput.value = value;
+              self.theForm.submit();
+            }); 
+        });
       }
     }
   }

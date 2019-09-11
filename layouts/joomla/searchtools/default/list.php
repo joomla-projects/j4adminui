@@ -13,6 +13,9 @@ $data = $displayData;
 
 // Load the form list fields
 $list = $data['view']->filterForm->getGroup('list');
+// echo '<xmp>';
+// print_r($list);
+// echo '</xmp>';die();
 ?>
 <?php if ($list) : ?>
 	<div class="ordering-select">
@@ -22,7 +25,7 @@ $list = $data['view']->filterForm->getGroup('list');
 					<div class="js-stools-list-inner">
 						<span class="sr-only"><?php echo $field->label; ?></span>
 						<?php if($fieldName === 'list_fullordering') : ?>
-							<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_SORT_BY'); ?></span>
+							<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_ORDER_BY'); ?></span>
 						<?php endif; ?>
 						<?php echo $field->input; ?>
 					</div>

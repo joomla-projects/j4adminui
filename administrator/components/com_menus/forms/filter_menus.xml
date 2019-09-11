@@ -3,11 +3,12 @@
 	<field
 		name="client_id"
 		type="list"
+		class="btn-group btn-group-yesno"
 		label="COM_MENUS_SELECT_CLIENT_FILTER"
 		filtermode="selector"
 		onchange="this.form.submit();"
 		>
-		<option value="0">JSITE</option>
+		<option value="0" selected="true">JSITE</option>
 		<option value="1">JADMINISTRATOR</option>
 	</field>
 	<fields name="filter">
