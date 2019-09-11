@@ -19,15 +19,17 @@ $hideLinks = $app->input->getBool('hidemainmenu');
 
 <div class="header-item-content header-profile">
 	<button id="header-user-dropdown" class="header-dropdown-button <?php echo ($hideLinks ? 'disabled' : ''); ?>" type="button" <?php echo ($hideLinks ? 'disabled' : ''); ?> title="<?php echo Text::_('MOD_USER_MENU'); ?>">
-        <!-- @TODO: @TODO: avatar must be dynamic -->
-        <img class="header-user-avatar" src="https://picsum.photos/32" alt="">
-        <!-- @TODO: User name must be dynamic value -->
-		<span class="header-user-name"><?php echo Text::_('MOD_USER_MENU'); ?></span>
+        <span class="header-user-icon fas fa-user"></span>
+		<span class="header-user-name"><?php echo $user->name; ?></span>
         <span class="fa fa-angle-down" aria-hidden="true"></span>
 	</button>
 
 
-	<!--<div>
+	<!--
+
+	@TODO: User menu dropdown must be completed
+
+	<div>
 		<div class="dropdown-header"><?php /*echo $user->name; */?></div>
 		<?php /*$uri   = Uri::getInstance(); */?>
 		<?php /*$route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); */?>
@@ -52,4 +54,5 @@ $hideLinks = $app->input->getBool('hidemainmenu');
 			</a>
 		</div>
 	</div>-->
+
 </div>

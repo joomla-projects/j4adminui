@@ -13,6 +13,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\Plugin\Quickicon\Joomlaupdate\Extension\Joomlaupdate;
 
 /** @var JDocumentHtml $this */
 
@@ -124,13 +125,9 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 								<img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
 								<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
 							</div>
-                            <div class="sidebar-version">
-                                <?php
-                                    // @TODO: must incluede version
-                                    $version = "4.0-dev";
-                                ?>
-                                <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', $version); ?></span>
-                                <span aria-hidden="true"><?php echo $version; ?></span>
+                            <div class="sidebar-version success" title="<?php echo JVERSION; ?>">
+                                <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
+                                <span aria-hidden="true"><?php echo JVERSION; ?></span>
                             </div>
 						<?php else : ?>
 							<a class="logo" href="<?php echo Route::_('index.php'); ?>"
@@ -146,8 +143,12 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 						</a>
 					</div>
 
-                    <!--@TODO: must be dynamic text-->
-                    <p class="sidebar-update-status"> Your Joomla is up to date </p>
+                    <!--@TODO: must be dynamic text & update link -->
+                    <a href="#" class="sidebar-update-status warning">
+                        <?php
+
+                        ?>
+                    </a>
 				</div>
 				<jdoc:include type="modules" name="menu" style="none" />
 			</div>
@@ -160,7 +161,8 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 			<?php // Subheader ?>
 			<button type="button" class="toggle-toolbar mx-auto btn btn-secondary my-2 d-md-none d-lg-none d-xl-none" data-toggle="collapse"
 				data-target=".subhead"><?php echo Text::_('TPL_ATUM_TOOLBAR'); ?>
-				<span class="icon-chevron-down" aria-hidden="true"></span></button>
+				<span class="icon-chevron-down" aria-hidden="true"></span>
+            </button>
 			<div id="subhead" class="subhead mb-3">
 				<div id="container-collapse" class="container-collapse"></div>
 				<div class="row">
