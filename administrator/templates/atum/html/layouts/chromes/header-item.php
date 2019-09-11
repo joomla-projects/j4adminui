@@ -14,7 +14,7 @@ defined('_JEXEC') or die;
 $module  = $displayData['module'];
 
 if ($module->content) : ?>
-	<div class="header-item d-flex">
+	<div class="header-item">
 		<?php echo $module->content; ?>
 	</div>
 <?php endif; ?>

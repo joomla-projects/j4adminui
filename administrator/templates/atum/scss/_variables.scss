@@ -262,33 +262,30 @@ $zindex-mobil-bottom:              8000;
 $zindex-mobil-toggle:              9999;
 $zindex-mobil-menu:                9000;
 
-//Custom CSS variable
+
+// New Styles
+
 :root{
-  --background: #f4f7fc;
-  --inverse-background: #1d2427;
-  --color: #252732;
-  --color-rgb: 37, 39, 50;
-  --inverse-color: #ffffff;
-  --secondary-color: #5e727c;
-  --icon-color: #808f94;
-  --secondary-icon-color: #bdc5c8;
-  --button-background: #e6f2ff;
-  --cancel-button-background: #f0f3f8;
-  --disabled-button-background: #dcdcdc;
-  --link-color: #0184ff;
-  --link-color-rgb: 229, 242, 255;
-  --primary-color: #0184ff;
-  --primary-gradient-color: #198df8;
-  --success-color: #7ac143;
-  --success-color-rgb: 122, 193, 67;
-  --warning-color: #f9a541;
-  --warning-color-rgb: 249, 165, 65;
-  --danger-color: #f44321;
-  --danger-color-rgb: 244, 67, 33;
-  --overlay: rgba(23, 23, 23, 0.5);
-  --input-background-color: #f4f5f9;
-  --input-background-color-white: #fff;
-  --font-size-sm: .8rem;
-  --transparent-bg: transparent;
-  --tr-hover-background: #e5f2ff;
+	--background: #f4f7fc;
+	--inverse-background: #1d2427;
+	--color: #252732;
+	--color-rgb: 37, 39, 50;
+	--inverse-color: #ffffff;
+	--secondary-color: #5e727c;
+	--icon-color: #808f94;
+	--secondary-icon-color: #bdc5c8;
+	--button-background: #e5f2ff;
+	--cancel-button-background: #f0f3f8;
+	--disabled-button-background: #eaeaea;
+	--link-color: #0184ff;
+	--link-color-light-rgb: 229, 242, 255;
+	--primary-color: #0184ff;
+	--primary-gradient-color: #198df8;
+	--success-color: #7ac143;
+	--warning-color: #f9a541;
+	--danger-color: #f44321;
+	--overlay: rgba(23, 23, 23, 0.5);
 }
+
+
+$sidebar-width:                    17.857rem;

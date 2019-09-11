@@ -50,6 +50,7 @@
     return null;
   };
 
+  const header = document.getElementById('header');
   const wrapper = document.getElementById('wrapper');
   const sidebar = document.getElementById('sidebar-wrapper');
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
@@ -59,14 +60,16 @@
     const sidebarState = localStorage.getItem('atum-sidebar');
     if (sidebarState === 'open' || sidebarState === null) {
       wrapper.classList.remove('closed');
-      menuToggleIcon.classList.remove('fa-toggle-off');
-      menuToggleIcon.classList.add('fa-toggle-on');
+      header.classList.remove('closed');
+      menuToggleIcon.classList.remove('fa-angle-double-right');
+      menuToggleIcon.classList.add('fa-angle-double-left');
       localStorage.setItem('atum-sidebar', 'open');
       Joomla.Event.dispatch('joomla:menu-toggle', 'open');
     } else {
       wrapper.classList.add('closed');
-      menuToggleIcon.classList.remove('fa-toggle-on');
-      menuToggleIcon.classList.add('fa-toggle-off');
+      header.classList.add('closed');
+      menuToggleIcon.classList.remove('fa-angle-double-left');
+      menuToggleIcon.classList.add('fa-angle-double-right');
       localStorage.setItem('atum-sidebar', 'closed');
       Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
     }
@@ -75,6 +78,7 @@
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
     wrapper.classList.remove('closed');
+    header.classList.remove('closed');
   }
 
   if (sidebar && !sidebar.getAttribute('data-hidden')) {
@@ -100,8 +104,9 @@
     // Toggle menu
     menuToggle.addEventListener('click', () => {
       wrapper.classList.toggle('closed');
-      menuToggleIcon.classList.toggle('fa-toggle-on');
-      menuToggleIcon.classList.toggle('fa-toggle-off');
+      header.classList.toggle('closed');
+      menuToggleIcon.classList.toggle('fa-angle-double-left');
+      menuToggleIcon.classList.toggle('fa-angle-double-right');
 
       const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
       listItems.forEach((item) => {
@@ -172,10 +177,11 @@
         });
 
         wrapper.classList.remove('closed');
+        header.classList.remove('closed');
         localStorage.setItem('atum-sidebar', 'open');
-        if (menuToggleIcon.classList.contains('fa-toggle-off')) {
-          menuToggleIcon.classList.toggle('fa-toggle-off');
-          menuToggleIcon.classList.toggle('fa-toggle-on');
+        if (menuToggleIcon.classList.contains('fa-angle-double-right')) {
+          menuToggleIcon.classList.toggle('fa-angle-double-right');
+          menuToggleIcon.classList.toggle('fa-angle-double-left');
         }
         mainNav.classList.add('child-open');
 
