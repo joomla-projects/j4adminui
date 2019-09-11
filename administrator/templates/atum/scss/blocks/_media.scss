@@ -1,0 +1,211 @@
+//Media Manager Style
+
+//Progress bar style
+.joomla-progress {
+    background: #f1f8ec;
+    display: flex;
+    height: 6px;
+    overflow: hidden;
+    font-size: .75rem;
+    border-radius: .25rem;
+    border: 1px solid #5fac23;
+    width: 100%;
+    margin-left: 15px;
+    .joomla-progress-bar {
+        background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+        background-size: 1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #5fac23;
+        transition: width .6s ease;
+    }
+}
+
+//Custom Design for modal
+.media-modal-backdrop{
+    background-color: rgba(0,0,0,.5);
+    .modal-body {
+        padding: 20px;
+    }
+}
+.joomla-upload-modal {
+    width: 550px;
+    max-width: 40vw;
+    .modal-header {
+        border: none;
+        position: relative;
+    }
+    .body {
+        padding: 10px;
+    }
+    .joomla-media-upload-drag-container {
+        border: 2px dashed #bdc5c8;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        &.active {
+            border-color: pink;
+        }
+        .btn {
+            &.btn-primary {
+                border-radius: 3px;
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+                background: #e5f2ff;
+                color: #0184ff;
+                border: none;
+                margin: 15px auto 10px;
+                padding: 0 2.4rem;
+                line-height: 2.5rem;
+                &:active {
+                    background: #0184ff;
+                    color: #fff;
+                    box-shadow: none;
+                }
+            }
+        }
+        .joomla-upload-tips{
+            color: #5e727c;
+            margin: 0 auto 40px;
+        }
+    }
+    .modal-content {
+        background-color: #f4f7fc;
+        border: none;
+        box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
+        border-radius: 3px;
+    }
+    .modal-footer {
+        border-color: #d7dee1;
+    }
+    .joomla-upload-img{
+        height: 206px;
+        width: 240px;
+        background: url(../images/image-upload.svg) no-repeat scroll center center;
+        margin: 30px auto 20px;
+    }
+    .joomla-upload-modal-cancel-btn {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        background: #f44321;
+        color: #e5f2ff;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 1.25rem;
+        line-height: 2.1rem;
+        width: 2rem;
+        height: 2rem;
+        z-index: 1;
+    }
+}
+.joomla-recent-uploaded-media {
+    color: #1d2427;
+    .joomla-recent-uploaded-media-item {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+        padding: 15px 0px;
+        .joomla-progress-container {
+            width: 205px;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            span {
+                padding-left: 15px;
+                color: #5e727c;
+            }
+        }
+        .joomla-recent-upload-file {
+            display: flex;
+            align-items: center;
+            span {
+                &:first-child {
+                    margin-right: 10px;
+                }
+                &.joomla-image-item {
+                    background: url(../images/files-icon-picture.svg);
+                    width: 25px;
+                    height: 30px;
+                }
+                &.joomla-media-item {
+                    background: url(../images/files-icon-music.svg);
+                    width: 25px;
+                    height: 30px;
+                }
+                &.joomla-docs-item,
+                &.joomla-file-item {
+                    background: url(../images/files-icon-docx.svg);
+                    width: 25px;
+                    height: 30px;
+                }
+            }
+        }
+        .joomla-upload-complete {
+            display: flex;
+            align-items: center;
+            i {
+                color: #5fac23;
+                font-size: 1.15rem;
+            }
+            span {
+                padding-left: 5px;
+                color: #5e727c;
+            }
+        }
+        .joomla-file-upload-cancel-btn{
+            color: #5e727c;
+            text-decoration: none;
+        }
+        .joomla-media-upload-error {
+            i {
+                color: #f44321;
+                font-size: 1.15rem;
+            }
+            span {
+                padding-left: 5px;
+                color: #f44321;
+            }
+        }
+        .joomla-file-remove-btn {
+            border-radius: 3px;
+            border: solid 1px #bdc5c8;
+            color: #5e727c;
+            text-decoration: none;
+            line-height: 1.9rem;
+            padding-right: 23px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            transition: .35s;
+            &:hover {
+                border-color: #f44321;
+                background-color: #f44321;
+                color: #fff;
+                i {
+                    color: #fff;
+                }
+            }
+            i {
+                color: #bdc5c8;
+                font-size: 1.15rem;
+                line-height: 1;
+                display: inline-block;
+                margin-right: 14px;
+                transition: .35s;
+            }
+        }
+        &:first-child {
+            padding-top: 10px;
+        }
+        &:last-child {
+            border: none;
+            padding-bottom: 35px;
+        }
+    }
+}

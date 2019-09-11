@@ -35,6 +35,8 @@ if (options.currentPath) {
 export default {
     // The general loading state
     isLoading: false,
+    // Last file uploaded
+    lastUploadedFile: [],
     // Will hold the activated filesystem disks
     disks: loadedDisks,
     // The loaded directories
@@ -74,4 +76,6 @@ export default {
     previewItem: null,
     // The Search Query
     search: '',
+    // Upload media modal 
+    showUploadMediaModal: false,
 }

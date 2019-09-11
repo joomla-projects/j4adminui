@@ -143,23 +143,64 @@ export const createDirectory = (context, payload) => {
  * @param payload object with the new folder name and its parent directory
  */
 export const uploadFile = (context, payload) => {
-    context.commit(types.SET_IS_LOADING, true);
-    api.upload(payload.name, payload.parent, payload.content, payload.override || false)
-        .then(file => {
-            context.commit(types.UPLOAD_SUCCESS, file);
-            context.commit(types.SET_IS_LOADING, false);
-        })
-        .catch(error => {
-            context.commit(types.SET_IS_LOADING, false);
-
-            // Handle file exists
-            if (error.status === 409) {
-                if (notifications.ask(translate.sprintf('COM_MEDIA_FILE_EXISTS_AND_OVERRIDE', payload.name), {})) {
-                    payload.override = true;
-                    uploadFile(context, payload);
-                }
+    const fileName = payload.name.replace(/[\])}[{(]/g, '');
+    new Promise((resolve, reject) => {
+        context.commit(types.SET_IS_LOADING, true);
+        const url = api._baseUrl + '&task=api.files&path=' + payload.parent;
+        const data = {
+            [api._csrfToken]: '1',
+            name: payload.name,
+            content: payload.content,
+        };
+        const override = payload.override || false
+        // Append override
+        if (override === true) {
+            data.override = true;
+        }
+        
+        const xhrRequest = Joomla.request({
+            url: url,
+            method: 'POST',
+            data: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'},
+            onProgress: (progress) => {
+                const percentComplete = Math.round((progress.loaded / progress.total)*100);
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties: {progress: percentComplete, error:''} })
+            },
+            onSuccess: (response) => {
+                notifications.success('COM_MEDIA_UPLOAD_SUCCESS');
+                resolve(api._normalizeItem(JSON.parse(response).data)) 
+            },
+            onError: (xhr) => {
+                reject(xhr)
             }
-        })
+        });
+        setTimeout(()=>{
+            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{xhrRequest, error:''} })
+        },100)
+    })
+    .then(file => {
+        context.commit(types.UPLOAD_SUCCESS, file);
+        context.commit(types.SET_IS_LOADING, false);
+    })
+    .catch(error => {
+        console.log("upload error: ",error)
+
+        context.commit(types.SET_IS_LOADING, false);
+        // Handle file exists
+        if (error.status === 409) {
+            if (notifications.ask(translate.sprintf('COM_MEDIA_FILE_EXISTS_AND_OVERRIDE', payload.name), {})) {
+                payload.override = true;
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{progress:0, error:''}})
+                uploadFile(context, payload);
+            } else {
+                context.commit(types.REMOVE_LAST_UPLOADED_FILES, {fileName: fileName})
+            }
+        }else if (error.response !== '') {
+            let error_message = JSON.parse(error.response).message
+            context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties:{error: error.status, error_message}})
+        }
+    }).catch(api._handleError);
 }
 
 /**
@@ -199,6 +240,7 @@ export const deleteSelectedItems = (context) => {
             api.delete(item.path)
                 .then(() => {
                     context.commit(types.DELETE_SUCCESS, item);
+                    context.commit(types.REMOVE_LAST_UPLOADED_FILES, {fileName: item.name});
                     context.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
                     context.commit(types.SET_IS_LOADING, false);
                 })

@@ -10,6 +10,7 @@
 defined('JPATH_BASE') or die;
 
 $data = $displayData;
+
 $isClientSelector = $data['options']['selectorFieldName'] === 'client_id';
 $clientOptions = $isClientSelector ? $data['view']->filterForm->getField($data['options']['selectorFieldName'])->options : array();
 

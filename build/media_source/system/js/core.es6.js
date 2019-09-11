@@ -856,6 +856,11 @@ window.Joomla.Modal = window.Joomla.Modal || {
     try {
       xhr = new XMLHttpRequest();
 
+      // Set progress report when upload or download files
+      if (newOptions.onProgress) {
+        xhr.upload.onprogress = newOptions.onProgress;
+      }
+
       xhr.open(newOptions.method, newOptions.url, true);
 
       // Set the headers

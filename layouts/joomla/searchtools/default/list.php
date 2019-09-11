@@ -13,6 +13,13 @@ $data = $displayData;
 
 // Load the form list fields
 $list = $data['view']->filterForm->getGroup('list');
+$state = $data['view']->get('State');
+
+$orderDirn = 'asc';
+if (isset($list['list_fullordering'])) {
+	$orderDirn = explode(' ', $state->get('list.fullordering', $list['list_fullordering']->getAttribute('default')))[1];
+}
+
 ?>
 <?php if ($list) : ?>
 	<div class="ordering-select">
