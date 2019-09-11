@@ -143,7 +143,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 					</div>
 
                     <!--@TODO: must be dynamic text & update link -->
-                    <a href="#" class="sidebar-update-status warning"> Your Joomla is not up to date </a>
+                    <a href="#" id="sidebar-update-status" class="sidebar-update-status warning"> Your Joomla is not up to date </a>
 				</div>
 				<jdoc:include type="modules" name="menu" style="none" />
 			</div>

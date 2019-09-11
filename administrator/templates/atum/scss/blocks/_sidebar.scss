@@ -199,23 +199,25 @@
     > a {
       flex-grow: 2;
     }
-  
     .menu-quicktask{
       position: absolute;
-      top: 50%;
-      right: 13px;
+      top: 7px;
+      right: 11px;
       height: 20px;
       width: 20px;
-      margin-top: -10px;
       border-radius: 50%;
       display: inline-block;
       background: var(--background);
       transition: 300ms;
       &:hover{
         background: var(--button-background);
+        border-radius: 50%;
       }
       > a{
         padding: 0;
+        &:hover{
+          background: transparent;
+        }
         span{
           line-height: 21px;
           display: block;

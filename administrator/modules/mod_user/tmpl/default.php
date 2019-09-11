@@ -23,36 +23,29 @@ $hideLinks = $app->input->getBool('hidemainmenu');
 		<span class="header-user-name"><?php echo $user->name; ?></span>
         <span class="fa fa-angle-down" aria-hidden="true"></span>
 	</button>
-
-
-	<!--
-
-	@TODO: User menu dropdown must be completed
-
-	<div>
-		<div class="dropdown-header"><?php /*echo $user->name; */?></div>
-		<?php /*$uri   = Uri::getInstance(); */?>
-		<?php /*$route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); */?>
-		<div class="dropdown-item">
-			<a href="<?php /*echo Route::_($route); */?>">
-				<span class="fa fa-user"></span>
-				<?php /*echo Text::_('MOD_USER_EDIT_ACCOUNT'); */?>
-			</a>
-		</div>
-		<div class="dropdown-item">
-			<?php /*// TODO: route to accessibility settings */?>
-			<a href="#">
-				<span class="fa fa-universal-access"></span>
-				<?php /*echo Text::_('MOD_USER_ACCESSIBILITY_SETTINGS'); */?>
-			</a>
-		</div>
-		<div class="dropdown-item">
-			<?php /*$route = 'index.php?option=com_login&task=logout&amp;' . Session::getFormToken() . '=1'; */?>
-			<a href="<?php /*echo Route::_($route); */?>">
-				<span class="fa fa-power-off"></span>
-				<?php /*echo Text::_('JLOGOUT'); */?>
-			</a>
-		</div>
-	</div>-->
+	<div class="header-dropdown-items">
+		<?php $uri   = Uri::getInstance(); ?>
+		<?php $route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); ?>
+        <div class="header-dropdown-item">
+            <a href="<?php echo Route::_($route); ?>">
+                <span class="fa fa-user"></span>
+				<?php echo Text::_('MOD_USER_EDIT_ACCOUNT'); ?>
+            </a>
+        </div>
+        <div class="header-dropdown-item">
+			<?php // TODO: route to accessibility settings ?>
+            <a href="#">
+                <span class="fa fa-universal-access"></span>
+				<?php echo Text::_('MOD_USER_ACCESSIBILITY_SETTINGS'); ?>
+            </a>
+        </div>
+        <div class="header-dropdown-footer">
+			<?php $route = 'index.php?option=com_login&task=logout&amp;' . Session::getFormToken() . '=1'; ?>
+            <a href="<?php echo Route::_($route); ?>">
+				<?php echo Text::_('JLOGOUT'); ?>
+                <span class="fa fa-power-off"></span>
+            </a>
+        </div>
+    </div>
 
 </div>
