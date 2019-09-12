@@ -8,7 +8,7 @@
             :style="mediaBrowserStyles"
             ref="browserItems">
             <div class="media-dragoutline">
-                <span class="fa fa-cloud-upload upload-icon" aria-hidden="true"></span>
+                <div class="joomla-drop-media-image"></div>
                 <p>{{ translate('COM_MEDIA_DROP_FILE') }}</p>
             </div>
             <table v-if="listView === 'table'" class="table media-browser-table">

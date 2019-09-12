@@ -2,7 +2,10 @@
     <nav class="media-breadcrumb" role="navigation" :aria-label="translate('COM_MEDIA_BREADCRUMB_LABEL')">
         <ol>
             <li class="media-breadcrumb-item" v-for="(val,index) in crumbs">
-                <a href="#" @click.stop.prevent="onCrumbClick(val)" v-bind:aria-current="(index === Object.keys(crumbs).length - 1) ? 'page' : undefined">{{ val.name }}</a>
+                <a href="#" @click.stop.prevent="onCrumbClick(val)" v-bind:aria-current="(index === Object.keys(crumbs).length - 1) ? 'page' : undefined"><span class="media-folder-icon fa fa-folder"></span>
+                    {{ val.name }}
+                    <span v-if="crumbs.length > 1" class="media-chevron-icon fa fa-chevron-right"></span>
+                </a>
             </li>
         </ol>
     </nav>

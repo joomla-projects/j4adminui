@@ -19,7 +19,7 @@
                 <div class="joomla-recent-uploaded-media-item" v-for="image in uploadedItems">
                     <div class="joomla-recent-upload-file">
                         <span :class="image.mediaClass"></span>
-                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 18, 6, 22)}}</span>
+                        <span class="joomla-upload-file-name">{{stringTruncate(image.name, 16, 6, 20)}}</span>
                     </div>
                     <div class="joomla-progress-container" v-if="image.error === '' && !image.success">
                         <div class="joomla-progress">

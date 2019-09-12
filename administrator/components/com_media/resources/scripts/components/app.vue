@@ -6,13 +6,6 @@
                 <media-toolbar></media-toolbar>
                 <media-browser></media-browser>
             </div>
-            
-            <media-upload></media-upload>
-            <media-create-folder-modal></media-create-folder-modal>
-            <media-preview-modal></media-preview-modal>
-            <media-rename-modal></media-rename-modal>
-            <media-share-modal></media-share-modal>
-            <media-confirm-delete-modal></media-confirm-delete-modal>
         </div>
         
         <media-upload></media-upload>
