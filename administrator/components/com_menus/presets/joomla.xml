@@ -21,27 +21,25 @@
 		>
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_ARTICLE_MANAGER"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
 			type="component"
 			element="com_content"
 			link="index.php?option=com_content&amp;view=articles"
-			quicktask="index.php?option=com_content&amp;task=article.add"
-		>
-			<menuitem
-				title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
-				type="component"
-				element="com_content"
-				icon="fa fa-plus"
-				link="index.php?option=com_content&amp;task=article.add"
-			/>
-			<menuitem
-				title="MOD_MENU_COM_CONTENT_FEATURED"
-				type="component"
-				element="com_content"
-				link="index.php?option=com_content&amp;view=featured"
-				class="class:featured"
-			/>
-		</menuitem>
+		/>
+		
+		<menuitem
+			title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
+			type="component"
+			element="com_content"
+			icon="fa fa-plus"
+			link="index.php?option=com_content&amp;task=article.add"
+		/>
+		<menuitem
+			title="MOD_MENU_COM_CONTENT_FEATURED"
+			type="component"
+			element="com_content"
+			link="index.php?option=com_content&amp;view=featured"
+			class="class:featured"
+		/>
 
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_CATEGORY_MANAGER"
@@ -304,14 +302,14 @@
 			title="MOD_MENU_TEMPLATE_SITE_TEMPLATES"
 			type="component"
 			element="com_templates"
-			link="index.php?option=com_templates&amp;view=templates&amp;client_id=0"
+			link="index.php?option=com_templates&amp;view=styles"
 		/>
 		<menuitem
 			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_MODULES"
 			quicktask-title="MOD_MENU_COM_CONTENT_NEW_MODULE"
 			type="component"
 			element="com_modules"
-			link="index.php?option=com_modules&amp;view=modules&amp;client_id=0"
+			link="index.php?option=com_modules&amp;view=modules"
 			quicktask="index.php?option=com_modules&amp;view=select"
 		/>
 		<menuitem
