@@ -47,7 +47,7 @@ class StandardButton extends BasicButton
 
 			$options['btnClass'] = $options['button_class'] = ($options['button_class'] ?? $class);
 		}
-
+		
 		$options['onclick'] = $options['onclick'] ?? $this->_getCommand();
 	}
 

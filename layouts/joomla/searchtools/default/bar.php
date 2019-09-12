@@ -55,11 +55,12 @@ $filters = $data['view']->filterForm->getGroup('filter');
 		</div>
 		<?php if($filterButton) : ?>
 			<div class="btn-group">
-				<button type="button" class="btn btn-primary hasTooltip js-stools-btn-filter">
-					<?php echo Text::_('JFILTER_OPTIONS'); ?>
-					<span class="fa fa-angle-down" aria-hidden="true"></span>
+				<button type="button" class="hasTooltip js-stools-btn-filter">
+					<span class="fa fa-plus" aria-hidden="true"></span>
+					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
 				</button>
 				<button type="button" class="btn btn-primary js-stools-btn-clear mr-2">
+					<span class="fa fa-times" aria-hidden="true"></span>
 					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
 			</div>

@@ -16,6 +16,11 @@ use Joomla\CMS\Layout\LayoutHelper;
 
 $data = $displayData;
 
+// client_id filed options
+$clientOptions = $data['view']->filterForm->getField('client_id')->options ?? array();
+$state = $data['view']->get('State');
+$defaultValue =  !empty($clientOptions) ? $state->get('client_id', 0) : 0;
+
 // Receive overridable options
 $data['options'] = !empty($data['options']) ? $data['options'] : array();
 
@@ -93,11 +98,14 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
 	<?php $app = Factory::getApplication(); ?>
 		<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
-		<div class="js-stools-container-selector-first">
-			<div class="js-stools-field-selector js-stools-client_id">
-				<?php echo $clientIdField->input; ?>
+		<?php if(!empty($clientOptions)) : ?>
+			<div class="btn-group" role="group">
+				<?php foreach($clientOptions as $key => $option) : ?>
+					<button type="button" class="js-stools-selector-btn <?php echo $defaultValue == $option->value ? 'active' : ''; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+				<?php endforeach; ?>
 			</div>
-		</div>
+			<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
+		<?php endif; ?>
 	<?php endif; ?>
 	<?php if ($data['options']['showSelector']) : ?>
 	<div class="js-stools-container-selector">

@@ -103,7 +103,6 @@ Joomla = window.Joomla || {};
       // Client filter 
       this.clientFieldBtns = Array.prototype.slice.call(document.querySelectorAll(`${this.options.mainContainerSelector} ${this.options.clientIdSelector}`));
       this.clientFieldInput = document.querySelector(`${this.options.mainContainerSelector} ${this.options.clientIdFieldSelector}`);
-      console.log('field', this.clientFieldInput);
       
       // List fields
       this.listButton = document.querySelector(this.options.listBtnSelector);

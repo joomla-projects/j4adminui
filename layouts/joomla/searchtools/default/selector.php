@@ -12,12 +12,13 @@ defined('JPATH_BASE') or die;
 $data = $displayData;
 
 $isClientSelector = $data['options']['selectorFieldName'] === 'client_id';
-$clientOptions = $isClientSelector ? $data['view']->filterForm->getField($data['options']['selectorFieldName'])->options : array();
+$clientOptions = $isClientSelector ? $data['view']->filterForm->getField('client_id')->options : array();
 
 $state = $data['view']->get('State');
-$defaultValue = $isClientSelector ? $state->get('client_id', 0) : 0;
+$defaultValue = $clientOptions ? $state->get('client_id', 0) : 0;
 
 ?>
+
 <div class="js-stools-field-selector">
 	<div class="sr-only">
 		<?php echo $data['view']->filterForm->getField($data['options']['selectorFieldName'])->label; ?>
