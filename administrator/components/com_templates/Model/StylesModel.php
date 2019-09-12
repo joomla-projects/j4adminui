@@ -221,6 +221,11 @@ class StylesModel extends ListModel
 
 		foreach ($items as &$item)
 		{
+
+			// Style Title
+			$item->title = trim(str_ireplace($item->template . ' - ', '', $item->title));
+
+			// Thumbnail & Preview
 			$template = $item->template;
 			$client = ApplicationHelper::getClientInfo($item->client_id);
 			$basePath = $client->path . '/templates/' . $template;
@@ -242,6 +247,7 @@ class StylesModel extends ListModel
 				}
 			}
 
+			// xml data
 			$item->xmldata = TemplatesHelper::parseXMLTemplateFile($client->path, $template);
 			$num = $this->updated($item->e_id);
 
