@@ -265,33 +265,39 @@ $zindex-mobil-menu:                9000;
 
 // New Styles
 :root{
-  --background: #f4f7fc;
-  --inverse-background: #1d2427;
-  --color: #252732;
-  --color-rgb: 37, 39, 50;
-  --inverse-color: #ffffff;
-  --secondary-color: #5e727c;
-  --icon-color: #808f94;
-  --secondary-icon-color: #bdc5c8;
-  --button-background: #e6f2ff;
-  --cancel-button-background: #f0f3f8;
-  --disabled-button-background: #dcdcdc;
-  --link-color: #0184ff;
-  --link-color-rgb: 229, 242, 255;
-  --primary-color: #0184ff;
-  --primary-gradient-color: #198df8;
-  --success-color: #7ac143;
-  --success-color-rgb: 122, 193, 67;
-  --warning-color: #f9a541;
-  --warning-color-rgb: 249, 165, 65;
-  --danger-color: #f44321;
-  --danger-color-rgb: 244, 67, 33;
-  --overlay: rgba(23, 23, 23, 0.5);
-  --input-background-color: #f4f5f9;
-  --input-background-color-white: #fff;
-  --font-size-sm: .8rem;
-  --transparent-bg: transparent;
-  --tr-hover-background: #e5f2ff;
+	--background: #f4f7fc;
+	--inverse-background: #1d2427;
+	--color: #252732;
+	--color-rgb: 37, 39, 50;
+	--inverse-color: #ffffff;
+	--secondary-color: #5e727c;
+	--icon-color: #808f94;
+	--secondary-icon-color: #bdc5c8;
+	--button-background: #e6f2ff;
+	--cancel-button-background: #f0f3f8;
+	--disabled-button-background: #dcdcdc;
+	--link-color: #0184ff;
+	--link-color-rgb: 229, 242, 255;
+	--link-color-light-rgb: 229, 242, 255;
+	--primary-color: #0184ff;
+	--primary-color-rgb: 1, 132, 255;
+	--primary-gradient-color: #198df8;
+	--success-color: #7ac143;
+	--success-color-rgb: 122, 193, 67;
+	--warning-color: #f9a541;
+	--warning-color-rgb: 249, 165, 65;
+	--danger-color: #f44321;
+	--danger-color-rgb: 244, 67, 33;
+	--overlay: rgba(23, 23, 23, 0.5);
+	--input-background-color: #f4f5f9;
+	--input-background-color-white: #fff;
+	--font-size-sm: .8rem;
+	--transparent-bg: transparent;
+	--tr-hover-background: #e5f2ff;
 }
 
-$sidebar-width:                    17.857rem;
+// Global
+
+$atum-box-shadow:                  0 10px 30px 0 rgba(209, 213, 223, 0.5);
+
+$sidebar-width:                    21.429rem;

@@ -188,13 +188,6 @@ a[target="_blank"]::before {
   color: var(--atum-text-dark);
 }
 
-// dashboard items
-.menu-quicktask,
-.menu-badge {
-  float: right;
-  min-width: 1rem;
-}
-
 .cpanel-help .card-columns,
 .cpanel-system .card-columns {
   @include media-breakpoint-up(md) {

@@ -124,10 +124,6 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 								<img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
 								<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
 							</div>
-                            <div class="sidebar-version success" title="<?php echo JVERSION; ?>">
-                                <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
-                                <span aria-hidden="true"><?php echo JVERSION; ?></span>
-                            </div>
 						<?php else : ?>
 							<a class="logo" href="<?php echo Route::_('index.php'); ?>"
 							   aria-label="<?php echo Text::_('TPL_BACK_TO_CONTROL_PANEL'); ?>">
@@ -142,8 +138,10 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 						</a>
 					</div>
 
-                    <!--@TODO: must be dynamic text & update link -->
-                    <a href="#" class="sidebar-update-status warning"> Your Joomla is not up to date </a>
+                    <div class="sidebar-version success" title="<?php echo JVERSION; ?>">
+                        <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
+                        <span aria-hidden="true"><?php echo JVERSION; ?></span>
+                    </div>
 				</div>
 				<jdoc:include type="modules" name="menu" style="none" />
 			</div>
