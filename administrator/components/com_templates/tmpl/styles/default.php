@@ -30,7 +30,60 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'client_id'))); ?>
 				<?php if ($this->total > 0) : ?>
-					<table class="table" id="styleList">
+					<div id="styleList">
+						<div class="row">
+							<?php foreach ($this->items as $i => $item) :
+								$canCreate = $user->authorise('core.create',     'com_templates');
+								$canEdit   = $user->authorise('core.edit',       'com_templates');
+								$canChange = $user->authorise('core.edit.state', 'com_templates');
+							?>
+								<div class="col-md-3">
+									<div class="template-style">
+										<div class="template-style-header">
+											<?php if ($canEdit) : ?>
+												<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+													<?php echo $this->escape($item->title); ?></a>
+											<?php else : ?>
+												<?php echo $this->escape($item->title); ?>
+											<?php endif; ?>
+										</div>
+
+										<div class="template-style-thumbnail">
+											<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
+										</div>
+
+									</div>
+									
+									<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>  ">
+										<?php echo ucfirst($this->escape($item->template)); ?>
+									</a>
+
+									<?php if ($version = $item->xmldata->get('version')) : ?>
+										<div><?php echo $this->escape($version); ?></div>
+									<?php endif; ?>
+
+									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+
+									<div class="admin-template-info">
+										<?php echo $this->escape($item->xmldata->get('creationDate')); ?>
+										<?php if ($author = $item->xmldata->get('author')) : ?>
+											<div><?php echo $this->escape($author); ?></div>
+										<?php else : ?>
+											&mdash;
+										<?php endif; ?>
+										<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
+											<div><?php echo $this->escape($email); ?></div>
+										<?php endif; ?>
+										<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+											<div><a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a></div>
+										<?php endif; ?>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+
+					<!-- <table class="table" id="styleList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_TEMPLATES_STYLES_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -71,7 +124,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							?>
 							<tr class="row<?php echo $i % 2; ?>">
 								<td style="width:1%" class="text-center">
-									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+									
 								</td>
 								<th scope="row">
 									<?php if ($canEdit) : ?>
@@ -139,7 +192,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							</tr>
 							<?php endforeach; ?>
 						</tbody>
-					</table>
+					</table> -->
 
 					<?php // load the pagination. ?>
 					<?php echo $this->pagination->getListFooter(); ?>

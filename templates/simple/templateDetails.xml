@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.8" type="template" client="site" method="upgrade">
+    <name>simple</name>
+    <creationDate>Feb 2018</creationDate>
+    <author>JoomShaper.com</author>
+    <authorEmail>support@joomshaper.com</authorEmail>
+    <authorUrl>http://www.joomshaper.com</authorUrl>
+    <copyright>Copyright (C) 2010 - 2019 JoomShaper.com. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later</license>
+    <version>1</version>
+    <description>Default template for Learn Joomla Free Website</description>
+
+    <languages>
+        <language tag="en-GB">en-GB.tpl_simple.ini</language>
+    </languages>
+
+    <positions>
+        <position>title</position>
+        <position>logo</position>
+        <position>login</position>
+        <position>menu</position>
+        <position>search</position>
+        <position>right</position>
+        <position>main</position>
+        <position>main-right</position>
+        <position>search-popup</position>
+        <position>featured</position>
+        <position>bottom1</position>
+        <position>bottom2</position>
+        <position>bottom3</position>
+        <position>newsletter</position>
+        <position>breadcrumb</position>
+        <position>footer1</position>
+        <position>footer2</position>
+        <position>offcanvas</position>
+        <position>top-ad</position>
+        <position>ad2</position>
+        <position>404</position>
+        <position>debug</position>
+    </positions>
+
+    <files>
+        <file>index.php</file>
+        <file>template_preview.png</file>
+        <file>template_thumbnail.png</file>
+        <file>options.xml</file>
+        <file>options.json</file>
+        <file>templateDetails.xml</file>
+        <file>offline.php</file>
+        <file>helper.php</file>
+        <file>component.php</file>
+        <file>error.php</file>
+        <folder>css/</folder>
+        <folder>features/</folder>
+        <folder>headers/</folder>
+        <folder>fonts/</folder>
+        <folder>html/</folder>
+        <folder>images/</folder>
+        <folder>js/</folder>
+        <folder>scss/</folder>
+    </files>
+    <config>
+        <fieldset name="basic" addfieldpath="/plugins/system/helixultimate/fields">
+            <field name="helixdetails" type="helixdetails" />
+        </fieldset>
+    </config>
+</extension>

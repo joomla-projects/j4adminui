@@ -1,5 +1,15 @@
 // com_templates
 .com_templates {
+  .template-style {
+    background: #FFFFFF;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+    border-radius: 3px;
+    .template-style-thumbnail {
+      img {
+        width: 100%;
+      }
+    }
+  }
 
   .menu-assignment {
     position: relative;
