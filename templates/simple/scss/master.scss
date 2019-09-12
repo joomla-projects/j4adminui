@@ -1,0 +1,20 @@
+/**
+ * @package Helix Ultimate Framework
+ * @author JoomShaper https://www.joomshaper.com
+ * @copyright Copyright (c) 2010 - 2018 JoomShaper
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
+*/
+
+$color_green: #5CC323;
+$color_red: #FF2624;
+$color_orange: #FFAB10;
+$color_gray: #595959;
+$color_light_gray: #818181;
+$border_color : #E7E8E9;
+
+@import 'theme';
+@import 'blog';
+@import 'legacy';
+@import 'menu';
+@import 'offcanvas';
+@import 'animation';

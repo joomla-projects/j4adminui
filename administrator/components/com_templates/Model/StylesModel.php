@@ -11,9 +11,13 @@ namespace Joomla\Component\Templates\Administrator\Model;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Uri\Uri;
+use Joomla\Component\Templates\Administrator\Helper\TemplatesHelper;
 
 /**
  * Methods supporting a list of template style records.
@@ -202,5 +206,91 @@ class StylesModel extends ListModel
 		$query->order($db->escape($this->getState('list.ordering', 'a.template')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
 
 		return $query;
+	}
+
+	/**
+	 * Override parent getItems to add extra XML metadata.
+	 *
+	 * @return  array
+	 *
+	 * @since   1.6
+	 */
+	public function getItems()
+	{
+		$items = parent::getItems();
+
+		foreach ($items as &$item)
+		{
+
+			// Style Title
+			$item->title = trim(str_ireplace($item->template . ' - ', '', $item->title));
+
+			// Thumbnail & Preview
+			$template = $item->template;
+			$client = ApplicationHelper::getClientInfo($item->client_id);
+			$basePath = $client->path . '/templates/' . $template;
+			$baseUrl = ($item->client_id == 0) ? Uri::root(true) : Uri::root(true) . '/administrator';
+			$thumb = $basePath . '/template_thumbnail.png';
+			$preview = $basePath . '/template_preview.png';
+			
+			if (file_exists($thumb) || file_exists($preview))
+			{
+
+				if (file_exists($thumb))
+				{
+					$item->thumbnail = $baseUrl . '/templates/' . $template . '/template_thumbnail.png';
+				}
+
+				if (file_exists($preview))
+				{
+					$item->preview = $baseUrl . '/templates/' . $template . '/template_preview.png';
+				}
+			}
+
+			// xml data
+			$item->xmldata = TemplatesHelper::parseXMLTemplateFile($client->path, $template);
+			$num = $this->updated($item->e_id);
+
+			if ($num)
+			{
+				$item->updated = $num;
+			}
+		}
+
+		return $items;
+	}
+
+	/**
+	 * Check if template extension have any updated override.
+	 *
+	 * @param   integer  $exid  Extension id of template.
+	 *
+	 * @return   boolean  False if records not found/else integer.
+	 *
+	 * @since   4.0.0
+	 */
+	public function updated($exid)
+	{
+		$db = Factory::getDbo();
+
+		// Select the required fields from the table
+		$query = $db->getQuery(true)
+			->select('a.template')
+			->from($db->quoteName('#__template_overrides', 'a'))
+			->where('extension_id = ' . $db->quote($exid))
+			->where('state = 0');
+
+		// Reset the query.
+		$db->setQuery($query);
+
+		// Load the results as a list of stdClass objects.
+		$num = count($db->loadObjectList());
+
+		if ($num > 0)
+		{
+			return $num;
+		}
+
+		return false;
 	}
 }

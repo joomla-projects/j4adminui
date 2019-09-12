@@ -77,5 +77,5 @@ export default {
     // The Search Query
     search: '',
     // Upload media modal 
-    showUploadMediaModal: false,
+    showUploadMediaPanel: false,
 }
