@@ -1,12 +1,12 @@
 <template>
     <div class="media-browser-image" @dblclick="openPreview()" @mouseleave="hideActions()">
+        <div class="media-browser-item-info">
+            {{ item.name }} {{ item.filetype }}
+        </div>
         <div class="media-browser-item-preview">
             <div class="image-background">
                 <div class="image-cropped" :style="{ backgroundImage: 'url(' + thumbUrl + ')' }"></div>
             </div>
-        </div>
-        <div class="media-browser-item-info">
-            {{ item.name }} {{ item.filetype }}
         </div>
         <a href="#" class="media-browser-select"
           @click.stop="toggleSelect()"

@@ -1,17 +1,19 @@
 <template>
     <div class="media-container row">
        
-        <div class="media-main">
-            <media-toolbar></media-toolbar>
-            <media-browser></media-browser>
+        <div class="col-md-12">
+            <div class="media-main">
+                <media-toolbar></media-toolbar>
+                <media-browser></media-browser>
+            </div>
+            
+            <media-upload></media-upload>
+            <media-create-folder-modal></media-create-folder-modal>
+            <media-preview-modal></media-preview-modal>
+            <media-rename-modal></media-rename-modal>
+            <media-share-modal></media-share-modal>
+            <media-confirm-delete-modal></media-confirm-delete-modal>
         </div>
-        
-        <media-upload></media-upload>
-        <media-create-folder-modal></media-create-folder-modal>
-        <media-preview-modal></media-preview-modal>
-        <media-rename-modal></media-rename-modal>
-        <media-share-modal></media-share-modal>
-        <media-confirm-delete-modal></media-confirm-delete-modal>
     </div>
 </template>
 

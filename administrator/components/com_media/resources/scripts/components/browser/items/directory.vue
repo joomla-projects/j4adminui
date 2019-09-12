@@ -1,5 +1,8 @@
 <template>
     <div class="media-browser-item-directory" @mouseleave="hideActions()">
+        <div class="media-browser-item-info">
+            {{ item.name }}
+        </div>
         <div class="media-browser-item-preview"
              @dblclick.stop.prevent="onPreviewDblClick()">
             <div class="file-background">
@@ -7,9 +10,6 @@
                     <span class="fa fa-folder"></span>
                 </div>
             </div>
-        </div>
-        <div class="media-browser-item-info">
-            {{ item.name }}
         </div>
         <a href="#" class="media-browser-select"
           @click.stop="toggleSelect()"
