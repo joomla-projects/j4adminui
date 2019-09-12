@@ -264,7 +264,6 @@ $zindex-mobil-menu:                9000;
 
 
 // New Styles
-
 :root{
 	--background: #f4f7fc;
 	--inverse-background: #1d2427;
@@ -274,10 +273,11 @@ $zindex-mobil-menu:                9000;
 	--secondary-color: #5e727c;
 	--icon-color: #808f94;
 	--secondary-icon-color: #bdc5c8;
-	--button-background: #e5f2ff;
+	--button-background: #e6f2ff;
 	--cancel-button-background: #f0f3f8;
-	--disabled-button-background: #eaeaea;
+	--disabled-button-background: #dcdcdc;
 	--link-color: #0184ff;
+	--link-color-rgb: 229, 242, 255;
 	--link-color-light-rgb: 229, 242, 255;
 	--primary-color: #0184ff;
 	--primary-color-rgb: 1, 132, 255;
@@ -289,6 +289,11 @@ $zindex-mobil-menu:                9000;
 	--danger-color: #f44321;
 	--danger-color-rgb: 244, 67, 33;
 	--overlay: rgba(23, 23, 23, 0.5);
+	--input-background-color: #f4f5f9;
+	--input-background-color-white: #fff;
+	--font-size-sm: .8rem;
+	--transparent-bg: transparent;
+	--tr-hover-background: #e5f2ff;
 }
 
 // Global

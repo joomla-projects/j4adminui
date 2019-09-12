@@ -37,7 +37,6 @@ const run = () => {
   });
 };
 
-
 const runScss = () => {
   watch.createMonitor(RootPath, (monitor) => {
     monitor.on('created', (file) => {
