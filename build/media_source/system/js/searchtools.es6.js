@@ -94,16 +94,16 @@ Joomla = window.Joomla || {};
 
       // Initialise selectors
       this.theForm = document.querySelector(this.options.formSelector);
-      
+
       // Filters
       this.filterButton = document.querySelector(`${this.options.formSelector} ${this.options.filterBtnSelector}`);
       this.filterContainer = document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) ? document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) : '';
       this.filtersHidden = this.options.filtersHidden;
 
-      // Client filter 
+      // Client filter
       this.clientFieldBtns = Array.prototype.slice.call(document.querySelectorAll(`${this.options.mainContainerSelector} ${this.options.clientIdSelector}`));
       this.clientFieldInput = document.querySelector(`${this.options.mainContainerSelector} ${this.options.clientIdFieldSelector}`);
-      
+
       // List fields
       this.listButton = document.querySelector(this.options.listBtnSelector);
       this.listContainer = document.querySelector(`${this.options.formSelector} ${this.options.listContainerSelector}`);
@@ -121,14 +121,14 @@ Joomla = window.Joomla || {};
       // Ordering
       this.orderCols = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.orderColumnSelector}`));
       this.orderField = document.querySelector(`${this.options.formSelector} ${this.options.orderFieldSelector}`);
-      this.orderToggler = document.querySelector(`${this.options.mainContainerSelector} ${this.options.orderTogglerBtn}`); 
+      this.orderToggler = document.querySelector(`${this.options.mainContainerSelector} ${this.options.orderTogglerBtn}`);
       this.fullOrdering = document.querySelector(`${this.options.mainContainerSelector} [name="${this.options.orderFieldName}"]`);
-      
+
 
       // Limit
       this.limitField = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.limitFieldSelector}`));
       this.listLimitFieldName = document.querySelector(`input[name="${this.options.listLimitFieldName}"]`);
-      
+
       // Init trackers
       this.activeColumn = null;
       this.activeDirection = this.options.activeDirection;
@@ -530,22 +530,22 @@ Joomla = window.Joomla || {};
       if (this.orderToggler) {
         this.orderToggler.addEventListener('click', (event) => {
           event.preventDefault();
-          let selectValue = this.fullOrdering.value;
-          
+          const selectValue = this.fullOrdering.value;
+
           let orderValue = [];
 
-          if (!!selectValue) {
+          if (selectValue) {
             orderValue = selectValue.split(' ');
-            
+
             if (!!orderValue[1] && orderValue[1].toUpperCase() === 'ASC') {
-                orderValue[1] = 'DESC';
+              orderValue[1] = 'DESC';
             } else if (!!orderValue[1] && orderValue[1].toUpperCase() === 'DESC') {
-                orderValue[1] = 'ASC';
+              orderValue[1] = 'ASC';
             }
           }
 
-            this.fullOrdering.value = orderValue.join(' ');
-            this.theForm.submit();
+          this.fullOrdering.value = orderValue.join(' ');
+          this.theForm.submit();
         }, false);
       }
     }
@@ -554,12 +554,12 @@ Joomla = window.Joomla || {};
       const self = this;
       if (this.clientFieldBtns) {
         this.clientFieldBtns.forEach((elem) => {
-            elem.addEventListener('click', event => {
-              event.preventDefault();
-              const value = event.target.getAttribute('value');
-              self.clientFieldInput.value = value;
-              self.theForm.submit();
-            }); 
+          elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const value = event.target.getAttribute('value');
+            self.clientFieldInput.value = value;
+            self.theForm.submit();
+          });
         });
       }
     }
