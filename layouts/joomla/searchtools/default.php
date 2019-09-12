@@ -83,6 +83,8 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 
 // Load search tools
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
+
+
 ?>
 <div class="js-stools" role="search">
 	<?php if ($data['options']['showSelector']) : ?>
