@@ -80,7 +80,7 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->transitions   = $this->get('Transitions');
 		$this->vote          = PluginHelper::isEnabled('content', 'vote');
-
+		
 		// Check for errors.
 		if ((count($errors = $this->get('Errors'))) || $this->transitions === false)
 		{
@@ -182,11 +182,6 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CONTENT_ARTICLES_TITLE'), 'stack article');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
-		{
-			$toolbar->addNew('article.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $canDo->get('core.execute.transition'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -253,12 +248,18 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		
+		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER');
+		
 		if ($user->authorise('core.admin', 'com_content') || $user->authorise('core.options', 'com_content'))
 		{
 			$toolbar->preferences('com_content');
 		}
-
-		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER');
+		
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
+		{
+			$toolbar->addNew('article.add');
+		}
 	}
 
 	/**

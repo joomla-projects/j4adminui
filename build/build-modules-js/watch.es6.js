@@ -1,8 +1,8 @@
 const watch = require('watch');
 const Path = require('path');
 const HandleJsFile = require('./javascript/handle-file.es6.js');
-const RootPath = require('./utils/rootpath.es6.js')._();
 const CompileScss = require('./stylesheets/scss-transform.es6.js');
+const RootPath = require('./utils/rootpath.es6.js')._();
 
 /**
  * Debounce
@@ -41,26 +41,27 @@ const runScss = () => {
   watch.createMonitor(RootPath, (monitor) => {
     monitor.on('created', (file) => {
       if (file.match(/\.scss/)) {
-        debounce(CompileScss.compile(file), 300);
+        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        debounce(CompileScss.compile(templatesSccs), 300);
       }
       // @todo css and scss
     });
     monitor.on('changed', (file) => {
       if (file.match(/\.scss/)) {
-        debounce(CompileScss.compile(file), 300);
+        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        debounce(CompileScss.compile(templatesSccs), 300);
       }
       // @todo css and scss
     });
     monitor.on('removed', (file) => {
       // Handle this case as well
       // eslint-disable-next-line no-console
-      console.log("scss remove: ",file);
+      console.log('scss remove: ', file);
     });
   });
 };
 
-
 module.exports = {
   run,
-  runScss
-}
+  runScss,
+};

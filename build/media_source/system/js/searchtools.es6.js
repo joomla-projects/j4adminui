@@ -70,9 +70,13 @@ Joomla = window.Joomla || {};
         orderColumnSelector: '.js-stools-column-order',
         orderBtnSelector: '.js-stools-btn-order',
         orderFieldSelector: '.js-stools-field-order',
+        orderTogglerBtn: '.js-stools-order-toggler',
         orderFieldName: 'list[fullordering]',
-        limitFieldSelector: '.js-stools-field-limit',
+        limitFieldSelector: '.js-stools-field-limit-link',
         defaultLimit: 20,
+
+        // List limit
+        listLimitFieldName: 'list[limit]',
 
         activeOrder: null,
         activeDirection: 'ASC',
@@ -109,9 +113,14 @@ Joomla = window.Joomla || {};
       // Ordering
       this.orderCols = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.orderColumnSelector}`));
       this.orderField = document.querySelector(`${this.options.formSelector} ${this.options.orderFieldSelector}`);
-
+      this.orderToggler = document.querySelector(`${this.options.orderTogglerBtn}`); 
+      this.fullOrdering = document.querySelector(`[name="${this.options.orderFieldName}"]`);
+      
+      
       // Limit
-      this.limitField = document.querySelector(`${this.options.formSelector} ${this.options.limitFieldSelector}`);
+      this.limitField = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.limitFieldSelector}`));
+      this.listLimitFieldName = document.querySelector(`input[name="${this.options.listLimitFieldName}"]`);
+
 
       // Init trackers
       this.activeColumn = null;
@@ -219,6 +228,8 @@ Joomla = window.Joomla || {};
       });
 
       this.checkActiveStatus(this);
+      this.listLimitFilter();
+      this.handleToggleClick();
     }
 
     checkFilter(element) {
@@ -491,7 +502,47 @@ Joomla = window.Joomla || {};
         }
       }
     }
+
+    // eslint-disable-next-line class-methods-use-this
+    listLimitFilter() {
+      const self = this;
+      if (this.limitField) {
+        this.limitField.forEach((elem) => {
+          elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const limit = event.target.getAttribute('value');
+            self.listLimitFieldName.value = limit;
+            self.theForm.submit();
+          }, false);
+        });
+      }
+    }
+
+    handleToggleClick() {
+      if (this.orderToggler) {
+        this.orderToggler.addEventListener('click', (event) => {
+          event.preventDefault();
+          let selectValue = this.fullOrdering.value;
+          
+          let orderValue = [];
+
+          if (!!selectValue) {
+            orderValue = selectValue.split(' ');
+            
+            if (!!orderValue[1] && orderValue[1].toUpperCase() === 'ASC') {
+                orderValue[1] = 'DESC';
+            } else if (!!orderValue[1] && orderValue[1].toUpperCase() === 'DESC') {
+                orderValue[1] = 'ASC';
+            }
+          }
+
+            this.fullOrdering.value = orderValue.join(' ');
+            this.theForm.submit();
+        }, false);
+      }
+    }
   }
+
 
   const onBoot = () => {
     if (Joomla.getOptions('searchtools')) {

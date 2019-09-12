@@ -1,56 +1,73 @@
 // Form
+label {
+  margin-bottom: .3rem;
+}
+//Input style mixin
+@mixin input-style {
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-color: var(--secondary-icon-color);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
+  color: var(--icon-color);
+  display: block;
+  height: 2.86rem;
+  min-width: 100%;
+}
 
 .form-control {
-  max-width: $input-max-width;
-  background-color: var(--white-offset);
+  @include input-style;
+  background-color: var(--input-background-color);
+  padding: 0 0 0 1.2rem;
+  &.focus-visible {
+    outline: 0;
+    border-color: var(--primary-color);
+  }
 }
 
 .control-group {
   margin-bottom: 18px;
-
+  
   > .form-check {
     display: inline-block;
   }
-
+  
   &::after {
     display: table;
     clear: both;
     content: "";
   }
-
+  
   .control-label {
     float: left;
-    width: 220px;
+    width: 170px;
     padding-top: 5px;
     padding-right: 5px;
     text-align: left;
   }
-
+  
   .controls {
-    margin-left: 220px;
+    margin-left: 170px;
   }
-}
 
-.control-group {
-  .switcher__legend {
-    font-size: $label-font-size;
-  }
 }
 
 .form-no-margin {
-
+  
   .control-group {
-
+    
     .controls {
       margin-left: 0;
       .switcher__legend {
         float:none;
-		margin-left: 0;
+        margin-left: 0;
+        width: auto;
       }
     }
-
+    
     .control-label {
       float: none;
+      width: auto;
     }
   }
 }
@@ -75,7 +92,7 @@ legend {
 
 .checkboxes {
   padding-top: 5px;
-
+  
   .checkbox input {
     position: static;
     margin-left: 0;
@@ -93,12 +110,19 @@ legend {
 
 // Validation
 .invalid {
-  color: theme-color("danger");
-  border-color: theme-color("danger");
+  color: var(--danger-color);
+  border-color: var(--danger-color);
 }
 
 .valid {
-  border-color: theme-color("success");
+  border-color: var(--primary-color);
+}
+input,
+textarea,
+select{
+  &.valid {
+    border-color: var(--primary-color);
+  }
 }
 
 .form-control-feedback {
@@ -119,7 +143,7 @@ legend {
   position: relative;
 }
 
- /* set up hidden tooltip */
+/* set up hidden tooltip */
 [role="tooltip"]:not(.show) {
   display: none;
   padding: 0.25em;
@@ -130,7 +154,7 @@ legend {
   z-index: $zindex-tooltip;
 }
 
- /* reveal associated tooltip on focus */
+/* reveal associated tooltip on focus */
 :focus + [role="tooltip"],
 :hover + [role="tooltip"] {
   display: block;
@@ -142,11 +166,94 @@ legend {
 }
 
 .switcher__legend {
-    font-size: $label-font-size;
-    color: var(--atum-special-color);
-    margin-bottom: 0;
+  font-size: $label-font-size;
+  color: var(--secondary-color);
+  width: 170px;
 }
 [class^="icon-"]:not(.input-group-text),
 [class*=" icon-"]:not(.input-group-text) {
   margin-right: 0.5em;
+}
+
+//Form elements custom design
+textarea.form-control {
+  height: 6.9rem;
+  padding-top: var(--font-size-sm);
+}
+.custom-select {
+  @include input-style;
+  background: $custom-select-indicator no-repeat 100%/100rem;
+  background-color: var(--input-background-color);
+  padding: 0 1.2rem;
+  font-size: var(--font-size-sm);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 4rem;
+  vertical-align: middle;
+  &[multiple]{
+    height: auto;
+    padding-right: 1rem;
+    background-image: none;
+    option {
+      padding: .3rem 1rem;
+    }
+  }
+}
+input {
+  &.invalid{
+    border: 1px solid var(--danger-color);
+    background: #fdece8;
+  }
+}
+
+.custom-select {
+  &.custom-select-color-state {
+
+    &.custom-select-success {
+      color: var(--icon-color);
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+.col-md-9 .switcher__legend,
+.col-md-12 .switcher__legend {
+  margin-left: -170px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  .custom-select,
+  .input-group {
+    min-width: auto;
+  }
+}
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem;
+  .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: .3125rem;
+    margin-left: 0;
+  }
+  label {
+    margin-bottom: 0;
+  }
+}
+
+//When container background not white this CSS will apply for form fields
+.j-main-container {
+  .custom-select,
+  .form-control {
+    background-color: var(--input-background-color-white);
+  }
+  .custom-select{
+    background-image: url(../images/select-bg-white.svg)
+  }
 }
