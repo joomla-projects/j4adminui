@@ -1,9 +1,29 @@
 //Custom badge style
 .badge {
+    line-height: 14px;
+    border-radius: 10px;
+    border: 1px solid;
+    font-size: 10px;
+    padding: 0 8px;
+    margin-left: 6px;
+    &.badge-warning {
+        background: rgba(var(--warning-color-rgb), .1);
+        border-color: var(--warning-color);
+        color: var(--warning-color);
+    }
     &.badge-info {
-        font-weight: $normal-weight;
-        background-color: transparent;
-        color: var(--inverse-background);
-        font-size: 1rem;
+        background: rgba(var(--primary-color-rgb), .1);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+    &.badge-success {
+        background: rgba(var(--success-color-rgb), .1);
+        border-color: var(--success-color);
+        color: var(--success-color);
+    }
+    &.badge-danger {
+        background: rgba(var(--danger-color-rgb), .1);
+        border-color: var(--danger-color);
+        color: var(--danger-color);
     }
 }

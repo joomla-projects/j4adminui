@@ -17,7 +17,7 @@
   transition: .3s ease;
   
   .header-title {
-    width: 50%;
+    flex-grow: 1;
     .d-flex:last-child {
       max-width: calc(100% - #{$sidebar-width});
 
@@ -89,7 +89,6 @@
   }
 
   .header-items {
-    width: 50%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
