@@ -184,8 +184,6 @@ export const uploadFile = (context, payload) => {
         context.commit(types.SET_IS_LOADING, false);
     })
     .catch(error => {
-        console.log("upload error: ",error)
-
         context.commit(types.SET_IS_LOADING, false);
         // Handle file exists
         if (error.status === 409) {
