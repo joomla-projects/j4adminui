@@ -73,3 +73,58 @@
 @import "pages/com_privacy";
 @import "pages/com_templates";
 @import "pages/com_users";
+
+.joomla-docker-panel {
+    position: fixed;
+    box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
+    background: #ffffff;
+    width: 550px;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 9;
+        &.joomla-docker-top-right {
+            right: 10px;
+            top: 10px;
+        }
+        &.joomla-docker-top-left {
+            left: 10px;
+            top: 10px;
+        }
+        &.joomla-docker-bottom-right {
+            right: 10px;
+            bottom: 10px;
+        }
+        &.joomla-docker-bottom-left {
+            left: 10px;
+            bottom: 10px;
+        }
+        .joomla-docker-panel-header {
+            background: #000000;
+            color: #ffffff;
+            display: flex;
+            padding: 10px;
+            .joomla-docker-panel-title {
+                flex: 1;
+                font-size: 12px;
+            }
+            .joomla-docker-panel-collapse-btn {
+                width: 30px;
+                text-align: right;
+            }
+        }
+        .joomla-docker-panel-body {
+            min-height: 100px;
+            transition: height 0.5s linear;
+            &.joomla-panel-collapse-in {
+                transition: height 0.5s linear;
+                height: 0px;
+            }
+        }
+}
+.joomla-recent-uploaded-media-item {
+    transition: height 0.5s linear;
+    &.joomla-media-upload-success {
+        height: 0px;
+        transition: height 0.5s linear;
+    }
+}

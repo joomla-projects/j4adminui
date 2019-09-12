@@ -426,7 +426,7 @@ export default {
      * @param state
      */
     [types.SHOW_UPLOAD_MEDIA_MODAL]: (state) => {
-        state.showUploadMediaModal = true;
+        state.showUploadMediaPanel = true;
     },
 
     /**
@@ -434,7 +434,7 @@ export default {
      * @param state
      */
     [types.HIDE_UPLOAD_MEDIA_MODAL]: (state) => {
-        state.showUploadMediaModal = false;
+        state.showUploadMediaPanel = false;
     },
 
     /**
