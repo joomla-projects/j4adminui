@@ -226,13 +226,16 @@
     }
     
     > ul{
-      //padding: 0;
+      padding: 0;
       > li > a{
         padding-left: 4.786rem;
         padding-right: 2.357rem;
         .sidebar-item-title{
           margin-left: 0;
         }
+      }
+      > li:last-child{
+        padding-bottom: .500rem;
       }
     }
     
@@ -344,7 +347,6 @@
 
     &.in {
       display: block;
-      padding-bottom: .500rem;
     }
   }
 
@@ -391,9 +393,14 @@
   .sidebar-wrapper .sidebar-header .sidebar-logo{
     margin-bottom: 0;
   }
+  
   .sidebar-header{
     padding-left: 15px;
     padding-right: 15px;
+    .sidebar-version{
+      text-align: center;
+      transition-delay: 300ms;
+    }
   }
   .sidebar-wrapper{
     width: 73px;
@@ -412,6 +419,7 @@
   .sidebar-update-status{
     display: none;
   }
+  .main-nav li .menu-quicktask,
   .sidebar-logo .sidebar-version,
   .sidebar-logo .logo svg:not(.logo-small),
   .has-arrow::after {
