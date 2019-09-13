@@ -332,6 +332,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
+		// toolbar title
 		if ($menuTypeTitle)
 		{
 			ToolbarHelper::title(Text::sprintf('COM_MENUS_VIEW_ITEMS_MENU_TITLE', $menuTypeTitle), 'list menumgr');
@@ -341,20 +342,17 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_MENUS_VIEW_ITEMS_ALL_TITLE'), 'list menumgr');
 		}
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('item.add');
-		}
-
+		// menutype filter
 		$protected = $this->state->get('filter.menutype') == 'main';
 
+		// action group toolbar dropdown
 		if (($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin')) && !$protected
 			|| $canDo->get('core.edit.state') && $this->state->get('filter.client_id') == 0)
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
+				->icon('fa fa-hand-pointer')
 				->buttonClass('btn btn-action')
 				->listCheck(true);
 
@@ -397,13 +395,16 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
-		if (Factory::getUser()->authorise('core.admin'))
+		// toolbar help button
+		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
+		
+		// option toolbar button
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
-			$toolbar->standardButton('refresh')
-				->text('JTOOLBAR_REBUILD')
-				->task('items.rebuild');
+			$toolbar->preferences('com_menus');
 		}
-
+		
+		// toolbar delete menuItem button
 		if (!$protected && $this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
 			$toolbar->delete('items.delete')
@@ -412,12 +413,19 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		// toolbar rebuild menuItem tree button
+		if (Factory::getUser()->authorise('core.admin'))
 		{
-			$toolbar->preferences('com_menus');
+			$toolbar->standardButton('refresh')
+				->text('JTOOLBAR_REBUILD')
+				->task('items.rebuild');
 		}
 
-		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
+		// toolbar addNew button
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('item.add');
+		}
 	}
 
 	/**

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+// joomla-toolbar-button {
+//   border: 1px solid var(--border);
+// }
+>>>>>>> c783608f800799f6f4909c78e25b7953707cc129
 .toggle-toolbar {
   display:block;
 }
@@ -21,7 +27,7 @@
     margin-right: 0;
     margin-left: 0;
   }
-
+  
   .btn-toolbar {
     margin-bottom: 0;
 
@@ -249,6 +255,7 @@
   //   }
   // }
 
+<<<<<<< HEAD
   .dropdown-item {
 
     &:hover:not(.disabled) {
@@ -330,6 +337,89 @@
         line-height:2.4rem;
     }
   }
+=======
+  // .dropdown-item {
+
+  //   &:hover:not(.disabled) {
+  //     color: #212529;
+  //     cursor: pointer;
+  //   }
+  // }
+
+  // .dropdown-toggle {
+
+  //   &.btn {
+  //     color: var(--atum-text-dark);
+  //     span {
+  //       background-color: var(--atum-bg-dark);
+  //       color:rgba(255,255,255,0.90);
+  //     }
+  //   }
+
+  //   &.btn-primary {
+  //     span {
+  //       background-color: var(--atum-bg-dark);
+  //       color:rgba(255,255,255,0.90);
+  //     }
+  //   }
+
+  //   &.btn-success {
+  //     background-color: $white;
+  //     padding: 0;
+
+  //     span {
+  //       background-color: theme-color("success");
+  //       color:rgba(255,255,255,0.90);
+  //     }
+
+  //     &::after {
+  //       border: 1px solid var(--border);
+  //       content: '\f078';
+  //       font-family: 'Font Awesome 5 Free';
+  //       vertical-align: middle;
+  //       width: 2.375rem;
+  //     }
+  //   }
+
+  //   &.btn-info {
+  //     background-color: darken(theme-color("info"), 8%);
+  //   }
+
+  //   &.btn-danger {
+  //     background-color: darken(theme-color("danger"), 8%);
+  //   }
+
+  //   &.btn-action {
+  //     background-color: $white;
+
+  //     [class^='icon-'],
+  //     [class*=' icon-'],
+  //     [class^='#{$fa-css-prefix}-'],
+  //     [class*=' #{$fa-css-prefix}-'] {
+  //       background-color: var(--atum-bg-dark);
+  //       color:rgba(255,255,255,0.90);
+  //     }
+
+  //     &:hover:not([disabled]) {
+  //       background-color: var(--atum-bg-dark-80);
+  //     }
+
+  //     &::after {
+  //       border: none;
+  //       content: '\f078';
+  //       font-family: 'Font Awesome 5 Free';
+  //       height: 100%;
+  //       margin: $input-btn-padding-y-sm-submenu -#{$input-btn-padding-x-sm-submenu} $input-btn-padding-y-sm-submenu $input-btn-submenu-icon-distance;
+  //       vertical-align: 0;
+  //       width: 2.375rem;
+  //       line-height: 2.375rem;
+  //     }
+  //   }
+  //   &::after{
+  //       line-height:2.4rem;
+  //   }
+  // }
+>>>>>>> c783608f800799f6f4909c78e25b7953707cc129
 }
 
 .input-group {
@@ -456,11 +546,11 @@
          }    
     }         
      
-     .js-stools-btn-filter    {
-        @include media-breakpoint-down(sm) {
-            width:75%;
-        }
-     }
+    //  .js-stools-btn-filter    {
+    //     @include media-breakpoint-down(sm) {
+    //         width:75%;
+    //     }
+    //  }
   }
 }
 .js-calendar{

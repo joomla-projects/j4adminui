@@ -12,12 +12,13 @@ defined('JPATH_BASE') or die;
 $data = $displayData;
 
 $isClientSelector = $data['options']['selectorFieldName'] === 'client_id';
-$clientOptions = $isClientSelector ? $data['view']->filterForm->getField($data['options']['selectorFieldName'])->options : array();
+$clientOptions = $isClientSelector ? $data['view']->filterForm->getField('client_id')->options : array();
 
 $state = $data['view']->get('State');
-$defaultValue = $isClientSelector ? $state->get('client_id', 0) : 0;
+$defaultValue = $clientOptions ? $state->get('client_id', 0) : 0;
 
 ?>
+
 <div class="js-stools-field-selector">
 	<div class="sr-only">
 		<?php echo $data['view']->filterForm->getField($data['options']['selectorFieldName'])->label; ?>
@@ -25,7 +26,7 @@ $defaultValue = $isClientSelector ? $state->get('client_id', 0) : 0;
 	<?php if($isClientSelector) : ?>
 		<div class="btn-group" role="group">
 			<?php foreach($clientOptions as $key => $option) : ?>
-				<button type="button" class="js-stools-selector-btn <?php echo $defaultValue == $option->value ? 'active' : ''; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+				<button type="button" class="btn js-stools-selector-btn <?php echo $defaultValue == $option->value ? 'btn-primary' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 			<?php endforeach; ?>
 		</div>
 		<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
