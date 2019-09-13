@@ -23,7 +23,7 @@ extract($displayData, EXTR_OVERWRITE);
 
 $id = isset($id) ? 'id="' . $id . '"' : '';
 
-$margin = (strpos($url ?? '', 'index.php?option=com_config') === false) ? '' : ' ml-auto';
+$margin = (strpos($url ?? '', 'index.php?option=com_config') === false) ? '' : '';
 $target = empty($target) ? '' : 'target="' . $target . '"';
 ?>
 <joomla-toolbar-button class="<?php echo $margin; ?>" <?php echo $id; ?>>
