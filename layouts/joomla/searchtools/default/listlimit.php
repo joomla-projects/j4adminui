@@ -25,7 +25,7 @@ $defaultLimit = !empty($data['options']['defaultLimit']) ? $data['options']['def
 
 $state = $data['view']->get('State');
 $limit = $state->get('list.limit', $defaultLimit);
-HTMLHelper::_('script', 'system/pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
 
 ?>
 <?php if ($list) : ?>
@@ -33,7 +33,7 @@ HTMLHelper::_('script', 'system/pagination.es6.min.js', array('version'=> 'auto'
         <?php if(!empty($listLimit) && count((array)$listLimit->options) > 0) : ?>
             <div class="limit-list">
                 <joomla-pagination class="js-stools-list-group">
-                    <li class="pagination-link listlimit-title" text="<?php echo JText::_('JSHOW'); ?>"></li>
+                    <a href="javascript:" class="has-arrow listlimit-title"><?php echo JText::_('JSHOW'); ?></a>
                     <?php foreach($listLimit->options as $listOption) : ?>
                         <li class="pagination-link js-stools-field-limit-link" activeClass="<?php echo $limit === $listOption->value ? 'active' : ''; ?>" value="<?php echo $listOption->value; ?>" text="<?php echo $listOption->text; ?>"></li>
                     <?php endforeach; ?>

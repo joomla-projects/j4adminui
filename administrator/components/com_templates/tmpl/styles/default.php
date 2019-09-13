@@ -38,27 +38,34 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style">
-										<div class="template-style-header">
-											<div>
-												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-											</div>
+									<div class="template-style<?php echo ($item->home == '1') ? ' default-template': ''; ?>">
+										<div class="template-style-header d-flex justify-content-between">
+											<div class="d-inline-flex align-items-center">
+												<div class="mr-2">
+													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+												</div>
 
-											<div>
-												<?php if($item->home == '1') : ?>
-													Home
-												<?php endif; ?>
-												<?php if ($canEdit) : ?>
-													<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-														<?php echo ucfirst($this->escape($item->template)); ?>
-													</a>
-												<?php else : ?>
-													<?php echo ucfirst($this->escape($item->template)); ?>
-												<?php endif; ?>
-												
-												<?php if ($version = $item->xmldata->get('version')) : ?>
-													<span class="template-version"><?php echo $this->escape($version); ?></span>
-												<?php endif; ?>
+												<div class="mr-2">
+													<?php if($item->home == '1') : ?>
+														<span class="default-template-indicator">
+															<span class="fas fa-star"></span>
+														</span>
+													<?php endif; ?>
+													
+													<span class="template-name">
+														<?php if ($canEdit) : ?>
+															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+																<?php echo ucfirst($this->escape($item->template)); ?>
+															</a>
+														<?php else : ?>
+															<?php echo ucfirst($this->escape($item->template)); ?>
+														<?php endif; ?>
+													</span>
+													
+													<?php if ($version = $item->xmldata->get('version')) : ?>
+														<span class="template-version">v<?php echo $this->escape($version); ?></span>
+													<?php endif; ?>
+												</div>
 											</div>
 
 											<i class="fas fa-info-circle"></i>

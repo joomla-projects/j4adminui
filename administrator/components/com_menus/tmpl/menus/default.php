@@ -64,20 +64,20 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="text-center  d-none d-md-table-cell">
-									<span class="icon-publish" aria-hidden="true"></span>
+									<!-- <span class="icon-publish" aria-hidden="true"></span> -->
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?></span>
 									
 								</th>
 								<th scope="col" style="width:10%" class="text-center d-none d-md-table-cell">
-									<span class="icon-unpublish" aria-hidden="true"></span>
+									<!-- <span class="icon-unpublish" aria-hidden="true"></span> -->
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_UNPUBLISHED_ITEMS'); ?></span>
 								</th>
 								<th scope="col" style="width:10%" class="text-center d-none d-md-table-cell">
-									<span class="icon-trash" aria-hidden="true"></span>
+									<!-- <span class="icon-trash" aria-hidden="true"></span> -->
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_TRASHED_ITEMS'); ?></span>
 								</th>
 								<th scope="col" style="width:10%" class="text-center d-none d-lg-table-cell">
-									<span class="icon-cube" aria-hidden="true"></span>
+									<!-- <span class="icon-cube" aria-hidden="true"></span> -->
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_LINKED_MODULES'); ?></span>
 								</th>
 								<th scope="col" style="width:5%" class="text-center">
@@ -107,9 +107,9 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 											<?php echo $this->escape($item->title); ?>
 										<?php endif; ?>
 										<?php if (!empty($item->description)) : ?>
-											<div class="small">
+											<small class="small">
 												(<?php echo $this->escape($item->description); ?>)
-											</div>
+											</small>
 										<?php endif; ?>
 									</div>
 								</td>
@@ -218,7 +218,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 											); ?>
 									<?php endif; ?>
 								</td>
-								<td class="text-center btns">
+								<td class="text-center btns d-none d-md-table-cell icon-1p5x">
 									<?php if ($canManageItems) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype); ?>">
 											<span class="icon-eye-open" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('COM_MENUS_MENUS'); ?></span>
@@ -228,12 +228,14 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 							</tr>
 							<?php endforeach; ?>
 						</tbody>
-					</table>
-
-					<!-- load the pagination. -->
-					<?php echo $this->pagination->getListFooter(); ?>
-
+					</table>	
 				<?php endif; ?>
+				
+				<!-- load the pagination. -->
+				<div class="j-pagination-footer">
+					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+					<?php echo $this->pagination->getListFooter(); ?>
+				</div>
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

@@ -8,7 +8,13 @@ table.j-list-table {
     th {
         border:none;
         padding: 1rem;
+        vertical-align: middle;
     }
+    
+    td.icon-1p5x, th.icon-1p5x {
+        font-size: 20px;
+    } 
+    
     thead {
         border-spacing: 0;
         td,

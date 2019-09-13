@@ -3,6 +3,7 @@
   "extends": "airbnb-base",
   // ESLint will not look in parent folders for eslint configs
   "root": true,
+  "parser": "babel-eslint",
   // An environment defines global variables that are predefined.
   "env": {
     "browser": true,

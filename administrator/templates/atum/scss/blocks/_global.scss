@@ -99,13 +99,12 @@ body .container-main {
     left: 0;
     z-index: -1;
     // Note IDE's will consider this file import to fail in SCSS but this is correct for the final compiled CSS file
-    background: var(--background) url("../images/joomla-pattern.svg");
-    background-size: 15rem;
+    background-color: var(--background);
   }
 
-  &::after {
-    background: linear-gradient(135deg, var(--background) 0%, var(--background) 20%, rgba(225, 229, 231, 0) 100%);
-  }
+  // &::after {
+  //   background: linear-gradient(135deg, var(--background) 0%, var(--background) 20%, rgba(225, 229, 231, 0) 100%);
+  // }
 }
 
 .content {
@@ -169,12 +168,6 @@ body .container-main {
 .menu-badge {
   float: right;
   min-width: 1rem;
-}
-
-// extern links with icons
-a[target="_blank"]::before {
-  font: normal normal normal 14px/1 'Font Awesome 5 Free';
-  content: "\f35d  ";
 }
 
 #wrapper{
