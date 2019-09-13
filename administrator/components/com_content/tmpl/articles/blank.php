@@ -77,10 +77,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
     <br><hr>
     <h1> Joomla Callout </h1>
     <div style="width: 100%">
-        <a href="#" id="showCollout" class="btn btn-secondary">Callout</a href="#">
-        <a href="#" id="showCollout2" class="btn btn-secondary">Callout with footer</a href="#">
+        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a href="#">
+        <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a href="#">
+        <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a href="#">
+        <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a href="#">
 
-        <joomla-callout for="#showCollout" dismiss="true">
+        <joomla-callout for="#showCollout" dismiss="true" position="bottom">
             <div class="callout-title">Title</div>
             <div class="callout-content">
                 Message body is optional.  If help documentation is available, consider adding a link to learn more
@@ -88,8 +90,26 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
             <a href="#" class="callout-link" target="blank">Learn more</a>
         </joomla-callout>
 
-        <joomla-callout for="#showCollout2" dismiss="true">
+        <joomla-callout for="#showCollout2" dismiss="true" position="right">
             <div class="callout-title">Title</div>
+            <div class="callout-content">
+                Message body is optional.  If help documentation is available, consider adding a link to learn more
+            </div>
+            <div class="callout-footer">
+                <a href="#" class="callout-link" target="blank">Learn more</a>
+            </div>
+        </joomla-callout>
+        <joomla-callout for="#showCollout3" dismiss="true" position="left">
+            <div class="callout-title">Callout Left</div>
+            <div class="callout-content">
+                Message body is optional.  If help documentation is available, consider adding a link to learn more
+            </div>
+            <div class="callout-footer">
+                <a href="#" class="callout-link" target="blank">Learn more</a>
+            </div>
+        </joomla-callout>
+        <joomla-callout for="#showCollout4" dismiss="true" position="top">
+            <div class="callout-title">Callout Top</div>
             <div class="callout-content">
                 Message body is optional.  If help documentation is available, consider adding a link to learn more
             </div>
