@@ -383,12 +383,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 						</tbody>
 					</table>
 
-					<?php // load the pagination and limit items ?>
-					<div class="j-pagination-footer">
-						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
-						<?php echo $this->pagination->getListFooter(); ?>
-					</div>
-
 					<?php // Load the batch processing form. ?>
 					<?php if ($user->authorise('core.create', 'com_content')
 						&& $user->authorise('core.edit', 'com_content')
@@ -413,6 +407,12 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 						$this->loadTemplate('stage_body')
 					); ?>
 				<?php endif; ?>
+
+				<?php // load the pagination and limit items ?>
+				<div class="j-pagination-footer">
+					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+					<?php echo $this->pagination->getListFooter(); ?>
+				</div>
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

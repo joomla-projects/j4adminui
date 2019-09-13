@@ -265,8 +265,9 @@ $zindex-mobil-menu:                9000;
 
 // New Styles
 :root{
-	--background: #f4f7fc;
-	--inverse-background: #1d2427;
+	--background: #edf0f5;
+  --inverse-background: #1d2427;
+  --border-color: #edf0f5;
 	--color: #252732;
 	--color-rgb: 37, 39, 50;
 	--inverse-color: #ffffff;
@@ -295,7 +296,8 @@ $zindex-mobil-menu:                9000;
 	--transparent-bg: transparent;
 	--tr-hover-background: #e5f2ff;
 	--submenu-background: #edf4fa;
-	--submenu-border: #eaeaea;
+  --submenu-border: #eaeaea;
+  --subhead-background: #e3e6eb;
 }
 
 // Global

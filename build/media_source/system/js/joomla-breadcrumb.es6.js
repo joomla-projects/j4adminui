@@ -28,17 +28,19 @@
         const createItem = document.createElement('li');
         const createLink = document.createElement('a');
 
-        createItem.classList.add('breadcrumb-item');
+        createItem.classList.add('joomla-breadcrumb-item');
         if (item.getAttribute('class')) {
-          createLink.classList.add(item.getAttribute('class'));
+          createLink.className = item.getAttribute('class');
+        }
+        if (item.getAttribute('activeClass')) {
+          createLink.className += ` ${item.getAttribute('activeClass')}`;
         }
         createLink.setAttribute('href', item.getAttribute('href'));
-        createLink.setAttribute('value', item.getAttribute('value'));
         createLink.innerHTML = item.getAttribute('text');
         createItem.appendChild(createLink);
         breadcrumbList.append(createItem);
+        item.parentNode.removeChild(item);
       });
-      self.innerHTML = '';
       nav.append(breadcrumbList);
       self.append(nav);
       /* store items */
@@ -65,14 +67,14 @@
           self.setAttribute('responsive', true);
         }
       };
-        /* init minimizeItems function */
-      if (breadcrumbList.offsetWidth > breadcrumbList.parentElement.offsetWidth) {
+      /* init minimizeItems function */
+      if (breadcrumbList.offsetWidth + 100 > breadcrumbList.parentElement.offsetWidth) {
         minimizeItemsFun();
       }
       /* check on reisze */
       window.addEventListener('resize', () => {
         setTimeout(() => {
-          if (breadcrumbList.offsetWidth > nav.offsetWidth) {
+          if (breadcrumbList.offsetWidth + 100 > nav.offsetWidth) {
             minimizeItemsFun();
           } else if (breadcrumbList.offsetWidth < nav.offsetWidth) {
             if (self.getAttribute('responsive')) {
@@ -80,7 +82,7 @@
                 const upated = Array.from(minimizeList.children);
                 if (upated.length !== 0) {
                   for (let i = upated.length - 1; i >= 0; i -= 1) {
-                    if (breadcrumbList.offsetWidth < nav.offsetWidth) {
+                    if (breadcrumbList.offsetWidth + 100 < nav.offsetWidth) {
                       singleLi.parentNode.insertBefore(upated[i], singleLi.nextSibling);
                     }
                   }

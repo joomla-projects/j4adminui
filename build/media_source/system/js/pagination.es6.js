@@ -1,6 +1,7 @@
+'use strict';
+
 (() => {
-  class joomlaPagination extends HTMLElement {
-    /* Lifecycle, element appended to the DOM */
+  class JoomlaPagination extends HTMLElement {
     connectedCallback() {
       const self = this;
       const nav = document.createElement('nav');
@@ -59,8 +60,9 @@
         if (item.getAttribute('activeClass')) {
           createLink.className += ` ${item.getAttribute('activeClass')}`;
         }
-        createLink.setAttribute('href', item.getAttribute('href'));
+        createLink.setAttribute('href', item.getAttribute('href') ? item.getAttribute('href') : '#');
         createLink.setAttribute('value', item.getAttribute('value'));
+
         createLink.innerHTML = item.getAttribute('text');
         createItem.appendChild(createLink);
         paginationList.append(createItem);
@@ -95,9 +97,8 @@
       /* init arrow function */
       arrowFun();
       /* init minimizeItems function */
-      const paginationWidth = paginationList.offsetWidth + totalArrowWidth + 100;
-      const parentWidth = paginationList.parentElement.offsetWidth;
-      if (paginationWidth > parentWidth) {
+      if (paginationList.offsetWidth + totalArrowWidth + 100
+          > paginationList.parentElement.offsetWidth) {
         minimizeItemsFun();
       }
       /* check on reisze */
@@ -132,5 +133,6 @@
         }, 300);
       });
     }
-  } customElements.define('joomla-pagination', joomlaPagination);
+  }
+  customElements.define('joomla-pagination', JoomlaPagination);
 })();
