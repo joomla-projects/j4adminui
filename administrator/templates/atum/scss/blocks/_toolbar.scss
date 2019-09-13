@@ -11,6 +11,11 @@
   min-height: 43px;
   padding: 13px 0;
   color: var(--atum-text-dark); //#0c192e;
+  background: var(--subhead-background);
+
+  &.subhead-is-sticky {
+    
+  }
 
   .row {
     margin-right: 0;
