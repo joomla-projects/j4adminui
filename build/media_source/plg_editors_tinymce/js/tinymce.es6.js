@@ -90,7 +90,16 @@
 
         buttonValues.push(tmp);
       });
-
+      const toggleButtonValues = (editor) => {
+        const { parentNode } = editor.editorContainer;
+        if (parentNode !== null) {
+          if (parentNode.classList.contains('joomla-tinymce-hide-menu')) {
+            parentNode.classList.remove('joomla-tinymce-hide-menu');
+          } else {
+            parentNode.classList.add('joomla-tinymce-hide-menu');
+          }
+        }
+      };
       if (buttonValues.length) {
         options.setup = (editor) => {
           Object.keys(icons).forEach((icon) => {
@@ -102,6 +111,11 @@
             text: Joomla.JText._('PLG_TINY_CORE_BUTTONS'),
             icon: 'joomla',
             fetch: callback => callback(buttonValues),
+          });
+          editor.ui.registry.addButton('jstogglebutton', {
+            text: 'Toggle',
+            tooltip: 'Toggle Menubar',
+            onAction: toggleButtonValues.bind(this, editor),
           });
         };
       }

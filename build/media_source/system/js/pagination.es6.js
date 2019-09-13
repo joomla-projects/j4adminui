@@ -59,8 +59,9 @@
         if (item.getAttribute('activeClass')) {
           createLink.className += ` ${item.getAttribute('activeClass')}`;
         }
-        createLink.setAttribute('href', item.getAttribute('href'));
+        createLink.setAttribute('href', item.getAttribute('href') ? item.getAttribute('href') : '#');
         createLink.setAttribute('value', item.getAttribute('value'));
+
         createLink.innerHTML = item.getAttribute('text');
         createItem.appendChild(createLink);
         paginationList.append(createItem);

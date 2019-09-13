@@ -129,7 +129,7 @@ class PlgEditorTinymce extends CMSPlugin
 		$textarea->readonly = !empty($params['readonly']);
 
 		// Render Editor markup
-		$editor = '<div class="js-editor-tinymce">';
+		$editor = '<div class="js-editor-tinymce joomla-tinymce-hide-menu">';
 		$editor .= LayoutHelper::render('joomla.tinymce.textarea', $textarea);
 		$editor .= $this->_toogleButton($id);
 		$editor .= '</div>';
@@ -554,7 +554,7 @@ class PlgEditorTinymce extends CMSPlugin
 
 				// Toolbars
 				'menubar'  => empty($menubar)  ? false : implode(' ', array_unique($menubar)),
-				'toolbar1' => empty($toolbar1) ? null  : implode(' ', $toolbar1) . ' jxtdbuttons',
+				'toolbar1' => empty($toolbar1) ? null  : 'jstogglebutton ' . implode(' ', $toolbar1) . ' jxtdbuttons',
 				'toolbar2' => empty($toolbar2) ? null  : implode(' ', $toolbar2),
 
 				'plugins'  => implode(',', array_unique($plugins)),
@@ -1014,7 +1014,7 @@ class PlgEditorTinymce extends CMSPlugin
 		$preset['medium'] = array(
 			'menu' => array('edit', 'insert', 'view', 'format', 'table', 'tools'),
 			'toolbar1' => array(
-				'bold', 'italic', 'underline', 'strikethrough', '|',
+				'jstogglebutton', 'bold', 'italic', 'underline', 'strikethrough', '|',
 				'alignleft', 'aligncenter', 'alignright', 'alignjustify', '|',
 				'formatselect', '|',
 				'bullist', 'numlist', '|',
@@ -1031,7 +1031,7 @@ class PlgEditorTinymce extends CMSPlugin
 		$preset['advanced'] = array(
 			'menu'     => array('edit', 'insert', 'view', 'format', 'table', 'tools'),
 			'toolbar1' => array(
-				'bold', 'italic', 'underline', 'strikethrough', '|',
+				'jstogglebutton', 'bold', 'italic', 'underline', 'strikethrough', '|',
 				'alignleft', 'aligncenter', 'alignright', 'alignjustify', '|',
 				'styleselect', '|',
 				'formatselect', 'fontselect', 'fontsizeselect', '|',
