@@ -80,34 +80,56 @@
     // eslint-disable-next-line class-methods-use-this
     checkPosition(currentPosition, buttonRect, calloutRect) {
       if (currentPosition === 'bottom' && (buttonRect.top + calloutRect.height) > window.innerHeight) {
+        this.setAttribute('position', 'top');
         return 'top';
       } if (currentPosition === 'top' && buttonRect.top < (buttonRect.height + calloutRect.height)) {
+        this.setAttribute('position', 'bottom');
         return 'bottom';
       } if (currentPosition === 'right' && (buttonRect.right + calloutRect.width) > window.innerWidth) {
+        this.setAttribute('position', 'left');
         return 'left';
       } if (currentPosition === 'left' && (buttonRect.width + calloutRect.width) > buttonRect.right) {
+        this.setAttribute('position', 'right');
         return 'right';
       }
       return currentPosition;
     }
 
     calloutPosition(copyPosition, buttonRect, calloutRect, space) {
+      const diffWidth = Math.round(Math.abs(calloutRect.width - buttonRect.width) / 2);
+      const diffHeight = Math.round(Math.abs(calloutRect.height - buttonRect.height) / 2);
       switch (copyPosition) {
         case 'top':
           this.style.top = `${Math.round(buttonRect.top - (calloutRect.height + space))}px`;
-          this.style.left = `${Math.round(buttonRect.left - buttonRect.width)}px`;
+          if (buttonRect.width < calloutRect.width) {
+            this.style.left = `${Math.round(buttonRect.left - diffWidth)}px`;
+          } else {
+            this.style.left = `${Math.round(buttonRect.left + diffWidth)}px`;
+          }
           break;
         case 'bottom':
           this.style.top = `${Math.round(buttonRect.bottom) + space}px`;
-          this.style.left = `${Math.round(buttonRect.left - buttonRect.width)}px`;
+          if (buttonRect.width < calloutRect.width) {
+            this.style.left = `${Math.round(buttonRect.left - diffWidth)}px`;
+          } else {
+            this.style.left = `${Math.round(buttonRect.left + diffWidth)}px`;
+          }
           break;
         case 'left':
           this.style.left = `${Math.round((buttonRect.left) - (calloutRect.width + space))}px`;
-          this.style.top = `${Math.round(buttonRect.top - (calloutRect.height / 2))}px`;
+          if (buttonRect.height < calloutRect.height) {
+            this.style.top = `${Math.round(buttonRect.top - diffHeight)}px`;
+          } else {
+            this.style.top = `${Math.round(buttonRect.top + diffHeight)}px`;
+          }
           break;
         default:
           this.style.left = `${Math.round((buttonRect.left) + (buttonRect.width + space))}px`;
-          this.style.top = `${Math.round(buttonRect.top - (calloutRect.height / 2))}px`;
+          if (buttonRect.height < calloutRect.height) {
+            this.style.top = `${Math.round(buttonRect.top - diffHeight)}px`;
+          } else {
+            this.style.top = `${Math.round(buttonRect.top + diffHeight)}px`;
+          }
           break;
       }
     }
