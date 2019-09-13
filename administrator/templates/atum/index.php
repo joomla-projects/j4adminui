@@ -150,47 +150,62 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 
 	<?php // container-fluid ?>
 	<div class="container-fluid container-main">
-
-
-
-<!--
-    Temporary Markpup
-    @TODO: Must remove this markup
--->
-        <hr>
-
        <div class="row justify-content-center">
            <div class="col-3">
                <div class="j-card">
-                   <div class="j-card__header d-flex justify-content-between align-items-center">
-                       <h4 class="j-card__title">
+                   <div class="j-card-header d-flex justify-content-between align-items-center">
+                       <h4 class="j-card-title">
                            <i class="fas fa-pen-alt"></i>
                            Card Title
                        </h4>
-
-                       <div class="joomla-dropdown-container">
-                           <button id="dropdownList"><i class="j-card__header__icon fas fa-ellipsis-h"></i></button>
-                           <joomla-dropdown for="#dropdownList">
-                               <a class="dropdown-item" href="#">Item 1</a>
-                               <a class="dropdown-item" href="#">Item 2</a>
-                               <a class="dropdown-item" href="#">Item 3</a>
-                           </joomla-dropdown>
-                       </div>
-
+                       <button></button>
                    </div>
-                   <div class="j-card__body j-card__body--has-padding">
-                       <div class="j-card__text">
+                   <div class="j-card-body">
+                       <div class="j-card-body-inner">
                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                        </div>
                    </div>
-                   <div class="j-card__footer j-card__footer--has-padding d-flex align-items-center">
-                       <div class="j-card__footer-item">
-                           <a href="#">Details Information</a>
-                       </div>
+                   <div class="j-card-footer">
+                       <a href="#">Details Information</a>
                    </div>
                </div>
            </div>
-
+           <div class="col-3">
+               <div class="j-card">
+                   <div class="j-card-header">
+                       <h4 class="j-card-title">
+                           <i class="fas fa-pen-alt"></i>
+                           Card Title
+                       </h4>
+                   </div>
+                   <div class="j-card-body">
+                       <div class="j-card-body-inner">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                       </div>
+                   </div>
+                   <div class="j-card-footer">
+                       <a href="#">Details Information</a>
+                   </div>
+               </div>
+           </div>
+           <div class="col-3">
+               <div class="j-card">
+                   <div class="j-card-header">
+                       <h4 class="j-card-title">
+                           <i class="fas fa-pen-alt"></i>
+                           Card Title
+                       </h4>
+                   </div>
+                   <div class="j-card-body">
+                       <div class="j-card-body-inner">
+                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                       </div>
+                   </div>
+                   <div class="j-card-footer">
+                       <a href="#">Details Information</a>
+                   </div>
+               </div>
+           </div>
        </div>
 <!--
     Temporary Markup End
