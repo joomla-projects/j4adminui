@@ -7,9 +7,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('versio
 HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 
-<div class="container">
+<div class="container" style="background:white; padding: 10px;">
         <h1> Joomla Pagination </h1>
         <div class="joomla-pagination" style="width: 600px">
             <joomla-pagination>
@@ -135,6 +136,30 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>
         </div>
+    </div>
+    <br><hr>
+    <h1> Joomla Accordion </h1>
+    <div style="width: 600px">
+        <joomla-accordion toggle="true" animation="true">
+            <section class="accordion-item" id="accordion-panel1" name="Accordion panel 1">
+                <h3>Tab panel 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section class="accordion-item show"  id="accordion-panel2" name="Accordion panel 2">
+                <h3>Tab panel 2</h3>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+            <section class="accordion-item" id="accordion-panel3" name="Accordion panel 3">
+                <h3>Tab panel 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+        </joomla-accordion>
     </div>
     <br><hr>
     <h1> Joomla Modal </h1>

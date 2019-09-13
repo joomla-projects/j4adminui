@@ -133,7 +133,9 @@
     }
 
     close(event) {
-      event.preventDefault();
+      if (event) {
+        event.preventDefault();
+      }
       this.removeEventListener('keydown', this.evKeypress);
       document.removeEventListener('click', this.evDocumentClose);
 
