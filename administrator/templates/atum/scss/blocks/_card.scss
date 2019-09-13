@@ -1,0 +1,43 @@
+$card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+$card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
+
+.j-card{
+	box-shadow: $card-box-shadow;
+	background: #ffffff;
+	border-radius: 3px;
+	&:hover{
+		box-shadow: $card-box-shadow-hover;
+	}
+	
+	.j-card__header{
+		padding: 0.857rem 0.571rem 0.857rem 1.429rem;
+		border-bottom: 1px solid var(--background);
+		h4{
+			margin: 0;
+		}
+		button{
+			padding: 0;
+			margin: 0;
+			background: transparent;
+			border: none;
+			&:focus{
+				outline: 1px solid var(--link-color);
+			}
+		}
+	}
+	
+	.j-card__body--has-padding{
+		padding: 0.857rem 1.429rem;
+	}
+	
+	.j-card__footer{
+		border-top: 1px solid var(--background);
+		.j-card__footer-item{
+			text-align: center;
+		}
+		&.j-card__footer--has-padding{
+			padding: 0.857rem 1.429rem;
+		}
+	}
+	
+}
