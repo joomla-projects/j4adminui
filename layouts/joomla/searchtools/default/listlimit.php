@@ -31,7 +31,7 @@ HTMLHelper::_('script', 'system/pagination.es6.min.js', array('version'=> 'auto'
 <?php if ($list) : ?>
 	<div class="ordering-select">
         <?php if(!empty($listLimit) && count((array)$listLimit->options) > 0) : ?>
-            <div class="limit-list">
+            <div class="limit-list" style="width: 300px">
                 <joomla-pagination class="js-stools-list-group">
                     <li class="pagination-link listlimit-title" text="<?php echo JText::_('JSHOW'); ?>"></li>
                     <?php foreach($listLimit->options as $listOption) : ?>
