@@ -86,29 +86,29 @@
 
     .btn-toolbar {
 
-      .js-stools-btn-filter{
-        border:1px solid var(--border);
-      }
-      .js-stools-btn-clear {
-        background-color: var(--atum-bg-dark);
-        color: var(--atum-text-light);
-        border:1px solid var(--border);
-        border-left: 1px solid var(--atum-text-light);
+      // .js-stools-btn-filter{
+      //   border:1px solid var(--border);
+      // }
+      // .js-stools-btn-clear {
+      //   background-color: var(--atum-bg-dark);
+      //   color: var(--atum-text-light);
+      //   border:1px solid var(--border);
+      //   border-left: 1px solid var(--atum-text-light);
 
-        &.disabled,
-        &:disabled{
-            background-color: rgba($gray-300, 0.8);
-            border-color: rgba($gray-500, 0.8);
-            opacity:1;
-            color:var(--atum-text-dark);
-        }
-      }
-      .js-stools-btn-filter{
-        border-right:1px solid var(--border);
-        .fa {
-          margin-left: 0.25rem;
-        }
-      }
+      //   &.disabled,
+      //   &:disabled{
+      //       background-color: rgba($gray-300, 0.8);
+      //       border-color: rgba($gray-500, 0.8);
+      //       opacity:1;
+      //       color:var(--atum-text-dark);
+      //   }
+      // }
+      // .js-stools-btn-filter{
+      //   border-right:1px solid var(--border);
+      //   .fa {
+      //     margin-left: 0.25rem;
+      //   }
+      // }
 
       .form-control{
         height: 2.86rem;

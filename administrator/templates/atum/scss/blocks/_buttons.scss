@@ -17,6 +17,7 @@
     box-shadow: 0 1px 1px 0 rgba(var(--color-rgb), 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     text-decoration: none;
     transition: .3s;
+    border-radius: 3px;
     &[disabled], &.disabled, &:disabled{
         pointer-events: none;
         background-image: none;
@@ -62,7 +63,7 @@
             }
         }
     }
-    &.btn-primary{
+    &.btn-primary {
         background-image: linear-gradient(to bottom, rgba(249, 252, 255, 0.5), rgba(var(--link-color-rgb), 0.5)), linear-gradient(to bottom, var(--button-background), var(--button-background));
         background-color: transparent;
         color: var(--link-color);
