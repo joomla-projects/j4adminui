@@ -28,7 +28,7 @@
         const createItem = document.createElement('li');
         const createLink = document.createElement('a');
 
-        createItem.classList.add('breadcrumb-item');
+        createItem.classList.add('joomla-breadcrumb-item');
         if (item.getAttribute('class')) {
           createLink.className = item.getAttribute('class');
         }
@@ -55,7 +55,7 @@
           breadcrumbList.appendChild(allItems[0]);
           breadcrumbList.appendChild(singleLi);
           singleLi.append(minimizeWrapper);
-          for (let i = filterItems.length - 1; i >= 0; i--) {
+          for (let i = filterItems.length - 1; i >= 0; i -= 1) {
             if (breadcrumbList.offsetWidth < nav.offsetWidth) {
               singleLi.parentNode.insertBefore(filterItems[i], singleLi.nextSibling);
             } else {
@@ -81,7 +81,7 @@
               if (allItems.length > 0) {
                 const upated = Array.from(minimizeList.children);
                 if (upated.length !== 0) {
-                  for (let i = upated.length - 1; i >= 0; i--) {
+                  for (let i = upated.length - 1; i >= 0; i -= 1) {
                     if (breadcrumbList.offsetWidth + 100 < nav.offsetWidth) {
                       singleLi.parentNode.insertBefore(upated[i], singleLi.nextSibling);
                     }

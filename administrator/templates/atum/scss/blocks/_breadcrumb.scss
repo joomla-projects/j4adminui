@@ -16,7 +16,7 @@ joomla-breadcrumb{
       }
     }
   }
-  .breadcrumb-item{
+  .joomla-breadcrumb-item{
     margin-right: 10px;
     &:not(:last-child)>a:after {
       content: ">";
@@ -75,7 +75,7 @@ joomla-breadcrumb{
       position: relative;
       padding: 0;
       margin: 0;
-      .breadcrumb-item{
+      .joomla-breadcrumb-item{
         margin-right: 0;
         >a{
           padding: 6px 18px;

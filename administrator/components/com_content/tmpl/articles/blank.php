@@ -18,7 +18,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
                 <li class="pagination-link" href="#" value="1" text="1"></li>
                 <li class="pagination-link" href="#" value="2" text="2"></li>
                 <li class="pagination-link" href="#" value="3" text="3"></li>
-                <li class="pagination-link" activeClass="active" href="#" value="4" text="4"></li>
+                <li class="pagination-link" href="#" value="4" text="4"></li>
                 <li class="pagination-link" href="#" value="5" text="5"></li>
                 <li class="pagination-link" href="#" value="5" text="6"></li>
                 <li class="pagination-link" href="#" value="5" text="7"></li>
@@ -40,7 +40,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
                 <li class="pagination-link" href="#" value="5" text="23"></li>
                 <li class="pagination-link" href="#" value="5" text="24"></li>
                 <li class="pagination-link" href="#" value="5" text="25"></li>
-                <li class="pagination-link" href="#" value="5" text="26"></li>
+                <li class="pagination-link" activeClass="active" href="#" value="5" text="26"></li>
                 <li class="pagination-link" href="#" value="5" text="27"></li>
                 <li class="pagination-link" href="#" value="5" text="28"></li>
                 <li class="pagination-link" href="#" value="5" text="29"></li>
