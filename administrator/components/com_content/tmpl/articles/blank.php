@@ -8,6 +8,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> '
 HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 
 <div class="container" style="background:white; padding: 10px;">
@@ -162,6 +164,24 @@ HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('versi
         </joomla-accordion>
     </div>
     <br><hr>
+    <h1> Joomla Tab </h1>
+    <div style="width: 600px">
+        <joomla-tab>
+            <section orientation="vertical" id="tab-panel1" name="Tab panel 1">
+                    <h3>Tab panel 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section id="tab-panel2" name="Tab panel 2">
+                    <h3>Tab panel 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section id="tab-panel3" name="Tab panel 3" disabled="true">
+                    <h3>Tab panel 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+        </joomla-tab>
+    </div>
+    <br><hr>
     <h1> Joomla Modal </h1>
     <div style="width: 100%">
         <a href="#" class="btn btn-primary" data-href="#exampleModal1">Launch demo modal</a href="#">
@@ -191,5 +211,47 @@ HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('versi
                 <a href="#" class="btn btn-primary">Save changes</a href="#">
             </footer>
         </joomla-modal>
+    </div>
+    <br><hr>
+    <h1> Joomla Alert </h1>
+    <div style="width:100%">
+            <!-- Alert with icon & content -->
+        <joomla-alert dismiss="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert-content">
+                Alert with icon & content
+                <div class="joomla-alert-link-group">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                </div>
+            </div>
+        </joomla-alert>
+
+        <!-- collapse & collapse title -->
+        <joomla-alert collapse-title="Collapsible allert with icon" collapse="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert--collapse">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+                    <div class="joomla-alert-button-group">
+                        <button>Sure!</button>
+                        <button>Noooo!</button>
+                    </div>
+            </div>
+        </joomla-alert>
+
+        <!-- Alert type: success, danger, warning. Alert dismiss: true -->
+        <joomla-alert type="success" dismiss="true">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
+        <joomla-alert type="warning" dismiss="true">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
+        <joomla-alert type="danger" dismiss="true" auto-dismiss="2000">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
     </div>
 </div>

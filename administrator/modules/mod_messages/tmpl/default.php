@@ -21,13 +21,11 @@ $app      = Factory::getApplication();
 ?>
 
 <div class="header-item-content">
-	<a class="d-flex align-items-stretch <?php echo ($hideLinks ? 'disabled' : 'dropdown-toggle'); ?>" <?php echo ($hideLinks ? '' : 'href="' . Route::_($route) . '"'); ?> title="<?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>">
-		<div class="d-flex align-items-end mx-auto">
-			<span class="fa fa-envelope" aria-hidden="true"></span>
-		</div>
-		<div>
-			<?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>
-		</div>
+	<a class="header-item-link <?php echo ($hideLinks ? 'disabled' : ''); ?>" <?php echo ($hideLinks ? '' : 'href="' . Route::_($route) . '"'); ?> title="<?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>">
+        <span class="header-item-icon fa fa-envelope" aria-hidden="true"></span>
+        <span class="header-item-text">
+            <?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>
+        </span>
 		<?php $countUnread = $app->getSession()->get('messages.unread'); ?>
 		<?php if ($countUnread > 0) : ?>
 			<span class="badge badge-pill badge-danger"><?php echo $countUnread; ?></span>

@@ -76,7 +76,7 @@ joomla-pagination{
         margin-right: 0;
         >a{
           padding: 1px 5px;
-          border-bottom: 1px solid #f4f7fc;
+          border-bottom: 1px solid var(--page-background);
           border-radius: 0px;
           &:hover, &:focus{
             color: var(--link-color);

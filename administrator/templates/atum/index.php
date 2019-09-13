@@ -156,7 +156,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 				data-target=".subhead"><?php echo Text::_('TPL_ATUM_TOOLBAR'); ?>
 				<span class="icon-chevron-down" aria-hidden="true"></span>
             </button>
-			<div id="subhead" class="subhead mb-3">
+			<div id="subhead" class="subhead mb-4">
 				<div id="container-collapse" class="container-collapse"></div>
 				<div class="row">
 					<div class="col-md-12">
