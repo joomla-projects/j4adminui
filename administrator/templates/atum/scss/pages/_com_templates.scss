@@ -1,5 +1,77 @@
 // com_templates
 .com_templates {
+  .template-style {
+    background: #FFFFFF;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+    border-radius: 3px;
+    margin-bottom: 30px;
+    .template-style-thumbnail {
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .template-style-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        transition: 500ms;
+      }
+    }
+
+    // Visible overlay on hover
+    &:hover {
+      .template-style-thumbnail {
+        .template-style-overlay {
+          opacity: 1;
+        }
+      }
+    }
+
+    .template-style-header {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      >div {
+        margin-right: 10px;
+      }
+      
+      .template-version {
+        font-size: 14px;
+        color: #5E727C;
+      }
+    }
+
+    .template-quick-info {
+      padding: 10px;
+    }
+
+    .template-actions {
+      border-top: 1px solid #F4F7FC;
+      display: flex;
+      flex-flow: wrap;
+      >a {
+        padding: 12px 10px;
+        flex: 0 0 50%;
+        text-align: center;
+        &:first-child {
+          color: #5E727C;
+          border-right: 1px solid #F4F7FC;
+        }
+        &:last-child {
+          color: #0184FF;
+          border-right: 1px solid #F4F7FC;
+        }
+      }
+    }
+  }
 
   .menu-assignment {
     position: relative;

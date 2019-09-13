@@ -17,7 +17,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        color: #fff;
+        color: var(--inverse-color);
         text-align: center;
         white-space: nowrap;
         background-color: #5fac23;
@@ -26,91 +26,21 @@
 }
 
 //Custom Design for modal
-.media-modal-backdrop{
-    background-color: rgba(0,0,0,.5);
-    .modal-body {
-        padding: 20px;
-    }
-}
-.joomla-upload-modal {
-    width: 550px;
-    max-width: 40vw;
-    .modal-header {
-        border: none;
-        position: relative;
-    }
-    .body {
-        padding: 10px;
-    }
-    .joomla-media-upload-drag-container {
-        border: 2px dashed #bdc5c8;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        &.active {
-            border-color: pink;
-        }
-        .btn {
-            &.btn-primary {
-                border-radius: 3px;
-                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
-                background: #e5f2ff;
-                color: #0184ff;
-                border: none;
-                margin: 15px auto 10px;
-                padding: 0 2.4rem;
-                line-height: 2.5rem;
-                &:active {
-                    background: #0184ff;
-                    color: #fff;
-                    box-shadow: none;
-                }
-            }
-        }
-        .joomla-upload-tips{
-            color: #5e727c;
-            margin: 0 auto 40px;
-        }
-    }
-    .modal-content {
-        background-color: #f4f7fc;
-        border: none;
-        box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
-        border-radius: 3px;
-    }
-    .modal-footer {
-        border-color: #d7dee1;
-    }
-    .joomla-upload-img{
-        height: 206px;
-        width: 240px;
-        background: url(../images/image-upload.svg) no-repeat scroll center center;
-        margin: 30px auto 20px;
-    }
-    .joomla-upload-modal-cancel-btn {
-        position: absolute;
-        right: -15px;
-        top: -15px;
-        background: #f44321;
-        color: #e5f2ff;
-        text-align: center;
-        border-radius: 50%;
-        font-size: 1.25rem;
-        line-height: 2.1rem;
-        width: 2rem;
-        height: 2rem;
-        z-index: 1;
-    }
-}
+
 .joomla-recent-uploaded-media {
-    color: #1d2427;
+    color: var(--inverse-background);
+    max-height: 300px;
+    overflow-y: scroll;
     .joomla-recent-uploaded-media-item {
         display: flex;
         position: relative;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid rgba(0, 0, 0, .15);
-        padding: 15px 0px;
+        padding: 20px 0px;
+        &:last-child {
+            border: none;
+        }
         .joomla-progress-container {
             width: 205px;
             display: flex;
@@ -118,7 +48,7 @@
             margin-right: 15px;
             span {
                 padding-left: 15px;
-                color: #5e727c;
+                color: var(--secondary-color);
             }
         }
         .joomla-recent-upload-file {
@@ -155,27 +85,27 @@
             }
             span {
                 padding-left: 5px;
-                color: #5e727c;
+                color: var(--secondary-color);
             }
         }
         .joomla-file-upload-cancel-btn{
-            color: #5e727c;
+            color: var(--secondary-color);
             text-decoration: none;
         }
         .joomla-media-upload-error {
             i {
-                color: #f44321;
+                color: var(--danger-color);
                 font-size: 1.15rem;
             }
             span {
                 padding-left: 5px;
-                color: #f44321;
+                color: var(--danger-color);
             }
         }
         .joomla-file-remove-btn {
             border-radius: 3px;
-            border: solid 1px #bdc5c8;
-            color: #5e727c;
+            border: solid 1px var(--secondary-icon-color);
+            color: var(--secondary-color);
             text-decoration: none;
             line-height: 1.9rem;
             padding-right: 23px;
@@ -184,15 +114,15 @@
             align-items: center;
             transition: .35s;
             &:hover {
-                border-color: #f44321;
-                background-color: #f44321;
-                color: #fff;
+                border-color: var(--danger-color);
+                background-color: var(--danger-color);
+                color: var(--inverse-color);
                 i {
-                    color: #fff;
+                    color: var(--inverse-color);
                 }
             }
             i {
-                color: #bdc5c8;
+                color: var(--secondary-icon-color);
                 font-size: 1.15rem;
                 line-height: 1;
                 display: inline-block;
@@ -200,12 +130,309 @@
                 transition: .35s;
             }
         }
-        &:first-child {
-            padding-top: 10px;
+    }
+}
+
+//Media manager container
+.media-main {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.media-toolbar {
+    background-color: var(--inverse-color);
+    border-bottom: none;
+    border-radius: 0;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 60px;
+}
+.media-browser-item-file,
+.media-browser-item-directory,
+.media-browser-image {
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+    background-color: var(--inverse-color);
+    position: relative;
+}
+.file-background,
+.folder-background {
+    background-color: transparent;
+    border-radius: 0;
+    padding-bottom: 80%;
+}
+.image-background{
+    background: none;
+}
+.media-browser-item-preview {
+    color: #93ceff;
+    font-size: 6rem;
+    &::after {
+        display: none;
+    }
+}
+.media-browser-select{
+    position: absolute;
+    top: auto;
+    left: auto;
+    width: 20px;
+    height: 20px;
+    content: initial;
+    background-color: #bdc5c8;
+    border: 0;
+    border-radius: 0.25rem;
+    box-shadow: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    right: 4px;
+    bottom: 4px;
+    text-align: center;
+    line-height: 1;
+    &::after {
+        position: absolute;
+        top: -2px;
+        left: 0;
+        width: 16px;
+        height: 16px;
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.3rem;
+        line-height: 1;
+        text-align: center;
+        content: "\F00C";
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #fff;
+        margin: auto;
+        right: 0;
+        bottom: 0;
+        transform: scale(.6);
+    }
+}
+.selected {
+    .media-browser-select {
+        color: #fff;
+        box-shadow: none;
+        background-color: #0184ff;
+        &::after {
+            transform: scale(.6);
         }
-        &:last-child {
-            border: none;
-            padding-bottom: 35px;
+    }
+}
+.media-browser-actions > button{
+    opacity: 1;
+}
+.media-browser-item-info {
+    padding: 1.08rem 3.3rem 1.06rem 1.08rem;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--inverse-background);
+}
+.media-browser-actions {
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+.image-browser-action {
+    width: calc(1.3rem * 1.55);
+    height: calc(1.3rem * 1.55);
+    margin-right: 0;
+    margin-left: 0;
+    color: var(--secondary-icon-color);
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 0;
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+.file-icon, .folder-icon{
+    color: #93ceff;
+}
+.action-delete {
+    .image-browser-action {
+        background-color: transparent;
+    }
+}
+.image-cropped {
+    padding-bottom: 80%;
+    background-size: 100%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.media-toolbar-icon {
+    line-height: 4.7rem;
+}
+//Media drop area
+.media-dragoutline {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px dashed #fff;
+    border-radius: 0;
+    p {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        color: $white;
+        font-weight: $bold-weight;
+        font-size: 3.85rem;
+    }
+}
+.joomla-drop-media-image {
+    width: 247px;
+    height: 265px;
+    background: url(../images/joomla-media-drop.svg) no-repeat center scroll / cover;
+    margin-bottom: 60px;
+}
+
+/* 1.5 dpr */
+@media 
+(-webkit-min-device-pixel-ratio: 1.5), 
+(min-resolution: 144dpi){ 
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 6 - 15px);
+        }
+    }
+}
+@media screen and (max-width: 1920px) {
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 6 - 15px);
+        }
+    }
+}
+@media screen and (max-width: 1600px) {
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 5 - 15px);
+        }
+    }
+}
+@media screen and (max-width: 1440px) {
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 4 - 15px);
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 3 - 15px);
+        }
+    }
+}
+@media screen and (max-width: 500px) {
+    .media-browser-items-lg {
+        .media-browser-item {
+            width: calc(100% / 2 - 15px);
+        }
+    }
+}
+
+//Docker upload
+.joomla-docker-panel {
+    position: fixed;
+    box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
+    background: #ffffff;
+    width: 550px;
+    border-radius: 3px;
+    overflow: hidden;
+    z-index: 9;
+    &.joomla-docker-top-right {
+        right: 30px;
+        top: 60px;
+    }
+    &.joomla-docker-top-left {
+        left: 30px;
+        top: 60px;
+    }
+    &.joomla-docker-bottom-right {
+        right: 40px;
+        bottom: 60px;
+    }
+    &.joomla-docker-bottom-left {
+        left: 30px;
+        bottom: 60px;
+    }
+    .joomla-docker-panel-header {
+        background: #000000;
+        color: #ffffff;
+        display: flex;
+        padding: 15px 15px 12px;
+        .joomla-docker-panel-title {
+            flex: 1;
+            font-size: 1.145rem;
+            line-height: 1;
+        }
+        .joomla-docker-panel-close-btn,
+        .joomla-docker-panel-collapse-btn {
+            font-size: 1.15rem;
+            line-height: 1;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .disable-btn {
+            cursor: not-allowed;
+        }
+    }
+    .joomla-docker-panel-body {
+        min-height: 70px;
+        transition: height 0.5s linear;
+        overflow-y: scroll;
+        &.joomla-panel-collapse-in {
+            transition: height 0.5s linear;
+            min-height: 0;
+            max-height: 0;
+        }
+    }
+    .joomla-recent-uploaded-media {
+        padding: 0 35px 0 25px;
+    }
+}
+.joomla-recent-uploaded-media-item {
+    transition: height 0.5s linear;
+    &.joomla-media-upload-success {
+        height: 0px;
+        transition: height 0.5s linear;
+    }
+}
+
+//Folder browse breadcrumb style
+.media-breadcrumb-item {
+    background: transparent;
+    padding: 0;
+    &::before,
+    &::after {
+        display: none;
+    }
+    &:last-of-type {
+        .media-chevron-icon {
+            display: none;
+        }
+    }
+    a {
+        color: var(--secondary-color);
+        font-size: 1.14rem;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        line-height: 4.9rem;
+        span {
+            display: inline-block;
+            padding: 0 15px 0 0;
+            &.media-folder-icon {
+                font-size: 3rem;
+                color: #93ceff;
+            }
+            &.media-chevron-icon {
+                padding: 0 15px;
+            }
         }
     }
 }

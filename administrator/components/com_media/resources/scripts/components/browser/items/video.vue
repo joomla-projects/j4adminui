@@ -1,14 +1,14 @@
 <template>
     <div class="media-browser-image" @dblclick="openPreview()" @mouseleave="hideActions()">
+        <div class="media-browser-item-info">
+            {{ item.name }} {{ item.filetype }}
+        </div>
         <div class="media-browser-item-preview">
             <div class="file-background">
                 <div class="file-icon">
                     <span class="fa fa-file-alt"></span>
                 </div>
             </div>
-        </div>
-        <div class="media-browser-item-info">
-            {{ item.name }} {{ item.filetype }}
         </div>
         <a href="#" class="media-browser-select"
           @click.stop="toggleSelect()"

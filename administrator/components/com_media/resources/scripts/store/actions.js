@@ -145,7 +145,6 @@ export const createDirectory = (context, payload) => {
 export const uploadFile = (context, payload) => {
     const fileName = payload.name.replace(/[\])}[{(]/g, '');
     new Promise((resolve, reject) => {
-        context.commit(types.SET_IS_LOADING, true);
         const url = api._baseUrl + '&task=api.files&path=' + payload.parent;
         const data = {
             [api._csrfToken]: '1',
@@ -165,10 +164,9 @@ export const uploadFile = (context, payload) => {
             headers: {'Content-Type': 'application/json'},
             onProgress: (progress) => {
                 const percentComplete = Math.round((progress.loaded / progress.total)*100);
-                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties: {progress: percentComplete, error:''} })
+                context.commit(types.UPDATE_LAST_UPLOADED_FILES, {fileName, properties: {progress: percentComplete, error:''}})
             },
             onSuccess: (response) => {
-                notifications.success('COM_MEDIA_UPLOAD_SUCCESS');
                 resolve(api._normalizeItem(JSON.parse(response).data)) 
             },
             onError: (xhr) => {
@@ -181,12 +179,8 @@ export const uploadFile = (context, payload) => {
     })
     .then(file => {
         context.commit(types.UPLOAD_SUCCESS, file);
-        context.commit(types.SET_IS_LOADING, false);
     })
     .catch(error => {
-        console.log("upload error: ",error)
-
-        context.commit(types.SET_IS_LOADING, false);
         // Handle file exists
         if (error.status === 409) {
             if (notifications.ask(translate.sprintf('COM_MEDIA_FILE_EXISTS_AND_OVERRIDE', payload.name), {})) {
