@@ -18,6 +18,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
 HTMLHelper::_('behavior.multiselect');
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('version'=> 'auto', 'relative' => true));
 
 $user      = Factory::getUser();
 $clientId = (int) $this->state->get('client_id', 0);
@@ -119,6 +120,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												</a>
 											<?php endif; ?>
 										</div>
+									</div>
+
+									<div class="joomla-dropdown-container">
+										<a href="#" class="btn btn-secondary" id="dropdownList<?php echo $item->id; ?>">Dropdown with list</a href="#">
+										<joomla-dropdown for="#dropdownList<?php echo $item->id; ?>">
+											<a class="dropdown-item" href="#">Item 1</a>
+											<a class="dropdown-item" href="#">Item 2</a>
+											<a class="dropdown-item" href="#">Item 3</a>
+										</joomla-dropdown>
 									</div>
 
 									<!-- <div class="admin-template-info">
