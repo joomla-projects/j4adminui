@@ -45,7 +45,7 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
-				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'menutype'))); ?>
+				<?php  echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'menutype'))); ?>
 				<?php if (!empty($this->items)) : ?>
 					<table class="table j-list-table" id="itemList">
 						<caption id="captionTable" class="sr-only">
@@ -211,11 +211,12 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'items.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
 								</td>
 								
-								<?php if ($this->state->get('filter.client_id') == 0) : ?>
+								<?php if ($this->state->get('filter.client_id') === 0) : ?>
 									<td class="small d-none d-md-table-cell">
 										<?php echo $this->escape($item->access_level); ?>
 									</td>
 								<?php endif; ?>
+
 								<?php if ($this->state->get('filter.client_id') == 0 && Multilanguage::isEnabled()) : ?>
 									<td class="small d-none d-md-table-cell text-center">
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>

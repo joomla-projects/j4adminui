@@ -352,7 +352,7 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
+				->icon('fa fa-hand-pointer')
 				->buttonClass('btn btn-action')
 				->listCheck(true);
 
@@ -395,14 +395,14 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		// toolbar help button
+		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
+		
 		// option toolbar button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_menus');
 		}
-
-		// toolbar help button
-		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
 		
 		// toolbar delete menuItem button
 		if (!$protected && $this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
