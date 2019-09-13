@@ -26,17 +26,19 @@ if (isset($list['list_fullordering'])) {
 		<?php foreach ($list as $fieldName => $field) : ?>
 			<?php if($fieldName !== 'list_limit') : ?>
 				<div class="js-stools-field-list">
-					<?php if($fieldName === 'list_fullordering') : ?>
-						<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_ORDER_BY'); ?></span>
-					<?php endif; ?>
-					<div class="js-stools-list-inner">
-						<span class="sr-only"><?php echo $field->label; ?></span>
-						<?php echo $field->input; ?>
+					<div class="js-stools-field-list-content">
+						<?php if($fieldName === 'list_fullordering') : ?>
+							<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_ORDER_BY'); ?></span>
+						<?php endif; ?>
+						<div class="js-stools-list-inner">
+							<span class="sr-only"><?php echo $field->label; ?></span>
+							<?php echo $field->input; ?>
+						</div>
 					</div>
+					<?php if($fieldName === 'list_fullordering') : ?>
+						<button type="button" class="btn js-stools-order-toggler"><i class="fa <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'fa-sort-amount-up-alt' : 'fa-sort-amount-down-alt'; ?>"></i></button>
+					<?php endif; ?>
 				</div>
-				<?php if($fieldName === 'list_fullordering') : ?>
-					<button type="button" class="btn js-stools-order-toggler"><i class="fa <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'fa-sort-amount-up-alt' : 'fa-sort-amount-down-alt'; ?>"></i></button>
-				<?php endif; ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
