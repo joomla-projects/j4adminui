@@ -546,7 +546,16 @@
     }
   }
   
-  
+  #wrapper::before{
+    content: '';
+    position: fixed;
+    z-index: 999999;
+    width: 100vw;
+    height: 65px;
+    bottom: 0;
+    background: #ffffff;
+    transform: translateY(50px);
+  }
   #wrapper::after{
     content: '';
     width: 100vw;
@@ -557,7 +566,7 @@
     background-size: contain;
     position: fixed;
     z-index: 999999;
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
   }
   
 }
