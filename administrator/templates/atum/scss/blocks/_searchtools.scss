@@ -16,11 +16,6 @@
     padding: 1rem .5rem .5rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-    background-color: $white;
-    border: solid var(--border);
-    border-width: 1px 0;
-    border-radius: 0 0 0 $border-radius;
-    box-shadow: $atum-box-shadow;
     width: 100%;
 
     joomla-field-fancy-select .choices,
@@ -85,10 +80,6 @@
   .js-stools-container-bar {
 
     .btn-toolbar {
-
-      .js-stools-btn-filter{
-        border:1px solid var(--border);
-      }
       .js-stools-btn-clear {
         background-color: var(--atum-bg-dark);
         color: var(--atum-text-light);
@@ -104,7 +95,6 @@
         }
       }
       .js-stools-btn-filter{
-        border-right:1px solid var(--border);
         .fa {
           margin-left: 0.25rem;
         }

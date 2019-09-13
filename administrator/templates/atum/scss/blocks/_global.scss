@@ -171,12 +171,6 @@ body .container-main {
   min-width: 1rem;
 }
 
-// extern links with icons
-a[target="_blank"]::before {
-  font: normal normal normal 14px/1 'Font Awesome 5 Free';
-  content: "\f35d  ";
-}
-
 #wrapper{
   &.d-flex{
     @include media-breakpoint-down(xs){
