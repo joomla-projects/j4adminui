@@ -1,10 +1,35 @@
 // com_templates
 .com_templates {
+  
+  .mdc-icon-button {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    fill: #BDC5C8;
+    color: #BDC5C8;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 50px;
+    &:focus {
+      background-color: #E5F2FF;
+      color: var(--primary-color); 
+      fill: var(--primary-color);
+    }
+}
+
   .template-style {
-    background: #FFFFFF;
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
-    border-radius: 3px;
-    margin-bottom: 30px;
+
     .template-style-thumbnail {
       position: relative;
       img {

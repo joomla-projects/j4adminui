@@ -1,5 +1,28 @@
 // Card
-
 .card {
-  box-shadow: $atum-box-shadow;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
+  //box-shadow: $atum-box-shadow;
+	border-radius: 3px;
+	margin-bottom: 30px;
+
+	.card-header,
+	.card-footer {
+		background-color: transparent;
+	}
+	.card-header {
+		border-bottom: 1px solid var(--border-color);
+	}
+
+	.card-footer {
+		border-top: 1px solid var(--border-color);
+		>div:not(:last-child) {
+			border-right: 1px solid var(--border-color);
+		}
+		.card-link {
+			color: var(--secondary-color);
+			&:hover {
+				color: var(--primary-color);
+			}
+		}
+	}
 }

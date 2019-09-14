@@ -19,17 +19,20 @@ use Joomla\CMS\Uri\Uri;
 
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 
 $user      = Factory::getUser();
 $clientId = (int) $this->state->get('client_id', 0);
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
+
 <form action="<?php echo Route::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'client_id'))); ?>
+				<div class="clearfix mt-4 mb-4"></div>
 				<?php if ($this->total > 0) : ?>
 					<div id="styleList">
 						<div class="row">
@@ -39,37 +42,55 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style<?php echo ($item->home == '1') ? ' default-template': ''; ?>">
-										<div class="template-style-header d-flex justify-content-between">
-											<div class="d-inline-flex align-items-center">
-												<div class="mr-2">
-													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-												</div>
-
-												<div class="mr-2">
-													<?php if($item->home == '1') : ?>
-														<span class="default-template-indicator">
-															<span class="fas fa-star"></span>
-														</span>
-													<?php endif; ?>
-													
-													<span class="template-name">
-														<?php if ($canEdit) : ?>
-															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-																<?php echo ucfirst($this->escape($item->template)); ?>
-															</a>
-														<?php else : ?>
-															<?php echo ucfirst($this->escape($item->template)); ?>
-														<?php endif; ?>
+									<div class="card template-style">
+										<div class="card-header d-flex align-items-center">
+											<div class="flex-grow-1">
+												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+												<?php if($item->home == '1') : ?>
+													<span class="default-template-indicator">
+														<span class="fas fa-star"></span>
 													</span>
-													
-													<?php if ($version = $item->xmldata->get('version')) : ?>
-														<span class="template-version">v<?php echo $this->escape($version); ?></span>
+												<?php endif; ?>
+												<span class="template-name">
+													<?php if ($canEdit) : ?>
+														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+															<?php echo ucfirst($this->escape($item->template)); ?>
+														</a>
+													<?php else : ?>
+														<?php echo ucfirst($this->escape($item->template)); ?>
 													<?php endif; ?>
+												</span>
+												
+												<?php if ($version = $item->xmldata->get('version')) : ?>
+													<span class="template-version">v<?php echo $this->escape($version); ?></span>
+												<?php endif; ?>
+											</div>
+											<div class="flex-shrink-1">
+												<button id="showCollout<?php echo $item->id; ?>" class="mdc-icon-button">
+													<i class="fas fa-info-circle"></i>
+												</button>
+
+												<joomla-callout for="#showCollout<?php echo $item->id; ?>" dismiss="true" position="bottom">
+													<div class="callout-title">Title</div>
+													<div class="callout-content">
+														Message body is optional.  If help documentation is available, consider adding a link to learn more
+													</div>
+													<a href="#" class="callout-link" target="blank">Learn more</a>
+												</joomla-callout>
+
+												<div class="joomla-dropdown-container">
+													<button id="dropdownList<?php echo $item->id; ?>" class="mdc-icon-button">
+														<svg width="16" height="4" xmlns="http://www.w3.org/2000/svg">
+															<path d="M14 0c1.104569 0 2 .89543 2 2s-.895431 2-2 2c-1.104569 0-2-.89543-2-2s.895431-2 2-2zM8 0c1.104569 0 2 .89543 2 2s-.895431 2-2 2c-1.104569 0-2-.89543-2-2s.895431-2 2-2zM2 0c1.104569 0 2 .89543 2 2s-.895431 2-2 2C.895431 4 0 3.10457 0 2s.895431-2 2-2z" fill-rule="evenodd"/>
+														</svg>
+													</button>
+													<joomla-dropdown for="#dropdownList<?php echo $item->id; ?>">
+														<a class="dropdown-item" href="#">Item 1</a>
+														<a class="dropdown-item" href="#">Item 2</a>
+														<a class="dropdown-item" href="#">Item 3</a>
+													</joomla-dropdown>
 												</div>
 											</div>
-
-											<i class="fas fa-info-circle"></i>
 										</div>
 
 										<div class="template-style-thumbnail">
@@ -83,13 +104,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 											<?php endif; ?>
 										</div>
 
-										<div class="template-quick-info">
-											<div>
-												<span>Style:</span> <?php echo $this->escape($item->title); ?>
-											</div>
-
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item"><span>Style:</span> <?php echo $this->escape($item->title); ?></li>
 											<?php if ($author = $item->xmldata->get('author')) : ?>
-												<div>
+												<li class="list-group-item">
 													<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
 														<div>
 															<span>
@@ -105,30 +123,23 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 														</span>
 														<?php echo $this->escape($author); ?>
 													<?php endif; ?>
-												</div>
+												</li>
 											<?php endif; ?>
-										</div>
-
-										<div class="template-actions">
-											<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>  ">
-												<i class="fas fa-code"></i> Edit Files
-											</a>
-
-											<?php if ($canEdit) : ?>
-												<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-													<i class="fas fa-cog"></i> Options
+										</ul>
+										<div class="card-footer d-flex">
+											<div class="col text-center">
+												<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="card-link">
+													<i class="fas fa-code"></i> Edit Files
 												</a>
-											<?php endif; ?>
+											</div>
+											<div class="col text-center">
+												<?php if ($canEdit) : ?>
+													<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="card-link">
+														<i class="fas fa-cog"></i> Options
+													</a>
+												<?php endif; ?>
+											</div>
 										</div>
-									</div>
-
-									<div class="joomla-dropdown-container">
-										<a href="#" class="btn btn-secondary" id="dropdownList<?php echo $item->id; ?>">Dropdown with list</a href="#">
-										<joomla-dropdown for="#dropdownList<?php echo $item->id; ?>">
-											<a class="dropdown-item" href="#">Item 1</a>
-											<a class="dropdown-item" href="#">Item 2</a>
-											<a class="dropdown-item" href="#">Item 3</a>
-										</joomla-dropdown>
 									</div>
 
 									<!-- <div class="admin-template-info">

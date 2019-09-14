@@ -1,7 +1,7 @@
 // Global
 
 html {
-   height: 100%;
+  height: 100%;
   font-size: 14px;
 }
 
@@ -54,6 +54,15 @@ textarea {
 
   &.focus-visible {
   outline: auto 2px var(--focus);
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
   }
 }
 
@@ -191,9 +200,4 @@ body .container-main {
   @include media-breakpoint-up(md) {
     column-count: 2;
   }
-}
-
-.tiny {
-  font-size: $font-size-vsm;
-  line-height: 1.4rem;
 }
