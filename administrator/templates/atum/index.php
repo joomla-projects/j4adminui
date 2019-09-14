@@ -143,7 +143,14 @@ HTMLHelper::_('atum.rootcolors', $this->params);
                         <span aria-hidden="true"><?php echo JVERSION; ?></span>
                     </div>
 				</div>
+				
 				<jdoc:include type="modules" name="menu" style="none" />
+				
+				<?php if($this->countModules('menu-bottom')): ?>
+					<div class="menu-bottom">
+						<jdoc:include type="modules" name="menu-bottom" style="menu-bottom" />
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php endif; ?>

@@ -80,10 +80,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <br><hr>
     <h1> Joomla Callout </h1>
     <div style="width: 100%">
-        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a href="#">
-        <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a href="#">
-        <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a href="#">
-        <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a href="#">
+        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a>
+        <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a>
+        <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a>
+        <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a>
 
         <joomla-callout for="#showCollout" dismiss="true" position="bottom">
             <div class="callout-title">Title</div>
