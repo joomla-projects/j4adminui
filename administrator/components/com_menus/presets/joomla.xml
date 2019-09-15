@@ -537,7 +537,7 @@
 		title="MOD_MENU_INFORMATION_NOTIFICATIONS"
 		type="component"
 		element="com_postinstall"
-		class="class:info-circle"
+		class="class:envelope"
 		link="index.php?option=com_postinstall"
 		permission="core.manage;com_postinstall"
 		ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
@@ -546,11 +546,10 @@
 	<menuitem
 		title="MOD_MESSAGES_PRIVATE_MESSAGES"
 		type="component"
-		element="com_postinstall"
-		class="class:info-circle"
-		link="index.php?option=com_postinstall"
-		permission="core.manage;com_postinstall"
-		ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
+		element="com_messages"
+		class="class:bell"
+		link="index.php?option=com_messages&amp;view=messages"
+		ajax-badge="index.php?option=com_messages&amp;task=getMenuBadgeData&amp;format=json"
 	/>
 
 </menu>

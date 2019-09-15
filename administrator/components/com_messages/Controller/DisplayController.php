@@ -11,9 +11,11 @@ namespace Joomla\Component\Messages\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Response\JsonResponse;
 
 /**
  * Messages master display controller.
@@ -57,5 +59,12 @@ class DisplayController extends BaseController
 		}
 
 		parent::display();
+	}
+
+	public function getMenuBadgeData()
+	{
+		$app      		= Factory::getApplication();
+		$countUnread 	= $app->getSession()->get('messages.unread', 0);
+		echo new JsonResponse($countUnread);
 	}
 }
