@@ -61,6 +61,13 @@ class DisplayController extends BaseController
 		parent::display();
 	}
 
+	/**
+	 * Provide the data for a badge in a menu item via JSON
+	 *
+	 * @return  void
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
 	public function getMenuBadgeData()
 	{
 		$app      		= Factory::getApplication();
