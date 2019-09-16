@@ -21,9 +21,7 @@ $menuTypes = MenusHelper::getMenuLinks();
 HTMLHelper::_('script', 'legacy/treeselectmenu.min.js', array('version' => 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array('version' => 'auto', 'relative' => true));
 ?>
-<div id="menuselect-group" class="control-group">
-	<label id="jform_menuselect-lbl" class="control-label" for="jform_menuselect"><?php echo Text::_('JGLOBAL_MENU_SELECTION'); ?></label>
-
+<div id="menuselect-group">
 	<div id="jform_menuselect" class="controls">
 		<?php if (!empty($menuTypes)) : ?>
 		<?php $id = 'jform_menuselect'; ?>
