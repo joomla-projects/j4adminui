@@ -212,8 +212,9 @@ class HtmlView extends BaseHtmlView
 		// add new module
 		if ($canDo->get('core.create'))
 		{
-			$toolbar->linkButton('arrow-down-2', 'JTOOLBAR_INTALL_MODULE')
-			->url('index.php?option=com_installer&amp;view=install');
+			$toolbar->linkButton('link', 'JTOOLBAR_INTALL_MODULE')
+				->url('index.php?option=com_installer&amp;view=install')
+				->icon('icon-arrow-down-2');
 		}
 
 		if ($canDo->get('core.admin'))
