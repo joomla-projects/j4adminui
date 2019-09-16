@@ -3,7 +3,11 @@
     constructor() {
       super();
       this.space = 15;
+      this.action = 'click';
+      this.disableEvent = this.disableEvent.bind(this);
+      this.setPositionOnScroll = this.setPositionOnScroll.bind(this);
     }
+
     /* Attributes to monitor */
     static get observedAttributes() {
       return ['for', 'dismiss', 'position'];
@@ -24,9 +28,10 @@
         this.position = 'right';
       }
 
+      const action = this.getAttribute('action');
+      this.action = action && action === 'hover' ? 'mouseenter' : this.action;
       this.setAttribute('aria-labelledby', this.for.substring(1));
       this.button = document.querySelector(this.for);
-      
 
       if (!this.button.id) {
         return;
@@ -38,68 +43,60 @@
       this.button.setAttribute('aria-haspopup', true);
       this.button.setAttribute('aria-expanded', false);
 
-      window.addEventListener('scroll', (e) => {
-        e.preventDefault();
-        if (this.hasAttribute('expanded')) {
-          const buttonRect = this.button.getBoundingClientRect();
-          const calloutRect = this.getBoundingClientRect();
-          const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
-        }
-      });
-
-      // this.button.addEventListener('click', (event) => {
-      //   event.preventDefault();
-      //   this.open(event)
-      // });
-      this.button.addEventListener('mouseenter', (event) => {
-        console.log('mouse envter')
+      this.button.addEventListener(this.action, (event) => {
         event.preventDefault();
-        this.open(event)
+        this.open(event);
       });
     }
-    
 
     open(event) {
-        const innerLinks = this.querySelectorAll('a');
-        if (this.hasAttribute('expanded')) {
-          this.removeAttribute('expanded');
-          event.target.setAttribute('aria-expanded', false);
-        } else {
-          this.isOpen = true;
-          this.setAttribute('expanded', '');
-          event.target.setAttribute('aria-expanded', true);
-          const buttonRect = this.button.getBoundingClientRect();
-          const calloutRect = this.getBoundingClientRect();
-          const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
-        }
-        this.disabledOnOutsideEvent(event.type === 'mouseenter' ? 'mouseleave' : event.type)
-        innerLinks.forEach((innerLink) => {
-          innerLink.addEventListener('click', () => {
-            this.close();
-          });
-        });
-       
-    }
-    /**
-     * Hide callout when trigger(hover|click) outside
-     * When mouseleave event then just hide the callout when mouse leave from the callout
-     * @param {String} trigger 
-     */
-    disabledOnOutsideEvent(trigger='click') {
-      const targetElement = trigger === 'click' ? document : this
-        
-        targetElement.addEventListener(trigger, (evt) => {
-          if( targetElement !== 'click')
-            this.close();
+      const innerLinks = this.querySelectorAll('a');
+      if (this.hasAttribute('expanded')) {
+        this.removeAttribute('expanded');
+        event.target.setAttribute('aria-expanded', false);
+      } else {
+        this.setAttribute('expanded', '');
+        event.target.setAttribute('aria-expanded', true);
+        const buttonRect = this.button.getBoundingClientRect();
+        const calloutRect = this.getBoundingClientRect();
+        const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
+        this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
+      }
+      const trigger = this.action === 'mouseenter' ? 'mouseover' : this.action;
+      document.addEventListener(trigger, this.disableEvent, true);
+      // Check position when browser scroll
+      window.addEventListener('scroll', this.setPositionOnScroll, true);
 
-          if (!this.button.contains(evt.target) && evt.target !== this.button && evt.target !== this) {
-            if (!this.findAncestor(evt.target, 'joomla-callout')) {
-              this.close();
-            }
-          }
+      innerLinks.forEach((innerLink) => {
+        innerLink.addEventListener('click', () => {
+          this.close();
         });
+      });
+    }
+
+    disableEvent(event) {
+      if (
+        !this.button.contains(event.target)
+          && event.target !== this.button
+          && event.target !== this) {
+        if (!this.findAncestor(event.target, 'joomla-callout')) {
+          this.close();
+        }
+      }
+    }
+
+    /**
+     * Check callout position on scroll and set the inline style
+     * @param {Object} event
+     */
+    setPositionOnScroll(event) {
+      event.preventDefault();
+      if (this.hasAttribute('expanded')) {
+        const buttonRect = this.button.getBoundingClientRect();
+        const calloutRect = this.getBoundingClientRect();
+        const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
+        this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
+      }
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -176,6 +173,9 @@
       const button = document.querySelector(`#${this.getAttribute('aria-labelledby')}`);
       this.removeAttribute('expanded');
       button.setAttribute('aria-expanded', false);
+      const trigger = this.action === 'mouseenter' ? 'mouseover' : this.action;
+      document.removeEventListener(trigger, this.disableEvent, true);
+      window.removeEventListener('scroll', this.setPositionOnScroll, true);
     }
 
     appendCloseButton() {
