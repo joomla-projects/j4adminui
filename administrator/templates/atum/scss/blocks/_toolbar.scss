@@ -24,7 +24,7 @@
 
     > joomla-toolbar-button,
     > .btn-group {
-      margin-left: .75rem;
+      margin-left: 1.4rem;
 
       &:first-child {
         margin-left: 0;
@@ -32,6 +32,17 @@
     }
     #toolbar-help {
       margin-left: auto;
+      .btn {
+        padding: 0;
+        color: var(--secondary-color);
+        &:hover,
+        &:active,
+        &:focus {
+          box-shadow: none;
+          color: var(--primary-color);
+          background-color: transparent;
+        }
+      }
     }
   }
 }
@@ -117,7 +128,8 @@
       margin-right:0.75rem;
       margin-bottom:0.75rem;
     }
-	}
+  }
+  
 	
 }
 
