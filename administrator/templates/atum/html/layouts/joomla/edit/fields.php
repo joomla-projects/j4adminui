@@ -14,7 +14,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
 
 $app       = Factory::getApplication();
-$form      = $displayData['getForm'];
+$form      = $displayData['data']->getForm();
 
 $input     = $app->input;
 $component = $input->getCmd('option', 'com_content');
@@ -27,8 +27,7 @@ if ($component === 'com_categories')
 }
 
 $saveHistory = ComponentHelper::getParams($component)->get('save_history', 0);
-
-$fields = $displayData['fields'] ?: array(
+$fields = ( isset($displayData['fields']) && $displayData['fields'] ) ? $displayData['fields'] : array(
 	'transition',
 	array('parent', 'parent_id'),
 	array('published', 'state', 'enabled'),
@@ -42,7 +41,7 @@ $fields = $displayData['fields'] ?: array(
 	'version_note',
 );
 
-$hiddenFields   = $displayData['hidden_fields'] ?: array();
+$hiddenFields   = ( isset($displayData['data']->hidden_fields) && $displayData['data']->hidden_fields ) ? $displayData['data']->hidden_fields : array();
 
 if (!$saveHistory)
 {
@@ -56,7 +55,7 @@ if (!Multilanguage::isEnabled())
 }
 
 $html   = array();
-$html[] = '<fieldset class="form-vertical form-no-margin">';
+$html[] = '<fieldset class="form-vertical">';
 
 foreach ($fields as $field)
 {
