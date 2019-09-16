@@ -66,7 +66,7 @@ if($this->item->id > 0)
 			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
 		</div>
 		<div class="col-lg-3">
-			<div class="bg-white px-3 card-body">
+			<div class="card p-3">
 				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><?php echo JText::_('COM_CONTENT_ARTICLE_URL'); ?></a>
 			</div>
 		</div>

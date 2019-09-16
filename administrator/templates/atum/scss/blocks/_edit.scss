@@ -21,13 +21,4 @@
 	.control-group {
 		min-width: (100% / 3);
 	}
-
-	.title-alias {
-		box-shadow: $atum-box-shadow;
-		background-color: var(--white-offset);
-		margin: 0 0 2rem !important;
-		.form-group {
-			box-shadow: none;
-		}
-	}
 }

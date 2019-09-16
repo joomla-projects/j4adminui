@@ -27,7 +27,7 @@ endif;
 <div id="new-modules-list">
 	<div class="row">
 		<?php foreach ($this->items as &$item) : ?>
-			<div class="col-md-6 col-lg-4">
+			<div class="col-sm-6 col-md-4 col-lg-3">
 				<div class="card">
 					<?php // Prepare variables for the link. ?>
 					<?php $link = 'index.php?option=com_modules&task=module.add&client_id=' . $this->state->get('client_id', 0) . $this->modalLink . '&eid=' . $item->extension_id; ?>
