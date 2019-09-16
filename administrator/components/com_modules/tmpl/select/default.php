@@ -14,8 +14,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
-$document = Factory::getDocument();
-
 $app = Factory::getApplication();
 
 $function  = $app->input->getCmd('function');
@@ -26,24 +24,31 @@ endif;
 ?>
 
 <h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
-<ul id="new-modules-list" class="list-group">
-<?php foreach ($this->items as &$item) : ?>
-	<?php // Prepare variables for the link. ?>
-	<?php $link = 'index.php?option=com_modules&task=module.add&client_id=' . $this->state->get('client_id', 0) . $this->modalLink . '&eid=' . $item->extension_id; ?>
-	<?php $name = $this->escape($item->name); ?>
-	<?php $desc = HTMLHelper::_('string.truncate', $this->escape(strip_tags($item->desc)), 200); ?>
+<div id="new-modules-list">
+	<div class="row">
+		<?php foreach ($this->items as &$item) : ?>
+			<div class="col-md-6 col-lg-4">
+				<div class="card">
+					<?php // Prepare variables for the link. ?>
+					<?php $link = 'index.php?option=com_modules&task=module.add&client_id=' . $this->state->get('client_id', 0) . $this->modalLink . '&eid=' . $item->extension_id; ?>
+					<?php $name = $this->escape($item->name); ?>
+					<?php $desc = HTMLHelper::_('string.truncate', $this->escape(strip_tags($item->desc)), 200); ?>
+					
+					<div class="card-header">
+						<strong><?php echo $name; ?></strong>
+					</div>
+					
+					<div class="card-body">
+						<?php echo $desc; ?>
+					</div>
 
-	<?php if ($document->direction != 'rtl') : ?>
-	<li class="list-group-item">
-		<a href="<?php echo Route::_($link); ?>" class="mr-2<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>">
-			<strong><?php echo $name; ?></strong></a>
-		<small><?php echo $desc; ?></small>
-	</li>
-	<?php else : ?>
-	<li class="list-group-item">
-		<small><?php echo $desc; ?></small>
-		<a href="<?php echo Route::_($link); ?>" class="mr-2<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>"><strong><?php echo $name; ?></strong></a>
-	</li>
-	<?php endif; ?>
-<?php endforeach; ?>
-</ul>
+					<div class="card-footer text-center">
+						<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>" class="card-link">
+							<?php echo Text::_('COM_MODULES_SELECT'); ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	</div>
+</div>
