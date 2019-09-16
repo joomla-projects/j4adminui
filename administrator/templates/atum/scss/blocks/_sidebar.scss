@@ -154,7 +154,7 @@
   padding: 0;
   .divider {
     height: 1px;
-    margin: 0;
+    margin: -1px 20px 0;
     background-color: var(--background);
   }
   
@@ -209,14 +209,13 @@
     .menu-badge{
       float: none;
       > span.system-counter {
-        margin: 0 !important;
+        margin: -6px 0 0 !important;
         text-align: center;
         display: inline-block;
         font-size: 6px;
         position: absolute;
         right: 17px;
         top: 50%;
-        transform: translateY(-50%);
         background: var(--success-color);
         color: #fff !important;
         height: 12px;
@@ -252,6 +251,7 @@
       > li a.active,
       > li a:hover{
         color: var(--link-color);
+        background: transparent;
       }
     }
     
@@ -259,7 +259,6 @@
   
   .sidebar-item-title{
     margin-left: 1.071rem;
-    transition: 300ms;
   }
 
   // All links
@@ -274,12 +273,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  
-  a:hover,
+  li > a.active,
   li.active > a{
     color: var(--link-color);
     text-decoration: none;
     background: var(--background);
+    &.has-arrow::after{
+      color: var(--link-color);
+    }
+  }
+
+
+  a:hover{
+    color: var(--link-color);
     &.has-arrow::after{
       color: var(--link-color);
     }
@@ -303,7 +309,7 @@
           display: inline-block;
           text-align: center;
           vertical-align: top;
-          transition: all .2s ease-in-out;
+          transition: 300ms;
           font-size: 1.429rem;
           line-height: 1.857rem;
           color: var(--secondary-icon-color);
@@ -311,13 +317,22 @@
     }
     
     &.active > a,
-    > a.active,
-    > a:hover{
+    > a.active{
       color: var(--link-color);
-      text-decoration: none;
       background-color: var(--button-background);
       border-top-color: var(--button-background);
       border-left-color: var(--link-color);
+      span.fa{
+        color: var(--link-color);
+      }
+      &.has-arrow::after{
+        color: var(--link-color);
+      }
+    }
+
+    > a:hover{
+      color: var(--link-color);
+      text-decoration: none;
       span.fa{
         color: var(--link-color);
       }
@@ -420,7 +435,7 @@
     transform: translateX(100%);
   }
   .main-nav span.fa {
-    transition: all .2s ease-in-out;
+    transition: 300ms;
   }
   .sidebar-logo .logo svg.logo-small{
     display: block;
