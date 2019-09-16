@@ -20,7 +20,7 @@
 
 		<field
 			name="note"
-			type="text"
+			type="textarea"
 			label="COM_MODULES_FIELD_NOTE_LABEL"
 			maxlength="255"
 			size="40"
@@ -47,9 +47,9 @@
 
 		<field
 			name="published"
-			type="list"
+			type="radio"
 			label="JSTATUS"
-			class="custom-select-color-state"
+			class="custom-select-color-state module-publish"
 			default="1"
 			size="1"
 			>

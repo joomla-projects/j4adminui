@@ -142,16 +142,21 @@ class HtmlView extends BaseHtmlView
 			'pencil-2 article-add'
 		);
 
+		// cancel button
+		$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+
+		//$toolbar->divider();
+		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
+
 		// For new records, check the create permission.
 		if ($isNew && (count($user->getAuthorisedCategories('com_content', 'core.create')) > 0))
 		{
-			$apply = $toolbar->apply('article.apply');
-
 			$saveGroup = $toolbar->dropdownButton('save-group');
 
 			$saveGroup->configure(
 				function (Toolbar $childBar)
 				{
+					$childBar->apply('article.apply');
 					$childBar->save('article.save');
 					$childBar->save2new('article.save2new');
 				}
@@ -161,36 +166,6 @@ class HtmlView extends BaseHtmlView
 		{
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
-
-			if (!$checkedOut && $itemEditable)
-			{
-				$toolbar->apply('article.apply');
-			}
-
-			$saveGroup = $toolbar->dropdownButton('save-group');
-
-			$saveGroup->configure(
-				function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
-				{
-					// Can't save the record if it's checked out and editable
-					if (!$checkedOut && $itemEditable)
-					{
-						$childBar->save('article.save');
-
-						// We can save this record, but check the create permission to see if we can return to make a new one.
-						if ($canDo->get('core.create'))
-						{
-							$childBar->save2new('article.save2new');
-						}
-					}
-
-					// If checked out, we can still save
-					if ($canDo->get('core.create'))
-					{
-						$childBar->save2copy('article.save2copy');
-					}
-				}
-			);
 
 			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
 			{
@@ -204,10 +179,6 @@ class HtmlView extends BaseHtmlView
 					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
 					true
 				);
-
-				$toolbar->preview($url, 'JGLOBAL_PREVIEW')
-					->bodyHeight(80)
-					->modalWidth(90);
 
 				// Add necessary code for a new menu item modal
 
@@ -262,6 +233,37 @@ class HtmlView extends BaseHtmlView
 
 				echo '<input type="hidden" class="form-control" id="' . $modalId . '_name" value="">';
 				echo '<input type="hidden" id="' . $modalId . '_id" value="0">';
+
+				// Save item group 
+				$saveGroup = $toolbar->dropdownButton('save-group');
+				$saveGroup->configure(
+					function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
+					{
+						if (!$checkedOut && $itemEditable)
+						{
+							$childBar->apply('article.apply');
+						}
+
+						// Can't save the record if it's checked out and editable
+						if (!$checkedOut && $itemEditable)
+						{
+							$childBar->save('article.save');
+
+							// We can save this record, but check the create permission to see if we can return to make a new one.
+							if ($canDo->get('core.create'))
+							{
+								$childBar->save2new('article.save2new');
+							}
+						}
+
+						// If checked out, we can still save
+						if ($canDo->get('core.create'))
+						{
+							$childBar->save2copy('article.save2copy');
+						}
+					}
+				);
+
 			}
 		}
 
@@ -272,9 +274,5 @@ class HtmlView extends BaseHtmlView
 				->task('article.editAssociations');
 		}
 
-		$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
-
-		$toolbar->divider();
-		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 	}
 }

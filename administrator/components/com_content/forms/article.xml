@@ -238,6 +238,104 @@
 
 	</fieldset>
 
+	<fieldset hidden="true">
+		<fieldset name="sidebar-featured" hidden="true">
+			<field
+				name="created"
+				type="calendar"
+				label="COM_CONTENT_FIELD_CREATED_LABEL"
+				translateformat="true"
+				showtime="true"
+				size="22"
+				filter="user_utc"
+			/>
+			
+			<field
+				name="featured"
+				type="radio"
+				label="JFEATURED"
+				class="switcher"
+				default="0"
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="sidebar-media" hidden="true">
+			<field
+				name="image_fulltext"
+				type="media"
+				label="COM_CONTENT_FIELD_FULL_LABEL"
+			/>
+
+			<field
+				name="float_fulltext"
+				type="list"
+				label="COM_CONTENT_FLOAT_LABEL"
+				useglobal="true"
+				>
+				<option value="right">COM_CONTENT_RIGHT</option>
+				<option value="left">COM_CONTENT_LEFT</option>
+				<option value="none">COM_CONTENT_NONE</option>
+			</field>
+
+			<field
+				name="image_fulltext_alt"
+				type="text"
+				label="COM_CONTENT_FIELD_IMAGE_ALT_LABEL"
+				size="20"
+			/>
+
+			<field
+				name="image_fulltext_caption"
+				type="text"
+				label="COM_CONTENT_FIELD_IMAGE_CAPTION_LABEL"
+				size="20"
+			/>
+		</fieldset>
+
+		<!-- <fieldset name="sidebar-category">
+			<field
+				name="catid"
+				type="categoryedit"
+				label="JCATEGORY"
+				addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+				required="true"
+				default=""
+			/>
+		<fieldset> -->
+
+		<fieldset name="sidebar-access" hidden="true">
+			<field
+				name="access"
+				type="accesslevel"
+				label="JFIELD_ACCESS_LABEL"
+				size="1"
+			/>
+		</fieldset>
+
+		<fieldset name="sidebar-language" hidden="true">
+			<field
+				name="language"
+				type="contentlanguage"
+				label="JFIELD_LANGUAGE_LABEL"
+				>
+				<option value="*">JALL</option>
+			</field>
+		</fieldset>
+
+		<fieldset name="sidebar-tags" hidden="true">
+			<field
+				name="tags"
+				type="tag"
+				label="JTAG"
+				multiple="true"
+			/>
+		</fieldset>
+
+	</fieldset>
+
 	<fields name="attribs" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
 		<fieldset name="attribs" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
 			<fieldset name="basic" label="JFIELD_ALT_LAYOUT_LABEL">
