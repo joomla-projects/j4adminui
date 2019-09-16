@@ -1,5 +1,9 @@
 (() => {
   class JoomlaCalloutElement extends HTMLElement {
+    constructor() {
+      super();
+      this.space = 15;
+    }
     /* Attributes to monitor */
     static get observedAttributes() {
       return ['for', 'dismiss', 'position'];
@@ -15,66 +19,88 @@
 
     set position(value) { return this.setAttribute('position', value); }
 
-
     connectedCallback() {
       if (!this.position || (this.position && ['top', 'bottom', 'left', 'right'].indexOf(this.position) === -1)) {
         this.position = 'right';
       }
 
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(this.for);
-      const innerLinks = this.querySelectorAll('a');
+      this.button = document.querySelector(this.for);
+      
+      
 
-      if (!button.id) {
+      if (!this.button.id) {
         return;
       }
       if (this.hasAttribute('dismiss')) {
         this.appendCloseButton();
       }
 
-      button.setAttribute('aria-haspopup', true);
-      button.setAttribute('aria-expanded', false);
+      this.button.setAttribute('aria-haspopup', true);
+      this.button.setAttribute('aria-expanded', false);
 
       window.addEventListener('scroll', (e) => {
         e.preventDefault();
         if (this.hasAttribute('expanded')) {
-          const buttonRect = button.getBoundingClientRect();
-          const space1 = 5;
+          const buttonRect = this.button.getBoundingClientRect();
           const calloutRect = this.getBoundingClientRect();
           const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, space1);
+          this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
         }
       });
 
-      button.addEventListener('click', (event) => {
+      // this.button.addEventListener('click', (event) => {
+      //   event.preventDefault();
+      //   this.open(event)
+      // });
+      this.button.addEventListener('mouseenter', (event) => {
+        console.log('mouse envter')
         event.preventDefault();
+        this.open(event)
+      });
+    }
+    
+
+    open(event) {
+        const innerLinks = this.querySelectorAll('a');
         if (this.hasAttribute('expanded')) {
           this.removeAttribute('expanded');
           event.target.setAttribute('aria-expanded', false);
         } else {
+          this.isOpen = true;
           this.setAttribute('expanded', '');
           event.target.setAttribute('aria-expanded', true);
-          const buttonRect = button.getBoundingClientRect();
-          const space = 5;
+          const buttonRect = this.button.getBoundingClientRect();
           const calloutRect = this.getBoundingClientRect();
           const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, space);
+          this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
         }
-
-        document.addEventListener('click', (evt) => {
-          if (evt.target !== button && evt.target !== this) {
-            if (!this.findAncestor(evt.target, 'joomla-callout')) {
-              this.close();
-            }
-          }
-        });
-
+        this.disabledOnOutsideEvent(event.type === 'mouseenter' ? 'mouseleave' : event.type)
         innerLinks.forEach((innerLink) => {
           innerLink.addEventListener('click', () => {
             this.close();
           });
         });
-      });
+       
+    }
+    /**
+     * Hide callout when trigger(hover|click) outside
+     * When mouseleave event then just hide the callout when mouse leave from the callout
+     * @param {String} trigger 
+     */
+    disabledOnOutsideEvent(trigger='click') {
+      const targetElement = trigger === 'click' ? document : this
+
+        targetElement.addEventListener(trigger, (evt) => {
+          if( targetElement !== 'click')
+            this.close();
+
+          if (!this.button.contains(evt.target) && evt.target !== this.button && evt.target !== this) {
+            if (!this.findAncestor(evt.target, 'joomla-callout')) {
+              this.close();
+            }
+          }
+        });
     }
 
     // eslint-disable-next-line class-methods-use-this
