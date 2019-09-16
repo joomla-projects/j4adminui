@@ -148,6 +148,14 @@ class HtmlView extends BaseHtmlView
 		//$toolbar->divider();
 		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
+		// language association
+		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+		{
+			$toolbar->standardButton('contract')
+				->text('JTOOLBAR_ASSOCIATIONS')
+				->task('article.editAssociations');
+		}
+
 		// For new records, check the create permission.
 		if ($isNew && (count($user->getAuthorisedCategories('com_content', 'core.create')) > 0))
 		{
@@ -265,13 +273,6 @@ class HtmlView extends BaseHtmlView
 				);
 
 			}
-		}
-
-		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-		{
-			$toolbar->standardButton('contract')
-				->text('JTOOLBAR_ASSOCIATIONS')
-				->task('article.editAssociations');
 		}
 
 	}

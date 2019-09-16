@@ -18,6 +18,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\Registry\Registry;
+use Joomla\CMS\Language\Multilanguage;
 
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
@@ -49,7 +50,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 // Generate article view URL
 $articleUrl = '';
 $articleUrlClass = 'inactive';
-if($this->item->id > 0) {
+if($this->item->id > 0) 
+{
 	// URL link to article
 	$articleUrl = Route::_(JURI::root() . \ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language));
 	$articleUrlClass = 'active';
@@ -75,49 +77,19 @@ if($this->item->id > 0) {
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<fieldset class="adminform">
-								<?php echo $this->form->getLabel('articletext'); ?>
-								<?php echo $this->form->getInput('articletext'); ?>
-							</fieldset>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<fieldset class="adminform">
+									<?php echo $this->form->getLabel('articletext'); ?>
+									<?php echo $this->form->getInput('articletext'); ?>
+								</fieldset>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-			<?php // Do not show the images and links options if the edit form is configured not to. ?>
-			<?php if ($params->get('show_urls_images_backend') == 1) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'images', Text::_('COM_CONTENT_FIELDSET_URLS_AND_IMAGES')); ?>
-				<div class="row">
-					<div class="col-12 col-lg-6">
-					<?php foreach ($fieldsetsInImages as $fieldset) : ?>
-						<fieldset id="fieldset-<?php echo $fieldset; ?>" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_($this->form->getFieldsets()[$fieldset]->label); ?></legend>
-							<div>
-							<?php echo $this->form->renderFieldset($fieldset); ?>
-							</div>
-						</fieldset>
-					<?php endforeach; ?>
-					</div>
-					<div class="col-12 col-lg-6">
-					<?php foreach ($fieldsetsInLinks as $fieldset) : ?>
-						<fieldset id="fieldset-<?php echo $fieldset; ?>" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_($this->form->getFieldsets()[$fieldset]->label); ?></legend>
-							<div>
-							<?php echo $this->form->renderFieldset($fieldset); ?>
-							</div>
-						</fieldset>
-					<?php endforeach; ?>
-					</div>
-				</div>
-
-				<?php echo HTMLHelper::_('uitab.endTab'); ?>
-			<?php endif; ?>
 
 			<?php $this->show_options = $params->get('show_article_options', 1); ?>
 			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
@@ -130,7 +102,7 @@ if($this->item->id > 0) {
 						<fieldset id="fieldset-publishingdata" class="options-grid-form options-grid-form-full">
 							<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
 							<div>
-							<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+								<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
 							</div>
 						</fieldset>
 					</div>
@@ -166,7 +138,7 @@ if($this->item->id > 0) {
 				<fieldset id="fieldset-editor" class="form-no-margin options-grid-form">
 					<legend><?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?></legend>
 					<div>
-					<?php echo $this->form->renderFieldset('editorConfig'); ?>
+						<?php echo $this->form->renderFieldset('editorConfig'); ?>
 					</div>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
@@ -197,53 +169,68 @@ if($this->item->id > 0) {
 			<?php echo HTMLHelper::_('form.token'); ?>
 		</div>
 		<div class="col-lg-3">
+			<!-- alias, status, category -->
 			<div class="bg-white px-3 form-no-margin card-body">
 				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
-				<?php 
-					$this->fieldset = 'sidebar-featured';
-					echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-				?>
+				<!-- status -->
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
+				<!-- category -->
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
 			</div>
-
+			<!-- featured -->
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php 
-					$this->fieldset = 'sidebar-media';
-					echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-				?>
-				<?php //echo LayoutHelper::render('joomla.edit.field_generator', array( 'fields' => $fields2, 'getForm' => $this->getForm(),  'hidden_fields' => $this->get('hidden_fields') )); ?>
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured' ), 'data' => $this)); ?>
 			</div>
-
-			<!-- published -->
+			<?php // Do not show the images and links options if the edit form is configured not to. ?>
+			<?php if ($params->get('show_urls_images_backend') == 1) : ?>
+				<!-- images & links -->
+				<div class="bg-white px-3 mt-4 form-no-margin card-body">
+					<!-- full image -->
+					<?php
+						$this->fieldset = 'image-full';
+						echo LayoutHelper::render('joomla.edit.fieldset', $this); 
+					?>
+					<a id="more-fields-toggle" href="javascript:void(0);"><?php echo JText::_('COM_CONTENT_MEDIA_FULL_IMAGE_MORE'); ?> <i class="fas fa-chevron-down"></i></a>
+					<!-- intro image -->
+					<?php
+						$this->fieldset = 'image-intro';
+						echo LayoutHelper::render('joomla.edit.fieldset', $this);
+					?>
+					<a id="more-fields-toggle" href="javascript:void(0);"><?php echo JText::_('COM_CONTENT_FIELD_URLS_OPTIONS'); ?> <i class="fas fa-chevron-down"></i></a>
+					<hr>
+					<!-- links -->
+					<?php
+						$this->fieldset = 'linka';
+						echo LayoutHelper::render('joomla.edit.fieldset', $this);
+					?>
+					<?php
+						$this->fieldset = 'linkb';
+						echo LayoutHelper::render('joomla.edit.fieldset', $this);
+					?>
+					<?php
+						$this->fieldset = 'linkc';
+						echo LayoutHelper::render('joomla.edit.fieldset', $this);
+					?>
+				</div>
+			<?php endif; ?>
+			<!-- tags -->
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'getForm' => $this->getForm(),  'hidden_fields' => $this->get('hidden_fields') )); ?>
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
 			</div>
-
-			<!-- category -->
+			<?php if (Multilanguage::isEnabled()) : ?>
+			<!-- language -->
+				<div class="bg-white px-3 mt-4 form-no-margin card-body">
+					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
+				</div>
+			<?php endif; ?>
+			<!-- created -->
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'getForm' => $this->getForm(),  'hidden_fields' => $this->get('hidden_fields') )); ?>
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
-
+			<!-- access -->
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php 
-					$this->fieldset = 'sidebar-access';
-					echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-				?>
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
-
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php 
-					$this->fieldset = 'sidebar-language';
-					echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-				?>
-			</div>
-			
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php 
-					$this->fieldset = 'sidebar-tags';
-					echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-				?>
-			</div>
-
 		</div>
 	</div>
 </form>
