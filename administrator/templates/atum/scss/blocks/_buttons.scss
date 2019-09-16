@@ -23,16 +23,17 @@
         background-image: none;
         color: var(--secondary-icon-color);
     }
-    span.icon{
+    >.icon{
         font-size: 1rem;
         line-height: 2.85rem;
-        width: 3rem;
+        width: 2.2rem;
         height: 100%;
         z-index: -1;
-        margin: 0 .3rem 0 -1.5rem;
+        margin: 0 .3rem 0 -1.2rem;
         display: inline-block;
+        
         &.right{
-            margin: 0 -1.5rem 0 .3rem;
+            margin: 0 -1rem 0 0rem;
         }
     }
     &:hover, &:focus, &:focus:active, &:active{
@@ -42,7 +43,7 @@
     &.btn-lg{
         padding: 0 2.857rem;
         line-height: 3.429rem;
-        span.icon{
+        >.icon{
             font-size: 1.143rem;
             line-height: 3.429rem;
             margin: 0 .3rem 0 -2.2rem;
@@ -54,7 +55,7 @@
     &.btn-sm{
         padding: 0 1.7rem;
         line-height: 2.286rem;
-        span.icon{
+        >.icon{
             line-height: 2.286rem;
             margin: 0 .3rem 0 -1.2rem;
             font-size: 1rem;
@@ -89,7 +90,7 @@
         border: 1px solid var(--secondary-icon-color);
         color: var(--secondary-color);
         box-shadow: none;
-        span.icon{
+        >.icon{
             margin: 0 .3rem 0 -2.5rem;
         }
         &:hover, &:not(:disabled):active{
@@ -116,7 +117,7 @@
         border: none;
         box-shadow: none;
         color: var(--color);
-        span.icon{
+        >.icon{
             width: auto;
             margin: 0 .4rem 0 .4rem;
         }
@@ -181,7 +182,7 @@
         &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
             background-color: var(--success-color);
             color: #fff;
-            span.icon{
+            >.icon{
                 border-right-color: rgba(255, 255, 255, 0.1);
             }
         }
@@ -201,11 +202,70 @@
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--warning-color);
         }
     }
+    &.button-new{
+        padding-left: 1.5rem;
+        .icon{
+            border-left: 1px solid rgba(var(--solid-link-color-rgb), 0.1);
+            margin: 0 -1.8rem 0 1.2rem;
+            width: 3rem;
+        }
+    }
     &.dropdown-toggle {
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
         padding: 0 1.4rem;
+    }
+}
+joomla-toolbar-button+.btn.dropdown-toggle{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    
+}
+.btn-group{
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    &.btn-group-lg>.btn{
+        padding: 0 2.857rem;
+        line-height: 3.429rem;
+        >.icon{
+            font-size: 1.143rem;
+            line-height: 3.429rem;
+            margin: 0 .3rem 0 -2.2rem;
+            &.right{
+                margin: 0 -2.2rem 0 .3rem;
+            }
+        }
+    }
+    &.btn-group-sm>.btn{
+        padding: 0 1.7rem;
+        line-height: 2.286rem;
+        >.icon{
+            line-height: 2.286rem;
+            margin: 0 .3rem 0 -1.2rem;
+            font-size: 1rem;
+            width: 2rem;
+            &.right{
+                margin: 0 -1.2rem 0 .3rem;
+            }
+        }
+    }
+    &>.btn {
+        position: relative;
+        flex: 1 1 auto;
+    }
+    &.btn-group-border{
+        border: 1px solid var(--secondary-icon-color);
+        border-radius: 3px;
+        >.btn{
+            border-radius: 0px;
+            box-shadow: none;
+            &.btn-secondary{
+                border: none;
+            }
+            &:not(:last-child){
+                border-right: 1px solid var(--secondary-icon-color);
+            }
+        }
     }
 }
