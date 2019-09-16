@@ -2,7 +2,6 @@
 joomla-dropdown {
     position: absolute;
     top: 100%;
-    left: 0;
     z-index: 1000;
     display: none;
     box-sizing: border-box;
@@ -50,6 +49,12 @@ joomla-dropdown {
           &:last-child{
               margin-bottom: 1.143rem;
           }
+      }
+      &[position="right"]{
+        right: 0;
+      }
+      &[position="left"] {
+        left: 0;
       }
   }
   

@@ -2,9 +2,14 @@
 /* eslint-disable no-cond-assign */
 (() => {
   class JoomlaDropdownElement extends HTMLElement {
+    constructor() {
+      super();
+      this.position = 'left';
+    }
+
     /* Attributes to monitor */
     static get observedAttributes() {
-      return ['for'];
+      return ['for', 'position'];
     }
 
     get for() { return this.getAttribute('for'); }
@@ -20,6 +25,8 @@
         return;
       }
 
+      this.position = this.getAttribute('position') ? this.getAttribute('position') : this.position;
+
       button.setAttribute('aria-haspopup', true);
       button.setAttribute('aria-expanded', false);
 
@@ -33,8 +40,10 @@
           event.target.setAttribute('aria-expanded', true);
         }
 
+        this.setPosition();
+
         document.addEventListener('click', (evt) => {
-          if (evt.target !== button) {
+          if (!button.contains(evt.target) && evt.target !== button) {
             if (!this.findAncestor(evt.target, 'joomla-dropdown')) {
               this.close();
             }
@@ -47,6 +56,28 @@
           });
         });
       });
+    }
+
+    attributeChangedCallback(attr, oldValue, newValue) {
+      switch (attr) {
+        case 'position':
+          if (!newValue || newValue === '') {
+            this.position = newValue;
+            this.setPosition();
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    setPosition() {
+      const dropdownRect = this.getBoundingClientRect();
+      if (this.position === 'left' && (dropdownRect.left + dropdownRect.width) > window.innerWidth) {
+        this.setAttribute('position', 'right');
+      } else if (this.position === 'right' && (dropdownRect.right + dropdownRect.width) > window.innerWidth) {
+        this.setAttribute('position', 'left');
+      }
     }
 
     /* Method to dispatch events */

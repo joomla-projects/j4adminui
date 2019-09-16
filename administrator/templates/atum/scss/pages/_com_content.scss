@@ -28,6 +28,24 @@
 		}
 	}
 	&.view-article{
-		
+		.article-title-wrap{
+			>.card-body{
+				background: transparent !important;
+				padding: 0;
+			}
+			label{
+				color: var(--color);
+				font-size: 1rem;
+			}
+			input{
+				color: var(--color);
+				background: #fff;
+				font-size: 1.15rem;
+				border-bottom-width: 3px;
+				height: 3.4rem;
+				padding-left: 1.7rem;
+				padding-right: 1.7rem;
+			}
+		}
 	}
 }
