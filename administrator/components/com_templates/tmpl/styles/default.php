@@ -43,17 +43,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							?>
 								<div class="col-md-3">
 									<div class="card template-style">
-										<div class="card-header d-flex align-items-center">
-											<div class="flex-grow-1">
-												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-											</div>
-											<div class="flex-shrink-1">
-												<div class="mdc-card__action-icons m-n2">
-												</div>
-											</div>
-										</div>
-
+										
 										<div class="template-thumbnail">
+											<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 											<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
 											<?php if ($clientId === 0) : ?>
 												<div class="template-overlay">
@@ -172,18 +164,29 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									<div class="callout-title">Information</div>
 									<div class="callout-content">
 										<div class="admin-template-info">
-											<?php echo $this->escape($item->xmldata->get('creationDate')); ?>
-											<?php if ($author = $item->xmldata->get('author')) : ?>
-												<div><?php echo $this->escape($author); ?></div>
-											<?php else : ?>
-												&mdash;
-											<?php endif; ?>
-											<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
-												<div><?php echo $this->escape($email); ?></div>
-											<?php endif; ?>
-											<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-												<div><a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a></div>
-											<?php endif; ?>
+											<ul class="list-group list-group-flush">
+												<li class="list-group-item">
+													<span class="text-muted">Created: </span> <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
+												</li>
+												
+												<?php if ($author = $item->xmldata->get('author')) : ?>
+													<li class="list-group-item">
+													<span class="text-muted">Author: </span><?php echo $this->escape($author); ?>
+													</li>
+												<?php endif; ?>
+												
+												<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
+													<li class="list-group-item">
+														<span class="text-muted">Author Email: </span> <?php echo $this->escape($email); ?>
+													</li>
+												<?php endif; ?>
+
+												<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+													<li class="list-group-item">
+														<span class="text-muted">Author Website: </span> <a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a>
+													</li>
+												<?php endif; ?>
+											</ul>
 										</div>
 									</div>
 								</joomla-callout>
