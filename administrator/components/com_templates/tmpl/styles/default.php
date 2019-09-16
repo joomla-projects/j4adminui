@@ -160,7 +160,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 								</div>
 
-								<joomla-callout for="#template-info-<?php echo $item->id; ?>" position="right">
+								<joomla-callout for="#template-info-<?php echo $item->id; ?>" action="hover" position="right">
 									<div class="callout-title">Information</div>
 									<div class="callout-content">
 										<div class="admin-template-info">
