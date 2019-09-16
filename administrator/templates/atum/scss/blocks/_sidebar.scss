@@ -116,7 +116,9 @@
       right: 0;
       top: 0;
       border-left: 1px solid var(--background);
+      border-right: 1px solid transparent;
       background: #ffffff;
+      transition: 300ms;
       a{
         height: 100%;
         width: 100%;
@@ -416,6 +418,10 @@
 .closed {
   .sidebar-wrapper .sidebar-header .sidebar-logo{
     margin-bottom: 0;
+  }
+
+  .sidebar-wrapper .sidebar-header .sidebar-toggle{
+    border-right: 1px solid var(--background);
   }
   
   .sidebar-header{
