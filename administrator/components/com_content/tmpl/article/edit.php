@@ -63,7 +63,9 @@ if($this->item->id > 0)
 
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			<div class="article-title-wrap">
+				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			</div>
 		</div>
 		<div class="col-lg-3">
 			<div class="bg-white px-3 card-body">
