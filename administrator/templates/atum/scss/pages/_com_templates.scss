@@ -1,48 +1,16 @@
 // com_templates
 .com_templates {
-
-  // .mdc-card__action-icons {
-  //   margin: -10px;
-  // }
-  
-  .mdc-icon-button {
-    width: 36px;
-    height: 36px;
-    padding: 4px;
-    font-size: 18px;
-    line-height: 1;
+  .default-template {
     display: inline-block;
-    position: relative;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    fill: #BDC5C8;
-    color: #BDC5C8;
-    text-decoration: none;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-radius: 50px;
-    &:focus {
-      background-color: #E5F2FF;
-      color: var(--primary-color); 
-      fill: var(--primary-color);
-    }
-}
-
-.default-template {
-  display: inline-block;
-  font-size: 12px;
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--primary-color);
-  border-radius: 30px;
-}
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 30px;
+  }
 
   .template-style {
 
@@ -61,7 +29,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.8);
         opacity: 0;
         transition: 500ms;
       }

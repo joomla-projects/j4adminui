@@ -46,85 +46,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 										<div class="card-header d-flex align-items-center">
 											<div class="flex-grow-1">
 												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-												<?php if($item->home == '1') : ?>
-													<span class="default-template">
-														<span class="fas fa-star"></span>
-													</span>
-												<?php else : ?>
-													<?php if ($item->image) : ?>
-														<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
-													<?php endif; ?>
-												<?php endif; ?>
-												<span class="template-name">
-													<?php if ($canEdit) : ?>
-														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-															<?php echo ucfirst($this->escape($item->template)); ?>
-														</a>
-													<?php else : ?>
-														<?php echo ucfirst($this->escape($item->template)); ?>
-													<?php endif; ?>
-												</span>
-												
-												<?php if ($version = $item->xmldata->get('version')) : ?>
-													<span class="template-version">v<?php echo $this->escape($version); ?></span>
-												<?php endif; ?>
 											</div>
 											<div class="flex-shrink-1">
 												<div class="mdc-card__action-icons m-n2">
-													<button id="showCollout<?php echo $item->id; ?>" class="mdc-icon-button">
-														<i class="fas fa-info-circle"></i>
-													</button>
-
-													<joomla-callout for="#showCollout<?php echo $item->id; ?>" dismiss="true" position="bottom">
-														<div class="callout-title">Title</div>
-														<div class="callout-content">
-															<div class="admin-template-info">
-																<?php echo $this->escape($item->xmldata->get('creationDate')); ?>
-																<?php if ($author = $item->xmldata->get('author')) : ?>
-																	<div><?php echo $this->escape($author); ?></div>
-																<?php else : ?>
-																	&mdash;
-																<?php endif; ?>
-																<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
-																	<div><?php echo $this->escape($email); ?></div>
-																<?php endif; ?>
-																<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-																	<div><a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a></div>
-																<?php endif; ?>
-															</div>
-														</div>
-														<a href="#" class="callout-link" target="blank">Learn more</a>
-													</joomla-callout>
-
-													<div class="joomla-dropdown-container">
-														<button id="dropdownList<?php echo $item->id; ?>" class="mdc-icon-button">
-															<span class="fas fa-ellipsis-h"></span>
-														</button>
-														<joomla-dropdown for="#dropdownList<?php echo $item->id; ?>">
-															<?php if ($canChange):?>
-																<?php if ($item->home == '0') : ?>
-																	<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
-																		<span class="fas fa-star fa-fw"></span> Set as Default
-																	</a>
-																<?php else : ?>
-																	<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>" class="dropdown-item">
-																		<span class="fas fa-star fa-fw"></span>
-																		<?php if ($item->image) : ?>
-																			<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
-																		<?php endif; ?>
-																		<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
-																	</a>
-																<?php endif; ?>
-															<?php endif; ?>
-
-															<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
-																<span class="fas fa-clone fa-fw"></span> Duplicate Style
-															</a>
-															<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
-																<span class="fas fa-trash fa-fw"></span> Delete Style
-															</a>
-														</joomla-dropdown>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -140,45 +64,129 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 											<?php endif; ?>
 										</div>
 
-										<ul class="list-group list-group-flush">
-											<li class="list-group-item"><span>Style:</span> <?php echo $this->escape($item->title); ?></li>
-											<?php if ($author = $item->xmldata->get('author')) : ?>
-												<li class="list-group-item">
-													<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-														<div>
-															<span>
-																Author:
-															</span>
-															<a target="_blank" rel="nofollow" href="<?php echo $this->escape($url); ?>">
-																<?php echo $this->escape($author); ?>
-															</a>
-														</div>
-													<?php else: ?>
-														<span>
-															Author:
+										<div class="list-group list-group-flush">
+											<div class="list-group-item d-flex align-items-center">
+												<!-- <?php if($item->home == '1') : ?>
+													<span class="default-template mr-2">
+														<span class="fas fa-star"></span>
+													</span>
+												<?php else : ?>
+													<?php if ($item->image) : ?>
+														<span class="default-template mr-2">
+															<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
 														</span>
-														<?php echo $this->escape($author); ?>
 													<?php endif; ?>
-												</li>
-											<?php endif; ?>
-										</ul>
-										<div class="card-footer d-flex">
-											<div class="col text-center">
-												<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="card-link">
-													<i class="fas fa-code"></i> Edit Files
-												</a>
-											</div>
-											<div class="col text-center">
-												<?php if ($canEdit) : ?>
-													<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="card-link">
-														<i class="fas fa-cog"></i> Options
-													</a>
+												<?php endif; ?> -->
+												<span class="fas fa-info-circle fa-fw mr-1" id="template-info-<?php echo $item->id; ?>"></span>
+												<span class="template-name mr-2">
+													<?php if ($canEdit) : ?>
+														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+															<?php echo ucfirst($this->escape($item->template)); ?>
+														</a>
+													<?php else : ?>
+														<?php echo ucfirst($this->escape($item->template)); ?>
+													<?php endif; ?>
+												</span>
+												<?php if ($version = $item->xmldata->get('version')) : ?>
+													<span class="template-version">v<?php echo $this->escape($version); ?></span>
 												<?php endif; ?>
+											</div>
+											
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-6">
+														<div class="text-muted mb-1">
+															Style
+														</div>
+														<?php echo $this->escape($item->title); ?>
+													</div>
+													<?php if ($author = $item->xmldata->get('author')) : ?>
+														<div class="col-6">
+															<div class="text-muted mb-1">
+																Author
+															</div>
+															<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+																<a target="_blank" href="<?php echo $this->escape($url); ?>">
+																	<?php echo $this->escape($author); ?>
+																</a>
+															<?php else: ?>
+																<?php echo $this->escape($author); ?>
+															<?php endif; ?>
+														</div>
+													<?php endif; ?>
+												</div>
+											</div>
+
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-7">
+														<?php if ($canChange):?>
+															<?php if ($item->home == '0') : ?>
+																<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
+																	<span class="fas fa-star fa-fw"></span> Set as Default
+																</a>
+															<?php else : ?>
+																<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
+																	<span class="fas fa-star fa-fw"></span>
+																	<?php if ($item->image) : ?>
+																		<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
+																	<?php endif; ?>
+																	<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+																</a>
+															<?php endif; ?>
+														<?php endif; ?>
+													</div>
+													<div class="col-5">
+														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
+															<span class="fas fa-clone fa-fw"></span>
+														</a>
+														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
+															<span class="fas fa-trash fa-fw"></span>
+														</a>
+													</div>
+												</div>
+											</div>
+
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-6">
+														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-primary btn-block">
+															<i class="fas fa-code"></i> Edit Files
+														</a>
+													</div>
+													<div class="col-6">
+														<?php if ($canEdit) : ?>
+															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary btn-block">
+																<i class="fas fa-cog"></i> Options
+															</a>
+														<?php endif; ?>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 
 								</div>
+
+								<joomla-callout for="#template-info-<?php echo $item->id; ?>" position="right">
+									<div class="callout-title">Information</div>
+									<div class="callout-content">
+										<div class="admin-template-info">
+											<?php echo $this->escape($item->xmldata->get('creationDate')); ?>
+											<?php if ($author = $item->xmldata->get('author')) : ?>
+												<div><?php echo $this->escape($author); ?></div>
+											<?php else : ?>
+												&mdash;
+											<?php endif; ?>
+											<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
+												<div><?php echo $this->escape($email); ?></div>
+											<?php endif; ?>
+											<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+												<div><a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a></div>
+											<?php endif; ?>
+										</div>
+									</div>
+								</joomla-callout>
 							<?php endforeach; ?>
 						</div>
 					</div>
