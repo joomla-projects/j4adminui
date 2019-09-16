@@ -154,7 +154,7 @@
   padding: 0;
   .divider {
     height: 1px;
-    margin: 4px 18px;
+    margin: 0;
     background-color: var(--background);
   }
   
@@ -166,9 +166,9 @@
   li {
     list-style-type: none;
     position: relative;
-    > a {
-      flex-grow: 2;
-    }
+    // > a {
+    //   flex-grow: 2;
+    // }
     .menu-quicktask{
       position: absolute;
       top: 7px;
@@ -259,7 +259,7 @@
   
   .sidebar-item-title{
     margin-left: 1.071rem;
-    transition: all .3s ease;
+    transition: 300ms;
   }
 
   // All links
@@ -289,6 +289,7 @@
   > li {
     white-space: nowrap;
     max-width: 100%;
+    width: 100%;
     > a {
       display: block;
       padding: 0.857rem 1.643rem 0.857rem 1.500rem;
@@ -338,11 +339,16 @@
     transition: 200ms;
     li {
       position: relative;
+      &.active > a,
+      > a.active{
+        color: var(--link-color);
+      }
     }
 
     a {
       display: block;
     }
+
   }
 
   .collapse {
@@ -369,7 +375,7 @@
     content: "\f054";
     font-weight: 900;
     font-family: "Font Awesome 5 Free";
-    transition: all .3s ease-out;
+    transition: 300ms;
     font-size: 0.714rem;
     right: .786rem;
     top: 50%;
@@ -422,7 +428,7 @@
   .sidebar-update-status{
     display: none;
   }
-  
+  .menu-badge,
   .main-nav .collapse.in,
   .main-nav li .menu-quicktask,
   .sidebar-logo .sidebar-version,
