@@ -348,30 +348,3 @@
         }
     }
 }
-.iconic-button {
-    width: 36px;
-    height: 36px;
-    padding: 4px;
-    font-size: 18px;
-    line-height: 1;
-    display: inline-block;
-    position: relative;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    fill: #BDC5C8;
-    color: #BDC5C8;
-    text-decoration: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-radius: 50px;
-    cursor: pointer;
-    
-    &:focus {
-      background-color: #E5F2FF;
-      color: var(--primary-color); 
-      fill: var(--primary-color);
-    }
-}
