@@ -1,17 +1,19 @@
-
-joomla-alert {
-  display: block;
-  min-width: 250px;
-  padding: 1.143rem 1.500rem;
-  margin-bottom: 1.143rem;
-  border: 1px solid transparent;
-  opacity: 0;
-  border-radius: 3px;
-    transition: 300ms;
+joomla-alert, .alert {
+    display: block;
+    min-width: 250px;
+    padding: 1.143rem 1.500rem;
+    margin-bottom: 1.143rem;
+    border: 1px solid transparent;
+    opacity: 0;
+    border-radius: 3px;
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px 0 rgba(9, 30, 66, 0.31);
     color: var(--color);
     position: relative;
     line-height: 1.643rem;
+    transform: scale(1);
+    z-index: -1;
+    transform-origin: 50% 50%;
+    transition: transform .5s,opacity .3s;
     a{
         color: var(--primary-color)
     }
@@ -19,24 +21,32 @@ joomla-alert {
     transition: none;
     }
     
-    &[type='danger']{
+    &[type='danger'],&.alert-danger{
         background-color: var(--danger-color);
         color: var(--inverse-color);
     }
     
-    &[type='warning']{
+    &[type='warning'],&.alert-warning{
         background-color: var(--warning-color);
     }
 
-    &[type='success']{
+    &[type='success'],&.alert-success{
         background-color: var(--success-color);
+        color: var(--inverse-color);
+    }
+    &[type='info'],&.alert-info{
+        background-color: var(--primary-color);
         color: var(--inverse-color);
     }
 
 
   &.joomla-alert--show {
-    display: flex;
+        display: flex;
         opacity: 1;
+        flex-wrap: wrap;
+        animation: showJoomlaAlert .3s;
+        will-change: transform;
+        z-index: auto;
     }
 
     .joomla-alert--collapse-container,
@@ -47,6 +57,10 @@ joomla-alert {
     .joomla-alert--icon{
         padding-right: 1.357rem;
         margin-top: 0.286rem;
+    }
+    .joomla-alert-heading{
+        padding-right: 1.357rem;
+        width: 100%;
     }
 
     .joomla-alert--collapse-header{
@@ -209,4 +223,30 @@ html[dir=rtl] joomla-alert {
         }
     }
 
+}
+.alert {
+    opacity: 1;
+    z-index: auto;
+}
+@keyframes showJoomlaAlert {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+    1% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5)
+    }
+    45% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    80% {
+        -webkit-transform: scale(.95);
+        transform: scale(.95)
+    }
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
 }
