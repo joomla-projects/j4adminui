@@ -541,7 +541,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box j-card-overview-warning">
+                    <div class="j-card-overview-box j-card-overview-info">
                         <div class="j-card-overview-icon">
                             <i class="fab fa-invision"></i>
                         </div>
