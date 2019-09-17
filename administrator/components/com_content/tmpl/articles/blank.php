@@ -11,7 +11,6 @@ HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('versi
 HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
-
 <div class="container" style="background:white; padding: 10px;">
         <h1> Joomla Pagination </h1>
         <div class="joomla-pagination" style="width: 600px">
@@ -85,7 +84,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
         <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a>
         <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a>
 
-        <joomla-callout for="#showCollout" dismiss="true" position="bottom">
+        <joomla-callout action="hover" for="#showCollout" dismiss="true" position="bottom">
             <div class="callout-title">Title</div>
             <div class="callout-content">
                 Message body is optional.  If help documentation is available, consider adding a link to learn more
@@ -125,7 +124,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <h1> Joomla Dropdown </h1>
     <div style="width: 100%">
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
             <joomla-dropdown for="#dropdownList">
                 <a class="dropdown-item" href="#">Item 1</a>
                 <a class="dropdown-item" href="#">Item 2</a>
@@ -133,7 +132,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a>
             <joomla-dropdown for="#dropdownText">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>

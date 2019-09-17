@@ -13,8 +13,9 @@ use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
 
-$app       = Factory::getApplication();
-$form      = $displayData['data']->getForm();
+$app		= Factory::getApplication();
+$form		= $displayData['data']->getForm();
+$group		= isset($displayData['group']) && $displayData['group'] ? $displayData['group'] : ''; 
 
 $input     = $app->input;
 $component = $input->getCmd('option', 'com_content');
@@ -61,7 +62,7 @@ foreach ($fields as $field)
 {
 	foreach ((array) $field as $f)
 	{
-		if ($form->getField($f))
+		if ($form->getField($f, $group))
 		{
 			if (in_array($f, $hiddenFields))
 			{
