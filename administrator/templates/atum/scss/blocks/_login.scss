@@ -2,7 +2,7 @@
 
 .view-login {
   position: relative;
-  background-color: var(--link-color) ;
+  background-color: var(--link-color);
   &:before{
     content: "";
     position: absolute;
@@ -15,6 +15,9 @@
   }
   .container-main {
     z-index: 10;
+    &:before, &:after{
+      background-color: transparent;
+    }
     @include media-breakpoint-down(sm) {
       min-height: calc(100vh - 35vh);
       flex-wrap: wrap;

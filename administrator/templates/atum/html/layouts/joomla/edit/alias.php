@@ -11,7 +11,13 @@ defined('JPATH_BASE') or die;
 
 $form  = $displayData->getForm();
 $alias = $form->getValue('alias', '');
-
+$document = JFactory::getDocument();
+$document->addScriptDeclaration('
+		let editAlias = document.querySelector("#edit-alias");
+		editAlias.addEventListener("click", function(){
+			document.querySelector(".alias-wrap").classList.add("active");
+		})
+');
 ?>
 <div class="alias-wrap">
 	<div class="alias-text">
@@ -25,7 +31,7 @@ $alias = $form->getValue('alias', '');
 		</div>
 	</div>
 
-	<div class="alias-edit d-none">
+	<div class="alias-edit">
 		<?php echo $form->renderField('alias'); ?>
 	</div>
 
