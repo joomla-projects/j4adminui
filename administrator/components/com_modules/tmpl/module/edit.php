@@ -14,6 +14,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Language\Multilanguage;
 
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.combobox');
@@ -54,7 +55,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+			<div class="form-no-margin form-title-wrap">
+				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			</div>		
 
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
@@ -181,31 +184,79 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		</div>
 
 		<div class="col-lg-3">
-			<div class="card">
-				<div class="card-body">
-				<?php
-				// Set main fields.
-				$this->fields = array(
-					'showtitle',
-					'published',
-					'position',
-					'ordering',
-					'access',
-					'publish_up',
-					'publish_down',
-					'language',
-					'note'
-				);
-				?>
-				<?php if ($this->item->client_id == 0) : ?>
-					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
-				<?php else : ?>
-					<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
-				<?php endif; ?>
+			<?php
+			// Set main fields.
+			$this->fields = array(
+				'showtitle',
+				'published',
+				'position',
+				'ordering',
+				'access',
+				'publish_up',
+				'publish_down',
+				'language',
+				'note'
+			);
+			?>
+			<!-- if site modules -->
+			<?php if ($this->item->client_id == 0) : ?>
+				<!-- title & status -->
+				<div class="j-card form-no-margin">
+					<div class="j-card-body p-4">
+						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'showtitle', 'published' ), 'data' => $this)); ?>
+					</div>
 				</div>
-			</div>
+				<!-- possition -->
+				<div class="j-card mt-4">
+					<div class="j-card-body">
+						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'position' ), 'data' => $this)); ?>
+					</div>
+				</div>
+				<!-- ordering -->
+				<div class="j-card mt-4">
+					<div class="j-card-body">
+						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'ordering' ), 'data' => $this)); ?>
+					</div>
+				</div>
+				<!-- access -->
+				<div class="j-card mt-4">
+					<div class="j-card-body">
+						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
+					</div>
+				</div>
+				<!-- schedule -->
+				<p class="mt-4"><?php echo JText::_('COM_MODULE_PUBLISH_SCHEDULE'); ?></p>
+				<div class="j-card form-no-margin">
+					<div class="j-card-body p-3">
+						<div class="row">
+							<div class="col-sm-6">
+								<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'publish_up' ), 'data' => $this)); ?>
+							</div>
+							<div class="col-sm-6">
+								<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'publish_down' ), 'data' => $this)); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- language -->
+				<?php if (Multilanguage::isEnabled()) : ?>
+					<div class="j-card mt-4">
+						<div class="j-card-body">
+							<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
+						</div>
+					</div>
+				<?php endif; ?>
+				<!-- note -->
+				<p class="mt-4"><?php echo JText::_('COM_MODULES_FIELD_NOTE_LABEL'); ?></p>
+				<div class="j-card form-no-margin">
+					<div class="j-card-body">
+						<?php echo $this->form->getInput('note'); ?>
+					</div>
+				</div>
+			<?php else : ?>
+				<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
+			<?php endif; ?>		
 		</div>
 	</div>
-
 
 </form>
