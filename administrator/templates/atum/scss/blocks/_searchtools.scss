@@ -45,20 +45,6 @@
       {
           width: 100%;
       }
-
-    .custom-select {
-
-      &.active {
-        color: var(--white);
-        background: $custom-select-bg $custom-select-indicator-active no-repeat right center;
-        background-size: $custom-select-bg-size;
-      }
-
-      option {
-        color: var(--atum-text-dark);
-        background-color: var(--white);
-      }
-    }
   }
 
   .js-stools-container-selector,
@@ -81,54 +67,28 @@
 
     .btn-toolbar {
 
-      // .js-stools-btn-filter{
-      //   border:1px solid var(--border);
-      // }
-      // .js-stools-btn-clear {
-      //   background-color: var(--atum-bg-dark);
-      //   color: var(--atum-text-light);
-      //   border:1px solid var(--border);
-      //   border-left: 1px solid var(--atum-text-light);
-
-      //   &.disabled,
-      //   &:disabled{
-      //       background-color: rgba($gray-300, 0.8);
-      //       border-color: rgba($gray-500, 0.8);
-      //       opacity:1;
-      //       color:var(--atum-text-dark);
-      //   }
-      // }
-      // .js-stools-btn-filter{
-      //   border-right:1px solid var(--border);
-      //   .fa {
-      //     margin-left: 0.25rem;
-      //   }
-      // }
-
       .form-control{
-        height: 2.86rem;
+        height: 3.43rem;
+        width: 21.49rem;
       }
       .input-group-append{
+        // .btn.btn-primary:focus, .btn.btn-primary:focus:active, .btn.btn-primary:not(:disabled):not(.disabled):active:focus
         .btn{
-          &:focus,
-          &:active{
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-            color: var(--primary-color);
+          &.btn-primary {
+            &:focus,
+            &:active{
+              background-color: transparent;
+              box-shadow: none;
+              border: none;
+              color: var(--primary-color);
+            }
           }
         }
       }
     }
 
     .js-stools-field-list{
-      margin-bottom:0;
       display: flex;
-      align-items: center;
-      border: 1px solid #e8ebf4;
-      background: #fff;
-      padding: 0px 5px 0px 15px;
-      margin-right: 10px;
       .js-stools-sort-by-label{
         font-size: 1rem;
         color: var(--secondary-color);
@@ -139,29 +99,48 @@
       .custom-select{
         box-shadow: none;
         border: none;
-        height: auto;
         padding-right: 0;
         font-size: 1rem;
         color: var(--inverse-background);
         padding: 0;
       }
     }
+    .js-stools-field-list-content {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e8ebf4;
+      background: #fff;
+      padding: 0px 5px 0px 15px;
+      margin-right: 10px;
+    }
 
     .input-append {
       margin-bottom: 0;
     }
     .ordering-select{
-      display: flex;
+      margin-left: auto;
       .btn{
         padding: 0;
         color: var(--secondary-icon-color);
         background: transparent;
         box-shadow: none;
         font-size: 20px;
+        &:hover {
+          color: var(--primary-color);
+        }
       }
     }
     .btn {
       line-height: 1;
+      color: #585858;
+      background-image: none;
+      &.btn-primary:not(:disabled):active,
+      &:active,
+      &:focus {
+        box-shadow: none;
+        color: var(--primary-color);
+        background-color: transparent;
+      }
     }
   }
 }

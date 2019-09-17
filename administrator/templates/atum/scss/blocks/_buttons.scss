@@ -1,7 +1,7 @@
 //Buttons Style
 .btn{
-    padding: 0 2.857rem;
-    line-height: 3.429rem;
+    padding: 0 1.857rem;
+    line-height: 2.9rem;
     font-size: 1rem;
     font-weight: 500;
     border: none;
@@ -24,30 +24,30 @@
         color: var(--secondary-icon-color);
     }
     span.icon{
-        font-size: 1.143rem;
-        line-height: 3.429rem;
+        font-size: 1rem;
+        line-height: 2.85rem;
         width: 3rem;
         height: 100%;
         z-index: -1;
-        margin: 0 .3rem 0 -2.2rem;
+        margin: 0 .3rem 0 -1.5rem;
         display: inline-block;
         &.right{
-            margin: 0 -2.2rem 0 .3rem;
+            margin: 0 -1.5rem 0 .3rem;
         }
     }
     &:hover, &:focus, &:focus:active, &:active{
         text-decoration: none;
         box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     }
-    &.btn-md{
-        padding: 0 1.857rem;
-        line-height: 2.9rem;
+    &.btn-lg{
+        padding: 0 2.857rem;
+        line-height: 3.429rem;
         span.icon{
-            line-height: 2.85rem;
-            margin: 0 .3rem 0 -1.5rem;
-            font-size: 1rem;
+            font-size: 1.143rem;
+            line-height: 3.429rem;
+            margin: 0 .3rem 0 -2.2rem;
             &.right{
-                margin: 0 -1.5rem 0 .3rem;
+                margin: 0 -2.2rem 0 .3rem;
             }
         }
     }
@@ -200,5 +200,40 @@
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--warning-color);
         }
+    }
+    &.dropdown-toggle {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 0 1.4rem;
+    }
+}
+
+.iconic-button {
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    font-size: 18px;
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    fill: #BDC5C8;
+    color: #BDC5C8;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 50px;
+    cursor: pointer;
+    
+    &:focus {
+      background-color: #E5F2FF;
+      color: var(--primary-color); 
+      fill: var(--primary-color);
     }
 }

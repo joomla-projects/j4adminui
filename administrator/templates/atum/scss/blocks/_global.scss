@@ -1,7 +1,7 @@
 // Global
 
 html {
-   height: 100%;
+  height: 100%;
   font-size: 14px;
 }
 
@@ -54,6 +54,15 @@ textarea {
 
   &.focus-visible {
   outline: auto 2px var(--focus);
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
   }
 }
 
@@ -193,7 +202,44 @@ body .container-main {
   }
 }
 
-.tiny {
-  font-size: $font-size-vsm;
-  line-height: 1.4rem;
+
+//admin form
+body.admin{
+  .container-main{
+    >#subhead{
+      margin-bottom: 2.14rem;
+    }
+    >section#content{
+      padding-left: 1.07rem;
+      padding-right: 1.07rem;
+    }
+    #adminForm table.table{
+      background-color: transparent;
+      border-collapse:separate; 
+      border-spacing: 0 7px;
+      thead{
+        td,th{
+          border: none;
+        }
+      }
+      tbody{
+        >tr{
+          border-radius: 3px;
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+          >th,
+          >td{
+            background-color: #ffffff;
+            padding: .95rem;
+            border: none;
+          }
+          >td:first-child{
+            border-radius: 3px 0 0 3px;
+          }
+          >td:last-child{
+            border-radius: 0 3px 3px 0;
+          }
+        }
+      }
+    }
+  }
 }

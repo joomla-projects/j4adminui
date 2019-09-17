@@ -271,13 +271,14 @@ $zindex-mobil-menu:                9000;
 	--color: #252732;
 	--color-rgb: 37, 39, 50;
 	--inverse-color: #ffffff;
-	--secondary-color: #5e727c;
+	--secondary-color: #585858;
 	--icon-color: #808f94;
-	--secondary-icon-color: #bdc5c8;
+	--secondary-icon-color: #7c7e82;
 	--button-background: #e6f2ff;
 	--cancel-button-background: #f0f3f8;
 	--disabled-button-background: #dcdcdc;
-	--link-color: #0184ff;
+	--link-color: rgb(1, 132, 255);
+	--solid-link-color-rgb: 1, 132, 255;
 	--link-color-rgb: 229, 242, 255;
 	--link-color-light-rgb: 229, 242, 255;
 	--primary-color: #0184ff;
@@ -298,6 +299,7 @@ $zindex-mobil-menu:                9000;
 	--submenu-background: #edf4fa;
   --submenu-border: #eaeaea;
   --subhead-background: #e3e6eb;
+  --page-background: #f4f7fc;
 }
 
 // Global

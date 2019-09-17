@@ -51,11 +51,13 @@
 @import "blocks/dropdown";
 @import "blocks/breadcrumb";
 @import "blocks/card";
+@import "blocks/accordion";
 
 
 // Vendor overrides
 @import "vendor/awesomplete";
 @import "vendor/bootstrap/card";
+@import "vendor/bootstrap/list-group";
 @import "vendor/bootstrap/collapse";
 @import "vendor/bootstrap/dropdown";
 @import "vendor/bootstrap/lists";
@@ -79,3 +81,4 @@
 @import "pages/com_privacy";
 @import "pages/com_templates";
 @import "pages/com_users";
+@import "pages/com_modules";

@@ -7,9 +7,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('versio
 HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
-
-<div class="container">
+<div class="container" style="background:white; padding: 10px;">
         <h1> Joomla Pagination </h1>
         <div class="joomla-pagination" style="width: 600px">
             <joomla-pagination>
@@ -77,12 +79,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
     <br><hr>
     <h1> Joomla Callout </h1>
     <div style="width: 100%">
-        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a href="#">
-        <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a href="#">
-        <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a href="#">
-        <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a href="#">
+        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a>
+        <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a>
+        <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a>
+        <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a>
 
-        <joomla-callout for="#showCollout" dismiss="true" position="bottom">
+        <joomla-callout action="hover" for="#showCollout" dismiss="true" position="bottom">
             <div class="callout-title">Title</div>
             <div class="callout-content">
                 Message body is optional.  If help documentation is available, consider adding a link to learn more
@@ -137,6 +139,48 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
         </div>
     </div>
     <br><hr>
+    <h1> Joomla Accordion </h1>
+    <div style="width: 600px">
+        <joomla-accordion toggle="true" animation="true">
+            <section class="accordion-item" id="accordion-panel1" name="Accordion panel 1">
+                <h3>Tab panel 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section class="accordion-item show"  id="accordion-panel2" name="Accordion panel 2">
+                <h3>Tab panel 2</h3>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+            <section class="accordion-item" id="accordion-panel3" name="Accordion panel 3">
+                <h3>Tab panel 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+        </joomla-accordion>
+    </div>
+    <br><hr>
+    <h1> Joomla Tab </h1>
+    <div style="width: 600px">
+        <joomla-tab>
+            <section orientation="vertical" id="tab-panel1" name="Tab panel 1">
+                    <h3>Tab panel 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section id="tab-panel2" name="Tab panel 2">
+                    <h3>Tab panel 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+            <section id="tab-panel3" name="Tab panel 3" disabled="true">
+                    <h3>Tab panel 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </section>
+        </joomla-tab>
+    </div>
+    <br><hr>
     <h1> Joomla Modal </h1>
     <div style="width: 100%">
         <a href="#" class="btn btn-primary" data-href="#exampleModal1">Launch demo modal</a href="#">
@@ -167,40 +211,155 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version
             </footer>
         </joomla-modal>
     </div>
+    <br><hr>
+    <h1> Joomla Alert </h1>
+    <div style="width:100%">
+            <!-- Alert with icon & content -->
+        <joomla-alert dismiss="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert-content">
+                Alert with icon & content
+                <div class="joomla-alert-link-group">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                </div>
+            </div>
+        </joomla-alert>
 
+        <!-- collapse & collapse title -->
+        <joomla-alert collapse-title="Collapsible allert with icon" collapse="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert--collapse">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+                    <div class="joomla-alert-button-group">
+                        <button>Sure!</button>
+                        <button>Noooo!</button>
+                    </div>
+            </div>
+        </joomla-alert>
+
+        <!-- Alert type: success, danger, warning. Alert dismiss: true -->
+        <joomla-alert type="success" dismiss="true">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
+        <joomla-alert type="warning" dismiss="true">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
+        <joomla-alert type="danger" dismiss="true" auto-dismiss="2000">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
+        </joomla-alert>
+    </div>
+
+
+    <section style="background: lightgray; padding: 30px 0">
     <h1> Joomla Card </h1>
 
     <div class="row justify-content-center">
         <div class="col-3">
             <div class="j-card">
-                <div class="j-card__header d-flex justify-content-between align-items-center">
-                    <h4 class="j-card__title">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
                         Card Title
                     </h4>
 
-                    <div class="joomla-dropdown-container">
-                        <button id="dropdownList"><i class="j-card__header__icon fas fa-ellipsis-h"></i></button>
-                        <joomla-dropdown for="#dropdownList">
-                            <a class="dropdown-item" href="#">Item 1</a>
-                            <a class="dropdown-item" href="#">Item 2</a>
-                            <a class="dropdown-item" href="#">Item 3</a>
-                        </joomla-dropdown>
+                    <div class="j-card-header-right">
+                        <div class="joomla-dropdown-container">
+                            <button id="dropdownList"><i class="j-card-header-icon fas fa-ellipsis-h"></i></button>
+                            <joomla-dropdown for="#dropdownList">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                            </joomla-dropdown>
+                        </div>
                     </div>
-
                 </div>
-                <div class="j-card__body j-card__body--has-padding">
-                    <div class="j-card__text">
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                     </div>
                 </div>
-                <div class="j-card__footer j-card__footer--has-padding d-flex align-items-center">
-                    <div class="j-card__footer-item">
+                <div class="j-card-footer d-flex align-items-center">
+                    <div class="j-card-footer-item">
+                        <a href="#">Details Information</a>
+                    </div>
+                    <div class="j-card-footer-item j-card-footer-icon">
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header j-card-header-sm">
+                    <h4 class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Title
+                    </h4>
+
+                    <div class="j-card-header-right">
+                        <div class="joomla-dropdown-container">
+                            <button id="dropdownList"><i class="j-card-header-icon fas fa-ellipsis-h"></i></button>
+                            <joomla-dropdown for="#dropdownList">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                            </joomla-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer d-flex align-items-center">
+                    <div class="j-card-footer-item">
+                        <button>Details Information</button>
+                    </div>
+                    <div class="j-card-footer-item j-card-footer-icon">
+                        <button href="#" class="fas fa-eye"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header j-card-header-sm">
+                    <p class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Title
+                    </p>
+
+                    <div class="j-card-header-right">
+                        <div class="joomla-dropdown-container">
+                            <button id="dropdownList"><i class="j-card-header-icon fas fa-ellipsis-h"></i></button>
+                            <joomla-dropdown for="#dropdownList">
+                                <a class="dropdown-item" href="#">Item 1</a>
+                                <a class="dropdown-item" href="#">Item 2</a>
+                                <a class="dropdown-item" href="#">Item 3</a>
+                            </joomla-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer d-flex align-items-center">
+                    <div class="j-card-footer-item">
                         <a href="#">Details Information</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </section>
 
 </div>

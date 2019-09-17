@@ -145,7 +145,7 @@
     border-bottom: none;
     border-radius: 0;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 .media-browser-item-file,
 .media-browser-item-directory,
@@ -217,9 +217,6 @@
         }
     }
 }
-.media-browser-actions > button{
-    opacity: 1;
-}
 .media-browser-item-info {
     padding: 1.08rem 3.3rem 1.06rem 1.08rem;
     overflow: hidden;
@@ -234,7 +231,64 @@
     top: 7px;
     right: 12px;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
+    > button{
+        opacity: 1;
+    }
+    &.active {
+        > button {
+            display: block;
+        }
+        .image-browser-action {
+            color: var(--primary-color);
+        }
+    }
+}
+.media-browser-actions-list {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    width: 200px;
+    background: #ffff;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    border: solid 1px #eaeef5;
+    padding: 7px 0;
+    ul {
+        columns: initial;
+        li {
+            display: block;
+            button {
+                width: 100%;
+                text-align: left;
+                margin: 0;
+                padding: 0 10px;
+                border-bottom: 1px solid rgba(234, 238, 245, .5);
+                color: var(--secondary-color);
+                &:hover {
+                    color: var(--primary-color);
+                    background-color: var(--button-background);
+                    .image-browser-action { 
+                        color: var(--primary-color);
+                    }
+                }
+            }
+            &:last-child {
+                button {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+    .image-browser-action {
+        width: auto;
+        height: auto;
+        margin-right: 5px;
+        &::before {
+            font-size: 1rem;
+        }
+    }
 }
 .image-browser-action {
     width: calc(1.3rem * 1.55);
@@ -246,6 +300,7 @@
     cursor: pointer;
     background-color: transparent;
     border-radius: 0;
+    transition: .35s;
     &:hover {
         color: var(--primary-color);
     }
@@ -286,52 +341,6 @@
     height: 265px;
     background: url(../images/joomla-media-drop.svg) no-repeat center scroll / cover;
     margin-bottom: 60px;
-}
-
-/* 1.5 dpr */
-@media 
-(-webkit-min-device-pixel-ratio: 1.5), 
-(min-resolution: 144dpi){ 
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 6 - 15px);
-        }
-    }
-}
-@media screen and (max-width: 1920px) {
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 6 - 15px);
-        }
-    }
-}
-@media screen and (max-width: 1600px) {
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 5 - 15px);
-        }
-    }
-}
-@media screen and (max-width: 1440px) {
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 4 - 15px);
-        }
-    }
-}
-@media screen and (max-width: 1024px) {
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 3 - 15px);
-        }
-    }
-}
-@media screen and (max-width: 500px) {
-    .media-browser-items-lg {
-        .media-browser-item {
-            width: calc(100% / 2 - 15px);
-        }
-    }
 }
 
 //Docker upload

@@ -1,6 +1,3 @@
-// Tabs
-
-
 //
 // Base styles
 //
@@ -8,208 +5,176 @@
 joomla-tab {
 	display: flex;
 	flex-direction: column;
-	&[orientation=horizontal]:not([view=accordion]) {
-		margin-bottom: 5rem;
+}
+
+joomla-tab > ul {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	white-space: nowrap;  
+	position: relative;
+	z-index: 1;
+}
+
+joomla-tab a[role=tab] {
+	display: block;
+	color: var(--secondary-color);
+	padding: .75em 1em;
+	position: relative;
+	text-decoration: none;
+}
+
+joomla-tab a[role=tab][active] {
+	color: var(--color);
+}
+joomla-tab a[role=tab]:after {
+	background-color: var(--primary-gradient-color);
+	bottom: -1px;
+	content: "";
+	height: 4px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .35s;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+joomla-tab a[role=tab][active]:hover:after {
+	background-color: var(--primary-gradient-color);
+}
+joomla-tab a[role=tab]:hover:after,
+joomla-tab a[role=tab][active]:after {
+	opacity: 1;
+	visibility: visible;
+}
+joomla-tab a[role=tab]:hover{
+	color: var(--color);
+}
+joomla-tab a[role=tab]:hover:after{
+	background-color: var(--secondary-icon-color);
+}
+joomla-tab a[role=tab]:focus{
+	outline: none;
+}
+joomla-tab a[role=tab]:focus {
+	outline: var(--primary-color) solid 2px;
+	&::after{
+		opacity: 0;
+		visibility: hidden;
 	}
-	&[orientation=horizontal]:not([view=accordion]) > ul {
-		width: 100%;
-		background-color: var(--atum-bg-dark);
-		margin-bottom: 1rem;
+}
+joomla-tab a[disabled=true]:hover,
+joomla-tab a[disabled=true]{
+	color: var(--secondary-icon-color);
+	&::before,
+	&::after{
+		display: none
 	}
-	> ul {
-		display: flex;
-		border-image: none;
-		border-radius: 0;
-		border: 0;
-		box-shadow: $atum-box-shadow;
-		margin: 0;
-		padding: 0;
-		list-style: outside none none;
-		overflow-x: auto;
-		overflow-y: hidden;
-		white-space: nowrap;
-		a[role=tab] {
-			display: block;
-			color: var(--atum-text-light);
-			padding: 1.3rem 2rem;
-			position: relative;
-			box-shadow: none;
-			border: 1px solid var(--atum-bg-dark-80);
-			border-right: 0;
-			border-bottom: 0;
-			text-decoration: none;
-			&[active], &:hover {
-				background-color: var(--atum-bg-dark-80);
-				background-image: none;
-				border-radius: 0;
-				box-shadow: none;
-				&::after {
-					background-color: var(--atum-contrast);
-					top: -1px;
-					content: "";
-					height: 8px;
-					left: 0;
-					opacity: .8;
-					position: absolute;
-					right: 0;
-				}
-			}
-			&[active] {
-				font-weight: $font-weight-bold;
-			}
-		}
+	&:active{
+		outline: none;
 	}
+}
+joomla-tab > section {
+	position: relative;
+	display: none;
+}
 
-	> section {
-		display: none;
-		background-color: transparent;
-		border: 0;
-		border-radius: 0;
-		box-shadow: none;
-		padding: 0;
-		&[active] {
-			display: block;
-		}
+joomla-tab > section[active] {
+	display: block; 
+}
+
+joomla-tab[orientation=vertical] {
+	flex-direction: row;
+	align-items: flex-start; 
+}
+
+joomla-tab[orientation=vertical] > ul {
+	flex-direction: column;
+    min-width: 30%;
+	height: auto;
+	border-left: 1px solid var(--secondary-icon-color);
+}
+
+joomla-tab[orientation=vertical] a[disabled=true]:hover,
+joomla-tab[orientation=vertical] a[disabled=true] {
+	color: var(--secondary-icon-color);
+}
+joomla-tab[orientation=vertical] a {
+	display: block;
+	color: var(--secondary-color);
+	padding: .45rem 1rem;
+	position: relative;
+	border-top: 1px solid var(--background);
+	box-shadow: none;
+	text-decoration: none; 
+}
+joomla-tab[orientation=vertical] a[role=tab]:after{
+	right: auto;
+	border-radius: 0;
+}
+joomla-tab[orientation=vertical] a:hover {
+	color: var(--secondary-color);
+}
+joomla-tab[orientation=vertical] a[active] {
+	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+	color: var(--color);
+	font-weight: 500;
+}
+joomla-tab[orientation=vertical] a[role=tab]:active {
+	outline: none;
+}
+
+joomla-tab[orientation=vertical] a[active]:after {
+	left: 0;
+    width: 3px;
+	height: auto;
+	top: 0;
+	bottom: 0; 
+}
+
+joomla-tab[view=accordion] > ul {
+	flex-direction: column;
+	border-radius: 0;
+	white-space: normal;
+}
+
+joomla-tab[view=accordion] section {
+	display: none;
+	padding: 15px; 
+}
+
+joomla-tab[view=accordion] section[active] {
+	display: block;
+	border-bottom: 1px solid var(--background);
+}
+
+joomla-tab[view=accordion] a[role=tab] {
+	border-bottom: 1px solid var(--background); 
+}
+
+joomla-tab[view=accordion] a[role=tab][active]:after {
+	display: none;
+}
+joomla-tab[view=accordion] a[role=tab][active]::before {
+	content: "";
+	background-color: var(--primary-color);
+	width: 3px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: -1px;
+}
+html[dir=rtl],
+body[dir=rtl]{
+	joomla-tab[orientation=vertical] a[role=tab][active]::after {
+		left: auto;
+		right: 0;
 	}
-
-	&[orientation=vertical] {
-		flex-direction: row;
-		align-items: flex-start;
-		width: 100%;
-		> ul {
-			flex-direction: column;
-			flex: 0 0 25%;
-			width: 100%;
-			max-width: 25%;
-			min-width: 25%;
-			height: auto;
-			border: 1px solid $gray-300;
-			border-radius: 0;
-			box-shadow: none;
-			overflow: hidden;
-			padding: 0;
-
-			@include media-breakpoint-down(md) {
-				max-width: 100%;
-				flex: 0 0 100%;
-			}
-		}
-		li:last-of-type a[role=tab] {
-			border-bottom: 0;
-		}
-		a[role=tab] {
-			display: block;
-			color: var(--atum-special-color);
-			padding: .75em 1em;
-			position: relative;
-			border: 0;
-			border-bottom: 1px solid $gray-300;
-			box-shadow: none;
-			text-decoration: none;
-			&[active], &:hover {
-				background-color: $white;
-				background-image: none;
-				box-shadow: none;
-				border-right: 0;
-				&::after {
-					left: -1px;
-					width: 5px;
-					height: auto;
-					top: 0;
-					bottom: 0;
-					background-color: var(--atum-bg-dark);
-				}
-			}
-		}
-		> section {
-			border: 0 none;
-			box-shadow: none;
-			padding: $grid-gutter-width-s 0 $grid-gutter-width-s $grid-gutter-width-s;
-			width: 100%;
-		}
-	}
-	&[view=accordion] {
-		> ul {
-			flex-direction: column;
-			border-radius: 0;
-			white-space: normal;
-			box-shadow: 0 1px $white inset, 0 0 3px rgba(0, 0, 0, 0.04);
-			background-color: var(--atum-bg-dark);
-		}
-		section {
-			display: none;
-			padding: 15px;
-			&[active] {
-				display: block;
-				border-bottom: 1px solid $gray-300;
-				width: 100%;
-				max-width: 100%;
-				flex: 0 0 100%;
-			}
-		}
-		[active] {
-			background-color: $gray-300;
-		}
-		a[role=tab] {
-			border: 1px solid var(--atum-bg-dark-80);
-			border-top: 0;
-
-			&[active], &:hover {
-				&::after {
-					position: absolute;
-					top: auto;
-					bottom: -1px;
-					left: -1px;
-					right: -1px;
-					content: "";
-					width: calc(100% + 2px);
-					height: 8px;
-					opacity: .8;
-					background-color: var(--atum-text-light);
-				}
-			}
-		}
-		.col-md-6,
-		.col-md-9,
-		.col-md-3 {
-			padding: 0.5rem 0  0 !important;
-		}
-
-		joomla-tab[view=accordion] {
-			> ul {
-				background-color: $gray-100;
-			}
-			a[role=tab] {
-				display: block;
-				color: var(--atum-special-color);
-				padding: .75em 1em;
-				position: relative;
-				border: 0;
-				border-bottom: 1px solid $gray-300;
-				box-shadow: none;
-				text-decoration: none;
-
-				&[active], &:hover {
-					&::after {
-						position: absolute;
-						top: auto;
-						bottom: -1px;
-						left: -1px;
-						right: -1px;
-						content: "";
-						width: calc(100% + 2px);
-						height: 5px;
-						opacity: .8;
-						background-color: var(--atum-bg-dark);
-						display: block;
-					}
-				}
-			}
-		}
-		#permissions-sliders {
-			section[active] {
-				padding: 0 !important;
-			}
-		}
+	joomla-tab[orientation=vertical] > ul {
+		border-left: 0;
+		border-right: 1px solid var(--secondary-icon-color);
 	}
 }

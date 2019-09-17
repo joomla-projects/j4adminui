@@ -20,6 +20,7 @@ use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * View class for a list of modules.
@@ -151,12 +152,6 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_SITE'), 'cube module');
 		}
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->standardButton('new', 'JTOOLBAR_NEW')
-				->onclick("location.href='index.php?option=com_modules&amp;view=select&amp;client_id=" . $this->state->get('client_id', 0) . "'");
-		}
-
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -212,12 +207,27 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
+
+		// add new module
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->linkButton('link', 'JTOOLBAR_INTALL_MODULE')
+				->url('index.php?option=com_installer&amp;view=install')
+				->icon('icon-arrow-down-2');
+		}
+
 		if ($canDo->get('core.admin'))
 		{
 			$toolbar->preferences('com_modules');
 		}
 
-		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
+		// create new module
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->standardButton('new', 'JTOOLBAR_NEW')
+				->onclick("location.href='index.php?option=com_modules&amp;view=select&amp;client_id=" . $this->state->get('client_id', 0) . "'");
+		}
 	}
 
 	/**

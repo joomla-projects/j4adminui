@@ -31,6 +31,7 @@
                            @keyup.up="$refs.actionDelete.focus()" @keyup.down="$refs.actionDownload.focus()">
                             <span class="image-browser-action fa fa-search-plus" aria-hidden="true"
                                   @click.stop="openPreview()"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_PREVIEW')}}</span>
                         </button>
                     </li>
                     <li>
@@ -40,6 +41,7 @@
                            @keyup.up="$refs.actionPreview.focus()" @keyup.down="$refs.actionRename.focus()">
                             <span class="image-browser-action fa fa-download" aria-hidden="true"
                                   @click.stop="download()"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_DOWNLOAD')}}</span>
                         </button>
                     </li>
                     <li>
@@ -49,6 +51,7 @@
                           @keyup.up="$refs.actionDownload.focus()" @keyup.down="$refs.actionShare.focus()">
                             <span class="image-browser-action fa fa-text-width" aria-hidden="true"
                                   @click.stop="openRenameModal()"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_RENAME')}}</span>
                         </button>
                     </li>
                     <li>
@@ -57,6 +60,7 @@
                           @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
                           @keyup.up="$refs.actionRename.focus()" @keyup.down="$refs.actionDelete.focus()">
                             <span class="image-browser-action fa fa-link" aria-hidden="true" @click.stop="openShareUrlModal()"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_SHARE')}}</span>
                         </button>
                     </li>
                     <li>
@@ -65,6 +69,7 @@
                            @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
                            @keyup.up="$refs.actionShare.focus()" @keyup.down="$refs.actionPreview.focus()">
                             <span class="image-browser-action fa fa-trash" aria-hidden="true" @click.stop="openConfirmDeleteModal()"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_DELETE')}}</span>
                         </button>
                     </li>
                 </ul>

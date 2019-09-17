@@ -318,9 +318,9 @@
     if (subhead) {
       doc.addEventListener('scroll', () => {
         if (window.scrollY > 0) {
-          subhead.classList.add('subhead-is-sticky', 'shadow-sm');
+          subhead.classList.add('subhead-is-sticky');
         } else {
-          subhead.classList.remove('subhead-is-sticky', 'shadow-sm');
+          subhead.classList.remove('subhead-is-sticky');
         }
       });
     }

@@ -1,16 +1,25 @@
 // com_templates
 .com_templates {
+  .default-template {
+    display: inline-block;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 30px;
+  }
+
   .template-style {
-    background: #FFFFFF;
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.15);
-    border-radius: 3px;
-    margin-bottom: 30px;
-    .template-style-thumbnail {
+
+    .template-thumbnail {
       position: relative;
       img {
         width: 100%;
       }
-      .template-style-overlay {
+      .template-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -20,7 +29,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.8);
         opacity: 0;
         transition: 500ms;
       }
@@ -28,8 +37,8 @@
 
     // Visible overlay on hover
     &:hover {
-      .template-style-thumbnail {
-        .template-style-overlay {
+      .template-thumbnail {
+        .template-overlay {
           opacity: 1;
         }
       }

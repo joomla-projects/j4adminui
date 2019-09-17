@@ -18,17 +18,21 @@ use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
 HTMLHelper::_('behavior.multiselect');
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 
 $user      = Factory::getUser();
 $clientId = (int) $this->state->get('client_id', 0);
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
+
 <form action="<?php echo Route::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'client_id'))); ?>
+				<div class="clearfix mt-4 mb-4"></div>
 				<?php if ($this->total > 0) : ?>
 					<div id="styleList">
 						<div class="row">
@@ -38,219 +42,157 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style<?php echo ($item->home == '1') ? ' default-template': ''; ?>">
-										<div class="template-style-header d-flex justify-content-between">
-											<div class="d-inline-flex align-items-center">
-												<div class="mr-2">
-													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-												</div>
-
-												<div class="mr-2">
-													<?php if($item->home == '1') : ?>
-														<span class="default-template-indicator">
-															<span class="fas fa-star"></span>
-														</span>
-													<?php endif; ?>
-													
-													<span class="template-name">
-														<?php if ($canEdit) : ?>
-															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-																<?php echo ucfirst($this->escape($item->template)); ?>
-															</a>
-														<?php else : ?>
-															<?php echo ucfirst($this->escape($item->template)); ?>
-														<?php endif; ?>
-													</span>
-													
-													<?php if ($version = $item->xmldata->get('version')) : ?>
-														<span class="template-version">v<?php echo $this->escape($version); ?></span>
-													<?php endif; ?>
-												</div>
-											</div>
-
-											<i class="fas fa-info-circle"></i>
-										</div>
-
-										<div class="template-style-thumbnail">
+									<div class="card template-style">
+										
+										<div class="template-thumbnail">
+											<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 											<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
 											<?php if ($clientId === 0) : ?>
-												<div class="template-style-overlay">
-													<a class="btn btn-primary btn-md" href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>  ">
+												<div class="template-overlay">
+													<a target="_blank" href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" class="btn btn-primary btn-md">
 														<i class="fas fa-eye"></i> &nbsp;Preview
 													</a>
 												</div>
 											<?php endif; ?>
 										</div>
 
-										<div class="template-quick-info">
-											<div>
-												<span>Style:</span> <?php echo $this->escape($item->title); ?>
-											</div>
-
-											<?php if ($author = $item->xmldata->get('author')) : ?>
-												<div>
-													<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-														<div>
-															<span>
-																Author:
-															</span>
-															<a target="_blank" rel="nofollow" href="<?php echo $this->escape($url); ?>">
-																<?php echo $this->escape($author); ?>
-															</a>
-														</div>
-													<?php else: ?>
-														<span>
-															Author:
+										<div class="list-group list-group-flush">
+											<div class="list-group-item d-flex align-items-center">
+												<!-- <?php if($item->home == '1') : ?>
+													<span class="default-template mr-2">
+														<span class="fas fa-star"></span>
+													</span>
+												<?php else : ?>
+													<?php if ($item->image) : ?>
+														<span class="default-template mr-2">
+															<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
 														</span>
-														<?php echo $this->escape($author); ?>
+													<?php endif; ?>
+												<?php endif; ?> -->
+												<span class="fas fa-info-circle fa-fw mr-1" id="template-info-<?php echo $item->id; ?>"></span>
+												<span class="template-name mr-2">
+													<?php if ($canEdit) : ?>
+														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+															<?php echo ucfirst($this->escape($item->template)); ?>
+														</a>
+													<?php else : ?>
+														<?php echo ucfirst($this->escape($item->template)); ?>
+													<?php endif; ?>
+												</span>
+												<?php if ($version = $item->xmldata->get('version')) : ?>
+													<span class="template-version">v<?php echo $this->escape($version); ?></span>
+												<?php endif; ?>
+											</div>
+											
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-6">
+														<div class="text-muted mb-1">
+															Style
+														</div>
+														<?php echo $this->escape($item->title); ?>
+													</div>
+													<?php if ($author = $item->xmldata->get('author')) : ?>
+														<div class="col-6">
+															<div class="text-muted mb-1">
+																Author
+															</div>
+															<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+																<a target="_blank" href="<?php echo $this->escape($url); ?>">
+																	<?php echo $this->escape($author); ?>
+																</a>
+															<?php else: ?>
+																<?php echo $this->escape($author); ?>
+															<?php endif; ?>
+														</div>
 													<?php endif; ?>
 												</div>
-											<?php endif; ?>
-										</div>
+											</div>
 
-										<div class="template-actions">
-											<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>  ">
-												<i class="fas fa-code"></i> Edit Files
-											</a>
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-7">
+														<?php if ($canChange):?>
+															<?php if ($item->home == '0') : ?>
+																<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
+																	<span class="fas fa-star fa-fw"></span> Set as Default
+																</a>
+															<?php else : ?>
+																<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
+																	<span class="fas fa-star fa-fw"></span>
+																	<?php if ($item->image) : ?>
+																		<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
+																	<?php endif; ?>
+																	<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+																</a>
+															<?php endif; ?>
+														<?php endif; ?>
+													</div>
+													<div class="col-5">
+														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
+															<span class="fas fa-clone fa-fw"></span>
+														</a>
+														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
+															<span class="fas fa-trash fa-fw"></span>
+														</a>
+													</div>
+												</div>
+											</div>
 
-											<?php if ($canEdit) : ?>
-												<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-													<i class="fas fa-cog"></i> Options
-												</a>
-											<?php endif; ?>
+											<div class="list-group-item">
+												<div class="row">
+													<div class="col-6">
+														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-primary btn-block">
+															<i class="fas fa-code"></i> Edit Files
+														</a>
+													</div>
+													<div class="col-6">
+														<?php if ($canEdit) : ?>
+															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary btn-block">
+																<i class="fas fa-cog"></i> Options
+															</a>
+														<?php endif; ?>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 
-									<!-- <div class="admin-template-info">
-										<?php echo $this->escape($item->xmldata->get('creationDate')); ?>
-										<?php if ($author = $item->xmldata->get('author')) : ?>
-											<div><?php echo $this->escape($author); ?></div>
-										<?php else : ?>
-											&mdash;
-										<?php endif; ?>
-										<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
-											<div><?php echo $this->escape($email); ?></div>
-										<?php endif; ?>
-										<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-											<div><a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a></div>
-										<?php endif; ?>
-									</div> -->
-
 								</div>
+
+								<joomla-callout for="#template-info-<?php echo $item->id; ?>" action="hover" position="right">
+									<div class="callout-title">Information</div>
+									<div class="callout-content">
+										<div class="admin-template-info">
+											<ul class="list-group list-group-flush">
+												<li class="list-group-item">
+													<span class="text-muted">Created: </span> <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
+												</li>
+												
+												<?php if ($author = $item->xmldata->get('author')) : ?>
+													<li class="list-group-item">
+													<span class="text-muted">Author: </span><?php echo $this->escape($author); ?>
+													</li>
+												<?php endif; ?>
+												
+												<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
+													<li class="list-group-item">
+														<span class="text-muted">Author Email: </span> <?php echo $this->escape($email); ?>
+													</li>
+												<?php endif; ?>
+
+												<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+													<li class="list-group-item">
+														<span class="text-muted">Author Website: </span> <a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a>
+													</li>
+												<?php endif; ?>
+											</ul>
+										</div>
+									</div>
+								</joomla-callout>
 							<?php endforeach; ?>
 						</div>
 					</div>
-
-					<table class="table" id="styleList">
-						<caption id="captionTable" class="sr-only">
-							<?php echo Text::_('COM_TEMPLATES_STYLES_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
-						</caption>
-						<thead>
-							<tr>
-								<td style="width:1%" class="text-center">
-									<?php echo HTMLHelper::_('grid.checkall'); ?>
-								</td>
-								<th scope="col">
-									<?php echo HTMLHelper::_('searchtools.sort', 'COM_TEMPLATES_HEADING_STYLE', 'a.title', $listDirn, $listOrder); ?>
-								</th>
-								<?php if ($clientId === 0) : ?>
-									<th scope="col" style="width:5%" class="text-center">
-										<?php echo Text::_('COM_TEMPLATES_TEMPLATE_PREVIEW'); ?>
-									</th>
-								<?php endif; ?>
-								<th scope="col" style="width:12%" class="text-center">
-									<?php echo HTMLHelper::_('searchtools.sort', 'COM_TEMPLATES_HEADING_DEFAULT', 'a.home', $listDirn, $listOrder); ?>
-								</th>
-								<?php if ($clientId === 0) : ?>
-									<th scope="col" style="width:12%" class="d-none d-md-table-cell">
-										<?php echo Text::_('COM_TEMPLATES_HEADING_PAGES'); ?>
-									</th>
-								<?php endif; ?>
-								<th scope="col" style="width:12%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'COM_TEMPLATES_HEADING_TEMPLATE', 'a.template', $listDirn, $listOrder); ?>
-								</th>
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($this->items as $i => $item) :
-								$canCreate = $user->authorise('core.create',     'com_templates');
-								$canEdit   = $user->authorise('core.edit',       'com_templates');
-								$canChange = $user->authorise('core.edit.state', 'com_templates');
-							?>
-							<tr class="row<?php echo $i % 2; ?>">
-								<td style="width:1%" class="text-center">
-									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-								</td>
-								<th scope="row">
-									<?php if ($canEdit) : ?>
-										<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-											<?php echo $this->escape($item->title); ?></a>
-									<?php else : ?>
-										<?php echo $this->escape($item->title); ?>
-									<?php endif; ?>
-								</th>
-								<?php if ($clientId === 0) : ?>
-									<td class="text-center">
-										<?php if ($this->preview && $item->client_id == '0') : ?>
-											<a target="_blank" href="<?php echo Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id ?>" class="jgrid">
-											<span class="icon-eye-open" aria-hidden="true" title="<?php echo Text::_('COM_TEMPLATES_TEMPLATE_PREVIEW'); ?>"></span>
-											<span class="sr-only"><?php echo Text::_('COM_TEMPLATES_TEMPLATE_PREVIEW'); ?></span>
-											</a>
-										<?php else: ?>
-											<span class="icon-eye-close" aria-hidden="true" title="<?php echo Text::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW'); ?>"></span>
-											<span class="sr-only"><?php echo Text::_('COM_TEMPLATES_TEMPLATE_NO_PREVIEW'); ?></span>
-										<?php endif; ?>
-									</td>
-								<?php endif; ?>
-								<td class="text-center">
-									<?php if ($item->home == '0') : ?>
-										<?php echo HTMLHelper::_('jgrid.isdefault', $item->home != '0', $i, 'styles.', $canChange && $item->home != '1'); ?>
-									<?php elseif ($canChange):?>
-										<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
-											<?php if ($item->image) : ?>
-												<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
-											<?php else : ?>
-												<span class="badge badge-secondary" title="<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>"><?php echo $item->language_sef; ?></span>
-											<?php endif; ?>
-										</a>
-									<?php else : ?>
-										<?php if ($item->image) : ?>
-											<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
-										<?php else : ?>
-											<span class="badge badge-secondary" title="<?php echo $item->language_title; ?>"><?php echo $item->language_sef; ?></span>
-										<?php endif; ?>
-									<?php endif; ?>
-								</td>
-								<?php if ($clientId === 0) : ?>
-								<td class="small d-none d-md-table-cell">
-									<?php if ($item->home == '1') : ?>
-										<?php echo Text::_('COM_TEMPLATES_STYLES_PAGES_ALL'); ?>
-									<?php elseif ($item->home != '0' && $item->home != '1') : ?>
-										<?php echo Text::sprintf('COM_TEMPLATES_STYLES_PAGES_ALL_LANGUAGE', $this->escape($item->language_title)); ?>
-									<?php elseif ($item->assigned > 0) : ?>
-										<?php echo Text::sprintf('COM_TEMPLATES_STYLES_PAGES_SELECTED', $this->escape($item->assigned)); ?>
-									<?php else : ?>
-										<?php echo Text::_('COM_TEMPLATES_STYLES_PAGES_NONE'); ?>
-									<?php endif; ?>
-								</td>
-								<?php endif; ?>
-								<td class="d-none d-md-table-cell">
-									<label for="cb<?php echo $i; ?>" class="small">
-										<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>  ">
-											<?php echo ucfirst($this->escape($item->template)); ?>
-										</a>
-									</label>
-								</td>
-								<td class="d-none d-md-table-cell">
-									<?php echo (int) $item->id; ?>
-								</td>
-							</tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
 
 					<?php // load the pagination. ?>
 					<?php echo $this->pagination->getListFooter(); ?>

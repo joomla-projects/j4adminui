@@ -19,6 +19,7 @@ use Joomla\Registry\Registry;
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.tabstate');
+HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array('version' => 'auto', 'relative' => true));
 
 // Load JS message titles
 Text::script('ERROR');
@@ -52,51 +53,53 @@ Text::script('MESSAGE');
 		<!-- End Sidebar -->
 		<!-- Begin Content -->
 		<div class="col-lg-9 mt-2">
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" href="#page-site" data-toggle="tab"><?php echo Text::_('JSITE'); ?></a></li>
-				<li class="nav-item"><a class="nav-link" href="#page-system" data-toggle="tab"><?php echo Text::_('COM_CONFIG_SYSTEM'); ?></a></li>
-				<li class="nav-item"><a class="nav-link" href="#page-server" data-toggle="tab"><?php echo Text::_('COM_CONFIG_SERVER'); ?></a></li>
-				<li class="nav-item"><a class="nav-link" href="#page-filters" data-toggle="tab"><?php echo Text::_('COM_CONFIG_TEXT_FILTERS'); ?></a></li>
-				<?php if ($this->ftp) : ?>
-					<li class="nav-item"><a class="nav-link" href="#page-ftp" data-toggle="tab"><?php echo Text::_('COM_CONFIG_FTP_SETTINGS'); ?></a></li>
-				<?php endif; ?>
-				<li class="nav-item"><a class="nav-link" href="#page-permissions" data-toggle="tab"><?php echo Text::_('COM_CONFIG_PERMISSIONS'); ?></a></li>
-			</ul>
-			<div id="config-document" class="tab-content form-no-margin">
-				<div id="page-site" class="tab-pane active">
-					<?php echo $this->loadTemplate('site'); ?>
-					<?php echo $this->loadTemplate('metadata'); ?>
-					<?php echo $this->loadTemplate('seo'); ?>
-					<?php echo $this->loadTemplate('cookie'); ?>
-				</div>
-				<div id="page-system" class="tab-pane">
-					<?php echo $this->loadTemplate('system'); ?>
-					<?php echo $this->loadTemplate('debug'); ?>
-					<?php echo $this->loadTemplate('cache'); ?>
-					<?php echo $this->loadTemplate('session'); ?>
-				</div>
-				<div id="page-server" class="tab-pane">
-					<?php echo $this->loadTemplate('server'); ?>
-					<?php echo $this->loadTemplate('locale'); ?>
-					<?php echo $this->loadTemplate('ftp'); ?>
-					<?php echo $this->loadTemplate('proxy'); ?>
-					<?php echo $this->loadTemplate('database'); ?>
-					<?php echo $this->loadTemplate('mail'); ?>
-				</div>
-				<div id="page-filters" class="tab-pane">
-					<?php echo $this->loadTemplate('filters'); ?>
-				</div>
-				<?php if ($this->ftp) : ?>
-					<div id="page-ftp" class="tab-pane">
-						<?php echo $this->loadTemplate('ftplogin'); ?>
+			<joomla-tab>
+				<section orientation="vertical" id="page-site" name="<?php echo Text::_('JSITE'); ?>">
+					<div class="card p-4">
+						<?php echo $this->loadTemplate('site'); ?>
+						<?php echo $this->loadTemplate('metadata'); ?>
+						<?php echo $this->loadTemplate('seo'); ?>
+						<?php echo $this->loadTemplate('cookie'); ?>
 					</div>
+				</section>
+				<section orientation="vertical" id="page-system" name="<?php echo Text::_('COM_CONFIG_SYSTEM'); ?>">
+					<div class="card p-4">
+						<?php echo $this->loadTemplate('system'); ?>
+						<?php echo $this->loadTemplate('debug'); ?>
+						<?php echo $this->loadTemplate('cache'); ?>
+						<?php echo $this->loadTemplate('session'); ?>
+					</div>
+				</section>
+				<section orientation="vertical" id="page-server" name="<?php echo Text::_('COM_CONFIG_SERVER'); ?>">
+					<div class="card p-4">
+						<?php echo $this->loadTemplate('server'); ?>
+						<?php echo $this->loadTemplate('locale'); ?>
+						<?php echo $this->loadTemplate('ftp'); ?>
+						<?php echo $this->loadTemplate('proxy'); ?>
+						<?php echo $this->loadTemplate('database'); ?>
+						<?php echo $this->loadTemplate('mail'); ?>
+					</div>
+				</section>
+				<section orientation="vertical" id="page-filters" name="<?php echo Text::_('COM_CONFIG_TEXT_FILTERS'); ?>">
+					<div class="card p-4">
+						<?php echo $this->loadTemplate('filters'); ?>
+					</div>
+				</section>
+				<?php if ($this->ftp) : ?>
+					<section orientation="vertical" id="page-ftp" name="<?php echo Text::_('COM_CONFIG_FTP_SETTINGS'); ?>">
+						<div class="card p-4">
+							<?php echo $this->loadTemplate('ftplogin'); ?>
+						</div>
+					</section>
 				<?php endif; ?>
-				<div id="page-permissions" class="tab-pane">
-					<?php echo $this->loadTemplate('permissions'); ?>
-				</div>
-				<input type="hidden" name="task" value="">
-				<?php echo HTMLHelper::_('form.token'); ?>
-			</div>
+				<section orientation="vertical" id="page-permissions" name="<?php echo Text::_('COM_CONFIG_PERMISSIONS'); ?>">
+					<div class="pt-4">
+						<?php echo $this->loadTemplate('permissions'); ?>
+					</div>
+				</section>
+			</joomla-tab>
+			<input type="hidden" name="task" value="">
+			<?php echo HTMLHelper::_('form.token'); ?>
 		</div>
 		<!-- End Content -->
 	</div>
