@@ -1,3 +1,4 @@
+
 $card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 
@@ -12,10 +13,9 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 	.j-card-header{
 		padding: 0.714rem 0 0.714rem 1.429rem; // left: 1.429rem
 		border-bottom: 1px solid var(--background);
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-
+		@extend .d-flex;
+		@extend .justify-content-between;
+		@extend .align-items-start;
 		.j-card-header-right{
 			margin-left: auto;
 		}
@@ -68,28 +68,43 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 	
 	.j-card-footer{
 		border-top: 1px solid var(--background);
-		&.j-card-footer-has-padding{
-			padding: 0.857rem 1.429rem;
-		}
+		@extend .d-flex;
+		@extend .justify-content-center;
 		.j-card-footer-item{
 			text-align: center;
 			flex-grow: 1;
 			a,
 			button{
 				line-height: 1.375rem;
-				padding: .5625rem .575rem;
-				display: block;
+				padding: .571429rem .642857rem;
 				color: var(--secondary-icon-color);
 				background: none;
 				border: none;
 				width: 100%;
 				margin: 0;
+				@extend .d-flex;
+				@extend .justify-content-center;
+				@extend .align-items-center;
+				transition: 300ms;
 				&:focus{
 					outline: 1px solid var(--link-color);
+				}
+				i{
+					font-size: .714286rem;
+					color: var(--link-color);
+					margin-right: .785714rem;
+					transition: 300ms;
+					&.j-icon-lg{
+						font-size: 1rem;
+						color: var(--icon-color);
+					}
 				}
 				&:hover,
 				&:focus{
 					color: var(--link-color);
+					i{
+						color: var(--link-color);
+					}
 				}
 			}
 			&:not(:last-child){
@@ -99,16 +114,42 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 					margin-right: 1px;
 				}
 			}
-			&.j-card-footer-icon{
+			+ .j-card-footer-item{
 				border-left: 1px solid var(--background);
+			}
+			&.j-card-footer-icon{
 				flex-grow: 0;
 				button,
 				a{
-					font-size: 1.607rem;
-					color: var(--icon-color)
+					font-size: 1.428571rem;
+					color: var(--icon-color);
+					transition: 300ms;
+					&:hover,
+					&:focus{
+						color: var(--link-color);
+					}
+				}
+			}
+		}
+		&.j-card-footer-lg .j-card-footer-item{
+			a,
+			button{
+				padding: 1rem .857143rem;
+				i{
+					font-size: 1rem;
+					&.j-icon-lg{
+						font-size: 1.428571rem;
+					}
 				}
 			}
 		}
 	}
-	
+	//media
+	.j-card-media{
+		img{
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
 }
