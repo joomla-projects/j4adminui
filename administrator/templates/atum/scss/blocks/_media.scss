@@ -239,7 +239,7 @@
         > button {
             display: block;
         }
-        .image-browser-action {
+        .image-browser-action.fa-ellipsis-h {
             color: var(--primary-color);
         }
     }
@@ -303,6 +303,7 @@
     transition: .35s;
     &:hover {
         color: var(--primary-color);
+        background-color: transparent;
     }
 }
 .file-icon, .folder-icon{
