@@ -55,7 +55,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			<div class="form-no-margin form-title-wrap">
+				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			</div>		
 
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
@@ -199,32 +201,33 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<!-- if site modules -->
 			<?php if ($this->item->client_id == 0) : ?>
 				<!-- title & status -->
-				<div class="form-no-margin j-card">
-					<div class="j-card-body">
+				<div class="j-card form-no-margin">
+					<div class="j-card-body p-4">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'showtitle', 'published' ), 'data' => $this)); ?>
 					</div>
 				</div>
 				<!-- possition -->
-				<div class="form-no-margin j-card">
+				<div class="j-card mt-4">
 					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'position' ), 'data' => $this)); ?>
 					</div>
 				</div>
 				<!-- ordering -->
-				<div class="form-no-margin j-card">
+				<div class="j-card mt-4">
 					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'ordering' ), 'data' => $this)); ?>
 					</div>
 				</div>
 				<!-- access -->
-				<div class="form-no-margin j-card">
+				<div class="j-card mt-4">
 					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 					</div>
 				</div>
 				<!-- schedule -->
-				<div class="form-no-margin j-card">
-					<div class="j-card-body">
+				<p class="mt-4"><?php echo JText::_('COM_MODULE_PUBLISH_SCHEDULE'); ?></p>
+				<div class="j-card form-no-margin">
+					<div class="j-card-body p-3">
 						<div class="row">
 							<div class="col-sm-6">
 								<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'publish_up' ), 'data' => $this)); ?>
@@ -237,19 +240,19 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				</div>
 				<!-- language -->
 				<?php if (Multilanguage::isEnabled()) : ?>
-					<div class="form-no-margin j-card">
+					<div class="j-card mt-4">
 						<div class="j-card-body">
 							<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
 						</div>
 					</div>
 				<?php endif; ?>
 				<!-- note -->
-				<div class="form-no-margin j-card">
+				<p class="mt-4"><?php echo JText::_('COM_MODULES_FIELD_NOTE_LABEL'); ?></p>
+				<div class="j-card form-no-margin">
 					<div class="j-card-body">
-						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'note' ), 'data' => $this)); ?>
+						<?php echo $this->form->getInput('note'); ?>
 					</div>
 				</div>
-				<?php //echo LayoutHelper::render('joomla.edit.global', $this); ?>
 			<?php else : ?>
 				<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
 			<?php endif; ?>		
