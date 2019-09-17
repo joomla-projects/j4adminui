@@ -132,7 +132,7 @@
     }
     .btn {
       line-height: 1;
-      color: #585858;
+      color: var(--table-sort-color);
       background-image: none;
       &.btn-primary:not(:disabled):active,
       &:active,

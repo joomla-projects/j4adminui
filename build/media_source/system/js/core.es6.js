@@ -482,7 +482,7 @@ window.Joomla.Modal = window.Joomla.Modal || {
       // Skip titles with untranslated strings
       if (typeof title !== 'undefined') {
         titleWrapper = document.createElement('span');
-        titleWrapper.className = 'alert-heading';
+        titleWrapper.className = 'joomla-alert-heading';
         titleWrapper.innerHTML = Joomla.Text._(type) ? Joomla.Text._(type) : type;
         messagesBox.appendChild(titleWrapper);
       }
@@ -490,6 +490,7 @@ window.Joomla.Modal = window.Joomla.Modal || {
       // Add messages to the message box
       typeMessages.forEach((typeMessage) => {
         messageWrapper = document.createElement('div');
+        messageWrapper.classList.add('joomla-alert-content');
         messageWrapper.innerHTML = typeMessage;
         messagesBox.appendChild(messageWrapper);
       });

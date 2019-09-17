@@ -9,7 +9,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div class="container" style="background:white; padding: 10px;">
         <h1> Joomla Pagination </h1>
@@ -215,6 +215,20 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <h1> Joomla Alert </h1>
     <div style="width:100%">
             <!-- Alert with icon & content -->
+        <joomla-alert dismiss="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert-content">
+                Alert with icon & content
+                <div class="joomla-alert-link-group">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                </div>
+            </div>
+        </joomla-alert>
+
+            <!-- Alert with header & content -->
         <joomla-alert dismiss="true">
             <div class="joomla-alert--icon">
                 <img src="./smile.svg" alt="">
@@ -464,6 +478,31 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
                 </div>
             </div>
         </div>
+
+
+        <div class="col-4">
+            <div class="j-card">
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <span class="j-card-divider"></span>
+                <div class="j-card-btn-group">
+                    <a class="btn btn-primary" href="#">Button 1 Button 1</a>
+                    <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 

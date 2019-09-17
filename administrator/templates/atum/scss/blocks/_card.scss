@@ -150,12 +150,33 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			}
 		}
 	}
+	.j-card-divider{
+		display: block;
+		height: 1px;
+		width: calc(100% - 2.857143rem);
+		background: var(--background);
+		margin: 0 1.428571rem;
+	}
 	//media
 	.j-card-media{
 		img{
 			display: block;
 			width: 100%;
 			height: auto;
+		}
+	}
+	//button group
+	.j-card-btn-group{
+		@extend .d-flex;
+		padding: 1.071429rem 1.428571rem;
+		a, 
+		button{
+			flex-grow: 1;
+			padding-left: .357143rem;
+			padding-right: .357143rem;
+			&:not(:last-child){
+				margin-right: 1.071429rem;
+			}
 		}
 	}
 }
