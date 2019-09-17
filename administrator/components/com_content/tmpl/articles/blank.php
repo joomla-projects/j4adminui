@@ -124,7 +124,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <h1> Joomla Dropdown </h1>
     <div style="width: 100%">
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
             <joomla-dropdown for="#dropdownList">
                 <a class="dropdown-item" href="#">Item 1</a>
                 <a class="dropdown-item" href="#">Item 2</a>
@@ -132,7 +132,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a>
             <joomla-dropdown for="#dropdownText">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>

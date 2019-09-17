@@ -47,7 +47,7 @@ echo HTMLHelper::_(
 			<?php // Display the icon position modules
 			foreach ($this->quickicons as $iconmodule)
 			{
-				echo ModuleHelper::renderModule($iconmodule, array('style' => 'card'));
+				echo ModuleHelper::renderModule($iconmodule, array('style' => 'simple'));
 			}
 			?>
 		</div>
