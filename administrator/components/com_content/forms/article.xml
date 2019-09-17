@@ -305,8 +305,6 @@
 		/>
 	</fieldset>
 
-
-
 	<fieldset name="linka" label="COM_CONTENT_FIELD_URLA_LABEL">
 		<field
 			name="urla"
