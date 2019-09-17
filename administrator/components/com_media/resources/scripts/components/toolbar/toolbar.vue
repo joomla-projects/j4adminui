@@ -10,6 +10,7 @@
         </div>
         <media-breadcrumb></media-breadcrumb>
         <div class="media-view-search-input" role="search">
+            <span class="fa fa-search"></span>
             <label for="media_search" class="sr-only">{{ translate('COM_MEDIA_SEARCH') }}</label>
             <input id="media_search" class="form-control" type="text" @input="changeSearch" :placeholder="translate('COM_MEDIA_SEARCH')"/>
         </div>
