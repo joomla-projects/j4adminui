@@ -18,10 +18,12 @@
     text-decoration: none;
     transition: .3s;
     border-radius: 3px;
+    position: relative;
+    z-index: 10;
     &[disabled], &.disabled, &:disabled{
         pointer-events: none;
         background-image: none;
-        color: var(--secondary-icon-color);
+        color: var(--button-border-color);
     }
     >.icon{
         font-size: 1rem;
@@ -66,28 +68,58 @@
         }
     }
     &.btn-primary {
+        background-color: var(--link-color);
+        color: var(--inverse-color);
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left:0;
+          right:0;
+          background-color: rgba(0, 0, 0, 0.3);
+          opacity: 0;
+          transition: opacity .3s;
+          z-index: -1;
+          border-radius: 3px;
+        }
+        &:hover, &:focus{
+            &:before{
+                opacity: 1;
+            }
+        }
+        &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
+            box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
+            &:before{
+                opacity: 0;
+            }
+        }
+        &[disabled], &.disabled, &:disabled{
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+            background-color: var(--button-border-color);
+            color: var(--icon-color);
+        }
+    }
+    &.btn-default {
         background-image: linear-gradient(to bottom, rgba(249, 252, 255, 0.5), rgba(var(--link-color-rgb), 0.5)), linear-gradient(to bottom, var(--button-background), var(--button-background));
         background-color: transparent;
         color: var(--link-color);
         &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
-            background-image: none;
-            background-color: var(--link-color);
-            color: #fff;
+            box-shadow: 0 0px 0px 1.2px var(--primary-gradient-color), 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 1px rgba(0, 0, 0, 0.03);
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
-            box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
+            box-shadow: 0 0px 0px 1.2px var(--primary-gradient-color), 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 1px rgba(0, 0, 0, 0.03);
         }
         &[disabled], &.disabled, &:disabled{
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
-            background-color: var(--disabled-button-background);
-            pointer-events: none;
             background-image: none;
-            color: var(--secondary-icon-color);
+            background-color: var(--submenu-border);
+            color: var(--button-border-color);
         }
     }
     &.btn-secondary{
         background-color: transparent;
-        border: 1px solid var(--secondary-icon-color);
+        border: 1px solid var(--button-border-color);
         color: var(--secondary-color);
         box-shadow: none;
         >.icon{
@@ -101,22 +133,24 @@
         }
         &:focus, &:not(:disabled):active:focus{
             background-color: transparent;
-            border-color: var(--secondary-icon-color);
+            border-color: var(--button-border-color);
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
         }
         &[disabled], &.disabled, &:disabled{
             box-shadow: none;
             background-color: transparent;
             pointer-events: none;
-            color: var(--secondary-icon-color);
-            border-color: var(--secondary-icon-color);
+            color: var(--button-border-color);
+            border-color: var(--button-border-color);
+            opacity: 0.8;
         }
     }
     &.btn-link{
         background-color: transparent;
         border: none;
         box-shadow: none;
-        color: var(--color);
+        color: var(--secondary-color);
+        padding: 0 1.2rem;
         >.icon{
             width: auto;
             margin: 0 .4rem 0 .4rem;
@@ -129,22 +163,22 @@
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             text-decoration: none;
             color: var(--link-color);
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 0px 1px var(--link-color);
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;
             background-image: none;
-            color: var(--secondary-icon-color);
+            color: var(--button-border-color);
         }
     }
     &.btn-cancel{
         color: var(--secondary-color);    
         background-color: var(--cancel-button-background);    
-        border: 1px solid var(--secondary-icon-color);
+        border: 1px solid var(--button-border-color);
         box-shadow: none;
         &:hover{
             box-shadow: none;
-            background-color: var(--secondary-icon-color);
+            background-color: var(--button-border-color);
             color: var(--color);
         }
         &:not(:disabled):active, &:not(:disabled):focus:active, &:not(:disabled):active:focus{
@@ -160,15 +194,14 @@
             pointer-events: none;
             background-image: none;
             background-color: var(--cancel-button-background);
-            color: var(--secondary-icon-color);
+            color: var(--button-border-color);
         }
     }
     &.btn-danger{
-        background-image: none;
-        background-color: rgba(var(--danger-color-rgb), 0.1);
-        color: var(--danger-color);
+        background-image: linear-gradient(to bottom, var(--danger-primary-color), var(--danger-color));
+        color: var(--inverse-color);
         &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
-            background-color: var(--danger-color);
+            background-image: linear-gradient(to bottom, var(--danger-color), var(--danger-primary-color));
             color: #fff;
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
@@ -176,27 +209,20 @@
         }
     }
     &.btn-success{
-        background-image: none;
-        background-color: rgba(var(--success-color-rgb), 0.1);
-        color: var(--success-color);
+        background-image: linear-gradient(to bottom, var(--success-primary-color), var(--success-color));
+        color: var(--inverse-color);
         &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
             background-color: var(--success-color);
-            color: #fff;
-            >.icon{
-                border-right-color: rgba(255, 255, 255, 0.1);
-            }
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--success-color);
         }
     }
     &.btn-warning{
-        background-image: none;
-        background-color: rgba(var(--warning-color-rgb), 0.1);
-        color: var(--warning-color);
+        background-image: linear-gradient(to bottom, var(--warning-primary-color), var(--warning-color));
+        color: var(--inverse-color);
         &.active, &:not(:disabled):active, &:focus, &:focus:active, &:not(:disabled):active:focus{
             background-color: var(--warning-color);
-            color: #fff;
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--warning-color);
@@ -205,6 +231,30 @@
     &.btn-solid-primary{
         background-image: linear-gradient(to bottom, var(--primary-gradient-color) 1%, var(--link-color));
         color: var(--inverse-color);
+        &:hover, &:focus{
+            opacity: .8;
+        }
+    }
+    &.btn-info{
+        background: none;
+        color: var(--icon-color);
+        padding: 0;
+        box-shadow: none;
+        &:hover, &:focus, &:focus:active, &:active{
+            opacity: .8;
+            box-shadow: none;
+        }
+    }
+    &.btn-dark{
+        background-image: linear-gradient(to bottom, var(--secondary-icon-color), var(--secondary-color));
+        color: var(--inverse-color);
+        &:hover, &:focus{
+            opacity: .8;
+        }
+    }
+    &.btn-light{
+        background-color: var(--inverse-color);
+        color: var(--link-color);
         &:hover, &:focus{
             opacity: .8;
         }
@@ -223,22 +273,37 @@
     }
     &.dropdown-toggle {
         padding: 0 1.4rem;
-        border-right: 1px solid rgba(var(--solid-link-color-rgb), 0.1);
+        border-right: 1px solid rgba(var(--inverse-color-rgb), 0.1);
         border-radius: 3px 0 0 3px;
+        +.btn,
         +joomla-toolbar-button .btn{
             border-radius: 0 3px 3px 0;
         }
     }
 }
-joomla-toolbar-button+.btn.dropdown-toggle{
-    border-radius: 3px 3px 0 0;
-    border-left: 1px solid rgba(var(--solid-link-color-rgb), 0.1);
-    border-right: none;
-}
 .btn-group{
     position: relative;
     display: inline-flex;
     vertical-align: middle;
+    >.btn{
+        margin-left: 0 !important;
+    }
+    &.dropdown-save-group{
+        .button-apply{
+            border-radius: 3px 0 0 3px;
+        }
+        .dropdown-toggle{
+            border-radius: 0 3px 3px 0;
+            border-left: 1px solid rgba(var(--inverse-color-rgb), 0.1);
+            border-right: none;
+            &:hover, &:focus, &:focus:active{
+                border-radius: 0 3px 3px 0;
+                &:before{
+                    border-radius: 0 3px 3px 0;
+                }
+            }
+        }
+    }
     &.btn-group-lg>.btn{
         padding: 0 2.857rem;
         line-height: 3.429rem;
@@ -269,7 +334,7 @@ joomla-toolbar-button+.btn.dropdown-toggle{
         flex: 1 1 auto;
     }
     &.btn-group-border{
-        border: 1px solid var(--secondary-icon-color);
+        border: 1px solid var(--button-border-color);
         border-radius: 3px;
         >.btn{
             border-radius: 0px;
@@ -278,7 +343,7 @@ joomla-toolbar-button+.btn.dropdown-toggle{
                 border: none;
             }
             &:not(:last-child){
-                border-right: 1px solid var(--secondary-icon-color);
+                border-right: 1px solid var(--button-border-color);
             }
         }
     }
