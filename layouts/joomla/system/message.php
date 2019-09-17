@@ -28,16 +28,16 @@ $alert = [
 ];
 
 // Alerts progressive enhancement
-HTMLHelper::_('webcomponent', 'vendor/joomla-custom-elements/joomla-alert.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', ['version' => 'auto', 'relative' => true]);
 ?>
 <div id="system-message-container" aria-live="polite">
 	<div id="system-message">
 		<?php if (is_array($msgList) && !empty($msgList)) : ?>
 			<?php foreach ($msgList as $type => $msgs) : ?>
-				<joomla-alert type="<?php echo $alert[$type] ?? $type; ?>" dismiss="true">
+				<joomla-alert type="<?php echo $alert[$type] ?? $type; ?>" dismiss="true" auto-dismiss="5000">
 					<?php if (!empty($msgs)) : ?>
-						<div class="alert-heading"><?php echo Text::_($type); ?></div>
-						<div>
+						<div class="joomla-alert-heading"><?php echo Text::_($type); ?></div>
+						<div class="joomla-alert-content">
 							<?php foreach ($msgs as $msg) : ?>
 								<p><?php echo $msg; ?></p>
 							<?php endforeach; ?>
