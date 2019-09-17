@@ -3,11 +3,11 @@ $card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 
 .j-card{
-	box-shadow: $card-box-shadow;
 	background: #ffffff;
 	border-radius: 3px;
 	transition: 300ms;
-	&:hover{
+	box-shadow: $card-box-shadow;
+	&.j-card-has-hover:hover{
 		box-shadow: $card-box-shadow-hover;
 	}
 	.j-card-header{
@@ -168,7 +168,9 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 	//button group
 	.j-card-btn-group{
 		@extend .d-flex;
-		padding: 1.071429rem 1.428571rem;
+		&:not(.j-no-padding){
+			padding: 1.071429rem 1.428571rem;
+		}
 		a, 
 		button{
 			flex-grow: 1;
@@ -177,6 +179,18 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			&:not(:last-child){
 				margin-right: 1.071429rem;
 			}
+		}
+	}
+	.j-card-item-group{
+		@extend .j-card-btn-group;
+		.j-card-item{
+			//code
+		}
+		&:not(.j-no-margin) .j-card-item:not(:last-child){
+			margin-right: 15px;
+		}
+		.j-card-item-right{
+			margin-left: auto;
 		}
 	}
 }

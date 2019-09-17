@@ -260,7 +260,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
 
     <div class="row justify-content-center">
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
                         Default Card...
@@ -286,7 +286,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </div>
         </div>
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header j-card-header-sm">
                     <h4 class="j-card-title">
                         Card small header
@@ -313,7 +313,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
         </div>
 
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header j-card-header-sm">
                     <p class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
@@ -342,7 +342,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
 
     <div class="row justify-content-center" style="padding: 30px 0">
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
@@ -365,7 +365,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </div>
         </div>
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
@@ -392,7 +392,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
         </div>
         
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
@@ -420,7 +420,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
 
     <div class="row justify-content-center" style="padding: 30px 0">
         <div class="col-3">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
                         <i class="fas fa-pen-alt"></i>
@@ -467,7 +467,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
 
 
         <div class="col-4">
-            <div class="j-card">
+            <div class="j-card j-card-has-hover">
                 <div class="j-card-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
@@ -489,6 +489,46 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </div>
         </div>
 
+        <div class="col-4">
+            <div class="j-card j-card-has-hover">
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <span class="j-card-divider"></span>
+
+                <div class="j-card-item-group">  <!-- Possible ext class:  j-no-margin, j-no-padding -->
+                    <div class="j-card-item">
+                        <span>Hello</span>
+                    </div>
+                    <div class="j-card-item">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="j-card-item j-card-item-right">
+                        content right
+                    </div>
+                    <div class="j-card-item">
+                        content right
+                    </div>
+                </div>
+
+                <span class="j-card-divider"></span>
+
+                <div class="j-card-btn-group"> <!-- Possible ext class: j-no-padding -->
+                    <a class="btn btn-primary" href="#">Button 1 Button 1</a>
+                    <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
