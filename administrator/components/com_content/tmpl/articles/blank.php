@@ -450,7 +450,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
         <div class="col-3">
             <div class="j-card">
                 <div class="j-card-media">
-                    <img src="https://picsum.photos/400/300" alt="">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
                     <div class="j-card-text">
