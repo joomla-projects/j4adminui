@@ -97,28 +97,32 @@ if($this->item->id > 0)
 						<?php echo HTMLHelper::_('uitab.startTabSet', 'imageTab', array('active' => 'introimage')); ?>
 							<!-- intro images -->
 							<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'introimage', JText::_('COM_CONTENT_FIELD_INTRO_LABEL')); ?>
-								<div class="intro-image-wrap px-3 form-no-margin card">
-									<div class="row">
-										<div class="col-lg-4">
-											<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro' ),'data' => $this)); ?>
-										</div>
+								<div class="intro-image-wrap form-no-margin card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-lg-4">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro' ),'data' => $this)); ?>
+											</div>
 
-										<div class="col-lg-8">
-											<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
+											<div class="col-lg-8">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
+											</div>
 										</div>
 									</div>
 								</div>
 							<?php echo HTMLHelper::_('uitab.endTab'); ?>
 							<!-- full images -->
 							<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'fullimage', JText::_('COM_CONTENT_FIELD_FULL_LABEL')); ?>
-								<div class="full-image-wrap px-3 form-no-margin card">
-									<div class="row">
-										<div class="col-lg-4">
-											<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
-										</div>
+								<div class="full-image-wrap form-no-margin card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-lg-4">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
+											</div>
 
-										<div class="col-lg-8">
-											<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext_alt', 'image_fulltext_caption', 'float_fulltext'),'data' => $this)); ?>
+											<div class="col-lg-8">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext_alt', 'image_fulltext_caption', 'float_fulltext'),'data' => $this)); ?>
+											</div>
 										</div>
 									</div>
 								</div>
