@@ -63,7 +63,9 @@ if($this->item->id > 0)
 
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			<div class="article-title-wrap">
+				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			</div>
 		</div>
 		<div class="col-lg-3">
 			<div class="card p-3">
@@ -80,7 +82,7 @@ if($this->item->id > 0)
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
-							<div class="card-body">
+							<div class="card">
 								<fieldset class="adminform">
 									<?php echo $this->form->getLabel('articletext'); ?>
 									<?php echo $this->form->getInput('articletext'); ?>
