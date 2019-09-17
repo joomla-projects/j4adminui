@@ -136,7 +136,7 @@ abstract class JHtmlSelect
 		$id = $options['id'] !== false ? $options['id'] : $name;
 		$id = str_replace(array('[', ']', ' '), '', $id);
 
-		// If if the selectbox contains "custom-select-color-state" then load the JS file
+		// If the selectbox contains "custom-select-color-state" then load the JS file
 		if (strpos($attribs, 'custom-select-color-state') !== false)
 		{
 			HTMLHelper::_('script', 'system/fields/select-colour.min.js', array('version' => 'auto', 'relative' => true));

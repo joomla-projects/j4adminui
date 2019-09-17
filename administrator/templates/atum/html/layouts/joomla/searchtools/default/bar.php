@@ -6,25 +6,32 @@
  * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 defined('JPATH_BASE') or die;
+
 use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
+
 $data = $displayData;
+
 // Receive overridable options
 $data['options'] = !empty($data['options']) ? $data['options'] : array();
+
 if (is_array($data['options']))
 {
 	$data['options'] = new Registry($data['options']);
 }
+
 // Options
 $filterButton = $data['options']->get('filterButton', true);
 $searchButton = $data['options']->get('searchButton', true);
+
 $filters = $data['view']->filterForm->getGroup('filter');
 ?>
 
 <?php if (!empty($filters['filter_search'])) : ?>
 	<?php if ($searchButton) : ?>
-		<div class="btn-group mr-2">
+		<div class="btn-group">
 			<div class="input-group">
 				<label for="filter_search" class="sr-only">
 					<?php if (isset($filters['filter_search']->label)) : ?>
@@ -46,15 +53,17 @@ $filters = $data['view']->filterForm->getGroup('filter');
 				</span>
 			</div>
 		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary hasTooltip js-stools-btn-filter">
-				<?php echo Text::_('JFILTER_OPTIONS'); ?>
-				<span class="fa fa-angle-down" aria-hidden="true"></span>
-			</button>
-			<button type="button" class="btn btn-primary js-stools-btn-clear mr-2">
-				<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
-			</button>
-		</div>
-		
+		<?php if($filterButton) : ?>
+			<div class="btn-group">
+				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter p-0 ml-3">
+					<span class="fa fa-plus" aria-hidden="true"></span>
+					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
+				</button>
+				<button type="button" class="btn btn-link js-stools-btn-clear p-0 ml-3">
+					<span class="fa fa-times" aria-hidden="true"></span>
+					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
+				</button>
+			</div>
+		<?php endif; ?>
 	<?php endif; ?>
 <?php endif;
