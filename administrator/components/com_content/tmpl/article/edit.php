@@ -243,31 +243,32 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3">
 			<!-- alias, status, category -->
-			<div class=" form-no-margin card">
+			<div class="bg-white px-3 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 				<!-- featured & status -->
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
 			</div>
-			<!-- featured -->
-			<div class=" mt-4 form-no-margin card">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured' ), 'data' => $this)); ?>
+			<!-- category -->
+			<div class="bg-white px-3 mt-4 form-no-margin card">
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
-			<div class=" mt-4 form-no-margin card">
+			<p><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
 			</div>
 			<?php if (Multilanguage::isEnabled()) : ?>
 			<!-- language -->
-				<div class=" mt-4 form-no-margin card">
+				<div class="bg-white px-3 mt-4 form-no-margin card">
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
 				</div>
 			<?php endif; ?>
 			<!-- created -->
-			<div class=" mt-4 form-no-margin card">
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class=" mt-4 form-no-margin card">
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
 			<!-- metadata -->
