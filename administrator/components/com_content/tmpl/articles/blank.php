@@ -465,6 +465,31 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </div>
         </div>
 
+
+        <div class="col-4">
+            <div class="j-card">
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <span class="j-card-divider"></span>
+                <div class="j-card-btn-group">
+                    <a class="btn btn-primary" href="#">Button 1 Button 1</a>
+                    <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
