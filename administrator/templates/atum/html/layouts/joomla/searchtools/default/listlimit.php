@@ -32,12 +32,17 @@ HTMLHelper::_('webcomponent', 'system/pagination.es6.min.js', array('version'=> 
 	<div class="ordering-select">
         <?php if(!empty($listLimit) && count((array)$listLimit->options) > 0) : ?>
             <div class="limit-list">
-                <joomla-pagination class="js-stools-list-group">
+                <!-- <joomla-pagination class="js-stools-list-group">
                     <a href="javascript:" class="has-arrow listlimit-title"><?php echo JText::_('JSHOW'); ?></a>
                     <?php foreach($listLimit->options as $listOption) : ?>
                         <li class="pagination-link js-stools-field-limit-link" activeClass="<?php echo $limit === $listOption->value ? 'active' : ''; ?>" value="<?php echo $listOption->value; ?>" text="<?php echo $listOption->text; ?>"></li>
                     <?php endforeach; ?>
-                </joomla-pagination>
+                </joomla-pagination> -->
+                <ul class="list-unstyle">
+                    <?php foreach($listLimit->options as $listOption) : ?>
+                        <li class="js-stools-field-limit-link <?php echo $limit === $listOption->value ? 'active' : ''; ?>" value="<?php echo $listOption->value; ?>"><?php echo $listOption->text; ?></li>
+                    <?php endforeach; ?>
+                </ul>
                 <input type="hidden" name="<?php echo $listLimit->name; ?>" class="js-stools-limit-list" value="<?php echo $limit; ?>">
             </div>
         <?php endif; ?>

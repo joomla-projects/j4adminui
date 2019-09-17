@@ -81,6 +81,32 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->transitions   = $this->get('Transitions');
 		$this->vote          = PluginHelper::isEnabled('content', 'vote');
+
+		$default = [
+			HTMLHelper::_('select.option', 'A', 'Option A'),
+			HTMLHelper::_('select.option', 'B', 'Option B'),
+			HTMLHelper::_('select.option', 'C', 'Option C'),
+			HTMLHelper::_('select.option', 'D', 'Option D')
+		];
+
+		$attribs = [
+			'id'        => 'transition-select_',
+			'list.attr' => [
+				'class'    => 'custom-select custom-select-sm form-control form-control-sm transition-select-layout',
+				'custom-select-color-state' => true
+			]
+		];
+		Factory::getDocument()->getWebAssetManager()->enableAsset('choicesjs');
+		HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', ['version' => 'auto', 'relative' => true]);
+		?>
+		<joomla-field-fancy-select>
+			<?php echo HTMLHelper::_('select.genericlist', $default, 'transition_', $attribs); ?>
+		</joomla-field-fancy-select>
+		<joomla-field-fancy-select>
+			<?php echo HTMLHelper::_('select.genericlist', $default, 'transition_', $attribs); ?>
+		</joomla-field-fancy-select>
+		<?php
+
 		
 		// Check for errors.
 		if ((count($errors = $this->get('Errors'))) || $this->transitions === false)
