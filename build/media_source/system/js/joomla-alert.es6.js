@@ -77,7 +77,6 @@
           break;
         case 'dismiss':
         case 'acknowledge':
-          console.log('auto dismiss working from herer');
           if (!newValue || newValue === 'true') {
             this.appendCloseButton();
           } else {
@@ -119,7 +118,6 @@
       if (this.querySelector('button.joomla-alert--close') || this.querySelector('button.joomla-alert-button--close')) {
         return;
       }
-
       const self = this;
       const closeButton = document.createElement('button');
 
@@ -236,6 +234,7 @@
     }
 
     /* Method to get the translated text */
+    // eslint-disable-next-line class-methods-use-this
     getText(str, fallback) {
       // TODO: Remove coupling to Joomla CMS Core JS here
       /* eslint-disable-next-line no-undef */
