@@ -42,11 +42,6 @@
                     <span class="fa fa-search-plus" aria-hidden="true"></span>
                 </button>
             </div>
-            <button type="button" href="#" class="media-toolbar-icon media-toolbar-info"
-               @click.stop.prevent="toggleInfoBar"
-               :aria-label="translate('COM_MEDIA_TOGGLE_INFO')">
-                <span class="fa fa-info" aria-hidden="true"></span>
-            </button>
         </div>
     </div>
 </template>
