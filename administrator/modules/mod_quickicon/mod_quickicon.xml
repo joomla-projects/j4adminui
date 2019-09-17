@@ -49,7 +49,7 @@
 				</field>
 				<field
 					name="show_checkin"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_CHECKIN_LABEL"
 					default="0"
 					>
@@ -59,7 +59,7 @@
 				</field>
 				<field
 					name="show_cache"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_CACHE_LABEL"
 					default="0"
 					>
@@ -69,7 +69,7 @@
 				</field>
 				<field
 					name="show_users"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_USERS_LABEL"
 					default="0"
 					>
@@ -79,7 +79,7 @@
 				</field>
 				<field
 					name="show_articles"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_ARTICLES_LABEL"
 					default="0"
 					>
@@ -89,7 +89,7 @@
 				</field>
 				<field
 					name="show_modules"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_MODULES_LABEL"
 					default="0"
 					>
@@ -99,7 +99,7 @@
 				</field>
 				<field
 					name="show_categories"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_CATEGORIES_LABEL"
 					default="0"
 					>
@@ -119,7 +119,7 @@
 				</field>
 				<field
 					name="show_menuitems"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_MENUITEMS_LABEL"
 					default="0"
 					>
@@ -129,7 +129,7 @@
 				</field>
 				<field
 					name="show_plugins"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_PLUGINS_LABEL"
 					default="0"
 					>
