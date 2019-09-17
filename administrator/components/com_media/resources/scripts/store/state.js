@@ -58,6 +58,8 @@ export default {
     selectedItems: [],
     // The state of the infobar
     showInfoBar: false,
+    // Item for the infobar
+    infobarItem: null,
     // List view
     listView: 'grid',
     // The size of the grid items

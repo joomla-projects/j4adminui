@@ -289,8 +289,9 @@ export default {
      * Show the info bar
      * @param state
      */
-    [types.SHOW_INFOBAR]: (state) => {
+    [types.SHOW_INFOBAR]: (state, payload) => {
         state.showInfoBar = true;
+        state.infobarItem = payload;
     },
 
     /**
@@ -299,6 +300,7 @@ export default {
      */
     [types.HIDE_INFOBAR]: (state) => {
         state.showInfoBar = false;
+        state.infobarItem = null;
     },
 
     /**

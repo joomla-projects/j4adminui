@@ -334,7 +334,7 @@
     }
 }
 .media-view-icons {
-    border-left: 1px solid var(--page-background);
+    border-left: 1px solid var(--media-border);
 }
 .media-toolbar-zoom-btn,
 .media-toolbar-view-type {
@@ -504,7 +504,7 @@
 
 //Folder browse breadcrumb style
 .media-breadcrumb {
-    border-color: var(--page-background);
+    border-color: var(--media-border);
 }
 .media-breadcrumb-item {
     background: transparent;
@@ -537,4 +537,7 @@
             }
         }
     }
+}
+.media-infobar {
+    top: 68px;
 }
