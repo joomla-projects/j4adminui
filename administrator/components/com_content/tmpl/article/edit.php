@@ -63,7 +63,9 @@ if($this->item->id > 0)
 
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			<div class="article-title-wrap">
+				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+			</div>
 		</div>
 		<div class="col-lg-3">
 			<div class="card p-3">
@@ -80,7 +82,7 @@ if($this->item->id > 0)
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
-							<div class="card-body">
+							<div class="card">
 								<fieldset class="adminform">
 									<?php echo $this->form->getLabel('articletext'); ?>
 									<?php echo $this->form->getInput('articletext'); ?>
@@ -241,32 +243,31 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3">
 			<!-- alias, status, category -->
-			<div class="bg-white px-3 form-no-margin card">
+			<div class=" form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 				<!-- featured & status -->
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
 			</div>
-			<!-- category -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
+			<!-- featured -->
+			<div class=" mt-4 form-no-margin card">
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured' ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
-			<p><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class=" mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
 			</div>
 			<?php if (Multilanguage::isEnabled()) : ?>
 			<!-- language -->
-				<div class="bg-white px-3 mt-4 form-no-margin card">
+				<div class=" mt-4 form-no-margin card">
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
 				</div>
 			<?php endif; ?>
 			<!-- created -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class=" mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class=" mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
 			<!-- metadata -->
