@@ -145,19 +145,16 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php if ($this->item->client_id == 0) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
-				<fieldset id="fieldset-assignment" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_MODULES_MENU_ASSIGNMENT'); ?></legend>
-					<div>
+				<fieldset id="fieldset-assignment" class="pt-4">
 					<?php echo $this->loadTemplate('assignment'); ?>
-					</div>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
 
 			<?php
-			$this->fieldsets        = array();
-			$this->ignore_fieldsets = array('basic', 'description');
-			echo LayoutHelper::render('joomla.edit.params', $this);
+				$this->fieldsets        = array();
+				$this->ignore_fieldsets = array('basic', 'description');
+				echo LayoutHelper::render('joomla.edit.params', $this);
 			?>
 
 			<?php if ($this->canDo->get('core.admin')) : ?>

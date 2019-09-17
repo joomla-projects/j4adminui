@@ -14,6 +14,4 @@ $form  = $displayData->getForm();
 $title = $form->getField('title') ? 'title' : ($form->getField('name') ? 'name' : '');
 
 ?>
-<div class="form-no-margin bg-white card-body">
-	<?php echo $title ? $form->renderField($title) : ''; ?>
-</div>
+<?php echo $title ? $form->renderField($title) : ''; ?>

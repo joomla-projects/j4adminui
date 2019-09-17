@@ -68,7 +68,7 @@ if($this->item->id > 0)
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div class="card">
+			<div class="card p-3">
 				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><?php echo JText::_('COM_CONTENT_ARTICLE_URL'); ?></a>
 			</div>
 		</div>
