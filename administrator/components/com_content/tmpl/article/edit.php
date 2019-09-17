@@ -67,7 +67,10 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3">
 			<div class="bg-white px-3 card-body">
-				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><?php echo JText::_('COM_CONTENT_ARTICLE_URL'); ?></a>
+				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>">
+					<i class="fas fa-eye"></i>
+					<span><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -89,6 +92,65 @@ if($this->item->id > 0)
 						</div>
 					</div>
 				</div>
+				
+				<?php if ($params->get('show_urls_images_backend') == 1) : ?>
+					<!-- images and links -->
+					<div class="images-and-links-wrap">
+						<?php echo HTMLHelper::_('uitab.startTabSet', 'imageTab', array('active' => 'fullimage')); ?>
+								<!-- intro images -->
+								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'fullimage', JText::_('COM_CONTENT_FIELD_FULL_LABEL')); ?>
+									<div class="intro-image-wrap">
+										<?php // Do not show the images and links options if the edit form is configured not to. ?>
+										<!-- images & links -->
+										<div class="bg-white px-3 mt-4 form-no-margin card-body">
+											<!-- full image -->
+											<div class="row">
+												<div class="col-lg-4">
+													<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
+												</div>
+
+												<div class="col-lg-8">
+													<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
+												</div>
+											</div>
+											<?php
+												//$this->fieldset = 'image-full';
+												//echo LayoutHelper::render('joomla.edit.fieldset', $this); 
+											?> 
+										</div>
+									</div>
+								<?php echo HTMLHelper::_('uitab.endTab'); ?>
+								<!-- full images -->
+								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'introimage', JText::_('COM_CONTENT_INTRO_IMAGE')); ?>
+									<div class="intro-image-wrap">
+										<?php
+											$this->fieldset = 'image-intro';
+											echo LayoutHelper::render('joomla.edit.fieldset', $this);
+										?>
+									</div>
+								<?php echo HTMLHelper::_('uitab.endTab'); ?>
+								<!-- links -->
+								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'links', JText::_('COM_CONTENT_LINKS')); ?>
+									<div class="intro-image-wrap">
+										<?php
+											$this->fieldset = 'linka';
+											echo LayoutHelper::render('joomla.edit.fieldset', $this);
+										?>
+										<?php
+											$this->fieldset = 'linkb';
+											echo LayoutHelper::render('joomla.edit.fieldset', $this);
+										?>
+										<?php
+											$this->fieldset = 'linkc';
+											echo LayoutHelper::render('joomla.edit.fieldset', $this);
+										?>
+									</div>
+								<?php echo HTMLHelper::_('uitab.endTab'); ?>
+							<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+						</div>
+					<?php endif; ?>
+				
+				 
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
 			<?php $this->show_options = $params->get('show_article_options', 1); ?>
@@ -181,38 +243,6 @@ if($this->item->id > 0)
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured' ), 'data' => $this)); ?>
 			</div>
-			<?php // Do not show the images and links options if the edit form is configured not to. ?>
-			<?php if ($params->get('show_urls_images_backend') == 1) : ?>
-				<!-- images & links -->
-				<div class="bg-white px-3 mt-4 form-no-margin card-body">
-					<!-- full image -->
-					<?php
-						$this->fieldset = 'image-full';
-						echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-					?>
-					<a id="more-fields-toggle" href="javascript:void(0);"><?php echo JText::_('COM_CONTENT_MEDIA_FULL_IMAGE_MORE'); ?> <i class="fas fa-chevron-down"></i></a>
-					<!-- intro image -->
-					<?php
-						$this->fieldset = 'image-intro';
-						echo LayoutHelper::render('joomla.edit.fieldset', $this);
-					?>
-					<a id="more-fields-toggle" href="javascript:void(0);"><?php echo JText::_('COM_CONTENT_FIELD_URLS_OPTIONS'); ?> <i class="fas fa-chevron-down"></i></a>
-					<hr>
-					<!-- links -->
-					<?php
-						$this->fieldset = 'linka';
-						echo LayoutHelper::render('joomla.edit.fieldset', $this);
-					?>
-					<?php
-						$this->fieldset = 'linkb';
-						echo LayoutHelper::render('joomla.edit.fieldset', $this);
-					?>
-					<?php
-						$this->fieldset = 'linkc';
-						echo LayoutHelper::render('joomla.edit.fieldset', $this);
-					?>
-				</div>
-			<?php endif; ?>
 			<!-- tags -->
 			<div class="bg-white px-3 mt-4 form-no-margin card-body">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
