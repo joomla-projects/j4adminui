@@ -8,6 +8,9 @@ html {
 body {
    min-height: 100%;
    font-family: "Helvetica Neue", "Segoe UI", "SF Pro Text", "SF Pro Display", "SF UI Text", "SF UI Display", "Roboto", "Noto Sans", "Droid Sans", "Ubuntu","Oxygen", "Fira Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+   text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -76,7 +79,6 @@ a {
   font-size: $display1-size;
 }
 
-label,
 caption {
 	font-size: 12px;
 }
@@ -107,13 +109,8 @@ body .container-main {
     top: 0;
     left: 0;
     z-index: -1;
-    // Note IDE's will consider this file import to fail in SCSS but this is correct for the final compiled CSS file
-    background-color: var(--background);
+	background-color: var(--background);
   }
-
-  // &::after {
-  //   background: linear-gradient(135deg, var(--background) 0%, var(--background) 20%, rgba(225, 229, 231, 0) 100%);
-  // }
 }
 
 .content {

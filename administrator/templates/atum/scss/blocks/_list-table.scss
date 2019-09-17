@@ -7,7 +7,7 @@ table.j-list-table {
     td,
     th {
         border:none;
-        padding: 1rem;
+        padding: 5px 1rem;
         vertical-align: middle;
     }
     
@@ -24,7 +24,7 @@ table.j-list-table {
             font-size: 1rem;
         }
         a{
-            color: var(--secondary-text-color);
+            color: var(--secondary-color);
             font-weight: $normal-weight;
             text-decoration: none;
             &#sorted{
@@ -75,6 +75,7 @@ table.j-list-table {
                 .break-word {
                     .small.break-word{
                         color: var(--secondary-color);
+                        font-size: 1rem;
                     }
                 }
             }
@@ -96,6 +97,37 @@ table.j-list-table {
                         text-decoration: underline;
                     }
                 }
+            }
+
+            .custom-select {
+                padding: 0;
+                border: 0;
+                box-shadow: none;
+                color: var(--success-color);
+                width: 110px;
+                option[selected],
+                option:checked,
+                option:hover {
+                    background: var(--success-color);
+                    color: #fff;
+                }
+                &[data-color="danger"] {
+                    color: var(--danger-color);
+                }
+                &[data-color="primary"] {
+                    color: var(--icon-color);
+                }
+                &[data-color="warning"] {
+                    color: var(--warning-color);
+                }
+            }
+            .badge.badge-info {
+                border: none;
+                background-color: transparent;
+                color: var(--inverse-background);
+                margin: 0;
+                padding: 0;
+                font-size: 1rem;
             }
         }
     }

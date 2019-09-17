@@ -1,5 +1,13 @@
 (() => {
   class JoomlaCalloutElement extends HTMLElement {
+    constructor() {
+      super();
+      this.space = 15;
+      this.action = 'click';
+      this.disableEvent = this.disableEvent.bind(this);
+      this.setPositionOnScroll = this.setPositionOnScroll.bind(this);
+    }
+
     /* Attributes to monitor */
     static get observedAttributes() {
       return ['for', 'dismiss', 'position'];
@@ -15,66 +23,80 @@
 
     set position(value) { return this.setAttribute('position', value); }
 
-
     connectedCallback() {
       if (!this.position || (this.position && ['top', 'bottom', 'left', 'right'].indexOf(this.position) === -1)) {
         this.position = 'right';
       }
 
+      const action = this.getAttribute('action');
+      this.action = action && action === 'hover' ? 'mouseenter' : this.action;
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(this.for);
-      const innerLinks = this.querySelectorAll('a');
+      this.button = document.querySelector(this.for);
 
-      if (!button.id) {
+      if (!this.button.id) {
         return;
       }
       if (this.hasAttribute('dismiss')) {
         this.appendCloseButton();
       }
 
-      button.setAttribute('aria-haspopup', true);
-      button.setAttribute('aria-expanded', false);
+      this.button.setAttribute('aria-haspopup', true);
+      this.button.setAttribute('aria-expanded', false);
 
-      window.addEventListener('scroll', (e) => {
-        e.preventDefault();
-        if (this.hasAttribute('expanded')) {
-          const buttonRect = button.getBoundingClientRect();
-          const space1 = 5;
-          const calloutRect = this.getBoundingClientRect();
-          const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, space1);
-        }
-      });
-
-      button.addEventListener('click', (event) => {
+      this.button.addEventListener(this.action, (event) => {
         event.preventDefault();
-        if (this.hasAttribute('expanded')) {
-          this.removeAttribute('expanded');
-          event.target.setAttribute('aria-expanded', false);
-        } else {
-          this.setAttribute('expanded', '');
-          event.target.setAttribute('aria-expanded', true);
-          const buttonRect = button.getBoundingClientRect();
-          const space = 5;
-          const calloutRect = this.getBoundingClientRect();
-          const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
-          this.calloutPosition(copyPosition, buttonRect, calloutRect, space);
-        }
+        this.open(event);
+      });
+    }
 
-        document.addEventListener('click', (evt) => {
-          if (evt.target !== button && evt.target !== this) {
-            if (!this.findAncestor(evt.target, 'joomla-callout')) {
-              this.close();
-            }
-          }
-        });
+    open(event) {
+      const innerLinks = this.querySelectorAll('a');
+      if (this.hasAttribute('expanded')) {
+        this.removeAttribute('expanded');
+        event.target.setAttribute('aria-expanded', false);
+      } else {
+        this.setAttribute('expanded', '');
+        event.target.setAttribute('aria-expanded', true);
+        const buttonRect = this.button.getBoundingClientRect();
+        const calloutRect = this.getBoundingClientRect();
+        const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
+        this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
+      }
+      const trigger = this.action === 'mouseenter' ? 'mouseover' : this.action;
+      document.addEventListener(trigger, this.disableEvent, true);
+      // Check position when browser scroll
+      window.addEventListener('scroll', this.setPositionOnScroll, true);
 
-        innerLinks.forEach((innerLink) => {
-          innerLink.addEventListener('click', () => {
-            this.close();
-          });
+      innerLinks.forEach((innerLink) => {
+        innerLink.addEventListener('click', () => {
+          this.close();
         });
       });
+    }
+
+    disableEvent(event) {
+      if (
+        !this.button.contains(event.target)
+          && event.target !== this.button
+          && event.target !== this) {
+        if (!this.findAncestor(event.target, 'joomla-callout')) {
+          this.close();
+        }
+      }
+    }
+
+    /**
+     * Check callout position on scroll and set the inline style
+     * @param {Object} event
+     */
+    setPositionOnScroll(event) {
+      event.preventDefault();
+      if (this.hasAttribute('expanded')) {
+        const buttonRect = this.button.getBoundingClientRect();
+        const calloutRect = this.getBoundingClientRect();
+        const copyPosition = this.checkPosition(this.position, buttonRect, calloutRect);
+        this.calloutPosition(copyPosition, buttonRect, calloutRect, this.space);
+      }
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -151,6 +173,9 @@
       const button = document.querySelector(`#${this.getAttribute('aria-labelledby')}`);
       this.removeAttribute('expanded');
       button.setAttribute('aria-expanded', false);
+      const trigger = this.action === 'mouseenter' ? 'mouseover' : this.action;
+      document.removeEventListener(trigger, this.disableEvent, true);
+      window.removeEventListener('scroll', this.setPositionOnScroll, true);
     }
 
     appendCloseButton() {

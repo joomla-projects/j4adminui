@@ -96,11 +96,31 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::sprintf('COM_MODULES_MANAGER_MODULE', Text::_($this->item->module)), 'cube module');
 
+		// Get the help information for the menu item.
+		$lang = Factory::getLanguage();
+
+		$help = $this->get('Help');
+
+		if ($lang->hasKey($help->url))
+		{
+			$debug = $lang->setDebug(false);
+			$url = Text::_($help->url);
+			$lang->setDebug($debug);
+		}
+		else
+		{
+			$url = null;
+		}
+
+		ToolbarHelper::help($help->key, false, $url);
+
 		// For new records, check the create permission.
 		if ($isNew && $canDo->get('core.create'))
-		{
+		{	
+			// cancel button
+			ToolbarHelper::cancel('module.cancel');
+			// save
 			ToolbarHelper::apply('module.apply');
-
 			ToolbarHelper::saveGroup(
 				[
 					['save', 'module.save'],
@@ -108,11 +128,11 @@ class HtmlView extends BaseHtmlView
 				],
 				'btn-success'
 			);
-
-			ToolbarHelper::cancel('module.cancel');
 		}
 		else
 		{
+			ToolbarHelper::cancel('module.cancel', 'JTOOLBAR_CANCEL');
+
 			$toolbarButtons = [];
 
 			// Can't save the record if it's checked out.
@@ -121,8 +141,7 @@ class HtmlView extends BaseHtmlView
 				// Since it's an existing record, check the edit permission.
 				if ($canDo->get('core.edit'))
 				{
-					ToolbarHelper::apply('module.apply');
-
+					$toolbarButtons[] = ['apply', 'module.apply'];
 					$toolbarButtons[] = ['save', 'module.save'];
 
 					// We can save this record, but check the create permission to see if we can return to make a new one.
@@ -143,26 +162,7 @@ class HtmlView extends BaseHtmlView
 				$toolbarButtons,
 				'btn-success'
 			);
-
-			ToolbarHelper::cancel('module.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		// Get the help information for the menu item.
-		$lang = Factory::getLanguage();
-
-		$help = $this->get('Help');
-
-		if ($lang->hasKey($help->url))
-		{
-			$debug = $lang->setDebug(false);
-			$url = Text::_($help->url);
-			$lang->setDebug($debug);
-		}
-		else
-		{
-			$url = null;
-		}
-
-		ToolbarHelper::help($help->key, false, $url);
 	}
 }

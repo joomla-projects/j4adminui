@@ -52,19 +52,18 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 <form action="<?php echo Route::_('index.php?option=com_modules&layout=' . $layout . $tmpl . '&client_id=' . $this->form->getValue('client_id') . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="module-form" class="form-validate">
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+	<div class="row">
+		<div class="col-lg-9">
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
-	<div>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
+			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_MODULES_MODULE')); ?>
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_MODULES_MODULE')); ?>
 
-		<div class="row">
-			<div class="col-lg-9">
 				<div class="card">
-					<div class="card-body">
-						<?php if ($this->item->xml) : ?>
-							<?php if ($this->item->xml->description) : ?>
+					<?php if ($this->item->xml) : ?>
+						<?php if ($this->item->xml->description) : ?>
+							<div class="card-header">
 								<h2>
 									<?php
 									if ($this->item->xml)
@@ -76,12 +75,11 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 										echo Text::_('COM_MODULES_ERR_XML');
 									}
 									?>
-								</h2>
-								<div class="info-labels">
-									<span class="badge badge-secondary">
+									<span class="badge badge-success">
 										<?php echo $this->item->client_id == 0 ? Text::_('JSITE') : Text::_('JADMINISTRATOR'); ?>
 									</span>
-								</div>
+								</h2>
+
 								<div>
 									<?php
 									$this->fieldset    = 'description';
@@ -105,22 +103,26 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 										}
 									}
 									?>
-									<p><?php echo $short_description; ?></p>
+									<p class="text-muted mb-0"><?php echo $short_description; ?></p>
 									<?php if ($long_description) : ?>
-										<p class="readmore">
+										<p class="readmore card-link mt-2">
 											<a href="#" onclick="document.querySelector('#tab-description').click();">
 												<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
 											</a>
 										</p>
 									<?php endif; ?>
 								</div>
-							<?php endif; ?>
-						<?php else : ?>
+							</div>
+						<?php endif; ?>
+					<?php else : ?>
+						<div class="p-3">
 							<div class="alert alert-danger">
 								<span class="fa fa-exclamation-triangle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('ERROR'); ?></span>
 								<?php echo Text::_('COM_MODULES_ERR_XML'); ?>
 							</div>
-						<?php endif; ?>
+						</div>
+					<?php endif; ?>
+					<div class="card-body">
 						<?php
 						if ($hasContent)
 						{
@@ -128,84 +130,82 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						}
 						$this->fieldset = 'basic';
 						$html = LayoutHelper::render('joomla.edit.fieldset', $this);
-						echo $html ? '<hr>' . $html : '';
+						echo $html;
 						?>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
-					<?php
-					// Set main fields.
-					$this->fields = array(
-						'showtitle',
-						'position',
-						'published',
-						'publish_up',
-						'publish_down',
-						'access',
-						'ordering',
-						'language',
-						'note'
-					);
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-					?>
-					<?php if ($this->item->client_id == 0) : ?>
-						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
-					<?php else : ?>
-						<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
-					<?php endif; ?>
+			<?php if (isset($long_description) && $long_description != '') : ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
+					<div class="card">
+						<div class="card-body">
+							<?php echo $long_description; ?>
+						</div>
 					</div>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+			<?php endif; ?>
+
+			<?php if ($this->item->client_id == 0) : ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
+				<fieldset id="fieldset-assignment" class="pt-4">
+					<?php echo $this->loadTemplate('assignment'); ?>
+				</fieldset>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+			<?php endif; ?>
+
+			<?php
+				$this->fieldsets        = array();
+				$this->ignore_fieldsets = array('basic', 'description');
+				echo LayoutHelper::render('joomla.edit.params', $this);
+			?>
+
+			<?php if ($this->canDo->get('core.admin')) : ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_MODULES_FIELDSET_RULES')); ?>
+				<fieldset id="fieldset-permissions" class="options-grid-form options-grid-form-full">
+					<legend><?php echo Text::_('COM_MODULES_FIELDSET_RULES'); ?></legend>
+					<div>
+					<?php echo $this->form->getInput('rules'); ?>
+					</div>
+				</fieldset>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+			<?php endif; ?>
+
+			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+
+			<input type="hidden" name="task" value="">
+			<input type="hidden" name="return" value="<?php echo $input->getCmd('return'); ?>">
+			<?php echo HTMLHelper::_('form.token'); ?>
+			<?php echo $this->form->getInput('module'); ?>
+			<?php echo $this->form->getInput('client_id'); ?>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="card">
+				<div class="card-body">
+				<?php
+				// Set main fields.
+				$this->fields = array(
+					'showtitle',
+					'published',
+					'position',
+					'ordering',
+					'access',
+					'publish_up',
+					'publish_down',
+					'language',
+					'note'
+				);
+				?>
+				<?php if ($this->item->client_id == 0) : ?>
+					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+				<?php else : ?>
+					<?php echo LayoutHelper::render('joomla.edit.admin_modules', $this); ?>
+				<?php endif; ?>
 				</div>
 			</div>
 		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php if (isset($long_description) && $long_description != '') : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
-				<div class="card">
-					<div class="card-body">
-						<?php echo $long_description; ?>
-					</div>
-				</div>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php endif; ?>
-
-		<?php if ($this->item->client_id == 0) : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
-			<fieldset id="fieldset-assignment" class="options-grid-form options-grid-form-full">
-				<legend><?php echo Text::_('COM_MODULES_MENU_ASSIGNMENT'); ?></legend>
-				<div>
-				<?php echo $this->loadTemplate('assignment'); ?>
-				</div>
-			</fieldset>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php endif; ?>
-
-		<?php
-		$this->fieldsets        = array();
-		$this->ignore_fieldsets = array('basic', 'description');
-		echo LayoutHelper::render('joomla.edit.params', $this);
-		?>
-
-		<?php if ($this->canDo->get('core.admin')) : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_MODULES_FIELDSET_RULES')); ?>
-			<fieldset id="fieldset-permissions" class="options-grid-form options-grid-form-full">
-				<legend><?php echo Text::_('COM_MODULES_FIELDSET_RULES'); ?></legend>
-				<div>
-				<?php echo $this->form->getInput('rules'); ?>
-				</div>
-			</fieldset>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php endif; ?>
-
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
-
-		<input type="hidden" name="task" value="">
-		<input type="hidden" name="return" value="<?php echo $input->getCmd('return'); ?>">
-		<?php echo HTMLHelper::_('form.token'); ?>
-		<?php echo $this->form->getInput('module'); ?>
-		<?php echo $this->form->getInput('client_id'); ?>
 	</div>
+
+
 </form>

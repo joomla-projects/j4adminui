@@ -36,7 +36,7 @@ if ($saveOrder && !empty($this->items))
 	<div id="j-main-container" class="j-main-container">
 		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<?php if ($this->total > 0) : ?>
-			<table class="table" id="moduleList">
+			<table class="table j-list-table" id="moduleList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_MODULES_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -47,6 +47,9 @@ if ($saveOrder && !empty($this->items))
 						</td>
 						<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+						</th>
+						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:1%; min-width:85px" class="text-center">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
@@ -77,9 +80,9 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'a.language', $listDirn, $listOrder); ?>
 						</th>
 						<?php endif; ?>
-						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-						</th>
+						<th scope="col" width="5%" class="text-center d-md-table-cell">
+							<?php echo JText::_('JGRID_HEADING_ACTION'); ?>
+						</th>	
 					</tr>
 				</thead>
 				<tbody <?php if ($saveOrder) :?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="false"<?php endif; ?>>
@@ -114,6 +117,9 @@ if ($saveOrder && !empty($this->items))
 							<?php if ($canChange && $saveOrder) : ?>
 								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
 							<?php endif; ?>
+						</td>
+						<td class="d-none d-md-table-cell">
+							<?php echo (int) $item->id; ?>
 						</td>
 						<td class="text-center">
 							<?php // Check if extension is enabled ?>
@@ -182,8 +188,8 @@ if ($saveOrder && !empty($this->items))
 								<?php endif; ?>
 							</td>
 						<?php endif; ?>
-						<td class="d-none d-md-table-cell">
-							<?php echo (int) $item->id; ?>
+						<td class="text-center">
+							<i class="fas fa-ellipsis-h"></i>
 						</td>
 					</tr>
 					<?php endforeach; ?>

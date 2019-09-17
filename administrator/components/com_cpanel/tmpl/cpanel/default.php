@@ -43,16 +43,14 @@ echo HTMLHelper::_(
 ?>
 <div id="cpanel-modules">
 	<?php if ($this->quickicons) : ?>
-	<div class="cpanel-modules <?php echo $this->position; ?>-quickicons">
-		<div class="card-columns">
+		<div class="cpanel-modules <?php echo $this->position; ?>-quickicons">
 			<?php // Display the icon position modules
 			foreach ($this->quickicons as $iconmodule)
 			{
-				echo ModuleHelper::renderModule($iconmodule, array('style' => 'well'));
+				echo ModuleHelper::renderModule($iconmodule, array('style' => 'simple'));
 			}
-		?>
+			?>
 		</div>
-	</div>
 	<?php endif; ?>
 
 	<div class="cpanel-modules <?php echo $this->position; ?>">
