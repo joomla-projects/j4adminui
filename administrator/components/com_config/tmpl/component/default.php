@@ -35,6 +35,7 @@ if ($this->fieldsets)
 
 // @TODO delete this when custom elements modal is merged
 HTMLHelper::_('script', 'com_config/admin-application-default.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'auto', 'relative' => true));
 
 $xml = $this->form->getXml();
 ?>
@@ -58,13 +59,17 @@ $xml = $this->form->getXml();
 
 			<?php if ($this->fieldsets): ?>
 			<?php $opentab = 0; ?>
-			<ul class="nav nav-tabs mt-2" id="configTabs">
+
+			<joomla-tab>
 				<?php foreach ($this->fieldsets as $name => $fieldSet) : ?>
 					<?php
 					// Only show first level fieldsets as tabs
 					if ($xml->xpath('//fieldset/fieldset[@name="' . $name . '"]')) :
 						continue;
 					endif;
+					$hasChildren = $xml->xpath('//fieldset[@name="' . $name . '"]/fieldset');
+					$hasParent = $xml->xpath('//fieldset/fieldset[@name="' . $name . '"]');
+					$isGrandchild = $xml->xpath('//fieldset/fieldset/fieldset[@name="' . $name . '"]');
 					?>
 					<?php $dataShowOn = ''; ?>
 					<?php if (!empty($fieldSet->showon)) : ?>
@@ -72,17 +77,6 @@ $xml = $this->form->getXml();
 						<?php $dataShowOn = ' data-showon=\'' . json_encode(FormHelper::parseShowOnConditions($fieldSet->showon, $this->formControl)) . '\''; ?>
 					<?php endif; ?>
 					<?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
-					<li class="nav-item"<?php echo $dataShowOn; ?>><a class="nav-link" data-toggle="tab" href="#<?php echo $name; ?>"><?php echo Text::_($label); ?></a></li>
-				<?php endforeach; ?>
-			</ul>
-
-			<div class="tab-content form-no-margin" id="configContent">
-				<?php foreach ($this->fieldsets as $name => $fieldSet) : ?>
-					<?php
-					$hasChildren = $xml->xpath('//fieldset[@name="' . $name . '"]/fieldset');
-					$hasParent = $xml->xpath('//fieldset/fieldset[@name="' . $name . '"]');
-					$isGrandchild = $xml->xpath('//fieldset/fieldset/fieldset[@name="' . $name . '"]');
-					?>
 
 					<?php if (!$isGrandchild && $hasParent) : ?>
 						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="options-grid-form options-grid-form-half">
@@ -90,24 +84,22 @@ $xml = $this->form->getXml();
 							<div>
 					<?php elseif (!$hasParent) : ?>
 						<?php if ($opentab) : ?>
-
 							<?php if ($opentab > 1) : ?>
 								</div>
 								</fieldset>
 							<?php endif; ?>
-
 							</div>
-
+							</section>
 						<?php endif; ?>
 
-						<div class="tab-pane" id="<?php echo $name; ?>">
+						<section orientation="vertical" id="<?php echo $name; ?>" class="<?php echo $dataShowOn; ?>" name="<?php echo Text::_($label); ?>">
+							<div class="<?php echo ($name != 'permissions') ? 'card p-4' : 'pt-4'; ?>">
 
 						<?php $opentab = 1; ?>
 
 						<?php if (!$hasChildren) : ?>
 
 						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="options-grid-form options-grid-form-half">
-							<legend><?php echo Text::_($fieldSet->label); ?></legend>
 							<div>
 						<?php $opentab = 2; ?>
 						<?php endif; ?>
@@ -138,7 +130,8 @@ $xml = $this->form->getXml();
 					<?php endif; ?>
 					</div>
 				<?php endif; ?>
-			</div>
+			</joomla-tab>
+
 			<?php else: ?>
 				<div class="alert alert-info">
 					<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>

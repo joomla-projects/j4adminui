@@ -9,19 +9,22 @@
   box-shadow: 0 1px 1px 0 #eaedf2;
   z-index: $zindex-header;
   color: var(--atum-special-color);
-  padding-left: $sidebar-width;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 60px;
   transition: .3s ease;
-  
+  padding-left: $sidebar-width;
+  @include media-breakpoint-down(xs){
+    padding-left: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
   .header-title {
     flex-grow: 1;
     .container-title {
       width: 100%;
     }
-
     @include media-breakpoint-down(xs) {
       width: 100%;
     }

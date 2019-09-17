@@ -80,10 +80,6 @@ joomla-tab a[disabled=true]{
 joomla-tab > section {
 	position: relative;
 	display: none;
-	padding: 15px; 
-	border-radius: 3px;
-	box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
-	border: solid 1px var(--secondary-icon-color);
 }
 
 joomla-tab > section[active] {

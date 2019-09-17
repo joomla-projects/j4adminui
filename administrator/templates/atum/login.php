@@ -121,14 +121,35 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 
 	<div class="container-fluid container-main order-1">
 		<section id="content" class="content h-100">
-			<main class="d-flex justify-content-center align-items-center h-100">
-				<div class="login">
-					<div class="main-brand text-center">
-						<img src="<?php echo $loginLogo; ?>"
-							 alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>">
+			<main class="d-flex justify-content-center align-items-center">
+				<div class="main-wrap">
+					<div class="main-sidebar">
+						<div class="main-brand text-center">
+							<div id="main-brand-logo" class="main-brand-logo">
+								<img src="<?php echo $loginLogo; ?>"
+								alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>">
+							</div> <!-- /.main-brand-logo -->
+							<div class="main-greetings">
+								<h3><?php echo JText::_('COM_CPANEL_WELCOME_BEGINNERS_TITLE'); ?></h3>
+							</div>
+							<div class="main-informations">
+								<ul>
+									<li><?php echo JText::_('COM_CPANEL_INFO_OPENSOURCE_INFRASTRUCTURE'); ?></li>
+									<li><?php echo JText::_('COM_CPANEL_INFO_CONTENT_MANAGEMENT'); ?></li>
+									<li><?php echo JText::_('COM_CPANEL_INFO_EXTENSIONS'); ?></li>
+								</ul>
+							</div>
+							<jdoc:include type="modules" name="sidebar" style="body" />
+						</div>
+					</div> <!-- /.main-sidebar -->
+				
+					<div class="login">
+						<div id="main-brand" class="main-brand">
+							<h3><?php echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
+						</div>
+						<jdoc:include type="component" />
 					</div>
-					<jdoc:include type="component" />
-				</div>
+				</div> <!-- /.main-wrap -->
 			</main>
 		</section>
 
@@ -137,15 +158,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 		</div>
 	</div>
 
-	<?php // Sidebar ?>
-	<div id="sidebar-wrapper" class="sidebar-wrapper order-0">
-		<div id="main-brand" class="main-brand">
-			<h1><?php echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h1>
-		</div>
-		<div id="sidebar">
-			<jdoc:include type="modules" name="sidebar" style="body" />
-		</div>
-	</div>
+	
 </div>
 <jdoc:include type="modules" name="debug" style="none" />
 <jdoc:include type="scripts" />
