@@ -5,6 +5,7 @@
 joomla-tab {
 	display: flex;
 	flex-direction: column;
+	font-size: 1.15rem;
 }
 
 joomla-tab > ul {
@@ -15,9 +16,7 @@ joomla-tab > ul {
 	white-space: nowrap;  
 	position: relative;
 	z-index: 1;
-	li {
-		border-bottom: 1px solid var(--secondary-icon-color);
-	}
+	border-bottom: 1px solid var(--secondary-icon-color);
 }
 
 joomla-tab a[role=tab] {
@@ -30,6 +29,7 @@ joomla-tab a[role=tab] {
 
 joomla-tab a[role=tab][active] {
 	color: var(--color);
+	font-weight: $medium-weight;
 }
 joomla-tab a[role=tab]:after {
 	background-color: var(--primary-gradient-color);
@@ -63,8 +63,9 @@ joomla-tab a[role=tab]:not([active]):hover{
 joomla-tab ul li a[role=tab]:focus {
 	outline: var(--primary-color) solid 2px;
 	&::after{
-		opacity: 0;
-		visibility: hidden;
+		background-color: var(--primary-color);
+		opacity: 1;
+		visibility: visible;
 	}
 }
 joomla-tab a[disabled=true]:hover,

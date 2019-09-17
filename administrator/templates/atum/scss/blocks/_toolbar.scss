@@ -179,3 +179,35 @@
 		}
 	}
 }
+
+//TinyMCE editor
+.js-editor-tinymce {
+  &.joomla-tinymce-hide-menu {
+    .tox-menubar {
+      display: none;
+    }
+    .tox {
+      .tox-toolbar {
+        border: none;
+      }
+    }
+  }
+  .tox {
+    .tox-tbtn {
+      svg {
+        fill: var(--icon-color);
+        &.toggle-elipsis {
+          fill: var(--secondary-icon-color);
+          &:hover {
+            fill: var(--success-color);
+          }
+        }
+      }
+      &:hover {
+        svg {
+          fill: var(--success-color);
+        }
+      }
+    }
+  }
+}
