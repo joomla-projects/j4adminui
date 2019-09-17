@@ -202,6 +202,17 @@
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--warning-color);
         }
     }
+    &.btn-solid-primary{
+        background-image: linear-gradient(to bottom, var(--primary-gradient-color) 1%, var(--link-color));
+        color: var(--inverse-color);
+        &:hover, &:focus{
+            opacity: .8;
+        }
+    }
+    &.btn-block{
+        display: block;
+        width: 100%;
+    }
     &.button-new{
         padding-left: 1.5rem;
         .icon{
