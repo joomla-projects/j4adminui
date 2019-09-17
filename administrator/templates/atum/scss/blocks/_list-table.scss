@@ -24,7 +24,7 @@ table.j-list-table {
             font-size: 1rem;
         }
         a{
-            color: var(--secondary-color);
+            color: var(--table-sort-color);
             font-weight: $normal-weight;
             text-decoration: none;
             &#sorted{

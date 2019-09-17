@@ -9,7 +9,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div class="container" style="background:white; padding: 10px;">
         <h1> Joomla Pagination </h1>
@@ -124,7 +124,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <h1> Joomla Dropdown </h1>
     <div style="width: 100%">
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
             <joomla-dropdown for="#dropdownList">
                 <a class="dropdown-item" href="#">Item 1</a>
                 <a class="dropdown-item" href="#">Item 2</a>
@@ -132,7 +132,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a href="#">
+            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a>
             <joomla-dropdown for="#dropdownText">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>
@@ -199,8 +199,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
                 <a href="#" class="btn btn-primary">Save changes</a href="#">
             </footer>
         </joomla-modal>
-        
-        
+
+
         <joomla-modal id="exampleModal2" title="Modal title" close-a href="#"-title="Close" width="100%" height="400px" iframe="https://www.joomla.org">
             <section>
                 <h4>I'm a Modal</h4>
@@ -215,6 +215,20 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
     <h1> Joomla Alert </h1>
     <div style="width:100%">
             <!-- Alert with icon & content -->
+        <joomla-alert dismiss="true">
+            <div class="joomla-alert--icon">
+                <img src="./smile.svg" alt="">
+            </div>
+            <div class="joomla-alert-content">
+                Alert with icon & content
+                <div class="joomla-alert-link-group">
+                    <a href="#">Link1</a>
+                    <a href="#">Link2</a>
+                </div>
+            </div>
+        </joomla-alert>
+
+            <!-- Alert with header & content -->
         <joomla-alert dismiss="true">
             <div class="joomla-alert--icon">
                 <img src="./smile.svg" alt="">
@@ -253,4 +267,246 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates odit consequatur illum?
         </joomla-alert>
     </div>
+
+
+    <section style="background: lightgray; padding: 30px 0">
+    <h1> Joomla Card </h1>
+
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
+                        Default Card...
+                    </h4>
+
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer d-flex align-items-center">
+                    <div class="j-card-footer-item">
+                        <a href="#">Details Information</a>
+                    </div>
+                    <div class="j-card-footer-item j-card-footer-icon">
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header j-card-header-sm">
+                    <h4 class="j-card-title">
+                        Card small header
+                    </h4>
+
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer">
+                    <div class="j-card-footer-item j-card-footer-icon">
+                        <button class="fas fa-eye"></button>
+                    </div>
+                    <div class="j-card-footer-item">
+                        <button><i class="fas fa-key"></i> Details Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header j-card-header-sm">
+                    <p class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card small title + icon
+                    </p>
+
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer">
+                    <div class="j-card-footer-item">
+                        <a href="#">Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<hr>
+
+    <div class="row justify-content-center" style="padding: 30px 0">
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Footer Large
+                    </h4>
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#">Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Footer Large
+                    </h4>
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="fas fa-key"></i> Details Information</a>
+                    </div>
+                    <div class="j-card-footer-item j-card-footer-icon">
+                        <button class="fas fa-eye"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Footer Large
+                    </h4>
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<hr>
+
+    <div class="row justify-content-center" style="padding: 30px 0">
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-header">
+                    <h4 class="j-card-title">
+                        <i class="fas fa-pen-alt"></i>
+                        Card Footer Large
+                    </h4>
+                    <div class="j-card-header-right">
+                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    </div>
+                </div>
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-3">
+            <div class="j-card">
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-4">
+            <div class="j-card">
+                <div class="j-card-media">
+                    <img src="https://picsum.photos/id/684/400/300" alt="">
+                </div>
+                <div class="j-card-body j-card-body-has-padding">
+                    <div class="j-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
+                    </div>
+                </div>
+                <span class="j-card-divider"></span>
+                <div class="j-card-btn-group">
+                    <a class="btn btn-primary" href="#">Button 1 Button 1</a>
+                    <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
+                </div>
+                <div class="j-card-footer j-card-footer-lg">
+                    <div class="j-card-footer-item">
+                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    </section>
+
 </div>

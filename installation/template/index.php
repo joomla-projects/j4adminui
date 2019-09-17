@@ -26,7 +26,7 @@ HTMLHelper::_('behavior.core');
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('script', 'installation/template/js/template.js', ['version' => 'auto']);
-HTMLHelper::_('webcomponent', 'vendor/joomla-custom-elements/joomla-alert.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', ['version' => 'auto', 'relative' => true]);
 
 // Add script options
 $this->addScriptOptions('system.installation', ['url' => Route::_('index.php')]);

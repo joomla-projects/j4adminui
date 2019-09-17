@@ -1,9 +1,23 @@
 // Login page
 
 .view-login {
-
+  position: relative;
+  background-color: var(--link-color);
+  &:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    z-index: -1;
+  }
   .container-main {
-
+    z-index: 10;
+    &:before, &:after{
+      background-color: transparent;
+    }
     @include media-breakpoint-down(sm) {
       min-height: calc(100vh - 35vh);
       flex-wrap: wrap;
@@ -19,8 +33,147 @@
         max-width: 98%;
       }
     }
+    a[target=_blank]:before{
+      display: none;
+    }
   }
-
+  .main-wrap{
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 3px;
+    box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.3);
+    max-width: 860px;
+    width: 100%;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+    .main-sidebar{
+      background: var(--color);
+      flex: 0 0 43%;
+      max-width: 43%;
+      padding: 4.2rem 2rem 2rem 2rem;
+      color: var(--inverse-color);
+      border-radius: 3px 0px 0px 3px;
+      @include media-breakpoint-down(sm) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 1.2rem;
+        margin-top: 30px;
+        border-radius: 3px 3px 0 0;
+      }
+      .main-brand{
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+      }
+    }
+    .main-greetings{
+      margin-top: 1.7rem;
+      margin-bottom: 3.5rem;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 1rem;
+      }
+      h3{
+        font-weight: 500;
+      }
+    }
+    .main-informations{
+      text-align: left;
+      opacity: 0.8;
+      >ul{
+        padding: 0;
+        >li{
+          display: flex;
+          align-items: baseline;
+          &:not(:last-child){
+            margin-bottom: 1.2rem;
+            @include media-breakpoint-down(sm) {
+              margin-bottom: .3rem;
+            }
+          }
+          &:before {
+            content: "\f058";
+            font: normal normal normal 14px/1 Font Awesome\ 5 Free;
+            margin-right: 10px;
+            opacity: 0.3;
+          }
+        }
+      }
+    }
+    .main-informations+.module-wrapper{
+      margin-top: auto;
+      flex: initial;
+      padding: 0;
+    }
+    .main-brand-logo{
+      min-width: 50px;
+    }
+    .loginsupport{
+      font-weight: 500;
+      a{
+        &:hover, &:focus{
+          color: var(--inverse-color);
+        }
+      }
+      >ul{
+        display: flex;
+        margin: 0;
+        >li{
+          display: flex;
+          align-items: center;
+          &:not(:last-child){
+            margin-right: 5px;
+          }
+          &:before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            opacity: 0.5;
+            background-color: var(--link-color);
+            float: left;
+            border-radius: 10px;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    .login{
+      flex: 0 0 57%;
+      max-width: 57%;
+      padding: 3.2rem 6.4rem;
+      border-radius: 0px 3px 3px 0px;
+      @include media-breakpoint-down(sm) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 1.2rem;
+        border-radius: 0 0 3px 3px;
+      }
+      .main-brand>h3{
+        font-size: 1.72rem;
+        text-align: center;
+        font-weight: normal;
+        margin-bottom: 4rem;
+        color: var(--color);
+        @include media-breakpoint-down(sm) {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+      }
+      a{
+        color: var(--icon-color);
+        &:hover, &:focus{
+          color: var(--link-color);
+          text-decoration: none;
+        }
+      }
+    }
+    .module-wrapper{
+      >.card{
+        background: transparent;
+        box-shadow: initial;
+      }
+    }
+  }
   .login-bg-grad {
     position: fixed;
     z-index: $zindex-negative;
@@ -46,18 +199,9 @@
   }
 
   .login {
-    width: 25rem;
     background: var(--white);
     padding: 15px;
     color: var(--atum-text-dark);
-    border-radius: 3px;
-    margin-top: 10rem;
-    align-self: flex-start;
-    box-shadow: 0 0 10px 0 #ccc;
-
-    @include media-breakpoint-down(md) {
-      margin-top: 3rem;
-    }
 
     img {
       height: 4.4rem;
@@ -69,6 +213,9 @@
       .form-group {
         position: relative;
         margin-bottom: 1.85rem;
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 1rem;
+        }
 
         .form-control-feedback {
           text-align: right;
@@ -79,11 +226,6 @@
         }
       }
 
-    }
-
-    #btn-login-submit {
-      background: var(--atum-bg-dark);
-      color:rgba(255,255,255,0.8);
     }
   }
 
@@ -123,10 +265,8 @@
       }
     }
   }
-
-  input:focus,
-  select:focus {
-    background: $white;
+  .input-group{
+    background-color: var(--input-background-color);
   }
 
   h1 {

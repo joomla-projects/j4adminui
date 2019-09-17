@@ -61,26 +61,33 @@ if($this->item->id > 0)
 
 <form action="<?php echo Route::_('index.php?option=com_content&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-	<div class="row">
-		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
-		</div>
-		<div class="col-lg-3">
-			<div class="card p-3">
-				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><?php echo JText::_('COM_CONTENT_ARTICLE_URL'); ?></a>
+	<div class="article-title-info-wrapper">
+		<div class="row align-items-center">
+			<div class="col-lg-9">
+				<div class="form-no-margin form-title-wrap">
+					<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="j-card">
+					<div class="j-card-header artilce-preview-link">
+						<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
+						<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row mt-4">
+	<div class="row">
 		<div class="col-lg-9">
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
+						<div class="j-card">
+							<div class="j-card-body j-card-body-has-padding">
 								<fieldset class="adminform">
 									<?php echo $this->form->getLabel('articletext'); ?>
 									<?php echo $this->form->getInput('articletext'); ?>
@@ -90,64 +97,76 @@ if($this->item->id > 0)
 					</div>
 				</div>
 				
+				<?php // Do not show the images and links options if the edit form is configured not to. ?>
 				<?php if ($params->get('show_urls_images_backend') == 1) : ?>
 					<!-- images and links -->
 					<div class="images-and-links-wrap">
-						<?php echo HTMLHelper::_('uitab.startTabSet', 'imageTab', array('active' => 'fullimage')); ?>
-								<!-- intro images -->
-								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'fullimage', JText::_('COM_CONTENT_FIELD_FULL_LABEL')); ?>
-									<div class="intro-image-wrap">
-										<?php // Do not show the images and links options if the edit form is configured not to. ?>
-										<!-- images & links -->
-										<div class="bg-white px-3 mt-4 form-no-margin card-body">
-											<!-- full image -->
-											<div class="row">
-												<div class="col-lg-4">
-													<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
-												</div>
-
-												<div class="col-lg-8">
-													<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
-												</div>
+						<?php echo HTMLHelper::_('uitab.startTabSet', 'imageTab', array('active' => 'introimage')); ?>
+							<!-- intro images -->
+							<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'introimage', JText::_('COM_CONTENT_FIELD_INTRO_LABEL')); ?>
+								<div class="intro-image-wrap form-no-margin card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-lg-4">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro' ),'data' => $this)); ?>
 											</div>
-											<?php
-												//$this->fieldset = 'image-full';
-												//echo LayoutHelper::render('joomla.edit.fieldset', $this); 
-											?> 
+
+											<div class="col-lg-8">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
+											</div>
 										</div>
 									</div>
-								<?php echo HTMLHelper::_('uitab.endTab'); ?>
-								<!-- full images -->
-								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'introimage', JText::_('COM_CONTENT_INTRO_IMAGE')); ?>
-									<div class="intro-image-wrap">
-										<?php
-											$this->fieldset = 'image-intro';
-											echo LayoutHelper::render('joomla.edit.fieldset', $this);
-										?>
+								</div>
+							<?php echo HTMLHelper::_('uitab.endTab'); ?>
+							<!-- full images -->
+							<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'fullimage', JText::_('COM_CONTENT_FIELD_FULL_LABEL')); ?>
+								<div class="full-image-wrap form-no-margin card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-lg-4">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
+											</div>
+
+											<div class="col-lg-8">
+												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext_alt', 'image_fulltext_caption', 'float_fulltext'),'data' => $this)); ?>
+											</div>
+										</div>
 									</div>
-								<?php echo HTMLHelper::_('uitab.endTab'); ?>
-								<!-- links -->
-								<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'links', JText::_('COM_CONTENT_LINKS')); ?>
-									<div class="intro-image-wrap">
-										<?php
-											$this->fieldset = 'linka';
-											echo LayoutHelper::render('joomla.edit.fieldset', $this);
-										?>
-										<?php
-											$this->fieldset = 'linkb';
-											echo LayoutHelper::render('joomla.edit.fieldset', $this);
-										?>
-										<?php
-											$this->fieldset = 'linkc';
-											echo LayoutHelper::render('joomla.edit.fieldset', $this);
-										?>
+								</div>
+							<?php echo HTMLHelper::_('uitab.endTab'); ?>
+							<!-- links -->
+							<?php echo HTMLHelper::_('uitab.addTab', 'imageTab', 'links', JText::_('COM_CONTENT_FIELD_URLS_OPTIONS')); ?>
+
+								<div class="urls-wrap px-3 form-no-margin card">
+									<div class="row">
+										<div class="col-lg-6">
+											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLA_LABEL'); ?></h3>
+											<?php
+												$this->fieldset = 'linka';
+												echo LayoutHelper::render('joomla.edit.fieldset', $this);
+											?>
+										</div>
+										<div class="col-lg-6">
+											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLB_LABEL'); ?></h3>
+											<?php
+												$this->fieldset = 'linkb';
+												echo LayoutHelper::render('joomla.edit.fieldset', $this);
+											?>
+										</div>
+										<div class="col-lg-6">
+											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLC_LABEL'); ?></h3>
+											<?php
+												$this->fieldset = 'linkc';
+												echo LayoutHelper::render('joomla.edit.fieldset', $this);
+											?>
+										</div>
 									</div>
-								<?php echo HTMLHelper::_('uitab.endTab'); ?>
-							<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
-						</div>
-					<?php endif; ?>
+								</div>
+							<?php echo HTMLHelper::_('uitab.endTab'); ?>
+						<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+					</div>
+				<?php endif; ?>
 				
-				 
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
 			<?php $this->show_options = $params->get('show_article_options', 1); ?>
@@ -227,36 +246,42 @@ if($this->item->id > 0)
 			<input type="hidden" name="forcedLanguage" value="<?php echo $input->get('forcedLanguage', '', 'cmd'); ?>">
 			<?php echo HTMLHelper::_('form.token'); ?>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="bg-white px-3 form-no-margin card-body">
-				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
-				<!-- status -->
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
-				<!-- category -->
+			<div class="form-no-margin j-card">
+				<div class="j-card-body j-card-body-has-padding">
+					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
+					<!-- featured & status -->
+					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
+				</div>
+			</div>
+			<!-- category -->
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
 			</div>
-			<!-- featured -->
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured' ), 'data' => $this)); ?>
-			</div>
 			<!-- tags -->
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
+			<p><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
 			</div>
 			<?php if (Multilanguage::isEnabled()) : ?>
 			<!-- language -->
-				<div class="bg-white px-3 mt-4 form-no-margin card-body">
+				<div class="bg-white px-3 mt-4 form-no-margin card">
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
 				</div>
 			<?php endif; ?>
 			<!-- created -->
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class="bg-white px-3 mt-4 form-no-margin card-body">
+			<div class="bg-white px-3 mt-4 form-no-margin card">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
+			</div>
+			<!-- metadata -->
+			<p><?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?></p>
+			<div class="bg-white px-3 mt-4 form-no-margin card">
+				<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
 			</div>
 		</div>
 	</div>
