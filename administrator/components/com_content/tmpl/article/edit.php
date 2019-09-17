@@ -61,28 +61,33 @@ if($this->item->id > 0)
 
 <form action="<?php echo Route::_('index.php?option=com_content&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-	<div class="row">
-		<div class="col-lg-9">
-			<div class="article-title-wrap">
-				<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+	<div class="article-title-info-wrapper">
+		<div class="row align-items-center">
+			<div class="col-lg-9">
+				<div class="form-no-margin form-title-wrap">
+					<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+				</div>
 			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card p-3">
-				<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></a>
+			<div class="col-lg-3">
+				<div class="j-card">
+					<div class="j-card-header artilce-preview-link">
+						<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
+						<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row mt-4">
+	<div class="row">
 		<div class="col-lg-9">
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="card">
-							<div class="card">
+						<div class="j-card">
+							<div class="j-card-body j-card-body-has-padding">
 								<fieldset class="adminform">
 									<?php echo $this->form->getLabel('articletext'); ?>
 									<?php echo $this->form->getInput('articletext'); ?>
@@ -241,12 +246,14 @@ if($this->item->id > 0)
 			<input type="hidden" name="forcedLanguage" value="<?php echo $input->get('forcedLanguage', '', 'cmd'); ?>">
 			<?php echo HTMLHelper::_('form.token'); ?>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="bg-white px-3 form-no-margin card">
-				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
-				<!-- featured & status -->
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
+			<div class="form-no-margin j-card">
+				<div class="j-card-body j-card-body-has-padding">
+					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
+					<!-- featured & status -->
+					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
+				</div>
 			</div>
 			<!-- category -->
 			<div class="bg-white px-3 mt-4 form-no-margin card">

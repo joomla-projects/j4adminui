@@ -77,6 +77,7 @@
           break;
         case 'dismiss':
         case 'acknowledge':
+          console.log('auto dismiss working from herer');
           if (!newValue || newValue === 'true') {
             this.appendCloseButton();
           } else {
