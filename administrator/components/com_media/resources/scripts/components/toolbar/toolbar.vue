@@ -11,28 +11,37 @@
         <media-breadcrumb></media-breadcrumb>
         <div class="media-view-search-input" role="search">
             <label for="media_search" class="sr-only">{{ translate('COM_MEDIA_SEARCH') }}</label>
-            <input id="media_search" type="text" @input="changeSearch" :placeholder="translate('COM_MEDIA_SEARCH')"/>
+            <input id="media_search" class="form-control" type="text" @input="changeSearch" :placeholder="translate('COM_MEDIA_SEARCH')"/>
         </div>
         <div class="media-view-icons">
-            <button type="button" class="media-toolbar-icon media-toolbar-decrease-grid-size"
-               v-if="isGridView"
-               :class="{disabled: isGridSize('xs')}"
-               @click.stop.prevent="decreaseGridSize()" 
-               :aria-label="translate('COM_MEDIA_DECREASE_GRID')">
-                <span class="fa fa-search-minus" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="media-toolbar-icon media-toolbar-increase-grid-size"
-               v-if="isGridView"
-               :class="{disabled: isGridSize('xl')}"
-               @click.stop.prevent="increaseGridSize()" 
-               :aria-label="translate('COM_MEDIA_INCREASE_GRID')">
-                <span class="fa fa-search-plus" aria-hidden="true"></span>
-            </button>
-            <button type="button" href="#" class="media-toolbar-icon media-toolbar-list-view"
-               @click.stop.prevent="changeListView()"
-               :aria-label="translate('COM_MEDIA_TOGGLE_LIST_VIEW')">
-                <span :class="toggleListViewBtnIcon" aria-hidden="true"></span>
-            </button>
+            <div class="media-toolbar-view-type" :class="activGridClass">
+                <button type="button" href="#" class="media-toolbar-icon media-toolbar-grid-view" 
+                @click.stop.prevent="changeListView('grid')"
+                :aria-label="translate('COM_MEDIA_TOGGLE_GRID_VIEW')">
+                    <span class="fa fa-th" aria-hidden="true"></span>
+                </button>
+                <button type="button" href="#" class="media-toolbar-icon media-toolbar-list-view"
+                @click.stop.prevent="changeListView('table')"
+                :aria-label="translate('COM_MEDIA_TOGGLE_LIST_VIEW')">
+                    <span class="fa fa-list" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="media-toolbar-zoom-btn">
+                <button type="button" class="media-toolbar-icon media-toolbar-decrease-grid-size"
+                v-if="isGridView"
+                :class="{disabled: isGridSize('xs')}"
+                @click.stop.prevent="decreaseGridSize()" 
+                :aria-label="translate('COM_MEDIA_DECREASE_GRID')">
+                    <span class="fa fa-search-minus" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="media-toolbar-icon media-toolbar-increase-grid-size"
+                v-if="isGridView"
+                :class="{disabled: isGridSize('xl')}"
+                @click.stop.prevent="increaseGridSize()" 
+                :aria-label="translate('COM_MEDIA_INCREASE_GRID')">
+                    <span class="fa fa-search-plus" aria-hidden="true"></span>
+                </button>
+            </div>
             <button type="button" href="#" class="media-toolbar-icon media-toolbar-info"
                @click.stop.prevent="toggleInfoBar"
                :aria-label="translate('COM_MEDIA_TOGGLE_INFO')">
@@ -48,11 +57,11 @@
     export default {
         name: 'media-toolbar',
         computed: {
-            toggleListViewBtnIcon() {
-                return (this.isGridView) ? 'fa fa-list' : 'fa fa-th';
+            activGridClass() {
+                return (this.isGridView) ? 'grid-active' : 'list-active';
             },
             toggleSelectAllBtnIcon() {
-                return (this.allItemsSelected) ? 'fa fa-check-square' : 'fa fa-square'
+                return (this.allItemsSelected) ? 'media-checkbox active' : 'media-checkbox'
             },
             isLoading() {
                 return this.$store.state.isLoading;
@@ -85,12 +94,10 @@
                     this.$store.commit(types.INCREASE_GRID_SIZE);
                 }
             },
-            changeListView() {
-                if (this.$store.state.listView === 'grid') {
-                    this.$store.commit(types.CHANGE_LIST_VIEW, 'table');
-                } else {
-                    this.$store.commit(types.CHANGE_LIST_VIEW, 'grid');
-                }
+            changeListView(viewType) {
+                if (this.$store.state.listView === viewType)
+                    return false;
+                this.$store.commit(types.CHANGE_LIST_VIEW, viewType);
             },
             toggleSelectAll() {
                 if (this.allItemsSelected) {

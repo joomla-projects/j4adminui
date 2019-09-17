@@ -324,8 +324,10 @@
             e.preventDefault();
             break;
           case 9:
-            nextTabItem.querySelector('a').click();
             nextTabItem.querySelector('a').focus();
+            e.preventDefault();
+          case 13:
+            nextTabItem.querySelector('a').click();
             e.preventDefault();
             break;
           default:

@@ -15,6 +15,9 @@ joomla-tab > ul {
 	white-space: nowrap;  
 	position: relative;
 	z-index: 1;
+	li {
+		border-bottom: 1px solid var(--secondary-icon-color);
+	}
 }
 
 joomla-tab a[role=tab] {
@@ -30,9 +33,9 @@ joomla-tab a[role=tab][active] {
 }
 joomla-tab a[role=tab]:after {
 	background-color: var(--primary-gradient-color);
-	bottom: -1px;
+	bottom: 0px;
 	content: "";
-	height: 4px;
+	height: 2px;
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -42,24 +45,22 @@ joomla-tab a[role=tab]:after {
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 }
-joomla-tab a[role=tab][active]:hover:after {
-	background-color: var(--primary-gradient-color);
+
+joomla-tab a[role=tab][active]{
+	&::after {
+		background-color: var(--primary-gradient-color);
+		opacity: 1;
+		visibility: visible;
+	}
 }
-joomla-tab a[role=tab]:hover:after,
-joomla-tab a[role=tab][active]:after {
-	opacity: 1;
-	visibility: visible;
+joomla-tab a[role=tab]:not([active]):hover{
+	&::after {
+		background-color: var(--secondary-color);
+		opacity: 1;
+		visibility: visible;
+	}
 }
-joomla-tab a[role=tab]:hover{
-	color: var(--color);
-}
-joomla-tab a[role=tab]:hover:after{
-	background-color: var(--secondary-icon-color);
-}
-joomla-tab a[role=tab]:focus{
-	outline: none;
-}
-joomla-tab a[role=tab]:focus {
+joomla-tab ul li a[role=tab]:focus {
 	outline: var(--primary-color) solid 2px;
 	&::after{
 		opacity: 0;
