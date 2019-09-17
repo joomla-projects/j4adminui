@@ -61,9 +61,9 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_MODULES_MODULE')); ?>
 
 				<div class="card">
-					<div class="card-body">
-						<?php if ($this->item->xml) : ?>
-							<?php if ($this->item->xml->description) : ?>
+					<?php if ($this->item->xml) : ?>
+						<?php if ($this->item->xml->description) : ?>
+							<div class="card-header">
 								<h2>
 									<?php
 									if ($this->item->xml)
@@ -75,12 +75,11 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 										echo Text::_('COM_MODULES_ERR_XML');
 									}
 									?>
-								</h2>
-								<div class="info-labels">
-									<span class="badge badge-secondary">
+									<span class="badge badge-success">
 										<?php echo $this->item->client_id == 0 ? Text::_('JSITE') : Text::_('JADMINISTRATOR'); ?>
 									</span>
-								</div>
+								</h2>
+
 								<div>
 									<?php
 									$this->fieldset    = 'description';
@@ -104,22 +103,26 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 										}
 									}
 									?>
-									<p><?php echo $short_description; ?></p>
+									<p class="text-muted mb-0"><?php echo $short_description; ?></p>
 									<?php if ($long_description) : ?>
-										<p class="readmore">
+										<p class="readmore card-link mt-2">
 											<a href="#" onclick="document.querySelector('#tab-description').click();">
 												<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
 											</a>
 										</p>
 									<?php endif; ?>
 								</div>
-							<?php endif; ?>
-						<?php else : ?>
+							</div>
+						<?php endif; ?>
+					<?php else : ?>
+						<div class="p-3">
 							<div class="alert alert-danger">
 								<span class="fa fa-exclamation-triangle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('ERROR'); ?></span>
 								<?php echo Text::_('COM_MODULES_ERR_XML'); ?>
 							</div>
-						<?php endif; ?>
+						</div>
+					<?php endif; ?>
+					<div class="card-body">
 						<?php
 						if ($hasContent)
 						{
@@ -127,7 +130,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						}
 						$this->fieldset = 'basic';
 						$html = LayoutHelper::render('joomla.edit.fieldset', $this);
-						echo $html ? '<hr>' . $html : '';
+						echo $html;
 						?>
 					</div>
 				</div>

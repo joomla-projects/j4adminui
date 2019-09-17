@@ -39,7 +39,9 @@ endif;
 					</div>
 					
 					<div class="card-body">
-						<?php echo $desc; ?>
+						<p class="text-muted m-0">
+							<?php echo $desc; ?>
+						</p>
 					</div>
 
 					<div class="card-footer text-center">
