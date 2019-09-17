@@ -207,10 +207,22 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			font-size: 1.714286rem;
 			height: 3.571429rem;
 			width: 3.571429rem;
-			background: rgba(var(--primary-color-rgb), .2);
-			color: var(--primary-color);
 			border-radius: 50%;
 			margin-right: 1.428571rem;
+			background: rgba(var(--primary-color-rgb), .2);
+			color: var(--primary-color);
+			&.j-warning{
+				background: rgba(var(--warning-color-rgb), .2);
+				color: var(--warning-color);
+			}
+			&.j-danger{
+				background: rgba(var(--danger-color-rgb), .2);
+				color: var(--danger-color);
+			}
+			&.j-success{
+				background: rgba(var(--success-color-rgb), .2);
+				color: var(--success-color);
+			}
 		}
 		.j-card-overview-content{
 			font-size: 3.857143rem;

@@ -534,15 +534,37 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.es6.min.js', array('version'=
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-3">
                 <div class="j-card j-card-has-hover">
                     <div class="j-card-header j-card-header-sm">
                         <div class="j-card-header-right">
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box j-card-overview-info">
-                        <div class="j-card-overview-icon">
+                    <div class="j-card-overview-box">
+                        <div class="j-card-overview-icon j-warning">
+                            <i class="fab fa-invision"></i>
+                        </div>
+                        <div class="j-card-overview-content">
+                            65 <sub>Article</sub>
+                        </div>
+                    </div>
+                    <div class="j-card-footer j-card-footer-lg">
+                        <div class="j-card-footer-item">
+                            <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="j-card j-card-has-hover">
+                    <div class="j-card-header j-card-header-sm">
+                        <div class="j-card-header-right">
+                            <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                        </div>
+                    </div>
+                    <div class="j-card-overview-box">
+                        <div class="j-card-overview-icon j-danger">
                             <i class="fab fa-invision"></i>
                         </div>
                         <div class="j-card-overview-content">
