@@ -42,41 +42,45 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style jcard jcard-has-hover mb-4">
+									<div class="template-style<?php echo ($item->home == '1') ? ' template-default' : ''; ?> jcard jcard-has-hover mb-4">
 										<div class="jcard-media">
 											<div class="template-thumbnail">
-												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 												<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
 												<?php if ($clientId === 0) : ?>
-													<div class="template-overlay">
+													<div class="jcard-media-overlay align-items-center justify-content-center">
 														<a href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" target="_blank" class="btn btn-default">
 															<i class="fas fa-eye"></i> &nbsp;Preview
 														</a>
 													</div>
 												<?php endif; ?>
+												<div class="select-style">
+													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+												</div>
 											</div>
 										</div>
 
 										<div class="list-group list-group-flush">
 										
-											<div class="list-group-item">
-												<h4 class="jcard-title">
-													<span class="fas fa-info-circle fa-fw jcard-icon" id="template-info-<?php echo $item->id; ?>"></span>
-													<span class="template-name">
-														<?php if ($canEdit) : ?>
-															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+											<div class="list-group-item py-3">
+												<div class="d-flex align-items-center">
+													<div class="flex-grow-1">
+														<span class="fas fa-info-circle fa-fw jcard-icon" id="template-info-<?php echo $item->id; ?>"></span>
+														<span class="template-name">
+															<?php if ($canEdit) : ?>
+																<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+																	<?php echo ucfirst($this->escape($item->template)); ?>
+																</a>
+															<?php else : ?>
 																<?php echo ucfirst($this->escape($item->template)); ?>
-															</a>
-														<?php else : ?>
-															<?php echo ucfirst($this->escape($item->template)); ?>
+															<?php endif; ?>
+														</span>
+														<?php if ($version = $item->xmldata->get('version')) : ?>
+															<span class="template-version">v<?php echo $this->escape($version); ?></span>
 														<?php endif; ?>
-													</span>
-													<?php if ($version = $item->xmldata->get('version')) : ?>
-														<span class="template-version">v<?php echo $this->escape($version); ?></span>
-													<?php endif; ?>
-												</h4>
-												<div class="jcard-header-right">
-													<button class="jcard-header-icon fas fa-ellipsis-h"></button>
+													</div>
+													<div class="m-n2">
+														<button class="iconic-btn btn-sm fas fa-ellipsis-h"></button>
+													</div>
 												</div>
 											</div>
 
@@ -128,13 +132,13 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 														<?php endif; ?>
 													</div>
 
-													<div class="flex-shrink-1">
-														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
-															<span class="fas fa-clone fa-fw"></span>
+													<div class="m-n2">
+														<a class="iconic-btn btn-sm" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')" aria-label="<?php echo Text::_(''); ?>">
+															<span class="fas fa-clone fa-fw" aria-hidden="true"></span>
 														</a>
 
-														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
-															<span class="fas fa-trash fa-fw"></span>
+														<a class="iconic-btn btn-sm" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')" aria-label="<?php echo Text::_(''); ?>">
+															<span class="fas fa-trash fa-fw" aria-hidden="true"></span>
 														</a>
 													</div>
 												</div>
