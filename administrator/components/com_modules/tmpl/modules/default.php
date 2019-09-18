@@ -119,36 +119,6 @@ Factory::getApplication()->getDocument()->getWebAssetManager()->enableAsset('swi
 							<?php echo (int) $item->id; ?>
 						</td>
 						<td class="text-center">
-							<?php 
-							// echo '<xmp>';
-							// print_r($this->switchers);
-							// echo '</xmp>';
-							?>
-
-						<!-- <fieldset>
-							<legend class="switcher__legend">
-								<?php //echo $label; ?>
-							</legend>
-							<div class="switcher">
-
-								<input type="radio" id="jform_showtitle0" name="jform[showtitle]" value="0">
-								<label for="jform_showtitle0">Hide</label>
-								<input type="radio" id="jform_showtitle1" name="jform[showtitle]" value="1" checked="checked" class="active">
-								<label for="jform_showtitle1">Show</label>
-
-								<span class="toggle-outside"><span class="toggle-inside"></span></span>
-							</div>
-						</fieldset> -->
-							
-
-							<?php //echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'published' ), 'data' => $this)); ?>
-
-							<div class="switcher" onChange="this.form.submit();">
-								<input type="radio" id="asd" name="asda" value="asdasd" />
-								<input type="radio" id="asds" name="asda" value="asdasds" />
-								<span class="toggle-outside"><span class="toggle-inside"></span></span>
-							</div>
-							
 							<?php // Check if extension is enabled ?>
 							<?php if ($item->enabled > 0) : ?>
 								<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'modules.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
