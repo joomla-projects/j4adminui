@@ -31,6 +31,8 @@ if ($saveOrder && !empty($this->items))
 	$saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 	HTMLHelper::_('draggablelist.draggable');
 }
+
+Factory::getApplication()->getDocument()->getWebAssetManager()->enableAsset('switcher');
 ?>
 <form action="<?php echo Route::_('index.php?option=com_modules&view=modules&client_id=' . $clientId); ?>" method="post" name="adminForm" id="adminForm">
 	<div id="j-main-container" class="j-main-container">
@@ -48,7 +50,7 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 						</th>
-						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+						<th scope="col" style="width:2%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:1%; min-width:85px" class="text-center">
@@ -57,19 +59,11 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" class="title">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
-						</th>
-						<?php if ($clientId === 0) : ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
-						</th>
-						<?php endif; ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
 						</th>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell text-center">
@@ -80,6 +74,9 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'a.language', $listDirn, $listOrder); ?>
 						</th>
 						<?php endif; ?>
+						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
+						</th>
 						<th scope="col" width="5%" class="text-center d-md-table-cell">
 							<?php echo JText::_('JGRID_HEADING_ACTION'); ?>
 						</th>	
@@ -122,6 +119,36 @@ if ($saveOrder && !empty($this->items))
 							<?php echo (int) $item->id; ?>
 						</td>
 						<td class="text-center">
+							<?php 
+							// echo '<xmp>';
+							// print_r($this->switchers);
+							// echo '</xmp>';
+							?>
+
+						<!-- <fieldset>
+							<legend class="switcher__legend">
+								<?php //echo $label; ?>
+							</legend>
+							<div class="switcher">
+
+								<input type="radio" id="jform_showtitle0" name="jform[showtitle]" value="0">
+								<label for="jform_showtitle0">Hide</label>
+								<input type="radio" id="jform_showtitle1" name="jform[showtitle]" value="1" checked="checked" class="active">
+								<label for="jform_showtitle1">Show</label>
+
+								<span class="toggle-outside"><span class="toggle-inside"></span></span>
+							</div>
+						</fieldset> -->
+							
+
+							<?php //echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'published' ), 'data' => $this)); ?>
+
+							<div class="switcher" onChange="this.form.submit();">
+								<input type="radio" id="asd" name="asda" value="asdasd" />
+								<input type="radio" id="asds" name="asda" value="asdasds" />
+								<span class="toggle-outside"><span class="toggle-inside"></span></span>
+							</div>
+							
 							<?php // Check if extension is enabled ?>
 							<?php if ($item->enabled > 0) : ?>
 								<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'modules.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
@@ -165,14 +192,6 @@ if ($saveOrder && !empty($this->items))
 						<td class="small d-none d-md-table-cell">
 							<?php echo $item->name; ?>
 						</td>
-						<?php if ($clientId === 0) : ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $item->pages; ?>
-						</td>
-						<?php endif; ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $this->escape($item->access_level); ?>
-						</td>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<td class="small d-none d-md-table-cell text-center">
 							<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
@@ -188,6 +207,9 @@ if ($saveOrder && !empty($this->items))
 								<?php endif; ?>
 							</td>
 						<?php endif; ?>
+						<td class="small d-none d-md-table-cell">
+							<?php echo $this->escape($item->access_level); ?>
+						</td>
 						<td class="text-center">
 							<i class="fas fa-ellipsis-h"></i>
 						</td>
