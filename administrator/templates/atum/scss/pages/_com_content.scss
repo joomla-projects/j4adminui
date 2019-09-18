@@ -6,9 +6,8 @@
 		joomla-tab {
 			#attrib-basic[active],
 			#editor[active] {
-				display: flex;
-				flex-wrap: wrap;
-
+				@extend .d-flex;
+				@extend .flex-wrap;
 				.form-group {
 					flex: 0 0 50%;
 					max-width: 50%;
@@ -60,12 +59,12 @@
 			}
 		}
 		.alias-wrap{
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
+			@extend .d-flex;
+			@extend .align-items-center;
+			@extend .justify-content-between;
 			.alias-text{
-				display: flex;
-				align-items: center;
+				@extend .d-flex;
+				@extend .align-items-center;
 				margin: 0;
 				.control-label{
 					min-width: 110px;
@@ -75,14 +74,14 @@
 				}
 			}
 			#edit-alias{
-				color: var(--button-border-color);
+				color: var(--secondary-icon-color);
 				font-size: 12px;
 				
 			}
 			.alias-edit{
 				display: none;
 				.control-group{
-					display: flex;
+					@extend .d-flex;
 				}
 			}
 			&.active{

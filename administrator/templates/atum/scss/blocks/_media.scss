@@ -3,24 +3,24 @@
 //Progress bar style
 .joomla-progress {
     background: #f1f8ec;
-    display: flex;
+    @extend .d-flex;
     height: 6px;
     overflow: hidden;
     font-size: .75rem;
     border-radius: .25rem;
-    border: 1px solid #5fac23;
+    border: 1px solid var(--success-color);
     width: 100%;
     margin-left: 15px;
     .joomla-progress-bar {
         background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-        background-size: 1rem 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        background-size: $display1-size $display1-size;
+        @extend .d-flex;
+        @extend .flex-column;
+        @extend .justify-content-center;
         color: var(--inverse-color);
         text-align: center;
         white-space: nowrap;
-        background-color: #5fac23;
+        background-color: var(--success-color);
         transition: width .6s ease;
     }
 }
@@ -32,10 +32,10 @@
     max-height: 300px;
     overflow-y: scroll;
     .joomla-recent-uploaded-media-item {
-        display: flex;
+        @extend .d-flex;
+        @extend .align-items-center;
+        @extend .justify-content-center;
         position: relative;
-        align-items: center;
-        justify-content: space-between;
         border-bottom: 1px solid rgba(0, 0, 0, .15);
         padding: 20px 0px;
         &:last-child {
@@ -43,8 +43,8 @@
         }
         .joomla-progress-container {
             width: 205px;
-            display: flex;
-            align-items: center;
+            @extend .d-flex;
+            @extend .align-items-center;
             margin-right: 15px;
             span {
                 padding-left: 15px;
@@ -52,8 +52,8 @@
             }
         }
         .joomla-recent-upload-file {
-            display: flex;
-            align-items: center;
+            @extend .d-flex;
+            @extend .align-items-center;
             span {
                 &:first-child {
                     margin-right: 10px;
@@ -77,10 +77,10 @@
             }
         }
         .joomla-upload-complete {
-            display: flex;
-            align-items: center;
+            @extend .d-flex;
+            @extend .align-items-center;
             i {
-                color: #5fac23;
+                color: var(--success-color);
                 font-size: 1.15rem;
             }
             span {
@@ -110,8 +110,8 @@
             line-height: 1.9rem;
             padding-right: 23px;
             padding-left: 5px;
-            display: flex;
-            align-items: center;
+            @extend .d-flex;
+            @extend .align-items-center;
             transition: .35s;
             &:hover {
                 border-color: var(--danger-color);
@@ -166,9 +166,30 @@
 }
 .media-browser-item-preview {
     color: #93ceff;
-    font-size: 6rem;
+    position: relative;
+    font-size: $display1-size;
     &::after {
         display: none;
+    }
+    &:hover {
+        .media-item-preview {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .media-item-preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        @extend .d-flex;
+        @extend .align-items-center;
+        @extend .justify-content-center;
+        transition: .35s;
+        opacity: 0;
+        visibility: hidden;
     }
 }
 .media-browser-select{
@@ -178,7 +199,7 @@
     width: 20px;
     height: 20px;
     content: initial;
-    background-color: #bdc5c8;
+    background-color: var(--secondary-icon-color);
     border: 0;
     border-radius: 0.25rem;
     box-shadow: none;
@@ -200,7 +221,7 @@
         content: "\F00C";
         opacity: 1;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        color: #fff;
+        color: var(--inverse-color);
         margin: auto;
         right: 0;
         bottom: 0;
@@ -209,9 +230,9 @@
 }
 .selected {
     .media-browser-select {
-        color: #fff;
+        color: var(--inverse-color);
         box-shadow: none;
-        background-color: #0184ff;
+        background-color: var(--primary-color);
         &::after {
             transform: scale(.6);
         }
@@ -220,7 +241,7 @@
 .media-browser-item-info {
     padding: 1.08rem 3.3rem 1.06rem 1.08rem;
     overflow: hidden;
-    font-size: 1rem;
+    font-size: $display1-size;
     line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -232,6 +253,7 @@
     right: 12px;
     padding: 0;
     overflow: visible;
+    z-index: 10;
     > button{
         opacity: 1;
     }
@@ -250,7 +272,7 @@
     right: 0;
     top: 25px;
     width: 200px;
-    background: #ffff;
+    background: var(--inverse-color);
     border-radius: 3px;
     box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
     border: solid 1px #eaeef5;
@@ -286,7 +308,7 @@
         height: auto;
         margin-right: 5px;
         &::before {
-            font-size: 1rem;
+            font-size: $display1-size;
         }
     }
 }
@@ -308,6 +330,7 @@
 }
 .file-icon, .folder-icon{
     color: #93ceff;
+    font-size: 4.3rem;
 }
 .action-delete {
     .image-browser-action {
@@ -323,9 +346,9 @@
     border-top-right-radius: 0;
 }
 .media-toolbar-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
     width: 68px;
     border-left: none;
     box-shadow: none;
@@ -338,13 +361,13 @@
 }
 .media-toolbar-zoom-btn,
 .media-toolbar-view-type {
-    display: flex;
-    align-items: center;
+    @extend .d-flex;
+    @extend .align-items-center;
     .media-toolbar-icon {
         padding: 0;
         width: 30px;
         height: 30px;
-        color: #bdc5c8;
+        color: var(--secondary-icon-color);
         display: inline-block;
         line-height: 30px;
         transition: .35s;
@@ -392,7 +415,7 @@
     border-radius: 3px;
     box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
     border: solid 1px var(--secondary-icon-color);
-    background-color: #fff;
+    background-color: var(--inverse-color);
     position: relative;
     &.active {
         background-color: var(--primary-color);
@@ -403,8 +426,8 @@
             transform: rotate(45deg);
             height: 12px;
             width: 8px;
-            border-bottom: 2px solid #fff;
-            border-right: 2px solid #fff;
+            border-bottom: 2px solid var(--inverse-color);
+            border-right: 2px solid var(--inverse-color);
             position: absolute;
             left: 0;
             right: 0;
@@ -414,10 +437,33 @@
         }
     }
 }
+//Media searchbox
+.media-view-search-input {
+    position: relative;
+    padding: 0 15px;
+    span {
+        position: absolute;
+        color: var(--icon-color);
+        font-size: 1.2rem;
+        left: 33px;
+    }
+}
+.media-toolbar {
+    input {
+        height: 3.45rem;
+        padding: .375rem .75rem .375rem 3.4rem;
+        width: 20.45rem;
+        border-width: 2px;
+        &::placeholder{
+            color: var(--icon-color);
+        }
+    }
+}
+
 //Media drop area
 .media-dragoutline {
     background-color: rgba(0, 0, 0, 0.5);
-    border: 2px dashed #fff;
+    border: 2px dashed var(--inverse-color);
     border-radius: 0;
     p {
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -437,7 +483,7 @@
 .joomla-docker-panel {
     position: fixed;
     box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
-    background: #ffffff;
+    background: var(--inverse-color);
     width: 550px;
     border-radius: 3px;
     overflow: hidden;
@@ -459,9 +505,9 @@
         bottom: 60px;
     }
     .joomla-docker-panel-header {
-        background: #000000;
-        color: #ffffff;
-        display: flex;
+        background: $black;
+        color: var(--inverse-color);
+        @extend .d-flex;
         padding: 15px 15px 12px;
         .joomla-docker-panel-title {
             flex: 1;
@@ -521,8 +567,8 @@
     a {
         color: var(--secondary-color);
         font-size: 1.14rem;
-        display: flex;
-        align-items: center;
+        @extend .d-flex;
+        @extend .align-items-center;
         text-decoration: none;
         line-height: 4.9rem;
         span {

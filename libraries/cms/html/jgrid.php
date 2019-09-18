@@ -196,7 +196,6 @@ abstract class JHtmlJGrid
 		}
 
 		$states = array(
-			//1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'fas fa-toggle-on', 'publish'),
 			1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'fas fa-toggle-on', 'publish'),
 			0 => array('publish', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'JUNPUBLISHED', true, 'fas fa-toggle-off', 'unpublish'),
 			2 => array('unpublish', 'JARCHIVED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JARCHIVED', true, 'archive', 'archive'),
@@ -232,6 +231,7 @@ abstract class JHtmlJGrid
 			// Add tips and special titles
 			foreach ($states as $key => $state)
 			{
+
 				// Create special titles for published items
 				if ($key == 1)
 				{

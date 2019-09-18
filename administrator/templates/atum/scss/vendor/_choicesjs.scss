@@ -36,7 +36,7 @@
 		left: 0px;
 		font-size: 14px;
 		line-height: 1;
-		color: #fff;
+		color: var(--inverse-color);
 	}
 
 	&:focus {
@@ -122,8 +122,7 @@
 	.choices__inner {
         background-color: var(--input-background-color);
         padding: .4rem 1rem .1rem;
-        border: 0;
-        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+        border: 2px solid var(--input-border-color);
         border-radius: 3px;
 	}
 	.choices__input {
@@ -134,7 +133,7 @@
 
 .choices__list--multiple .choices__item {
     position: relative;
-    background-color: #e5f2ff;
+    background-color: var(--inverse-color);
     border: 1px solid #ccd3d7;
     color: var(--color);
     border-radius: 10px;
@@ -143,7 +142,7 @@
     font-size: .75rem;
 
 	&.is-highlighted {
-		background-color: #e5f2ff;
+		background-color: var(--tr-hover-background);
         border-color: #ccd3d7;
 		opacity: 1;
 	}
@@ -167,7 +166,7 @@
 
 .choices__list--single {
 	padding: 0;
-	font-size: var(--font-size-sm);
+	font-size: $display1-size;
 	color: var(--icon-color);
 }
 
@@ -175,7 +174,7 @@
 .switcher .toggle-inside {
     height: 20px;
     width: 20px;
-    background: #f0f3f8;
+    background: var(--cancel-button-background);
     position: absolute;
     transition: all .4s ease;
     border-radius: 50%;
@@ -200,10 +199,14 @@
     background: rgba(1, 132, 255, .5);
 }
 .switcher input~input:checked~.toggle-outside .toggle-inside {
-    background: var(--primary-color)
+    background: var(--primary-color);
 }
 .switcher label {
     line-height: 1.2;
     margin-left: 45px;
 }
-
+.is-open.is-focused {
+	.choices__inner {
+		border-color: var(--primary-color);
+	}
+}
