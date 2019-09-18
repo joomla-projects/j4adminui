@@ -55,7 +55,7 @@ abstract class QuickIconHelper
 
 		$key     = (string) $params;
 		$context = (string) $params->get('context', 'mod_quickicon');
-
+		
 		if (!isset(self::$buttons[$key]))
 		{
 			// Load mod_quickicon language file in case this method is called before rendering the module
@@ -245,13 +245,14 @@ abstract class QuickIconHelper
 				];
 			}
 
+			$tmp = self::reOrderModules($tmp);
+
 			PluginHelper::importPlugin('quickicon');
 
 			$arrays = (array) $application->triggerEvent(
 				'onGetIcons',
 				new QuickIconsEvent('onGetIcons', ['context' => $context])
 			);
-
 			foreach ($arrays as $response)
 			{
 				if (!is_array($response))
@@ -281,7 +282,16 @@ abstract class QuickIconHelper
 				}
 			}
 		}
-
+		
 		return self::$buttons[$key];
+	}
+
+
+	private static function reOrderModules($tmp, $params ) {
+		$orderList = $params->get('module_ordering');
+		if( empty($orderList) )
+			return $tmp;
+		$orderList = explode(',',$orderList);
+		
 	}
 }

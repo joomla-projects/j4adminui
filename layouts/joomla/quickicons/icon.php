@@ -50,7 +50,7 @@ if (!empty($displayData['class']))
 // Make the class string
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
-<div class="col-lg-3">
+<div class="col-lg-3 widget-item">
 	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
 		<div class="j-card-header j-card-header-sm">
 			<div class="j-card-header-right">
