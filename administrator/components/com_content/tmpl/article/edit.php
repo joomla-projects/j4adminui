@@ -69,8 +69,8 @@ if($this->item->id > 0)
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="j-card">
-					<div class="j-card-header artilce-preview-link">
+				<div class="jcard">
+					<div class="jcard-header artilce-preview-link">
 						<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
 						<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
 					</div>
@@ -86,8 +86,8 @@ if($this->item->id > 0)
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="j-card">
-							<div class="j-card-body j-card-body-has-padding">
+						<div class="jcard">
+							<div class="jcard-body jcard-body-has-padding">
 								<fieldset class="adminform">
 									<?php echo $this->form->getLabel('articletext'); ?>
 									<?php echo $this->form->getInput('articletext'); ?>
@@ -248,8 +248,8 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="form-no-margin j-card">
-				<div class="j-card-body j-card-body-has-padding">
+			<div class="form-no-margin jcard">
+				<div class="jcard-body jcard-body-has-padding">
 					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 					<!-- featured & status -->
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
@@ -275,7 +275,7 @@ if($this->item->id > 0)
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class="mt-4 j-card form-inline-group">
+			<div class="mt-4 jcard form-inline-group">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
 			<!-- metadata -->
