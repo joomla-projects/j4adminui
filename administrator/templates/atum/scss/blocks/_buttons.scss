@@ -207,6 +207,10 @@
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--danger-color);
         }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            color: var(--button-border-color);
+        }
     }
     &.btn-success{
         background-image: linear-gradient(to bottom, var(--success-primary-color), var(--success-color));
@@ -217,6 +221,10 @@
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--success-color);
         }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            color: var(--button-border-color);
+        }
     }
     &.btn-warning{
         background-image: linear-gradient(to bottom, var(--warning-primary-color), var(--warning-color));
@@ -226,6 +234,10 @@
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--warning-color);
+        }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            color: var(--button-border-color);
         }
     }
     &.btn-solid-primary{
@@ -244,12 +256,20 @@
             opacity: .8;
             box-shadow: none;
         }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            color: var(--button-border-color);
+        }
     }
     &.btn-dark{
-        background-image: linear-gradient(to bottom, var(--secondary-icon-color), var(--secondary-color));
+        background-image: linear-gradient(to bottom, var(--dark-primary-color), var(--dark-color));
         color: var(--inverse-color);
         &:hover, &:focus{
             opacity: .8;
+        }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            color: var(--button-border-color);
         }
     }
     &.btn-light{
@@ -257,6 +277,11 @@
         color: var(--link-color);
         &:hover, &:focus{
             opacity: .8;
+        }
+        &[disabled], &.disabled, &:disabled{
+            background-image: none;
+            background-color: rgba(var(--color-rgb),.1);
+            color: var(--button-border-color);
         }
     }
     &.btn-block{
