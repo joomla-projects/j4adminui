@@ -34,3 +34,15 @@
 
   animation: fadein $fadetime;
 }
+
+//Input style mixin
+@mixin input-style () {
+  border: 2px solid var(--input-border-color);
+  border-radius: 3px;
+  background-color: var(--input-background-color);
+  color: var(--icon-color);
+  display: block;
+  height: 2.86rem;
+  min-width: 100%;
+  font-size: 1rem;
+}
