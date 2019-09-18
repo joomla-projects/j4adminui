@@ -273,7 +273,6 @@
       };
   
       resizeWindow = (event) => {
-        event.preventDefault();
         this.resizeTimer = setTimeout(() => {
           const elWidth = this.clientWidth || window.innerWidth;
           this.pageCount = Math.floor((elWidth - 180) / 45);
@@ -426,7 +425,6 @@
       };
   
       closeDropdown = (event) => {
-        event.preventDefault();
         if (event.target.classList.contains('dot-item') === false) {
           this.clearDropdown();
         }
