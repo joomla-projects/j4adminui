@@ -572,19 +572,42 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             </div>
             <div class="col-3">
                 <div class="j-card j-card-has-hover">
-                    <div class="j-card-header j-card-header-sm">
+                    <div class="j-card-header">
+                        <h4 class="j-card-header-title">Table</h4>
                         <div class="j-card-header-right">
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box">
-                        <div class="j-card-overview-icon j-danger">
-                            <i class="fab fa-invision"></i>
-                        </div>
-                        <div class="j-card-overview-content">
-                            65 <sub>Article</sub>
-                        </div>
-                    </div>
+
+                    <table class="j-card-table mt-2 mb-3">
+                        <tbody>
+                            <tr>
+                                <th>Time</th>
+                                <td>20:45</td>
+                            </tr>
+                            <tr>
+                                <th>SQL</th>
+                                <td>MySQLi 5.6.35</td>
+                            </tr>
+                            <tr>
+                                <th>OS</th>
+                                <td>Darwin 7.1</td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td>20:45</td>
+                            </tr>
+                            <tr>
+                                <th>SQL</th>
+                                <td>MySQLi 5.6.35</td>
+                            </tr>
+                            <tr>
+                                <th>OS</th>
+                                <td>Darwin 7.1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
                             <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>

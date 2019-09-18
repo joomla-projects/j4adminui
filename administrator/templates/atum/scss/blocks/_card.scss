@@ -19,6 +19,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 		.j-card-header-right{
 			margin-left: auto;
 		}
+		> h4,
 		.j-card-title{
 			margin: 0;
 			font-weight: 400;
@@ -83,7 +84,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			button{
 				line-height: 1.375rem;
 				padding: .571429rem .642857rem;
-				color: var(--secondary-icon-color);
+				color: var(--secondary-color);
 				background: none;
 				border: none;
 				width: 100%;
@@ -233,6 +234,35 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 				bottom: 0;
 				color: var(--secondary-color);
 				font-weight: 400;
+			}
+		}
+	}
+
+	// table
+	table{
+		width: 100%;
+		color: var(--color);
+		td,
+		th{
+			font-size: 1.142857rem;
+			line-height: 1.785714rem;
+			padding: .714286rem;
+			border-bottom: 1px solid var(--background);
+			&:first-child{
+				padding-left: 1.785714rem;
+			}
+			&:last-child{
+				padding-right: 1.785714rem;
+			}
+		}
+		th{
+			font-weight: 400;
+			color: var(--secondary-color);
+		}
+		tr:last-child{
+			td,
+			th{
+				border-bottom: none;
 			}
 		}
 	}
