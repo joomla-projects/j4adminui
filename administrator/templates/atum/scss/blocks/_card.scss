@@ -157,10 +157,27 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 	}
 	//media
 	.jcard-media{
+		position: relative;
 		img{
 			display: block;
 			width: 100%;
 			height: auto;
+		}
+		.jcard-media-hover{
+			@extend .d-flex;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			background: var(--overlay);
+			opacity: 0;
+			visibility: hidden;
+			transition: 300ms;
+		}
+		&:hover .jcard-media-hover{
+			opacity: 1;
+			visibility: visible;
 		}
 	}
 	//button group
