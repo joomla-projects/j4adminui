@@ -375,3 +375,27 @@
         }
     }
 }
+
+// iconic button
+.js-focus-visible .iconic-btn,
+.iconic-btn{
+	padding: 1.071429rem 0.714rem;
+	background: transparent;
+	border: none;
+	color: var(--secondary-icon-color);
+	transition: 300ms;
+	line-height: 1;
+	display: inline-block;
+	position: relative;
+    z-index: 2;
+    &.btn-sm{
+		padding: .642857rem;
+    }
+	&:focus{
+		outline: 1px solid var(--link-color);
+	}
+	&:hover,
+	&:focus{
+		color: var(--link-color);
+	}
+}

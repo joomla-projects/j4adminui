@@ -4,9 +4,9 @@
  */
 jQuery(function($)
 {
-	var treeselectmenu = $('div#treeselectmenu').html();
+	var treeselectmenu = $('div#treeselectmenu');
 
-	$('.treeselect li').each(function()
+	$('.treeselect li').each(function(index)
 	{
 		$li = $(this);
 		
@@ -18,9 +18,11 @@ jQuery(function($)
 		if ($li.find('ul.treeselect-sub').length) {
 			// Add classes to Expand/Collapse icons
 			$li.find('span.icon-').addClass('treeselect-toggle fa-chevron-down');
-
+			
 			// Append drop down menu in nodes
-			$div.find('label:first').after(treeselectmenu);
+			treeselectmenu.find('button.iconic-button').attr('id', `treemenu-${index}`);
+			treeselectmenu.find('joomla-dropdown').attr('for', `#treemenu-${index}`);
+			$div.find('label:first').after(treeselectmenu.html());
 
 			if (!$li.find('ul.treeselect-sub ul.treeselect-sub').length) {
 				$li.find('div.treeselect-menu-expand').remove();
@@ -97,11 +99,11 @@ jQuery(function($)
 	// Take care of children check/uncheck all
 	$('a.checkall').click(function()
 	{
-		$(this).parents().eq(5).find('ul.treeselect-sub input').attr('checked', 'checked');
+		$(this).parents().eq(3).find('ul.treeselect-sub input').attr('checked', 'checked');
 	});
 	$('a.uncheckall').click(function()
 	{
-		$(this).parents().eq(5).find('ul.treeselect-sub input').attr('checked', false);
+		$(this).parents().eq(3).find('ul.treeselect-sub input').attr('checked', false);
 	});
 
 	// Take care of children toggle all
