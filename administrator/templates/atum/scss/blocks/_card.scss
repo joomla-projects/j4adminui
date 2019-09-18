@@ -148,7 +148,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			width: 100%;
 			height: auto;
 		}
-		.jcard-media-hover{
+		.jcard-media-overlay{
 			@extend .d-flex;
 			position: absolute;
 			height: 100%;
@@ -160,7 +160,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			visibility: hidden;
 			transition: 300ms;
 		}
-		&:hover .jcard-media-hover{
+		&:hover .jcard-media-overlay{
 			opacity: 1;
 			visibility: visible;
 		}

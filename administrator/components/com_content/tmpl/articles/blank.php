@@ -476,7 +476,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="jcard jcard-has-hover">
                 <div class="jcard-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
-                    <div class="jcard-media-hover align-items-center justify-content-center">
+                    <div class="jcard-media-overlay align-items-center justify-content-center">
                         <button class="btn btn-success">Hello</button>
                     </div>
                 </div>
