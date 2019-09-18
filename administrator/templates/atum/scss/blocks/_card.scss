@@ -1,6 +1,7 @@
 
 $card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
+$card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 
 .jcard{
 	background: #ffffff;
@@ -10,6 +11,10 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 	position: relative;
 	&.jcard-has-hover:hover{
 		box-shadow: $card-box-shadow-hover;
+	}
+	&.active{
+		box-shadow: $card-box-shadow-active;
+		outline: 3px solid var(--link-color);
 	}
 	.jcard-header{
 		padding: .714286rem 0 .714286rem 1.429rem;
