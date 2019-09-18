@@ -58,40 +58,5 @@
 				}
 			}
 		}
-		.alias-wrap{
-			@extend .d-flex;
-			@extend .align-items-center;
-			@extend .justify-content-between;
-			.alias-text{
-				@extend .d-flex;
-				@extend .align-items-center;
-				margin: 0;
-				.control-label{
-					min-width: 110px;
-				}
-				.controls{
-					color: var(--inverse-background);
-				}
-			}
-			#edit-alias{
-				color: var(--secondary-icon-color);
-				font-size: 12px;
-				
-			}
-			.alias-edit{
-				display: none;
-				.control-group{
-					@extend .d-flex;
-				}
-			}
-			&.active{
-				.alias-text{
-					display: none;
-				}
-				.alias-edit{
-					display: block;
-				}
-			}
-		}
 	}
 }
