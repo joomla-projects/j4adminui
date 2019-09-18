@@ -128,6 +128,7 @@ window.customElements.define('joomla-field-fancy-select', class extends HTMLElem
       }
     });
 
+
     // Handle typing of custom term
     if (this.allowCustom) {
       this.addEventListener('keydown', (event) => {

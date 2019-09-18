@@ -28,9 +28,8 @@
                         <button type="button" class="action-preview" ref="actionPreview" @keyup.enter="openPreview()"
                            :aria-label="translate('COM_MEDIA_ACTION_PREVIEW')" @keyup.space="openPreview()"
                            @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
-                           @keyup.up="$refs.actionDelete.focus()" @keyup.down="$refs.actionDownload.focus()">
-                            <span class="image-browser-action fa fa-search-plus" aria-hidden="true"
-                                  @click.stop="openPreview()"></span>
+                           @keyup.up="$refs.actionDelete.focus()" @keyup.down="$refs.actionDownload.focus()" @click.stop="openPreview()">
+                            <span class="image-browser-action fa fa-search-plus" aria-hidden="true"></span>
                             <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_PREVIEW')}}</span>
                         </button>
                     </li>
@@ -38,9 +37,8 @@
                         <button type="button" class="action-download" ref="actionDownload" @keyup.enter="download()"
                            :aria-label="translate('COM_MEDIA_ACTION_DOWNLOAD')" @keyup.space="download()"
                            @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
-                           @keyup.up="$refs.actionPreview.focus()" @keyup.down="$refs.actionRename.focus()">
-                            <span class="image-browser-action fa fa-download" aria-hidden="true"
-                                  @click.stop="download()"></span>
+                           @keyup.up="$refs.actionPreview.focus()" @keyup.down="$refs.actionRename.focus()" @click.stop="download()">
+                            <span class="image-browser-action fa fa-download" aria-hidden="true"></span>
                             <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_DOWNLOAD')}}</span>
                         </button>
                     </li>
@@ -48,9 +46,8 @@
                         <button type="button" class="action-rename" ref="actionRename" @keyup.enter="openRenameModal()"
                           :aria-label="translate('COM_MEDIA_ACTION_RENAME')" @keyup.space="openRenameModal()"
                           @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
-                          @keyup.up="$refs.actionDownload.focus()" @keyup.down="$refs.actionShare.focus()">
-                            <span class="image-browser-action fa fa-text-width" aria-hidden="true"
-                                  @click.stop="openRenameModal()"></span>
+                          @keyup.up="$refs.actionDownload.focus()" @keyup.down="$refs.actionShare.focus()" @click.stop="openRenameModal()">
+                            <span class="image-browser-action fa fa-text-width" aria-hidden="true"></span>
                             <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_RENAME')}}</span>
                         </button>
                     </li>
@@ -58,8 +55,8 @@
                         <button type="button" class="action-url" ref="actionShare" @keyup.enter="openShareUrlModal()"
                           :aria-label="translate('COM_MEDIA_ACTION_SHARE')" @keyup.space="openShareUrlModal()"
                           @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
-                          @keyup.up="$refs.actionRename.focus()" @keyup.down="$refs.actionDelete.focus()">
-                            <span class="image-browser-action fa fa-link" aria-hidden="true" @click.stop="openShareUrlModal()"></span>
+                          @keyup.up="$refs.actionRename.focus()" @keyup.down="$refs.actionDelete.focus()" @click.stop="openShareUrlModal()">
+                            <span class="image-browser-action fa fa-link" aria-hidden="true"></span>
                             <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_SHARE')}}</span>
                         </button>
                     </li>
@@ -67,9 +64,17 @@
                         <button type="button" class="action-delete" ref="actionDelete" @keyup.enter="openConfirmDeleteModal()"
                           :aria-label="translate('COM_MEDIA_ACTION_DELETE')" @keyup.space="openConfirmDeleteModal()"
                            @focus="focused(true)" @blur="focused(false)" @keyup.esc="hideActions()"
-                           @keyup.up="$refs.actionShare.focus()" @keyup.down="$refs.actionPreview.focus()">
-                            <span class="image-browser-action fa fa-trash" aria-hidden="true" @click.stop="openConfirmDeleteModal()"></span>
+                           @keyup.up="$refs.actionShare.focus()" @keyup.down="$refs.actionPreview.focus()" @click.stop="openConfirmDeleteModal()">
+                            <span class="image-browser-action fa fa-trash" aria-hidden="true"></span>
                             <span class="image-browser-action-text">{{translate('COM_MEDIA_ACTION_DELETE')}}</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" href="#" class="action-info"
+                        @click.stop="showInfoBar()"
+                        :aria-label="translate('COM_MEDIA_TOGGLE_INFO')">
+                            <span class="image-browser-action fa fa-info" aria-hidden="true"></span>
+                            <span class="image-browser-action-text">{{translate('COM_MEDIA_TOGGLE_INFO')}}</span>
                         </button>
                     </li>
                 </ul>
@@ -129,6 +134,9 @@
             hideActions() {
                 this.showActions = false;
                 this.$nextTick(() => this.$refs.actionToggle.focus());
+            },
+            showInfoBar() {
+                this.$store.commit(types.SHOW_INFOBAR, this.item);
             },
         }
     }

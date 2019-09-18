@@ -316,7 +316,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                         <button class="fas fa-eye"></button>
                     </div>
                     <div class="j-card-footer-item">
-                        <button><span class="j-icon fas fa-key"></span> Details Information</button>
+                        <button><span class="j-card-icon fas fa-key"></span> Details Information</button>
                     </div>
                 </div>
             </div>
@@ -326,7 +326,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header j-card-header-sm">
                     <p class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <i class="j-card-icon fas fa-pen-alt"></i>
                         Card small title + icon
                     </p>
 
@@ -353,7 +353,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <span class="fas fa-pen-alt"></span>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -374,7 +374,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <span class="fas fa-pen-alt"></span>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -386,7 +386,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-icon fas fa-key"></span> Details Information</a>
+                        <a href="#"> <span class="j-card-icon fas fa-key"></span> Details Information</a>
                     </div>
                     <div class="j-card-footer-item j-card-footer-icon">
                         <button class="fas fa-eye"></button>
@@ -399,7 +399,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <span class="fas fa-pen-alt"></span>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -411,7 +411,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -425,7 +425,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <span class="fas fa-pen-alt"></span>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -440,7 +440,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -457,7 +457,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -479,7 +479,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -522,7 +522,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
@@ -545,7 +545,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
@@ -590,7 +590,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>

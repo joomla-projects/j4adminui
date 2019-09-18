@@ -42,35 +42,11 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="card template-style">
-										
-										<div class="template-thumbnail">
-											<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-											<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
-											<?php if ($clientId === 0) : ?>
-												<div class="template-overlay">
-													<a target="_blank" href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" class="btn btn-primary btn-md">
-														<i class="fas fa-eye"></i> &nbsp;Preview
-													</a>
-												</div>
-											<?php endif; ?>
-										</div>
-
-										<div class="list-group list-group-flush">
-											<div class="list-group-item d-flex align-items-center">
-												<!-- <?php if($item->home == '1') : ?>
-													<span class="default-template mr-2">
-														<span class="fas fa-star"></span>
-													</span>
-												<?php else : ?>
-													<?php if ($item->image) : ?>
-														<span class="default-template mr-2">
-															<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
-														</span>
-													<?php endif; ?>
-												<?php endif; ?> -->
-												<span class="fas fa-info-circle fa-fw mr-1" id="template-info-<?php echo $item->id; ?>"></span>
-												<span class="template-name mr-2">
+									<div class="template-style j-card j-card-has-hover mb-4">
+										<div class="j-card-header">
+											<h4 class="j-card-title">
+												<span class="fas fa-info-circle fa-fw j-card-icon" id="template-info-<?php echo $item->id; ?>"></span>
+												<span class="template-name">
 													<?php if ($canEdit) : ?>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
 															<?php echo ucfirst($this->escape($item->template)); ?>
@@ -82,82 +58,122 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($version = $item->xmldata->get('version')) : ?>
 													<span class="template-version">v<?php echo $this->escape($version); ?></span>
 												<?php endif; ?>
+											</h4>
+											<div class="j-card-header-right">
+												<button class="j-card-header-icon fas fa-ellipsis-h"></button>
 											</div>
-											
-											<div class="list-group-item">
-												<div class="row">
-													<div class="col-6">
-														<div class="text-muted mb-1">
-															Style
-														</div>
-														<?php echo $this->escape($item->title); ?>
+										</div>
+
+										<div class="j-card-media">
+											<div class="template-thumbnail">
+												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+												<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
+												<?php if ($clientId === 0) : ?>
+													<div class="template-overlay">
+														<a target="_blank" href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" class="btn btn-primary btn-md">
+															<i class="fas fa-eye"></i> &nbsp;Preview
+														</a>
 													</div>
-													<?php if ($author = $item->xmldata->get('author')) : ?>
-														<div class="col-6">
-															<div class="text-muted mb-1">
-																Author
-															</div>
-															<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-																<a target="_blank" href="<?php echo $this->escape($url); ?>">
-																	<?php echo $this->escape($author); ?>
-																</a>
-															<?php else: ?>
-																<?php echo $this->escape($author); ?>
-															<?php endif; ?>
-														</div>
+												<?php endif; ?>
+											</div>
+										</div>
+
+										<div class="j-card-item-group">
+											<div class="j-card-item">
+												<div class="text-muted mb-1">
+													Style
+												</div>
+												<?php echo $this->escape($item->title); ?>
+											</div>
+											<?php if ($author = $item->xmldata->get('author')) : ?>
+												<div class="j-card-item">
+													<div class="text-muted mb-1">
+														Author
+													</div>
+													<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
+														<a target="_blank" href="<?php echo $this->escape($url); ?>">
+															<?php echo $this->escape($author); ?>
+														</a>
+													<?php else: ?>
+														<?php echo $this->escape($author); ?>
 													<?php endif; ?>
 												</div>
-											</div>
+											<?php endif; ?>
+										</div>
 
-											<div class="list-group-item">
-												<div class="row">
-													<div class="col-7">
-														<?php if ($canChange):?>
-															<?php if ($item->home == '0') : ?>
-																<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
-																	<span class="fas fa-star fa-fw"></span> Set as Default
-																</a>
-															<?php else : ?>
-																<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
-																	<span class="fas fa-star fa-fw"></span>
-																	<?php if ($item->image) : ?>
-																		<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
-																	<?php endif; ?>
-																	<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
-																</a>
+										<span class="j-card-divider"></span>
+
+										<div class="j-card-item-group">
+											<div class="j-card-item">
+												<?php if ($canChange):?>
+													<?php if ($item->home == '0') : ?>
+														<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
+															<span class="fas fa-star fa-fw"></span> Set as Default
+														</a>
+													<?php else : ?>
+														<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
+															<span class="fas fa-star fa-fw"></span>
+															<?php if ($item->image) : ?>
+																<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
 															<?php endif; ?>
-														<?php endif; ?>
-													</div>
-													<div class="col-5">
-														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
-															<span class="fas fa-clone fa-fw"></span>
+															<span class="text-truncate">
+																<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+															</span>
 														</a>
-														<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
-															<span class="fas fa-trash fa-fw"></span>
-														</a>
-													</div>
-												</div>
+													<?php endif; ?>
+												<?php endif; ?>
 											</div>
+											<div class="j-card-item j-card-item-right">
+												<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
+													<span class="fas fa-clone fa-fw"></span>
+												</a>
+											</div>
+											<div class="j-card-item">
+												<a class="iconic-button" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
+													<span class="fas fa-trash fa-fw"></span>
+												</a>
+											</div>
+										</div>
+										<span class="j-card-divider"></span>
+										<div class="j-card-btn-group">
+											<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-default">
+												<i class="fas fa-code"></i> Edit Files
+											</a>
+											<?php if ($canEdit) : ?>
+												<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary">
+													<i class="fas fa-cog"></i> Options
+												</a>
+											<?php endif; ?>
+										</div>
 
-											<div class="list-group-item">
-												<div class="row">
-													<div class="col-6">
-														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-primary btn-block">
-															<i class="fas fa-code"></i> Edit Files
+										<div class="j-card-footer j-card-footer-lg">
+											<div class="j-card-footer-item">
+												<?php if ($canChange):?>
+													<?php if ($item->home == '0') : ?>
+														<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
+															<span class="fas fa-star fa-fw j-card-icon j-icon-lg"></span> Set as Default
 														</a>
-													</div>
-													<div class="col-6">
-														<?php if ($canEdit) : ?>
-															<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary btn-block">
-																<i class="fas fa-cog"></i> Options
-															</a>
-														<?php endif; ?>
-													</div>
-												</div>
+													<?php else : ?>
+														<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
+															<span class="fas fa-star fa-fw j-card-icon j-icon-lg"></span>
+															<?php if ($item->image) : ?>
+																<span class="mr-2">
+																	<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
+																</span>
+															<?php endif; ?>
+															<span class="text-truncate">
+																<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+															</span>
+														</a>
+													<?php endif; ?>
+												<?php elseif ($item->image) : ?>
+													<span class="default-template mr-2">
+														<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => $item->language_title), true); ?>
+													</span>
+												<?php endif; ?>
 											</div>
 										</div>
 									</div>
-
 								</div>
 
 								<joomla-callout for="#template-info-<?php echo $item->id; ?>" action="hover" position="right">

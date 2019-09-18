@@ -25,7 +25,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			font-weight: 400;
 			line-height: 1.714rem;
 			color: var(--color);
-			> span{
+			.j-card-icon {
 				color: var(--icon-color);
 				display: inline-block;
 				margin-right: 0.293rem;
@@ -96,7 +96,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 				&:focus{
 					outline: 1px solid var(--link-color);
 				}
-				span.j-icon{
+				.j-card-icon {
 					font-size: .714286rem;
 					color: var(--link-color);
 					margin-right: .785714rem;
@@ -109,7 +109,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 				&:hover,
 				&:focus{
 					color: var(--link-color);
-					i{
+					.j-card-icon{
 						color: var(--link-color);
 					}
 				}
@@ -142,7 +142,7 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 			a,
 			button{
 				padding: 1rem .857143rem;
-				i{
+				.j-card-icon{
 					font-size: 1rem;
 					&.j-icon-lg{
 						font-size: 1.428571rem;

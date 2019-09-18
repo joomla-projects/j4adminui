@@ -111,42 +111,42 @@
       return this.getAttribute('autofocus') || false;
     }
 
-        /**
-         * Create a HTMLElement
-         * @param {string} tagName      - e.g. div, strong, span etc.
-         * @param {object} attr         - element attribute object
-         * @param {string} innerHTML    - text to elements innerHTML
-         *
-         * @return {HTMLElement}
-         */
-        createDOMElement = (tag, attributes = {}, text = '') => {
-          const tagName = typeof (tag) === 'string' && tag.length > 0 ? tag : false;
-          const attr = typeof (attributes) === 'object' && Object.keys(attributes).length ? attributes : false;
-          const innerHTML = typeof (text) === 'string' && text.length > 0 ? text : false;
+    /**
+     * Create a HTMLElement
+     * @param {string} tagName      - e.g. div, strong, span etc.
+     * @param {object} attr         - element attribute object
+     * @param {string} innerHTML    - text to elements innerHTML
+     *
+     * @return {HTMLElement}
+     */
+    createDOMElement = (tag, attributes = {}, text = '') => {
+      const tagName = typeof (tag) === 'string' && tag.length > 0 ? tag : false;
+      const attr = typeof (attributes) === 'object' && Object.keys(attributes).length ? attributes : false;
+      const innerHTML = typeof (text) === 'string' && text.length > 0 ? text : false;
 
-          let el;
+      let el;
 
-          // IF tag name given then create element, otherwise create element div
-          if (tagName) {
-            el = document.createElement(tagName);
-          } else {
-            el = document.createElement('div');
-          }
+      // IF tag name given then create element, otherwise create element div
+      if (tagName) {
+        el = document.createElement(tagName);
+      } else {
+        el = document.createElement('div');
+      }
 
-          // If attributes given then set attributes for the element
-          if (attr) {
-            Object.keys(attr).forEach((key) => {
-              el.setAttribute(key, attr[key]);
-            });
-          }
+      // If attributes given then set attributes for the element
+      if (attr) {
+        Object.keys(attr).forEach((key) => {
+          el.setAttribute(key, attr[key]);
+        });
+      }
 
-          // Add inner HTML
-          if (innerHTML) {
-            el.innerHTML = innerHTML;
-          }
+      // Add inner HTML
+      if (innerHTML) {
+        el.innerHTML = innerHTML;
+      }
 
-          return el;
-        }
+      return el;
+    }
 
         /**
          * clear all children of a specific element
