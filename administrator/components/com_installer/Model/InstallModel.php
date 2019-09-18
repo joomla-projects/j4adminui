@@ -196,11 +196,6 @@ class InstallModel extends BaseDatabaseModel
 			return false;
 		}
 
-		if ($package['type'] == 'module') {
-			$app->enqueueMessage(Text::_('This is module package!'), 'error');
-			return false;
-		}
-
 		// Install the package.
 		if (!$installer->install($package['dir']))
 		{
