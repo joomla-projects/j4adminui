@@ -256,7 +256,7 @@ if($this->item->id > 0)
 				</div>
 			</div>
 			<!-- category -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class="form-inline-group">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
@@ -275,7 +275,7 @@ if($this->item->id > 0)
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class="mt-4 j-card form-inline-group">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
 			<!-- metadata -->

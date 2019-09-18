@@ -7,3 +7,86 @@
     }
   }
 }
+
+/*TODO: This is temporary design. must be removed*/
+.j-pagination-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+joomla-pagination {
+  nav {
+    .pagination-label {
+      padding: 0 10px;
+    }
+    ul.pagination-list {
+      .pagination-item {
+        padding: 5px 10px;
+        margin: 0 5px 0 0;
+        color: #5e727c;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        font-size: 14px;
+
+        &:not(.disabled):hover {
+          background: #ffffff;
+          border-radius: 3px;
+          box-shadow: 0 0 4px 4px #eaeaea;
+        }
+
+        &:active {
+          background: #ffffff;
+          border-radius: 3px;
+          box-shadow: 0 0 4px 4px #eaeaea;
+        }
+      }
+      .pagination-item.active {
+        background: #ffffff;
+        border-radius: 3px;
+        box-shadow: 0 0 4px 4px #eaeaea;
+      }
+
+      .pagination-item.disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .dot-item-list {
+    display: inline-flex;
+    list-style: none;
+    flex-direction: column;
+    box-shadow: 1px 1px 4px 0px #eaeaea;
+    padding: 0;
+    margin: 0;
+    position: sticky;
+    max-height: 180px;
+    overflow-y: auto;
+
+    .pagination-item {
+      display: flex;
+      padding: 10px;
+      border: 1px solid #eaeaea;
+      min-width: 20px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all .3s ease;
+      width: 100%;
+      background: #ffffff;
+      &:hover {
+        background: #0184ff;
+        color: #fff;  
+      }
+    }
+  }
+  .dot-item-list {
+      -ms-overflow-style: none;  // IE 10+
+      scrollbar-width: none;  // Firefox
+  }
+
+  .dot-item-list::-webkit-scrollbar { 
+      display: none;  // Safari and Chrome
+  }
+}

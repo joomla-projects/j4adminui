@@ -191,7 +191,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 										<?php endforeach; ?>
 									<?php elseif ($modMenuId) : ?>
 										<?php $link = Route::_('index.php?option=com_modules&task=module.add&eid=' . $modMenuId . '&params[menutype]=' . $item->menutype . '&tmpl=component&layout=modal'); ?>
-										<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#moduleAddModal"><?php echo Text::_('COM_MENUS_ADD_MENU_MODULE'); ?></button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleAddModal"><?php echo Text::_('COM_MENUS_ADD_MENU_MODULE'); ?></button>
 										<?php echo HTMLHelper::_(
 												'bootstrap.renderModal',
 												'moduleAddModal',

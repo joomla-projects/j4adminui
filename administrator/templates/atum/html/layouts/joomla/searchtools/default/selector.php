@@ -24,7 +24,7 @@ $defaultValue = $clientOptions ? $state->get('client_id', 0) : 0;
 		<?php echo $data['view']->filterForm->getField($data['options']['selectorFieldName'])->label; ?>
 	</div>
 	<?php if($isClientSelector) : ?>
-		<div class="btn-group" role="group">
+		<div class="btn-group btn-group-border btn-group-md" role="group">
 			<?php foreach($clientOptions as $key => $option) : ?>
 				<button type="button" class="btn js-stools-selector-btn <?php echo $defaultValue == $option->value ? 'btn-primary' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 			<?php endforeach; ?>

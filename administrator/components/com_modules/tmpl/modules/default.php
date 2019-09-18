@@ -48,7 +48,7 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 						</th>
-						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+						<th scope="col" style="width:2%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:1%; min-width:85px" class="text-center">
@@ -57,19 +57,11 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" class="title">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
-						</th>
-						<?php if ($clientId === 0) : ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
-						</th>
-						<?php endif; ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
 						</th>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell text-center">
@@ -80,6 +72,9 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'a.language', $listDirn, $listOrder); ?>
 						</th>
 						<?php endif; ?>
+						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
+						</th>
 						<th scope="col" width="5%" class="text-center d-md-table-cell">
 							<?php echo JText::_('JGRID_HEADING_ACTION'); ?>
 						</th>	
@@ -165,14 +160,6 @@ if ($saveOrder && !empty($this->items))
 						<td class="small d-none d-md-table-cell">
 							<?php echo $item->name; ?>
 						</td>
-						<?php if ($clientId === 0) : ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $item->pages; ?>
-						</td>
-						<?php endif; ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $this->escape($item->access_level); ?>
-						</td>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<td class="small d-none d-md-table-cell text-center">
 							<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
@@ -188,6 +175,9 @@ if ($saveOrder && !empty($this->items))
 								<?php endif; ?>
 							</td>
 						<?php endif; ?>
+						<td class="small d-none d-md-table-cell">
+							<?php echo $this->escape($item->access_level); ?>
+						</td>
 						<td class="text-center">
 							<i class="fas fa-ellipsis-h"></i>
 						</td>

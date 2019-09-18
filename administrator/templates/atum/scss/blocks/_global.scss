@@ -213,3 +213,54 @@ body .container-main {
     padding-right: 1.7rem;
   }
 }
+.form-inline-group{
+  .control-group{
+    padding: 0 15px;
+    @extend .d-flex;
+    @extend .align-items-center;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+    background: var(--inverse-color);
+    border-radius: 3px;
+    transition: .3s;
+    font-size: 1rem;
+    .control-label{
+      width: auto;
+      border-right: 1px solid var(--page-background);
+      flex: 0 0 90px;
+    }
+    .controls{
+      padding-left: 25px;
+      margin-left: 0;
+      flex: 1;
+      color: var(--color);
+      select{
+        color: var(--color);
+        background: transparent;
+        border: none;
+        -webkit-appearance: menulist-button;
+        -moz-appearance: menulist-button;
+        appearance: menulist-button;
+      }
+    }
+  }
+  .choices[data-type*=select-one] .choices__inner{
+    @extend .d-flex;
+    @extend .align-items-center;
+    background: transparent;
+    border: none;
+    .choices__list--single{
+      color: var(--color);
+      font-size: 1rem;
+    }
+  }
+  .choices__list.choices__list--dropdown{
+    .choices__input{
+      font-size: .78rem; 
+      padding: 5px 15px;
+    }
+  }
+  .choices__list--dropdown .choices__item{
+    font-size: .78rem;
+    padding: 5px 15px;
+  }
+}

@@ -42,19 +42,11 @@ echo HTMLHelper::_(
 );
 ?>
 <div id="cpanel-modules">
-	<?php if ($this->quickicons) : ?>
-		<div class="cpanel-modules <?php echo $this->position; ?>-quickicons">
-			<?php // Display the icon position modules
-			foreach ($this->quickicons as $iconmodule)
-			{
-				echo ModuleHelper::renderModule($iconmodule, array('style' => 'simple'));
-			}
-			?>
-		</div>
-	<?php endif; ?>
-
 	<div class="cpanel-modules <?php echo $this->position; ?>">
-		<div class="card-columns">
+		<?php // apear this div if not cpanel
+		if($this->extension) : ?>
+			<div class="card-columns">
+		<?php endif; ?>
 
 		<?php
 		foreach ($this->modules as $module)
@@ -62,9 +54,13 @@ echo HTMLHelper::_(
 			echo ModuleHelper::renderModule($module, array('style' => 'well'));
 		}
 		?>
+		
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>
 
-		</div>
+		<?php // apear this div closing if not cpanel
+		if($this->extension) : ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>
 <div class="row">
