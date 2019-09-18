@@ -1,16 +1,19 @@
 /* eslint-disable no-useless-return */
 /* eslint-disable max-len */
-(() => {
+((Joomla) => {
     customElements.define('joomla-pagination', class extends HTMLElement {
       constructor() {
         super();
   
+        if (!Joomla) {
+          throw new Error('Joomla API not properly initialised');
+        }
+
         this.keyCode = { TAB: 9, ESC: 27 };
   
         this.defaultSettings = {
-          min: 1,
-          max: 10,
           totalVisible: 10,
+          resultMsg: '',
           nextText: 'Next',
           nextIcon: '>',
           prevText: 'Prev',
@@ -22,8 +25,8 @@
           navBtnsState: 'icon', // allowed values are ['icon', 'text', 'text-icon'],
           disableBtns: [], // this allowes disable the navigation buttons if anywant wants, allowed texts [next, prev, first, last]
           limit: 10, // how many steps it will go after clicking next
-          inputName: 'list_limit', // the hidden input field name
-          formName: 'adminForm', // the form id
+          inputSelector: '#list_limit', // the hidden input field name
+          formSelector: '#adminForm', // the form id
           pagination: false
         };
   
@@ -51,11 +54,9 @@
       /**
        * Getter methods
        */
-      get min() { return this.getAttribute('min'); }
-  
-      get max() { return this.getAttribute('max'); }
-  
       get totalVisible() { return this.getAttribute('total-visible'); }
+      
+      get resultMsg() { return this.getAttribute('result-msg'); }
   
       get nextText() { return this.getAttribute('next-text'); }
   
@@ -79,7 +80,9 @@
   
       get limit() { return this.getAttribute('limit'); }
   
-      get inputName() { return this.getAttribute('input-name'); }
+      get inputSelector() { return this.getAttribute('input-selector'); }
+      
+      get formSelector() { return this.getAttribute('form-selector'); }
 
       get pagination() { return this.getAttribute('pagination'); }
   
@@ -88,9 +91,11 @@
         this.pageNav = this.createDOMElement('nav', {
           class: 'pagination-navigation', role: 'navigation', 'aria-label': 'Pagination', tabindex: '-1',
         });
+        this.pageLabel = this.createDOMElement('span', {class: 'pagination-label'});
         this.pageUl = this.createDOMElement('ul', { class: 'pagination-list' });
+        this.pageNav.appendChild(this.pageLabel);
         this.pageNav.appendChild(this.pageUl);
-        this.appendChild(this.pageNav);
+        this.appendChild(this.pageNav); 
       };
   
       /**
@@ -191,6 +196,11 @@
   
       renderPagination = (current, total) => {
         // enable disable navigation buttons
+      
+        if (this.options.resultMsg) {
+          this.pageLabel.innerHTML = this.options.resultMsg;
+        }
+
         if (current === 0) {
           this.disablePrev = true;
           this.disableFirst = true;
@@ -283,9 +293,8 @@
       connectedCallback() {
         // const paginationLength = this.getAllSiblings();
         const extendedSettings = {};
-        if (this.min !== null) extendedSettings.min = this.min;
-        if (this.max !== null) extendedSettings.max = this.max;
         if (this.totalVisible !== null) extendedSettings.totalVisible = this.totalVisible;
+        if (this.resultMsg !== null) extendedSettings.resultMsg = this.resultMsg;
         if (this.nextText !== null) extendedSettings.nextText = this.nextText;
         if (this.nextIcon !== null) extendedSettings.nextIcon = this.nextIcon;
         if (this.prevText !== null) extendedSettings.prevText = this.prevText;
@@ -296,14 +305,15 @@
         if (this.lastIcon !== null) extendedSettings.lastIcon = this.lastIcon;
         if (this.navBtnsState !== null) extendedSettings.navBtnsState = this.navBtnsState;
         if (this.disableBtns !== null) extendedSettings.disableBtns = this.disableBtns.split(',').map((btn) => btn.trim());
-        if (this.inputName !== null) extendedSettings.inputName = this.inputName;
+        if (this.inputSelector !== null) extendedSettings.inputSelector = this.inputSelector;
+        if (this.formSelector !== null) extendedSettings.formSelector = this.formSelector;
         if (this.limit !== null) extendedSettings.limit = this.limit;
         if (this.pagination !== null) extendedSettings.pagination = (this.pagination === 'true' || this.pagination === '1');
   
         this.options = { ...this.defaultSettings, ...extendedSettings };
         
-        this.inputField = document.querySelector(`#${this.options.inputName}`);
-        this.adminForm = document.querySelector(`#${this.options.formName}`);
+        this.inputField = document.querySelector(`${this.options.inputSelector}`);
+        this.adminForm = document.querySelector(`${this.options.formSelector}`);
   
         this.renderPagination(this.currentItemIndex, this.rawItems.length);
         this.clickHandlers();
@@ -483,5 +493,5 @@
         else this.submitLimitForm();
       };
     });
-  })();
+  })(Joomla);
   
