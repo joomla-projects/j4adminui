@@ -51,8 +51,41 @@ if (!empty($displayData['class']))
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
 <div class="col-lg-3">
-	<div <?php echo $id; ?> class="card <?php echo $class; ?>">
-		<div class="card-body">
+	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
+		<div class="j-card-header j-card-header-sm">
+			<div class="j-card-header-right">
+				<button class="j-card-header-icon fas fa-ellipsis-h"></button>
+			</div>
+		</div>
+		<div class="j-card-overview-box">
+			<div class="j-card-overview-icon j-warning">
+				<i class="<?php echo $displayData['image']; ?>"></i>
+			</div>
+			<div class="j-card-overview-content">
+				65
+				<?php // Name indicates the component
+				if (isset($displayData['name'])): ?>
+					<sub <?php echo isset($displayData['ajaxurl']) ? ' aria-hidden="true"' : ''; ?>>
+						<?php echo Text::_($displayData['name']); ?>
+					</sub>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<?php // Add the link to the edit-form
+		if (isset($displayData['linkadd'])): ?>
+			<div class="j-card-footer j-card-footer-lg">
+				<div class="j-card-footer-item">
+					<a href="<?php echo $displayData['linkadd']; ?>">
+						<span class="fa fa-plus j-card-icon j-icon-lg" aria-hidden="true"></span>
+						<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
+						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
+					</a>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<!-- <div class="card-body">
 			<div class="d-flex align-items-center">
 				<div class="quickicon-icon">
 					<div class="<?php echo $displayData['image']; ?> fa-2x" aria-hidden="true"></div>
@@ -65,12 +98,7 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 					<div class="quickicon-sr-desc sr-only"></div>
 				<?php endif; ?>
 
-				<?php // Name indicates the component
-				if (isset($displayData['name'])): ?>
-					<div class="quickicon-name d-flex align-items-end" <?php echo isset($displayData['ajaxurl']) ? ' aria-hidden="true"' : ''; ?>>
-						<?php echo Text::_($displayData['name']); ?>
-					</div>
-				<?php endif; ?>
+				
 			</div>
 			
 			<?php // Information or action from plugins
@@ -79,20 +107,8 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 					<?php echo $text; ?>
 				</div>
 			<?php endif; ?>
-			<!-- <a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>" class="stretched-link"><span class="sr-only"><?php echo $title; ?></span></a> -->
-		</div>
-		<div class="card-footer">
-			<a href="#">Hello</span></a>
-		</div>
-		<!-- <?php // Add the link to the edit-form
-		if (isset($displayData['linkadd'])): ?>
-			<li class="btn-block quickicon-linkadd j-links-link">
-				<a href="<?php echo $displayData['linkadd']; ?>">
-					<span class="fa fa-plus mr-2" aria-hidden="true"></span>
-					<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
-					<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
-				</a>
-			</li>
-		<?php endif; ?> -->
+			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>" class="stretched-link"><span class="sr-only"><?php echo $title; ?></span></a>
+		</div> -->
+		
 	</div>
 </div>

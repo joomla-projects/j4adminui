@@ -154,8 +154,7 @@
     position: relative;
     &:hover{
       .header-dropdown-items{
-        opacity: 1;
-        visibility: visible;
+        display: block;
       }
     }
   }
@@ -169,9 +168,8 @@
     border-radius: 3px;
     background: #fff;
     width: 300px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 300ms;
+    display: none;
+    animation: fadeIn .5s;
     .header-dropdown-item{
       a{
         color: var(--color);

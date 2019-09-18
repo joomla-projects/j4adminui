@@ -214,3 +214,49 @@ body .container-main {
     padding-right: 1.7rem;
   }
 }
+.j-edit-fields{
+  .control-group{
+    margin: 0;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+
+    .control-label{
+      width: auto;
+      border-right: 1px solid var(--page-background);
+      flex: 0 0 90px;
+    }
+    .controls{
+      padding-left: 35px;
+      margin-left: 0;
+      flex: 1;
+      select{
+        background: transparent;
+        border: none;
+        -webkit-appearance: menulist-button;
+        -moz-appearance: menulist-button;
+        appearance: menulist-button;
+      }
+    }
+  }
+  .choices[data-type*=select-one] .choices__inner{
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    .choices__list--single{
+      color: var(--color);
+      font-size: 1rem;
+    }
+  }
+  .choices__list.choices__list--dropdown{
+    .choices__input{
+      font-size: .78rem; 
+      padding: 5px 15px;
+    }
+  }
+  .choices__list--dropdown .choices__item{
+    font-size: .78rem;
+    padding: 5px 15px;
+  }
+}

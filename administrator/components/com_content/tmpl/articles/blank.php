@@ -292,10 +292,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                         <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                <div class="j-card-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer d-flex align-items-center">
                     <div class="j-card-footer-item">
@@ -319,16 +317,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer">
                     <div class="j-card-footer-item j-card-footer-icon">
                         <button class="fas fa-eye"></button>
                     </div>
                     <div class="j-card-footer-item">
-                        <button><i class="fas fa-key"></i> Details Information</button>
+                        <button><span class="j-card-icon fas fa-key"></span> Details Information</button>
                     </div>
                 </div>
             </div>
@@ -338,7 +334,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header j-card-header-sm">
                     <p class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <i class="j-card-icon fas fa-pen-alt"></i>
                         Card small title + icon
                     </p>
 
@@ -347,9 +343,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer">
                     <div class="j-card-footer-item">
@@ -367,7 +361,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -375,9 +369,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
@@ -390,7 +382,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -398,13 +390,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <i class="fas fa-key"></i> Details Information</a>
+                        <a href="#"> <span class="j-card-icon fas fa-key"></span> Details Information</a>
                     </div>
                     <div class="j-card-footer-item j-card-footer-icon">
                         <button class="fas fa-eye"></button>
@@ -417,7 +407,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -425,13 +415,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -445,7 +433,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="j-card j-card-has-hover">
                 <div class="j-card-header">
                     <h4 class="j-card-title">
-                        <i class="fas fa-pen-alt"></i>
+                        <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
                     <div class="j-card-header-right">
@@ -456,13 +444,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     <img src="https://picsum.photos/400/300" alt="">
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -475,13 +461,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -494,9 +478,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
                 <div class="j-card-body j-card-body-has-padding">
-                    <div class="j-card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
                 <span class="j-card-divider"></span>
                 <div class="j-card-btn-group">
@@ -505,7 +487,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
                 <div class="j-card-footer j-card-footer-lg">
                     <div class="j-card-footer-item">
-                        <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -521,9 +503,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                         <img src="https://picsum.photos/id/684/400/300" alt="">
                     </div>
                     <div class="j-card-body j-card-body-has-padding">
-                        <div class="j-card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
-                        </div>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                     </div>
                     <span class="j-card-divider"></span>
 
@@ -532,7 +512,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                             <span>Hello</span>
                         </div>
                         <div class="j-card-item">
-                            <i class="fab fa-facebook"></i>
+                            <span class="fab fa-facebook"></span>
                         </div>
                         <div class="j-card-item j-card-item-right">
                             content right
@@ -546,11 +526,11 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
                     <div class="j-card-btn-group"> <!-- Possible ext class: j-no-padding -->
                         <a class="btn btn-primary" href="#">Button 1 Button 1</a>
-                        <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
+                        <button class="btn"> <span class="icon fas fa-cog"></span> Button 2</button>
                     </div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
@@ -565,7 +545,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                     <div class="j-card-overview-box">
                         <div class="j-card-overview-icon j-warning">
-                            <i class="fab fa-invision"></i>
+                            <span class="fab fa-invision"></span>
                         </div>
                         <div class="j-card-overview-content">
                             65 <sub>Article</sub>
@@ -573,29 +553,52 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-3">
                 <div class="j-card j-card-has-hover">
-                    <div class="j-card-header j-card-header-sm">
+                    <div class="j-card-header">
+                        <h4 class="j-card-header-title">Table</h4>
                         <div class="j-card-header-right">
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box">
-                        <div class="j-card-overview-icon j-danger">
-                            <i class="fab fa-invision"></i>
-                        </div>
-                        <div class="j-card-overview-content">
-                            65 <sub>Article</sub>
-                        </div>
-                    </div>
+
+                    <table class="j-card-table mt-2 mb-3">
+                        <tbody>
+                            <tr>
+                                <th>Time</th>
+                                <td>20:45</td>
+                            </tr>
+                            <tr>
+                                <th>SQL</th>
+                                <td>MySQLi 5.6.35</td>
+                            </tr>
+                            <tr>
+                                <th>OS</th>
+                                <td>Darwin 7.1</td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td>20:45</td>
+                            </tr>
+                            <tr>
+                                <th>SQL</th>
+                                <td>MySQLi 5.6.35</td>
+                            </tr>
+                            <tr>
+                                <th>OS</th>
+                                <td>Darwin 7.1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
-                            <a href="#"> <i class="j-icon-lg fas fa-cloud-download-alt"></i> Details Information</a>
+                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
