@@ -20,6 +20,7 @@ $menuTypes = MenusHelper::getMenuLinks();
 
 HTMLHelper::_('script', 'legacy/treeselectmenu.min.js', array('version' => 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array('version' => 'auto', 'relative' => true));
+// HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div id="menuselect-group">
 	<div id="jform_menuselect" class="controls">
@@ -124,23 +125,20 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 			
 			<div style="display:none" id="treeselectmenu">
 				<div class="nav-hover treeselect-menu">
-					<div class="dropdown">
-						<button type="button" data-toggle="dropdown" class="dropdown-toggle iconic-button">
-							<span class="fas fa-ellipsis-h"></span>
-							<span class="sr-only"><?php echo Text::sprintf('JGLOBAL_TOGGLE_DROPDOWN'); ?></span>
-						</button>
-						<div class="dropdown-menu">
-							<h5 class="dropdown-header"><?php echo Text::_('COM_MODULES_SUBITEMS'); ?></h5>
+					<button class="btn btn-link iconic-button" id="treemenu-">
+						<span class="fas fa-ellipsis-h"></span>
+						<span class="sr-only"><?php echo Text::sprintf('JGLOBAL_TOGGLE_DROPDOWN'); ?></span>
+					</button>
+					<joomla-dropdown for="#treemenu-">
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item checkall" href="javascript://"><span class="icon-checkbox" aria-hidden="true"></span> <?php echo Text::_('JSELECT'); ?></a>
+						<a class="dropdown-item uncheckall" href="javascript://"><span class="icon-checkbox-unchecked" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_DESELECT'); ?></a>
+						<div class="treeselect-menu-expand">
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item checkall" href="javascript://"><span class="icon-checkbox" aria-hidden="true"></span> <?php echo Text::_('JSELECT'); ?></a>
-							<a class="dropdown-item uncheckall" href="javascript://"><span class="icon-checkbox-unchecked" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_DESELECT'); ?></a>
-							<div class="treeselect-menu-expand">
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item expandall" href="javascript://"><span class="icon-plus" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_EXPAND'); ?></a>
-								<a class="dropdown-item collapseall" href="javascript://"><span class="icon-minus" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_COLLAPSE'); ?></a>
-							</div>
+							<a class="dropdown-item expandall" href="javascript://"><span class="icon-plus" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_EXPAND'); ?></a>
+							<a class="dropdown-item collapseall" href="javascript://"><span class="icon-minus" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_COLLAPSE'); ?></a>
 						</div>
-					</div>
+					</joomla-dropdown>
 				</div>
 			</div>
 		</div>
