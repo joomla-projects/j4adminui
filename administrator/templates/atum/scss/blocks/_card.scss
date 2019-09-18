@@ -264,38 +264,96 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 }
 
 // Event List
-.jcard-event-list{
-	.jcard-event-item{
-		padding: .928571rem 2.142857rem 1.785714rem;
-		@extend .d-flex;
-		&:not(:last-child){
-			border-bottom: 1px solid var(--background);
+
+.jcard-event-item{
+	padding: .928571rem 2.142857rem 1.785714rem;
+	@extend .d-flex;
+	&:not(:last-child){
+		border-bottom: 1px solid var(--background);
+	}
+	time{
+		margin-right: 25px;
+		white-space: nowrap;
+		text-align: left;
+		span{
+			font-size: 3.857143rem;
+			line-height: 5.071429rem;
+			font-weight: 700;
+			display: block;
+		}
+	}
+	.jcard-event-content{
+		flex-grow: 1;
+		padding-top: .857143rem;
+		span{
+			font-size: 1rem;
+			color: var(--secondary-color);
+			display: block;
+			margin-bottom: .428571rem;
+		}
+		h5{
+			font-size: 1.142857rem;
+			line-height: 1.61em;
+			font-weight: 400;
+		}
+	}
+}
+
+// activity list
+
+.jcard-activity-item{
+	padding: 1.785714rem 2.142857rem 1.785714rem;
+	@extend .d-flex;
+	@extend .align-items-start;
+	&:not(:last-child){
+		border-bottom: 1px solid var(--background);
+	}
+	.jcard-activity-avatar{
+		height: 3.571429rem;
+		min-width: 3.571429rem;
+		max-width: 3.571429rem;
+		margin-right: 1.071429rem;
+		font-size: 1.428571rem;
+		color: var(--secondary-color);
+		background: var(--background);
+		border-radius: 50%;
+		@extend .d-inline-flex;
+		@extend .align-items-center;
+		@extend .justify-content-center;
+	}
+	.jcard-activity-content{
+		flex-grow: 1;
+		color: var(--secondary-color);
+		p{
+			font-size: 12px;
+			&:last-child{
+				margin-bottom: 0;
+			}
 		}
 		time{
-			margin-right: 25px;
-			white-space: nowrap;
-			text-align: left;
+			margin-bottom: .5rem;
+			color: var(--secondary-color);
+			display: block;
 			span{
-				font-size: 3.857143rem;
-				line-height: 5.071429rem;
-				font-weight: 700;
-				display: block;
+				padding: 0 .357143rem;
 			}
 		}
-		.jcard-event-content{
-			flex-grow: 1;
-			padding-top: .857143rem;
+		h4{
+			font-size: 1.142857rem;
+			font-weight: 400;
+			line-height: 1.857143rem;
+			color: var(--color);
+			margin-bottom: .142857rem;
 			span{
-				font-size: 1rem;
 				color: var(--secondary-color);
-				display: block;
-				margin-bottom: .428571rem;
+				font-size: 1rem;
 			}
-			h5{
-				font-size: 1.142857rem;
-				line-height: 1.61em;
-				font-weight: 400;
-			}
+		}
+		h5{
+			font-size: 1rem;
+			margin-bottom: .928571rem;
+			color: var(--secondary-color);
+			font-weight: 400;
 		}
 	}
 }

@@ -658,6 +658,53 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                     </div>
                 </div>
             </div>
+
+            <div class="col-4">
+                <div class="jcard jcard-has-hover">
+                    <div class="jcard-header">
+                        <h4>Recent activities</h4>
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
+                        </div>
+                    </div>
+
+                    <div class="jcard-activity-list">
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
