@@ -639,6 +639,27 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
         </div>
 
+        <hr>
+
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="jcard jcard-quick-link j-success jcard-has-hover">
+                    <div class="jcard-header jcard-header-sm">
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
+                        </div>
+                    </div>
+                    <div class="jcard-quick-link-body">
+                        <span class="fas fa-image jcard-icon"></span>
+                        <div class="jcard-quick-link-content">
+                            <a href="#">Learn Joomla</a>
+                            <p>Learn Joomla FREE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 
