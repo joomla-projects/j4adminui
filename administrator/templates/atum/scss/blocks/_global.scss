@@ -214,23 +214,28 @@ body .container-main {
     padding-right: 1.7rem;
   }
 }
-.j-edit-fields{
+.form-inline-group{
   .control-group{
-    margin: 0;
     padding: 0 15px;
-    display: flex;
-    align-items: center;
-
+    @extend .d-flex;
+    @extend .align-items-center;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+    background: var(--inverse-color);
+    border-radius: 3px;
+    transition: .3s;
+    font-size: 1rem;
     .control-label{
       width: auto;
       border-right: 1px solid var(--page-background);
       flex: 0 0 90px;
     }
     .controls{
-      padding-left: 35px;
+      padding-left: 25px;
       margin-left: 0;
       flex: 1;
+      color: var(--color);
       select{
+        color: var(--color);
         background: transparent;
         border: none;
         -webkit-appearance: menulist-button;
@@ -240,8 +245,8 @@ body .container-main {
     }
   }
   .choices[data-type*=select-one] .choices__inner{
-    display: flex;
-    align-items: center;
+    @extend .d-flex;
+    @extend .align-items-center;
     background: transparent;
     border: none;
     .choices__list--single{
