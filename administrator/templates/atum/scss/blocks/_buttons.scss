@@ -285,6 +285,7 @@
     position: relative;
     display: inline-flex;
     display: -ms-inline-flexbox;
+    @extend .align-items-center;
     vertical-align: middle;
     &.dropdown-save-group{
         >.btn{
