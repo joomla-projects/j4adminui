@@ -11,8 +11,8 @@
 
   .js-stools-container-filters {
     display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
+    @extend .flex-row;
+    @extend .flex-wrap;
     padding: 1rem .5rem .5rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
@@ -24,7 +24,7 @@
     }
 
     &.js-filters-show {
-      display: flex;
+      @extend .d-flex;
     }
 
     .chzn-container-single {
@@ -88,7 +88,7 @@
     }
 
     .js-stools-field-list{
-      display: flex;
+      @extend .d-flex;
       .js-stools-sort-by-label{
         font-size: 1rem;
         color: var(--secondary-color);
@@ -106,10 +106,10 @@
       }
     }
     .js-stools-field-list-content {
-      display: flex;
-      align-items: center;
+      @extend .d-flex;
+      @extend .align-items-center;
       border: 1px solid #e8ebf4;
-      background: #fff;
+      background: var(--inverse-color);
       padding: 0px 5px 0px 15px;
       margin-right: 10px;
     }

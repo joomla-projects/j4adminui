@@ -1,5 +1,5 @@
 .toggle-toolbar {
-  display:block;
+  display: block;
 }
 .subhead {
   position: sticky;
@@ -65,6 +65,7 @@
       color: var(--icon-color);
       box-shadow: none;
       line-height: 1;
+      &::before,
       &.hidden{
         display: none;
       }
@@ -143,7 +144,7 @@
     }
   }
   @include media-breakpoint-down(xs) {
-    display:block;
+    display: block;
       .joomla-toolbar-button,
       .btn-group,
       .input-group,
