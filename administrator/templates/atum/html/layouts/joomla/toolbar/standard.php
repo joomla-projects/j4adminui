@@ -62,13 +62,8 @@ elseif (!empty($onclick))
 	class="<?php echo $btnClass ?? ''; ?>"
 	<?php echo $htmlAttributes ?? ''; ?>
     >
-    <?php if ($id === 'toolbar-new') : ?>
-        <?php echo $text ?? ''; ?>
-        <span class="<?php echo trim($class ?? ''); ?> icon right" aria-hidden="true"></span>
-    <?php else: ?>
-        <span class="<?php echo trim($class ?? ''); ?> icon" aria-hidden="true"></span>
-        <?php echo $text ?? ''; ?>
-    <?php endif; ?>
+    <span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
+    <?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
 <?php endif; ?>
 </joomla-toolbar-button>
