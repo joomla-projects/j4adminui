@@ -476,6 +476,9 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="jcard jcard-has-hover">
                 <div class="jcard-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
+                    <div class="jcard-media-hover align-items-center justify-content-center">
+                        <button class="btn btn-success">Hello</button>
+                    </div>
                 </div>
                 <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
@@ -637,6 +640,74 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                 </div>
             </div>
 
+        </div>
+
+        <hr>
+
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="jcard jcard-quick-link j-success jcard-has-hover">
+                    <div class="jcard-header jcard-header-sm">
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
+                        </div>
+                    </div>
+                    <div class="jcard-quick-link-body">
+                        <span class="fas fa-image jcard-icon"></span>
+                        <div class="jcard-quick-link-content">
+                            <a href="#">Learn Joomla</a>
+                            <p>Learn Joomla FREE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="jcard jcard-has-hover">
+                    <div class="jcard-header">
+                        <h4>Recent activities</h4>
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
+                        </div>
+                    </div>
+
+                    <div class="jcard-activity-list">
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                        <div class="jcard-activity-item">
+                            <div class="jcard-activity-avatar">
+                                <span class="fas fa-user"></span>
+                            </div>
+                            <div class="jcard-activity-content">
+                                <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
+                                <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
+                                <h5 class="jcard-activity-type">Wrote Article: Service</h5>
+                                <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
