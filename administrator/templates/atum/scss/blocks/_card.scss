@@ -14,6 +14,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	}
 	&.active{
 		box-shadow: $card-box-shadow-active, 0 0 0 3px var(--link-color);
+		&:hover{
+			box-shadow: $card-box-shadow-hover, 0 0 0 3px var(--link-color);
+		}
 	}
 	.jcard-header{
 		padding: .714286rem 0 .714286rem 1.429rem;
