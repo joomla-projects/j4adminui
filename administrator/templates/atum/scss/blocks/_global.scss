@@ -204,11 +204,10 @@ body .container-main {
     font-size: 1rem;
   }
   input{
-    border-bottom-color: var(--button-border-color);
+    border-bottom-color: var(--secondary-icon-color);
     color: var(--color);
     background: var(--inverse-color);
     font-size: 1.15rem;
-    border-bottom-width: 3px;
     height: 3.4rem;
     padding-left: 1.7rem;
     padding-right: 1.7rem;

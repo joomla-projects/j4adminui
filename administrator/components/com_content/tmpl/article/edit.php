@@ -84,17 +84,9 @@ if($this->item->id > 0)
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="jcard">
-							<div class="jcard-body jcard-body-has-padding">
-								<fieldset class="adminform">
-									<?php echo $this->form->getLabel('articletext'); ?>
-									<?php echo $this->form->getInput('articletext'); ?>
-								</fieldset>
-							</div>
-						</div>
-					</div>
+				<div class="item-title">
+					<?php echo $this->form->getLabel('articletext'); ?>
+					<?php echo $this->form->getInput('articletext'); ?>
 				</div>
 				
 				<?php // Do not show the images and links options if the edit form is configured not to. ?>
@@ -249,33 +241,35 @@ if($this->item->id > 0)
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
 			<div class="form-no-margin jcard">
-				<div class="jcard-body jcard-body-has-padding">
+				<div class="jcard-body p-4">
 					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 					<!-- featured & status -->
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
 				</div>
 			</div>
+
 			<!-- category -->
-			<div class="form-inline-group">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( array('category', 'catid') ), 'data' => $this)); ?>
+			<div class="form-inline-group mt-4">
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'category', 'catid' ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
-			<p><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
-			<div class="bg-white px-3 mt-4 form-no-margin card">
-				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'tags' ), 'data' => $this)); ?>
+			<div class="control-group">
+				<p class="mt-4"><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
+				<?php echo $this->form->getInput('tags'); ?>
 			</div>
+				
 			<?php if (Multilanguage::isEnabled()) : ?>
-			<!-- language -->
-				<div class="bg-white px-3 mt-4 form-no-margin card">
+				<!-- language -->
+				<div class="form-inline-group mt-4">
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'language' ), 'data' => $this)); ?>
 				</div>
 			<?php endif; ?>
 			<!-- created -->
-			<div class="bg-white px-3 mt-4 form-no-margin card">
+			<div class="form-inline-group mt-4">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'created' ), 'data' => $this)); ?>
 			</div>
 			<!-- access -->
-			<div class="mt-4 jcard form-inline-group">
+			<div class="form-inline-group mt-4">
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'access' ), 'data' => $this)); ?>
 			</div>
 			<!-- metadata -->
