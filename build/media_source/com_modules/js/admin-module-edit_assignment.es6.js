@@ -7,9 +7,11 @@
 
   const onChange = (value) => {
     if (value === '-' || parseInt(value, 10) === 0) {
+      // hide
       document.querySelector('.menuselect-hierarchy').style.display = 'none';
       document.querySelector('#treeselectfilter').style.display = 'none';
     } else {
+      // show 
       document.querySelector('.menuselect-hierarchy').style.display = 'block';
       document.querySelector('#treeselectfilter').style.display = 'block';
     }
