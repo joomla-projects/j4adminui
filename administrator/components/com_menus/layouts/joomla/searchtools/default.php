@@ -93,13 +93,13 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 // Load search tools
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
 ?>
-<div class="js-stools d-flex flex-wrap" role="search">
+<div class="js-stools d-flex flex-wrap align-items-center" role="search">
 	<?php if ($data['view'] instanceof \Joomla\Component\Menus\Administrator\View\Items\HtmlView) : ?>
 	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
 	<?php $app = Factory::getApplication(); ?>
 		<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
 		<?php if(!empty($clientOptions)) : ?>
-			<div class="btn-group" role="group">
+			<div class="btn-group btn-group-border mr-3" role="group">
 				<?php foreach($clientOptions as $key => $option) : ?>
 					<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-primary' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 				<?php endforeach; ?>

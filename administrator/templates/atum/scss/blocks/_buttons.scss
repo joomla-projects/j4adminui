@@ -284,9 +284,14 @@
 .btn-group{
     position: relative;
     display: inline-flex;
+    display: -ms-inline-flexbox;
+    @extend .align-items-center;
     vertical-align: middle;
     &.dropdown-save-group{
-        .button-apply{
+        >.btn{
+            margin-left: 0;
+        }
+        joomla-toolbar-button .btn{
             border-radius: 3px 0 0 3px;
         }
         .dropdown-toggle{

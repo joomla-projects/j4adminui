@@ -282,71 +282,71 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
     <div class="row justify-content-center">
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header">
-                    <h4 class="j-card-title">
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header">
+                    <h4 class="jcard-title">
                         Default Card...
                     </h4>
 
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer d-flex align-items-center">
-                    <div class="j-card-footer-item">
+                <div class="jcard-footer d-flex align-items-center">
+                    <div class="jcard-footer-item">
                         <a href="#">Details Information</a>
                     </div>
-                    <div class="j-card-footer-item j-card-footer-icon">
+                    <div class="jcard-footer-item jcard-footer-icon">
                         <a href="#" class="fas fa-eye"></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header j-card-header-sm">
-                    <h4 class="j-card-title">
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header jcard-header-sm">
+                    <h4 class="jcard-title">
                         Card small header
                     </h4>
 
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer">
-                    <div class="j-card-footer-item j-card-footer-icon">
+                <div class="jcard-footer">
+                    <div class="jcard-footer-item jcard-footer-icon">
                         <button class="fas fa-eye"></button>
                     </div>
-                    <div class="j-card-footer-item">
-                        <button><span class="j-card-icon fas fa-key"></span> Details Information</button>
+                    <div class="jcard-footer-item">
+                        <button><span class="jcard-icon fas fa-key"></span> Details Information</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header j-card-header-sm">
-                    <p class="j-card-title">
-                        <i class="j-card-icon fas fa-pen-alt"></i>
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header jcard-header-sm">
+                    <p class="jcard-title">
+                        <i class="jcard-icon fas fa-pen-alt"></i>
                         Card small title + icon
                     </p>
 
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer">
-                    <div class="j-card-footer-item">
+                <div class="jcard-footer">
+                    <div class="jcard-footer-item">
                         <a href="#">Details Information</a>
                     </div>
                 </div>
@@ -358,45 +358,45 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
     <div class="row justify-content-center" style="padding: 30px 0">
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header">
-                    <h4 class="j-card-title">
-                        <span class="j-card-icon fas fa-pen-alt"></span>
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header">
+                    <h4 class="jcard-title">
+                        <span class="jcard-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
                         <a href="#">Details Information</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header">
-                    <h4 class="j-card-title">
-                        <span class="j-card-icon fas fa-pen-alt"></span>
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header">
+                    <h4 class="jcard-title">
+                        <span class="jcard-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-card-icon fas fa-key"></span> Details Information</a>
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
+                        <a href="#"> <span class="jcard-icon fas fa-key"></span> Details Information</a>
                     </div>
-                    <div class="j-card-footer-item j-card-footer-icon">
+                    <div class="jcard-footer-item jcard-footer-icon">
                         <button class="fas fa-eye"></button>
                     </div>
                 </div>
@@ -404,22 +404,22 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
         </div>
         
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header">
-                    <h4 class="j-card-title">
-                        <span class="j-card-icon fas fa-pen-alt"></span>
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header">
+                    <h4 class="jcard-title">
+                        <span class="jcard-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
+                        <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -430,25 +430,25 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
     <div class="row justify-content-center" style="padding: 30px 0">
         <div class="col-3">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-header">
-                    <h4 class="j-card-title">
-                        <span class="j-card-icon fas fa-pen-alt"></span>
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-header">
+                    <h4 class="jcard-title">
+                        <span class="jcard-icon fas fa-pen-alt"></span>
                         Card Footer Large
                     </h4>
-                    <div class="j-card-header-right">
-                        <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                    <div class="jcard-header-right">
+                        <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                     </div>
                 </div>
-                <div class="j-card-media">
+                <div class="jcard-media">
                     <img src="https://picsum.photos/400/300" alt="">
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
+                        <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -456,16 +456,16 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
 
         <div class="col-3">
-            <div class="j-card">
-                <div class="j-card-media">
+            <div class="jcard">
+                <div class="jcard-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
+                        <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -473,21 +473,21 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
 
         <div class="col-4">
-            <div class="j-card j-card-has-hover">
-                <div class="j-card-media">
+            <div class="jcard jcard-has-hover">
+                <div class="jcard-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
                 </div>
-                <div class="j-card-body j-card-body-has-padding">
+                <div class="jcard-body p-3">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                 </div>
-                <span class="j-card-divider"></span>
-                <div class="j-card-btn-group">
+                <span class="jcard-divider mx-3"></span>
+                <div class="jcard-btn-group p-3">
                     <a class="btn btn-primary" href="#">Button 1 Button 1</a>
                     <button class="btn"> <i class="icon fas fa-cog"></i> Button 2</button>
                 </div>
-                <div class="j-card-footer j-card-footer-lg">
-                    <div class="j-card-footer-item">
-                        <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                <div class="jcard-footer jcard-footer-lg">
+                    <div class="jcard-footer-item">
+                        <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                     </div>
                 </div>
             </div>
@@ -498,76 +498,76 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 
         <div class="row justify-content-center">
             <div class="col-4">
-                <div class="j-card j-card-has-hover">
-                    <div class="j-card-media">
+                <div class="jcard jcard-has-hover">
+                    <div class="jcard-media">
                         <img src="https://picsum.photos/id/684/400/300" alt="">
                     </div>
-                    <div class="j-card-body j-card-body-has-padding">
+                    <div class="jcard-body p-3">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ex expedita incidunt minus modi odit pariatur provident quasi, vero!
                     </div>
-                    <span class="j-card-divider"></span>
+                    <span class="jcard-divider mx-3"></span>
 
-                    <div class="j-card-item-group">  <!-- Possible ext class:  j-no-margin, j-no-padding -->
-                        <div class="j-card-item">
+                    <div class="jcard-item-group p-4">
+                        <div class="jcard-item">
                             <span>Hello</span>
                         </div>
-                        <div class="j-card-item">
+                        <div class="jcard-item">
                             <span class="fab fa-facebook"></span>
                         </div>
-                        <div class="j-card-item j-card-item-right">
+                        <div class="jcard-item jcard-item-right">
                             content right
                         </div>
-                        <div class="j-card-item">
+                        <div class="jcard-item">
                             content right
                         </div>
                     </div>
 
-                    <span class="j-card-divider"></span>
+                    <span class="jcard-divider mx-3"></span>
 
-                    <div class="j-card-btn-group"> <!-- Possible ext class: j-no-padding -->
+                    <div class="jcard-btn-group p-3">
                         <a class="btn btn-primary" href="#">Button 1 Button 1</a>
                         <button class="btn"> <span class="icon fas fa-cog"></span> Button 2</button>
                     </div>
-                    <div class="j-card-footer j-card-footer-lg">
-                        <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                    <div class="jcard-footer jcard-footer-lg">
+                        <div class="jcard-footer-item">
+                            <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-3">
-                <div class="j-card j-card-has-hover">
-                    <div class="j-card-header j-card-header-sm">
-                        <div class="j-card-header-right">
-                            <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+                <div class="jcard jcard-has-hover">
+                    <div class="jcard-header jcard-header-sm">
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box">
-                        <div class="j-card-overview-icon j-warning">
+                    <div class="jcard-overview-box">
+                        <div class="jcard-overview-icon j-warning">
                             <span class="fab fa-invision"></span>
                         </div>
-                        <div class="j-card-overview-content">
+                        <div class="jcard-overview-content">
                             65 <sub>Article</sub>
                         </div>
                     </div>
-                    <div class="j-card-footer j-card-footer-lg">
-                        <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                    <div class="jcard-footer jcard-footer-lg">
+                        <div class="jcard-footer-item">
+                            <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="j-card j-card-has-hover">
-                    <div class="j-card-header">
-                        <h4 class="j-card-header-title">Table</h4>
-                        <div class="j-card-header-right">
-                            <button class="j-card-header-icon fas fa-ellipsis-h"></button>
+            <div class="col-4">
+                <div class="jcard jcard-has-hover">
+                    <div class="jcard-header">
+                        <h4 class="jcard-header-title">Table</h4>
+                        <div class="jcard-header-right">
+                            <button class="jcard-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
 
-                    <table class="j-card-table mt-2 mb-3">
+                    <table>
                         <tbody>
                             <tr>
                                 <th>Time</th>
@@ -596,9 +596,42 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                         </tbody>
                     </table>
 
-                    <div class="j-card-footer j-card-footer-lg">
-                        <div class="j-card-footer-item">
-                            <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
+                    <div class="jcard-event-list">
+                        <div class="jcard-event-item">
+                            <time datetime="2019-07-13"> <!-- yyyy-mm-dd -->
+                                <span>13</span>
+                                July 2019
+                            </time>
+                            <div class="jcard-event-content">
+                                <span>Project Release News</span>
+                                <h5>Project Release News</h5>
+                            </div>
+                        </div>
+                        <div class="jcard-event-item">
+                            <time datetime="2019-07-13"> <!-- yyyy-mm-dd -->
+                                <span>13</span>
+                                July 2019
+                            </time>
+                            <div class="jcard-event-content">
+                                <span>Project Release News</span>
+                                <h5>Because Open Source Matters and Domains too! </h5>
+                            </div>
+                        </div>
+                        <div class="jcard-event-item">
+                            <time datetime="2019-07-13"> <!-- yyyy-mm-dd -->
+                                <span>13</span>
+                                July 2019
+                            </time>
+                            <div class="jcard-event-content">
+                                <span>Project Release News</span>
+                                <h5>Because Open Source Matters and Domains too! </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jcard-footer jcard-footer-lg">
+                        <div class="jcard-footer-item">
+                            <a href="#"> <span class="jcard-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
                         </div>
                     </div>
                 </div>
