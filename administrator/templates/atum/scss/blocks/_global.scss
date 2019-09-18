@@ -265,6 +265,10 @@ body .container-main {
   }
 }
 .alias-wrap{
+  margin-bottom: 15px;
+  border-bottom: 1px solid #edf0f5;
+  padding-bottom: 10px;
+  max-width: 100%;
   @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-between;
@@ -279,6 +283,7 @@ body .container-main {
       color: var(--inverse-background);
     }
   }
+  #remove-edit,
   #edit-alias{
     color: var(--button-border-color);
     font-size: 12px;
@@ -287,13 +292,34 @@ body .container-main {
   .alias-edit{
     display: none;
     .control-group{
+      margin-bottom: 0;
+      .control-label{
+        min-width: 90px;
+      }
+      .controls{
+        input{
+          height: 2.3rem;
+          padding-left: 1rem;
+          width: auto;
+          min-width: auto;
+        }
+      }
+    }
+    .control-group{
       @extend .d-flex;
     }
   }
+  #remove-edit{
+    display: none;
+    position: absolute;
+    right: 40px;
+  }
   &.active{
+    #edit-alias,
     .alias-text{
-      display: none;
+      display: none !important;
     }
+    #remove-edit,
     .alias-edit{
       display: block;
     }
