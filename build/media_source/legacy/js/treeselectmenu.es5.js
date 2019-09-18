@@ -9,10 +9,11 @@ jQuery(function($)
 	$('.treeselect li').each(function()
 	{
 		$li = $(this);
+		
 		$div = $li.find('div.treeselect-item:first');
 
 		// Add icons
-		$li.prepend('<span class="icon-"></span>');
+		$div.prepend('<span class="icon-"></span>');
 
 		if ($li.find('ul.treeselect-sub').length) {
 			// Add classes to Expand/Collapse icons
