@@ -476,7 +476,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             <div class="jcard jcard-has-hover">
                 <div class="jcard-media">
                     <img src="https://picsum.photos/id/684/400/300" alt="">
-                    <div class="jcard-media-hover align-items-center justify-content-center">
+                    <div class="jcard-media-overlay align-items-center justify-content-center">
                         <button class="btn btn-success">Hello</button>
                     </div>
                 </div>
@@ -703,6 +703,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
                                 <h5 class="jcard-activity-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                                <a href="#" class="iconic-button"><span class="fas fa-pen-alt"></span></a>
                             </div>
                         </div>
                     </div>
