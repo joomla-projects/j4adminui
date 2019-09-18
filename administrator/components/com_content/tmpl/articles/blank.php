@@ -126,7 +126,15 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
         <div class="joomla-dropdown-container">
             <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
             <joomla-dropdown for="#dropdownList">
-                <a class="dropdown-item" href="#">Item 1</a>
+                <li hasdropdown="true" class="dropdown-item">
+                    <a href="#"> Item 1 </a>
+                    <ul class="sub-dropdown">
+                        <li> alskjdf alsdkf  </li>
+                        <li> alskjdf alsdkf  </li>
+                        <li> alskjdf alsdkf  </li>
+                        <li> alskjdf alsdkf  </li>
+                    </ul>
+                </li>
                 <a class="dropdown-item" href="#">Item 2</a>
                 <a class="dropdown-item" href="#">Item 3</a>
             </joomla-dropdown>
