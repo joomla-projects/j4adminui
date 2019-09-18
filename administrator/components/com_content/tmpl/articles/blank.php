@@ -703,6 +703,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
                                 <h5 class="jcard-activity-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
+                                <a href="#" class="iconic-button"><span class="fas fa-pen-alt"></span></a>
                             </div>
                         </div>
                     </div>

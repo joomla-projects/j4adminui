@@ -38,25 +38,10 @@ $card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
 		}
 
 		button{
-			padding: 1.071429rem 0.714rem;
+			@extend .iconic-btn;
 			margin: -.714rem 0 -.714rem;
-			background: transparent;
-			border: none;
-			color: var(--secondary-icon-color);
-			transition: 300ms;
-			line-height: 1;
-			display: block;
-			position: relative;
-			z-index: 2;
-			&:focus{
-				outline: 1px solid var(--link-color);
-			}
-			&:hover,
-			&:focus{
-				color: var(--link-color);
-			}
 		}
-
+		
 		&.jcard-header-sm{
 			padding: 0 0 0 0.714rem;
 			border-bottom: none;
