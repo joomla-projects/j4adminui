@@ -56,17 +56,17 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$app = Factory::getApplication();
-		$extension = ApplicationHelper::stringURLSafe($app->input->getCmd('dashboard'));
+		$this->extension = ApplicationHelper::stringURLSafe($app->input->getCmd('dashboard'));
 
 		$title = Text::_('COM_CPANEL_DASHBOARD_BASE_TITLE');
 		$icon = Text::_('COM_CPANEL_DASHBOARD_BASE_ICON');
 
-		$position = ApplicationHelper::stringURLSafe($extension);
+		$position = ApplicationHelper::stringURLSafe($this->extension);
 
 		// Generate a title for the view cpanel
-		if (!empty($extension))
+		if (!empty($this->extension))
 		{
-			$parts = explode('.', $extension);
+			$parts = explode('.', $this->extension);
 
 			$prefix = 'COM_CPANEL_DASHBOARD_';
 			$lang = Factory::getLanguage();
@@ -109,9 +109,6 @@ class HtmlView extends BaseHtmlView
 		// Display the cpanel modules
 		$this->position = $position ? 'cpanel-' . $position : 'cpanel';
 		$this->modules = ModuleHelper::getModules($this->position);
-
-		$quickicons = $position ? 'icon-' . $position : 'icon';
-		$this->quickicons = ModuleHelper::getModules($quickicons);
 
 		parent::display($tpl);
 	}
