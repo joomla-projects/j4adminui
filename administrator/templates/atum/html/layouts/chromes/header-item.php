@@ -15,6 +15,8 @@ $module  = $displayData['module'];
 
 if ($module->content) : ?>
 	<div class="header-item">
-		<?php echo $module->content; ?>
+		<div class="header-item-content">
+			<?php echo $module->content; ?>
+		</div>
 	</div>
 <?php endif; ?>
