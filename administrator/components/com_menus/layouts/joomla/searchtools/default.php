@@ -101,7 +101,7 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 		<?php if(!empty($clientOptions)) : ?>
 			<div class="btn-group btn-group-border mr-3" role="group">
 				<?php foreach($clientOptions as $key => $option) : ?>
-					<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-primary' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+					<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default' : 'btn-link'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 				<?php endforeach; ?>
 			</div>
 			<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
