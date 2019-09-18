@@ -9,6 +9,7 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
 use Joomla\CMS\HTML\HTMLHelper;
 
@@ -26,6 +27,13 @@ $showLimitStart = $options->get('showLimitStart', true);
 $totalPages = ceil($list['total'] / $list['limit']);
 $limitStart = $list['limitstart'];
 
+$showResultFrom = (($limitStart / $list['limit'])) * $list['limit'] + 1;
+$showResultTo = (($limitStart / $list['limit']) + 1) * $list['limit'];
+if ($showResultTo > $list['total']) {
+    $showResultTo = $list['total'];
+}
+$resultMsg = Text::sprintf('JGLOBAL_SHOW_PAGINATION_MSG', $showResultFrom, $showResultTo, $list['total']);
+
 ?>
 <?php if($totalPages > 1) : ?>
     <joomla-pagination 
@@ -36,9 +44,10 @@ $limitStart = $list['limitstart'];
         last-icon="fa fa-angle-double-right"
         navbtns-state="icon"
         disable-btns=""
-        input-name="<?php echo $list['prefix']; ?>limitstart"
+        input-selector="#<?php echo $list['prefix']; ?>limitstart"
         pagination="true"
         limit="<?php echo $list['limit']; ?>"
+        result-msg="<?php echo $resultMsg; ?>"
     >
         <?php for($i = 1; $i <= $totalPages; $i++) : ?>
             <li class="pagination-item <?php echo $i === (($limitStart / $list['limit']) + 1) ? 'active': ''; ?>" value="<?php echo $i; ?>" style="display: none;" ><?php echo $i; ?></li>
