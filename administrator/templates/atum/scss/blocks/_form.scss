@@ -109,6 +109,10 @@ input,
 textarea,
 select{
   &.valid {
+    border-color: var(--input-border-color);
+  }
+  &:active,
+  &:focus {
     border-color: var(--primary-color);
   }
 }
