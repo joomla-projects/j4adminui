@@ -56,7 +56,7 @@ input,
 textarea {
 
   &.focus-visible {
-  outline: auto 2px var(--focus);
+  outline: solid 2px var(--primary-color);
   }
 }
 
@@ -204,7 +204,6 @@ body .container-main {
     font-size: 1rem;
   }
   input{
-    border-bottom-color: var(--secondary-icon-color);
     color: var(--color);
     background: var(--inverse-color);
     font-size: 1.15rem;
@@ -246,27 +245,43 @@ body .container-main {
   .choices[data-type*=select-one] .choices__inner{
     @extend .d-flex;
     @extend .align-items-center;
-    background: transparent;
+    background-image: url(../images/select-bg-white.svg);
+    background-color: #fff;
     border: none;
     .choices__list--single{
       color: var(--color);
       font-size: 1rem;
     }
   }
-  .choices__list.choices__list--dropdown{
-    .choices__input{
-      font-size: .78rem; 
-      padding: 5px 15px;
+  .choices__list--dropdown {
+    border: solid 1px #eaeef5;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    .choices__input,
+    .choices__item{
+      font-size: 1rem;
+      padding: 6px 15px;
+      color: var(--secondary-color);
+      border-bottom: solid 1px var(--page-background);
+      line-height: 1;
+      transition: .35s;
+      &:hover {
+        color: var(--primary-color);
+        box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+      }
     }
   }
-  .choices__list--dropdown .choices__item{
-    font-size: .78rem;
-    padding: 5px 15px;
+}
+.choices {
+  .choices__item--selectable {
+    &.is-highlighted {
+      background-color: transparent;
+    }
   }
 }
 .alias-wrap{
   margin-bottom: 15px;
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid var(--background);
   padding-bottom: 10px;
   max-width: 100%;
   @extend .d-flex;
