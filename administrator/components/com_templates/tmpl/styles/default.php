@@ -42,7 +42,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style<?php echo ($item->home == '1') ? ' template-default' : ''; ?> jcard jcard-has-hover mb-4">
+									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> jcard jcard-has-hover mb-4">
 										<div class="jcard-media">
 											<div class="template-thumbnail">
 												<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
@@ -115,17 +115,21 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 													<div class="flex-grow-1">
 														<?php if ($canChange):?>
 															<?php if ($item->home == '0') : ?>
-																<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')">
-																	<span class="fas fa-star fa-fw"></span> Set as Default
+																<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')" class="template-toggle-style text-muted">
+																	Set as Default
 																</a>
 															<?php else : ?>
-																<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>">
-																	<span class="fas fa-star fa-fw"></span>
+																<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>" class="template-toggle-style text-primary">
 																	<?php if ($item->image) : ?>
-																		<?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?>
+																		<span class="fas fa-language fa-fw text-muted" area-hidden="true"></span>
+																		<!-- <?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?> -->
+																	<?php else: ?>
+																		<span class="fas fa-check-circle fa-fw" area-hidden="true"></span>
+																		<!-- <?php echo HTMLHelper::_('image', 'mod_languages/' . $item->image . '.gif', $item->language_title, array('title' => Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title)), true); ?> -->
 																	<?php endif; ?>
 																	<span>
-																		<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+																		<?php //echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>
+																		<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', ''); ?>
 																	</span>
 																</a>
 															<?php endif; ?>
