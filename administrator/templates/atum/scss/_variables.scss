@@ -267,7 +267,7 @@ $zindex-mobil-menu:                9000;
 :root{
 	--background: #edf0f5;
   --inverse-background: #1d2427;
-  --border-color: #edf0f5;
+  --border-color: var(--background);
 	--color: #252732;
 	--color-rgb: 37, 39, 50;
 	--inverse-color: #ffffff;

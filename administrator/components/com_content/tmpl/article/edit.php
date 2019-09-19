@@ -240,8 +240,8 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="form-no-margin jcard">
-				<div class="jcard-body p-4">
+			<div class="form-no-margin jcard form-group-wrapper">
+				<div class="jcard-body">
 					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 					<!-- featured & status -->
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
@@ -253,8 +253,8 @@ if($this->item->id > 0)
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'category', 'catid' ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
-			<div class="control-group">
-				<p class="mt-4"><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
+			<div class="control-group tags-group">
+				<p class="tags-label"><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
 				<?php echo $this->form->getInput('tags'); ?>
 			</div>
 				
