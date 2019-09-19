@@ -137,16 +137,24 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance();
 
+		// if is not new
+		if (!$isNew)
+		{
+		$url = Route::link(
+			'site',
+			\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
+			true
+		);
+		
+		$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
+					->bodyHeight(80)	
+					->modalWidth(90);
+		}
+
 		ToolbarHelper::title(
 			Text::_('COM_CONTENT_PAGE_' . ($checkedOut ? 'VIEW_ARTICLE' : ($isNew ? 'ADD_ARTICLE' : 'EDIT_ARTICLE'))),
 			'pencil-2 article-add'
 		);
-
-		// cancel button
-		$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
-
-		//$toolbar->divider();
-		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
 		// language association
 		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
@@ -156,11 +164,20 @@ class HtmlView extends BaseHtmlView
 				->task('article.editAssociations');
 		}
 
+		// if new
+		if ($isNew)
+		{
+			// help button
+			$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
+
+			// cancel button
+			$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+		}
+
 		// For new records, check the create permission.
 		if ($isNew && (count($user->getAuthorisedCategories('com_content', 'core.create')) > 0))
 		{
 			$saveGroup = $toolbar->dropdownButton('save-group');
-
 			$saveGroup->configure(
 				function (Toolbar $childBar)
 				{
@@ -182,11 +199,6 @@ class HtmlView extends BaseHtmlView
 
 			if (!$isNew)
 			{
-				$url = Route::link(
-					'site',
-					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
-					true
-				);
 
 				// Add necessary code for a new menu item modal
 
@@ -241,6 +253,12 @@ class HtmlView extends BaseHtmlView
 
 				echo '<input type="hidden" class="form-control" id="' . $modalId . '_name" value="">';
 				echo '<input type="hidden" id="' . $modalId . '_id" value="0">';
+
+				//$toolbar->divider();
+				$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
+
+				// cancel button
+				$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
 
 				// Save item group 
 				$saveGroup = $toolbar->dropdownButton('save-group');
