@@ -401,8 +401,6 @@
         if (!navBtns.last.isShown) this.pageUl.appendChild(this.lastBtn);
         if (!navBtns.prev.isShown) this.pageUl.insertBefore(this.prevBtn, this.pageUl.firstChild);
         if (!navBtns.first.isShown) this.pageUl.insertBefore(this.firstBtn, this.pageUl.firstChild);
-
-        console.log('disables', this.disableNext, this.disablePrev, this.disableFirst, this.disableLast);
   
         if (!this.disableNext) this.nextBtn.addEventListener('click', this.nextPage, false);
         if (!this.disablePrev) this.prevBtn.addEventListener('click', this.prevPage, false);
