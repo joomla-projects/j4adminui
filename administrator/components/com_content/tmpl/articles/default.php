@@ -23,6 +23,7 @@ use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 use Joomla\Component\Content\Administrator\Helper\ContentHelper;
 
 HTMLHelper::_('behavior.multiselect');
+JHtml::_('bootstrap.tooltip');
 
 $app       = Factory::getApplication();
 $user      = Factory::getUser();
@@ -115,23 +116,12 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 								<th scope="col" style="min-width:100px">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="min-width:100px">
+								<th scope="col" style="min-width:60px">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JCATEGORY', 'a.catid', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
-								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort',  'JAUTHOR', 'a.created_by', $listDirn, $listOrder); ?>
-								</th>
-								<?php if ($assoc) : ?>
-									<th scope="col" style="width:5%" class="d-none d-md-table-cell">
-										<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTENT_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
-									</th>
-								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
 									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
@@ -231,13 +221,15 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										<?php if ($item->checked_out) : ?>
 											<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'articles.', $canCheckin); ?>
 										<?php endif; ?>
-										<?php if ($canEdit || $canEditOwn) : ?>
-											<a href="<?php echo Route::_('index.php?option=com_content&task=article.edit&id=' . $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+										<?php if ($canEdit || $canEditOwn) : 
+											$toolTipTitle = Text::_('JACTION_EDIT') . $this->escape(addslashes($item->title)) . '<br />' . Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); 
+											?>
+											<a class="hasTooltip" href="<?php echo Route::_('index.php?option=com_content&task=article.edit&id=' . $item->id); ?>" title="<?php echo $toolTipTitle; ?>">
 												<?php echo $this->escape($item->title); ?></a>
 										<?php else : ?>
 											<span title="<?php echo Text::sprintf('JFIELD_ALIAS_LABEL', $this->escape($item->alias)); ?>"><?php echo $this->escape($item->title); ?></span>
 										<?php endif; ?>
-											<span class="small break-word">
+											<span class="small break-word hasTooltip" title="<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>">
 												<?php if (empty($item->note)) : ?>
 													<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
 												<?php else : ?>
@@ -327,29 +319,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</div>
 									</div>
 								</td>
-
-								<td class="d-none d-md-table-cell">
-									<?php echo $this->escape($item->access_level); ?>
-								</td>
-								<td class="d-none d-md-table-cell">
-									<?php if ((int) $item->created_by != 0) : ?>
-										<a href="<?php echo Route::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>">
-											<?php echo $this->escape($item->author_name); ?>
-										</a>
-									<?php else : ?>
-										<?php echo Text::_('JNONE'); ?>
-									<?php endif; ?>
-									<?php if ($item->created_by_alias) : ?>
-										<div class="smallsub"><?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
-									<?php endif; ?>
-								</td>
-								<?php if ($assoc) : ?>
-									<td class="d-none d-md-table-cell">
-										<?php if ($item->association) : ?>
-											<?php echo HTMLHelper::_('contentadministrator.association', $item->id); ?>
-										<?php endif; ?>
-									</td>
-								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
 									<td class="d-none d-md-table-cell">
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
