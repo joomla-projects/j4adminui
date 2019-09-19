@@ -253,8 +253,8 @@ if($this->item->id > 0)
 				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'category', 'catid' ), 'data' => $this)); ?>
 			</div>
 			<!-- tags -->
-			<div class="control-group">
-				<p class="mt-4"><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
+			<div class="control-group tags-group">
+				<p class="tags-label"><?php echo Text::_('COM_CONTENT_FIELD_SHOW_TAGS_LABEL'); ?></p>
 				<?php echo $this->form->getInput('tags'); ?>
 			</div>
 				
