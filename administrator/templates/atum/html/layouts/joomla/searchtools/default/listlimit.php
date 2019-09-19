@@ -37,7 +37,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-pagination.es6.min.js', array('vers
 	<div class="ordering-select">
         <?php if(!empty($listLimit) && count((array)$listLimit->options) > 0) : ?>
             <div class="limit-list">
-                <joomla-pagination total-visible="5" input-name="list_limit" disable-btns="next, prev, first, last" result-msg="<?php echo Text::_('JSHOW'); ?>">
+                <joomla-pagination total-visible="7" input-name="list_limit" disable-btns="next, prev, first, last" result-msg="<?php echo Text::_('JSHOW'); ?>">
                     <?php foreach($listLimit->options as $listOption) : ?>
                         <li class="pagination-item <?php echo $limit === $listOption->value ? 'active': ''; ?>" value="<?php echo $listOption->value; ?>" style="display: none;" ><?php echo $listOption->value === 0 ? Text::_('JALL') : $listOption->value; ?></li>
                     <?php endforeach; ?>
