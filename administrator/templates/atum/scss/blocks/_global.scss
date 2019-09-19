@@ -34,10 +34,10 @@ h1 {
   font-weight: $font-weight-normal;
 }
 
-small,
-.small {
-  font-size: $font-size-sm;
-}
+// small,
+// .small {
+//   font-size: $font-size-sm;
+// }
 
 legend {
   font-size: 1.2rem;
@@ -56,7 +56,7 @@ input,
 textarea {
 
   &.focus-visible {
-  outline: auto 2px var(--focus);
+  outline: solid 2px var(--primary-color);
   }
 }
 
@@ -204,7 +204,6 @@ body .container-main {
     font-size: 1rem;
   }
   input{
-    border-bottom-color: var(--secondary-icon-color);
     color: var(--color);
     background: var(--inverse-color);
     font-size: 1.15rem;
@@ -215,9 +214,8 @@ body .container-main {
 }
 .form-inline-group{
   .control-group{
-    padding: 0 15px;
+    padding-left: 1.07rem;
     @extend .d-flex;
-    @extend .align-items-center;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
     background: var(--inverse-color);
     border-radius: 3px;
@@ -226,47 +224,107 @@ body .container-main {
     .control-label{
       width: auto;
       border-right: 1px solid var(--page-background);
-      flex: 0 0 90px;
+      min-width: 90px;
+      padding-right: 35px;
+      display: flex;
+      align-items: center;
+      &.sr-only{
+        position: initial;
+        margin: 0;
+        height: auto;
+      }
     }
     .controls{
-      padding-left: 25px;
-      margin-left: 0;
       flex: 1;
+      padding-left: 35px;
+      margin-left: 0;
       color: var(--color);
+      input, select{
+        width: 100%;
+      }
       select{
         color: var(--color);
         background: transparent;
-        border: none;
+        border-color: transparent;
         -webkit-appearance: menulist-button;
         -moz-appearance: menulist-button;
         appearance: menulist-button;
+        padding-right: 15px;
+        &:focus, &:active{
+          border-color: var(--primary-color);
+        }
+      }
+      .switcher__legend{
+        display: none;
+      }
+      .switcher{
+        padding-top: 6px;
+        label{
+          color: var(--color);
+        }
       }
     }
   }
-  .choices[data-type*=select-one] .choices__inner{
-    @extend .d-flex;
-    @extend .align-items-center;
-    background: transparent;
-    border: none;
-    .choices__list--single{
-      color: var(--color);
+  .choices[data-type*=select-one]{
+    &.is-focus, &.is-open{
+      .choices__inner{
+        border-color: var(--primary-color);
+      }
+    }
+    .choices__inner{
+      @extend .d-flex;
+      @extend .align-items-center;
+      background-image: url(../images/select-bg-white.svg);
+      background-color: #fff;
+      border: 2px solid transparent;
+      .choices__list--single{
+        color: var(--color);
+        font-size: 1rem;
+      }
+    }
+  }
+  .choices__list--dropdown {
+    border: solid 1px #eaeef5;
+    border-radius: 3px;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    margin-top: 0;
+    .choices__input,
+    .choices__item{
       font-size: 1rem;
+      padding: 6px 15px;
+      color: var(--secondary-color);
+      border-bottom: solid 1px var(--page-background);
+      line-height: 1;
+      transition: .35s;
+      &:hover {
+        color: var(--primary-color);
+        box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+      }
     }
   }
-  .choices__list.choices__list--dropdown{
-    .choices__input{
-      font-size: .78rem; 
-      padding: 5px 15px;
+  .field-calendar{
+    >.input-group{
+      input{
+        border-color: transparent;
+        background: transparent;
+        &:active,
+        &:focus {
+          border-color: var(--primary-color);
+        }
+      }
     }
   }
-  .choices__list--dropdown .choices__item{
-    font-size: .78rem;
-    padding: 5px 15px;
+}
+.choices {
+  .choices__item--selectable {
+    &.is-highlighted {
+      background-color: transparent;
+    }
   }
 }
 .alias-wrap{
   margin-bottom: 15px;
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid var(--background);
   padding-bottom: 10px;
   max-width: 100%;
   @extend .d-flex;
@@ -280,7 +338,7 @@ body .container-main {
       min-width: 110px;
     }
     .controls{
-      color: var(--inverse-background);
+      color: var(--color);
     }
   }
   #remove-edit,
@@ -298,21 +356,20 @@ body .container-main {
       }
       .controls{
         input{
-          height: 2.3rem;
-          padding-left: 1rem;
-          width: auto;
-          min-width: auto;
+          padding-right: 2.2rem;
+          width: 100%;
         }
       }
     }
     .control-group{
       @extend .d-flex;
+      @extend .align-items-center;
     }
   }
   #remove-edit{
     display: none;
     position: absolute;
-    right: 40px;
+    right: 30px;
   }
   &.active{
     #edit-alias,
@@ -324,4 +381,53 @@ body .container-main {
       display: block;
     }
   }
+}
+.tags-group{
+  .tags-label{
+    color: var(--color);
+    margin-bottom: 10px;
+  }
+  .choices[data-type*=select-multiple]{
+    &.is-focus, &.is-open{
+      .choices__inner{
+        border-color: var(--primary-color);
+      }
+    }
+    .choices__inner{
+      border-color: transparent;
+      background: var(--inverse-color);
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+      padding: 10px 10px 7px 10px;
+      input{
+        min-width: 200px !important;
+        font-size: 1rem;
+        background-color: transparent;
+        &.focus-visible{
+          font-size: .85rem;
+        }
+      }
+    }
+    .choices__list.choices__list--multiple{
+      .choices__item{
+        background-color: var(--page-background);
+        border: 1px solid transparent;
+        color: var(--icon-color);
+        border-radius: 3px;
+        padding: 2px 1.4rem 2px 10px;
+        font-size: .85rem;
+        .choices__button_joomla{
+          top: 4px;
+          background-color: transparent;
+          &:before{
+            color: var(--secondary-color);
+            font-size: 13px;
+            font-weight: 565;
+          }
+        }
+      }
+    }
+    .choices__list--dropdown{
+      margin-top: 0;
+    }
+  } 
 }

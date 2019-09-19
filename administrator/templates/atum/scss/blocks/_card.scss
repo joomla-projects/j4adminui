@@ -44,9 +44,10 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			font-size: 1.143rem;
 		}
 
-		button{
+		.jcard-header-icon{
 			@extend .iconic-btn;
 			margin: -.714rem 0 -.714rem;
+			cursor: pointer;
 		}
 		
 		&.jcard-header-sm{
@@ -57,7 +58,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 				padding-top: .714286rem;
 				color: var(--secondary-color);
 			}
-			button{
+			.jcard-header-icon{
 				padding: .642857rem;
 				margin: 0;
 			}
@@ -434,5 +435,5 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			background: var(--danger-colorcolor);
 		}
 	}
-
 }
+
