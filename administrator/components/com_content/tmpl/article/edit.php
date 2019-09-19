@@ -53,7 +53,11 @@ $articleUrlClass = 'inactive';
 if($this->item->id > 0) 
 {
 	// URL link to article
-	$articleUrl = Route::_(JURI::root() . \ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language));
+	$articleUrl = Route::link(
+		'site',
+		\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
+		true
+	);
 	$articleUrlClass = 'active';
 }
 
@@ -71,8 +75,13 @@ if($this->item->id > 0)
 			<div class="col-lg-3">
 				<div class="jcard">
 					<div class="jcard-header artilce-preview-link">
-						<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
-						<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
+						<?php if( ($this->item->id > 0) && ($this->item->state === 1 || $this->item->state === 2) ): ?>
+							<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
+							<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
+						<?php else: ?>
+							<i class="fas fa-eye"></i>
+							<span><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE_NOT_AVAILABLE'); ?></span>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
