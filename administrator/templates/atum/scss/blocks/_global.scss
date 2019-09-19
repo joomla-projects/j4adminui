@@ -217,7 +217,6 @@ body .container-main {
   .control-group{
     padding: 0 15px;
     @extend .d-flex;
-    @extend .align-items-center;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
     background: var(--inverse-color);
     border-radius: 3px;
@@ -226,13 +225,27 @@ body .container-main {
     .control-label{
       width: auto;
       border-right: 1px solid var(--page-background);
-      flex: 0 0 90px;
+      min-width: 90px;
+      padding-right: 35px;
+      display: flex;
+      align-items: center;
+      &.sr-only{
+        position: initial;
+        margin: 0;
+        height: auto;
+      }
     }
     .controls{
-      padding-left: 25px;
-      margin-left: 0;
       flex: 1;
+      padding: 8px 5px 8px 35px;
+      margin-left: 0;
       color: var(--color);
+      .custom-select{
+        height: 1.8rem;
+      }
+      input, select{
+        width: 100%;
+      }
       select{
         color: var(--color);
         background: transparent;
@@ -241,13 +254,22 @@ body .container-main {
         -moz-appearance: menulist-button;
         appearance: menulist-button;
       }
+      .switcher__legend{
+        display: none;
+      }
+      .switcher{
+        padding-top: 6px;
+        label{
+          color: var(--color);
+        }
+      }
     }
   }
   .choices[data-type*=select-one] .choices__inner{
     @extend .d-flex;
     @extend .align-items-center;
     background: transparent;
-    border: none;
+    border: 2px solid var(--input-border-color);
     .choices__list--single{
       color: var(--color);
       font-size: 1rem;
@@ -280,7 +302,7 @@ body .container-main {
       min-width: 110px;
     }
     .controls{
-      color: var(--inverse-background);
+      color: var(--color);
     }
   }
   #remove-edit,
@@ -298,21 +320,20 @@ body .container-main {
       }
       .controls{
         input{
-          height: 2.3rem;
-          padding-left: 1rem;
-          width: auto;
-          min-width: auto;
+          padding-right: 2.2rem;
+          width: 100%;
         }
       }
     }
     .control-group{
       @extend .d-flex;
+      @extend .align-items-center;
     }
   }
   #remove-edit{
     display: none;
     position: absolute;
-    right: 40px;
+    right: 30px;
   }
   &.active{
     #edit-alias,

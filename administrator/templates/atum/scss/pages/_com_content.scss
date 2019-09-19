@@ -58,5 +58,46 @@
 				}
 			}
 		}
+		.form-group-wrapper{
+			padding-top: .8rem;
+			padding-bottom: 1.4rem;
+			fieldset .control-group,
+			.alias-wrap{
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+			fieldset .control-group{
+				&:not(:last-child){
+					border-bottom: 1px solid #edf0f5;
+					padding-bottom: 15px;
+				}
+				&:last-child{
+					margin-bottom: 0;
+				}
+				@extend .d-flex;
+				@extend .align-items-center;
+				.control-label{
+					position: inherit;
+					height: auto;
+					min-width: 90px;
+				}
+				.controls{
+					flex: 1;
+					select,
+					input{
+						width: 100%;
+					}
+					.switcher__legend{
+						display: none;
+					}
+					.switcher{
+						padding-top: 5px;
+						label{
+							color: var(--color);
+						}
+					}
+				}
+			}
+		}
 	}
 }
