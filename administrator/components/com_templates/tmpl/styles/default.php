@@ -71,13 +71,13 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 													<joomla-dropdown for="#template-style-actions-<?php echo $item->id; ?>">
 														<?php if($canCreate) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
-															<span class="fas fa-clone fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DELETE'); ?>
+															<span class="fas fa-clone fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DUPLICATE'); ?>
 														</a>
 														<?php endif; ?>
 
 														<?php if($canDelete) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
-															<span class="fas fa-trash fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DUPLICATE'); ?>
+															<span class="fas fa-trash fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DELETE'); ?>
 														</a>
 														<?php endif; ?>
 													</joomla-dropdown>
