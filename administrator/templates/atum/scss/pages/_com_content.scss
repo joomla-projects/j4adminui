@@ -6,9 +6,8 @@
 		joomla-tab {
 			#attrib-basic[active],
 			#editor[active] {
-				display: flex;
-				flex-wrap: wrap;
-
+				@extend .d-flex;
+				@extend .flex-wrap;
 				.form-group {
 					flex: 0 0 50%;
 					max-width: 50%;
@@ -59,38 +58,44 @@
 				}
 			}
 		}
-		.alias-wrap{
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			.alias-text{
-				display: flex;
-				align-items: center;
-				margin: 0;
+		.form-group-wrapper{
+			padding-top: .8rem;
+			padding-bottom: 1.4rem;
+			fieldset .control-group,
+			.alias-wrap{
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+			fieldset .control-group{
+				&:not(:last-child){
+					border-bottom: 1px solid #edf0f5;
+					padding-bottom: 15px;
+				}
+				&:last-child{
+					margin-bottom: 0;
+				}
+				@extend .d-flex;
+				@extend .align-items-center;
 				.control-label{
-					min-width: 110px;
+					position: inherit;
+					height: auto;
+					min-width: 90px;
 				}
 				.controls{
-					color: var(--inverse-background);
-				}
-			}
-			#edit-alias{
-				color: var(--button-border-color);
-				font-size: 12px;
-				
-			}
-			.alias-edit{
-				display: none;
-				.control-group{
-					display: flex;
-				}
-			}
-			&.active{
-				.alias-text{
-					display: none;
-				}
-				.alias-edit{
-					display: block;
+					flex: 1;
+					select,
+					input{
+						width: 100%;
+					}
+					.switcher__legend{
+						display: none;
+					}
+					.switcher{
+						padding-top: 5px;
+						label{
+							color: var(--color);
+						}
+					}
 				}
 			}
 		}

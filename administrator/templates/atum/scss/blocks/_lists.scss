@@ -16,9 +16,13 @@
 
 joomla-pagination {
   nav {
+    .pagination-label {
+      padding: 0 10px;
+    }
     ul.pagination-list {
       .pagination-item {
-        padding: 8px;
+        padding: 5px 10px;
+        margin: 0 5px 0 0;
         color: #5e727c;
         width: 100%;
         text-align: center;

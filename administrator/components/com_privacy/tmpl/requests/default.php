@@ -41,7 +41,7 @@ $urgentRequestDate->sub(new DateInterval('P' . $this->urgentRequestAge . 'D'));
 				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php else : ?>
-			<table class="table" id="requestList">
+			<table class="table j-list-table" id="requestList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_PRIVACY_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
