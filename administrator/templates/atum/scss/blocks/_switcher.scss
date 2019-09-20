@@ -1,12 +1,16 @@
 // fake checkbox 
-.jcheckbox-fake-wrap{
+.switcher-wrap{
 	@extend .d-inline-flex;
 	@extend .align-items-center;
-	span + span{
+	span + *{
 		margin-left: 5px;
 	}
+
+	> *{
+		color: var(--secondary-color)
+	}
 }
-.jcheckbox-fake{
+.switcher-alt{
 	display: inline-block;
 	width: 28px;
 	height: 12px;
@@ -31,7 +35,6 @@
 		margin-top: -9px;
 		transition: 200ms;
 	}
-
 	&.checked{
 		background-color: rgba(var(--primary-color-rgb), .5);
 		&::after{

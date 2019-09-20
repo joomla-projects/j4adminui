@@ -39,7 +39,7 @@ if ($saveOrder)
 				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php else : ?>
-			<table class="table" id="pluginList">
+			<table class="table j-list-table" id="pluginList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_PLUGINS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>

@@ -41,7 +41,7 @@ $stateMsgs  = array(
 				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php else : ?>
-			<table class="table" id="consentList">
+			<table class="table j-list-table" id="consentList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_PRIVACY_TABLE_CONSENTS_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>

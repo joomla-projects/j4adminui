@@ -102,7 +102,7 @@
         padding-right: 0;
         font-size: 1rem;
         color: var(--inverse-background);
-        padding: 0;
+        padding: 0 1.5rem 0 0;
       }
     }
     .js-stools-field-list-content {
@@ -134,12 +134,17 @@
       line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
+      &.btn-link:focus, &.btn-link:focus:active,
+      &.btn-link:not(:disabled):not(.disabled):active:focus,
       &.btn-primary:not(:disabled):active,
       &:active,
       &:focus {
         box-shadow: none;
         color: var(--primary-color);
         background-color: transparent;
+      }
+      &.js-stools-btn-clear {
+        margin-right: 1rem;
       }
     }
   }

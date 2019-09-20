@@ -705,21 +705,21 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
 
                                 <p>
-                                    <span class="jcheckbox-fake-wrap">
-                                        <span class="jcheckbox-fake"></span>
+                                    <span class="switcher-wrap">
+                                        <span class="switcher-alt"></span>
                                         <span>No</span>
                                     </span>
                                     
-                                    <br>
-                                    
-                                    You can select from a number of options for customising the look 
-                                <span class="jcheckbox-fake-wrap">
+                                <br> You can select from a number of options for customising the look 
+                                <span class="switcher-wrap">
                                     <span>Yes</span>
-                                    <span class="jcheckbox-fake checked"></span>
+                                    <span class="switcher-alt checked"></span>
                                 </span>  of your templates. The Template Manager supports…
                                 </p>
 
-                                <h2><span class="jcheckbox-fake-wrap"> <span class="jcheckbox-fake"></span> <span>No.</span></span> My name is </h2>
+                                <h2>
+                                    <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
+                                </h2>
 
                             </div>
                         </div>
