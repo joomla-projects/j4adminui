@@ -721,6 +721,55 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                     <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
 
+                                <br>    
+                                <!-- single radio -->
+                                <input class="jradio" type="radio" name="name">
+
+                                <br>
+                                
+                                <!-- Radio + label -->
+                                <label class="jradio-label">
+                                    <input type="radio" name="radio1" id="radio1"> Label + Radio
+                                </label>
+                                <br>
+
+                                <br>
+
+                                <!-- radio group -->
+                                <div class="jradio-group">
+                                    <label>
+                                        <input type="radio" name="radio1" id="radio1"> Group + Label + Radio
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="radio1" id="radio2"> Group + Label + Radio
+                                    </label>
+                                </div>
+
+                                <br>
+
+                                <!-- single checkbox -->
+                                <input class="jcheckbox" type="checkbox" name="name">
+
+                                <br>
+                                
+                                <!-- check box + label -->
+                                <label class="jcheckbox-label">
+                                    <input type="checkbox" name="check1" id="check2"> Label + Checkbox
+                                </label>
+                                <br>
+
+                                <br>
+
+                                <!-- checkbox group -->
+                                <div class="jcheckbox-group">
+                                    <label>
+                                        <input type="checkbox" name="checkbox1" id="checkbox1"> Group + Label + checkbox
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="checkbox2" id="checkbox2"> Group + Label + checkbox
+                                    </label>
+                                </div>
+
                             </div>
                         </div>
                     </div>
