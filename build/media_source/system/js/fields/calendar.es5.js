@@ -602,7 +602,7 @@
 
 		if (this.params.compressedHeader === false) {                                                        // Head - year
 			row = createElement("tr", thead);
-			row.className = "calendar-head-row";
+			row.className = "calendar-head-row tt";
 			this._nav_py = hh("&lsaquo;", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
 			this.title = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
 			this.title.className = "title";
