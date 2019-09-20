@@ -1,0 +1,43 @@
+// fake checkbox 
+.jcheckbox-fake-wrap{
+	@extend .d-inline-flex;
+	@extend .align-items-center;
+	span + span{
+		margin-left: 5px;
+	}
+}
+.jcheckbox-fake{
+	display: inline-block;
+	width: 28px;
+	height: 12px;
+	position: relative;
+	background-color: rgba(#bdc5c8, .5);
+	border-radius: 30px;
+	margin: 1px 2px 0;
+	&::after{
+		content: '';
+		width: 17px;
+		height: 17px;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+		border-style: solid;
+		border-width: 0.5px;
+		border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06) 20%, rgba(255, 255, 255, 0));
+		border-image-slice: 1;
+		background-color: #f0f3f8;
+		border-radius: 50%;
+		position: absolute;
+		left: -2px;
+		top: 50%;
+		margin-top: -9px;
+		transition: 200ms;
+	}
+
+	&.checked{
+		background-color: rgba(var(--primary-color-rgb), .5);
+		&::after{
+			background-color: var(--primary-color);
+			left: auto;
+			right: -2px;
+		}
+	}
+}

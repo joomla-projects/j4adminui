@@ -703,7 +703,24 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
                                 <h5 class="jcard-activity-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
-                                <a href="#" class="iconic-button"><span class="fas fa-pen-alt"></span></a>
+
+                                <p>
+                                    <span class="jcheckbox-fake-wrap">
+                                        <span class="jcheckbox-fake"></span>
+                                        <span>No</span>
+                                    </span>
+                                    
+                                    <br>
+                                    
+                                    You can select from a number of options for customising the look 
+                                <span class="jcheckbox-fake-wrap">
+                                    <span>Yes</span>
+                                    <span class="jcheckbox-fake checked"></span>
+                                </span>  of your templates. The Template Manager supports…
+                                </p>
+
+                                <h2><span class="jcheckbox-fake-wrap"> <span class="jcheckbox-fake"></span> <span>No.</span></span> My name is </h2>
+
                             </div>
                         </div>
                     </div>
