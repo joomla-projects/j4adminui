@@ -563,6 +563,8 @@
 
 		var cell = null,
 			row  = null,
+			yearsRow = null,
+			monthsRow = null,
 			cal  = this,
 			hh   = function (text, cs, navtype, node, styles, classes, attributes) {
 				node = node ? node : "td";
@@ -603,19 +605,22 @@
 		if (this.params.compressedHeader === false) {                                                        // Head - year
 			row = createElement("tr", thead);
 			row.className = "calendar-head-row tt";
-			this._nav_py = hh("&lsaquo;", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
+			this._nav_py = hh("&#10094;", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
 			this.title = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
 			this.title.className = "title";
-			this._nav_ny = hh(" &rsaquo;", 1, 2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-next-year');                   // Next year button
+			this._nav_ny = hh("&#10095;", 1, 2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-next-year');                   // Next year button
 		}
-
+		yearsRow = row;
 		row = createElement("tr", thead);                                                                   // Head - month
+		monthsRow = row;
 		row.className = "calendar-head-row";
-		this._nav_pm = hh("&lsaquo;", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
-		this._nav_month = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 888, 'td', {'textAlign': 'center'});
+		this._nav_pm = hh("&#10094;", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
+		this._nav_month = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'center'});
 		this._nav_month.className = "title";
-		this._nav_nm = hh(" &rsaquo;", 1, 1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-next-month');                       // Next month button
-
+		let yearsWrapper = createElement('td', row);
+		yearsWrapper.setAttribute("colspan", "3");
+		yearsWrapper.appendChild(yearsRow);
+		this._nav_nm = hh("&#10095;", 1, 1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-next-month');                       // Next month button
 		row = createElement("tr", thead);                                                                   // day names
 		row.className = self.params.weekNumbers ? "daynames wk" : "daynames";
 		if (this.params.weekNumbers) {
