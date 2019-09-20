@@ -38,7 +38,7 @@ HTMLHelper::_('script', 'com_finder/maps.js', ['version' => 'auto', 'relative' =
 						<?php echo Text::_('COM_FINDER_MAPS_NO_CONTENT'); ?>
 					</div>
 				<?php else : ?>
-				<table class="table">
+				<table class="table j-list-table">
 					<caption id="captionTable" class="sr-only">
 						<?php echo Text::_('COM_FINDER_MAPS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 					</caption>

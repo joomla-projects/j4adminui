@@ -62,7 +62,7 @@ Factory::getDocument()->addScriptDeclaration('
 				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php else : ?>
-			<table class="table table-striped" id="logsList">
+			<table class="table j-list-table" id="logsList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_ACTIONLOGS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>

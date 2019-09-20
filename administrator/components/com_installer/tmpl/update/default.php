@@ -38,7 +38,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							<?php echo Text::_('COM_INSTALLER_MSG_UPDATE_NOUPDATES'); ?>
 						</div>
 					<?php else : ?>
-						<table class="table">
+						<table class="table j-list-table">
 							<caption id="captionTable" class="sr-only">
 								<?php echo Text::_('COM_INSTALLER_UPDATE_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 							</caption>

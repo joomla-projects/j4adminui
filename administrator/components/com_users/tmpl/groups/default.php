@@ -37,7 +37,7 @@ HTMLHelper::_('script', 'com_users/admin-users-groups.min.js', array('version' =
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 					</div>
 				<?php else : ?>
-					<table class="table" id="groupList">
+					<table class="table j-list-table" id="groupList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_USERS_GROUPS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
