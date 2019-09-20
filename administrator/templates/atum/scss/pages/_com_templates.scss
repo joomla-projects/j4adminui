@@ -1,19 +1,6 @@
 // com_templates
 .com_templates {
-  .default-template {
-    display: inline-block;
-    font-size: 12px;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    text-align: center;
-    color: var(--white);
-    background-color: var(--primary-color);
-    border-radius: 30px;
-  }
-
   .template-style {
-    overflow: hidden;
     .template-name {
       font-size: $h3-font-size;
       a {
@@ -22,13 +9,6 @@
           color: var(--primary-color);
         }
       }
-    }
-
-    .select-style {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 99;
     }
   }
 
