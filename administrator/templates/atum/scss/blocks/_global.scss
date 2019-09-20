@@ -224,13 +224,14 @@ body .container-main {
     border-radius: 3px;
     transition: .3s;
     font-size: 1rem;
+    min-height: 40px;
     .control-label{
       width: auto;
       border-right: 1px solid var(--page-background);
-      min-width: 90px;
       padding-right: 35px;
-      display: flex;
-      align-items: center;
+      flex: 0 0 90px;
+      @extend .d-flex;
+      @extend .align-items-center;
       &.sr-only{
         position: initial;
         margin: 0;
@@ -239,11 +240,15 @@ body .container-main {
     }
     .controls{
       flex: 1;
-      padding-left: 35px;
+      padding-left: 25px;
       margin-left: 0;
       color: var(--color);
       input, select{
-        width: 100%;
+        height: 100%;
+        border-width: 1px;
+        &:focus, &:active{
+          border-color: var(--primary-color);
+        }
       }
       select{
         color: var(--color);
@@ -253,9 +258,6 @@ body .container-main {
         -moz-appearance: menulist-button;
         appearance: menulist-button;
         padding-right: 15px;
-        &:focus, &:active{
-          border-color: var(--primary-color);
-        }
       }
       .switcher__legend{
         display: none;
@@ -266,6 +268,11 @@ body .container-main {
           color: var(--color);
         }
       }
+    }
+  }
+  .choices{
+    &, >.choices__inner{
+      height: 100%;
     }
   }
   .choices[data-type*=select-one]{
@@ -279,7 +286,7 @@ body .container-main {
       @extend .align-items-center;
       background-image: url(../images/select-bg-white.svg);
       background-color: #fff;
-      border: 2px solid transparent;
+      border: 1px solid transparent;
       .choices__list--single{
         color: var(--color);
         font-size: 1rem;
@@ -306,6 +313,9 @@ body .container-main {
     }
   }
   .field-calendar{
+    &,.input-group, input{
+      height: 100%;
+    }
     >.input-group{
       input{
         border-color: transparent;
@@ -405,9 +415,6 @@ body .container-main {
         min-width: 200px !important;
         font-size: 1rem;
         background-color: transparent;
-        &.focus-visible{
-          font-size: .85rem;
-        }
       }
     }
     .choices__list.choices__list--multiple{

@@ -141,6 +141,9 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	padding: 4px 0 !important;
 	border-bottom: none;
 }
+.calendar-container .calendar-head-row .js-btn i.fas{
+	pointer-events: none;
+}
 .calendar-container .day-name {
 	font-size: 1rem;
 }
