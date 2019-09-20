@@ -11,6 +11,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('bootstrap.popover');
+HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
 /**
  * @var $icon    string
@@ -59,9 +60,11 @@ $attribs = [
     ];
 ?>
 
-<div class="j-transition-group <?php echo $tip ? 'hasPopover' : ''; ?>" 
-    title="<?php echo HTMLHelper::_('tooltipText', Text::_($tipTitle ? : $title), '', 0); ?>" 
-    data-content="<?php echo HTMLHelper::_('tooltipText', Text::_($title), '', 0); ?>" 
-    data-placement="top">
+<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group">
     <?php echo HTMLHelper::_('select.genericlist', $transitions, 'transition_' . (int) $id, $attribs); ?>
 </div>
+
+<joomla-callout action="hover" for="#publishColloutId-<?php echo $id; ?>" position="top">
+    <div class="callout-title"><?php echo HTMLHelper::_('tooltipText', Text::_($tipTitle ? : $title), '', 0); ?></div>
+    <div class="callout-content"><?php echo HTMLHelper::_('tooltipText', Text::_($title), '', 0); ?></div>
+</joomla-callout>
