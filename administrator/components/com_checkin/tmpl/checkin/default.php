@@ -25,7 +25,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 				<?php if ($this->total > 0) : ?>
-					<table id="global-checkin" class="table">
+					<table id="global-checkin" class="table j-list-table">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_CHECKIN_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
