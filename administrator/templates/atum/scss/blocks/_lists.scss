@@ -21,30 +21,38 @@ joomla-pagination {
     }
     ul.pagination-list {
       .pagination-item {
-        padding: 5px 10px;
+        padding: 2px 7px;
         margin: 0 5px 0 0;
         color: #5e727c;
         width: 100%;
         text-align: center;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 1rem;
 
         &:not(.disabled):hover {
           background: #ffffff;
           border-radius: 3px;
-          box-shadow: 0 0 4px 4px #eaeaea;
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+          color: var(--inverse-background);
         }
-
+        
         &:active {
           background: #ffffff;
           border-radius: 3px;
-          box-shadow: 0 0 4px 4px #eaeaea;
+          color: var(--inverse-background);
+          box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+        }
+        &.dot-item {
+          &:hover {
+            color: var(--primary-color);
+          }
         }
       }
       .pagination-item.active {
         background: #ffffff;
         border-radius: 3px;
-        box-shadow: 0 0 4px 4px #eaeaea;
+        color: var(--inverse-background);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
       }
 
       .pagination-item.disabled {
@@ -57,27 +65,30 @@ joomla-pagination {
     display: inline-flex;
     list-style: none;
     flex-direction: column;
-    box-shadow: 1px 1px 4px 0px #eaeaea;
-    padding: 0;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    padding: 5px 8px;
     margin: 0;
+    position: -webkit-sticky;
     position: sticky;
     max-height: 180px;
     overflow-y: auto;
+    border: solid 1px #eaeef5;
+    background: #fff;
 
     .pagination-item {
+      color: var(--secondary-color);
       display: flex;
-      padding: 10px;
-      border: 1px solid #eaeaea;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--page-background);
       min-width: 20px;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       cursor: pointer;
       transition: all .3s ease;
       width: 100%;
-      background: #ffffff;
       &:hover {
-        background: #0184ff;
-        color: #fff;  
+        color: var(--primary-color);
+        box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
       }
     }
   }

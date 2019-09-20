@@ -14,6 +14,7 @@ use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 
 HTMLHelper::_('behavior.core');
 Text::script('COM_CPANEL_UNPUBLISH_MODULE_SUCCESS');
@@ -22,7 +23,15 @@ Text::script('COM_CPANEL_UNPUBLISH_MODULE_ERROR');
 HTMLHelper::_('script', 'com_cpanel/admin-cpanel-default.min.js', array('version' => 'auto', 'relative' => true));
 
 $user = Factory::getUser();
+
 HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
+HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
+HTMLHelper::_('script', 'mod_quickicon/quickicon-draggble.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
+
+// $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
+$saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 
 // Set up the bootstrap modal that will be used for all module editors
 echo HTMLHelper::_(
@@ -40,9 +49,10 @@ echo HTMLHelper::_(
 			. Text::_('JSAVE') . '</button>',
 	)
 );
+
 ?>
 <div id="cpanel-modules">
-	<div class="cpanel-modules <?php echo $this->position; ?>">
+	<div class="cpanel-modules js-draggable <?php echo $this->position; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
 		<?php // apear this div if not cpanel
 		if($this->extension) : ?>
 			<div class="card-columns">

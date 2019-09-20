@@ -17,7 +17,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
 use Joomla\Registry\Registry;
-
+use Joomla\CMS\Language\Text;
 /**
  * Helper for mod_quickicon
  *
@@ -55,7 +55,7 @@ abstract class QuickIconHelper
 
 		$key     = (string) $params;
 		$context = (string) $params->get('context', 'mod_quickicon');
-
+		
 		if (!isset(self::$buttons[$key]))
 		{
 			// Load mod_quickicon language file in case this method is called before rendering the module
@@ -245,13 +245,16 @@ abstract class QuickIconHelper
 				];
 			}
 
+			if (!empty($params->get('module_ordering'))) {
+				self::$buttons[$key] = self::getOrderedModuleList(self::$buttons[$key], $params);
+			}
+
 			PluginHelper::importPlugin('quickicon');
 
 			$arrays = (array) $application->triggerEvent(
 				'onGetIcons',
 				new QuickIconsEvent('onGetIcons', ['context' => $context])
 			);
-
 			foreach ($arrays as $response)
 			{
 				if (!is_array($response))
@@ -281,7 +284,38 @@ abstract class QuickIconHelper
 				}
 			}
 		}
-
 		return self::$buttons[$key];
+	}
+
+	/**
+	 * Re-order button list based on order values
+	 * 
+	 * @method 	Aajax
+	 * @param	Array	List of buttons
+	 * @param	Array 	Module params for get the order values
+	 * 
+	 * @since   4.0.1
+	 */
+	private static function getOrderedModuleList($buttons, $params ) 
+	{
+		$orders = $params->get('module_ordering');
+		$orders = json_decode($orders);
+		if (count($orders)) 
+		{
+			$collector = [];
+			foreach ($orders as $order)
+			{
+				foreach ($buttons as $key=>$button) 
+				{
+					if ($order == Text::_($button['name']))
+					{ 
+						array_push($collector, $button);
+						unset($buttons[$key]);
+					}
+				}
+			}
+			return array_merge($collector, $buttons);
+		}
+		return $buttons;
 	}
 }
