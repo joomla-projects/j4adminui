@@ -45,6 +45,20 @@
     border-radius: 50%;
   }
 
+  .fa,
+  .fas,
+  .far {
+    margin-top: 3px;
+    font-size: 2em;
+    color: var(--secondary-icon-color);
+    &.fa-toggle-off {
+      color: var(--secondary-icon-color);
+    }
+    &.fa-toggle-on {
+      color: var(--primary-color);
+    }
+  }
+
   .icon-publish {
     color: var(--success-color);
     border-color: var(--success-color);
