@@ -58,6 +58,7 @@ input[type="checkbox"].jcheckbox{
     }
 }
 
+.jcheckbox-group label,
 .jcheckbox-label{
     @extend .d-inline-flex;
     @extend .align-items-center;
