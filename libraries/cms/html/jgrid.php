@@ -68,7 +68,7 @@ abstract class JHtmlJGrid
 
 		if ($enabled)
 		{
-			$active_class = (strpos($active_class, 'fas') === false) ? 'icon-' . $active_class : $active_class ;
+			$active_class = (strpos($active_class, 'fas') === false) ? 'icon-' . $active_class : $active_class;
 			// if active class has not font awesome
 			if( strpos($active_class, 'fas') && strpos($active_class, 'fa') ) 
 			{

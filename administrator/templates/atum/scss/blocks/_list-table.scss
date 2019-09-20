@@ -7,7 +7,7 @@ table.j-list-table {
     td,
     th {
         border:none;
-        padding: 5px 1rem;
+        padding: 1rem;
         vertical-align: middle;
     }
     
@@ -71,14 +71,6 @@ table.j-list-table {
                 font-weight: $medium-weight;
                 font-size: 1rem;
             }
-            .has-context {
-                .break-word {
-                    .small.break-word{
-                        color: var(--secondary-color);
-                        font-size: 1rem;
-                    }
-                }
-            }
             th,
             td {
                 a {
@@ -103,6 +95,21 @@ table.j-list-table {
                         background-color: var(--tr-hover-background);
                     }
                 }
+                .small,
+                &.small{
+                    font-size: 1rem;
+                }
+                small,
+                div.small,
+                span.small {
+                    color: var(--secondary-color);
+                }
+                .btn {
+                    &.dropdown-toggle {
+                        border-color: var(--secondary-icon-color);
+                        border-radius: 3px;
+                    }
+                }
             }
 
             .custom-select {
@@ -111,6 +118,7 @@ table.j-list-table {
                 box-shadow: none;
                 color: var(--success-color);
                 width: 110px;
+                height: auto;
                 option[selected],
                 option:checked,
                 option:hover {
@@ -134,6 +142,21 @@ table.j-list-table {
                 margin: 0;
                 padding: 0;
                 font-size: 1rem;
+            }
+            .itemnumber {
+                a.btn {
+                    line-height: 14px;
+                    border-radius: 10px;
+                    border: 1px solid;
+                    font-size: 10px;
+                    padding: 0 8px;
+                    margin-left: 6px;
+                    box-shadow: none;
+                    &:active,
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
             }
         }
     }

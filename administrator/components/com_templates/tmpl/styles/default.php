@@ -138,11 +138,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 													<div>
 														<?php if ($item->home == '0') : ?>
 															<a href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>','styles.setDefault')" class="template-toggle-style">
-																<span class="jcheckbox-fake" area-hidden="true"></span> <?php echo Text::_('JNO'); ?>
+																<span class="switcher-wrap">
+																	<span class="switcher-alt" area-hidden="true"></span> <span><?php echo Text::_('JNO'); ?></span>
+																</span>
 															</a>
 														<?php else : ?>
 															<a href="<?php echo Route::_('index.php?option=com_templates&task=styles.unsetDefault&cid[]=' . $item->id . '&' . Session::getFormToken() . '=1'); ?>" class="template-toggle-style">
-																<span class="jcheckbox-fake checked mx-2" area-hidden="true"></span> <?php echo Text::_('JYES'); ?>
+																<span class="switcher-wrap">
+																	<span class="switcher-alt checked" area-hidden="true"></span> <span><?php echo Text::_('JYES'); ?></span>
+																</span>
 															</a>
 														<?php endif; ?>
 													</div>
