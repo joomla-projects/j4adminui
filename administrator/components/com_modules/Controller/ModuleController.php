@@ -10,7 +10,7 @@
 namespace Joomla\Component\Modules\Administrator\Controller;
 
 defined('_JEXEC') or die;
-
+use Exception;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Language\Text;
@@ -19,7 +19,8 @@ use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
-
+use Joomla\Registry\Registry;
+use Joomla\Component\Modules\Administrator\Model\ModuleModel;
 /**
  * Module controller class.
  *
@@ -347,5 +348,41 @@ class ModuleController extends FormController
 		$append .= '&client_id=' . $this->input->getInt('client_id');
 
 		return $append;
+	}
+
+	/**
+	 * Set the module ordering params from dashboard with ajax call
+	 * 
+	 * @return 	String 	Return success true or false with data
+	 * @since  	4.0.1
+	 */
+	public function saveParamsOrderAjax(){
+		try{
+			$app = $this->app;
+			// Check if user token is valid.
+			$this->checkToken();
+			
+			$id = $this->input->getInt('module_id');
+			if( !$id )
+				throw new Exception("Module id required!");
+			// Create the instance from Module Model
+			$model = new ModuleModel();
+			$item = $model->getItem($id);
+
+			$order = $this->input->post->get('sub_module_name', array(), 'array');
+
+			$params = new Registry($item->params);
+			$params->set('module_ordering', json_encode($order));
+
+			$data = ['id'=>$item->id, 'params'=>$params->toString('JSON')];
+			$result['success'] = $model->save($data);
+
+			echo new JsonResponse($result);
+			$app->close();
+		}catch( Exception $e){
+			echo new JsonResponse(['success'=>false, 'message'=>$e->getMessage()]);
+			$app->close();
+		}
+		
 	}
 }

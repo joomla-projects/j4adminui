@@ -45,12 +45,13 @@ if ($module->content) :
 		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
-	<div class="module-wrapper">
+	<div class="module-wrapper" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
-				<div class="card-header">
+				<div class="card-header handle">
 					<?php if ($canEdit || $canChange) : ?>
 						<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
+						<span class="joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"> <i class="fa fa-chevron-down"></i></span>
 						<div class="module-actions dropdown">
 							<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-link" id="dropdownMenuButton-<?php echo $id; ?>">
 								<span class="fa fa-cog" aria-hidden="true"></span>
@@ -74,9 +75,11 @@ if ($module->content) :
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-			<div class="card-body">
+			<div class="card-body" id="card-body-<?php echo $id; ?>">
 				<?php echo $module->content; ?>
 			</div>
 		</<?php echo $moduleTag; ?>>
+		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
+		<input type="hidden" value="<?php echo $module->ordering; ?>" name="order[]">
 	</div>
 <?php endif; ?>

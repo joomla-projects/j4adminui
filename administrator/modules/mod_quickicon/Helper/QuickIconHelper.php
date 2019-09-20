@@ -17,7 +17,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
 use Joomla\Registry\Registry;
-
+use Joomla\CMS\Language\Text;
 /**
  * Helper for mod_quickicon
  *
@@ -245,7 +245,9 @@ abstract class QuickIconHelper
 				];
 			}
 
-			$tmp = self::reOrderModules($tmp);
+			if (!empty($params->get('module_ordering'))) {
+				self::$buttons[$key] = self::getOrderedModuleList(self::$buttons[$key], $params);
+			}
 
 			PluginHelper::importPlugin('quickicon');
 
@@ -282,16 +284,38 @@ abstract class QuickIconHelper
 				}
 			}
 		}
-		
 		return self::$buttons[$key];
 	}
 
-
-	private static function reOrderModules($tmp, $params ) {
-		$orderList = $params->get('module_ordering');
-		if( empty($orderList) )
-			return $tmp;
-		$orderList = explode(',',$orderList);
-		
+	/**
+	 * Re-order button list based on order values
+	 * 
+	 * @method 	Aajax
+	 * @param	Array	List of buttons
+	 * @param	Array 	Module params for get the order values
+	 * 
+	 * @since   4.0.1
+	 */
+	private static function getOrderedModuleList($buttons, $params ) 
+	{
+		$orders = $params->get('module_ordering');
+		$orders = json_decode($orders);
+		if (count($orders)) 
+		{
+			$collector = [];
+			foreach ($orders as $order)
+			{
+				foreach ($buttons as $key=>$button) 
+				{
+					if ($order == Text::_($button['name']))
+					{ 
+						array_push($collector, $button);
+						unset($buttons[$key]);
+					}
+				}
+			}
+			return array_merge($collector, $buttons);
+		}
+		return $buttons;
 	}
 }

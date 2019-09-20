@@ -15,15 +15,15 @@ use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('script', 'mod_quickicon/quickicon.min.js', ['version' => 'auto', 'relative' => true]);
 
-$saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
-HTMLHelper::_('draggablelist.draggable');
+$saveOrderingUrl = 'index.php?option=com_modules&task=Module.saveParamsOrderAjax&format=json&' . Session::getFormToken() . '=1';
+
 $html = HTMLHelper::_('icons.buttons', $buttons);
-print_r('1')
 ?>
 <?php if (!empty($html)) : ?>
 	<nav class="quick-icons" aria-label="<?php echo Text::_('MOD_QUICKICON_NAV_LABEL') . ' ' . $module->title; ?>">
-		<div class="row" class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true">
+		<div class="row js-draggable-container" data-fields="sub_module_name[],module_id" data-url="<?php echo $saveOrderingUrl; ?>">
 			<?php echo $html; ?>
+			<input type="hidden" value="<?php echo $module->id ?>" name="module_id">
 		</div>
 	</nav>
 <?php endif; ?>

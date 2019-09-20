@@ -151,8 +151,7 @@
 				<field
 					name="module_ordering"
 					type="hidden"
-					filter="unset"
-					default="0"
+					filter="raw"
 					>
 				</field>
 			</fieldset>

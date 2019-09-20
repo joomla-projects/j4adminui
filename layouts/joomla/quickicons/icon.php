@@ -50,11 +50,11 @@ if (!empty($displayData['class']))
 // Make the class string
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
-<div class="col-lg-3 widget-item">
+<div class="col-lg-3" data-dragable-group="none">
 	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
 		<div class="j-card-header j-card-header-sm">
 			<div class="j-card-header-right">
-				<button class="j-card-header-icon fas fa-ellipsis-h"></button>
+				<span class="order j-card-header-icon fas fa-ellipsis-h"></span>
 			</div>
 		</div>
 		<div class="j-card-overview-box">
@@ -109,6 +109,6 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 			<?php endif; ?>
 			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>" class="stretched-link"><span class="sr-only"><?php echo $title; ?></span></a>
 		</div> -->
-		
+		<input type="hidden" name="sub_module_name[]" value="<?php echo Text::_($displayData['name']); ?>" class="width-20 text-area-order">
 	</div>
 </div>
