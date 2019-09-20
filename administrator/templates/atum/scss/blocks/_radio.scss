@@ -1,0 +1,37 @@
+
+// radio button
+
+.jradio-group input[type="radio"],
+input[type="radio"].jradio{
+    -webkit-appearance: none;
+    height: 18px;
+    width: 18px;
+    background: #f4f5f9;
+    border-radius: 50%;
+    box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+    background-image: linear-gradient(to bottom, #f4f5f9, #e3e6f2);
+    border: 2px solid #bdc5c8;
+    cursor: pointer;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        height: 0;
+        width: 0;
+        background: var(--primary-color);
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        border-radius: 50%;
+        transition: 100ms;
+        opacity: 0;
+    }
+    &:checked{
+        border-color: var(--primary-color);
+        &::before{
+            height: 50%;
+            width: 50%;
+            opacity: 1;
+        }
+    }
+}
