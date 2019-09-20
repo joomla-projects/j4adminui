@@ -145,13 +145,15 @@ table.j-list-table {
             }
             .itemnumber {
                 a.btn {
-                    line-height: 14px;
-                    border-radius: 10px;
-                    border: 1px solid;
-                    font-size: 10px;
-                    padding: 0 8px;
-                    margin-left: 6px;
+                    line-height: 1;
+                    border-radius: 0;
+                    border: 0;
+                    font-size: 1rem;
+                    padding: 2px 5px;
                     box-shadow: none;
+                    background: transparent;
+                    color: var(--primary-color);
+                    text-decoration: underline;
                     &:active,
                     &:focus {
                         box-shadow: none;

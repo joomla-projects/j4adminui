@@ -268,43 +268,6 @@ body .container-main {
       }
     }
   }
-  .choices[data-type*=select-one]{
-    &.is-focus, &.is-open{
-      .choices__inner{
-        border-color: var(--primary-color);
-      }
-    }
-    .choices__inner{
-      @extend .d-flex;
-      @extend .align-items-center;
-      background-image: url(../images/select-bg-white.svg);
-      background-color: #fff;
-      border: 2px solid transparent;
-      .choices__list--single{
-        color: var(--color);
-        font-size: 1rem;
-      }
-    }
-  }
-  .choices__list--dropdown {
-    border: solid 1px #eaeef5;
-    border-radius: 3px;
-    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
-    margin-top: 0;
-    .choices__input,
-    .choices__item{
-      font-size: 1rem;
-      padding: 6px 15px;
-      color: var(--secondary-color);
-      border-bottom: solid 1px var(--page-background);
-      line-height: 1;
-      transition: .35s;
-      &:hover {
-        color: var(--primary-color);
-        box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
-      }
-    }
-  }
   .field-calendar{
     >.input-group{
       input{
@@ -315,13 +278,6 @@ body .container-main {
           border-color: var(--primary-color);
         }
       }
-    }
-  }
-}
-.choices {
-  .choices__item--selectable {
-    &.is-highlighted {
-      background-color: transparent;
     }
   }
 }
@@ -390,47 +346,4 @@ body .container-main {
     color: var(--color);
     margin-bottom: 10px;
   }
-  .choices[data-type*=select-multiple]{
-    &.is-focus, &.is-open{
-      .choices__inner{
-        border-color: var(--primary-color);
-      }
-    }
-    .choices__inner{
-      border-color: transparent;
-      background: var(--inverse-color);
-      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-      padding: 10px 10px 7px 10px;
-      input{
-        min-width: 200px !important;
-        font-size: 1rem;
-        background-color: transparent;
-        &.focus-visible{
-          font-size: .85rem;
-        }
-      }
-    }
-    .choices__list.choices__list--multiple{
-      .choices__item{
-        background-color: var(--page-background);
-        border: 1px solid transparent;
-        color: var(--icon-color);
-        border-radius: 3px;
-        padding: 2px 1.4rem 2px 10px;
-        font-size: .85rem;
-        .choices__button_joomla{
-          top: 4px;
-          background-color: transparent;
-          &:before{
-            color: var(--secondary-color);
-            font-size: 13px;
-            font-weight: 565;
-          }
-        }
-      }
-    }
-    .choices__list--dropdown{
-      margin-top: 0;
-    }
-  } 
 }
