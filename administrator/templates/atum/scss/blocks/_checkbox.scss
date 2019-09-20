@@ -1,3 +1,4 @@
+.jcheckbox-label input[type="checkbox"],
 .jcheckbox-group input[type="checkbox"],
 input[type="checkbox"].jcheckbox{
     background: #fff;
@@ -5,15 +6,13 @@ input[type="checkbox"].jcheckbox{
     clear: none;
     cursor: pointer;
     display: inline-block;
-    line-height: 0;
+    line-height: 16px;
     height: 16px;
-    margin: -4px 4px 0 0;
     outline: 0;
     padding: 0!important;
     text-align: center;
     vertical-align: middle;
     width: 16px;
-    min-width: 16px;
     -webkit-appearance: none;
     transition: .05s border-color ease-in-out;
     border-radius: 3px;
@@ -56,5 +55,16 @@ input[type="checkbox"].jcheckbox{
     }
     &:focus{
         outline: none;
+    }
+}
+
+.jcheckbox-label{
+    @extend .d-inline-flex;
+    @extend .align-items-center;
+    cursor: pointer;
+    margin: 0;
+    line-height: 20px;
+    input{
+        margin-right: .428571rem;
     }
 }

@@ -720,21 +720,33 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <h2>
                                     <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
-<br>    
-                                <div class="jcheckbox-group">
-                                    <input class="jcheckbox" type="checkbox">
-                                    <input class="jcheckbox" type="checkbox">
-                                    <input type="checkbox" checked>
-                                </div>
-                                <br>
 
+                                <br>    
+                                <!-- single radio -->
+                                <input class="jradio" type="radio" name="name">
+
+                                <!-- radio group -->
                                 <div class="jradio-group">
-                                    <input class="jradio" type="radio" name="radiov">
-                                    <input class="jradio" type="radio" name="radiov">
-                                    <input checked class="jradio" type="radio" name="radiov">
-                                    <input type="radio" name="radiov">
+                                    <label class="jradio-label">
+                                        <input type="radio" name="radio1" id="radio1"> radio 1
+                                    </label>
+                                    <label class="jradio-label">
+                                        <input type="radio" name="radio1" id="radio2"> radio 1
+                                    </label>
                                 </div>
 
+                                <!-- single checkbox -->
+                                <input class="jcheckbox" type="checkbox" name="name">
+
+                                <!-- checkbox group -->
+                                <div class="jcheckbox-group">
+                                    <label class="jcheckbox-label">
+                                        <input type="checkbox" name="check1" id="check2"> check 1
+                                    </label>
+                                    <label class="jcheckbox-label">
+                                        <input type="checkbox" name="check2" id="check2"> check 2
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 
 // radio button
 
+.jradio-label input[type="radio"],
 .jradio-group input[type="radio"],
 input[type="radio"].jradio{
     -webkit-appearance: none;
@@ -13,6 +14,7 @@ input[type="radio"].jradio{
     border: 2px solid #bdc5c8;
     cursor: pointer;
     position: relative;
+    display: inline-block;
     &::before{
         content: '';
         position: absolute;
@@ -34,4 +36,9 @@ input[type="radio"].jradio{
             opacity: 1;
         }
     }
+}
+
+
+.jradio-label{
+    @extend .jcheckbox-label;
 }
