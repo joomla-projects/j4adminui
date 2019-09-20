@@ -720,6 +720,20 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 <h2>
                                     <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
+<br>    
+                                <div class="jcheckbox-group">
+                                    <input class="jcheckbox" type="checkbox">
+                                    <input class="jcheckbox" type="checkbox">
+                                    <input type="checkbox" checked>
+                                </div>
+                                <br>
+
+                                <div class="jradio-group">
+                                    <input class="jradio" type="radio" name="radiov">
+                                    <input class="jradio" type="radio" name="radiov">
+                                    <input checked class="jradio" type="radio" name="radiov">
+                                    <input type="radio" name="radiov">
+                                </div>
 
                             </div>
                         </div>
