@@ -2,8 +2,12 @@
 .switcher-wrap{
 	@extend .d-inline-flex;
 	@extend .align-items-center;
-	span + span{
+	span + *{
 		margin-left: 5px;
+	}
+
+	> *{
+		color: var(--secondary-color)
 	}
 }
 .switcher-alt{
@@ -31,7 +35,6 @@
 		margin-top: -9px;
 		transition: 200ms;
 	}
-
 	&.checked{
 		background-color: rgba(var(--primary-color-rgb), .5);
 		&::after{

@@ -718,7 +718,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                 </p>
 
                                 <h2>
-                                    <span class="switcher-wrap"> <span class="switcher-alt"></span> <span>No.</span></span> My name is
+                                    <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
 
                             </div>
