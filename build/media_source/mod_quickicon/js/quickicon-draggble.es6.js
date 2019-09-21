@@ -11,13 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // eslint-disable-next-line no-undef
     dragula([container], {
-      moves(el, source, handle, sibling) {
-        const handleClass = container.getAttribute('data-drag_handler');
-        if (handleClass) {
-          return handle.classList.contains(handleClass);
-        }
-        return true; // elements are always draggable by default
-      },
       direction: 'vertical', // Y axis is considered when determining where an element would be dropped
       copy: false, // elements are moved by default, not copied
     })
