@@ -61,7 +61,7 @@ echo HTMLHelper::_(
 		<?php
 		foreach ($this->modules as $module)
 		{
-			echo ModuleHelper::renderModule($module, array('style' => 'well'));
+			echo ModuleHelper::renderModule($module, array('style' => 'simple'));
 		}
 		?>
 		

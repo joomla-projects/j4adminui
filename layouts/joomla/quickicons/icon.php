@@ -51,17 +51,17 @@ if (!empty($displayData['class']))
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
 <div class="col-lg-3" data-dragable-group="none">
-	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
-		<div class="j-card-header j-card-header-sm">
-			<div class="j-card-header-right">
-				<span class="order j-card-header-icon fas fa-ellipsis-h"></span>
+	<div <?php echo $id; ?> class="jcard jcard-has-hover mb-4 <?php echo $class; ?>" data-quick-icon>
+		<div class="jcard-header jcard-header-sm">
+			<div class="jcard-header-right">
+				<span class="order jcard-header-icon fas fa-ellipsis-h"></span>
 			</div>
 		</div>
-		<div class="j-card-overview-box">
-			<div class="j-card-overview-icon j-warning">
+		<div class="jcard-overview-box">
+			<div class="jcard-overview-icon j-warning">
 				<i class="<?php echo $displayData['image']; ?>"></i>
 			</div>
-			<div class="j-card-overview-content">
+			<div class="jcard-overview-content">
 				65
 				<?php // Name indicates the component
 				if (isset($displayData['name'])): ?>
@@ -74,10 +74,10 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 
 		<?php // Add the link to the edit-form
 		if (isset($displayData['linkadd'])): ?>
-			<div class="j-card-footer j-card-footer-lg">
-				<div class="j-card-footer-item">
+			<div class="jcard-footer jcard-footer-lg">
+				<div class="jcard-footer-item">
 					<a href="<?php echo $displayData['linkadd']; ?>">
-						<span class="fa fa-plus j-card-icon j-icon-lg" aria-hidden="true"></span>
+						<span class="fa fa-plus jcard-icon" aria-hidden="true"></span>
 						<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
 						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
 					</a>
