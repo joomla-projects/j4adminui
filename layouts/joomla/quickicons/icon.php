@@ -53,17 +53,17 @@ if (!empty($displayData['class']))
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
 <div class="col-lg-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
-	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
-		<div class="j-card-header j-card-header-sm">
-			<div class="j-card-header-right">
-				<span class="order j-card-header-icon fas fa-ellipsis-h"></span>
+	<div <?php echo $id; ?> class="jcard jcard-has-hover mb-4 <?php echo $class; ?>">
+		<div class="jcard-header jcard-header-sm">
+			<div class="jcard-header-right">
+				<span class="order jcard-header-icon fas fa-ellipsis-h"></span>
 			</div>
 		</div>
 		<div class="jcard-overview-box">
 			<div class="jcard-overview-icon j-warning">
 				<i class="<?php echo $displayData['image']; ?>"></i>
 			</div>
-			<div class="j-card-overview-content" area-hidden="true">
+			<div class="jcard-overview-content" area-hidden="true">
 				<?php if (isset($displayData['ajaxurl'])): ?>
 					<span class="j-counter-animation">
 						<i class="fa fa-spinner" aria-hidden="true"></i>
