@@ -61,7 +61,8 @@ echo HTMLHelper::_(
 		<?php
 		foreach ($this->modules as $module)
 		{
-			echo ModuleHelper::renderModule($module, array('style' => 'simple'));
+			$style = ($module->module == 'mod_quickicon') ? 'simple' : 'card';
+			echo ModuleHelper::renderModule($module, array('style' => $style));
 		}
 		?>
 		

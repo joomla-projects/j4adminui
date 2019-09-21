@@ -10,9 +10,12 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
+
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 
 $module  = $displayData['module'];
 $params  = $displayData['params'];
@@ -33,7 +36,7 @@ if ($module->content) :
 	$moduleClassSfx = $params->get('moduleclass_sfx', '');
 
 	// Temporarily store header class in variable
-	$headerClass = !empty($params->get('header_class')) ? ' class="' . htmlspecialchars($params->get('header_class')) . '"' : '';
+	$headerClass = !empty($params->get('header_class')) ? ' ' . htmlspecialchars($params->get('header_class')) . '"' : '';
 
 	// Get the module icon
 	$headerIcon = '';
@@ -45,11 +48,46 @@ if ($module->content) :
 		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
-	<div class="module-wrapper">
-		<<?php echo $moduleTag; ?> class="<?php echo $moduleClassSfx; ?>">
-			<div class="mb-3">
+	<div class="module-wrapper" data-dragable-group="dashboard_module">
+		<<?php echo $moduleTag; ?> class="jcard mb-3<?php echo $moduleClassSfx; ?>">
+			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
+				<div class="jcard-header handle">
+					<h2 class="jcard-title<?php echo $headerClass; ?>">
+						<span class="jcard-icon fas fa-arrows-alt-v" area-hidden="true"></span>
+						<?php if ($module->showtitle) :
+							echo $headerIcon . htmlspecialchars($module->title);
+						endif; ?>
+					</h2>
+
+					<div class="jcard-header-right">
+						<button class="jcard-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"></button>
+						<?php if ($canEdit || $canChange) : ?>
+							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
+							<div class="joomla-dropdown-container">
+								<a href="javascript:;" class="" id="dropdownMenuButton-<?php echo $id; ?>">
+									<span class="jcard-header-icon fas fa-ellipsis-h" aria-hidden="true"></span>
+									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
+								</a>
+								<joomla-dropdown for="#dropdownMenuButton-<?php echo $id; ?>">
+									<?php if ($canEdit) : ?>
+										<?php $uri = Uri::getInstance(); ?>
+										<?php $url = Route::_('index.php?option=com_modules&task=module.edit&id=' . $id . '&return=' . base64_encode($uri)); ?>
+										<a class="dropdown-item" href="<?php echo $url; ?>"><span class="fas fa-edit" aria-hidden="true"></span> <?php echo Text::_('JACTION_EDIT'); ?></a>
+									<?php endif; ?>
+									<?php if ($canChange) : ?>
+										<button type="button" class="dropdown-item unpublish-module" data-module-id="<?php echo $id; ?>"><span class="fas fa-eye-slash" aria-hidden="true"></span> <?php echo Text::_('JACTION_UNPUBLISH'); ?></button>
+									<?php endif; ?>
+								</joomla-dropdown>
+							</div>
+						<?php endif; ?>
+                    </div>
+				</div>
+			<?php endif; ?>
+			<div class="card-body" id="card-body-<?php echo $id; ?>">
 				<?php echo $module->content; ?>
 			</div>
 		</<?php echo $moduleTag; ?>>
+		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
+		<input type="hidden" value="<?php echo $module->ordering; ?>" name="order[]">
 	</div>
 <?php endif; ?>
