@@ -54,13 +54,8 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
 <div class="col-lg-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
 	<div <?php echo $id; ?> class="jcard jcard-has-hover mb-4 <?php echo $class; ?>">
-		<div class="jcard-header jcard-header-sm">
-			<div class="jcard-header-right">
-				<span class="order jcard-header-icon fas fa-ellipsis-h"></span>
-			</div>
-		</div>
-		<div class="jcard-overview-box">
-			<div class="jcard-overview-icon j-warning">
+		<div class="jcard-overview-box pt-3">
+			<div class="jcard-overview-icon j-<?php echo $displayData['icon_class']; ?>">
 				<i class="<?php echo $displayData['image']; ?>"></i>
 			</div>
 			<div class="jcard-overview-content" area-hidden="true">
@@ -79,9 +74,10 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 			</div>
 		</div>
 
-		<?php // Add the link to the edit-form
-		if (isset($displayData['linkadd'])): ?>
-			<div class="jcard-footer jcard-footer-lg">
+		
+		<div class="jcard-footer jcard-footer-lg">
+			<?php // Add the link to the edit-form
+			if (isset($displayData['linkadd'])): ?>
 				<div class="jcard-footer-item">
 					<a href="<?php echo $displayData['linkadd']; ?>">
 						<span class="fa fa-plus jcard-icon" aria-hidden="true"></span>
@@ -89,8 +85,11 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
 					</a>
 				</div>
+			<?php endif; ?>
+			<div class="jcard-footer-item jcard-footer-icon">
+				<a href="<?php echo $displayData['link']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?>"><span class="fas fa-eye" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
 			</div>
-		<?php endif; ?>
+		</div>
 
 		<!-- <div class="card-body">
 			<div class="d-flex align-items-center">
