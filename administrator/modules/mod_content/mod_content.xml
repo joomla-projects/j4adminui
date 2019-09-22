@@ -19,14 +19,14 @@
 		<language tag="en-GB">en-GB.mod_content.ini</language>
 		<language tag="en-GB">en-GB.mod_content.sys.ini</language>
 	</languages>
-	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_LATEST" />
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_CONTENT" />
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
 				<field
 					name="count"
 					type="number"
-					label="MOD_LATEST_FIELD_COUNT_LABEL"
+					label="MOD_CONTENT_FIELD_COUNT_LABEL"
 					default="5"
 					filter="integer"
 				/>
@@ -34,11 +34,11 @@
 				<field
 					name="ordering"
 					type="list"
-					label="MOD_LATEST_FIELD_ORDERING_LABEL"
+					label="MOD_CONTENT_FIELD_ORDERING_LABEL"
 					default="c_dsc"
 					>
-					<option value="c_dsc">MOD_LATEST_FIELD_VALUE_ORDERING_ADDED</option>
-					<option value="m_dsc">MOD_LATEST_FIELD_VALUE_ORDERING_MODIFIED</option>
+					<option value="c_dsc">MOD_CONTENT_FIELD_VALUE_ORDERING_ADDED</option>
+					<option value="m_dsc">MOD_CONTENT_FIELD_VALUE_ORDERING_MODIFIED</option>
 				</field>
 
 				<field
@@ -56,12 +56,12 @@
 				<field
 					name="user_id"
 					type="list"
-					label="MOD_LATEST_FIELD_AUTHORS_LABEL"
+					label="MOD_CONTENT_FIELD_AUTHORS_LABEL"
 					default="0"
 					>
-					<option value="0">MOD_LATEST_FIELD_VALUE_AUTHORS_ANYONE</option>
-					<option value="by_me">MOD_LATEST_FIELD_VALUE_AUTHORS_BY_ME</option>
-					<option value="not_me">MOD_LATEST_FIELD_VALUE_AUTHORS_NOT_BY_ME</option>
+					<option value="0">MOD_CONTENT_FIELD_VALUE_AUTHORS_ANYONE</option>
+					<option value="by_me">MOD_CONTENT_FIELD_VALUE_AUTHORS_BY_ME</option>
+					<option value="not_me">MOD_CONTENT_FIELD_VALUE_AUTHORS_NOT_BY_ME</option>
 				</field>
 			</fieldset>
 			<fieldset name="advanced">
