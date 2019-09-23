@@ -13,7 +13,6 @@ use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Response\JsonResponse;
-use Joomla\CMS\Table\Table;
 use Joomla\String\StringHelper;
 
 /**
@@ -50,7 +49,8 @@ class ModDraftArticleHelper
         // read input 
         $title = $input->post->get('title', '', 'STRING');
         $description = $input->post->get('description', '', 'STRING');
-        $catid = 2;
+        $catid = 2; // uncategorised category id for com_content
+        
         $table->load();
         $table->title       = $title;
         $table->alias       = static::generateSafeAlias($title, $catid);
@@ -79,7 +79,7 @@ class ModDraftArticleHelper
                 {
                     $app->setHeader('status', 500, true);
                     $app->sendHeaders();
-                    echo "Error inserting workflow associations";
+                    echo Text::_("MOD_DRAFT_ARTICLE_CANNOT_SAVE_WORKFLOW");
                     $app->close();
                 }
             }
@@ -135,6 +135,8 @@ class ModDraftArticleHelper
      * @param {int} $item_id - newly created article id
      * 
      * @return {boolean}
+     * 
+     * @since 1.0.0
      */
     private static function workflowAssociationsPivot($item_id)
     {

@@ -12,7 +12,6 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
 HTMLHelper::_('behavior.core');
@@ -27,7 +26,7 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
     <fieldset>
         <div class="form-group">
             <label for="mod-draftarticle-title" >
-                <?php echo JText::_('JGLOBAL_TITLE'); ?>
+                <?php echo Text::_('JGLOBAL_TITLE'); ?>
             </label>
             <div class="input-group">
                 <input 
@@ -36,14 +35,13 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
                     name="title"
                     class="form-control input-full"
                     required="required"
-                    autofocus
                 >
             </div>
         </div>
 
         <div class="form-group">
             <label for="mod-draftarticle-description">
-                <?php echo JText::_('JGLOBAL_FIELDSET_CONTENT'); ?>
+                <?php echo Text::_('JGLOBAL_FIELDSET_CONTENT'); ?>
             </label>
             <div class="input-group">
                 <textarea 
@@ -59,10 +57,10 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
 
         <div class="form-group">
             <button class="btn btn-cancel" type="button" role="button" id="mod-draftarticle-clear">
-                <?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>
+                <?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
             </button>
             <button class="btn btn-primary" type="submit" role="button" id="mod-draftarticle-submit">
-                <?php echo JText::_('MOD_DRAFTARTICLE_SAVE_ARTICLE'); ?>
+                <?php echo Text::_('MOD_DRAFTARTICLE_SAVE_ARTICLE'); ?>
             </button>
         </div>
 
