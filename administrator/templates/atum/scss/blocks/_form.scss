@@ -169,7 +169,7 @@ select{
 //Form elements custom design
 textarea.form-control {
   height: 6.9rem;
-  padding-top: var(--font-size-sm);
+  padding-top: $font-size-sm;
 }
 .custom-select {
   @include input-style();

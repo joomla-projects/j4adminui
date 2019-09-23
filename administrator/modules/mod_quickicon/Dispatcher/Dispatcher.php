@@ -31,7 +31,7 @@ class Dispatcher extends AbstractModuleDispatcher
 	protected function getLayoutData()
 	{
 		$data = parent::getLayoutData();
-
+		
 		$data['buttons'] = QuickIconHelper::getButtons($data['params'], $this->getApplication());
 
 		return $data;

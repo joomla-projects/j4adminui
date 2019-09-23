@@ -11,7 +11,7 @@
       document.querySelector('.menuselect-hierarchy').style.display = 'none';
       document.querySelector('#treeselectfilter').style.display = 'none';
     } else {
-      // show 
+      // show
       document.querySelector('.menuselect-hierarchy').style.display = 'block';
       document.querySelector('#treeselectfilter').style.display = 'block';
     }

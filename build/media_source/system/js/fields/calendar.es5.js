@@ -544,14 +544,14 @@
 
 		div.className = 'js-calendar';
 		div.style.position = "absolute";
-		div.style.boxShadow = "0px 0px 70px 0px rgba(0,0,0,0.67)";
+		div.style.boxShadow = "0 30px 60px -10px rgba(0, 28, 73, 0.15);";
 		div.style.minWidth = this.inputField.width;
 		div.style.padding = '0';
 		div.style.display = "none";
 		div.style.left = "auto";
 		div.style.top = "auto";
 		div.style.zIndex = 1060;
-		div.style.borderRadius = "20px";
+		div.style.borderRadius = "3px";
 
 		this.wrapper = createElement('div');
 		this.wrapper.className = 'calendar-container';
@@ -563,6 +563,8 @@
 
 		var cell = null,
 			row  = null,
+			yearsRow = null,
+			monthsRow = null,
 			cal  = this,
 			hh   = function (text, cs, navtype, node, styles, classes, attributes) {
 				node = node ? node : "td";
@@ -602,20 +604,23 @@
 
 		if (this.params.compressedHeader === false) {                                                        // Head - year
 			row = createElement("tr", thead);
-			row.className = "calendar-head-row";
-			this._nav_py = hh("&lsaquo;", 1, -2, '', {"text-align": "center", "font-size": "18px", "line-height": "18px"}, 'js-btn btn-prev-year');                   // Previous year button
-			this.title = hh('<div style="text-align:center;font-size:18px"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
+			row.className = "calendar-head-row tt";
+			this._nav_py = hh("<i class=\"fas fa-chevron-left\">", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
+			this.title = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
 			this.title.className = "title";
-			this._nav_ny = hh(" &rsaquo;", 1, 2, '', {"text-align": "center", "font-size": "18px", "line-height": "18px"}, 'js-btn btn-next-year');                   // Next year button
+			this._nav_ny = hh("<i class=\"fas fa-chevron-right\">", 1, 2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-next-year');                   // Next year button
 		}
-
+		yearsRow = row;
 		row = createElement("tr", thead);                                                                   // Head - month
+		monthsRow = row;
 		row.className = "calendar-head-row";
-		this._nav_pm = hh("&lsaquo;", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
-		this._nav_month = hh('<div style="text-align:center;font-size:1.2em"><span></span></div>', this.params.weekNumbers ? 6 : 5, 888, 'td', {'textAlign': 'center'});
+		this._nav_pm = hh("<i class=\"fas fa-chevron-left\">", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
+		this._nav_month = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'center'});
 		this._nav_month.className = "title";
-		this._nav_nm = hh(" &rsaquo;", 1, 1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-next-month');                       // Next month button
-
+		let yearsWrapper = createElement('td', row);
+		yearsWrapper.setAttribute("colspan", "3");
+		yearsWrapper.appendChild(yearsRow);
+		this._nav_nm = hh("<i class=\"fas fa-chevron-right\">", 1, 1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-next-month');                       // Next month button
 		row = createElement("tr", thead);                                                                   // day names
 		row.className = self.params.weekNumbers ? "daynames wk" : "daynames";
 		if (this.params.weekNumbers) {
@@ -666,22 +671,21 @@
 				cell.addEventListener("mousedown", this._dayMouseDown, true);
 			}
 		}
-
 		if (this.params.showsTime) {
-			row = createElement("tr", tbody);
+			row = createElement("div", tbody);
 			row.className = "time";
 
-			cell = createElement("td", row);
+			cell = createElement("div", row);
 			cell.className = "time time-title";
 			cell.colSpan = 1;
 			cell.style.verticalAlign = 'middle';
 			cell.innerHTML = " ";
 
-			var cell1 = createElement("td", row);
+			var cell1 = createElement("div", row);
 			cell1.className = "time hours-select";
 			cell1.colSpan = 2;
 
-			var cell2 = createElement("td", row);
+			var cell2 = createElement("div", row);
 			cell2.className = "time minutes-select";
 			cell2.colSpan = 2;
 
@@ -723,7 +727,7 @@
 					M = makeTimePart("time time-minutes", mins, 0, 59, cell2),
 					AP = null;
 
-				cell = createElement("td", row);
+				cell = createElement("div", row);
 				cell.className = "time ampm-select";
 				cell.colSpan = self.params.weekNumbers ? 1 : 2;
 

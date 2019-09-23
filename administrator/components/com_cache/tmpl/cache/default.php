@@ -27,7 +27,7 @@ HTMLHelper::_('script', 'com_cache/admin-cache-default.js', ['version' => 'auto'
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', ['view' => $this]); ?>
 				<?php if (count($this->data) > 0) : ?>
-				<table class="table">
+				<table class="table j-list-table">
 					<caption id="captionTable" class="sr-only">
 						<?php echo Text::_('COM_CACHE_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 					</caption>

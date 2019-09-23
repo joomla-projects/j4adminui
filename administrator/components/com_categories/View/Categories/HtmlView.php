@@ -180,11 +180,6 @@ class HtmlView extends BaseHtmlView
 		// Prepare the toolbar.
 		ToolbarHelper::title($title, 'folder categories ' . substr($component, 4) . ($section ? "-$section" : '') . '-categories');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories($component, 'core.create')) > 0)
-		{
-			$toolbar->addNew('category.add');
-		}
-
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -242,11 +237,6 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			$toolbar->preferences($component);
-		}
-
 		// Compute the ref_key if it does exist in the component
 		if (!$lang->hasKey($ref_key = strtoupper($component . ($section ? "_$section" : '')) . '_CATEGORIES_HELP_KEY'))
 		{
@@ -270,7 +260,20 @@ class HtmlView extends BaseHtmlView
 			$url = null;
 		}
 
+		// Help button
 		$toolbar->help($ref_key, ComponentHelper::getParams($component)->exists('helpURL'), $url);
+
+		// category global settings (option) button
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			$toolbar->preferences($component);
+		}
+
+		// create new category button
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories($component, 'core.create')) > 0)
+		{
+			$toolbar->addNew('category.add');
+		}
 	}
 
 	/**

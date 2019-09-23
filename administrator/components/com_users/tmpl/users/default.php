@@ -41,7 +41,7 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 					</div>
 				<?php else : ?>
-					<table class="table" id="userList">
+					<table class="table j-list-table" id="userList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_USERS_USERS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>

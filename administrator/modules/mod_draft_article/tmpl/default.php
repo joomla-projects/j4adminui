@@ -19,6 +19,7 @@ HTMLHelper::_('behavior.core');
 HTMLHelper::_('behavior.keepalive');
 
 Factory::getDocument()->addScriptOptions('saveurl', Uri::root() . 'administrator/index.php?option=com_ajax&module=draft_article&method=saveDraftArticle&format=json');
+Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator/index.php?option=com_content&task=article.edit&id=');
 
 ?>
 
@@ -57,8 +58,8 @@ Factory::getDocument()->addScriptOptions('saveurl', Uri::root() . 'administrator
         </div>
 
         <div class="form-group">
-            <button class="btn btn-cancel" type="button" role="button" id="mod-draftarticle-cancle">
-                <?php echo JText::_('MOD_DRAFTARTICLE_CANCEL_SAVE_ARTICLE'); ?>
+            <button class="btn btn-cancel" type="button" role="button" id="mod-draftarticle-clear">
+                <?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>
             </button>
             <button class="btn btn-primary" type="submit" role="button" id="mod-draftarticle-submit">
                 <?php echo JText::_('MOD_DRAFTARTICLE_SAVE_ARTICLE'); ?>
