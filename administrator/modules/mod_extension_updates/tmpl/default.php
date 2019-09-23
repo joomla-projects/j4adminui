@@ -47,22 +47,23 @@ if (!empty($extensionContents['updatableInfo']['package']))
 
 ?>
 
-<div class="mod-extension-updates module-<?php echo $module->id; ?>" id="mod-extension-updates-<?php echo $module->id; ?>">
+<div class="mod-extension-updates text-center module-<?php echo $module->id; ?>" id="mod-extension-updates-<?php echo $module->id; ?>">
     <div class="mod-eu-joomla-update">
         <?php if($extensionContents['updateJoomla']) : ?>
-            <a href="<?php echo Route::_('index.php?option=com_joomlaupdate'); ?>" class="btn btn-link"><?php echo Text::_('Outdated'); ?></a>
+            <h3 class="text-warning"><span class="fas fa-exclamation-triangle" area-hidden="true"></span> Your Joomla <?php echo JVERSION; ?> is Outdated</h3>
+            <a href="<?php echo Route::_('index.php?option=com_joomlaupdate'); ?>"><?php echo Text::_('Update to Joomla 4.2'); ?></a>
         <?php else : ?>
         <div class="updated">
-            <div class="outdated"><?php echo Text::_('Updated'); ?></div>    
+            <h3 class="mb-4"><span class="fas fa-check-circle text-success" area-hidden="true"></span> Your Joomla is up to date to the latest version <?php echo JVERSION; ?></h3>
         </div>
         <?php endif; ?> 
     </div><!-- /.mod-eu-joomla-update -->
 
     <div class="mod-eu-extension-update">
-        <div class="mod-eu-percent">
+        <!-- <div class="mod-eu-percent">
             <h4><?php echo $extensionContents['percentage'] . '%'; ?></h4>
             <p><?php echo Text::_('MOD_EXTENSION_UPDATES_UPDATED'); ?></p>
-        </div>
+        </div> -->
 
         <div class="j-progress">
             <joomla-progress progress="<?php echo $extensionContents['percentage']; ?>" radius="80" stroke="15" duration="2000" >

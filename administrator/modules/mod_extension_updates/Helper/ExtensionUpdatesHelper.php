@@ -25,7 +25,7 @@ abstract class ExtensionUpdatesHelper
     public static function extractExtensionsContent() : array
     {
         $totalExtensions = static::getTotalInstalledExtensions();
-        $updatableExtensions = static::getUpdateableExtensions();
+        $updatableExtensions = static::getUpdatableExtensions();
 
         $content = array();
 
@@ -81,7 +81,7 @@ abstract class ExtensionUpdatesHelper
         return !empty($extensions) ? true : false;
     }
 
-    private static function getUpdateableExtensions() : array
+    private static function getUpdatableExtensions() : array
     {
         $updateModel = Factory::getApplication()->bootComponent('com_installer')
             ->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
