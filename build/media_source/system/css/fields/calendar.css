@@ -2,6 +2,7 @@
  * @copyright	Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 .calendar-container {
 	float: left;
 	min-width: 160px;
@@ -10,25 +11,35 @@
 	border-radius: 3px;
 	background-color: #ffffff !important;
 	z-index: 1100 !important;
+	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 }
 .calendar-container table {
 	table-layout: fixed;
-	max-width: 320px;
+	max-width: 340px;
 	border-radius: 3px;
 	background-color: #ffffff !important;
 	z-index: 1100 !important;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-top: 25px;
 }
 /* The main calendar widget.  DIV containing a table. */
 div.calendar-container table th, .calendar-container table td {
 	padding: .95rem 0;
 	line-height: 1.1rem;
 	text-align: center;
+	border: none;
 }
-
+.calendar-container table thead td, .calendar-container table thead th{
+	border: none;
+}
 div.calendar-container table body td {
 	line-height: 2em;
 }
-
+.calendar-container .daynames .day-name{
+	background-color: #f4f5f9;
+}
 .calendar-container table {
 	border-collapse: separate;
 }
@@ -130,16 +141,63 @@ div.calendar-container table td.title { /* This holds the current "month, year" 
 	display: none;
 }
 .buttons-wrapper {
-	padding: 5px 5px;
+	width: 100%;
+	border: solid 1px #bdc5c8;
+	margin-top: 25px;
 }
 a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	cursor: pointer;
 	text-decoration: none;
 	min-width: 60px;
 }
+.calendar-container .years-wrapper{
+	vertical-align: baseline;
+}
+.calendar-container .years-wrapper .js-btn{
+	font-size: 10px;
+	opacity: 0;
+	transition: .3s;
+	margin-right: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.calendar-container .years-wrapper:hover>tr{
+	background-color: #f4f5f9;
+}
+.calendar-container .years-wrapper:hover .js-btn{
+	opacity: 1;
+}
+.calendar-container .years-wrapper .js-btn:hover,
+.calendar-container .years-wrapper .js-btn:focus{	
+	color: var(--link-color);
+}
+.calendar-container .js-btn.btn-prev-month,
+.calendar-container .js-btn.btn-next-month{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 10px;
+	background-color: #f4f5f9;
+	cursor: pointer;
+	transition: .3s;
+}
+.calendar-container .js-btn.btn-prev-month{
+	margin-left: 5px;
+}
+.calendar-container .js-btn.btn-next-month{
+	margin-right: 5px;
+}
+.calendar-container .js-btn.btn-prev-month:hover,
+.calendar-container .js-btn.btn-next-month:hover{
+	background-color: var(--link-color);
+	color: var(--inverse-color) !important;
+}
+.calendar-container .calendar-head-row .years-wrapper{
+	padding-left: 5px;
+}
 .calendar-container .calendar-head-row td {
-	padding: 4px 0 !important;
-	border-bottom: none;
+	padding: 4px 0;
+	border: none;
 }
 .calendar-container .calendar-head-row .js-btn i.fas{
 	pointer-events: none;
