@@ -46,7 +46,7 @@
             data,
             perform: true,
             onSuccess: function(response) {
-                console.log(response);
+                console.log(response.data);
             },
             onError: function(xhr) {
                 Joomla.renderMessages({error: [xhr.response]});
