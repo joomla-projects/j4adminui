@@ -37,6 +37,7 @@ $resultMsg = Text::sprintf('JGLOBAL_SHOW_PAGINATION_MSG', $showResultFrom, $show
 ?>
 <?php if($totalPages > 1) : ?>
     <joomla-pagination 
+        class="j-pagination"
         total-visible="7"
         next-icon="fa fa-angle-right"
         prev-icon="fa fa-angle-left"

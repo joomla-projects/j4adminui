@@ -28,13 +28,12 @@
     });
     document.querySelectorAll('.j-quickicon').forEach((quickicon) => {
       const pulse = quickicon.querySelector('.pulse');
-      const counterAnimate = quickicon.querySelector('.j-counter-animation')
+      const counterAnimate = quickicon.querySelector('.j-counter-animation');
       if (quickicon.dataset.url) {
         Joomla.request({
           url: quickicon.dataset.url,
           method: 'GET',
-          onSuccess: ( resp => {
-            
+          onSuccess: ((resp) => {
             const response = JSON.parse(resp);
             quickicon.removeAttribute('data-loading');
 
@@ -44,9 +43,9 @@
                 pulse.classList.add(className);
               }
               if (response.data > 0) {
-                quickicon.setAttribute('data-status','warning');
-              }else{
-                quickicon.setAttribute('data-status','success');
+                quickicon.setAttribute('data-status', 'warning');
+              } else {
+                quickicon.setAttribute('data-status', 'success');
               }
               // Set amount of number into counter span
               counterAnimate.textContent = `\u200E${response.data.amount}`;
@@ -58,11 +57,11 @@
                 sronly.textContent = response.data.sronly;
               }
             } else {
-              quickicon.setAttribute('data-status','danger')
+              quickicon.setAttribute('data-status', 'danger');
             }
           }),
           onError: (() => {
-              quickicon.setAttribute('data-status','danger')
+            quickicon.setAttribute('data-status', 'danger');
           }),
         });
       }
