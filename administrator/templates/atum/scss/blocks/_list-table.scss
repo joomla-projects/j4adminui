@@ -119,6 +119,8 @@ table.j-list-table {
                 color: var(--success-color);
                 width: 110px;
                 height: auto;
+                background-image: url(../images/select-bg-white.svg);
+                background-color: var(--input-background-color-white);
                 option[selected],
                 option:checked,
                 option:hover {
