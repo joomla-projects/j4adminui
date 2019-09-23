@@ -3,15 +3,21 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 
 HTMLHelper::_('webcomponent', 'system/pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-dropdown.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div class="container" style="background:white; padding: 10px;">
+        <h1> Joomla Pgoress </h1>
+        <div class="_joomla-progress" style="width: 600px">
+            <joomla-progress progress="25"></joomla-progress>
+            <joomla-progress stroke="10" radius="100" progress="45" fill="#ff0000"></joomla-progress>
+        </div>
         <h1> Joomla Pagination </h1>
         <div class="joomla-pagination" style="width: 600px">
             <joomla-pagination>
