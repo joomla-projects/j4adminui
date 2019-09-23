@@ -26,9 +26,12 @@
 .choices__list--dropdown {
 	z-index: $zindex-popover;
 	border: solid 1px #eaeef5;
-    border-radius: 3px;
-    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+	border-radius: 3px;
+	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 	margin-top: 0;
+	max-height: 190px;
+	overflow-y: auto;
+	overflow-x: hidden;
 	.choices__input,
     .choices__item{
       font-size: 1rem;
@@ -156,6 +159,7 @@
 			font-size: 1rem;
 			background-color: transparent;
 			padding: 0;
+			min-width: 100px;
 		}
 	}
 	.choices__input {
