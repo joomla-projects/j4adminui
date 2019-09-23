@@ -80,6 +80,7 @@
 				time24          : true,
 				showsOthers     : (parseInt(btn.getAttribute("data-show-others")) === 1) ? true : false,
 				showsTime       : true,
+				timeTitle       : (btn.getAttribute("data-time-title")) ? btn.getAttribute("data-time-title") : "",
 				weekNumbers     : (parseInt(btn.getAttribute("data-week-numbers")) === 1) ? true : false,
 				showsTodayBtn   : true,
 				compressedHeader: (parseInt(btn.getAttribute("data-only-months-nav")) === 1) ? true : false,
@@ -615,7 +616,11 @@
 		monthsRow = row;
 		row.className = "calendar-head-row";
 		this._nav_pm = hh("<i class=\"fas fa-chevron-left\">", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
-		this._nav_month = hh('<div><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'right'});
+		if (this.params.compressedHeader === false) {
+			this._nav_month = hh('<div><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'right'});
+		} else {
+			this._nav_month = hh('<div><span></span></div>', this.params.weekNumbers ? 6 : 3, 888, 'td', {'textAlign': 'center'});
+		}
 		this._nav_month.className = "title";
 		if (this.params.compressedHeader === false) {
 			let yearsWrapper = createElement('td', row);
@@ -680,9 +685,9 @@
 
 			cell = createElement("td", row);
 			cell.className = "time time-title";
-			cell.colSpan = 1;
+			cell.colSpan = 3;
 			cell.style.verticalAlign = 'middle';
-			cell.innerHTML = " ";
+			cell.innerHTML = this.params.timeTitle;
 
 			var cell1 = createElement("td", row);
 			cell1.className = "time hours-select";
@@ -726,8 +731,8 @@
 					hrs -= 12;
 				}
 
-				var H = makeTimePart("time time-hours", hrs, t12 ? 1 : 0, t12 ? 12 : 23, cell1),
-					M = makeTimePart("time time-minutes", mins, 0, 59, cell2),
+				var H = makeTimePart("time time-hours custom-select", hrs, t12 ? 1 : 0, t12 ? 12 : 23, cell1),
+					M = makeTimePart("time time-minutes custom-select", mins, 0, 59, cell2),
 					AP = null;
 
 				cell = createElement("div", row);
