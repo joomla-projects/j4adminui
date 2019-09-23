@@ -768,7 +768,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
                                     <label>
                                         <input type="checkbox" name="checkbox2" id="checkbox2"> Group + Label + checkbox
                                     </label>
-                                </div>
+                                </div>     
 
                             </div>
                         </div>
@@ -777,7 +777,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
             </div>
         </div>
 
-
+        
 
 
     </section>
