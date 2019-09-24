@@ -231,7 +231,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
         </joomla-modal>
 
 
-        <joomla-modal id="exampleModal2" title="Modal title" close-a href="#"-title="Close" width="100%" height="400px" iframe="https://www.joomla.org">
+        <joomla-modal id="exampleModal2" title="Modal title" close-a href="#"-title="Close" width="100%" height="400px" iframe="http://10.0.1.71/wp_sites/wpmm/">
             <section>
                 <h4>I'm a Modal</h4>
             </section>
@@ -424,7 +424,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-3">
             <div class="jcard jcard-has-hover">
                 <div class="jcard-header">
@@ -731,8 +731,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                         <span class="switcher-alt"></span>
                                         <span>No</span>
                                     </span>
-                                    
-                                <br> You can select from a number of options for customising the look 
+
+                                <br> You can select from a number of options for customising the look
                                 <span class="switcher-wrap">
                                     <span>Yes</span>
                                     <span class="switcher-alt checked"></span>
@@ -743,12 +743,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                     <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
 
-                                <br>    
+                                <br>
                                 <!-- single radio -->
                                 <input class="jradio" type="radio" name="name">
 
                                 <br>
-                                
+
                                 <!-- Radio + label -->
                                 <label class="jradio-label">
                                     <input type="radio" name="radio1" id="radio1"> Label + Radio
@@ -773,7 +773,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                 <input class="jcheckbox" type="checkbox" name="name">
 
                                 <br>
-                                
+
                                 <!-- check box + label -->
                                 <label class="jcheckbox-label">
                                     <input type="checkbox" name="check1" id="check2"> Label + Checkbox

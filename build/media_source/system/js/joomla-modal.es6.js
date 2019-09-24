@@ -75,18 +75,6 @@
       }
     }
 
-    /* Respond to attribute changes */
-    // attributeChangedCallback(attr, oldValue, newValue) {
-    //   console.log('class list: ', attr);
-    //   switch (attr) {
-    //     case 'class':
-    //       console.log('class list: ', newValue);
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // }
-
     disconnectedCallback() {
       this.removeEventListener('joomla.modal.show');
       this.removeEventListener('joomla.modal.close');
@@ -185,9 +173,7 @@
       this.classList.remove('show');
       this.setAttribute('area-expand', 'false');
       // this.main.innerHTML = '';
-      if (this.main.querySelector('iframe')) {
-        this.main.removeChild(this.main.querySelector('iframe'));
-      }
+
       if (this.triggerBtn) {
         this.triggerBtn.focus();
       }
@@ -197,6 +183,9 @@
         const dropShadow = document.querySelector('.modal-backdrop');
         if (dropShadow) {
           document.body.removeChild(dropShadow);
+        }
+        if (this.main.querySelector('iframe')) {
+          this.main.removeChild(this.main.querySelector('iframe'));
         }
         this.dispatchCustomEvent('joomla.modal.closed');
       }, { once: true });
