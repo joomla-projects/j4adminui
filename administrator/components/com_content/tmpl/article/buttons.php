@@ -1,7 +1,8 @@
 <?php
 defined('_JEXEC') or die;
 ?>
-<!-- 
+
+
 <div class="container">
   <p>
     <a href="#"class="btn btn-lg btn-primary">Primary button</a>
@@ -10,7 +11,6 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-primary"><span class="icon fas fa-plus"></span> Primary button</a>
     <a href="#"class="btn btn-primary btn-sm">Primary button</a>
     <a href="#"class="btn btn-primary btn-sm disabled">Primary button</a>
-    <a href="#"class="btn btn-primary btn-sm" disabled="disabled">Primary button</a>
   </p>
 
   <p>
@@ -120,5 +120,48 @@ defined('_JEXEC') or die;
       </div>
     </p>
 </div>
- -->
+ 
+
+
+ <div class="j-panel d-flex">
+   <div class="j-panel-icon-wrap"><i class="fas fa-check"></i></div>
+   <div class="j-panel-info-wrap">
+     <p>Use your finance report to get detailed information about your business. <a href="#">Let us know what you think.</a></p>
+   </div>
+ </div>
+
+ <div class="j-panel d-flex">
+   <div class="j-panel-icon-wrap"><i class="fas fa-check"></i></div>
+   <div class="j-panel-info-wrap">
+     <h3 class="title">Your shipping label is ready to print</h3>
+     <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+   </div>
+ </div>
+
+ <div class="j-panel d-flex">
+   <div class="j-panel-icon-wrap"><i class="fas fa-check"></i></div>
+   <div class="j-panel-info-wrap">
+     <h3 class="title">Your shipping label is ready to print</h3>
+     <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+     <a href="#" class="btn btn-secondary">Review risk analysis</a>
+   </div>
+ </div>
+ 
+ <div class="j-panel j-panel-success d-flex">
+   <div class="j-panel-icon-wrap"><i class="fas fa-check"></i></div>
+   <div class="j-panel-info-wrap">
+     <h3 class="title">Your shipping label is ready to print</h3>
+     <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+     <a href="#" class="btn btn-secondary">Review risk analysis</a>
+   </div>
+ </div>
+ 
+ <div class="j-panel j-panel-success d-flex">
+   <div class="j-panel-icon-wrap"><i class="fas fa-check"></i></div>
+   <div class="j-panel-info-wrap">
+     <h3 class="title">Your shipping label is ready to print</h3>
+     <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+     <a href="#" class="btn btn-secondary">Review risk analysis</a>
+   </div>
+ </div>
  
