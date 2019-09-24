@@ -12,13 +12,13 @@ input[type="checkbox"].jcheckbox{
     padding: 0!important;
     text-align: center;
     vertical-align: middle;
-    width: 16px;
+    min-width: 16px;
+    max-width: 16px;
     -webkit-appearance: none;
     transition: .05s border-color ease-in-out;
     border-radius: 3px;
     box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
     border: solid 1px #bdc5c8;
-    background-color: #ffffff;
     position: relative;
     &::after,
     &::before{
@@ -68,4 +68,11 @@ input[type="checkbox"].jcheckbox{
     input{
         margin-right: .428571rem;
     }
+}
+
+.jcheckbox-group{
+	margin-left: -0.714rem;
+	label{
+		padding-left: 0.714rem;
+	}
 }

@@ -1,0 +1,58 @@
+
+.mod-extension-updates{
+    padding-top: 20px;
+}
+
+.mod-eu-joomla-update h3{
+	font-size: 1.286rem;
+	line-height: 1.714rem;
+	font-weight: 500;
+	margin: 0 0 1.571rem;
+}
+
+
+.mod-eu-joomla-update .not-updated h3{
+	color: var(--warning-color);
+}
+
+.mod-eu-joomla-update .not-updated a{
+	margin-bottom: 0.929rem;
+	display: block;
+	line-height: 1.571rem;
+	transition: 300ms;
+}
+
+.mod-eu-joomla-update h3 span{
+	font-size: 1.286rem;
+}
+
+.mod-eu-joomla-update .updated h3 span{
+	color: var(--success-color);
+	background: #ffffff;
+}
+.jcard-module-update{
+	padding-bottom: 20px;
+}
+.jcard-module-update .progress-inner-text{
+	padding: 17px 14px 0px;
+}
+.jcard-module-update .progress-inner-text h2{
+	font-size: 3.857rem;
+	font-weight: 700;
+	margin-bottom: 0;
+}
+.jcard-module-update .progress-inner-text h2 + span{
+	font-size: 1.143rem;
+	color: var(--secondary-color);
+	line-height: 1.857rem;
+}
+
+.mod-eu-group-count{
+	font-size: 1.143rem;
+	color: var(--secondary-color);
+	padding: 0 20px 20px;
+}
+
+.mod-eu-group-count p:last-child{
+	margin-bottom: 0;
+}
