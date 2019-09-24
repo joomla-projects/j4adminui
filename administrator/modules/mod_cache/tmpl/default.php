@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     Joomla.Administrator
  * @subpackage  mod_cache
@@ -12,32 +11,33 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
 
-// ajax URL
+// cache ajax URL
 Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrator/index.php?option=com_ajax&module=cache&method=clearCache&format=json');
-
-//echo $module->content;
 
 ?>
 
-<div class="jcardmbcol-lg-4">
+<div class="jcard">
     <div class="jcard-overview-box pt-3">
         <div class="jcard-overview-content" area-hidden="true">
             <div>
                 <img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
             </div>
-            <span class="j-counter-animation">&lrm;<?php echo $total_cache; ?></span>
-            <sub aria-hidden="true">Files Total Cache.</sub>
+            <span class="j-counter-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
+            <sub aria-hidden="true"><?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?></sub>
         </div>
     </div>
     <div class="jcard-footer jcard-footer-lg">
         <div class="jcard-footer-item">
-            <?php if($total_cache > 1): ?>
+            <?php if($cacheInfo['raw']): ?>
                 <a id="jclear-cache-btn" href="#">
                     <span class="fa fa-trash-alt jcard-icon" aria-hidden="true"></span>
-                    <span aria-hidden="true">Clear Cache</span>
+                    <span aria-hidden="true"><?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?></span>
                 </a>
-            <?php endif; ?>
+            <?php else: ?>
+                <span><?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?></span>
+            <?php endif;?>
         </div>					
 	</div>
 </div>    

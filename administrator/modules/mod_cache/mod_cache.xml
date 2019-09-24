@@ -10,8 +10,6 @@
 	<version>1.0.0</version>
 	<description>MOD_CACHE_XML_DESCRIPTION</description>
 
-	<cacheContent />
-
 	<files>
 		<filename module="mod_cache">mod_cache.php</filename>
 		<folder>tmpl</folder>
@@ -23,20 +21,6 @@
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_CACJE" />
 	<config>
 		<fields name="params">
-			<fieldset name="options" label="COM_MODULES_BASIC_FIELDSET_LABEL">
-				<field
-					name="prepare_content"
-					type="radio"
-					label="MOD_CACJE_FIELD_PREPARE_CONTENT_LABEL"
-					description="MOD_CACJE_FIELD_PREPARE_CONTENT_DESC"
-					class="switcher"
-					default="1"
-					filter="integer"
-					>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-			</fieldset>
 			<fieldset
 				name="advanced">
 				<field

@@ -13,6 +13,7 @@
  use Joomla\CMS\Factory;
  use Joomla\CMS\HTML\HTMLHelper;
  use Joomla\CMS\Language\Text;
+ use Joomla\CMS\Response\JsonResponse;
 
 /**
  * mod_cache_helper helper class for the module
@@ -24,16 +25,12 @@ class ModCacheHelper
 	{
 
         $data = array();
-        $data['status'] = false;
-
+		$data['status'] = false;
+		
         // load cache model
         $cache_model = new CacheModel;
-
-        //echo json_encode(get_class_methods($cache_model));
-
         $app = Factory::getApplication();
 		$allCleared = true;
-
         $mCache = $cache_model->getCache();
 
 		foreach ($mCache->getAll() as $cache)
@@ -48,22 +45,16 @@ class ModCacheHelper
 		if ($allCleared)
 		{
             $data['status']     = true;
-            $data['messsage']   = Text::_('COM_CACHE_MSG_ALL_CACHE_GROUPS_CLEARED');
+            $data['messsage']   = Text::_('MOD_CACHE_MSG_ALL_CACHE_GROUPS_CLEARED');
 		}
 		else
 		{
-            //$data['messsage']   = Text::_('COM_CACHE_MSG_SOME_CACHE_GROUPS_CLEARED');
+            $data['messsage']   = Text::_('MOD_CACHE_MSG_SOME_CACHE_GROUPS_CLEARED');
             $data['status']     = true;
         }
         
-        echo json_encode($data);
-
-        // $app->triggerEvent('onAfterPurge', array());
-        
-		// $app->setHeader('status', 200, true);
-        // $app->sendHeaders();
-        // echo new JsonResponse($articleid);
-		// $app->close();
+        echo new JsonResponse($data);
+		$app->close();
     }
     
     public static function getCacheSize() 
@@ -71,6 +62,7 @@ class ModCacheHelper
         $cache_model = new CacheModel;
 		$data = $cache_model->getData();
 		$size = 0;
+		$result = array();
 
 		if (!empty($data))
 		{
@@ -81,17 +73,19 @@ class ModCacheHelper
 		}
 
 		// Number bytes are returned in format xxx.xx MB
-        $bytes = HTMLHelper::_('number.bytes', $size, 'MB', 1);
-        
+        $bytes = HTMLHelper::_('number.bytes', $size, 'kB', 1);
 		if (!empty($bytes))
 		{
-			$result['amount'] = $bytes;
-			$result['sronly'] = Text::sprintf('COM_CACHE_QUICKICON_SRONLY', $bytes);
+			$sizeExplode = explode(' ', $bytes);
+			$result['raw'] = $bytes;
+			$result['size'] = $sizeExplode[0];
+			$result['unit'] = $sizeExplode[1];
 		}
 		else
 		{
-			$result['amount'] = 0;
-			$result['sronly'] = Text::sprintf('COM_CACHE_QUICKICON_SRONLY_NOCACHE');
+			$result['raw'] = 0;
+			$result['size'] = 0;
+			$result['unit'] = null;
         }
         
         return $result;
