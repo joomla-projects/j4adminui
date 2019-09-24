@@ -13,16 +13,16 @@ jQuery(function($)
 		$div = $li.find('div.treeselect-item:first');
 
 		// Add icons
-		$div.prepend('<span class="icon-"></span>');
+		$div.prepend('<span class="treeselect-icon d-none"><span class="fas fa-fw" area-hidden="true"></span></span>');
 
 		if ($li.find('ul.treeselect-sub').length) {
 			// Add classes to Expand/Collapse icons
-			$li.find('span.icon-').addClass('treeselect-toggle fa-chevron-down');
+			$li.find('span.treeselect-icon').removeClass('d-none').addClass('treeselect-toggle').find('span').addClass('fa-chevron-down');
 			
 			// Append drop down menu in nodes
-			treeselectmenu.find('button.iconic-button').attr('id', `treemenu-${index}`);
+			treeselectmenu.find('.treeselect-options-toggle').attr('id', `treemenu-${index}`);
 			treeselectmenu.find('joomla-dropdown').attr('for', `#treemenu-${index}`);
-			$div.find('label:first').after(treeselectmenu.html());
+			$div.find('.treeselect-item-content').after(treeselectmenu.html());
 
 			if (!$li.find('ul.treeselect-sub ul.treeselect-sub').length) {
 				$li.find('div.treeselect-menu-expand').remove();
@@ -33,18 +33,18 @@ jQuery(function($)
 	// Takes care of the Expand/Collapse of a node
 	$('span.treeselect-toggle').click(function()
 	{
-		console.log($(this));
-		$i = $(this);
+		$toggle = $(this);
+		$icon = $(this).find('span');
 
 		// Take care of parent UL
-		if ($i.parent().parent().find('ul.treeselect-sub').is(':visible')) {
-			$i.removeClass('fa-chevron-down').addClass('fa-chevron-right');
-			$i.parent().parent().find('ul.treeselect-sub').hide();
-			$i.parent().parent().find('ul.treeselect-sub span.treeselect-toggle').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+		if ($toggle.parent().parent().find('ul.treeselect-sub').is(':visible')) {
+			$icon.removeClass('fa-chevron-down').addClass('fa-chevron-right');
+			$toggle.parent().parent().find('ul.treeselect-sub').hide();
+			$toggle.parent().parent().find('ul.treeselect-sub span.treeselect-toggle').find('span').removeClass('fa-chevron-down').addClass('fa-chevron-right');
 		} else {
-			$i.removeClass('fa-chevron-right').addClass('fa-chevron-down');
-			$i.parent().parent().find('ul.treeselect-sub').show();
-			$i.parent().parent().find('ul.treeselect-sub span.treeselect-toggle').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+			$icon.removeClass('fa-chevron-right').addClass('fa-chevron-down');
+			$toggle.parent().parent().find('ul.treeselect-sub').show();
+			$toggle.parent().parent().find('ul.treeselect-sub span.treeselect-toggle').find('span').removeClass('fa-chevron-right').addClass('fa-chevron-down');
 		}
 	});
 
@@ -87,14 +87,14 @@ jQuery(function($)
 	$('#treeExpandAll').click(function()
 	{
 		$('ul.treeselect ul.treeselect-sub').show();
-		$('ul.treeselect span.treeselect-toggle').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+		$('ul.treeselect span.treeselect-toggle').find('span').removeClass('fa-chevron-right').addClass('fa-chevron-down');
 	});
 
 	// Unchecks all checkboxes the tree
 	$('#treeCollapseAll').click(function()
 	{
 		$('ul.treeselect ul.treeselect-sub').hide();
-		$('ul.treeselect span.treeselect-toggle').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+		$('ul.treeselect span.treeselect-toggle').find('span').removeClass('fa-chevron-down').addClass('fa-chevron-right');
 	});
 	// Take care of children check/uncheck all
 	$('a.checkall').click(function()
@@ -111,12 +111,12 @@ jQuery(function($)
 	{
 		var $parent = $(this).parents().eq(6);
 		$parent.find('ul.treeselect-sub').show();
-		$parent.find('ul.treeselect-sub span.treeselect-toggle').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+		$parent.find('ul.treeselect-sub span.treeselect-toggle').find('span').removeClass('fa-chevron-right').addClass('fa-chevron-down');
 	});
 	$('a.collapseall').click(function()
 	{
 		var $parent = $(this).parents().eq(6);
 		$parent.find('li ul.treeselect-sub').hide();
-		$parent.find('li span.treeselect-toggle').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+		$parent.find('li span.treeselect-toggle').find('span').removeClass('fa-chevron-down').addClass('fa-chevron-right');
 	});
 });
