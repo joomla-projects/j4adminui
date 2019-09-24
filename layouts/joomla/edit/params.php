@@ -116,10 +116,10 @@ foreach ($fieldSets as $name => $fieldSet)
 
 	if (!$isGrandchild && $hasParent)
 	{
-		echo '<fieldset id="fieldset-' . $name . '" class="form-no-margin options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
-		echo '<div class="card">';
-		echo '<div class="card-header">' . $label . '</div>';
-		echo '<div class="card-body">';
+		echo '<fieldset id="fieldset-' . $name . '" class="options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
+		echo '<div class="j-card mb-4">';
+		echo '<div class="j-card-header">' . $label . '</div>';
+		echo '<div class="j-card-body">';
 	}
 	// Tabs
 	elseif (!$hasParent)
