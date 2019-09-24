@@ -55,47 +55,35 @@ Text::script('MESSAGE');
 		<div class="col-lg-9 mt-2">
 			<joomla-tab>
 				<section orientation="vertical" id="page-site" name="<?php echo Text::_('JSITE'); ?>">
-					<div class="card p-4">
-						<?php echo $this->loadTemplate('site'); ?>
-						<?php echo $this->loadTemplate('metadata'); ?>
-						<?php echo $this->loadTemplate('seo'); ?>
-						<?php echo $this->loadTemplate('cookie'); ?>
-					</div>
+					<?php echo $this->loadTemplate('site'); ?>
+					<?php echo $this->loadTemplate('metadata'); ?>
+					<?php echo $this->loadTemplate('seo'); ?>
+					<?php echo $this->loadTemplate('cookie'); ?>
 				</section>
 				<section orientation="vertical" id="page-system" name="<?php echo Text::_('COM_CONFIG_SYSTEM'); ?>">
-					<div class="card p-4">
-						<?php echo $this->loadTemplate('system'); ?>
-						<?php echo $this->loadTemplate('debug'); ?>
-						<?php echo $this->loadTemplate('cache'); ?>
-						<?php echo $this->loadTemplate('session'); ?>
-					</div>
+					<?php echo $this->loadTemplate('system'); ?>
+					<?php echo $this->loadTemplate('debug'); ?>
+					<?php echo $this->loadTemplate('cache'); ?>
+					<?php echo $this->loadTemplate('session'); ?>
 				</section>
 				<section orientation="vertical" id="page-server" name="<?php echo Text::_('COM_CONFIG_SERVER'); ?>">
-					<div class="card p-4">
-						<?php echo $this->loadTemplate('server'); ?>
-						<?php echo $this->loadTemplate('locale'); ?>
-						<?php echo $this->loadTemplate('ftp'); ?>
-						<?php echo $this->loadTemplate('proxy'); ?>
-						<?php echo $this->loadTemplate('database'); ?>
-						<?php echo $this->loadTemplate('mail'); ?>
-					</div>
+					<?php echo $this->loadTemplate('server'); ?>
+					<?php echo $this->loadTemplate('locale'); ?>
+					<?php echo $this->loadTemplate('ftp'); ?>
+					<?php echo $this->loadTemplate('proxy'); ?>
+					<?php echo $this->loadTemplate('database'); ?>
+					<?php echo $this->loadTemplate('mail'); ?>
 				</section>
 				<section orientation="vertical" id="page-filters" name="<?php echo Text::_('COM_CONFIG_TEXT_FILTERS'); ?>">
-					<div class="card p-4">
-						<?php echo $this->loadTemplate('filters'); ?>
-					</div>
+					<?php echo $this->loadTemplate('filters'); ?>
 				</section>
 				<?php if ($this->ftp) : ?>
 					<section orientation="vertical" id="page-ftp" name="<?php echo Text::_('COM_CONFIG_FTP_SETTINGS'); ?>">
-						<div class="card p-4">
-							<?php echo $this->loadTemplate('ftplogin'); ?>
-						</div>
+						<?php echo $this->loadTemplate('ftplogin'); ?>
 					</section>
 				<?php endif; ?>
 				<section orientation="vertical" id="page-permissions" name="<?php echo Text::_('COM_CONFIG_PERMISSIONS'); ?>">
-					<div class="pt-4">
-						<?php echo $this->loadTemplate('permissions'); ?>
-					</div>
+					<?php echo $this->loadTemplate('permissions'); ?>
 				</section>
 			</joomla-tab>
 			<input type="hidden" name="task" value="">

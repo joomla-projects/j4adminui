@@ -14,6 +14,6 @@ defined('_JEXEC') or die;
 
 $this->name = Text::_('COM_CONFIG_PROXY_SETTINGS');
 $this->fieldsname = 'proxy';
-$this->formclass = 'options-grid-form options-grid-form-half';
+$this->formclass = 'options-grid-form options-grid-form-half mb-4';
 
 echo LayoutHelper::render('joomla.content.options_default', $this);
