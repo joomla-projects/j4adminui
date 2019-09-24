@@ -12,9 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ModuleHelper;
 
-//includes js and css
-//$doc        = JFactory::getDocument();
-//$doc->addScript(JURI::root(true) . '/administrator/modules/' . $module->module . '/assets/js/mod_cache.js');
+//include js
 HTMLHelper::_('script', 'mod_cache/cache.min.js', ['version' => 'auto', 'relative' => true]);
 // include helper file
 require_once __DIR__ . '/helper.php';
