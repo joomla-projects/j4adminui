@@ -17,6 +17,7 @@ use Joomla\CMS\Uri\Uri;
 
 HTMLHelper::_('behavior.core');
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('stylesheet', 'mod_extension_updates/style.css', ['relative' => true]);
 
 $updateMsg = '';
 
@@ -50,18 +51,25 @@ if (!empty($extensionContents['updatableInfo']['package']))
 <div class="mod-extension-updates text-center module-<?php echo $module->id; ?>" id="mod-extension-updates-<?php echo $module->id; ?>">
     <div class="mod-eu-joomla-update">
         <?php if(!empty($extensionContents['updateJoomla'])) : ?>
-            <h3 class="text-warning"><span class="fas fa-exclamation-triangle" area-hidden="true"></span><?php echo Text::sprintf('MOD_EXTENSION_UPDATES_JOOMLA_OUTDATED', JVERSION); ?></h3>
-            <a href="<?php echo Route::_('index.php?option=com_joomlaupdate'); ?>"><?php echo Text::sprintf('MOD_EXTENSION_UPDATES_JOOMLA_UPDATED_MSG', $extensionContents['updateJoomla']); ?></a>
+            <div class="not-updated">
+                <h3>
+                    <span class="fas fa-exclamation-triangle" area-hidden="true"></span>
+                    <?php echo Text::sprintf('MOD_EXTENSION_UPDATES_JOOMLA_OUTDATED', JVERSION); ?>
+                </h3>
+                <a href="<?php echo Route::_('index.php?option=com_joomlaupdate'); ?>">
+                    <?php echo Text::sprintf('MOD_EXTENSION_UPDATES_JOOMLA_UPDATED_MSG', $extensionContents['updateJoomla']); ?>
+                </a>
+            </div>
         <?php else : ?>
         <div class="updated">
-            <h3 class="mb-4"><span class="fas fa-check-circle text-success" area-hidden="true"></span> Your Joomla is up to date to the latest version <?php echo JVERSION; ?></h3>
+            <h3><span class="fas fa-check-circle text-success" area-hidden="true"></span> Your Joomla is up to date to the latest version <?php echo JVERSION; ?></h3>
         </div>
         <?php endif; ?> 
     </div><!-- /.mod-eu-joomla-update -->
 
     <div class="mod-eu-extension-update">
-        <div class="j-progress">
-            <joomla-progress progress="<?php echo $extensionContents['percentage']; ?>" radius="80" stroke="10" duration="2000" >
+        <div class="jcard-module-update">
+            <joomla-progress progress="<?php echo $extensionContents['percentage']; ?>" radius="100" stroke="14" duration="300" >
                 <h2><span data-counter="true"></span>%</h2>
                 <span><?php echo Text::_('MOD_EXTENSION_UPDATES_UPDATED'); ?></span>
             </joomla-progress>
@@ -74,17 +82,19 @@ if (!empty($extensionContents['updatableInfo']['package']))
             <div class="mod-eu-group-count">
                 <p class=""><?php echo Text::sprintf('MOD_EXTENSION_UPDATES_UPDATE_EXTENSIONS_MSG', $updateMsg); ?></p>
             </div>
-            <div class="jcard-footer">
-                <div class="mod-eu-group-update-all">
-                    <div class="jcard-footer-item">
-                        <a href="<?php echo Route::_('index.php?option=com_installer&view=update'); ?>" class="btn btn-link"><span class="fa fa-sync"></span> <?php echo JText::_('MOD_EXTENSION_UPDATES_UPDATE_ALL'); ?></a>
-                    </div>
+            <div class="mod-eu-group-update-all jcard-footer jcard-footer-lg">
+                <div class="jcard-footer-item">
+                    <a href="<?php echo Route::_('index.php?option=com_installer&view=update'); ?>" class="btn btn-link">
+                        <span class="jcard-icon j-icon-lg fas fa-sync"></span> 
+                        <?php echo JText::_('MOD_EXTENSION_UPDATES_UPDATE_ALL'); ?>
+                    </a>
                 </div>
             </div>
         <?php else: ?>
-            <div class="jcard-footer">
-                <div class="mod-eu-uptodate">
-                    <span class="fa fa-check-circle"></span> <?php echo Text::_('MOD_EXTENSION_UPDATES_UPTODATE'); ?>
+            <div class="mod-eu-uptodate jcard-footer jcard-footer-lg">
+                <div class="jcard-footer-item">
+                    <span class="jcard-footer-item-text"><span class="jcard-icon j-icon-lg fas fa-check-circle"></span>
+                    <?php echo Text::_('MOD_EXTENSION_UPDATES_UPTODATE'); ?></span>
                 </div>
             </div>
         <?php endif; ?>
