@@ -30,6 +30,10 @@
   }
   .header-title {
     flex-grow: 1;
+    .d-flex {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
     .container-title {
       width: 100%;
     }
@@ -104,6 +108,7 @@
   }
   
   .header-item-content{
+    joomla-dropdown,
     joomla-callout {
       line-height: 1;
     }
