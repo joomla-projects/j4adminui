@@ -60,7 +60,7 @@ if ($module->content) :
 					<?php if ($canEdit || $canChange) : ?>
 						<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 						<div class="joomla-dropdown-container">
-							<a href="javascript:;" class="iconic-button" id="dropdownMenuButton-<?php echo $id; ?>">
+							<a href="javascript:;" class="iconic-btn" id="dropdownMenuButton-<?php echo $id; ?>">
 								<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
 								<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 							</a>
