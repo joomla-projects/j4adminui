@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 (() => {
   class JoomlaProgress extends HTMLElement {
     constructor() {
@@ -11,6 +10,7 @@
       this.isRendered = false;
       this.renderInViewPort = this.renderInViewPort.bind(this);
       this.setDefaultHeight();
+      this.render();
     }
 
     static get observedAttributes() {
@@ -55,7 +55,6 @@
     renderInViewPort() {
       // render if item in viewport
       if (!this.isRendered && this.isInViewport(this)) {
-        this.render();
         this.isRendered = true;
         this.querySelector('svg').style.transform = 'rotate(-90deg)';
         this.calculateProgress();
@@ -75,6 +74,7 @@
     }
 
     calculateProgress() {
+      this.style.opacity = '';
       const circleFg = this.querySelector('#circleFg');
       this.dashSize = circleFg.getTotalLength();
       this.dashParcent = this.dashSize - ((this.progress / 100) * this.dashSize);
@@ -119,18 +119,17 @@
       startAnimation();
     }
 
+    // eslint-disable-next-line class-methods-use-this
     isInViewport(elem) {
       const bounding = elem.getBoundingClientRect();
       return (
-        bounding.top >= 0
-          && bounding.left >= 0
-          && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-          && bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+      // eslint-disable-next-line max-len
+        bounding.top >= 0 && bounding.left >= 0 && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) && bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
       );
     }
 
     render() {
-      this.style.opacity = '';
+      this.style.display = 'inline-flex';
       this.innerHTML = this.innerHTML.trim() !== '' ? `<div class="progress-inner-text">${this.innerHTML}</div>` : '';
       this.innerHTML += `
         <svg xmlns="http://www.w3.org/2000/svg" width="${this.size}" height="${this.size}">

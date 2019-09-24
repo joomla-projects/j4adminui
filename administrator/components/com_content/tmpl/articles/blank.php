@@ -408,7 +408,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                 </div>
             </div>
         </div>
-        
+
         <div class="col-3">
             <div class="jcard jcard-has-hover">
                 <div class="jcard-header">
@@ -666,6 +666,22 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         </div>
                     </div>
                 </div>
+
+				<hr>
+
+				<div class="jcard jcard-has-hover">
+					<div class="jcard-header">
+						<h4>Recent activities</h4>
+						<div class="jcard-header-right">
+							<button class="jcard-header-icon fas fa-ellipsis-h"></button>
+						</div>
+					</div>
+					<joomla-progress radius="60" stroke="8" progress="20">
+						<h2><span data-counter="true"></span>%</h2>
+						<span>Updated</span>
+					</joomla-progress>
+				</div>
+
             </div>
 
             <div class="col-4">
@@ -715,8 +731,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                         <span class="switcher-alt"></span>
                                         <span>No</span>
                                     </span>
-                                    
-                                <br> You can select from a number of options for customising the look 
+
+                                <br> You can select from a number of options for customising the look
                                 <span class="switcher-wrap">
                                     <span>Yes</span>
                                     <span class="switcher-alt checked"></span>
@@ -727,12 +743,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                     <span class="switcher-wrap"> <span class="switcher-alt"></span> <a href="#">No.</a></span> My name is
                                 </h2>
 
-                                <br>    
+                                <br>
                                 <!-- single radio -->
                                 <input class="jradio" type="radio" name="name">
 
                                 <br>
-                                
+
                                 <!-- Radio + label -->
                                 <label class="jradio-label">
                                     <input type="radio" name="radio1" id="radio1"> Label + Radio
@@ -757,7 +773,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                 <input class="jcheckbox" type="checkbox" name="name">
 
                                 <br>
-                                
+
                                 <!-- check box + label -->
                                 <label class="jcheckbox-label">
                                     <input type="checkbox" name="check1" id="check2"> Label + Checkbox
@@ -774,7 +790,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                     <label>
                                         <input type="checkbox" name="checkbox2" id="checkbox2"> Group + Label + checkbox
                                     </label>
-                                </div>     
+                                </div>
 
                             </div>
                         </div>
@@ -783,7 +799,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
             </div>
         </div>
 
-        
+
 
 
     </section>
