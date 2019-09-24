@@ -48,9 +48,12 @@
         }
       }
     }
-    .btn {
-      &.dropdown-toggle {
-        border-radius: 3px;
+    #toolbar-status-group {
+      .btn {
+        &.dropdown-toggle {
+          border-radius: 3px;
+          border: 1px solid var(--secondary-icon-color);
+        }
       }
     }
   }
