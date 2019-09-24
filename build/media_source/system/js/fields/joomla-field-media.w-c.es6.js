@@ -186,7 +186,6 @@
 
     show() {
       this.querySelector('[role="dialog"]').open();
-
       this.querySelector(this.buttonSaveSelected).addEventListener('click', this.onSelected);
     }
 
