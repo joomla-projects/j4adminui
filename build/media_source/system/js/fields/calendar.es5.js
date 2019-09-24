@@ -606,10 +606,10 @@
 		if (this.params.compressedHeader === false) {                                                        // Head - year
 			row = createElement("tr", thead);
 			row.className = "calendar-head-row";
-			this._nav_py = hh("<i class=\"fas fa-chevron-left\">", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
 			this.title = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
 			this.title.className = "title";
-			this._nav_ny = hh("<i class=\"fas fa-chevron-right\">", 1, 2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-next-year');                   // Next year button
+			this._nav_ny = hh("<i class=\"fas fa-chevron-up\">", 1, 2, '', '', 'js-btn btn-next-year');                   // Next year button
+			this._nav_py = hh("<i class=\"fas fa-chevron-down\">", 1, -2, '', '', 'js-btn btn-prev-year');                   // Previous year button
 		}
 		yearsRow = row;
 		row = createElement("tr", thead);                                                                   // Head - month
@@ -778,7 +778,7 @@
 		row = createElement("div", this.wrapper);
 		row.className = "buttons-wrapper btn-group";
 
-		this._nav_clear = hh(JoomlaCalLocale.clear, '', 100, 'button', '', 'js-btn btn btn-lg btn-link btn-clear', {"type": "button", "data-action": "clear"});
+		this._nav_clear = hh(JoomlaCalLocale.clear, '', 100, 'button', '', 'js-btn btn btn-sm btn-link btn-clear', {"type": "button", "data-action": "clear"});
 
 			var cleara = row.querySelector('[data-action="clear"]');
 			cleara.addEventListener("click", function (e) {
@@ -796,7 +796,7 @@
 			});
 
 		if (this.params.showsTodayBtn) {
-			this._nav_now = hh(JoomlaCalLocale.today, '', 0, 'button', '', 'js-btn btn btn-lg btn-link btn-today', {"type": "button", "data-action": "today"});
+			this._nav_now = hh(JoomlaCalLocale.today, '', 0, 'button', '', 'js-btn btn btn-sm btn-link btn-today', {"type": "button", "data-action": "today"});
 
 			var todaya = this.wrapper.querySelector('[data-action="today"]');
 			todaya.addEventListener('click', function (e) {
@@ -808,7 +808,7 @@
 			});
 		}
 
-		this._nav_exit = hh(JoomlaCalLocale.exit, '', 999, 'button', '', 'js-btn btn btn-lg btn-link btn-exit', {"type": "button", "data-action": "exit"});
+		this._nav_exit = hh(JoomlaCalLocale.exit, '', 999, 'button', '', 'js-btn btn btn-sm btn-link btn-exit', {"type": "button", "data-action": "exit"});
 		var exita = this.wrapper.querySelector('[data-action="exit"]');
 		exita.addEventListener('click', function (e) {
 			e.preventDefault();

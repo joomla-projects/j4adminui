@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die;
 ?>
-
+<!-- 
 <div class="container">
   <p>
     <a href="#"class="btn btn-lg btn-primary">Primary button</a>
@@ -120,3 +120,5 @@ defined('_JEXEC') or die;
       </div>
     </p>
 </div>
+ -->
+ 
