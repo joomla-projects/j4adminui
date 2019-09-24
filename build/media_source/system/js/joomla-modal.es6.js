@@ -4,25 +4,26 @@
       super();
       this.KEYCODE = { tab: 9, esc: 27 };
       this.triggerBtn = '';
+      this.evDocumentClose = this.documentClose.bind(this);
       this.focusableElements = null;
       this.focusableSelectors = ['a[href]', 'area[href]', 'input:not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'iframe', 'object', 'embed', '[contenteditable]', '[tabindex]:not([tabindex^="-"])'];
       this.container = this.querySelector('.joomla-modal-dialog');
     }
 
     static get observedAttributes() {
-      return ['width', 'height', 'innerWidth', 'innerHeight', 'iframe'];
+      return ['width', 'height', 'innerWidth', 'innerHeight', 'iframe', 'class'];
     }
 
     connectedCallback() {
       if (!this.id) {
         throw new Error('`Joomla-modal` requires an id');
       }
-
       this.title = this.getAttribute('title') || 'Modal';
       this.setAttribute('role', 'dialog');
+      this.setAttribute('area-expand', 'false');
       this.classList.add('fade');
       this.iframe = this.getAttribute('iframe') || '';
-      this.width = this.getAttribute('width') || '100%';
+      this.width = this.getAttribute('width') || '40vw';
       this.height = this.getAttribute('height') || '600px';
 
       if (!this.container) {
@@ -64,25 +65,58 @@
       this.header = this.container.querySelector('header');
       this.body = this.container.querySelector('section');
       this.footer = this.container.querySelector('footer');
+      if (this.width !== '') {
+        this.container.style.width = this.width;
+      }
+
       this.triggerBtn = document.querySelector(`[data-href="#${this.id}"]`);
       if (this.triggerBtn) {
         this.triggerBtn.addEventListener('click', this.open.bind(this));
       }
     }
 
+    /* Respond to attribute changes */
+    // attributeChangedCallback(attr, oldValue, newValue) {
+    //   console.log('class list: ', attr);
+    //   switch (attr) {
+    //     case 'class':
+    //       console.log('class list: ', newValue);
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    // }
 
     disconnectedCallback() {
+      this.removeEventListener('joomla.modal.show');
+      this.removeEventListener('joomla.modal.close');
+      this.removeEventListener('joomla.modal.closed');
       if (this.triggerBtn) {
         this.triggerBtn.removeEventListener('click', this.open);
       }
     }
 
-    open() {
+
+    /* Method to dispatch events */
+    dispatchCustomEvent(eventName) {
+      const OriginalCustomEvent = new CustomEvent(eventName);
+      OriginalCustomEvent.relatedTarget = this;
+      this.dispatchEvent(OriginalCustomEvent);
+      this.removeEventListener(eventName, this);
+    }
+
+    open(event) {
+      if (event) {
+        event.preventDefault();
+      }
+      // Comply with the Joomla API
+      // Set the current Modal ID
+      Joomla.Modal.setCurrent(this);
+
       const dropShadow = document.createElement('div');
       dropShadow.classList.add('modal-backdrop', 'fade');
       dropShadow.classList.add('modal-backdrop', 'show');
       document.body.appendChild(dropShadow);
-
       this.removeAttribute('aria-hidden');
       // Iframe specific code, reload
       if (this.body) {
@@ -91,9 +125,10 @@
           if (this.iframeEl) {
             this.iframeEl.parentNode.remove(this.iframeEl);
           }
+
           const newIframe = document.createElement('iframe');
-          newIframe.width = this.width;
-          newIframe.height = this.height;
+          newIframe.width = '100%';
+          // newIframe.height = this.height;
           newIframe.src = this.iframe;
           newIframe.setAttribute('frameborder', 0);
           this.body.appendChild(newIframe);
@@ -106,7 +141,7 @@
 
       this.scrollTop = 0;
       this.classList.add('show');
-
+      this.setAttribute('area-expand', 'true');
       this.focusableElements = [].slice.call(this.querySelectorAll(this.focusableSelectors.join()));
       if (this.focusableElements.length) {
         this.focusableElements[0].focus();
@@ -116,7 +151,6 @@
 
       this.evKeypress = this.keyPress.bind(this);
       this.evClose = this.close.bind(this);
-      this.evDocumentClose = this.documentClose.bind(this);
 
       // Keyboard handling
       this.addEventListener('keydown', this.evKeypress);
@@ -130,6 +164,7 @@
       modalButtons.forEach((modalButton) => {
         modalButton.addEventListener('click', this.evClose);
       });
+      this.dispatchCustomEvent('joomla.modal.show');
     }
 
     close(event) {
@@ -146,19 +181,30 @@
         modalButton.removeEventListener('click', this.evClose);
       });
 
-      const dropShadow = document.querySelector('.modal-backdrop');
-      if (dropShadow) document.body.removeChild(dropShadow);
       this.setAttribute('aria-hidden', 'true');
       this.classList.remove('show');
+      this.setAttribute('area-expand', 'false');
       // this.main.innerHTML = '';
       if (this.main.querySelector('iframe')) {
         this.main.removeChild(this.main.querySelector('iframe'));
       }
-      this.triggerBtn.focus();
+      if (this.triggerBtn) {
+        this.triggerBtn.focus();
+      }
+      this.dispatchCustomEvent('joomla.modal.close');
+
+      this.addEventListener('transitionend', () => {
+        const dropShadow = document.querySelector('.modal-backdrop');
+        if (dropShadow) {
+          document.body.removeChild(dropShadow);
+        }
+        this.dispatchCustomEvent('joomla.modal.closed');
+      }, { once: true });
     }
 
     documentClose(event) {
-      if (!this.findAncestorByClass(event.target, 'joomla-modal-dialog') && event.target !== this.triggerBtn) {
+      if (this.container.contains(event.target) === false
+          && !this.triggerBtn.contains(event.target)) {
         this.close();
       }
     }
@@ -227,12 +273,5 @@
         this.container.style.overflowY = 'auto';
       }
     }
-
-    /* eslint-disable */
-      findAncestorByClass(el, className) {
-        while ((el = el.parentElement) && !el.classList.contains(className));
-        return el;
-      }
-      /* eslint-enable */
   });
 })();

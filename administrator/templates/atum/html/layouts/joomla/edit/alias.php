@@ -14,8 +14,12 @@ $alias = $form->getValue('alias', '');
 $document = JFactory::getDocument();
 $document->addScriptDeclaration('
 		let editAlias = document.querySelector("#edit-alias");
+		let removeEdit = document.querySelector("#remove-edit");
 		editAlias.addEventListener("click", function(){
 			document.querySelector(".alias-wrap").classList.add("active");
+		})
+		removeEdit.addEventListener("click", function(){
+			document.querySelector(".alias-wrap").classList.remove("active");
 		})
 ');
 ?>
@@ -36,4 +40,5 @@ $document->addScriptDeclaration('
 	</div>
 
 	<a id="edit-alias" href="javascript:void(0);"><i class="fas fa-edit"></i></a>
+	<a id="remove-edit" href="javascript:void(0);"><i class="fas fa-times-circle"></i></a>
 </div>

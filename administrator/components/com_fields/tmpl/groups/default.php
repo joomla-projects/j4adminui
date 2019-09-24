@@ -56,7 +56,7 @@ $context = $this->escape($this->state->get('filter.context'));
 						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 					</div>
 				<?php else : ?>
-					<table class="table" id="groupList">
+					<table class="table j-list-table" id="groupList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_FIELDS_GROUPS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>

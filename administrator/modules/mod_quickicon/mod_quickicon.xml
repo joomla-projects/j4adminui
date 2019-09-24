@@ -26,6 +26,7 @@
 				<field
 					name="context"
 					type="text"
+					position="1"
 					label="MOD_QUICKICON_GROUP_LABEL"
 					description="MOD_QUICKICON_GROUP_DESC"
 					default="mod_quickicon"
@@ -146,6 +147,12 @@
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
+				</field>
+				<field
+					name="module_ordering"
+					type="hidden"
+					filter="raw"
+					>
 				</field>
 			</fieldset>
 			<fieldset name="advanced">

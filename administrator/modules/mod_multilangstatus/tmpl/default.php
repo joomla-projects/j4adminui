@@ -17,13 +17,13 @@ HTMLHelper::_('bootstrap.framework');
 HTMLHelper::_('script', 'mod_multilangstatus/admin-multilangstatus.min.js', array('version' => 'auto', 'relative' => true));
 ?>
 
-<div class="header-item-content multilanguage">
-	<a class="d-flex align-items-stretch" href="#multiLangModal" title="<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>" data-toggle="modal" role="button">
-		<div class="d-flex align-items-end mx-auto">
-			<span class="fa fa-language" aria-hidden="true"></span>
-		</div>
+<div class="multilanguage">
+	<a class="d-flex align-items-stretch header-item-link" href="#multiLangModal" title="<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>" data-toggle="modal" role="button">
 		<div>
 			<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>
+		</div>
+		<div class="ml-2">
+			<span class="fa fa-language" aria-hidden="true"></span>
 		</div>
 	</a>
 

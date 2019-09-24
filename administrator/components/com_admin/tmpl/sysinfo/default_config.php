@@ -14,7 +14,7 @@ use Joomla\CMS\Language\Text;
 /** @var \Joomla\Component\Admin\Administrator\View\Sysinfo\HtmlView $this */
 ?>
 <div class="sysinfo">
-	<table class="table">
+	<table class="table j-list-table">
 		<caption class="sr-only">
 			<?php echo Text::_('COM_ADMIN_CONFIGURATION_FILE'); ?>
 		</caption>

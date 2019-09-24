@@ -2,29 +2,26 @@
  * @copyright	Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
- .js-calendar {
-	box-shadow: 0 0 15px 4px rgba(0,0,0,.15) !important;
- }
 .calendar-container {
 	float: left;
 	min-width: 160px;
 	padding: 0;
 	list-style: none;
-	border-radius: 5px;
+	border-radius: 3px;
 	background-color: #ffffff !important;
 	z-index: 1100 !important;
 }
 .calendar-container table {
 	table-layout: fixed;
-	max-width: 262px;
-	border-radius: 5px;
+	max-width: 320px;
+	border-radius: 3px;
 	background-color: #ffffff !important;
 	z-index: 1100 !important;
 }
 /* The main calendar widget.  DIV containing a table. */
 div.calendar-container table th, .calendar-container table td {
-	padding: 8px 0;
-	line-height: 1.1em;
+	padding: .95rem 0;
+	line-height: 1.1rem;
 	text-align: center;
 }
 
@@ -78,18 +75,18 @@ div.calendar-container table td.title { /* This holds the current "month, year" 
 .calendar-container table tbody td.day {
 	border: 0;
 	cursor : pointer;
-	font-size: 12px;
-	min-width: 38px;
+	font-size: 1rem;
+	min-width: 40px;
 }
 
 .calendar-container table tbody td.day.wn {
 	text-align: center;
-	background-color: #f4f4f4;
+	background-color: var(--page-background);
 }
 
 .calendar-container table tbody td.day.selected { /* Cell showing today date */
-	background: #3071a9;
-	color: #fff;
+	background: var(--page-background);
+	color: var(--color);
 	border: 0;
 }
 
@@ -97,26 +94,24 @@ div.calendar-container table td.title { /* This holds the current "month, year" 
 	position: relative;
 	height: 100%;
 	width: auto;
-	font-weight: bold;
+	color: var(--link-color);
+
 }
 .calendar-container table tbody td.today:after {
 	position: absolute;
 	bottom: 3px;
-	left: 3px;
-	right: 3px;
 	content: "";
-	height: 3px;
-	border-radius: 1.5px;
-	background-color: #46a546;
-}
-.calendar-container table tbody td.today.selected:after {
-	background-color: #fff;
+	height: 4px;
+	background-color: var(--link-color);
+	width: 4px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .calendar-container table tbody td.day:hover {
 	cursor: pointer;
-	background: #3d8fd7;
-	color: #fff;
+	background: var(--page-background);
+	color: var(--color);
 }
 .calendar-container table tbody td.day:hover:after {
 	background-color: #fff;
@@ -146,9 +141,11 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	padding: 4px 0 !important;
 	border-bottom: none;
 }
+.calendar-container .calendar-head-row .js-btn i.fas{
+	pointer-events: none;
+}
 .calendar-container .day-name {
-	font-size: 0.7rem;
-	font-weight: bold;
+	font-size: 1rem;
 }
 .calendar-container .time td {
 	padding: 8px 0 8px 8px;

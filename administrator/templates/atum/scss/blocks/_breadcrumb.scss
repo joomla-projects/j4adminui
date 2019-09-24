@@ -54,6 +54,7 @@ joomla-breadcrumb{
     position: absolute;
     top: calc(100% + 10px);
     left: -10px;
+    z-index: 1000;
     
     &:before{
       content: "";

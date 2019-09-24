@@ -17,10 +17,12 @@ $onclick = empty($displayData['onclick']) ? '' : (' onclick="' . $displayData['o
 
 if (isset($displayData['ajaxurl'])) {
 	$size = 'small';
-	$dataUrl = 'data-url="' . $displayData['ajaxurl'] . '"';
+	$dataAttributes = 'data-url="' . $displayData['ajaxurl'] . '"';
+	$dataAttributes .= ' data-status="loading"';
 } else {
 	$size = 'big';
-	$dataUrl = '';
+	$dataAttributes = 'data-status="none"';
+	$dataLoading = '';
 }
 
 // The title for the link (a11y)
@@ -50,40 +52,44 @@ if (!empty($displayData['class']))
 // Make the class string
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
-<div class="col-lg-3">
-	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
-		<div class="j-card-header j-card-header-sm">
-			<div class="j-card-header-right">
-				<button class="j-card-header-icon fas fa-ellipsis-h"></button>
-			</div>
-		</div>
-		<div class="j-card-overview-box">
-			<div class="j-card-overview-icon j-warning">
+<div class="col-lg-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
+	<div <?php echo $id; ?> class="jcard jcard-has-hover mb-4 <?php echo $class; ?>">
+		<div class="jcard-overview-box pt-3">
+			<div class="jcard-overview-icon j-<?php echo $displayData['icon_class']; ?>">
 				<i class="<?php echo $displayData['image']; ?>"></i>
 			</div>
-			<div class="j-card-overview-content">
-				65
+			<div class="jcard-overview-content" area-hidden="true">
+				<?php if (isset($displayData['ajaxurl'])): ?>
+					<span class="j-counter-animation">
+						<i class="fa fa-spinner" aria-hidden="true"></i>
+					</span>
+				<?php endif; ?>
 				<?php // Name indicates the component
 				if (isset($displayData['name'])): ?>
 					<sub <?php echo isset($displayData['ajaxurl']) ? ' aria-hidden="true"' : ''; ?>>
 						<?php echo Text::_($displayData['name']); ?>
 					</sub>
 				<?php endif; ?>
+				<div class="quickicon-sr-desc sr-only"></div>
 			</div>
 		</div>
 
-		<?php // Add the link to the edit-form
-		if (isset($displayData['linkadd'])): ?>
-			<div class="j-card-footer j-card-footer-lg">
-				<div class="j-card-footer-item">
+		
+		<div class="jcard-footer jcard-footer-lg">
+			<?php // Add the link to the edit-form
+			if (isset($displayData['linkadd'])): ?>
+				<div class="jcard-footer-item">
 					<a href="<?php echo $displayData['linkadd']; ?>">
-						<span class="fa fa-plus j-card-icon j-icon-lg" aria-hidden="true"></span>
+						<span class="fa fa-plus jcard-icon" aria-hidden="true"></span>
 						<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
 						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
 					</a>
 				</div>
+			<?php endif; ?>
+			<div class="jcard-footer-item jcard-footer-icon">
+				<a href="<?php echo $displayData['link']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?>"><span class="fas fa-eye" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
 			</div>
-		<?php endif; ?>
+		</div>
 
 		<!-- <div class="card-body">
 			<div class="d-flex align-items-center">
@@ -92,7 +98,7 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 				</div>
 				
 				<?php if (isset($displayData['ajaxurl'])) : ?>
-					<div class="quickicon-amount" <?php echo $dataUrl ?> aria-hidden="true">
+					<div class="quickicon-amount" <?php echo $dataAttributes ?> aria-hidden="true">
 						<span class="fa fa-spinner" aria-hidden="true"></span>
 					</div>
 					<div class="quickicon-sr-desc sr-only"></div>
@@ -109,6 +115,6 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 			<?php endif; ?>
 			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>" class="stretched-link"><span class="sr-only"><?php echo $title; ?></span></a>
 		</div> -->
-		
+		<input type="hidden" name="sub_module_name[]" value="<?php echo Text::_($displayData['name']); ?>" class="width-20 text-area-order">
 	</div>
 </div>

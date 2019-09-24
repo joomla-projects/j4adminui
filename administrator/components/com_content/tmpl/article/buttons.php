@@ -2,7 +2,7 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="container" style="background:white; padding: 10px;">
+<div class="container">
   <p>
     <a href="#"class="btn btn-lg btn-primary">Primary button</a>
     <a href="#"class="btn btn-primary">Primary button</a>
@@ -48,6 +48,7 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-cancel">Cancel button <span class="icon right fas fa-plus"></span></a>
     <a href="#"class="btn btn-cancel"><span class="icon fas fa-plus"></span> Cancel button</a>
     <a href="#"class="btn btn-cancel btn-sm">Cancel button</a>
+    <a href="#"class="btn btn-cancel btn-sm disabled">Cancel button</a>
   </p>
 
   <p>
@@ -56,6 +57,7 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-success">succss button <span class="icon right fas fa-plus"></span></a>
     <a href="#"class="btn btn-success"><span class="icon fas fa-plus"></span> succss button</a>
     <a href="#"class="btn btn-success btn-sm">succss button</a>
+    <a href="#"class="btn btn-success btn-sm disabled">succss button</a>
   </p>
 
   <p>
@@ -64,12 +66,16 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-warning">warning button <span class="icon right fas fa-plus"></span></a>
     <a href="#"class="btn btn-warning"><span class="icon fas fa-plus"></span> warning button</a>
     <a href="#"class="btn btn-warning btn-sm">warning button</a>
+    <a href="#"class="btn btn-warning btn-sm disabled">warning button</a>
   </p>
 
   <p>
     <a href="#"class="btn btn-lg btn-info">Info button</a>
+    <a href="#"class="btn btn-lg btn-info disabled">Info button</a>
     <a href="#"class="btn btn-dark">Dark button</a>
+    <a href="#"class="btn btn-dark disabled">Dark button</a>
     <a href="#"class="btn btn-light">Light button</a>
+    <a href="#"class="btn btn-light disabled">Light button</a>
   </p>
 
   <p>

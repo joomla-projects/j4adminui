@@ -7,7 +7,7 @@ table.j-list-table {
     td,
     th {
         border:none;
-        padding: 5px 1rem;
+        padding: 1rem;
         vertical-align: middle;
     }
     
@@ -39,7 +39,7 @@ table.j-list-table {
     }
     tbody{
         tr{
-            background: #fff;
+            background: var(--inverse-color);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
             transition: .35s;
             border-radius: 3px;
@@ -52,7 +52,7 @@ table.j-list-table {
             &:active,
             &:focus,
             &:hover {
-                background-color: #fff;
+                background-color: var(--inverse-color);
                 box-shadow: none;
             }
             td:first-child { 
@@ -70,14 +70,6 @@ table.j-list-table {
             .j-article-id-number{
                 font-weight: $medium-weight;
                 font-size: 1rem;
-            }
-            .has-context {
-                .break-word {
-                    .small.break-word{
-                        color: var(--secondary-color);
-                        font-size: 1rem;
-                    }
-                }
             }
             th,
             td {
@@ -97,6 +89,27 @@ table.j-list-table {
                         text-decoration: underline;
                     }
                 }
+                &.row-selected {
+                    .custom-select {
+                        background-image: url(../images/select-bg-in-table.svg);
+                        background-color: var(--tr-hover-background);
+                    }
+                }
+                .small,
+                &.small{
+                    font-size: 1rem;
+                }
+                small,
+                div.small,
+                span.small {
+                    color: var(--secondary-color);
+                }
+                .btn {
+                    &.dropdown-toggle {
+                        border-color: var(--secondary-icon-color);
+                        border-radius: 3px;
+                    }
+                }
             }
 
             .custom-select {
@@ -105,11 +118,12 @@ table.j-list-table {
                 box-shadow: none;
                 color: var(--success-color);
                 width: 110px;
+                height: auto;
                 option[selected],
                 option:checked,
                 option:hover {
                     background: var(--success-color);
-                    color: #fff;
+                    color: var(--inverse-color);
                 }
                 &[data-color="danger"] {
                     color: var(--danger-color);
@@ -128,6 +142,23 @@ table.j-list-table {
                 margin: 0;
                 padding: 0;
                 font-size: 1rem;
+            }
+            .itemnumber {
+                a.btn {
+                    line-height: 1;
+                    border-radius: 0;
+                    border: 0;
+                    font-size: 1rem;
+                    padding: 2px 5px;
+                    box-shadow: none;
+                    background: transparent;
+                    color: var(--primary-color);
+                    text-decoration: underline;
+                    &:active,
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
             }
         }
     }

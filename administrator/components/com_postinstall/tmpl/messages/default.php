@@ -68,7 +68,7 @@ $params = array('params' => json_encode($param));
 				</a>
 				<?php endif; ?>
 				<?php if (Factory::getUser()->authorise('core.edit.state', 'com_postinstall')) : ?>
-				<a href="<?php echo Route::_('index.php?option=com_postinstall&view=messages&task=message.unpublish&id=' . $item->postinstall_message_id . '&' . $this->token . '=1'); ?>" class="btn btn-danger btn-sm">
+				<a href="<?php echo Route::_('index.php?option=com_postinstall&view=messages&task=message.unpublish&id=' . $item->postinstall_message_id . '&' . $this->token . '=1'); ?>" class="btn btn-secondary">
 					<?php echo Text::_('COM_POSTINSTALL_BTN_HIDE'); ?>
 				</a>
 				<?php endif; ?>

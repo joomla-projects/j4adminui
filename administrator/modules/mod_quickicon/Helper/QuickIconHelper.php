@@ -17,7 +17,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
 use Joomla\Registry\Registry;
-
+use Joomla\CMS\Language\Text;
 /**
  * Helper for mod_quickicon
  *
@@ -55,7 +55,7 @@ abstract class QuickIconHelper
 
 		$key     = (string) $params;
 		$context = (string) $params->get('context', 'mod_quickicon');
-
+		
 		if (!isset(self::$buttons[$key]))
 		{
 			// Load mod_quickicon language file in case this method is called before rendering the module
@@ -67,6 +67,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'   => 'fa fa-users',
+					'icon_class'   => 'warning',
 					'link'    => Route::_('index.php?option=com_users'),
 					'linkadd' => Route::_('index.php?option=com_users&task=users.add'),
 					'name'    => 'MOD_QUICKICON_USER_MANAGER',
@@ -86,6 +87,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'   => 'fa fa-list',
+					'icon_class'   => 'danger',
 					'link'    => Route::_('index.php?option=com_menus&client_id=0'),
 					'linkadd' => Route::_('index.php?option=com_menus&task=item.add'),
 					'name'    => 'MOD_QUICKICON_MENUITEMS_MANAGER',
@@ -105,6 +107,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'   => 'fa fa-file-alt',
+					'icon_class'   => 'success',
 					'link'    => Route::_('index.php?option=com_content'),
 					'linkadd' => Route::_('index.php?option=com_content&task=article.add'),
 					'name'    => 'MOD_QUICKICON_ARTICLE_MANAGER',
@@ -143,6 +146,7 @@ abstract class QuickIconHelper
 			{
 				self::$buttons[$key][] = [
 					'image'  => 'fa fa-images',
+					'icon_class'   => 'danger',
 					'link'   => Route::_('index.php?option=com_media'),
 					'name'   => 'MOD_QUICKICON_MEDIA_MANAGER',
 					'access' => array('core.manage', 'com_media'),
@@ -154,6 +158,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'   => 'fa fa-cube',
+					'icon_class'   => 'warning',
 					'link'    => Route::_('index.php?option=com_modules&client_id=0'),
 					'linkadd' => Route::_('index.php?option=com_modules&view=select&client_id=0'),
 					'name'    => 'MOD_QUICKICON_MODULE_MANAGER',
@@ -173,6 +178,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'  => 'fa fa-plug',
+					'icon_class'   => 'success',
 					'link'   => Route::_('index.php?option=com_plugins'),
 					'name'   => 'MOD_QUICKICON_PLUGIN_MANAGER',
 					'access' => array('core.manage', 'com_plugins'),
@@ -191,6 +197,7 @@ abstract class QuickIconHelper
 			{
 				self::$buttons[$key][] = [
 					'image'  => 'fa fa-paint-brush',
+					'icon_class'   => 'danger',
 					'link'   => Route::_('index.php?option=com_templates&client_id=0'),
 					'name'   => 'MOD_QUICKICON_TEMPLATES',
 					'access' => array('core.admin', 'com_templates'),
@@ -245,13 +252,16 @@ abstract class QuickIconHelper
 				];
 			}
 
+			if (!empty($params->get('module_ordering'))) {
+				self::$buttons[$key] = self::getOrderedModuleList(self::$buttons[$key], $params);
+			}
+
 			PluginHelper::importPlugin('quickicon');
 
 			$arrays = (array) $application->triggerEvent(
 				'onGetIcons',
 				new QuickIconsEvent('onGetIcons', ['context' => $context])
 			);
-
 			foreach ($arrays as $response)
 			{
 				if (!is_array($response))
@@ -281,7 +291,38 @@ abstract class QuickIconHelper
 				}
 			}
 		}
-
 		return self::$buttons[$key];
+	}
+
+	/**
+	 * Re-order button list based on order values
+	 * 
+	 * @method 	Aajax
+	 * @param	Array	List of buttons
+	 * @param	Array 	Module params for get the order values
+	 * 
+	 * @since   4.0.1
+	 */
+	private static function getOrderedModuleList($buttons, $params ) 
+	{
+		$orders = $params->get('module_ordering');
+		$orders = json_decode($orders);
+		if (count($orders)) 
+		{
+			$collector = [];
+			foreach ($orders as $order)
+			{
+				foreach ($buttons as $key=>$button) 
+				{
+					if ($order == Text::_($button['name']))
+					{ 
+						array_push($collector, $button);
+						unset($buttons[$key]);
+					}
+				}
+			}
+			return array_merge($collector, $buttons);
+		}
+		return $buttons;
 	}
 }

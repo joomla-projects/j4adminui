@@ -29,7 +29,6 @@ $ordering  = ($listOrder == 'a.lft');
 $saveOrder = ($listOrder == 'a.lft' && strtolower($listDirn) == 'asc');
 $menuType  = (string) $app->getUserState('com_menus.items.menutype', '', 'string');
 
-
 if ($saveOrder && $menuType && !empty($this->items))
 {
 	$saveOrderingUrl = 'index.php?option=com_menus&task=items.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
@@ -45,7 +44,7 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 	<div class="row">
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
-				<?php  echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'menutype'))); ?>
+				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'menutype'))); ?>
 				<?php if (!empty($this->items)) : ?>
 					<table class="table j-list-table" id="itemList">
 						<caption id="captionTable" class="sr-only">
@@ -61,26 +60,23 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 								</th>
 							<?php endif; ?>
+							<th scope="col" style="width:1%" class="text-center">
+								<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
+							</th>
 							<th scope="col" class="title">
 								<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
-							</th>
-							<th scope="col" style="width:5%" class="d-none d-md-table-cell">
-								<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 							</th>
 							<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 								<?php echo HTMLHelper::_('searchtools.sort', 'COM_MENUS_HEADING_MENU', 'menutype_title', $listDirn, $listOrder); ?>
 							</th>
-							<th scope="col" style="width:1%" class="text-center">
-								<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
-							</th>
-							<?php if ($this->state->get('filter.client_id') == 0) : ?>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
-								</th>
-							<?php endif; ?>
 							<?php if ($this->state->get('filter.client_id') == 0) : ?>
 								<th scope="col" style="width:10%" class="text-center d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_MENUS_HEADING_HOME', 'a.home', $listDirn, $listOrder); ?>
+								</th>
+							<?php endif; ?>
+							<?php if ($this->state->get('filter.client_id') == 0) : ?>
+								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 								</th>
 							<?php endif; ?>
 							<?php if ($assoc) : ?>
@@ -93,6 +89,9 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 								</th>
 							<?php endif; ?>
+							<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+							</th>
 						</tr>
 						</thead>
 						<tbody <?php if ($saveOrder && $menuType) :?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="false"<?php endif; ?>>
@@ -132,7 +131,7 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 								$parentsStr = '';
 							}
 							?>
-							<tr class="row<?php echo $i % 2; ?>" data-dragable-group="<?php echo $item->parent_id; ?> j-tr-level-<?php echo $item->level; ?>"
+							<tr class="row<?php echo $i % 2; ?>" data-dragable-group="<?php echo $item->parent_id; ?>"
 								item-id="<?php echo $item->id; ?>" parents="<?php echo $parentsStr; ?>"
 								level="<?php echo $item->level; ?>">
 								<td class="text-center">
@@ -161,7 +160,9 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 										<?php endif; ?>
 									</td>
 								<?php endif; ?>
-								
+								<td class="text-center">
+									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'items.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+								</td>
 								<th scope="row">
 									<?php $prefix = LayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level)); ?>
 									<?php echo $prefix; ?>
@@ -201,34 +202,9 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 										</div>
 									<?php endif; ?>
 								</th>
-								<td class="d-none d-md-table-cell">
-									<?php echo (int) $item->id; ?>
-								</td>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $this->escape($item->menutype_title ?: ucwords($item->menutype)); ?>
 								</td>
-								<td class="text-center">
-									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'items.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-								</td>
-								
-								<?php if ($this->state->get('filter.client_id') === 0) : ?>
-									<td class="small d-none d-md-table-cell">
-										<?php echo $this->escape($item->access_level); ?>
-									</td>
-								<?php endif; ?>
-
-								<?php if ($this->state->get('filter.client_id') == 0 && Multilanguage::isEnabled()) : ?>
-									<td class="small d-none d-md-table-cell text-center">
-										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
-									</td>
-								<?php endif; ?>
-								<?php if ($assoc) : ?>
-									<td class="small d-none d-md-table-cell text-center">
-										<?php if ($item->association) : ?>
-											<?php echo HTMLHelper::_('menus.association', $item->id); ?>
-										<?php endif; ?>
-									</td>
-								<?php endif; ?>
 								<?php if ($this->state->get('filter.client_id') == 0) : ?>
 									<td class="text-center d-none d-md-table-cell">
 										<?php if ($item->type == 'component') : ?>
@@ -254,10 +230,33 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 										<?php endif; ?>
 									</td>
 								<?php endif; ?>
+								<?php if ($this->state->get('filter.client_id') == 0) : ?>
+									<td class="small d-none d-md-table-cell">
+										<?php echo $this->escape($item->access_level); ?>
+									</td>
+								<?php endif; ?>
+								<?php if ($assoc) : ?>
+									<td class="small d-none d-md-table-cell text-center">
+										<?php if ($item->association) : ?>
+											<?php echo HTMLHelper::_('menus.association', $item->id); ?>
+										<?php endif; ?>
+									</td>
+								<?php endif; ?>
+								<?php if ($this->state->get('filter.client_id') == 0 && Multilanguage::isEnabled()) : ?>
+									<td class="small d-none d-md-table-cell text-center">
+										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
+									</td>
+								<?php endif; ?>
+								<td class="d-none d-md-table-cell">
+									<?php echo (int) $item->id; ?>
+								</td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>
 					</table>
+
+					<?php // load the pagination. ?>
+					<?php echo $this->pagination->getListFooter(); ?>
 
 					<?php // Load the batch processing form if user is allowed ?>
 					<?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
@@ -266,18 +265,12 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 							'collapseModal',
 							array(
 								'title'  => Text::_('COM_MENUS_BATCH_OPTIONS'),
-							'footer' => $this->loadTemplate('batch_footer')
+								'footer' => $this->loadTemplate('batch_footer')
 							),
 							$this->loadTemplate('batch_body')
 						); ?>
 					<?php endif; ?>
 				<?php endif; ?>
-				
-				<?php // load the pagination. ?>
-				<div class="j-pagination-footer">
-					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-				</div>
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
