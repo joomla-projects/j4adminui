@@ -30,6 +30,12 @@
 					class="custom-select"
  				/>
 
+				 <field
+					name="module_group"
+					type="hidden"
+					default="system"
+ 				/>
+
 				<field
 					name="moduleclass_sfx"
 					type="textarea"

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Registry\Registry;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
@@ -52,39 +53,36 @@ echo HTMLHelper::_(
 
 ?>
 <div id="cpanel-modules">
-	<div class="cpanel-modules js-draggable <?php echo $this->position; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
-		<?php // apear this div if not cpanel
-		if($this->extension) : ?>
-			<div class="card-columns">
-		<?php endif; ?>
-
-		<?php
-		foreach ($this->modules as $module)
-		{
-			$style = 'card';
-			if( $module->module == 'mod_quickicon' || $module->module == 'mod_content' )
-			{
-				$style = 'simple';
-			}
-			echo ModuleHelper::renderModule($module, array('style' => $style));
-		}
-		?>
+	<div class="cpanel-modules <?php echo $this->position; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+		
+		<div class="row js-draggable">
+			<?php
+				foreach ($this->modules as $module)
+				{
+					$style = 'card';
+					if( $module->module == 'mod_quickicon' || $module->module == 'mod_content' )
+					{
+						$style = 'simple';
+					}
+					$params = new Registry($module->params);
+					$bootstrap_size = $params->get('bootstrap_size', 12);
+					$columns = ($bootstrap_size == 0) ? 12 : $bootstrap_size;
+					?>
+					<div class="col-<?php echo $columns; ?>">
+						<?php echo ModuleHelper::renderModule($module, array('style' => $style)); ?>
+					</div>
+					<?php
+				}
+			?>
+		</div>
 		
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>
-
-		<?php // apear this div closing if not cpanel
-		if($this->extension) : ?>
-			</div>
-		<?php endif; ?>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-6">
-		<a href="#moduleEditModal" data-toggle="modal" data-target="#moduleDashboardAddModal" role="button" class="cpanel-add-module text-center py-5 w-100 d-block">
-			<div class="cpanel-add-module-icon text-center">
-				<span class="fa fa-plus-square text-light mt-2"></span>
-			</div>
-			<span><?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?></span>
+<div class="row justify-content-center mt-4">
+	<div class="col-md-11">
+		<a href="#moduleEditModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#moduleDashboardAddModal" role="button">
+			<span class="fas fa-plus mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
 		</a>
 	</div>
 	<?php endif; ?>
