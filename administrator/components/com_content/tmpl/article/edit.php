@@ -73,8 +73,8 @@ if($this->item->id > 0)
 				</div>
 			</div>
 			<!-- <div class="col-lg-3">
-				<div class="jcard">
-					<div class="jcard-header artilce-preview-link">
+				<div class="j-card">
+					<div class="j-card-header artilce-preview-link">
 						<?php if( ($this->item->id > 0) && ($this->item->state === 1 || $this->item->state === 2) ): ?>
 							<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
 							<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
@@ -176,11 +176,11 @@ if($this->item->id > 0)
 			<?php // Do not show the publishing options if the edit form is configured not to. ?>
 			<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('COM_CONTENT_FIELDSET_PUBLISHING')); ?>
-					<fieldset id="fieldset-publishingdata" class="jcard options-grid-form options-grid-form-half">
-						<div class="jcard-header">
+					<fieldset id="fieldset-publishingdata" class="j-card options-grid-form options-grid-form-half">
+						<div class="j-card-header">
 							<?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?>
 						</div>
-						<div class="jcard-body p-4">
+						<div class="j-card-body">
 							<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
 						</div>
 					</fieldset>
@@ -204,11 +204,11 @@ if($this->item->id > 0)
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
-				<fieldset id="fieldset-editor" class="jcard form-no-margin options-grid-form">
-					<div class="jcard-header">
+				<fieldset id="fieldset-editor" class="j-card form-no-margin options-grid-form">
+					<div class="j-card-header">
 						<?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?>
 					</div>
-					<div class="jcard-body p-4">
+					<div class="j-card-body">
 						<?php echo $this->form->renderFieldset('editorConfig'); ?>
 					</div>
 				</fieldset>
@@ -241,8 +241,8 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="form-no-margin jcard form-group-wrapper">
-				<div class="jcard-body">
+			<div class="form-no-margin j-card form-group-wrapper">
+				<div class="j-card-body">
 					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 					<!-- featured & status -->
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>

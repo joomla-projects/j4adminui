@@ -151,7 +151,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php if ($this->item->client_id == 0) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
-				<fieldset id="fieldset-assignment" class="pt-4">
+				<fieldset id="fieldset-assignment">
 					<?php echo $this->loadTemplate('assignment'); ?>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
@@ -166,10 +166,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php if ($this->canDo->get('core.admin')) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_MODULES_FIELDSET_RULES')); ?>
 				<fieldset id="fieldset-permissions" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_MODULES_FIELDSET_RULES'); ?></legend>
-					<div>
 					<?php echo $this->form->getInput('rules'); ?>
-					</div>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
@@ -201,8 +198,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<!-- if site modules -->
 			<?php if ($this->item->client_id == 0) : ?>
 				<!-- title & status -->
-				<div class="jcard form-no-margin">
-					<div class="jcard-body p-4">
+				<div class="j-card form-no-margin">
+					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'showtitle', 'published' ), 'data' => $this)); ?>
 					</div>
 				</div>
@@ -220,8 +217,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				</div>
 				<!-- schedule -->
 				<p class="mt-4"><?php echo JText::_('COM_MODULE_PUBLISH_SCHEDULE'); ?></p>
-				<div class="jcard form-no-margin">
-					<div class="jcard-body p-3">
+				<div class="j-card form-no-margin">
+					<div class="j-card-body">
 						<div class="row">
 							<div class="col-sm-6">
 								<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'publish_up' ), 'data' => $this)); ?>

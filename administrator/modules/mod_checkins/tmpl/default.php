@@ -28,7 +28,7 @@ HTMLHelper::_('stylesheet', 'mod_checkins/style.css', array('relative' => true))
     <div class="mod-checkins-checkin-msg">
         <span class="checkin-msg"><?php echo Text::plural('MOD_CHECKINS_GLOBAL_CHECKIN_MSG', $checkins); ?></span>
     </div>
-    <div class="jcard-footer jcard-footer-lg">
+    <div class="j-card-footer j-card-footer-lg">
         <a href="<?php echo Route::_('index.php?option=com_checkin'); ?>" class=""><?php echo Text::_('MOD_CHECKINS_GO_TO_CHECKINS'); ?></a>
     </div>
 </div>

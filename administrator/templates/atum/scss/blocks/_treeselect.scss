@@ -50,7 +50,7 @@
 
   .treeselect-item {
     @extend .d-inline-flex;
-    @extend .jcard;
+    @extend .j-card;
     @extend .align-items-center;
     z-index: $zindex-tree-select;
 

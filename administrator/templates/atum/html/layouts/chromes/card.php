@@ -49,23 +49,23 @@ if ($module->content) :
 	}
 	?>
 	<div class="module-wrapper" data-dragable-group="dashboard_module">
-		<<?php echo $moduleTag; ?> class="jcard mb-3<?php echo $moduleClassSfx; ?>">
+		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
-				<div class="jcard-header handle">
-					<h2 class="jcard-title<?php echo $headerClass; ?>">
-						<span class="jcard-icon fas fa-arrows-alt-v" area-hidden="true"></span>
+				<div class="j-card-header handle">
+					<h2 class="j-card-title<?php echo $headerClass; ?>">
+						<span class="j-card-icon fas fa-arrows-alt-v" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>
 					</h2>
 
-					<div class="jcard-header-right">
-						<button class="jcard-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"></button>
+					<div class="j-card-header-right">
+						<button class="j-card-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"></button>
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
 								<a href="javascript:;" class="" id="dropdownMenuButton-<?php echo $id; ?>">
-									<span class="jcard-header-icon fas fa-ellipsis-h" aria-hidden="true"></span>
+									<span class="j-card-header-icon fas fa-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
 								<joomla-dropdown for="#dropdownMenuButton-<?php echo $id; ?>">

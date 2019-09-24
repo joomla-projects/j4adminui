@@ -14,12 +14,12 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 ?>
 
-<fieldset class="jcard <?php echo !empty($displayData->formclass) ? $displayData->formclass : ''; ?>">
-	<div class="jcard-header">
+<fieldset class="j-card <?php echo !empty($displayData->formclass) ? $displayData->formclass : ''; ?>">
+	<div class="j-card-header">
 		<?php echo $displayData->name; ?>
 	</div>
 	<?php $fieldsnames = explode(',', $displayData->fieldsname); ?>
-	<div class="jcard-body p-4">
+	<div class="j-card-body">
 		<?php if (!empty($displayData->description)) : ?>
 			<p class="text-muted"><?php echo $displayData->description; ?></p>
 		<?php endif; ?>

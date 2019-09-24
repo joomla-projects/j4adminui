@@ -73,12 +73,12 @@ $ajaxUri = Route::_('index.php?option=com_config&task=application.store&format=j
 ?>
 
 <?php // Description ?>
-<details class="jcard mb-4">
+<details class="j-card mb-4">
 	<summary class="rule-notes px-4 py-3">
 		<?php echo Text::_('JLIB_RULES_SETTINGS_DESC'); ?>
 	</summary>
 	<hr class="m-0" />
-	<div class="rule-notes jcard-body p-4">
+	<div class="rule-notes j-card-body">
 	<?php
 	if ($section === 'component' || !$section)
 	{
@@ -94,7 +94,7 @@ $ajaxUri = Route::_('index.php?option=com_config&task=application.store&format=j
 
 <?php // Begin tabs ?>
 <joomla-field-permissions data-uri="<?php echo $ajaxUri; ?>">
-	<joomla-tab orientation="vertical" class="jcard" id="permissions-sliders">
+	<joomla-tab orientation="vertical" class="j-card" id="permissions-sliders">
 	<?php // Initial Active Pane ?>
 		<?php foreach ($groups as $group) : ?>
 			<?php $active = (int) $group->value === 1 ? ' active' : ''; ?>
