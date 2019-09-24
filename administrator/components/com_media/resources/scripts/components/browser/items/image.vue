@@ -87,6 +87,7 @@
                     </li>
                 </ul>
             </div>
+            <media-infobar-popup v-if="showInfoPopup" :item="item" @hideInfoPopup="hideInfoPopup"></media-infobar-popup>
         </div>
     </div>
 </template>
@@ -99,6 +100,7 @@
         data() {
             return {
                 showActions: false,
+                showInfoPopup: false
             }
         },
         props: ['item', 'focused'],
@@ -165,8 +167,11 @@
                 this.$nextTick(() => this.$refs.actionToggle.focus());
             },
             showInfoBar() {
-                this.$store.commit(types.SHOW_INFOBAR, this.item);
+                this.showInfoPopup = true;
             },
+            hideInfoPopup() {
+                this.showInfoPopup = false;
+            }
         }
     }
 </script>
