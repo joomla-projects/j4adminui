@@ -69,7 +69,7 @@ abstract class ExtensionUpdatesHelper
         return round($updatePercentage);
     }
     
-    private static function checkJoomlaUpdate(): bool
+    private static function checkJoomlaUpdate()
     {
         $updateModel = Factory::getApplication()->bootComponent('com_installer')
             ->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
@@ -78,7 +78,7 @@ abstract class ExtensionUpdatesHelper
         $updateModel->setState('filter.extension_id', $eid);
         $extensions = $updateModel->getItems();
         
-        return !empty($extensions) ? true : false;
+        return !empty($extensions) ? $extensions[0]->version : false;
     }
 
     private static function getUpdatableExtensions() : array

@@ -15,7 +15,16 @@ $isClientSelector = $data['options']['selectorFieldName'] === 'client_id';
 $clientOptions = $isClientSelector ? $data['view']->filterForm->getField('client_id')->options : array();
 
 $state = $data['view']->get('State');
-$defaultValue = $clientOptions ? $state->get('client_id', 0) : 0;
+
+if ($state->get('filter.client_id', null) !== null)
+{
+	$defaultValue = $clientOptions ? $state->get('filter.client_id', 0) : 0;
+}
+
+if ($state->get('client_id', null) !== null)
+{
+	$defaultValue = $clientOptions ? $state->get('client_id', 0) : 0;
+}
 
 ?>
 
