@@ -6,10 +6,11 @@
 input[type="radio"].jradio{
     -webkit-appearance: none;
     height: 18px;
-    width: 18px;
-    background: #f4f5f9;
+    min-width: 18px;
+    max-width: 18px;
     border-radius: 50%;
     box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+	background-color: #f4f5f9;
     background-image: linear-gradient(to bottom, #f4f5f9, #e3e6f2);
     border: 2px solid #bdc5c8;
     cursor: pointer;
@@ -36,6 +37,10 @@ input[type="radio"].jradio{
             opacity: 1;
         }
     }
+}
+
+.jradio-group{
+	@extend .jcheckbox-group;
 }
 
 .jradio-group label,
