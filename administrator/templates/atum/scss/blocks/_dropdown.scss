@@ -2,7 +2,7 @@
 joomla-dropdown {
     position: absolute;
     top: 100%;
-    z-index: 1000;
+    z-index: 999999999;
     display: none;
     box-sizing: border-box;
     min-width: 16.071rem;
@@ -29,6 +29,7 @@ joomla-dropdown {
       border: 0;
         text-decoration: none;
         border-bottom: 1px solid var(--background);
+        border-top: none;
         cursor: pointer;
         color: var(--text-color);
         transition: 300ms;
