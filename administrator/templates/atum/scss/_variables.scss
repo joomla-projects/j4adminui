@@ -197,8 +197,7 @@ $input-group-addon-bg:             var(--atum-bg-dark);
 $input-group-addon-border-color:   var(--atum-bg-dark);
 
 // Treeselect
-$treeselect-line-height:           2.2rem;
-$treeselect-indent:                40px;
+$treeselect-indent:                30px;
 
 // List
 $list-group-bg:                    var(--white-offset);
@@ -250,6 +249,7 @@ $fadetime:                         1s;
 // Z-Index list
 $zindex-negative:                  -1;
 $zindex-actions:                   2;
+$zindex-tree-select:               999;
 $zindex-sidebar:                   1000;
 $zindex-toolbar:                   1010;
 $zindex-header:                    1020;
@@ -274,7 +274,6 @@ $zindex-mobil-menu:                9000;
 	--inverse-color-rgb: 255, 255, 255;
 	--secondary-color: #5e727c;
 	--icon-color: #808f94;
-	--secondary-icon-color: #bdc5c8;
 	--button-background: #e6f2ff;
 	--cancel-button-background: #f0f3f8;
 	--disabled-button-background: #dcdcdc;

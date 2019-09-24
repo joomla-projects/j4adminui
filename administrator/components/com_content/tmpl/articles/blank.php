@@ -792,6 +792,24 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                     </label>
                                 </div>
 
+								<hr>
+
+								<!-- checkbox group -->
+								<div class="jcheckbox-group">
+									<label>
+										<input type="checkbox" name="checkbox1" id="checkbox1"> Checkbox 1
+									</label>
+									<label>
+										<input type="checkbox" name="checkbox2" id="checkbox2"> Checkbox 2
+									</label>
+									<label>
+										<input type="checkbox" name="checkbox3" id="checkbox3"> Checkbox 3
+									</label>
+									<label>
+										<input type="checkbox" name="checkbox4" id="checkbox4"> Checkbox 4
+									</label>
+								</div>
+
                             </div>
                         </div>
                     </div>
