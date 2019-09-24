@@ -3,7 +3,7 @@
 }
 .subhead {
   position: sticky;
-  top: 0;
+  top: 60px;
   right: 0;
   left: 0;
   z-index: $zindex-toolbar;
@@ -13,6 +13,8 @@
   color: var(--atum-text-dark);
   background: var(--subhead-background);
   border-bottom: 1px solid #d0dae3;
+  margin-left: -15px;
+  margin-right: -15px;
 
   .row {
     margin-right: 0;

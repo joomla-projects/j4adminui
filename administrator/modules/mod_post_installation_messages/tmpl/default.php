@@ -24,7 +24,7 @@ $hideLinks = $app->input->getBool('hidemainmenu');
 		<?php endif; ?>
 	</a>
 	<?php if (!$hideLinks) : ?>
-		<joomla-callout for="#showCollout" dismiss="true" position="right">
+		<joomla-callout for="#showCollout" dismiss="true" position="bottom">
 			<div class="callout-title">
 				<?php echo Text::_('MOD_POST_INSTALLATION_MESSAGES'); ?>
 			</div>
