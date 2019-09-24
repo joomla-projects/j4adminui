@@ -15,9 +15,18 @@
                 <caption class="sr-only">{{ sprintf('COM_MEDIA_BROWSER_TABLE_CAPTION', currentDirectory) }}</caption>
                 <thead class="media-browser-table-head">
                     <tr>
+                        <th class="checkmark" scope="col">
+                            <div class="media-view-icons">
+                                <a href="#" class="media-toolbar-icon media-toolbar-select-all"
+                                @click.stop.prevent="toggleSelectAll()"
+                                :aria-label="translate('COM_MEDIA_SELECT_ALL')">
+                                    <span :class="toggleSelectAllBtnIcon" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </th>
                         <th class="type" scope="col"></th>
                         <th class="name" scope="col">{{ translate('COM_MEDIA_MEDIA_NAME') }}</th>
-                        <th class="size" scope="col">{{ translate('COM_MEDIA_MEDIA_SIZE') }}</th>
+                        <th class="size" scope="col">{{ translate('COM_MEDIA_MEDIA_SIZE') }} {{translate('COM_MEDIA_MEDIA_BYTES')}}</th>
                         <th class="dimension" scope="col">{{ translate('COM_MEDIA_MEDIA_DIMENSION') }}</th>
                         <th class="created" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_CREATED') }}</th>
                         <th class="modified" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_MODIFIED') }}</th>
@@ -95,7 +104,14 @@
 				});
 
 				return diskName;
-			}
+            },
+            
+            toggleSelectAllBtnIcon() {
+                return (this.allItemsSelected) ? 'media-checkbox active' : 'media-checkbox'
+            },
+            allItemsSelected() {
+                return (this.$store.getters.getSelectedDirectoryContents.length === this.$store.state.selectedItems.length);
+            }
         },
         methods: {
             /* Unselect all browser items */
@@ -197,6 +213,15 @@
                 document.querySelector('.media-dragoutline').classList.remove('active');
                 return false;
             },
+            //Select all items
+            toggleSelectAll() {
+                if (this.allItemsSelected) {
+                    this.$store.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
+                } else {
+                    this.$store.commit(types.SELECT_BROWSER_ITEMS, this.$store.getters.getSelectedDirectoryContents);
+                }
+            },
+
         },
         created() {
             document.body.addEventListener('click', this.unselectAllBrowserItems, false);

@@ -152,7 +152,7 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 										}
 										?>
 										<span class="sortable-handler<?php echo $iconClass ?>">
-											<span class="fa fa-ellipsis-v" aria-hidden="true"></span>
+											<span class="fa fa-arrows-alt-v" aria-hidden="true"></span>
 										</span>
 										<?php if ($canChange && $saveOrder) : ?>
 											<input type="text" style="display:none" name="order[]" size="5"

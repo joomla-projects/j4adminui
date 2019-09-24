@@ -69,3 +69,4 @@ Text::script('JGLOBAL_CONFIRM_DELETE', true);
 Text::script('JLIB_FORM_FIELD_REQUIRED_VALUE', true);
 Text::script('COM_MEDIA_UPLOAD_FILE', true);
 Text::script('COM_MEDIA_MAX_DROP_FILE', true);
+Text::script('COM_MEDIA_MEDIA_BYTES', true);

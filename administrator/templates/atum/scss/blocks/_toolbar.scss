@@ -72,6 +72,13 @@
       span{
         margin-right: 0;
       }
+      &.btn-primary {
+        &:not(:disabled):not(.disabled):active:focus,
+        &:active,
+        &:focus {
+          box-shadow: none;
+        }
+      }
     }
     .input-group-text{
       background: var(--transparent-bg);

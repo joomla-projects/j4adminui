@@ -103,7 +103,7 @@ if ($saveOrder && !empty($this->items))
 											$disableClassName = 'inactive';
 										endif; ?>
 										<span class="sortable-handler <?php echo $disableClassName; ?>" title="<?php echo $disabledLabel; ?>">
-											<span class="fa fa-ellipsis-v" aria-hidden="true"></span>
+											<span class="fa fa-arrows-alt-v" aria-hidden="true"></span>
 										</span>
 										<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
 									<?php else : ?>

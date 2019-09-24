@@ -252,11 +252,7 @@ input {
 }
 //When container background not white this CSS will apply for form fields
 .j-main-container {
-  .custom-select,
   .form-control {
     background-color: var(--input-background-color-white);
-  }
-  .custom-select{
-    background-image: url(../images/select-bg-white.svg)
   }
 }

@@ -1,12 +1,20 @@
 <template>
     <tr @dblclick.stop.prevent="onDblClick()" @click="onClick" :class="{selected: this.isSelected()}">
+        <td class="checkmark">
+            <div class="media-view-icons">
+                <a href="#" class="media-toolbar-icon media-toolbar-select-all"
+                :aria-label="translate('COM_MEDIA_SELECT_ALL')">
+                    <span :class="this.isSelected() ? 'media-checkbox active' : 'media-checkbox'" aria-hidden="true"></span>
+                </a>
+            </div>
+        </td>
         <td class="type" :data-type="item.extension">
         </td>
-        <th scope="row" class="name">
+        <td scope="row" class="name">
             {{ item.name }}
-        </th>
+        </td>
         <td class="size">
-            {{ item.size }}
+            {{ isDir ? '...' : item.size }}
         </td>
         <td class="dimension">
             {{ dimension }}
@@ -32,7 +40,7 @@
             /* The dimension of a file */
             dimension() {
                 if (!this.item.width) {
-                    return '';
+                    return '...';
                 }
                 return `${this.item.width} x ${this.item.height}`;
             },

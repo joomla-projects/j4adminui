@@ -590,3 +590,103 @@
 .media-infobar {
     top: 68px;
 }
+//Media listview table
+
+table {
+    &.media-browser-table {
+        border-collapse:separate; 
+        border-spacing: 0 10px;
+        background-color: transparent;
+        color: var(--inverse-background);
+        td,
+        th {
+            border:none;
+            padding: 1rem 0;
+            vertical-align: middle;
+        }
+        
+        thead {
+            border-spacing: 0;
+            tr {
+                box-shadow: none;
+                background: transparent;
+            }
+            td,
+            th {
+                border:none;
+                padding-bottom: 0;
+                font-size: 1rem;
+                color: var(--table-sort-color);
+                &.type {
+                    border: 0;
+                    background: transparent;
+                    &::after {
+                        display: none;
+                    }
+                    span {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+        tr {
+            background: var(--inverse-color);
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+            transition: .35s;
+            .media-view-icons {
+                border: 0;
+                display: block;
+            }
+            td {
+                &.type {
+                    border: 0;
+                    background: transparent;
+                    padding: 0 1rem 0 0;
+                    line-height: 1;
+                    width: 6%;
+                    &::before{
+                        font-size: 2.5rem;
+                        color: #93ceff;
+                        line-height: 1;
+                    }
+                    &::after {
+                        display: none;
+                    }
+                    span {
+                        visibility: visible;
+                    }
+                }
+            }
+            td:first-child { 
+                border-top-left-radius: 3px; 
+            }
+            td:last-child { 
+                border-top-right-radius: 3px; 
+            }
+            td:first-child { 
+                border-bottom-left-radius: 3px; 
+            }
+            td:last-child { 
+                border-bottom-right-radius: 3px; 
+            }
+        }
+        .media-toolbar-icon {
+            width: 18px;
+            margin-left: 1rem;
+        }
+        .media-checkbox {
+            width: 16px;
+            height: 16px;
+            &.active {
+                &::after {
+                    height: 10px;
+                    width: 6px;
+                    top: -4px;
+                }
+            }
+        }
+        .checkmark {
+           width: 3%;
+        }
+    }
+}

@@ -80,6 +80,7 @@
 				time24          : true,
 				showsOthers     : (parseInt(btn.getAttribute("data-show-others")) === 1) ? true : false,
 				showsTime       : true,
+				timeTitle       : (btn.getAttribute("data-time-title")) ? btn.getAttribute("data-time-title") : "",
 				weekNumbers     : (parseInt(btn.getAttribute("data-week-numbers")) === 1) ? true : false,
 				showsTodayBtn   : true,
 				compressedHeader: (parseInt(btn.getAttribute("data-only-months-nav")) === 1) ? true : false,
@@ -592,7 +593,7 @@
 				cell.calendar = cal;
 				cell.navtype = navtype;
 				if (navtype !== 0 && Math.abs(navtype) <= 2) {
-					cell.innerHTML = "<a " + classes + " style='display:inline;padding:2px 6px;cursor:pointer;text-decoration:none;' unselectable='on'>" + text + "</a>";
+					cell.innerHTML = "<a " + classes + " ' unselectable='on'>" + text + "</a>";
 				} else {
 					cell.innerHTML = cs ? "<div unselectable='on'" + classes + ">" + text + "</div>" : text;
 					if (!cs && classes) {
@@ -604,7 +605,7 @@
 
 		if (this.params.compressedHeader === false) {                                                        // Head - year
 			row = createElement("tr", thead);
-			row.className = "calendar-head-row tt";
+			row.className = "calendar-head-row";
 			this._nav_py = hh("<i class=\"fas fa-chevron-left\">", 1, -2, '', {"text-align": "center", "font-size": "1.14rem", "line-height": "1.14rem"}, 'js-btn btn-prev-year');                   // Previous year button
 			this.title = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 6 : 5, 300);
 			this.title.className = "title";
@@ -615,11 +616,18 @@
 		monthsRow = row;
 		row.className = "calendar-head-row";
 		this._nav_pm = hh("<i class=\"fas fa-chevron-left\">", 1, -1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-prev-month');                       // Previous month button
-		this._nav_month = hh('<div style="text-align:center;font-size:1.14rem"><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'center'});
+		if (this.params.compressedHeader === false) {
+			this._nav_month = hh('<div><span></span></div>', this.params.weekNumbers ? 3 : 3, 888, 'td', {'textAlign': 'right'});
+		} else {
+			this._nav_month = hh('<div><span></span></div>', this.params.weekNumbers ? 6 : 3, 888, 'td', {'textAlign': 'center'});
+		}
 		this._nav_month.className = "title";
-		let yearsWrapper = createElement('td', row);
-		yearsWrapper.setAttribute("colspan", "3");
-		yearsWrapper.appendChild(yearsRow);
+		if (this.params.compressedHeader === false) {
+			let yearsWrapper = createElement('td', row);
+			yearsWrapper.classList.add("years-wrapper");
+			yearsWrapper.setAttribute("colspan", "3");
+			yearsWrapper.appendChild(yearsRow);
+		}
 		this._nav_nm = hh("<i class=\"fas fa-chevron-right\">", 1, 1, '', {"text-align": "center", "font-size": "2em", "line-height": "1em"}, 'js-btn btn-next-month');                       // Next month button
 		row = createElement("tr", thead);                                                                   // day names
 		row.className = self.params.weekNumbers ? "daynames wk" : "daynames";
@@ -672,20 +680,20 @@
 			}
 		}
 		if (this.params.showsTime) {
-			row = createElement("div", tbody);
+			row = createElement("tr", tbody);
 			row.className = "time";
 
-			cell = createElement("div", row);
+			cell = createElement("td", row);
 			cell.className = "time time-title";
-			cell.colSpan = 1;
+			cell.colSpan = 3;
 			cell.style.verticalAlign = 'middle';
-			cell.innerHTML = " ";
+			cell.innerHTML = this.params.timeTitle;
 
-			var cell1 = createElement("div", row);
+			var cell1 = createElement("td", row);
 			cell1.className = "time hours-select";
 			cell1.colSpan = 2;
 
-			var cell2 = createElement("div", row);
+			var cell2 = createElement("td", row);
 			cell2.className = "time minutes-select";
 			cell2.colSpan = 2;
 
@@ -723,8 +731,8 @@
 					hrs -= 12;
 				}
 
-				var H = makeTimePart("time time-hours", hrs, t12 ? 1 : 0, t12 ? 12 : 23, cell1),
-					M = makeTimePart("time time-minutes", mins, 0, 59, cell2),
+				var H = makeTimePart("time time-hours custom-select", hrs, t12 ? 1 : 0, t12 ? 12 : 23, cell1),
+					M = makeTimePart("time time-minutes custom-select", mins, 0, 59, cell2),
 					AP = null;
 
 				cell = createElement("div", row);
@@ -770,7 +778,7 @@
 		row = createElement("div", this.wrapper);
 		row.className = "buttons-wrapper btn-group";
 
-		this._nav_clear = hh(JoomlaCalLocale.clear, '', 100, 'button', '', 'js-btn btn btn-clear', {"type": "button", "data-action": "clear"});
+		this._nav_clear = hh(JoomlaCalLocale.clear, '', 100, 'button', '', 'js-btn btn btn-lg btn-link btn-clear', {"type": "button", "data-action": "clear"});
 
 			var cleara = row.querySelector('[data-action="clear"]');
 			cleara.addEventListener("click", function (e) {
@@ -788,7 +796,7 @@
 			});
 
 		if (this.params.showsTodayBtn) {
-			this._nav_now = hh(JoomlaCalLocale.today, '', 0, 'button', '', 'js-btn btn btn-today', {"type": "button", "data-action": "today"});
+			this._nav_now = hh(JoomlaCalLocale.today, '', 0, 'button', '', 'js-btn btn btn-lg btn-link btn-today', {"type": "button", "data-action": "today"});
 
 			var todaya = this.wrapper.querySelector('[data-action="today"]');
 			todaya.addEventListener('click', function (e) {
@@ -800,7 +808,7 @@
 			});
 		}
 
-		this._nav_exit = hh(JoomlaCalLocale.exit, '', 999, 'button', '', 'js-btn btn btn-exit', {"type": "button", "data-action": "exit"});
+		this._nav_exit = hh(JoomlaCalLocale.exit, '', 999, 'button', '', 'js-btn btn btn-lg btn-link btn-exit', {"type": "button", "data-action": "exit"});
 		var exita = this.wrapper.querySelector('[data-action="exit"]');
 		exita.addEventListener('click', function (e) {
 			e.preventDefault();

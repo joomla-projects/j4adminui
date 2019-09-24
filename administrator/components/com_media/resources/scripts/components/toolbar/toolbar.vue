@@ -1,7 +1,7 @@
 <template>
     <div class="media-toolbar"role="toolbar" :aria-label="translate('COM_MEDIA_TOOLBAR_LABEL')">
         <div class="media-loader" v-if="isLoading"></div>
-        <div class="media-view-icons">
+        <div class="media-view-icons" v-if="isGridView">
             <a href="#" class="media-toolbar-icon media-toolbar-select-all"
                @click.stop.prevent="toggleSelectAll()"
                :aria-label="translate('COM_MEDIA_SELECT_ALL')">
