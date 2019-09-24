@@ -23,27 +23,27 @@ $updateMsg = '';
 
 if (!empty($extensionContents['updatableInfo']['component']))
 {
-    $updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_COMPONENTS', $extensionContents['updatableInfo']['component']);
+	$updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_COMPONENTS', $extensionContents['updatableInfo']['component']);
 }
 
 if (!empty($extensionContents['updatableInfo']['module']))
 {
-    $updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_MODULES', $extensionContents['updatableInfo']['module']);
+	$updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_MODULES', $extensionContents['updatableInfo']['module']);
 }
 
 if (!empty($extensionContents['updatableInfo']['plugin']))
 {
-    $updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_PLUGINS', $extensionContents['updatableInfo']['plugin']);
+	$updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_PLUGINS', $extensionContents['updatableInfo']['plugin']);
 }
 
 if (!empty($extensionContents['updatableInfo']['library']))
 {
-    $updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_LIBRARIES', $extensionContents['updatableInfo']['library']);
+	$updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_LIBRARIES', $extensionContents['updatableInfo']['library']);
 }
 
 if (!empty($extensionContents['updatableInfo']['package']))
 {
-    $updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_PACKAGES', $extensionContents['updatableInfo']['package']);
+	$updateMsg .= Text::plural('MOD_EXTENSION_UPDATES_PACKAGES', $extensionContents['updatableInfo']['package']);
 }
 
 ?>

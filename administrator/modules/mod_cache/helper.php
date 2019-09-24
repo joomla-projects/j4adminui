@@ -44,11 +44,13 @@ class ModCacheHelper
 
 		if ($allCleared)
 		{
+            $data['size']     	= static::getCacheSize();
             $data['status']     = true;
             $data['messsage']   = Text::_('MOD_CACHE_MSG_ALL_CACHE_GROUPS_CLEARED');
 		}
 		else
 		{
+			$data['size'] 		= 0;
             $data['messsage']   = Text::_('MOD_CACHE_MSG_SOME_CACHE_GROUPS_CLEARED');
             $data['status']     = true;
         }

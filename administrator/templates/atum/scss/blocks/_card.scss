@@ -72,6 +72,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		.jcard-footer-item{
 			text-align: center;
 			flex-grow: 1;
+			.jcard-footer-item-text,
 			a,
 			button{
 				line-height: 1.375rem;
@@ -98,7 +99,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 						color: var(--icon-color);
 					}
 				}
-				&:hover,
+				&:not(.jcard-footer-item-text):hover,
 				&:focus{
 					color: var(--link-color);
 					.jcard-icon{
@@ -131,6 +132,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			}
 		}
 		&.jcard-footer-lg .jcard-footer-item{
+			.jcard-footer-item-text,
 			a,
 			button{
 				padding: 1rem .857143rem;
@@ -176,7 +178,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	//button group
 	.jcard-btn-group{
 		@extend .d-flex;
-		a, 
+		a,
 		button{
 			flex-grow: 1;
 			padding-left: .357143rem;
@@ -436,4 +438,3 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		}
 	}
 }
-
