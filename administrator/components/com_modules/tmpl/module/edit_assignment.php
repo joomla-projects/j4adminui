@@ -95,7 +95,7 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 										$uselessMenuItem = in_array($link->type, array('separator', 'heading', 'alias', 'url'));
 										?>
 										<div class="treeselect-item-content">
-											<input type="checkbox" class="novalidate jcheckbox" name="jform[assigned][]" id="<?php echo $id . $link->value; ?>" value="<?php echo (int) $link->value; ?>"<?php echo $selected ? ' checked="checked"' : ''; echo $uselessMenuItem ? ' disabled="disabled"' : ''; ?>>
+											<input type="checkbox" class="novalidate j-checkbox" name="jform[assigned][]" id="<?php echo $id . $link->value; ?>" value="<?php echo (int) $link->value; ?>"<?php echo $selected ? ' checked="checked"' : ''; echo $uselessMenuItem ? ' disabled="disabled"' : ''; ?>>
 											<label for="<?php echo $id . $link->value; ?>" class="">
 												<?php echo $link->text; ?> <span class="small"><?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($link->alias)); ?></span>
 												<?php if (Multilanguage::isEnabled() && $link->language != '' && $link->language != '*') : ?>

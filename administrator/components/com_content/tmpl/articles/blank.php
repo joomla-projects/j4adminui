@@ -745,12 +745,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 
                                 <br>
                                 <!-- single radio -->
-                                <input class="jradio" type="radio" name="name">
+                                <input class="j-radio" type="radio" name="name">
 
                                 <br>
 
                                 <!-- Radio + label -->
-                                <label class="jradio-label">
+                                <label class="j-radio-label">
                                     <input type="radio" name="radio1" id="radio1"> Label + Radio
                                 </label>
                                 <br>
@@ -758,7 +758,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                 <br>
 
                                 <!-- radio group -->
-                                <div class="jradio-group">
+                                <div class="j-radio-group">
                                     <label>
                                         <input type="radio" name="radio1" id="radio1"> Group + Label + Radio
                                     </label>
@@ -770,12 +770,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                 <br>
 
                                 <!-- single checkbox -->
-                                <input class="jcheckbox" type="checkbox" name="name">
+                                <input class="j-checkbox" type="checkbox" name="name">
 
                                 <br>
 
                                 <!-- check box + label -->
-                                <label class="jcheckbox-label">
+                                <label class="j-checkbox-label">
                                     <input type="checkbox" name="check1" id="check2"> Label + Checkbox
                                 </label>
                                 <br>
@@ -783,7 +783,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                                 <br>
 
                                 <!-- checkbox group -->
-                                <div class="jcheckbox-group">
+                                <div class="j-checkbox-group">
                                     <label>
                                         <input type="checkbox" name="checkbox1" id="checkbox1"> Group + Label + checkbox
                                     </label>
@@ -795,7 +795,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 								<hr>
 
 								<!-- checkbox group -->
-								<div class="jcheckbox-group">
+								<div class="j-checkbox-group">
 									<label>
 										<input type="checkbox" name="checkbox1" id="checkbox1"> Checkbox 1
 									</label>
