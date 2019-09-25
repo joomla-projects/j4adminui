@@ -104,28 +104,52 @@ defined('_JEXEC') or die;
       <button type="button" class="btn btn-link">Middle</button>
     </div>
 
-    <div class="btn-group btn-group-border" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-default">Left</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary">Left</button>
+      <button type="button" class="btn btn-secondary">Middle</button>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-default btn-outline">Left</button>
       <button type="button" class="btn btn-secondary">Middle</button>
     </div>
   </p>
-
     <p>
-      <div class="btn-group btn-group-border btn-group-lg" role="group" aria-label="Basic example">
+      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">Left</a></button>
+        <button type="button" class="btn btn-secondary">Middle</button>
+        <button type="button" class="btn btn-secondary">Right</button>
+      </div>
+    </p>
+    <p>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary">Left</a></button>
-        <button type="button" class="btn btn-link">Middle</button>
+        <button type="button" class="btn btn-primary">Middle</button>
+        <button type="button" class="btn btn-primary">Right</button>
+      </div>
+    </p>
+    <p>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-default">Left</a></button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </p>
+    <p>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Left</a></button>
+        <button type="button" class="btn btn-default">Middle</button>
         <button type="button" class="btn btn-danger">Right</button>
       </div>
     </p>
     <p>
-      <div class="btn-group btn-group-border" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary">Left</a></button>
-        <button type="button" class="btn btn-link">Middle</button>
+        <button type="button" class="btn btn-default">Middle</button>
         <button type="button" class="btn btn-danger">Right</button>
       </div>
     </p>
     <p>
-      <div class="btn-group btn-group-border btn-group-sm" role="group" aria-label="Basic example">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-primary">Left</a></button>
         <button type="button" class="btn btn-link">Middle</button>
         <button type="button" class="btn btn-danger">Right</button>

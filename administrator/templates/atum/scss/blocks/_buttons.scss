@@ -18,8 +18,6 @@
     text-decoration: none;
     transition: .3s;
     border-radius: 3px;
-    position: relative;
-    z-index: 10;
 
     &[disabled], &.disabled, &:disabled,
     &.btn-primary[disabled],&.btn-primary.disabled,&.btn-primary:disabled,
@@ -262,20 +260,61 @@
         display: block;
         width: 100%;
     }
-    &.dropdown-toggle {
-        padding: 0 1.1rem;
-        border-right: 1px solid rgba(var(--inverse-color-rgb), 0.1);
-        border-radius: 3px 0 0 3px;
-        +.btn,
-        +joomla-toolbar-button .btn{
-            border-radius: 0 3px 3px 0;
-        }
+    &.btn-outline-primary{
+        border: 1px solid var(--link-color);
+        color: var(--link-color);
     }
+    &.btn-outline-secondary{
+        border: 1px solid var(--dark-border-color);
+        color: var(--dark-primary-color);
+    }
+    &.btn-outline{
+        border: 1px solid var(--dark-border-color);
+    }
+    // &.dropdown-toggle {
+    //     padding: 0 1.1rem;
+    //     border-right: 1px solid rgba(var(--inverse-color-rgb), 0.1);
+    //     border-radius: 3px 0 0 3px;
+    //     +.btn,
+    //     +joomla-toolbar-button .btn{
+    //         border-radius: 0 3px 3px 0;
+    //     }
+    // }
 }
 .btn-group{
     position: relative;
     display: inline-flex;
     display: -ms-inline-flexbox;
+    vertical-align: middle;
+    >.btn {
+        position: relative;
+        flex: 1 1 auto;
+        border-radius: 3px;
+        &:hover{
+            z-index: 1;
+        }
+    }
+    >.btn:not(:last-child),
+    >.btn:not(:last-child):not(.dropdown-toggle) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    >.btn:not(:first-child),
+    >.btn:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    >.btn:not(:first-child){
+        margin-left: -1px;
+    }
+    &.btn-group-lg>.btn{
+        padding: 0 2.857rem;
+        line-height: 3.429rem;
+    }
+    &.btn-group-sm>.btn{
+        padding: 0 1.7rem;
+        line-height: 2.286rem;
+    }
     &.dropdown-save-group{
         >.btn{
             margin-left: 0;
@@ -292,39 +331,6 @@
                 &:before{
                     border-radius: 0 3px 3px 0;
                 }
-            }
-        }
-    }
-    &.btn-group-lg>.btn{
-        padding: 0 2.857rem;
-        line-height: 3.429rem;
-    }
-    &.btn-group-sm>.btn{
-        padding: 0 1.7rem;
-        line-height: 2.286rem;
-    }
-    &>.btn {
-        position: relative;
-        flex: 1 1 auto;
-    }
-    &.btn-group-border{
-        border: 1px solid var(--secondary-icon-color);
-        border-radius: 3px;
-        >.btn{
-            border-radius: 0px;
-            box-shadow: none;
-            line-height: 2.75rem;
-            &.btn-secondary{
-                border: none;
-            }
-            &:not(:last-child){
-                border-right: 1px solid var(--secondary-icon-color);
-            }
-            &.btn-lg{
-                line-height: 3.29rem;
-            }
-            &.btn-sm{
-                line-height: 2.15rem;
             }
         }
     }
