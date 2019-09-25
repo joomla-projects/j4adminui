@@ -53,12 +53,12 @@ if (!empty($displayData['class']))
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
 <div class="col-lg-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
-	<div <?php echo $id; ?> class="jcard jcard-has-hover mb-4 <?php echo $class; ?>">
-		<div class="jcard-overview-box pt-3">
-			<div class="jcard-overview-icon j-<?php echo $displayData['icon_class']; ?>">
+	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
+		<div class="j-card-overview-box pt-3">
+			<div class="j-card-overview-icon j-<?php echo $displayData['icon_class']; ?>">
 				<i class="<?php echo $displayData['image']; ?>"></i>
 			</div>
-			<div class="jcard-overview-content" area-hidden="true">
+			<div class="j-card-overview-content" area-hidden="true">
 				<?php if (isset($displayData['ajaxurl'])): ?>
 					<span class="j-counter-animation">
 						<i class="fa fa-spinner" aria-hidden="true"></i>
@@ -75,18 +75,18 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 		</div>
 
 		
-		<div class="jcard-footer jcard-footer-lg">
+		<div class="j-card-footer j-card-footer-lg">
 			<?php // Add the link to the edit-form
 			if (isset($displayData['linkadd'])): ?>
-				<div class="jcard-footer-item">
+				<div class="j-card-footer-item">
 					<a href="<?php echo $displayData['linkadd']; ?>">
-						<span class="fa fa-plus jcard-icon" aria-hidden="true"></span>
+						<span class="fa fa-plus j-card-icon" aria-hidden="true"></span>
 						<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
 						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
 					</a>
 				</div>
 			<?php endif; ?>
-			<div class="jcard-footer-item jcard-footer-icon">
+			<div class="j-card-footer-item j-card-footer-icon">
 				<a href="<?php echo $displayData['link']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?>"><span class="fas fa-eye" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
 			</div>
 		</div>

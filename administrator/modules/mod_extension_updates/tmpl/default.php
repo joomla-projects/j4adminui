@@ -68,7 +68,7 @@ if (!empty($extensionContents['updatableInfo']['package']))
     </div><!-- /.mod-eu-joomla-update -->
 
     <div class="mod-eu-extension-update">
-        <div class="jcard-module-update">
+        <div class="j-card-module-update">
             <joomla-progress progress="<?php echo $extensionContents['percentage']; ?>" radius="100" stroke="14" duration="300" >
                 <h2><span data-counter="true"></span>%</h2>
                 <span><?php echo Text::_('MOD_EXTENSION_UPDATES_UPDATED'); ?></span>
@@ -82,18 +82,18 @@ if (!empty($extensionContents['updatableInfo']['package']))
             <div class="mod-eu-group-count">
                 <p class=""><?php echo Text::sprintf('MOD_EXTENSION_UPDATES_UPDATE_EXTENSIONS_MSG', $updateMsg); ?></p>
             </div>
-            <div class="mod-eu-group-update-all jcard-footer jcard-footer-lg">
-                <div class="jcard-footer-item">
+            <div class="mod-eu-group-update-all j-card-footer j-card-footer-lg">
+                <div class="j-card-footer-item">
                     <a href="<?php echo Route::_('index.php?option=com_installer&view=update'); ?>" class="btn btn-link">
-                        <span class="jcard-icon j-icon-lg fas fa-sync"></span> 
+                        <span class="j-card-icon j-icon-lg fas fa-sync"></span> 
                         <?php echo JText::_('MOD_EXTENSION_UPDATES_UPDATE_ALL'); ?>
                     </a>
                 </div>
             </div>
         <?php else: ?>
-            <div class="mod-eu-uptodate jcard-footer jcard-footer-lg">
-                <div class="jcard-footer-item">
-                    <span class="jcard-footer-item-text"><span class="jcard-icon j-icon-lg fas fa-check-circle"></span>
+            <div class="mod-eu-uptodate j-card-footer j-card-footer-lg">
+                <div class="j-card-footer-item">
+                    <span class="j-card-footer-item-text"><span class="j-card-icon j-icon-lg fas fa-check-circle"></span>
                     <?php echo Text::_('MOD_EXTENSION_UPDATES_UPTODATE'); ?></span>
                 </div>
             </div>

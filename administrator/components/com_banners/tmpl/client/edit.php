@@ -23,17 +23,15 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-versions.js', ['versio
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_banners&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="client-form" class="form-validate">
+	<div class="row">
+		<div class="col-lg-9">
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => 'general']); ?>
 
-	<div>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => 'general']); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', empty($this->item->id) ? Text::_('COM_BANNERS_NEW_CLIENT') : Text::_('COM_BANNERS_EDIT_CLIENT')); ?>
-		<div class="row">
-			<div class="col-lg-9">
-				<div class="card">
-					<div class="card-body">
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', empty($this->item->id) ? Text::_('COM_BANNERS_NEW_CLIENT') : Text::_('COM_BANNERS_EDIT_CLIENT')); ?>
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php
 						echo $this->form->renderField('contact');
 						echo $this->form->renderField('email');
@@ -44,31 +42,25 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-versions.js', ['versio
 						?>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
-						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'metadata', Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS')); ?>
+				<div id="fieldset-metadata" class="j-card">
+					<div class="j-card-body">
+						<?php echo $this->form->renderFieldset('metadata'); ?>
 					</div>
+				</div>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		</div>
+		<div class="col-lg-3">
+			<div class="j-card">
+				<div class="j-card-body">
+					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
 				</div>
 			</div>
 		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'metadata', Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS')); ?>
-		<div class="row">
-			<div class="col-12 col-lg-6">
-				<fieldset id="fieldset-metadata" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?></legend>
-					<div>
-					<?php echo $this->form->renderFieldset('metadata'); ?>
-					</div>
-				</fieldset>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
 	</div>
 
 	<input type="hidden" name="task" value="">

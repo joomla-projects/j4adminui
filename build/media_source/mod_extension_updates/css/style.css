@@ -30,18 +30,18 @@
 	color: var(--success-color);
 	background: #ffffff;
 }
-.jcard-module-update{
+.j-card-module-update{
 	padding-bottom: 20px;
 }
-.jcard-module-update .progress-inner-text{
+.j-card-module-update .progress-inner-text{
 	padding: 17px 14px 0px;
 }
-.jcard-module-update .progress-inner-text h2{
+.j-card-module-update .progress-inner-text h2{
 	font-size: 3.857rem;
 	font-weight: 700;
 	margin-bottom: 0;
 }
-.jcard-module-update .progress-inner-text h2 + span{
+.j-card-module-update .progress-inner-text h2 + span{
 	font-size: 1.143rem;
 	color: var(--secondary-color);
 	line-height: 1.857rem;

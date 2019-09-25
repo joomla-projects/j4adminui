@@ -30,23 +30,23 @@ Text::script('ERROR');
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_MENUS_MENU_DETAILS')); ?>
 
-			<fieldset id="fieldset-details" class="options-grid-form">
-				<legend><?php echo Text::_('COM_MENUS_MENU_DETAILS'); ?></legend>
-
-				<div>
-					<div>
-						<?php
-						echo $this->form->renderField('menutype');
-
-						echo $this->form->renderField('description');
-
-						echo $this->form->renderField('client_id');
-
-						echo $this->form->renderField('preset');
-						?>
-					</div>
+			<div id="fieldset-details" class="j-card">
+				<div class="j-card-header">
+					<?php echo Text::_('COM_MENUS_MENU_DETAILS'); ?>
 				</div>
-			</fieldset>
+
+				<div class="j-card-body">
+					<?php
+					echo $this->form->renderField('menutype');
+
+					echo $this->form->renderField('description');
+
+					echo $this->form->renderField('client_id');
+
+					echo $this->form->renderField('preset');
+					?>
+				</div>
+			</div>
 
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 

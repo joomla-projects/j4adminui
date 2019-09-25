@@ -5,7 +5,6 @@
             @drop="onDrop"
             @dragover="onDragOver"
             @dragleave="onDragLeave"
-            :style="mediaBrowserStyles"
             ref="browserItems">
             <div class="media-dragoutline">
                 <div class="joomla-drop-media-image"></div>
@@ -40,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <media-infobar v-if="!this.isModal" ref="infobar"></media-infobar>
+        <media-infobar-popup v-if="showInfoPopup" :item="item" @hideInfoPopup="hideInfoPopup"></media-infobar-popup>
     </div>
 </template>
 
@@ -49,6 +48,11 @@
 
     export default {
         name: 'media-browser',
+        data() {
+            return {
+                showInfoPopup: false
+            }
+        },
         computed: {
             /* Get the contents of the currently selected directory */
             items() {
@@ -65,12 +69,6 @@
                     return file.name.toLowerCase().includes(this.$store.state.search.toLowerCase())
                 });
                 return [...directories, ...files];
-            },
-            /* The styles for the media-browser element */
-            mediaBrowserStyles() {
-                return {
-                    width: this.$store.state.showInfoBar ? '75%' : '100%'
-                }
             },
             /* The styles for the media-browser element */
             listView() {
@@ -221,6 +219,12 @@
                     this.$store.commit(types.SELECT_BROWSER_ITEMS, this.$store.getters.getSelectedDirectoryContents);
                 }
             },
+            showInfoBar() {
+                this.showInfoPopup = true;
+            },
+            hideInfoPopup() {
+                this.showInfoPopup = false;
+            }
 
         },
         created() {

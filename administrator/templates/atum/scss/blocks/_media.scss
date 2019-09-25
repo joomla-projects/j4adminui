@@ -154,6 +154,7 @@
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
     background-color: var(--inverse-color);
     position: relative;
+    margin: 0 0 0 15px;
 }
 .file-background,
 .folder-background {
@@ -267,16 +268,7 @@
     }
 }
 .media-browser-actions-list {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 25px;
-    width: 200px;
-    background: var(--inverse-color);
-    border-radius: 3px;
-    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
-    border: solid 1px #eaeef5;
-    padding: 7px 0;
+    @include media-popup-action(200px, 7px, 0px);
     ul {
         columns: initial;
         li {
@@ -309,6 +301,25 @@
         margin-right: 5px;
         &::before {
             font-size: $display1-size;
+        }
+    }
+}
+//Media info popup
+.media-infobar-popup {
+    @include media-popup-action(285px, 25px, 20px);
+    ul {
+        columns: initial;
+        li {
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--background);
+            .media-info-title {
+                color: var(--secondary-color);
+            }
+            &:last-child {
+                border: 0;
+            }
         }
     }
 }

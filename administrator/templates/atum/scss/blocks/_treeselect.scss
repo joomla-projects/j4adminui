@@ -50,7 +50,7 @@
 
   .treeselect-item {
     @extend .d-inline-flex;
-    @extend .jcard;
+    @extend .j-card;
     @extend .align-items-center;
     z-index: $zindex-tree-select;
 
@@ -72,7 +72,7 @@
       border-right: 1px solid var(--border-color);
     }
 
-    .jcheckbox {
+    .j-checkbox {
       margin-right: 0.625rem;
     }
 
