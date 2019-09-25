@@ -180,7 +180,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                     </ul>
                 </li>
                 <li class="has-submenu" data-action="hover">
-                    <a class="dropdown-item" >Item 1</a>
+                    <a class="dropdown-item" >Item 2</a>
                     <ul class='submenu'>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
@@ -188,7 +188,6 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
                     </ul>
                 </li>
-                <li><a class="dropdown-item" href="#">Item 2</a></li>
                 <li><a class="dropdown-item" href="#">Item 3</a></li>
             </joomla-dropdown>
         </div>

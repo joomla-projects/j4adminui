@@ -67,6 +67,12 @@
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
       if(hasSubmenu) {
+        const allDropdowns = this.querySelectorAll('.has-submenu a');
+        allDropdowns.forEach((dropdown) => {
+          if(dropdown.hasAttribute('open')) {
+            dropdown.removeAttribute('open');
+          }
+        })
         event.target.toggleAttribute('open');
       } else {
         this.close();
