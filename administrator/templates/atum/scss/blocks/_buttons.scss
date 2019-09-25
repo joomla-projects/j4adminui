@@ -26,16 +26,10 @@
         color: var(--secondary-icon-color);
     }
     >.icon{
-        font-size: 1rem;
-        line-height: 2.85rem;
-        width: 2.2rem;
-        height: 100%;
-        z-index: -1;
-        margin: 0 .3rem 0 -1.2rem;
-        display: inline-block;
-        
-        &.right{
-            margin: 0 -1rem 0 0rem;
+        margin-right: 12px;
+        &.icon-right{
+            margin-right: 0;
+            margin-left: 12px;
         }
     }
     &:hover, &:focus, &:focus:active, &:active{
@@ -45,27 +39,10 @@
     &.btn-lg{
         padding: 0 2.857rem;
         line-height: 3.429rem;
-        >.icon{
-            font-size: 1.143rem;
-            line-height: 3.429rem;
-            margin: 0 .3rem 0 -2.2rem;
-            &.right{
-                margin: 0 -2.2rem 0 .3rem;
-            }
-        }
     }
     &.btn-sm{
         padding: 0 1.7rem;
         line-height: 2.286rem;
-        >.icon{
-            line-height: 2.286rem;
-            margin: 0 .3rem 0 -1.2rem;
-            font-size: 1rem;
-            width: 2rem;
-            &.right{
-                margin: 0 -1.2rem 0 .3rem;
-            }
-        }
     }
     &.btn-primary {
         background-color: var(--link-color);
