@@ -22,13 +22,13 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=>
 
 <div class="header-item-content header-profile">
     <div class="joomla-dropdown-container">
-        <button id="header-user-dropdown" class="header-dropdown-button <?php echo ($hideLinks ? 'disabled' : ''); ?>" type="button" <?php echo ($hideLinks ? 'disabled' : ''); ?> title="<?php echo Text::_('MOD_USER_MENU'); ?>">
+        <button data-target="header-user-dropdown" class="header-dropdown-button <?php echo ($hideLinks ? 'disabled' : ''); ?>" type="button" <?php echo ($hideLinks ? 'disabled' : ''); ?> title="<?php echo Text::_('MOD_USER_MENU'); ?>">
             <span class="header-user-icon fas fa-user"></span>
             <span class="header-user-name"><?php echo $user->name; ?></span>
             <span class="fa fa-angle-down" aria-hidden="true"></span>
         </button>
         
-        <joomla-dropdown for="#header-user-dropdown">
+        <joomla-dropdown for="header-user-dropdown" position='left'>
             <?php $uri   = Uri::getInstance(); ?>
 		    <?php $route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); ?>
             <a href="<?php echo Route::_($route); ?>" class="dropdown-item">
