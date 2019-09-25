@@ -101,7 +101,7 @@ if (!$readonly)
 <?php // Create a dummy text field with the user name. ?>
 <joomla-field-user class="field-user-wrapper"
 		url="<?php echo (string) $uri; ?>"
-		modal=".modal"
+		modal=".userModal"
 		modal-width="100%"
 		modal-height="400px"
 		input=".field-user-input"
@@ -123,7 +123,8 @@ if (!$readonly)
 					'url'         => $uri,
 					'title'       => Text::_('JLIB_FORM_CHANGE_USER'),
 					'closeButton' => true,
-					'height'      => '100%',
+					'height'      => '300px',
+					'class'		  => 'userModal',
 					'width'       => '100%',
 					'modalWidth'  => 80,
 					'bodyHeight'  => 60,

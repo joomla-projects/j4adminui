@@ -61,15 +61,19 @@
     if (sidebarState === 'open' || sidebarState === null) {
       wrapper.classList.remove('closed');
       header.classList.remove('closed');
-      menuToggleIcon.classList.remove('fa-angle-double-right');
-      menuToggleIcon.classList.add('fa-angle-double-left');
+      if (menuToggleIcon !== null) {
+        menuToggleIcon.classList.remove('fa-angle-double-right');
+        menuToggleIcon.classList.add('fa-angle-double-left');
+      }
       localStorage.setItem('atum-sidebar', 'open');
       Joomla.Event.dispatch('joomla:menu-toggle', 'open');
     } else {
       wrapper.classList.add('closed');
       header.classList.add('closed');
-      menuToggleIcon.classList.remove('fa-angle-double-left');
-      menuToggleIcon.classList.add('fa-angle-double-right');
+      if (menuToggleIcon !== null) {
+        menuToggleIcon.classList.remove('fa-angle-double-left');
+        menuToggleIcon.classList.add('fa-angle-double-right');
+      }
       localStorage.setItem('atum-sidebar', 'closed');
       Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
     }

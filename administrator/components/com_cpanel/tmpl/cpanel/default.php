@@ -25,7 +25,7 @@ HTMLHelper::_('script', 'com_cpanel/admin-cpanel-default.min.js', array('version
 
 $user = Factory::getUser();
 
-HTMLHelper::_('script', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
 HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
@@ -66,7 +66,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 </div>
 <div class="row justify-content-center mt-4">
 	<div class="col-md-11">
-		<a href="#" data-href="#moduleEditModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#moduleDashboardAddModal" role="button">
+		<a href="#moduleEditModal" data-href="#moduleDashboardAddModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" role="button">
 			<span class="fas fa-plus mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
 		</a>
 	</div>

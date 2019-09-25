@@ -25,7 +25,6 @@
       this.iframe = this.getAttribute('iframe') || '';
       this.width = this.getAttribute('width') || '40vw';
       this.height = this.getAttribute('height') || '600px';
-
       if (!this.container) {
         const cont = document.createElement('div');
         cont.classList.add('joomla-modal-dialog');
@@ -113,12 +112,11 @@
           if (this.iframeEl) {
             this.iframeEl.parentNode.remove(this.iframeEl);
           }
-
           const newIframe = document.createElement('iframe');
           newIframe.width = '100%';
-          // newIframe.height = this.height;
           newIframe.src = this.iframe;
           newIframe.setAttribute('frameborder', 0);
+          newIframe.style.height = this.height;
           this.body.appendChild(newIframe);
           this.iframeEl = this.main.querySelector('iframe');
         }
@@ -141,7 +139,7 @@
       this.evClose = this.close.bind(this);
 
       // Keyboard handling
-      this.addEventListener('keydown', this.evKeypress);
+      document.addEventListener('keydown', this.evKeypress);
       // Close on click outside the modal
       document.addEventListener('click', this.evDocumentClose);
 

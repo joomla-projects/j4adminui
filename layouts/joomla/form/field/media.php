@@ -124,7 +124,7 @@ $url    = ($readonly ? ''
 	HTMLHelper::_('webcomponent', 'system/fields/joomla-field-media.min.js', ['version' => 'auto', 'relative' => true]);
 	Text::script('JLIB_FORM_MEDIA_PREVIEW_EMPTY', true);
 	?>
-	<joomla-modal role="dialog" id="imageModal_<?php echo $id; ?>" title="<?php echo Text::_('JLIB_FORM_CHANGE_IMAGE'); ?>" width="90vw" height="100%" iframe="<?php echo $url ?>">
+	<joomla-modal role="dialog" id="imageModal_<?php echo $id; ?>" title="<?php echo Text::_('JLIB_FORM_CHANGE_IMAGE'); ?>" width="90vw" height="400px" iframe="<?php echo $url ?>">
 		<section>&nbsp;</section>
 		<footer>
 			<button type="button" class="btn btn-secondary button-save-selected"><?php echo Text::_('JSELECT'); ?></button>
