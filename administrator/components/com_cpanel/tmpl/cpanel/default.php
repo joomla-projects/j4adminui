@@ -39,7 +39,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 ?>
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
-		
+
 		<div class="row js-draggable">
 			<?php
 				foreach ($this->modules as $module)
@@ -60,7 +60,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 				}
 			?>
 		</div>
-		
+
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>
 	</div>
 </div>
@@ -73,7 +73,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 	<?php endif; ?>
 </div>
 
-<joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="http://localhost<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>">
+<joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>">
 	<section>&nbsp;</section>
 	<footer>
 		<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>
