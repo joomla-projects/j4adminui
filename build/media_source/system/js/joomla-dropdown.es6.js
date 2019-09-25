@@ -19,10 +19,12 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(this.for);
+      // const button = document.querySelector(this.for);
+      const button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
-      if (!button.id) {
+      if (!button.hasAttribute('data-target')) {
+        console.log('hi')
         return;
       }
 
@@ -111,9 +113,9 @@
           item.toggleAttribute('open');
         }
       })
-      const button = document.querySelector(`#${this.getAttribute('aria-labelledby')}`);
+      const button = document.querySelector(`[data-target=${this.getAttribute('aria-labelledby')}]`);
       this.removeAttribute('expanded');
-      button.setAttribute('aria-expanded', false);
+      button && button.setAttribute('aria-expanded', false);
 
       // remove the click listener on list items
       window.removeEventListener('click', this.checkSubmenu, true);
