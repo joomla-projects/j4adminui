@@ -18,7 +18,7 @@ $activeRequests = 0;
 
 ?>
 
-<table id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>

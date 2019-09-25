@@ -18,7 +18,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 
 <joomla-tab>
 	<section orientation="vertical" id="module-content-latest-<?php echo $module->id; ?>" name="<?php echo Text::_('MOD_CONTENT_LATEST'); ?>">
-		<table class="j-list-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+		<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 			<caption class="sr-only"><?php echo $module->title; ?></caption>
 			<tbody>
 				<?php if (count($latests)) : ?>
