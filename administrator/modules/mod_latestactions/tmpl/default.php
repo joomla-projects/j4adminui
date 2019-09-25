@@ -15,12 +15,12 @@ use Joomla\CMS\Language\Text;
 HTMLHelper::_('bootstrap.framework');
 
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:80%"><?php echo Text::_('MOD_LATESTACTIONS_ACTION'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col"><?php echo Text::_('MOD_LATESTACTIONS_ACTION'); ?></th>
+			<th scope="col" style="width: 150px; white-space: nowrap"><?php echo Text::_('JDATE'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,7 +30,7 @@ HTMLHelper::_('bootstrap.framework');
 			<td>
 				<?php echo $item->message; ?>
 			</td>
-			<td>
+			<td style="white-space: nowrap">
 				<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
 			</td>
 		</tr>

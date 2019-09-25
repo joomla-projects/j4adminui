@@ -14,13 +14,13 @@ use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('bootstrap.framework');
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:2%"><?php echo Text::_('JGLOBAL_HITS'); ?></th>
-			<th scope="col" style="width:80%"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
-			<th scope="col" style="width:18%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col" style="width: 70px"><?php echo Text::_('JGLOBAL_HITS'); ?></th>
+			<th scope="col"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
+			<th scope="col" style="white-space: nowrap; width: 150px;"><?php echo Text::_('JDATE'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -31,7 +31,7 @@ HTMLHelper::_('bootstrap.framework');
 			<?php $hits_class = ($hits >= 10000 ? 'danger' : ($hits >= 1000 ? 'warning' : ($hits >= 100 ? 'info' : 'secondary'))); ?>
 			<tr>
 				<td>
-					<span class="badge badge-<?php echo $hits_class; ?>"><?php echo $item->hits; ?></span>
+					<span class="j-color-<?php echo $hits_class; ?>"><?php echo $item->hits; ?></span>
 				</td>
 				<th scope="row">
 					<?php if ($item->checked_out) : ?>
@@ -45,7 +45,7 @@ HTMLHelper::_('bootstrap.framework');
 						<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>
 					<?php endif; ?>
 				</th>
-				<td>
+				<td style="white-space: nowrap;">
 					<?php echo HTMLHelper::_('date', $item->publish_up, Text::_('DATE_FORMAT_LC4')); ?>
 				</td>
 			</tr>

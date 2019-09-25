@@ -64,8 +64,8 @@ if ($module->content) :
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
-								<a href="javascript:;" class="" id="dropdownMenuButton-<?php echo $id; ?>">
-									<span class="j-card-header-icon fas fa-ellipsis-h" aria-hidden="true"></span>
+								<a href="javascript:;" class="j-card-header-icon" id="dropdownMenuButton-<?php echo $id; ?>">
+									<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
 								<joomla-dropdown for="#dropdownMenuButton-<?php echo $id; ?>">
@@ -83,7 +83,7 @@ if ($module->content) :
                     </div>
 				</div>
 			<?php endif; ?>
-			<div class="card-body" id="card-body-<?php echo $id; ?>">
+			<div class="j-module-content" id="j-card-body-<?php echo $id; ?>">
 				<?php echo $module->content; ?>
 			</div>
 		</<?php echo $moduleTag; ?>>

@@ -64,7 +64,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			}
 		}
 	}
-
+	
 	.j-card-body {
 		padding: 1.5rem;
 	}
@@ -77,6 +77,8 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			text-align: center;
 			flex-grow: 1;
 			.j-card-footer-item-text,
+			> span,
+			> div,
 			a,
 			button{
 				line-height: 1.375rem;
@@ -103,8 +105,8 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 						color: var(--icon-color);
 					}
 				}
-				&:not(.j-card-footer-item-text):hover,
-				&:focus{
+				&:not(.j-card-footer-item-text):not(.no-link):hover,
+				&:not(.j-card-footer-item-text):not(.no-link):focus{
 					color: var(--link-color);
 					.j-card-icon{
 						color: var(--link-color);
@@ -137,6 +139,8 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		}
 		&.j-card-footer-lg .j-card-footer-item{
 			.j-card-footer-item-text,
+			> span,
+			> div,
 			a,
 			button{
 				padding: 1rem .857143rem;
@@ -269,7 +273,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			font-weight: 400;
 			color: var(--secondary-color);
 		}
-		tr:last-child{
+		tbody tr:last-child{
 			td,
 			th{
 				border-bottom: none;
@@ -440,5 +444,22 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		&::after{
 			background: var(--danger-colorcolor);
 		}
+	}
+}
+
+.j-card-image-mod-container{
+	padding: 50px 50px 30px;
+}
+
+.j-card-counter-msg{
+	color: var(--secondary-color);
+	margin-top: 1.071rem;
+	span{
+		font-size: 3.857rem;
+		line-height: 5.071rem;
+		font-weight: 700;
+		display: inline-block;
+		padding-right: 0.643rem;
+		color: var(--color);
 	}
 }
