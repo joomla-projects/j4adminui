@@ -18,6 +18,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $user      = Factory::getUser();
@@ -260,15 +261,14 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 
 					<?php // Load the batch processing form if user is allowed ?>
 					<?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
-							'collapseModal',
-							array(
-								'title'  => Text::_('COM_MENUS_BATCH_OPTIONS'),
-								'footer' => $this->loadTemplate('batch_footer')
-							),
-							$this->loadTemplate('batch_body')
-						); ?>
+						<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_MENUS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+							<section>
+								<?php echo $this->loadTemplate('batch_body'); ?>
+							</section>
+							<footer>
+								<?php echo $this->loadTemplate('batch_footer'); ?>
+							</footer>
+						</joomla-modal>
 					<?php endif; ?>
 				<?php endif; ?>
 

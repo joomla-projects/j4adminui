@@ -18,7 +18,7 @@ HTMLHelper::_('script', 'mod_multilangstatus/admin-multilangstatus.min.js', arra
 ?>
 
 <div class="multilanguage">
-	<a class="d-flex align-items-stretch header-item-link" href="#multiLangModal" title="<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>" data-toggle="modal" role="button">
+	<a class="d-flex align-items-stretch header-item-link" data-href="#multiLangModal" href="#" title="<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>" data-toggle="modal" role="button">
 		<div>
 			<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>
 		</div>
@@ -28,7 +28,7 @@ HTMLHelper::_('script', 'mod_multilangstatus/admin-multilangstatus.min.js', arra
 	</a>
 
 	<?php echo HTMLHelper::_(
-		'bootstrap.renderModal',
+		'webcomponent.renderModal',
 		'multiLangModal',
 		array(
 			'title'      => Text::_('MOD_MULTILANGSTATUS'),

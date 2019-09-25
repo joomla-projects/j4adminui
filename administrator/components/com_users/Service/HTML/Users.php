@@ -109,7 +109,7 @@ class Users
 
 		$title = Text::plural('COM_USERS_N_USER_NOTES', $count);
 
-		return '<button  type="button" data-target="#userModal_' . (int) $userId . '" id="modal-' . (int) $userId
+		return '<button  type="button" data-href="#userModal_' . (int) $userId . '" id="modal-' . (int) $userId
 			. '" data-toggle="modal" class="dropdown-item"><span class="fa fa-eye" aria-hidden="true"></span> ' . $title . '</button>';
 	}
 
@@ -135,7 +135,7 @@ class Users
 			. Text::_('JTOOLBAR_CLOSE') . '</button>';
 
 		return HTMLHelper::_(
-			'bootstrap.renderModal',
+			'webcomponent.renderModal',
 			'userModal_' . (int) $userId,
 			array(
 				'title'       => $title,

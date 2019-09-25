@@ -75,18 +75,6 @@
       }
     }
 
-    /* Respond to attribute changes */
-    // attributeChangedCallback(attr, oldValue, newValue) {
-    //   console.log('class list: ', attr);
-    //   switch (attr) {
-    //     case 'class':
-    //       console.log('class list: ', newValue);
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // }
-
     disconnectedCallback() {
       this.removeEventListener('joomla.modal.show');
       this.removeEventListener('joomla.modal.close');
@@ -113,10 +101,10 @@
       // Set the current Modal ID
       Joomla.Modal.setCurrent(this);
 
-      const dropShadow = document.createElement('div');
-      dropShadow.classList.add('modal-backdrop', 'fade');
-      dropShadow.classList.add('modal-backdrop', 'show');
-      document.body.appendChild(dropShadow);
+      this.dropShadow = document.createElement('div');
+      this.dropShadow.classList.add('modal-backdrop', 'fade');
+      this.dropShadow.classList.add('modal-backdrop', 'show');
+      document.body.appendChild(this.dropShadow);
       this.removeAttribute('aria-hidden');
       // Iframe specific code, reload
       if (this.body) {
@@ -154,7 +142,6 @@
 
       // Keyboard handling
       this.addEventListener('keydown', this.evKeypress);
-
       // Close on click outside the modal
       document.addEventListener('click', this.evDocumentClose);
 
@@ -185,26 +172,25 @@
       this.classList.remove('show');
       this.setAttribute('area-expand', 'false');
       // this.main.innerHTML = '';
-      if (this.main.querySelector('iframe')) {
-        this.main.removeChild(this.main.querySelector('iframe'));
-      }
+
       if (this.triggerBtn) {
         this.triggerBtn.focus();
       }
       this.dispatchCustomEvent('joomla.modal.close');
 
       this.addEventListener('transitionend', () => {
-        const dropShadow = document.querySelector('.modal-backdrop');
-        if (dropShadow) {
-          document.body.removeChild(dropShadow);
+        if (this.dropShadow) {
+          document.body.removeChild(this.dropShadow);
+        }
+        if (this.main.querySelector('iframe')) {
+          this.main.removeChild(this.main.querySelector('iframe'));
         }
         this.dispatchCustomEvent('joomla.modal.closed');
       }, { once: true });
     }
 
     documentClose(event) {
-      if (this.container.contains(event.target) === false
-          && !this.triggerBtn.contains(event.target)) {
+      if (!this.container.contains(event.target) && event.target === this) {
         this.close();
       }
     }

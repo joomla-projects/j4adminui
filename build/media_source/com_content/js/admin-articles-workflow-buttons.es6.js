@@ -60,7 +60,7 @@ Joomla.toggleAllNextElements = (element, className) => {
       articleListRows = [].slice.call(articleList.querySelectorAll('tbody tr'));
     }
     // TODO: remove jQuery dependency, when we have a new modal script
-    window.jQuery(modal).on('hide.bs.modal', () => {
+    modal.addEventListener('joomla.modal.close', () => {
       modalcontent.innerHTML = '';
     });
 
@@ -148,7 +148,7 @@ Joomla.toggleAllNextElements = (element, className) => {
         modalcontent.innerHTML = html;
 
         // TODO: remove jQuery dependency, when we have a new modal script
-        window.jQuery(modal).modal();
+        modal.open();
       }
     }
 

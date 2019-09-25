@@ -50,9 +50,9 @@ class DisplayController extends BaseController
 			$httpHeadersId = ReporterHelper::getHttpHeadersPluginId();
 			$link = HTMLHelper::_(
 				'link',
-				'#plugin' . $httpHeadersId . 'Modal',
+				'#',
 				Text::_('COM_CSP_SYSTEM_PLUGIN'),
-				'class="alert-link" data-toggle="modal" id="title-' . $httpHeadersId . '"'
+				'class="alert-link" data-href="#plugin'. $httpHeadersId .'Modal" data-toggle="modal" id="title-' . $httpHeadersId . '"'
 			);
 
 			$this->app->enqueueMessage(Text::sprintf('COM_CSP_PLUGIN_MODAL_DISABLED', $link), 'error');
