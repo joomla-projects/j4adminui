@@ -168,8 +168,32 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
     <h1> Joomla Dropdown </h1>
     <div style="width: 100%">
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
-            <joomla-dropdown for="#dropdownList">
+            <a href="#" class="btn btn-secondary" data-target="dropdownList1">Dropdown with list</a>
+            <joomla-dropdown for="dropdownList1">
+                <li class="has-submenu" data-action="hover">
+                    <a class="dropdown-item" >Item 1</a>
+                    <ul class='submenu'>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu" data-action="hover">
+                    <a class="dropdown-item" >Item 2</a>
+                    <ul class='submenu'>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="#">Item 3</a></li>
+            </joomla-dropdown>
+        </div>
+        <div class="joomla-dropdown-container">
+            <a href="#" class="btn btn-secondary" data-target="dropdownList2">Dropdown with list</a>
+            <joomla-dropdown for="dropdownList2" position="left">
                 <li class="has-submenu">
                     <a class="dropdown-item" >Item 1</a>
                     <ul class='submenu'>
@@ -184,24 +208,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList3">Dropdown with list</a>
-            <joomla-dropdown for="#dropdownList3" position="left">
-                <li class="has-submenu">
-                    <a class="dropdown-item" >Item 1</a>
-                    <ul class='submenu'>
-                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
-                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
-                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
-                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
-                    </ul>
-                </li>
-                <li><a class="dropdown-item" href="#">Item 2</a></li>
-                <li><a class="dropdown-item" href="#">Item 3</a></li>
-            </joomla-dropdown>
-        </div>
-        <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a>
-            <joomla-dropdown for="#dropdownText">
+            <a href="#" class="btn btn-secondary" data-target="dropdownText">Dropdown with text</a>
+            <joomla-dropdown for="dropdownText">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>
         </div>
