@@ -52,12 +52,12 @@ if ($module->content) :
 		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header handle">
-					<h2 class="j-card-title<?php echo $headerClass; ?>">
+					<h3 class="j-card-title<?php echo $headerClass; ?>">
 						<span class="j-card-icon fas fa-arrows-alt-v" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>
-					</h2>
+					</h3>
 
 					<div class="j-card-header-right">
 						<button class="j-card-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"></button>

@@ -188,23 +188,25 @@ if($this->item->id > 0)
 			<?php endif; ?>
 
 			<?php if (!$isModal && $assoc) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 				<?php if ($hasAssoc) : ?>
-					<fieldset id="fieldset-associations" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
-					<div>
-					<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
-					</div>
-					</fieldset>
+					<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+						<div id="fieldset-associations" class="j-card options-grid-form options-grid-form-full">
+							<div class="j-card-header">
+								<?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?>
+							</div>
+							<div class="j-card-body">
+								<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
+							</div>
+						</div>
+					<?php echo HTMLHelper::_('uitab.endTab'); ?>
 				<?php endif; ?>
-				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php elseif ($isModal && $assoc) : ?>
 				<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 			<?php endif; ?>
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
-				<fieldset id="fieldset-editor" class="j-card form-no-margin options-grid-form">
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor-config', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
+				<fieldset id="fieldset-editor-config" class="j-card form-no-margin options-grid-form">
 					<div class="j-card-header">
 						<?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?>
 					</div>
