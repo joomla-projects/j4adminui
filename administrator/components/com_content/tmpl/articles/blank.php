@@ -170,7 +170,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
         <div class="joomla-dropdown-container">
             <a href="#" class="btn btn-secondary" data-target="dropdownList1">Dropdown with list</a>
             <joomla-dropdown for="dropdownList1">
-                <li class="has-submenu" data-action="hover">
+                <li class="has-submenu">
                     <a class="dropdown-item" >Item 1</a>
                     <ul class='submenu'>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
@@ -179,7 +179,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu" data-action="hover">
+                <li class="has-submenu">
                     <a class="dropdown-item" >Item 2</a>
                     <ul class='submenu'>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
@@ -192,9 +192,9 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" data-target="dropdownList2">Dropdown with list</a>
+            <a href="#" class="btn btn-secondary" data-target="dropdownList2">Dropdown with list ( clickable )</a>
             <joomla-dropdown for="dropdownList2" position="left">
-                <li class="has-submenu">
+                <li class="has-submenu" data-action="click">
                     <a class="dropdown-item" >Item 1</a>
                     <ul class='submenu'>
                         <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>

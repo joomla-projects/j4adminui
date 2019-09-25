@@ -36,7 +36,7 @@ joomla-dropdown {
         left: auto;
         right: 100%;
       }
-      .dropdown-item[open] + ul{
+      &[open] > ul{
         visibility: visible;
         opacity: 1;
       }
@@ -58,9 +58,9 @@ joomla-dropdown {
             background-repeat: no-repeat;
             transition: 300ms;
           }
-          &[open]::after{
-            transform: translateY(-50%) rotate(-90deg)
-          }
+        }
+        &[open] > a::after{
+          transform: translateY(-50%) rotate(-90deg)
         }
         &.left > a{
           padding-left: 30px;
@@ -68,9 +68,9 @@ joomla-dropdown {
             right: auto;
             left: 10px;
           }
-          &[open]::after{
-            transform: translateY(-50%) rotate(90deg)
-          }
+        }
+        &[open].left > a::after{
+          transform: translateY(-50%) rotate(90deg)
         }
       }
     }
