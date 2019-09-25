@@ -130,11 +130,6 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'address contact');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('workflow.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -170,12 +165,17 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_WORKFLOWS_LIST');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($this->extension);
 		}
 
-		$toolbar->help('JHELP_WORKFLOWS_LIST');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('workflow.add');
+		}
 	}
 
 	/**

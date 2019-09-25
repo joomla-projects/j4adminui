@@ -116,10 +116,22 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_BANNERS_MANAGER_TRACKS'), 'bookmark banners-tracks');
 
+		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_TRACKS');
+
 		$bar = Toolbar::getInstance('toolbar');
 
 		// Instantiate a new FileLayout instance and render the export button
 		$layout = new FileLayout('joomla.toolbar.modal');
+
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			ToolbarHelper::preferences('com_banners');
+		}
+
+		if ($canDo->get('core.delete'))
+		{
+			$bar->appendButton('Confirm', 'COM_BANNERS_DELETE_MSG', 'delete', 'COM_BANNERS_TRACKS_DELETE', 'tracks.delete', false);
+		}
 
 		$dHtml = $layout->render(
 			[
@@ -132,17 +144,6 @@ class HtmlView extends BaseHtmlView
 
 		$bar->appendButton('Custom', $dHtml, 'download');
 
-		if ($canDo->get('core.delete'))
-		{
-			$bar->appendButton('Confirm', 'COM_BANNERS_DELETE_MSG', 'delete', 'COM_BANNERS_TRACKS_DELETE', 'tracks.delete', false);
-		}
-
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			ToolbarHelper::preferences('com_banners');
-		}
-
-		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_TRACKS');
 	}
 
 	/**

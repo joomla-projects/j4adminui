@@ -142,11 +142,6 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CONTACT_MANAGER_CONTACTS'), 'address-book contact');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_contact', 'core.create')) > 0)
-		{
-			$toolbar->addNew('contact.add');
-		}
-
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -203,12 +198,17 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_CONTACTS_CONTACTS');
+
 		if ($user->authorise('core.admin', 'com_contact') || $user->authorise('core.options', 'com_contact'))
 		{
 			$toolbar->preferences('com_contact');
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_CONTACTS_CONTACTS');
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_contact', 'core.create')) > 0)
+		{
+			$toolbar->addNew('contact.add');
+		}
 	}
 
 	/**
