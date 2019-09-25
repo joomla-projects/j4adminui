@@ -19,7 +19,6 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      // const button = document.querySelector(this.for);
       const button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
@@ -60,21 +59,43 @@
         innerLinks.forEach((innerLink) => {
           innerLink.addEventListener('click', this.checkSubmenu, true);
         });
+        // toggle dropdown onhover
+        const lists = this.querySelectorAll('li.has-submenu');
+        lists.forEach((list) => {
+          if (list.getAttribute('data-action') !== 'click') {
+            list.addEventListener('mouseenter', this.showSubmenu, true);
+            list.addEventListener('mouseleave', this.hideSubmenu, true);
+          }
+        });
       });
     }
 
-    checkSubmenu(event) {
+    showSubmenu(event) {
       event.preventDefault();
+      if (event.target.classList.contains('has-submenu')) {
+        event.target.toggleAttribute('open');
+      }
+    }
+
+    hideSubmenu(event) {
+      event.preventDefault();
+      if (event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
+        event.target.toggleAttribute('open');
+      }
+    }
+
+    checkSubmenu(event) {
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
-      if (hasSubmenu) {
-        const allDropdowns = this.querySelectorAll('.has-submenu a');
+      const clickable = event.target.parentElement.getAttribute('data-action') === 'click';
+      if (hasSubmenu && clickable) {
+        const allDropdowns = this.querySelectorAll('.has-submenu');
         allDropdowns.forEach((dropdown) => {
-          if (dropdown.hasAttribute('open')) {
-            dropdown.removeAttribute('open');
+          if (dropdown.hasAttribute('open') && dropdown !== event.target.parentElement) {
+            dropdown.toggleAttribute('open');
           }
         });
-        event.target.toggleAttribute('open');
+        event.target.parentElement.toggleAttribute('open');
       } else {
         this.close();
       }
@@ -95,10 +116,12 @@
 
     setPosition() {
       const dropdownRect = this.getBoundingClientRect();
-      if (this.position === 'left' && (dropdownRect.left + dropdownRect.width) > window.innerWidth) {
-        this.setAttribute('position', 'right');
-      } else if (this.position === 'right' && (dropdownRect.right + dropdownRect.width) > window.innerWidth) {
+      const button = document.querySelector(`[data-target=${this.for}]`);
+      const buttonRect = button.getBoundingClientRect();
+      if (this.position === 'left' && (dropdownRect.width + buttonRect.width) > dropdownRect.right) {
         this.setAttribute('position', 'left');
+      } else if (this.position === 'right' && (buttonRect.right + dropdownRect.width) > window.innerWidth) {
+        this.setAttribute('position', 'right');
       }
     }
 
@@ -112,7 +135,7 @@
 
     close() {
       // removing 'open' attribute of dropdown items
-      const dropdownItems = document.querySelectorAll('.has-submenu > .dropdown-item');
+      const dropdownItems = document.querySelectorAll('.has-submenu');
       dropdownItems.forEach((item) => {
         if (item.hasAttribute('open')) {
           item.toggleAttribute('open');

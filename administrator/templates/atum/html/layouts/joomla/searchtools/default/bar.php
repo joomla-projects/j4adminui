@@ -55,7 +55,7 @@ $filters = $data['view']->filterForm->getGroup('filter');
 		</div>
 		<?php if($filterButton) : ?>
 			<div class="btn-group">
-				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter p-0 ml-3">
+				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter ml-3">
 					<span class="fa fa-plus" aria-hidden="true"></span>
 					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
 				</button>

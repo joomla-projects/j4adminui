@@ -28,7 +28,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=>
             <span class="fa fa-angle-down" aria-hidden="true"></span>
         </button>
         
-        <joomla-dropdown for="header-user-dropdown" position='left'>
+        <joomla-dropdown for="header-user-dropdown">
             <?php $uri   = Uri::getInstance(); ?>
 		    <?php $route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); ?>
             <a href="<?php echo Route::_($route); ?>" class="dropdown-item">

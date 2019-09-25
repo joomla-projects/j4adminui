@@ -27,7 +27,7 @@ HTMLHelper::_('script', 'com_menus/admin-item-edit_modules.min.js', array('versi
 
 // Set up the bootstrap modal that will be used for all module editors
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'moduleEditModal',
 	array(
 		'title'       => Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'),
@@ -52,7 +52,7 @@ $this->fields = array('toggle_modules_assigned','toggle_modules_published');
 
 echo LayoutHelper::render('joomla.menu.edit_modules', $this); ?>
 
-<table class="table">
+<table class="table j-striped-table">
 	<thead>
 		<tr>
 			<th>
@@ -91,7 +91,7 @@ echo LayoutHelper::render('joomla.menu.edit_modules', $this); ?>
 		<tr class="<?php echo $no; ?><?php echo $status; ?>row<?php echo $i % 2; ?>" id="tr-<?php echo $module->id; ?>">
 			<td id="<?php echo $module->id; ?>" style="width:40%">
 				<button type="button"
-					data-target="#moduleEditModal"
+					data-href="#moduleEditModal"
 					class="btn btn-link module-edit-link"
 					title="<?php echo Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'); ?>"
 					id="title-<?php echo $module->id; ?>"

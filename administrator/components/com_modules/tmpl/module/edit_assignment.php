@@ -26,15 +26,15 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 		<?php if (!empty($menuTypes)) : ?>
 		<?php $id = 'jform_menuselect'; ?>
 
-		<div class="card mb-3">
-			<div class="card-body">
+		<div class="j-card mb-3">
+			<div class="j-card-body">
 				<div id="jform_menus" class="form-group">
 					<label id="jform_menus-lbl" for="jform_assignment"><?php echo Text::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
 					<select class="form-control custom-select" name="jform[assignment]" id="jform_assignment">
 						<?php echo HTMLHelper::_('select.options', ModulesHelper::getAssignmentOptions($this->item->client_id), 'value', 'text', $this->item->assignment, true); ?>
 					</select>
 				</div>
-				
+
 				<div id="jform_treeselectfilter" class="form-group mb-0">
 					<label id="treeselectfilter-lbl" for="treeselectfilter"><?php echo Text::_('COM_MODULES_SEARCH_MENU_ITEMS'); ?></label>
 					<input type="text" id="treeselectfilter" name="treeselectfilter" class="form-control search-query" size="16"
@@ -55,7 +55,7 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 					<a id="treeCollapseAll" href="javascript://"><?php echo Text::_('JNONE'); ?></a>
 				</small>
 			</div>
-	
+
 			<ul class="treeselect">
 				<?php foreach ($menuTypes as &$type) : ?>
 				<?php if (count($type->links)) : ?>
@@ -115,7 +115,7 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 										</div>
 									</div>
 							<?php
-	
+
 							if (!isset($type->links[$i + 1]))
 							{
 								echo str_repeat('</li></ul>', $link->level);
@@ -127,9 +127,9 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
-	
+
 			<joomla-alert id="noresultsfound" type="warning" style="display:none;"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></joomla-alert>
-			
+
 			<div style="display:none" id="treeselectmenu">
 				<div class="nav-hover treeselect-menu">
 					<a href="javascript:;" class="treeselect-options-toggle" id="treemenu" role="button">

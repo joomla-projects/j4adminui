@@ -36,7 +36,7 @@ joomla-dropdown {
         left: auto;
         right: 100%;
       }
-      .dropdown-item[open] + ul{
+      &[open] > ul{
         visibility: visible;
         opacity: 1;
       }
@@ -48,7 +48,7 @@ joomla-dropdown {
             position: absolute;
             right: 10px;
             top: 50%;
-            transform: rotate(-90deg);
+            transform: translateY(-50%);
             height: 12px;
             width: 12px;
             background-size: contain;
@@ -58,10 +58,9 @@ joomla-dropdown {
             background-repeat: no-repeat;
             transition: 300ms;
           }
-
-          // &[open]::after{
-          //   transform: translateY(-50%) rotate(-90deg)
-          // }
+        }
+        &[open] > a::after{
+          transform: translateY(-50%) rotate(-90deg)
         }
         &.left > a{
           padding-left: 30px;
@@ -69,9 +68,9 @@ joomla-dropdown {
             right: auto;
             left: 10px;
           }
-          &[open]::after{
-            transform: translateY(-50%) rotate(90deg)
-          }
+        }
+        &[open].left > a::after{
+          transform: translateY(-50%) rotate(90deg)
         }
       }
     }
@@ -104,7 +103,6 @@ joomla-dropdown {
         outline: 2px solid var(--link-color);
         background: #ffffff;
       }
-    }
       > p{
           padding-left: 1.143rem;
           padding-right: 1.143rem;

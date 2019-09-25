@@ -151,7 +151,7 @@ class PopupButton extends ToolbarButton
 				$params['footer'] = $footer;
 			}
 
-			$html[] = HTMLHelper::_('bootstrap.renderModal', $selector, $params);
+			$html[] = HTMLHelper::_('webcomponent.renderModal', $selector, $params);
 
 			$html[] = '</div>';
 
@@ -172,9 +172,9 @@ JS
 			Factory::getDocument()->addScriptDeclaration(
 				<<<JS
 window.addEventListener('DOMContentLoaded', function() {
-	jQuery('#{$options['selector']}').on('hide.bs.modal', function () {
-	    {$options['onclose']}
-	});
+	document.getElementById('{$options['selector']}').addEventListener('joomla.modal.close', function(){
+		{$options['onclose']}
+	})
 });
 JS
 			);

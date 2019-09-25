@@ -63,10 +63,10 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_MODULES_MODULE')); ?>
 
-				<div class="card">
+				<div class="j-card">
 					<?php if ($this->item->xml) : ?>
 						<?php if ($this->item->xml->description) : ?>
-							<div class="card-header">
+							<div class="j-card-header">
 								<h2>
 									<?php
 									if ($this->item->xml)
@@ -108,7 +108,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 									?>
 									<p class="text-muted mb-0"><?php echo $short_description; ?></p>
 									<?php if ($long_description) : ?>
-										<p class="readmore card-link mt-2">
+										<p class="readmore j-card-link mt-2">
 											<a href="#" onclick="document.querySelector('#tab-description').click();">
 												<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
 											</a>
@@ -125,7 +125,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 							</div>
 						</div>
 					<?php endif; ?>
-					<div class="card-body">
+					<div class="j-card-body">
 						<?php
 						if ($hasContent)
 						{
@@ -141,8 +141,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php if (isset($long_description) && $long_description != '') : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
-					<div class="card">
-						<div class="card-body">
+					<div class="j-card">
+						<div class="j-card-body">
 							<?php echo $long_description; ?>
 						</div>
 					</div>

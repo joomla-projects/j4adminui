@@ -33,7 +33,7 @@ $saveOrder = $listOrder == 'a.id';
 				<?php if ($this->httpHeadersId) : ?>
 					<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->httpHeadersId . '&tmpl=component&layout=modal'); ?>
 					<?php echo HTMLHelper::_(
-						'bootstrap.renderModal',
+						'webcomponent.renderModal',
 						'plugin' . $this->httpHeadersId . 'Modal',
 						array(
 							'url'         => $link,

@@ -144,7 +144,6 @@ class MenutypeField extends ListField
 
 		$html[] = '<input type="hidden" ' . $required . ' readonly="readonly" id="' . $this->id
 			. '" value="' . $value . '"' . $size . $class . '>';
-
 		$html[] = '<input type="hidden" name="' . $this->name . '" value="'
 			. htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '" id="' . $this->id . '_val">';
 

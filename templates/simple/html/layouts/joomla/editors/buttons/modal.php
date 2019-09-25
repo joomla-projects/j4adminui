@@ -25,7 +25,7 @@ $options  = is_array($button->get('options')) ? $button->get('options') : array(
 
 // Create the modal
 echo JHtml::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	str_replace(' ', '', $button->get('text')) . 'Modal',
 	array(
 		'url'    => $link,

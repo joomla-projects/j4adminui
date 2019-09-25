@@ -15,7 +15,7 @@ $icon     = isset($displayData['icon']) ? $displayData['icon'] : 'fa fa-download
 $text     = isset($displayData['text']) ? $displayData['text'] : '';
 
 // Render the modal
-echo JHtml::_('bootstrap.renderModal',
+echo JHtml::_('webcomponent.renderModal',
 	'modal_'. $selector,
 	array(
 		'url'         => $displayData['doTask'],

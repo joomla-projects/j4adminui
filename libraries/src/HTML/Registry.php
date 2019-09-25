@@ -58,6 +58,7 @@ final class Registry
 		'tel'             => \JHtmlTel::class,
 		'uitab'           => \JHtmlUiTab::class,
 		'user'            => \JHtmlUser::class,
+		'webcomponent'    => \JHtmlWebcomponent::class,
 		'workflowstage'   => \JHtmlWorkflowstage::class,
 	];
 

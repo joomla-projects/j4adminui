@@ -152,7 +152,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 												<?php foreach ($this->modules[$item->menutype] as &$module) : ?>
 													<?php if ($user->authorise('core.edit', 'com_modules.module.' . (int) $module->id)) : ?>
 														<?php $link = Route::_('index.php?option=com_modules&task=module.edit&id=' . $module->id . '&return=' . $return . '&tmpl=component&layout=modal'); ?>
-														<button type="button" class="dropdown-item" data-target="#moduleEdit<?php echo $module->id; ?>Modal" data-toggle="modal" title="<?php echo Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'); ?>">
+														<button type="button" class="dropdown-item" data-href="#moduleEdit<?php echo $module->id; ?>Modal" data-toggle="modal" title="<?php echo Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'); ?>">
 															<?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?></button>
 													<?php else : ?>
 														<span class="dropdown-item"><?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?></span>
@@ -164,7 +164,7 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 											<?php if ($user->authorise('core.edit', 'com_modules.module.' . (int) $module->id)) : ?>
 												<?php $link = Route::_('index.php?option=com_modules&task=module.edit&id=' . $module->id . '&return=' . $return . '&tmpl=component&layout=modal'); ?>
 												<?php echo HTMLHelper::_(
-														'bootstrap.renderModal',
+														'webcomponent.renderModal',
 														'moduleEdit' . $module->id . 'Modal',
 														array(
 															'title'       => Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'),
@@ -191,9 +191,9 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 										<?php endforeach; ?>
 									<?php elseif ($modMenuId) : ?>
 										<?php $link = Route::_('index.php?option=com_modules&task=module.add&eid=' . $modMenuId . '&params[menutype]=' . $item->menutype . '&tmpl=component&layout=modal'); ?>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleAddModal"><?php echo Text::_('COM_MENUS_ADD_MENU_MODULE'); ?></button>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-href="#moduleAddModal"><?php echo Text::_('COM_MENUS_ADD_MENU_MODULE'); ?></button>
 										<?php echo HTMLHelper::_(
-												'bootstrap.renderModal',
+												'webcomponent.renderModal',
 												'moduleAddModal',
 												array(
 													'title'       => Text::_('COM_MENUS_ADD_MENU_MODULE'),

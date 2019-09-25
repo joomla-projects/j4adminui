@@ -28,26 +28,28 @@ endif;
 	<div class="row">
 		<?php foreach ($this->items as &$item) : ?>
 			<div class="col-sm-6 col-md-4 col-lg-3">
-				<div class="card">
+				<div class="j-card mb-4">
 					<?php // Prepare variables for the link. ?>
 					<?php $link = 'index.php?option=com_modules&task=module.add&client_id=' . $this->state->get('client_id', 0) . $this->modalLink . '&eid=' . $item->extension_id; ?>
 					<?php $name = $this->escape($item->name); ?>
 					<?php $desc = HTMLHelper::_('string.truncate', $this->escape(strip_tags($item->desc)), 200); ?>
-					
-					<div class="card-header">
+
+					<div class="j-card-header">
 						<strong><?php echo $name; ?></strong>
 					</div>
-					
-					<div class="card-body">
+
+					<div class="j-card-body">
 						<p class="text-muted m-0">
 							<?php echo $desc; ?>
 						</p>
 					</div>
 
-					<div class="card-footer text-center">
-						<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>" class="card-link">
-							<?php echo Text::_('COM_MODULES_SELECT'); ?>
-						</a>
+					<div class="j-card-footer">
+						<div class="j-card-footer-item">
+							<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>" class="j-card-link">
+								<?php echo Text::_('COM_MODULES_SELECT'); ?>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

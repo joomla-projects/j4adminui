@@ -1,18 +1,56 @@
 <?php
 defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 
-HTMLHelper::_('webcomponent', 'system/pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/pagination.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-modal.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-callout.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-accordion.es6.min.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-tab.es6.min.js', array('version'=> 'auto', 'relative' => true));
+// HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div class="container" style="background:white; padding: 10px;">
+        <h1> Demo Modal </h1>
+        <?php 
+        
+            echo HTMLHelper::_(
+                'webcomponent.renderModal',
+                'associationSelect',
+                array(
+                    'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),
+                    'backdrop'    => 'static',
+                    'url'         => 'https://stackoverflow.com/questions/369602/deleting-an-element-from-an-array-in-php',
+                    'height'      => '400px',
+                    'width'       => '800px',
+                    'bodyHeight'  => 70,
+                    'modalWidth'  => 80,
+                    'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
+                            . Text::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>',
+                )
+            );
+
+            echo HTMLHelper::_(
+                'webcomponent.renderModal',
+                'associationSelect2',
+                array(
+                    'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),
+                    'backdrop'    => 'static',
+                    'height'      => '400px',
+                    'width'       => '800px',
+                    'bodyHeight'  => 70,
+                    'modalWidth'  => 80,
+                    'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
+                            . Text::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>',
+                ),
+                '<p> This is awesome paragraph </p>'
+            );
+        ?>
+        <button type="button" data-href="#associationSelect"> Open Modal </button>
+        <button type="button" data-href="#associationSelect2"> Open Modal2 </button>
         <h1> Joomla Pgoress </h1>
         <div class="_joomla-progress" style="width: 600px">
             <joomla-progress progress="25"></joomla-progress>
@@ -85,12 +123,12 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
     <br><hr>
     <h1> Joomla Callout </h1>
     <div style="width: 100%">
-        <a href="#" id="showCollout" class="btn btn-secondary">Callout Bottom </a>
+        <a href="#" id="showCollout1" class="btn btn-secondary">Callout Bottom </a>
         <a href="#" id="showCollout2" class="btn btn-secondary">Callout Right </a>
         <a href="#" id="showCollout3" class="btn btn-secondary">Callout Left</a>
         <a href="#" id="showCollout4" class="btn btn-secondary">Callout Top</a>
 
-        <joomla-callout action="hover" for="#showCollout" dismiss="true" position="bottom">
+        <joomla-callout action="hover" for="#showCollout1" dismiss="true" position="bottom">
             <div class="callout-title">Title</div>
             <div class="callout-content">
                 Message body is optional.  If help documentation is available, consider adding a link to learn more
@@ -130,24 +168,48 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
     <h1> Joomla Dropdown </h1>
     <div style="width: 100%">
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownList">Dropdown with list</a>
-            <joomla-dropdown for="#dropdownList">
-                <li hasdropdown="true" class="dropdown-item">
-                    <a href="#"> Item 1 </a>
-                    <ul class="sub-dropdown">
-                        <li> alskjdf alsdkf  </li>
-                        <li> alskjdf alsdkf  </li>
-                        <li> alskjdf alsdkf  </li>
-                        <li> alskjdf alsdkf  </li>
+            <a href="#" class="btn btn-secondary" data-target="dropdownList1">Dropdown with list</a>
+            <joomla-dropdown for="dropdownList1">
+                <li class="has-submenu">
+                    <a class="dropdown-item" >Item 1</a>
+                    <ul class='submenu'>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
                     </ul>
                 </li>
-                <a class="dropdown-item" href="#">Item 2</a>
-                <a class="dropdown-item" href="#">Item 3</a>
+                <li class="has-submenu">
+                    <a class="dropdown-item" >Item 2</a>
+                    <ul class='submenu'>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="#">Item 3</a></li>
             </joomla-dropdown>
         </div>
         <div class="joomla-dropdown-container">
-            <a href="#" class="btn btn-secondary" id="dropdownText">Dropdown with text</a>
-            <joomla-dropdown for="#dropdownText">
+            <a href="#" class="btn btn-secondary" data-target="dropdownList2">Dropdown with list ( clickable )</a>
+            <joomla-dropdown for="dropdownList2" position="left">
+                <li class="has-submenu" data-action="click">
+                    <a class="dropdown-item" >Item 1</a>
+                    <ul class='submenu'>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 1</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 2</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 3</a></li>
+                        <li><a class="dropdown-item" href="#" title="Sub Menu">Sub Menu 4</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                <li><a class="dropdown-item" href="#">Item 3</a></li>
+            </joomla-dropdown>
+        </div>
+        <div class="joomla-dropdown-container">
+            <a href="#" class="btn btn-secondary" data-target="dropdownText">Dropdown with text</a>
+            <joomla-dropdown for="dropdownText">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </joomla-dropdown>
         </div>
@@ -215,7 +277,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
         </joomla-modal>
 
 
-        <joomla-modal id="exampleModal2" title="Modal title" close-a href="#"-title="Close" width="100%" height="400px" iframe="https://www.joomla.org">
+        <joomla-modal id="exampleModal2" title="Modal title" close-a href="#"-title="Close" width="100%" height="400px" iframe="http://10.0.1.71/wp_sites/wpmm/">
             <section>
                 <h4>I'm a Modal</h4>
             </section>
@@ -576,7 +638,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         </div>
                     </div>
 
-                    <table>
+                    <table class="j-card-table">
                         <tbody>
                             <tr>
                                 <th>Time</th>
@@ -816,8 +878,6 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                 </div>
             </div>
         </div>
-
-
 
 
     </section>
