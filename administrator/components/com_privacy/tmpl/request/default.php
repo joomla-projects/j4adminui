@@ -36,9 +36,9 @@ Factory::getDocument()->addScriptDeclaration($js);
 <form action="<?php echo Route::_('index.php?option=com_privacy&view=request&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 	<div class="row mt-3">
 		<div class="col-12 col-md-6 mb-3">
-			<div class="card">
-				<h3 class="card-header"><?php echo Text::_('COM_PRIVACY_HEADING_REQUEST_INFORMATION'); ?></h3>
-				<div class="card-body">
+			<div class="j-card">
+				<h3 class="j-card-header"><?php echo Text::_('COM_PRIVACY_HEADING_REQUEST_INFORMATION'); ?></h3>
+				<div class="j-card-body">
 					<dl class="dl-horizontal">
 						<dt><?php echo Text::_('JGLOBAL_EMAIL'); ?>:</dt>
 						<dd><?php echo $this->item->email; ?></dd>
@@ -56,9 +56,9 @@ Factory::getDocument()->addScriptDeclaration($js);
 			</div>
 		</div>
 		<div class="col-12 col-md-6 mb-3">
-			<div class="card">
-				<h3 class="card-header"><?php echo Text::_('COM_PRIVACY_HEADING_ACTION_LOG'); ?></h3>
-				<div class="card-body">
+			<div class="j-card">
+				<h3 class="j-card-header"><?php echo Text::_('COM_PRIVACY_HEADING_ACTION_LOG'); ?></h3>
+				<div class="j-card-body">
 					<?php if (empty($this->actionlogs)) : ?>
 						<div class="alert alert-info">
 							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>

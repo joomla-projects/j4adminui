@@ -100,8 +100,8 @@ if ($clientId === 1)
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_MENUS_ITEM_DETAILS')); ?>
-				<div class="card">
-					<div class="card-body">
+				<div class="j-card">
+					<div class="j-card-body">
 					<?php
 					echo $this->form->renderField('type');
 
@@ -149,16 +149,18 @@ if ($clientId === 1)
 			?>
 
 			<?php if (!$isModal && $assoc && $this->state->get('item.client_id') != 1) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 				<?php if ($hasAssoc) : ?>
-					<fieldset id="fieldset-associations" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
-					<div>
-					<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+					<div id="fieldset-associations" class="j-card options-grid-form options-grid-form-full">
+						<div class="j-card-header">
+							<?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?>
+						</div>
+						<div class="j-card-body">
+							<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
+						</div>
 					</div>
-					</fieldset>
-				<?php endif; ?>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+				<?php endif; ?>
 			<?php elseif ($isModal && $assoc) : ?>
 				<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 			<?php endif; ?>
@@ -180,8 +182,8 @@ if ($clientId === 1)
 		</div>
 
 		<div class="col-lg-3">
-			<div class="card">
-				<div class="card-body">
+			<div class="j-card">
+				<div class="j-card-body">
 				<?php
 					// Set main fields.
 					$this->fields = array(

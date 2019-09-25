@@ -15,9 +15,11 @@ use Joomla\CMS\Layout\LayoutHelper;
 $this->fieldset = 'jbasic';
 ?>
 
-<fieldset id="fieldset-display" class="options-grid-form options-grid-form-full">
-	<legend><?php echo Text::_('JGLOBAL_FIELDSET_DISPLAY_OPTIONS'); ?></legend>
-	<div>
-	<?php echo LayoutHelper::render('joomla.edit.fieldset', $this); ?>
+<div id="fieldset-display" class="j-card options-grid-form options-grid-form-full mb-4">
+	<div class="j-card-header">
+		<?php echo Text::_('JGLOBAL_FIELDSET_DISPLAY_OPTIONS'); ?>
 	</div>
-</fieldset>
+	<div class="j-card-body">
+		<?php echo LayoutHelper::render('joomla.edit.fieldset', $this); ?>
+	</div>
+</div>

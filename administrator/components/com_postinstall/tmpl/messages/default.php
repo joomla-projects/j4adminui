@@ -54,8 +54,8 @@ $params = array('params' => json_encode($param));
 	</div>
 <?php else : ?>
 	<?php foreach ($this->items as $item) : ?>
-	<div class="card card-outline-secondary mb-3">
-		<div class="card-body">
+	<div class="j-card mb-3">
+		<div class="j-card-body">
 			<h3><?php echo Text::_($item->title_key); ?></h3>
 			<p class="small">
 				<?php echo Text::sprintf('COM_POSTINSTALL_LBL_SINCEVERSION', $item->version_introduced); ?>
