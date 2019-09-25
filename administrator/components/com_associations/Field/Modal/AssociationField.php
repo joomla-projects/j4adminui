@@ -66,7 +66,7 @@ class AssociationField extends FormField
 			. ' data-toggle="modal"'
 			. ' data-select="' . Text::_('COM_ASSOCIATIONS_SELECT_TARGET') . '"'
 			. ' data-change="' . Text::_('COM_ASSOCIATIONS_CHANGE_TARGET') . '"'
-			. ' data-target="#associationSelect' . $this->id . 'Modal">'
+			. ' data-href="#associationSelect' . $this->id . 'Modal">'
 			. '<span class="icon-file" aria-hidden="true"></span> '
 			. '<span id="select-change-text"></span>'
 			. '</button>';
@@ -84,7 +84,7 @@ class AssociationField extends FormField
 
 		// Select custom association modal
 		$html[] = HTMLHelper::_(
-			'bootstrap.renderModal',
+			'webcomponent.renderModal',
 			'associationSelect' . $this->id . 'Modal',
 			array(
 				'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),

@@ -26,7 +26,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-toolbar-button.min.js', ['version' 
 extract($displayData, EXTR_OVERWRITE);
 
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'versionsModal',
 	array(
 		'url'    => 'index.php?' . http_build_query(

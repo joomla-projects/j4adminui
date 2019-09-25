@@ -169,18 +169,14 @@ table {
     //j striped table
     &.j-striped-table {
         border-radius: 3px;
-        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
         background-color: $white;
         color: var(--inverse-background);
-        padding: 1.45rem;
-        border-collapse: separate;
-        border-spacing: 0;
+        margin-bottom: 0;
         thead {
             th {
                 color: var(--secondary-color);
                 border: 0;
                 font-size: 1rem;
-                padding-top: 0;
                 border-bottom: 1px solid #f2f5fa;
             }
         }
@@ -196,7 +192,7 @@ table {
             }
             td {
                 border: 0;
-                padding: 7px 0;
+                padding: 15px 0;
                 line-height: 1;
                 .btn {
                     line-height: 1;

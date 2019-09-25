@@ -48,7 +48,7 @@ else
 // TODO: J4: Move Make buttons fullscreen on smaller devices per https://github.com/joomla/joomla-cms/pull/23091
 // Create the modal
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	$id,
 	array(
 		'url'    => $link,

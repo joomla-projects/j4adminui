@@ -365,17 +365,14 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 
 					<?php // load the pagination. ?>
 					<?php echo $this->pagination->getListFooter(); ?>
-
-					<?php echo HTMLHelper::_(
-						'bootstrap.renderModal',
-						'stageModal',
-						array(
-							'title'  => Text::_('JTOOLBAR_CHANGE_STATUS'),
-							'footer' => $this->loadTemplate('stage_footer'),
-						),
-						$this->loadTemplate('stage_body')
-					); ?>
-
+					<joomla-modal role="dialog" id="stageModal" title="<?php echo Text::_('JTOOLBAR_CHANGE_STATUS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('stage_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('stage_footer'); ?>
+						</footer>
+					</joomla-modal>
 				<?php endif; ?>
 
 				<input type="hidden" name="task" value="">

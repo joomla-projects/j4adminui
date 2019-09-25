@@ -110,7 +110,7 @@ if (!$readonly)
 				<span class="input-group-btn">
 					<a class="btn btn-primary button-select" title="<?php echo JText::_('JLIB_FORM_CHANGE_USER') ?>"><span class="icon-user icon-white"></span></a>
 					<?php echo JHtml::_(
-						'bootstrap.renderModal',
+						'webcomponent.renderModal',
 						'userModal_' . $id,
 						array(
 							'url'         => $uri,
