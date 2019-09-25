@@ -22,14 +22,14 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
 
 ?>
 
-<form name="draftArticleForm" id="form-draftarticle" method="post" action="#">
+<form class="j-card-body" name="draftArticleForm" id="form-draftarticle" method="post" action="#">
     <fieldset>
         <div class="form-group">
             <label for="mod-draftarticle-title" >
                 <?php echo Text::_('JGLOBAL_TITLE'); ?>
             </label>
             <div class="input-group">
-                <input 
+                <input
                     type="text"
                     id="mod-draftarticle-title"
                     name="title"
@@ -44,7 +44,7 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
                 <?php echo Text::_('JGLOBAL_FIELDSET_CONTENT'); ?>
             </label>
             <div class="input-group">
-                <textarea 
+                <textarea
                     name="description"
                     id="mod-draftarticle-description"
                     cols="10"

@@ -20,14 +20,14 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 
 <div class="mod-extension-cache module-<?php echo $module->id; ?>" id="mod-extension-cache-<?php echo $module->id; ?>">
     <div class="j-card">
-        <div class="j-card-overview-box pt-3">
-            <div class="j-card-overview-content" area-hidden="true">
-                <div class="j-card-img">
-                    <img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
-                </div>
-                <span class="j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
-                <sub class="j-counter-" aria-hidden="true"><?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?></sub>
-            </div>
+        <div class="j-card-image-mod-container text-center">
+			<div class="j-card-img">
+				<img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
+			</div>
+			<div class="j-card-counter-msg">
+				<span class="j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
+				<?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?>
+			</div>
         </div>
         <div class="j-card-footer j-card-footer-lg">
             <div class="j-card-footer-item">
@@ -37,9 +37,9 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
                         <span aria-hidden="true"><?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?></span>
                     </a>
                 <?php else: ?>
-                    <span><?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?></span>
+                    <span class="no-link"><?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?></span>
                 <?php endif;?>
-            </div>					
+            </div>
         </div>
     </div>
 </div>

@@ -576,7 +576,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         </div>
                     </div>
 
-                    <table>
+                    <table class="j-card-table">
                         <tbody>
                             <tr>
                                 <th>Time</th>
@@ -816,8 +816,6 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                 </div>
             </div>
         </div>
-
-
 
 
     </section>

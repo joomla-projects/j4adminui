@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 ?>
-<table class="table">
+<table class="j-card-table" class="table">
 	<thead>
 		<tr>
 			<th scope="col" style="width:20%;"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
