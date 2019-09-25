@@ -116,10 +116,12 @@
 
     setPosition() {
       const dropdownRect = this.getBoundingClientRect();
-      if (this.position === 'left' && (dropdownRect.left + dropdownRect.width) > window.innerWidth) {
-        this.setAttribute('position', 'right');
-      } else if (this.position === 'right' && (dropdownRect.right + dropdownRect.width) > window.innerWidth) {
+      const button = document.querySelector(`[data-target=${this.for}]`);
+      buttonRect = button.getBoundingClientRect();
+      if (this.position === 'left' && (dropdownRect.width + buttonRect.width) > dropdownRect.right) {
         this.setAttribute('position', 'left');
+      } else if (this.position === 'right' && (buttonRect.right + dropdownRect.width) > window.innerWidth) {
+        this.setAttribute('position', 'right');
       }
     }
 
