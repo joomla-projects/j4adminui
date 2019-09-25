@@ -26,6 +26,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		@extend .align-items-center;
 		.j-card-header-right{
 			margin-left: auto;
+			@extend .d-inline-flex;
 		}
 		> h4,
 		.j-card-title{
