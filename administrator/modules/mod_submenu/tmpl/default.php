@@ -41,7 +41,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 						<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 						<div class="module-actions dropdown">
 							<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-link" id="dropdownMenuButton-<?php echo $id; ?>">
-								<span class="fa fa-cog" aria-hidden="true"></span>
+								<span class="fas fa-cog" aria-hidden="true"></span>
 								<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 							</button>
 							<div class="dropdown-menu dropdown-menu-<?php echo $dropdownPosition; ?>" aria-labelledby="dropdownMenuButton-<?php echo $id; ?>">
@@ -56,7 +56,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 							</div>
 						</div>
 					<?php endif; ?>
-						<?php if ($child->icon) : ?><span class="fa fa-<?php echo $child->icon; ?>" aria-hidden="true"></span><?php endif; ?>
+						<?php if ($child->icon) : ?><span class="fas fa-<?php echo $child->icon; ?>" aria-hidden="true"></span><?php endif; ?>
 						<?php echo Text::_($child->title); ?>
 					</h2>
 					<ul class="list-group list-group-flush">
@@ -96,7 +96,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 											?>
 											<?php if (!$permission || $user->authorise($permission, $scope)) : ?>
 												<a href="<?php echo $link; ?>">
-													<span class="fa fa-<?php echo $icon; ?> fa-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
+													<span class="fas fa-<?php echo $icon; ?> fa-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
 													<span class="sr-only"><?php echo  htmlentities($sronly); ?></span>
 												</a>
 											<?php endif; ?>
@@ -104,14 +104,14 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 									<?php endif; ?>
 									<?php if ($item->ajaxbadge) : ?>
 										<span class="menu-badge">
-											<span class="fa fa-spin fa-spinner mt-1 system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
+											<span class="fas fa-spin fa-spinner mt-1 system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
 										</span>
 									<?php endif; ?>
 								</a>
 								<?php if ($item->dashboard) : ?>
 									<span class="menu-dashboard">
 										<a href="<?php echo JRoute::_('index.php?option=com_cpanel&view=cpanel&dashboard=' . $item->dashboard); ?>">
-											<span class="fa fa-th-large" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
+											<span class="fas fa-th-large" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
 										</a>
 									</span>
 								<?php endif; ?>
