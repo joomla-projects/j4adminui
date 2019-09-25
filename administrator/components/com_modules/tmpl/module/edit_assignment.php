@@ -26,8 +26,8 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 		<?php if (!empty($menuTypes)) : ?>
 		<?php $id = 'jform_menuselect'; ?>
 
-		<div class="card mb-3">
-			<div class="card-body">
+		<div class="j-card mb-3">
+			<div class="j-card-body">
 				<div id="jform_menus" class="form-group">
 					<label id="jform_menus-lbl" for="jform_assignment"><?php echo Text::_('COM_MODULES_MODULE_ASSIGN'); ?></label>
 					<select class="form-control custom-select" name="jform[assignment]" id="jform_assignment">

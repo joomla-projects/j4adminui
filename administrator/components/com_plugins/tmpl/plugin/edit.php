@@ -39,8 +39,8 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 
 		<div class="row mt-2">
 			<div class="col-lg-9">
-				<div class="card">
-					<div class="card-body">
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php if ($this->item->xml) : ?>
 							<?php if ($this->item->xml->description) : ?>
 								<h2>
@@ -111,8 +111,8 @@ $tmpl     = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php
 						// Set main fields.
 						$this->fields = array(

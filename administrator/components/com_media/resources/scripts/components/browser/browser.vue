@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <media-infobar-popup v-if="showInfoPopup" :item="item" @hideInfoPopup="hideInfoPopup"></media-infobar-popup>
+        <media-infobar v-if="!this.isModal" ref="infobar"></media-infobar>
     </div>
 </template>
 
@@ -48,11 +48,6 @@
 
     export default {
         name: 'media-browser',
-        data() {
-            return {
-                showInfoPopup: false
-            }
-        },
         computed: {
             /* Get the contents of the currently selected directory */
             items() {
@@ -219,12 +214,6 @@
                     this.$store.commit(types.SELECT_BROWSER_ITEMS, this.$store.getters.getSelectedDirectoryContents);
                 }
             },
-            showInfoBar() {
-                this.showInfoPopup = true;
-            },
-            hideInfoPopup() {
-                this.showInfoPopup = false;
-            }
 
         },
         created() {

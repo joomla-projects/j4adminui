@@ -23,8 +23,8 @@ $this->useCoreUI = true;
 <form action="<?php echo Route::_('index.php?option=com_users&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="group-form" class="form-validate">
 	<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 	<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_USERS_USERGROUP_DETAILS')); ?>
-	<div class="card">
-		<div class="card-body">
+	<div class="j-card">
+		<div class="j-card-body">
 			<div class="row">
 				<div class="col-lg-8 col-xl-6">
 					<?php echo $this->form->renderField('title'); ?>

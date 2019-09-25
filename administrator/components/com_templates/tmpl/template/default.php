@@ -88,8 +88,8 @@ if ($this->type == 'font')
 </div>
 <div class="row mt-2">
 	<div id="treeholder" class="col-md-3 tree-holder">
-		<div class="card">
-			<div class="card-body">
+		<div class="j-card">
+			<div class="j-card-body">
 				<?php echo $this->loadTemplate('tree'); ?>
 			</div>
 		</div>
@@ -238,7 +238,7 @@ if ($this->type == 'font')
 <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'overrides', Text::_('COM_TEMPLATES_TAB_OVERRIDES')); ?>
 <div class="row mt-2">
 	<div class="col-md-12">
-		<div class="card-body">
+		<div class="j-card-body">
 			<div class="row">
 				<div class="col-md-3">
 					<fieldset class="options-grid-form options-grid-form-full">
@@ -352,8 +352,8 @@ if ($this->type == 'font')
 <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('COM_TEMPLATES_TAB_DESCRIPTION')); ?>
 <div class="row mt-3">
 	<div class="col-12">
-		<div class="card">
-			<div class="card-body">
+		<div class="j-card">
+			<div class="j-card-body">
 				<?php echo $this->loadTemplate('description'); ?>
 			</div>
 		</div>

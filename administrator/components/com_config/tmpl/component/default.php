@@ -93,7 +93,7 @@ $xml = $this->form->getXml();
 						<?php endif; ?>
 
 						<section orientation="vertical" id="<?php echo $name; ?>" class="<?php echo $dataShowOn; ?>" name="<?php echo Text::_($label); ?>">
-							<div class="<?php echo ($name != 'permissions') ? 'card p-4' : 'pt-4'; ?>">
+							<div class="<?php echo ($name != 'permissions') ? 'j-card p-4' : 'pt-4'; ?>">
 
 						<?php $opentab = 1; ?>
 
