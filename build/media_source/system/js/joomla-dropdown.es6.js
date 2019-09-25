@@ -29,10 +29,10 @@
       this.position = this.getAttribute('position') ? this.getAttribute('position') : this.position;
       // set the position for submenu items
       innerLinks.forEach((link) => {
-        if(link.parentElement.classList.contains('has-submenu')) {
+        if (link.parentElement.classList.contains('has-submenu')) {
           link.parentElement.classList.add(this.position);
         }
-      })
+      });
       button.setAttribute('aria-haspopup', true);
       button.setAttribute('aria-expanded', false);
 
@@ -61,40 +61,40 @@
         });
         // toggle dropdown onhover
         const lists = this.querySelectorAll('li.has-submenu');
-        lists.forEach(( list ) => {
-          if(list.getAttribute('data-action') !== 'click') {
+        lists.forEach((list) => {
+          if (list.getAttribute('data-action') !== 'click') {
             list.addEventListener('mouseenter', this.showSubmenu, true);
             list.addEventListener('mouseleave', this.hideSubmenu, true);
           }
-        })
+        });
       });
     }
 
     showSubmenu(event) {
       event.preventDefault();
-      if(event.target.classList.contains('has-submenu')) {
+      if (event.target.classList.contains('has-submenu')) {
         event.target.toggleAttribute('open');
       }
     }
-    
+
     hideSubmenu(event) {
       event.preventDefault();
-      if(event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
+      if (event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
         event.target.toggleAttribute('open');
       }
     }
-    
+
     checkSubmenu(event) {
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
       const clickable = event.target.parentElement.getAttribute('data-action') === 'click';
-      if(hasSubmenu && clickable) {
+      if (hasSubmenu && clickable) {
         const allDropdowns = this.querySelectorAll('.has-submenu');
         allDropdowns.forEach((dropdown) => {
-          if(dropdown.hasAttribute('open') && dropdown !== event.target.parentElement) {
+          if (dropdown.hasAttribute('open') && dropdown !== event.target.parentElement) {
             dropdown.toggleAttribute('open');
           }
-        })
+        });
         event.target.parentElement.toggleAttribute('open');
       } else {
         this.close();
@@ -117,7 +117,7 @@
     setPosition() {
       const dropdownRect = this.getBoundingClientRect();
       const button = document.querySelector(`[data-target=${this.for}]`);
-      buttonRect = button.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
       if (this.position === 'left' && (dropdownRect.width + buttonRect.width) > dropdownRect.right) {
         this.setAttribute('position', 'left');
       } else if (this.position === 'right' && (buttonRect.right + dropdownRect.width) > window.innerWidth) {
@@ -137,10 +137,10 @@
       // removing 'open' attribute of dropdown items
       const dropdownItems = document.querySelectorAll('.has-submenu');
       dropdownItems.forEach((item) => {
-        if(item.hasAttribute('open')) {
+        if (item.hasAttribute('open')) {
           item.toggleAttribute('open');
         }
-      })
+      });
       const button = document.querySelector(`[data-target=${this.getAttribute('aria-labelledby')}]`);
       this.removeAttribute('expanded');
       button && button.setAttribute('aria-expanded', false);
