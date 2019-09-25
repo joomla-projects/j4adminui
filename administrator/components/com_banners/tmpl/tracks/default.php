@@ -85,7 +85,7 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 				<?php endif; ?>
 				<?php // Load the export form ?>
 				<?php echo HTMLHelper::_(
-					'bootstrap.renderModal',
+					'webcomponent.renderModal',
 					'downloadModal',
 					[
 						'title'       => Text::_('COM_BANNERS_TRACKS_DOWNLOAD'),

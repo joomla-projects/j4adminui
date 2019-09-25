@@ -4,7 +4,8 @@
   class JoomlaDropdownElement extends HTMLElement {
     constructor() {
       super();
-      this.position = 'left';
+      this.position = 'right';
+      this.checkSubmenu = this.checkSubmenu.bind(this);
     }
 
     /* Attributes to monitor */
@@ -18,15 +19,20 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(this.for);
+      const button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
-      if (!button.id) {
+      if (!button.hasAttribute('data-target')) {
         return;
       }
 
       this.position = this.getAttribute('position') ? this.getAttribute('position') : this.position;
-
+      // set the position for submenu items
+      innerLinks.forEach((link) => {
+        if(link.parentElement.classList.contains('has-submenu')) {
+          link.parentElement.classList.add(this.position);
+        }
+      })
       button.setAttribute('aria-haspopup', true);
       button.setAttribute('aria-expanded', false);
 
@@ -42,20 +48,35 @@
 
         this.setPosition();
 
-        document.addEventListener('click', (evt) => {
-          if (!button.contains(evt.target) && evt.target !== button) {
-            if (!this.findAncestor(evt.target, 'joomla-dropdown')) {
+        document.addEventListener('click', (event) => {
+          if (!button.contains(event.target) && event.target !== button) {
+            if (!this.findAncestor(event.target, 'joomla-dropdown')) {
               this.close();
             }
           }
         });
 
         innerLinks.forEach((innerLink) => {
-          innerLink.addEventListener('click', () => {
-            this.close();
-          });
+          innerLink.addEventListener('click', this.checkSubmenu, true);
         });
       });
+    }
+
+    checkSubmenu(event) {
+      event.preventDefault();
+      // check for drop-down items
+      const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
+      if(hasSubmenu) {
+        const allDropdowns = this.querySelectorAll('.has-submenu a');
+        allDropdowns.forEach((dropdown) => {
+          if(dropdown.hasAttribute('open') && dropdown !== event.target) {
+            dropdown.toggleAttribute('open');
+          }
+        })
+        event.target.toggleAttribute('open');
+      } else {
+        this.close();
+      }
     }
 
     attributeChangedCallback(attr, oldValue, newValue) {
@@ -89,9 +110,19 @@
     }
 
     close() {
-      const button = document.querySelector(`#${this.getAttribute('aria-labelledby')}`);
+      // removing 'open' attribute of dropdown items
+      const dropdownItems = document.querySelectorAll('.has-submenu > .dropdown-item');
+      dropdownItems.forEach((item) => {
+        if(item.hasAttribute('open')) {
+          item.toggleAttribute('open');
+        }
+      })
+      const button = document.querySelector(`[data-target=${this.getAttribute('aria-labelledby')}]`);
       this.removeAttribute('expanded');
-      button.setAttribute('aria-expanded', false);
+      button && button.setAttribute('aria-expanded', false);
+
+      // remove the click listener on list items
+      window.removeEventListener('click', this.checkSubmenu, true);
     }
 
     // eslint-disable-next-line class-methods-use-this

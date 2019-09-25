@@ -68,7 +68,7 @@ $this->useCoreUI = true;
 				</fieldset>
 			</div>
 			<div class="col-md-6">
-				<?php echo $this->loadTemplate('metadata'); ?>
+				<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>

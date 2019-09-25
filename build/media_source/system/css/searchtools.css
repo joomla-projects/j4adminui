@@ -56,10 +56,13 @@ html[dir=rtl] .js-stools .chosen-container {
 .js-stools .chzn-container-single .chzn-single span {
 	overflow: visible;
 }
+.js-stools .ordering-select .custom-select{
+	height: 2.7rem;
+}
 .js-stools .js-stools-field-list,
 .js-stools .js-stools-field-filter {
 	display: inline-block;
-	margin: 0 5px 5px 0;
+	margin: 0 5px 0 0;
 }
 .js-stools .js-stools-container-list .js-stools-field-list:last-child {
 	margin-right: 0;

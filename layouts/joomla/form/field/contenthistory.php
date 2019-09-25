@@ -48,7 +48,7 @@ use Joomla\CMS\Language\Text;
 extract($displayData);
 
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'versionsModal',
 	array(
 		'url'    => $link,
