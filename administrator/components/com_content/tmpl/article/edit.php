@@ -205,8 +205,8 @@ if($this->item->id > 0)
 			<?php endif; ?>
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
-				<fieldset id="fieldset-editor" class="j-card form-no-margin options-grid-form">
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor-config', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
+				<fieldset id="fieldset-editor-config" class="j-card form-no-margin options-grid-form">
 					<div class="j-card-header">
 						<?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?>
 					</div>
