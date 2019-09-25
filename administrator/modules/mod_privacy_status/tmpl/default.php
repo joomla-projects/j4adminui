@@ -15,7 +15,7 @@ use Joomla\CMS\Router\Route;
 <table class="j-card-table" class="table">
 	<thead>
 		<tr>
-			<th scope="col" style="width:20%;"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
+			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
 			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_CHECK'); ?></th>
 		</tr>
 	</thead>
@@ -23,20 +23,20 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($privacyPolicyInfo['published'] && $privacyPolicyInfo['articlePublished']) : ?>
-					<span class="badge badge-success">
-					<span class="icon-checkbox" aria-hidden="true"></span>
-					<?php echo Text::_('JPUBLISHED'); ?>
-				</span>
+					<small class="j-text-success">
+						<span class="icon-checkbox" aria-hidden="true"></span>
+						<?php echo Text::_('JPUBLISHED'); ?>
+					</small>
 				<?php elseif ($privacyPolicyInfo['published'] && !$privacyPolicyInfo['articlePublished']) : ?>
-					<span class="badge badge-warning">
-					<span class="icon-warning" aria-hidden="true"></span>
-					<?php echo Text::_('JUNPUBLISHED'); ?>
-				</span>
+					<small class="j-text-warning">
+						<span class="icon-warning" aria-hidden="true"></span>
+						<?php echo Text::_('JUNPUBLISHED'); ?>
+					</small>
 				<?php else : ?>
-					<span class="badge badge-warning">
-					<span class="icon-warning" aria-hidden="true"></span>
-					<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
-				</span>
+					<small class="j-text-warning">
+						<span class="icon-warning" aria-hidden="true"></span>
+						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
+					</small>
 				<?php endif; ?>
 			</td>
 			<td>
@@ -52,20 +52,20 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<span class="badge badge-success">
-					<span class="icon-checkbox" aria-hidden="true"></span>
-					<?php echo Text::_('JPUBLISHED'); ?>
-				</span>
+					<small class="j-text-success">
+						<span class="icon-checkbox" aria-hidden="true"></span>
+						<?php echo Text::_('JPUBLISHED'); ?>
+					</small>
 				<?php elseif (!$requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<span class="badge badge-warning">
-					<span class="icon-warning" aria-hidden="true"></span>
-					<?php echo Text::_('JUNPUBLISHED'); ?>
-				</span>
+					<small class="j-text-warning">
+						<span class="icon-warning" aria-hidden="true"></span>
+						<?php echo Text::_('JUNPUBLISHED'); ?>
+					</small>
 				<?php else : ?>
-					<span class="badge badge-warning">
-					<span class="icon-warning" aria-hidden="true"></span>
-					<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
-				</span>
+					<small class="j-text-warning">
+						<span class="icon-warning" aria-hidden="true"></span>
+						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
+					</small>
 				<?php endif; ?>
 			</td>
 			<td>
@@ -78,15 +78,15 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($numberOfUrgentRequests === 0) : ?>
-					<span class="badge badge-success">
+					<small class="j-text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JNONE'); ?>
-					</span>
+					</small>
 				<?php else : ?>
-					<span class="badge badge-danger">
+					<small class="j-text-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('WARNING'); ?>
-					</span>
+					</small>
 				<?php endif; ?>
 			</td>
 			<td>
@@ -100,15 +100,15 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($sendMailEnabled) : ?>
-					<span class="badge badge-success">
+					<small class="j-text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JENABLED'); ?>
-					</span>
+					</small>
 				<?php else : ?>
-				<span class="badge badge-danger">
+					<small class="j-text-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JDISABLED'); ?>
-					</span>
+					</small>
 				<?php endif; ?>
 			</td>
 			<td>
