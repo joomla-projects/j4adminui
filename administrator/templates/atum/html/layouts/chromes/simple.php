@@ -45,7 +45,7 @@ if ($module->content) :
 
 	if (!empty($params->get('header_icon')))
 	{
-		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
+		$headerIcon = '<span class="handle ' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
 	<div class="module-wrapper">
