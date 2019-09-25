@@ -9,8 +9,7 @@ Joomla = window.Joomla || {};
 
   document.addEventListener('DOMContentLoaded', () => {
     window.jSelectModuleType = () => {
-      const elements = document.querySelectorAll('#moduleDashboardAddModal .modal-footer .btn.hidden');
-
+      const elements = document.querySelectorAll('#moduleDashboardAddModal footer .btn.hidden');
       if (elements.length) {
         setTimeout(() => {
           elements.forEach((button) => {
@@ -20,7 +19,7 @@ Joomla = window.Joomla || {};
       }
     };
 
-    const buttons = document.querySelectorAll('#moduleDashboardAddModal .modal-footer .btn');
+    const buttons = document.querySelectorAll('#moduleDashboardAddModal footer .btn');
     const hideButtons = [];
     let isSaving = false;
 
@@ -29,10 +28,8 @@ Joomla = window.Joomla || {};
         if (button.classList.contains('hidden')) {
           hideButtons.push(button);
         }
-
         button.addEventListener('click', (event) => {
           let elem = event.currentTarget;
-
           // There is some bug with events in iframe where currentTarget is "null"
           // => prevent this here by bubble up
           if (!elem) {
@@ -41,7 +38,11 @@ Joomla = window.Joomla || {};
 
           if (elem) {
             const clickTarget = elem.getAttribute('data-target');
-
+            if (clickTarget === null) {
+              // eslint-disable-next-line no-console
+              console.warn('Save Target Missting!');
+              return false;
+            }
             // We remember to be in the saving process
             isSaving = clickTarget === '#saveBtn';
 
@@ -63,6 +64,17 @@ Joomla = window.Joomla || {};
       hideButtons.forEach((button) => {
         button.classList.add('hidden');
       });
+    });
+
+    document.getElementById('moduleDashboardAddModal').addEventListener('joomla.modal.close', () => {
+      hideButtons.forEach((button) => {
+        button.classList.add('hidden');
+      });
+    });
+    document.getElementById('moduleDashboardAddModal').addEventListener('joomla.modal.closed', () => {
+      if (isSaving) {
+        setTimeout(() => { window.parent.location.reload(); }, 1000);
+      }
     });
 
     jQuery('#moduleDashboardAddModal').on('hidden.bs.modal', () => {

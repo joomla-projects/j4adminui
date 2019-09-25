@@ -117,7 +117,7 @@ if (!$readonly)
 				</button>
 			</span>
 			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'userModal_' . $id,
 				array(
 					'url'         => $uri,

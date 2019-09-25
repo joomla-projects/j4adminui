@@ -25,6 +25,8 @@ HTMLHelper::_('script', 'vendor/diff/diff.min.js', array('version' => 'auto', 'r
 HTMLHelper::_('script', 'com_templates/admin-template-compare.min.js', array('version' => 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_templates/admin-template-toggle-switch.min.js', array('version' => 'auto', 'relative' => true));
 
+HTMLHelper::_('webcomponent.assets','joomla-modal');
+
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.tabstate');
@@ -380,7 +382,7 @@ $copyModalData = array(
 );
 ?>
 <form action="<?php echo Route::_('index.php?option=com_templates&task=template.copy&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post" name="adminForm" id="adminForm">
-	<?php echo LayoutHelper::render('joomla.modal.main', $copyModalData); ?>
+	<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $copyModalData); ?>
 	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
 <?php if ($this->type != 'home') : ?>
@@ -395,7 +397,7 @@ $copyModalData = array(
 	);
 	?>
 	<form action="<?php echo Route::_('index.php?option=com_templates&task=template.renameFile&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post">
-		<?php echo LayoutHelper::render('joomla.modal.main', $renameModalData); ?>
+		<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $renameModalData); ?>
 		<?php echo HTMLHelper::_('form.token'); ?>
 	</form>
 <?php endif; ?>
@@ -410,7 +412,7 @@ $copyModalData = array(
 		'body' => $this->loadTemplate('modal_delete_body')
 	);
 	?>
-	<?php echo LayoutHelper::render('joomla.modal.main', $deleteModalData); ?>
+	<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $deleteModalData); ?>
 <?php endif; ?>
 <?php // File Modal
 $fileModalData = array(
@@ -426,7 +428,7 @@ $fileModalData = array(
 	'body' => $this->loadTemplate('modal_file_body')
 );
 ?>
-<?php echo LayoutHelper::render('joomla.modal.main', $fileModalData); ?>
+<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $fileModalData); ?>
 <?php // Folder Modal
 $folderModalData = array(
 	'selector' => 'folderModal',
@@ -441,7 +443,7 @@ $folderModalData = array(
 	'body' => $this->loadTemplate('modal_folder_body')
 );
 ?>
-<?php echo LayoutHelper::render('joomla.modal.main', $folderModalData); ?>
+<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $folderModalData); ?>
 <?php if ($this->type != 'home') : ?>
 	<?php // Resize Modal
 	$resizeModalData = array(
@@ -454,7 +456,7 @@ $folderModalData = array(
 	);
 	?>
 	<form action="<?php echo Route::_('index.php?option=com_templates&task=template.resizeImage&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post">
-		<?php echo LayoutHelper::render('joomla.modal.main', $resizeModalData); ?>
+		<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $resizeModalData); ?>
 		<?php echo HTMLHelper::_('form.token'); ?>
 	</form>
 <?php endif; ?>

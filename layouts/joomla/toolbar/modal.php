@@ -39,7 +39,7 @@ $text     = isset($displayData['text']) ? $displayData['text'] : '';
 
 <!-- Render the modal -->
 <?php
-echo HTMLHelper::_('bootstrap.renderModal',
+echo HTMLHelper::_('webcomponent.renderModal',
 	'modal_' . $selector,
 	[
 		'url'         => $displayData['doTask'],
