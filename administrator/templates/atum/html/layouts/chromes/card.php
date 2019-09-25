@@ -64,11 +64,11 @@ if ($module->content) :
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
-								<a href="javascript:;" class="j-card-header-icon" id="dropdownMenuButton-<?php echo $id; ?>">
+								<a href="javascript:;" class="j-card-header-icon" data-target="dropdownMenuButton-<?php echo $id; ?>">
 									<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
-								<joomla-dropdown for="#dropdownMenuButton-<?php echo $id; ?>">
+								<joomla-dropdown for="dropdownMenuButton-<?php echo $id; ?>">
 									<?php if ($canEdit) : ?>
 										<?php $uri = Uri::getInstance(); ?>
 										<?php $url = Route::_('index.php?option=com_modules&task=module.edit&id=' . $id . '&return=' . base64_encode($uri)); ?>
