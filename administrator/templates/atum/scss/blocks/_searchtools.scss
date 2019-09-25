@@ -52,6 +52,7 @@
     }
 
     .js-stools-field-selector{
+      margin-right: 15px;
         @include media-breakpoint-down(sm) {
             max-width:100%;
             margin-right:0.5rem;
@@ -62,9 +63,7 @@
   .js-stools-container-bar {
 
     .btn-toolbar {
-
       .form-control{
-        height: 3.43rem;
         width: 21.49rem;
       }
       .input-group-append{
@@ -130,15 +129,6 @@
       line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
-      &.btn-link:focus, &.btn-link:focus:active,
-      &.btn-link:not(:disabled):not(.disabled):active:focus,
-      &.btn-primary:not(:disabled):active,
-      &:active,
-      &:focus {
-        box-shadow: none;
-        color: var(--primary-color);
-        background-color: transparent;
-      }
       &.js-stools-btn-clear {
         margin-right: 1rem;
       }

@@ -48,12 +48,12 @@ if ($module->content) :
 		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
-	<div class="module-wrapper" data-dragable-group="dashboard_module">
+	<div class="module-wrapper">
 		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
-				<div class="j-card-header handle">
+				<div class="j-card-header">
 					<h3 class="j-card-title<?php echo $headerClass; ?>">
-						<span class="j-card-icon fas fa-arrows-alt-v" area-hidden="true"></span>
+						<span class="j-card-icon fas fa-arrows-alt-v handle" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>
