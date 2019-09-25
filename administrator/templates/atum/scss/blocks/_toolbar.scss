@@ -52,7 +52,15 @@
       .btn {
         &.dropdown-toggle {
           border-radius: 3px;
-          border: 1px solid var(--secondary-icon-color);
+          &:after{
+              margin-left: 2.14rem;
+          }
+          >span{
+            margin-right: 12px;
+          }
+          &.btn-white{
+            border-right-color: #e8ebf4;
+          }
         }
       }
     }
