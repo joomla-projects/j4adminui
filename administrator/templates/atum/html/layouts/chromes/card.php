@@ -48,12 +48,12 @@ if ($module->content) :
 		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
-	<div class="module-wrapper" data-dragable-group="dashboard_module">
+	<div class="module-wrapper">
 		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
-				<div class="j-card-header handle">
+				<div class="j-card-header">
 					<h3 class="j-card-title<?php echo $headerClass; ?>">
-						<span class="j-card-icon fas fa-arrows-alt-v" area-hidden="true"></span>
+						<span class="j-card-icon fas fa-arrows-alt-v handle" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>
@@ -64,11 +64,11 @@ if ($module->content) :
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
-								<a href="javascript:;" class="j-card-header-icon" id="dropdownMenuButton-<?php echo $id; ?>">
+								<a href="javascript:;" class="j-card-header-icon" data-target="dropdownMenuButton-<?php echo $id; ?>">
 									<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
-								<joomla-dropdown for="#dropdownMenuButton-<?php echo $id; ?>">
+								<joomla-dropdown for="dropdownMenuButton-<?php echo $id; ?>">
 									<?php if ($canEdit) : ?>
 										<?php $uri = Uri::getInstance(); ?>
 										<?php $url = Route::_('index.php?option=com_modules&task=module.edit&id=' . $id . '&return=' . base64_encode($uri)); ?>

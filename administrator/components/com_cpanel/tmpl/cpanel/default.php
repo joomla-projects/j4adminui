@@ -25,7 +25,7 @@ HTMLHelper::_('script', 'com_cpanel/admin-cpanel-default.min.js', array('version
 
 $user = Factory::getUser();
 
-HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('script', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
 HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
@@ -38,9 +38,9 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 
 ?>
 <div id="cpanel-modules">
-	<div class="cpanel-modules <?php echo $this->position; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+	<div class="cpanel-modules <?php echo $this->position; ?>">
 		
-		<div class="row js-draggable">
+		<div class="row js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
 			<?php
 				foreach ($this->modules as $module)
 				{
@@ -53,7 +53,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 					$bootstrap_size = $params->get('bootstrap_size', 12);
 					$columns = ($bootstrap_size == 0) ? 12 : $bootstrap_size;
 					?>
-					<div class="col-<?php echo $columns; ?>">
+					<div class="col-<?php echo $columns; ?>" data-dragable-group="dashboard_module">
 						<?php echo ModuleHelper::renderModule($module, array('style' => $style)); ?>
 					</div>
 					<?php
