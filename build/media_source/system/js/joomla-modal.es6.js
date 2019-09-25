@@ -172,9 +172,7 @@
       this.classList.remove('show');
       this.setAttribute('area-expand', 'false');
       // this.main.innerHTML = '';
-      if (this.main.querySelector('iframe')) {
-        this.main.removeChild(this.main.querySelector('iframe'));
-      }
+
       if (this.triggerBtn) {
         this.triggerBtn.focus();
       }
@@ -183,6 +181,9 @@
       this.addEventListener('transitionend', () => {
         if (this.dropShadow) {
           document.body.removeChild(this.dropShadow);
+        }
+        if (this.main.querySelector('iframe')) {
+          this.main.removeChild(this.main.querySelector('iframe'));
         }
         this.dispatchCustomEvent('joomla.modal.closed');
       }, { once: true });
