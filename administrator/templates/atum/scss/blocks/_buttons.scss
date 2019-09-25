@@ -352,3 +352,12 @@
 		color: var(--link-color);
 	}
 }
+
+//Horizontal button in menu module assignment
+.horizontal-buttons {
+    &.unstyled {
+        .switcher__legend {
+            padding-top: 0;
+        }
+    }
+}

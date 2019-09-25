@@ -14,19 +14,19 @@ use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('bootstrap.framework');
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:50%">
+			<th scope="col">
 				<?php if ($params->get('name', 1) == 0) : ?>
 					<?php echo Text::_('JGLOBAL_USERNAME'); ?>
 				<?php else : ?>
 					<?php echo Text::_('MOD_LOGGED_NAME'); ?>
 				<?php endif; ?>
 			</th>
-			<th scope="col" style="width:30%"><?php echo Text::_('JCLIENT'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col" style="width: 70px; white-space: nowrap;"><?php echo Text::_('JCLIENT'); ?></th>
+			<th scope="col" style="width: 150px; white-space: nowrap;"><?php echo Text::_('JDATE'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -41,7 +41,7 @@ HTMLHelper::_('bootstrap.framework');
 						<?php echo htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8'); ?>
 					<?php endif; ?>
 				</th>
-				<td>
+				<td style="white-space: nowrap;">
 					<?php if ($user->client_id === null) : ?>
 						<?php // Don't display a client ?>
 					<?php elseif ($user->client_id) : ?>
@@ -55,7 +55,7 @@ HTMLHelper::_('bootstrap.framework');
 						</form>
 					<?php endif; ?>
 				</td>
-				<td>
+				<td style="white-space: nowrap;">
 					<?php echo HTMLHelper::_('date', $user->time, Text::_('DATE_FORMAT_LC5')); ?>
 				</td>
 			</tr>

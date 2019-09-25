@@ -37,8 +37,8 @@ $this->useCoreUI = true;
 		<div class="row">
 			<div class="col-lg-9">
 				<div class="form-vertical">
-					<div class="card">
-						<div class="card-body">
+					<div class="j-card">
+						<div class="j-card-body">
 						<?php echo $this->form->getLabel('description'); ?>
 						<?php echo $this->form->getInput('description'); ?>
 						</div>
@@ -46,8 +46,8 @@ $this->useCoreUI = true;
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
 					</div>
 				</div>
@@ -68,7 +68,7 @@ $this->useCoreUI = true;
 				</fieldset>
 			</div>
 			<div class="col-md-6">
-				<?php echo $this->loadTemplate('metadata'); ?>
+				<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
 			</div>
 		</div>
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>

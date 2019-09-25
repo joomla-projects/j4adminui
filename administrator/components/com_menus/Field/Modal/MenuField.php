@@ -279,7 +279,7 @@ class MenuField extends FormField
 				. ' id="' . $this->id . '_select"'
 				. ' data-toggle="modal"'
 				. ' type="button"'
-				. ' data-target="#ModalSelect' . $modalId . '">'
+				. ' data-href="#ModalSelect' . $modalId . '">'
 				. '<span class="icon-file" aria-hidden="true"></span> ' . Text::_('JSELECT')
 				. '</button>';
 		}
@@ -292,7 +292,7 @@ class MenuField extends FormField
 				. ' id="' . $this->id . '_new"'
 				. ' data-toggle="modal"'
 				. ' type="button"'
-				. ' data-target="#ModalNew' . $modalId . '">'
+				. ' data-href="#ModalNew' . $modalId . '">'
 				. '<span class="icon-new" aria-hidden="true"></span> ' . Text::_('JACTION_CREATE')
 				. '</button>';
 		}
@@ -305,7 +305,7 @@ class MenuField extends FormField
 				. ' id="' . $this->id . '_edit"'
 				. ' data-toggle="modal"'
 				. ' type="button"'
-				. ' data-target="#ModalEdit' . $modalId . '">'
+				. ' data-href="#ModalEdit' . $modalId . '">'
 				. '<span class="icon-edit" aria-hidden="true"></span> ' . Text::_('JACTION_EDIT')
 				. '</button>';
 		}
@@ -348,7 +348,7 @@ class MenuField extends FormField
 		if ($this->allowSelect)
 		{
 			$html .= HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'ModalSelect' . $modalId,
 				array(
 					'title'       => $modalTitle,
@@ -367,7 +367,7 @@ class MenuField extends FormField
 		if ($this->allowNew)
 		{
 			$html .= HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'ModalNew' . $modalId,
 				array(
 					'title'       => Text::_('COM_MENUS_NEW_MENUITEM'),
@@ -396,7 +396,7 @@ class MenuField extends FormField
 		if ($this->allowEdit)
 		{
 			$html .= HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'ModalEdit' . $modalId,
 				array(
 					'title'       => Text::_('COM_MENUS_EDIT_MENUITEM'),

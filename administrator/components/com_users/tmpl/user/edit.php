@@ -36,8 +36,8 @@ $this->useCoreUI = true;
 	<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_USERS_USER_ACCOUNT_DETAILS')); ?>
-			<div class="card">
-				<div class="card-body">
+			<div class="j-card">
+				<div class="j-card-body">
 					<div class="row">
 						<div class="col-lg-8 col-xl-6">
 						<?php echo $this->form->renderFieldset('user_details'); ?>

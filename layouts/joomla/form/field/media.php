@@ -120,25 +120,17 @@ $url    = ($readonly ? ''
 		preview-height="<?php echo $previewHeight; ?>"
 >
 	<?php
-	// Render the modal
-	echo HTMLHelper::_('bootstrap.renderModal',
-		'imageModal_'. $id,
-		array(
-			'url'         => $url,
-			'title'       => Text::_('JLIB_FORM_CHANGE_IMAGE'),
-			'closeButton' => true,
-			'height' => '100%',
-			'width'  => '100%',
-			'modalWidth'  => '80',
-			'bodyHeight'  => '60',
-			'footer'      => '<button type="button" class="btn btn-secondary button-save-selected">' . Text::_('JSELECT') . '</button>'
-				. '<button type="button" class="btn btn-secondary" data-dismiss="modal">' . Text::_('JCANCEL') . '</button>',
-		)
-	);
-
+	HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 	HTMLHelper::_('webcomponent', 'system/fields/joomla-field-media.min.js', ['version' => 'auto', 'relative' => true]);
 	Text::script('JLIB_FORM_MEDIA_PREVIEW_EMPTY', true);
 	?>
+	<joomla-modal role="dialog" id="imageModal_<?php echo $id; ?>" title="<?php echo Text::_('JLIB_FORM_CHANGE_IMAGE'); ?>" width="90vw" height="400px" iframe="<?php echo $url ?>">
+		<section>&nbsp;</section>
+		<footer>
+			<button type="button" class="btn btn-secondary button-save-selected"><?php echo Text::_('JSELECT'); ?></button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo Text::_('JCANCEL'); ?></button>
+		</footer>
+	</joomla-modal>
 	<?php if ($showPreview) : ?>
 		<div class="field-media-preview">
 			<?php echo ' ' . $previewImgEmpty; ?>
@@ -149,7 +141,7 @@ $url    = ($readonly ? ''
 		<input type="text" name="<?php echo $name; ?>" id="<?php echo $id; ?>" value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>" readonly="readonly"<?php echo $attr; ?>>
 		<?php if ($disabled != true) : ?>
 			<div class="input-group-append">
-				<button type="button" class="btn btn-secondary button-select"><?php echo Text::_("JLIB_FORM_BUTTON_SELECT"); ?></button>
+				<button  type="button" class="btn btn-secondary button-select"><?php echo Text::_("JLIB_FORM_BUTTON_SELECT"); ?></button>
 				<button type="button" class="btn btn-secondary button-clear"><span class="fa fa-times" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_("JLIB_FORM_BUTTON_CLEAR"); ?></span></button>
 			</div>
 		<?php endif; ?>

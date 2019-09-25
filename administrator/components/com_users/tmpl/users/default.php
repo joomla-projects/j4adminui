@@ -18,6 +18,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\String\PunycodeHelper;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('behavior.tabstate');
 
@@ -204,15 +205,14 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 					<?php if ($loggeduser->authorise('core.create', 'com_users')
 						&& $loggeduser->authorise('core.edit', 'com_users')
 						&& $loggeduser->authorise('core.edit.state', 'com_users')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
-							'collapseModal',
-							array(
-								'title'  => Text::_('COM_USERS_BATCH_OPTIONS'),
-								'footer' => $this->loadTemplate('batch_footer'),
-							),
-							$this->loadTemplate('batch_body')
-						); ?>
+							<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_USERS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+								<section>
+									<?php echo $this->loadTemplate('batch_body'); ?>
+								</section>
+								<footer>
+									<?php echo $this->loadTemplate('batch_footer'); ?>
+								</footer>
+							</joomla-modal>
 					<?php endif; ?>
 				<?php endif; ?>
 

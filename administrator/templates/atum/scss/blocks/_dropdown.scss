@@ -2,7 +2,7 @@
 joomla-dropdown {
     position: absolute;
     top: 100%;
-    z-index: 999999999;
+    z-index: 9999;
     display: none;
     box-sizing: border-box;
     min-width: 16.071rem;
@@ -12,9 +12,69 @@ joomla-dropdown {
     list-style: none;
     background-color: #ffffff;
     background-clip: padding-box;
-      border: 1px solid #eaeef5;
-      box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
-      border-radius: 3px;
+    border: 1px solid #eaeef5;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    border-radius: 3px;
+
+    li{
+      position: relative;
+      ul{
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background-color: #ffffff;
+        border: 1px solid #eaeef5;
+        box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+        min-width: 16.071rem;
+        padding: 0;
+        list-style: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: 300ms;
+      }
+      &.left ul{
+        left: auto;
+        right: 100%;
+      }
+      .dropdown-item[open] + ul{
+        visibility: visible;
+        opacity: 1;
+      }
+      &.has-submenu{
+        > a{
+          position: relative;
+          &::after{
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 12px;
+            width: 12px;
+            background-size: contain;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.707 6.283a1 1 0 0 1-1.414 0L.7 1.69A.99.99 0 0 1 2.1.29L6 4.19 9.9.29a.99.99 0 0 1 1.4 1.4L6.707 6.283z' fill='%23C1C7D0' fill-rule='nonzero'/%3E%3C/svg%3E");
+            display: inline-block;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: 300ms;
+          }
+          &[open]::after{
+            transform: translateY(-50%) rotate(-90deg)
+          }
+        }
+        &.left > a{
+          padding-left: 30px;
+          &::after{
+            right: auto;
+            left: 10px;
+          }
+          &[open]::after{
+            transform: translateY(-50%) rotate(90deg)
+          }
+        }
+      }
+    }
+
     &[expanded] {
       display: block;
     }
@@ -40,6 +100,10 @@ joomla-dropdown {
         &:focus {
                 outline: 2px solid var(--link-color);
         }
+      }
+      &:focus {
+        outline: 2px solid var(--link-color);
+        background: #ffffff;
       }
       > p{
           padding-left: 1.143rem;
