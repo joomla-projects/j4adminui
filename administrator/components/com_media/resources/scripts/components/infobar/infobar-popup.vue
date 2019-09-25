@@ -1,7 +1,6 @@
 <template>
     <div class="media-infobar-popup" v-if="item"  v-click-outside="hideInfoBar">
         <span class="infobar-close" @click="hideInfoBar()">×</span>
-        <h2>{{ item.name }}</h2>
         <div v-if="item.path === '/'" class="text-center">
             <span class="fa fa-file placeholder-icon"></span>
             Select file or folder to view its details.

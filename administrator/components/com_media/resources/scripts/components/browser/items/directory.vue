@@ -54,6 +54,7 @@
                     </li>
                 </ul>
             </div>
+            <media-infobar-popup v-if="showInfoPopup" :item="item" @hideInfoPopup="hideInfoPopup"></media-infobar-popup>
         </div>
     </div>
 </template>
@@ -66,14 +67,12 @@
         data() {
             return {
                 showActions: false,
+                showInfoPopup: false
             }
         },
         props: ['item', 'focused'],
         mixins: [navigable],
         methods: {
-            showInfoBar() {
-                this.$store.commit(types.SHOW_INFOBAR, this.item);
-            },
             /* Handle the on preview double click event */
             onPreviewDblClick() {
                 this.navigateTo(this.item.path);
@@ -108,6 +107,12 @@
                this.showActions = false;
                this.$nextTick(() => this.$refs.actionToggle.focus());
            },
+            showInfoBar() {
+                this.showInfoPopup = true;
+            },
+            hideInfoPopup() {
+                this.showInfoPopup = false;
+            }
         }
     }
 </script>

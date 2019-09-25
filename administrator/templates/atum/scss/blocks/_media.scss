@@ -311,16 +311,26 @@
         columns: initial;
         li {
             padding: 5px 0;
-            display: flex;
-            justify-content: space-between;
+            @extend .d-flex;
+            @extend .justify-content-between;
             border-bottom: 1px solid var(--background);
             .media-info-title {
                 color: var(--secondary-color);
+                flex: 0 0 50%;
+            }
+            .media-info-details {
+                flex: 0 0 50%;
             }
             &:last-child {
                 border: 0;
             }
         }
+    }
+    .infobar-close {
+        padding: 0 10px;
+        font-size: 2rem;
+        line-height: 1;
+        color: #ccc;
     }
 }
 .image-browser-action {

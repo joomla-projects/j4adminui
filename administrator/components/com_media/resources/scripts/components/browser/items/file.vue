@@ -70,6 +70,7 @@
                     </li>
                 </ul>
             </div>
+            <media-infobar-popup v-if="showInfoPopup" :item="item" @hideInfoPopup="hideInfoPopup"></media-infobar-popup>
         </div>
     </div>
 </template>
@@ -82,6 +83,7 @@
         data() {
             return {
                 showActions: false,
+                showInfoPopup: false
             }
         },
         props: ['item', 'focused'],
@@ -92,7 +94,7 @@
 	        },
             /* Opening confirm delete modal */
             openConfirmDeleteModal(){
-                    this.$store.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
+                this.$store.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
 	            this.$store.commit(types.SELECT_BROWSER_ITEM, this.item);
 	            this.$store.commit(types.SHOW_CONFIRM_DELETE_MODAL);
             },
@@ -126,8 +128,11 @@
                 this.$nextTick(() => this.$refs.actionToggle.focus());
             },
             showInfoBar() {
-                this.$store.commit(types.SHOW_INFOBAR, this.item);
+                this.showInfoPopup = true;
             },
+            hideInfoPopup() {
+                this.showInfoPopup = false;
+            }
         }
     }
 </script>
