@@ -19,12 +19,10 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      // const button = document.querySelector(this.for);
       const button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
       if (!button.hasAttribute('data-target')) {
-        console.log('hi')
         return;
       }
 
