@@ -60,7 +60,7 @@ echo HTMLHelper::_(
 				foreach ($this->modules as $module)
 				{
 					$style = 'card';
-					if( $module->module == 'mod_quickicon' || $module->module == 'mod_content' )
+					if( $module->module == 'mod_quickicon' )
 					{
 						$style = 'simple';
 					}
