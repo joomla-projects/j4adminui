@@ -18,7 +18,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
 /** @var \Joomla\Component\Banners\Administrator\View\Banners\HtmlView $this */
-
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('behavior.tabstate');
 
@@ -177,15 +177,17 @@ if ($saveOrder && !empty($this->items))
 					<?php if ($user->authorise('core.create', 'com_banners')
 						&& $user->authorise('core.edit', 'com_banners')
 						&& $user->authorise('core.edit.state', 'com_banners')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
+						<?php 
+						echo HTMLHelper::_(
+							'webcomponent.renderModal',
 							'collapseModal',
 							[
 								'title' => Text::_('COM_BANNERS_BATCH_OPTIONS'),
 								'footer' => $this->loadTemplate('batch_footer')
 							],
 							$this->loadTemplate('batch_body')
-						); ?>
+						); 
+						?>
 					<?php endif; ?>
 				<?php endif; ?>
 

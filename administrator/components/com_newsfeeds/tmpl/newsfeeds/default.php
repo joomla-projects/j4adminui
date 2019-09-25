@@ -18,6 +18,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('behavior.tabstate');
 
@@ -176,15 +177,14 @@ if ($saveOrder && !empty($this->items))
 					<?php if ($user->authorise('core.create', 'com_newsfeeds')
 						&& $user->authorise('core.edit', 'com_newsfeeds')
 						&& $user->authorise('core.edit.state', 'com_newsfeeds')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
-							'collapseModal',
-							array(
-								'title'  => Text::_('COM_NEWSFEEDS_BATCH_OPTIONS'),
-								'footer' => $this->loadTemplate('batch_footer'),
-							),
-							$this->loadTemplate('batch_body')
-						); ?>
+							<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_NEWSFEEDS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+								<section>
+									<?php echo $this->loadTemplate('batch_body'); ?>
+								</section>
+								<footer>
+									<?php echo $this->loadTemplate('batch_footer'); ?>
+								</footer>
+							</joomla-modal>
 					<?php endif; ?>
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">
