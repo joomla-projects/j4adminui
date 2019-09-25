@@ -22,6 +22,7 @@ use Joomla\CMS\Session\Session;
 use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 use Joomla\Component\Content\Administrator\Helper\ContentHelper;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 JHtml::_('bootstrap.tooltip');
 
@@ -356,25 +357,23 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 					<?php if ($user->authorise('core.create', 'com_content')
 						&& $user->authorise('core.edit', 'com_content')
 						&& $user->authorise('core.edit.state', 'com_content')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
-							'collapseModal',
-							array(
-								'title'  => Text::_('COM_CONTENT_BATCH_OPTIONS'),
-								'footer' => $this->loadTemplate('batch_footer'),
-							),
-							$this->loadTemplate('batch_body')
-						); ?>
+						<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_CONTENT_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+							<section>
+								<?php echo $this->loadTemplate('batch_body'); ?>
+							</section>
+							<footer>
+								<?php echo $this->loadTemplate('batch_footer'); ?>
+							</footer>
+						</joomla-modal>
 					<?php endif; ?>
-					<?php echo HTMLHelper::_(
-						'bootstrap.renderModal',
-						'stageModal',
-						array(
-							'title'  => Text::_('JTOOLBAR_CHANGE_STATUS'),
-							'footer' => $this->loadTemplate('stage_footer'),
-						),
-						$this->loadTemplate('stage_body')
-					); ?>
+					<joomla-modal role="dialog" id="stageModal" title="<?php echo Text::_('JTOOLBAR_CHANGE_STATUS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('stage_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('stage_footer'); ?>
+						</footer>
+					</joomla-modal>
 				<?php endif; ?>
 
 				<?php // load the pagination and limit items ?>

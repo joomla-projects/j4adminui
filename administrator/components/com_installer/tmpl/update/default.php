@@ -102,12 +102,12 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									</td>
 									<td class="hidden-sm-down text-center">
 										<?php if (!empty($item->changelogurl)) : ?>
-										<a href="#changelogModal<?php echo $item->extension_id; ?>" class="btn btn-info btn-xs changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="update" data-toggle="modal">
+										<a data-href="#changelogModal<?php echo $item->extension_id; ?>" href="#" class="btn btn-info btn-xs changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="update">
 											<?php echo Text::_('COM_INSTALLER_CHANGELOG'); ?>
 										</a>
 										<?php
 										echo HTMLHelper::_(
-											'bootstrap.renderModal',
+											'webcomponent.renderModal',
 											'changelogModal' . $item->extension_id,
 											array(
 												'title' => Text::sprintf('COM_INSTALLER_CHANGELOG_TITLE', $item->name, $item->version),

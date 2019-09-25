@@ -1,11 +1,12 @@
 <?php
 defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('webcomponent', 'system/pagination.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-breadcrumb.js', array('version'=> 'auto', 'relative' => true));
-HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
+// HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'auto', 'relative' => true));
@@ -13,6 +14,43 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
 <div class="container" style="background:white; padding: 10px;">
+        <h1> Demo Modal </h1>
+        <?php 
+        
+            echo HTMLHelper::_(
+                'webcomponent.renderModal',
+                'associationSelect',
+                array(
+                    'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),
+                    'backdrop'    => 'static',
+                    'url'         => 'https://stackoverflow.com/questions/369602/deleting-an-element-from-an-array-in-php',
+                    'height'      => '400px',
+                    'width'       => '800px',
+                    'bodyHeight'  => 70,
+                    'modalWidth'  => 80,
+                    'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
+                            . Text::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>',
+                )
+            );
+
+            echo HTMLHelper::_(
+                'webcomponent.renderModal',
+                'associationSelect2',
+                array(
+                    'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),
+                    'backdrop'    => 'static',
+                    'height'      => '400px',
+                    'width'       => '800px',
+                    'bodyHeight'  => 70,
+                    'modalWidth'  => 80,
+                    'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
+                            . Text::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>',
+                ),
+                '<p> This is awesome paragraph </p>'
+            );
+        ?>
+        <button type="button" data-href="#associationSelect"> Open Modal </button>
+        <button type="button" data-href="#associationSelect2"> Open Modal2 </button>
         <h1> Joomla Pgoress </h1>
         <div class="_joomla-progress" style="width: 600px">
             <joomla-progress progress="25"></joomla-progress>

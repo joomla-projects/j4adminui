@@ -227,7 +227,7 @@ class HtmlView extends BaseHtmlView
 
 				// Add the modal html to the document
 				echo HTMLHelper::_(
-					'bootstrap.renderModal',
+					'webcomponent.renderModal',
 					'ModalNewItem_' . $modalId,
 					array(
 						'title' => Text::_('COM_MENUS_NEW_MENUITEM'),

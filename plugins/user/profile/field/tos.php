@@ -82,7 +82,7 @@ class JFormFieldTos extends \Joomla\CMS\Form\Field\RadioField
 		{
 			$attribs                = [];
 			$attribs['data-toggle'] = 'modal';
-			$attribs['data-target'] = '#tosModal';
+			$attribs['data-href'] = '#tosModal';
 
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true);
@@ -116,7 +116,7 @@ class JFormFieldTos extends \Joomla\CMS\Form\Field\RadioField
 			}
 
 			echo HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'tosModal',
 				array(
 					'url'    => Route::_($url . '&tmpl=component'),
