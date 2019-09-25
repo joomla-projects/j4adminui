@@ -77,9 +77,12 @@ if ($clientId === 1)
 
 	<div class="row">
 		<div class="col-lg-9">
-
 			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+		</div>
+	</div>
 			
+	<div class="row">
+		<div class="col-lg-9">
 			<?php // Add the translation of the menu item title when client is administrator ?>
 			<?php if ($clientId === 1 && $this->item->id != 0) : ?>
 				<div class="form-inline form-inline-header">
@@ -162,12 +165,14 @@ if ($clientId === 1)
 
 			<?php if (!empty($this->modules)) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'modules', Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
-				<fieldset id="fieldset-modules" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT'); ?></legend>
-					<div>
-					<?php echo $this->loadTemplate('modules'); ?>
+				<div id="fieldset-modules" class="j-card options-grid-form options-grid-form-full">
+					<div class="j-card-header">
+						<?php echo Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT'); ?>
 					</div>
-				</fieldset>
+					<div class="j-card-body">
+						<?php echo $this->loadTemplate('modules'); ?>
+					</div>
+				</div>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
 
