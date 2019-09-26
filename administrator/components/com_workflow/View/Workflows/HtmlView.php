@@ -127,13 +127,9 @@ class HtmlView extends BaseHtmlView
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
-
+		
+		// set title
 		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'address contact');
-
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('workflow.add');
-		}
 
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{
@@ -170,12 +166,17 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_WORKFLOWS_LIST');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($this->extension);
 		}
 
-		$toolbar->help('JHELP_WORKFLOWS_LIST');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('workflow.add');
+		}
 	}
 
 	/**

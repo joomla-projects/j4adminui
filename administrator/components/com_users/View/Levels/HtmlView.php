@@ -103,16 +103,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_USERS_VIEW_LEVELS_TITLE'), 'user-lock levels');
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::addNew('level.add');
-		}
-
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'level.delete', 'JTOOLBAR_DELETE');
 			ToolbarHelper::divider();
 		}
+
+		ToolbarHelper::help('JHELP_USERS_ACCESS_LEVELS');
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
@@ -120,7 +117,11 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		ToolbarHelper::help('JHELP_USERS_ACCESS_LEVELS');
+		if ($canDo->get('core.create'))
+		{
+			ToolbarHelper::addNew('level.add');
+		}
+
 	}
 
 	/**

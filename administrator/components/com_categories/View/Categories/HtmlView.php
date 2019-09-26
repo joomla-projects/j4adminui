@@ -222,13 +222,6 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
-		if ($canDo->get('core.admin'))
-		{
-			$toolbar->standardButton('refresh')
-				->text('JTOOLBAR_REBUILD')
-				->task('categories.rebuild');
-		}
-
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete', $component))
 		{
 			$toolbar->delete('categories.delete')
@@ -267,6 +260,13 @@ class HtmlView extends BaseHtmlView
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($component);
+		}
+
+		if ($canDo->get('core.admin'))
+		{
+			$toolbar->standardButton('refresh')
+				->text('JTOOLBAR_REBUILD')
+				->task('categories.rebuild');
 		}
 
 		// create new category button
