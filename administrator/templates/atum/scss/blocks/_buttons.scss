@@ -52,10 +52,11 @@
         line-height: 2.286rem;
     }
     &.btn-primary {
-        background-color: var(--button-color);
+        background-color: var(--link-color);
         color: #fff;
         &:hover{
             box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.15), 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+            background-color: var(--button-color);
         }
         &:active, &.active{
             background-color: var(--button-dark-color);
@@ -68,7 +69,10 @@
     &.btn-default {
         background-image: linear-gradient(to bottom, var(--lighter-link-color), var(--light-link-color));
         color: var(--link-color);
-        &:active, &.active{
+        &:hover{
+            color: var(--button-color);
+        }
+        &:hover, &:active, &.active{
             background-image: none;
             background-color: #fff;
         }
@@ -128,11 +132,13 @@
         &:hover, &:active, &.active{
             color: var(--link-color);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+            text-decoration: underline;
         }
         &:hover{
             background-color: var(--submenu-background);
         }
         &:active, &.active{
+            color: var(--button-color);
             background-color: #fff;
         }
         &:focus, &:focus:active, &:not(:disabled):active:focus{
@@ -194,7 +200,7 @@
     }
     &.btn-warning{
         background-color: var(--warning-button);
-        color: #fff;
+        color: var(--color);
         &:hover, &:focus, &:active, &.active{
             background-color: var(--warning-button-dark);
         }
@@ -209,12 +215,10 @@
     &.btn-info{
         background: none;
         color: var(--secondary-color);
-        padding: 0;
         box-shadow: none;
-        line-height: 1.2;
         &:hover, &:focus, &:focus:active, &:active{
-            color: var(--color);
-            box-shadow: none;
+            background-color: var(--submenu-background);
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
         }
         &[disabled], &.disabled, &:disabled{
             background-image: none;
@@ -222,17 +226,17 @@
         }
     }
     &.btn-dark{
-        background-color: var(--dark-primary-color);
+        background-color: var(--inverse-background);
         color: #fff;
         &:hover, &:focus{
-            background-color: var(--inverse-background);
+            background-color: var(--dark-primary-color);
         }
     }
     &.btn-light{
         background-color: #fff;
         color: var(--link-color);
         &:hover, &:focus{
-            background-color: #f5f5f5;
+            color: var(--button-color);
         }
     }
     &.btn-white{
