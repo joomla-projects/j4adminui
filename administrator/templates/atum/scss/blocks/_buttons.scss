@@ -31,6 +31,9 @@
         background-image: none;
         background-color: var(--secondary-icon-color);
         color: var(--icon-color);
+        span, i{
+            color: var(--icon-color);
+        }
     }
     >.icon{
         margin-right: 12px;
@@ -52,10 +55,11 @@
         line-height: 2.286rem;
     }
     &.btn-primary {
-        background-color: var(--button-color);
+        background-color: var(--link-color);
         color: #fff;
         &:hover{
             box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.15), 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+            background-color: var(--button-color);
         }
         &:active, &.active{
             background-color: var(--button-dark-color);
@@ -64,11 +68,17 @@
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-default {
         background-image: linear-gradient(to bottom, var(--lighter-link-color), var(--light-link-color));
         color: var(--link-color);
-        &:active, &.active{
+        &:hover{
+            color: var(--button-color);
+        }
+        &:hover, &:active, &.active{
             background-image: none;
             background-color: #fff;
         }
@@ -128,11 +138,13 @@
         &:hover, &:active, &.active{
             color: var(--link-color);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+            text-decoration: underline;
         }
         &:hover{
             background-color: var(--submenu-background);
         }
         &:active, &.active{
+            color: var(--button-color);
             background-color: #fff;
         }
         &:focus, &:focus:active, &:not(:disabled):active:focus{
@@ -156,14 +168,11 @@
             background-color: var(--secondary-icon-color);
             color: var(--color);
         }
-        &:focus{
-            box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
-        }
-        &.active, &:active, &:focus:active{
-            box-shadow: none;
+        &:focus, &.active, &:active{
             border-color: var(--danger-button);
             background-color: var(--danger-button);
             color: #fff;
+            box-shadow: none;
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;
@@ -184,6 +193,9 @@
         &:hover, &:focus, &:active, &.active{
             background-color: var(--danger-button-dark);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-success{
         background-color: var(--success-button);
@@ -191,12 +203,18 @@
         &:hover, &:focus, &:active, &.active{
             background-color: var(--success-button-dark);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-warning{
         background-color: var(--warning-button);
-        color: #fff;
+        color: var(--color);
         &:hover, &:focus, &:active, &.active{
             background-color: var(--warning-button-dark);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-solid-primary{
@@ -205,16 +223,17 @@
         &:hover, &:focus{
             background-color: var(--button-dark-color);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-info{
         background: none;
         color: var(--secondary-color);
-        padding: 0;
         box-shadow: none;
-        line-height: 1.2;
         &:hover, &:focus, &:focus:active, &:active{
-            color: var(--color);
-            box-shadow: none;
+            background-color: var(--submenu-background);
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
         }
         &[disabled], &.disabled, &:disabled{
             background-image: none;
@@ -222,17 +241,20 @@
         }
     }
     &.btn-dark{
-        background-color: var(--dark-primary-color);
+        background-color: var(--inverse-background);
         color: #fff;
         &:hover, &:focus{
-            background-color: var(--inverse-background);
+            background-color: var(--dark-primary-color);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-light{
         background-color: #fff;
         color: var(--link-color);
         &:hover, &:focus{
-            background-color: #f5f5f5;
+            color: var(--button-color);
         }
     }
     &.btn-white{
@@ -271,22 +293,19 @@
     &.btn-outline{
         border: 1px solid var(--dark-border-color);
     }
-    // &.dropdown-toggle {
-    //     padding: 0 1.1rem;
-    //     border-right: 1px solid rgba(var(--inverse-color-rgb), 0.1);
-    //     border-radius: 3px 0 0 3px;
-    //     +.btn,
-    //     +joomla-toolbar-button .btn{
-    //         border-radius: 0 3px 3px 0;
-    //     }
-    // }
+    &.dropdown-toggle {
+        padding: 0 1.1rem;
+    }
+    &.hidden {
+        display: none;
+    }
 }
-.btn-group{
+.btn-group, .toolbar-btn-group{
     position: relative;
     display: inline-flex;
     display: -ms-inline-flexbox;
     vertical-align: middle;
-    >.btn {
+    >.btn, >joomla-toolbar-button{
         position: relative;
         flex: 1 1 auto;
         border-radius: 3px;
@@ -294,13 +313,13 @@
             z-index: 1;
         }
     }
+    >joomla-toolbar-button:not(:last-child) >.btn,
     >.btn:not(:last-child),
     >.btn:not(:last-child):not(.dropdown-toggle) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
-    >.btn:not(:first-child),
-    >.btn:not(:first-child) {
+    >.btn:not(:first-child){
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
@@ -333,6 +352,11 @@
                 }
             }
         }
+    }
+}
+.toolbar-btn-group{
+    joomla-toolbar-button+.dropdown-toggle{
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 // iconic button

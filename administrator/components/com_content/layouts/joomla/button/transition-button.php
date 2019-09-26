@@ -54,12 +54,11 @@ $attribs = [
     'id'        => 'transition-select_' . (int) $id,
     'list.attr' => [
         'class'    => 'custom-select custom-select-sm form-control form-control-sm',
-        'data-color' => $color,
         'onchange' => "Joomla.listItemTask('" . $checkboxName . $this->escape($row ?? '') . "', 'articles.runTransition')"]
     ];
 ?>
 
-<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group">
+<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group" data-color="<?php echo $color;?>">
     <?php echo HTMLHelper::_('select.genericlist', $transitions, 'transition_' . (int) $id, $attribs); ?>
 </div>
 

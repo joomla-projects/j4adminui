@@ -116,12 +116,31 @@ class HtmlView extends BaseHtmlView
 			'bookmark banners-clients'
 		);
 
+		if (!empty($this->item->id) && ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
+		{
+			ToolbarHelper::versions('com_banners.client', $this->item->id);
+		}
+
 		$toolbarButtons = [];
+
+		// help button
+		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_CLIENTS_EDIT');
+
+		// close/cancel button
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('client.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('client.cancel', 'JTOOLBAR_CLOSE');
+		}
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || $canDo->get('core.create')))
-		{
-			ToolbarHelper::apply('client.apply');
+		{	
+			$toolbarButtons[] = ['apply', 'client.apply'];
 			$toolbarButtons[] = ['save', 'client.save'];
 		}
 
@@ -140,22 +159,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('client.cancel');
-		}
-		else
-		{
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
-			{
-				ToolbarHelper::versions('com_banners.client', $this->item->id);
-			}
-
-			ToolbarHelper::cancel('client.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_CLIENTS_EDIT');
 	}
 }

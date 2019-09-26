@@ -20,8 +20,8 @@ jQuery(function($)
 			$li.find('span.treeselect-icon').removeClass('d-none').addClass('treeselect-toggle').find('span').addClass('fa-chevron-down');
 			
 			// Append drop down menu in nodes
-			treeselectmenu.find('.treeselect-options-toggle').attr('id', `treemenu-${index}`);
-			treeselectmenu.find('joomla-dropdown').attr('for', `#treemenu-${index}`);
+			treeselectmenu.find('.treeselect-options-toggle').attr('data-target', `treemenu-${index}`);
+			treeselectmenu.find('joomla-dropdown').attr('for', `treemenu-${index}`);
 			$div.find('.treeselect-item-content').after(treeselectmenu.html());
 
 			if (!$li.find('ul.treeselect-sub ul.treeselect-sub').length) {

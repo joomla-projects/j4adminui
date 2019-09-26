@@ -27,6 +27,7 @@
     margin-bottom: 0;
 
     > joomla-toolbar-button,
+    > div,
     > .btn-group {
       margin-left: 1.4rem;
 
@@ -66,7 +67,11 @@
     }
   }
 }
-
+.js-stools .js-stools-container-bar{
+  .btn.js-stools-btn-filter, .btn.js-stools-btn-clear{
+    border-radius: 3px !important;
+  }
+}
 .input-group {
   position: relative;
   display: block;

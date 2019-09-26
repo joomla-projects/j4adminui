@@ -111,12 +111,41 @@ table {
                         }
                     }
                 }
-    
+                .j-transition-group {
+                    position: relative;
+                    &::after {
+                        content: "";
+                        width: 7px;
+                        height: 7px;
+                        position: absolute;
+                        left: -12px;
+                        top: 0;
+                        border-radius: 50%;
+                        background: var(--primary-color);
+                        bottom: 0;
+                        margin: auto;
+                    }
+                    &[data-color="danger"] {
+                        &::after {
+                            background: var(--danger-color);
+                        }
+                    }
+                    &[data-color="primary"] {
+                        &::after {
+                            background: var(--icon-color);
+                        }
+                    }
+                    &[data-color="warning"] {
+                        &::after {
+                            background: var(--warning-color);
+                        }
+                    }
+                }
                 .custom-select {
                     padding: 0;
                     border: 0;
                     box-shadow: none;
-                    color: var(--success-color);
+                    color: var(--color);
                     width: 110px;
                     height: auto;
                     background-image: url(../images/select-bg-white.svg);
@@ -126,15 +155,6 @@ table {
                     option:hover {
                         background: var(--success-color);
                         color: var(--inverse-color);
-                    }
-                    &[data-color="danger"] {
-                        color: var(--danger-color);
-                    }
-                    &[data-color="primary"] {
-                        color: var(--icon-color);
-                    }
-                    &[data-color="warning"] {
-                        color: var(--warning-color);
                     }
                 }
                 .badge.badge-info {
@@ -165,7 +185,7 @@ table {
             }
         }
     }
-
+    
     //j striped table
     &.j-striped-table {
         border-radius: 3px;

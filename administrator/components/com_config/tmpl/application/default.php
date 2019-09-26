@@ -31,12 +31,12 @@ Text::script('MESSAGE');
 <form action="<?php echo Route::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm" class="form-validate" data-cancel-task="config.cancel.component">
 	<div class="row">
 		<!-- Begin Sidebar -->
-		<div id="sidebar" class="col-md-3">
+		<div id="sidebar" class="col-md-2">
 			<button class="btn btn-sm btn-secondary my-2 options-menu d-md-none" type="button" data-toggle="collapse" data-target=".sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
 				<span class="fas fa-align-justify" aria-hidden="true"></span>
 				<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>
 			</button>
-			<div class="sidebar-nav bg-light p-2 my-2">
+			<div class="sidebar-nav p-2 my-2">
 				<?php echo $this->loadTemplate('navigation'); ?>
 				<?php
 				// Display the submenu position modules
@@ -52,7 +52,7 @@ Text::script('MESSAGE');
 		</div>
 		<!-- End Sidebar -->
 		<!-- Begin Content -->
-		<div class="col-lg-9 mt-2">
+		<div class="col-lg-10 mt-2">
 			<joomla-tab>
 				<section  id="page-site" name="<?php echo Text::_('JSITE'); ?>">
 					<?php echo $this->loadTemplate('site'); ?>
