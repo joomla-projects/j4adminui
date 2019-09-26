@@ -39,10 +39,12 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 <form action="<?php echo Route::_('index.php?option=com_contact&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="contact-form" class="form-validate">
 
+	<div class="form-no-margin">
+		<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+	</div>
+
 	<div class="row">
 		<div class="col-lg-9">
-			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', empty($this->item->id) ? Text::_('COM_CONTACT_NEW_CONTACT') : Text::_('COM_CONTACT_EDIT_CONTACT')); ?>
