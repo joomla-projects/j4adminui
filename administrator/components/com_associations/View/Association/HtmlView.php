@@ -197,6 +197,8 @@ class HtmlView extends BaseHtmlView
 
 		$helper = AssociationsHelper::getExtensionHelper($this->extensionName);
 		$title  = $helper->getTypeTitle($this->typeName);
+		// toolbar instance
+		$bar = Toolbar::getInstance('toolbar');
 
 		$languageKey = strtoupper($this->extensionName . '_' . $title . 'S');
 
@@ -207,26 +209,29 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::sprintf('COM_ASSOCIATIONS_TITLE_EDIT', Text::_($this->extensionName), Text::_($languageKey)), 'language assoc');
 
-		$bar = Toolbar::getInstance('toolbar');
-
-		$bar->appendButton(
-			'Custom', '<button onclick="Joomla.submitbutton(\'reference\')" '
-			. 'class="btn btn-sm btn-success"><span class="icon-apply" aria-hidden="true"></span>'
-			. Text::_('COM_ASSOCIATIONS_SAVE_REFERENCE') . '</button>', 'reference'
-		);
-
-		$bar->appendButton(
-			'Custom', '<button onclick="Joomla.submitbutton(\'target\')" '
-			. 'class="btn btn-sm btn-success"><span class="icon-apply" aria-hidden="true"></span>'
-			. Text::_('COM_ASSOCIATIONS_SAVE_TARGET') . '</button>', 'target'
-		);
-
+		// copy refference button
 		if ($this->typeName === 'category' || $this->extensionName === 'com_menus' || $this->save2copy === true)
 		{
 			ToolbarHelper::custom('copy', 'copy.png', '', 'COM_ASSOCIATIONS_COPY_REFERENCE', false);
 		}
-
-		ToolbarHelper::cancel('association.cancel', 'JTOOLBAR_CLOSE');
+		// help button
 		ToolbarHelper::help('JHELP_COMPONENTS_ASSOCIATIONS_EDIT');
+
+		// close button
+		ToolbarHelper::cancel('association.cancel', 'JTOOLBAR_CLOSE');
+
+		// save refference button
+		$bar->appendButton(
+			'Custom', '<button onclick="Joomla.submitbutton(\'reference\')" '
+			. 'class="btn btn-sm btn-primary"><span class="icon-apply" aria-hidden="true"></span>'
+			. Text::_('COM_ASSOCIATIONS_SAVE_REFERENCE') . '</button>', 'reference'
+		);
+
+		// save target button
+		$bar->appendButton(
+			'Custom', '<button onclick="Joomla.submitbutton(\'target\')" '
+			. 'class="btn btn-sm btn-primary"><span class="icon-apply" aria-hidden="true"></span>'
+			. Text::_('COM_ASSOCIATIONS_SAVE_TARGET') . '</button>', 'target'
+		);
 	}
 }
