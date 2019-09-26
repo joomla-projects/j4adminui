@@ -13,6 +13,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 HTMLHelper::_('behavior.core');
 HTMLHelper::_('webcomponent', 'system/joomla-toolbar-button.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('script', 'system/joomla-toolbar-button-action.min.js', ['version' => 'auto', 'relative' => true]);
 
 /**
  * @var  string  $id
@@ -51,7 +52,6 @@ elseif (!empty($onclick))
 
 ?>
 
-<joomla-toolbar-button <?php echo $idAttr.$taskAttr.$listAttr.$formAttr.$validate.$msgAttr; ?>>
 <?php if (!empty($group)) : ?>
 <a href="#" class="dropdown-item">
 	<span class="<?php echo trim($class ?? ''); ?>"></span>
@@ -61,9 +61,9 @@ elseif (!empty($onclick))
 <<?php echo $tagName; ?>
 	class="<?php echo $btnClass ?? ''; ?>"
 	<?php echo $htmlAttributes ?? ''; ?>
+	<?php echo $idAttr.$taskAttr.$listAttr.$formAttr.$validate.$msgAttr; ?>
     >
     <span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
     <?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
 <?php endif; ?>
-</joomla-toolbar-button>
