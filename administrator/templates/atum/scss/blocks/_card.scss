@@ -27,6 +27,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		.j-card-header-right{
 			margin-left: auto;
 			@extend .d-inline-flex;
+			joomla-dropdown{
+				margin-top: 0.714rem;
+			}
 		}
 		> h4,
 		.j-card-title{
@@ -455,12 +458,26 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 .j-card-counter-msg{
 	color: var(--secondary-color);
 	margin-top: 1.071rem;
-	span{
+	span:not(.j-count-icon){
 		font-size: 3.857rem;
 		line-height: 5.071rem;
 		font-weight: 700;
 		display: inline-block;
 		padding-right: 0.643rem;
 		color: var(--color);
+	}
+	span.j-count-icon{
+		@extend .d-inline-flex;
+		@extend .align-items-center;
+		@extend .justify-content-center;
+		vertical-align: top;
+		height: 1.286rem;
+		width: 1.286rem;
+		background: var(--success-color);
+		color: #fff;
+		line-height: 1.286rem;
+		font-size: 0.643rem;
+		border-radius: 50%;
+		margin-right: 6px;
 	}
 }
