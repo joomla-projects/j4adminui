@@ -115,6 +115,10 @@ class HtmlView extends BaseHtmlView
 
 		$bar = Toolbar::getInstance('toolbar');
 
+		ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_CONSENTS');
+
+		ToolbarHelper::preferences('com_privacy');
+
 		// Add a button to invalidate a consent
 		$bar->appendButton(
 			'Confirm',
@@ -137,9 +141,5 @@ class HtmlView extends BaseHtmlView
 				false
 			);
 		}
-
-		ToolbarHelper::preferences('com_privacy');
-
-		ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_CONSENTS');
 	}
 }

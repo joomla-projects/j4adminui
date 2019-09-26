@@ -25,7 +25,7 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 				<img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
 			</div>
 			<div class="j-card-counter-msg">
-				<span class="j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
+				<span class="j-count-number j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
 				<?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?>
 			</div>
         </div>

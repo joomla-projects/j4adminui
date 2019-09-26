@@ -109,7 +109,14 @@ class HtmlView extends BaseHtmlView
 
 		$canDo = WorkflowHelper::getActions($this->extension, 'workflow', $this->item->id);
 
+		// set title
 		ToolbarHelper::title(empty($this->item->id) ? Text::_('COM_WORKFLOW_WORKFLOWS_ADD') : Text::_('COM_WORKFLOW_WORKFLOWS_EDIT'), 'address');
+
+		// Help Button
+		ToolbarHelper::help('JHELP_WORKFLOWS_DETAILS');
+
+		// Cancel Button
+		ToolbarHelper::cancel('workflow.cancel');
 
 		$toolbarButtons = [];
 
@@ -118,8 +125,7 @@ class HtmlView extends BaseHtmlView
 			// For new records, check the create permission.
 			if ($canDo->get('core.edit'))
 			{
-				ToolbarHelper::apply('workflow.apply');
-				$toolbarButtons = [['save', 'workflow.save'], ['save2new', 'workflow.save2new']];
+				$toolbarButtons = [['apply', 'workflow.apply'], ['save', 'workflow.save'], ['save2new', 'workflow.save2new']];
 			}
 
 			ToolbarHelper::saveGroup(
@@ -134,8 +140,8 @@ class HtmlView extends BaseHtmlView
 
 			if ($itemEditable && !$this->item->core)
 			{
-				ToolbarHelper::apply('workflow.apply');
-				$toolbarButtons = [['save', 'workflow.save']];
+				//ToolbarHelper::apply('workflow.apply');
+				$toolbarButtons = [['apply', 'workflow.apply'], ['save', 'workflow.save']];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
 				if ($canDo->get('core.create'))
@@ -149,7 +155,5 @@ class HtmlView extends BaseHtmlView
 				'btn-success'
 			);
 		}
-
-		ToolbarHelper::cancel('workflow.cancel');
 	}
 }

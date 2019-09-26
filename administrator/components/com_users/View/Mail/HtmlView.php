@@ -68,11 +68,10 @@ class HtmlView extends BaseHtmlView
 		Factory::getApplication()->input->set('hidemainmenu', true);
 
 		ToolbarHelper::title(Text::_('COM_USERS_MASS_MAIL'), 'users massmail');
-		ToolbarHelper::custom('mail.send', 'envelope.png', 'send_f2.png', 'COM_USERS_TOOLBAR_MAIL_SEND_MAIL', false);
 		ToolbarHelper::cancel('mail.cancel');
-		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_USERS_MASS_MAIL_USERS');
 		ToolbarHelper::preferences('com_users');
 		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_USERS_MASS_MAIL_USERS');
+		ToolbarHelper::custom('mail.send', 'envelope.png', 'send_f2.png', 'COM_USERS_TOOLBAR_MAIL_SEND_MAIL', false);
 	}
 }

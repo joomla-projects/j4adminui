@@ -161,11 +161,6 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CONTENT_FEATURED_TITLE'), 'star featured');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
-		{
-			$toolbar->addNew('article.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $canDo->get('core.execute.transition'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -220,12 +215,18 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		// helper button
+		ToolbarHelper::help('JHELP_CONTENT_FEATURED_ARTICLES');
+		// option button
 		if ($user->authorise('core.admin', 'com_content') || $user->authorise('core.options', 'com_content'))
 		{
 			$toolbar->preferences('com_content');
 		}
-
-		ToolbarHelper::help('JHELP_CONTENT_FEATURED_ARTICLES');
+		// create new article button
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
+		{
+			$toolbar->addNew('article.add');
+		}
 	}
 
 	/**

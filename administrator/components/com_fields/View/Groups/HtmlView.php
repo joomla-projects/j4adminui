@@ -148,11 +148,6 @@ class HtmlView extends BaseHtmlView
 		// Prepare the toolbar.
 		ToolbarHelper::title($title, 'puzzle fields ' . substr($component, 4) . '-groups');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('group.add');
-		}
-
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -201,12 +196,17 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_FIELDS_FIELD_GROUPS');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($component);
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_FIELDS_FIELD_GROUPS');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('group.add');
+		}
 	}
 
 	/**

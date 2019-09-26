@@ -132,13 +132,14 @@ class HtmlView extends BaseHtmlView
 	{
 		ToolbarHelper::title(Text::_('COM_PRIVACY_VIEW_REQUESTS'), 'lock');
 
+		ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUESTS');
+
+		ToolbarHelper::preferences('com_privacy');
+
 		// Requests can only be created if mail sending is enabled
 		if (Factory::getConfig()->get('mailonline', 1))
 		{
 			ToolbarHelper::addNew('request.add');
 		}
-
-		ToolbarHelper::preferences('com_privacy');
-		ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUESTS');
 	}
 }

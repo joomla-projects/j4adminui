@@ -33,9 +33,9 @@ if ($state->get('client_id', null) !== null)
 		<?php echo $data['view']->filterForm->getField($data['options']['selectorFieldName'])->label; ?>
 	</div>
 	<?php if($isClientSelector) : ?>
-		<div class="btn-group btn-group-border btn-group-md" role="group">
+		<div class="btn-group" role="group">
 			<?php foreach($clientOptions as $key => $option) : ?>
-				<button type="button" class="btn js-stools-selector-btn <?php echo $defaultValue == $option->value ? 'btn-primary' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+				<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default btn-outline' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 			<?php endforeach; ?>
 		</div>
 		<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />

@@ -136,11 +136,6 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_BANNERS_MANAGER_BANNERS'), 'bookmark banners');
 
-		if (count($user->getAuthorisedCategories('com_banners', 'core.create')) > 0)
-		{
-			$toolbar->addNew('banner.add');
-		}
-
 		if ($canDo->get('core.edit.state') || ($this->state->get('filter.published') == -2 && $canDo->get('core.delete')))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
@@ -201,12 +196,17 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_BANNERS_BANNERS');
+
 		if ($user->authorise('core.admin', 'com_banners') || $user->authorise('core.options', 'com_banners'))
 		{
 			$toolbar->preferences('com_banners');
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_BANNERS_BANNERS');
+		if (count($user->getAuthorisedCategories('com_banners', 'core.create')) > 0)
+		{
+			$toolbar->addNew('banner.add');
+		}
 	}
 
 	/**
