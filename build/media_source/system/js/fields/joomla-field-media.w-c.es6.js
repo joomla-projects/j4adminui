@@ -85,7 +85,7 @@
     }
 
     static get observedAttributes() {
-      return ['type', 'base-path', 'root-folder', 'url', 'modal-container', 'modal-width', 'modal-height', 'input', 'button-select', 'button-clear', 'button-save-selected', 'preview', 'preview-width', 'preview-height'];
+      return ['type', 'base-path', 'root-folder', 'url', 'modal-container', 'modal-width', 'modal-height', 'input', 'button-select', 'button-clear', 'button-save-selected', 'preview', 'preview-width', 'preview-height', 'has-preview-image'];
     }
 
     get type() { return this.getAttribute('type'); }
@@ -144,9 +144,11 @@
 
     set preview(value) { this.setAttribute('preview', value); }
 
-    get previewContainer() { return this.getAttribute('preview-container'); }
+    get hasPreviewImage() { return this.getAttribute('has-preview-image'); }
 
-    // attributeChangedCallback(attr, oldValue, newValue) {}
+    set hasPreviewImage(value) { this.setAttribute('has-preview-image', value); }
+
+    get previewContainer() { return this.getAttribute('preview-container'); }
 
     connectedCallback() {
       this.button = this.querySelector(this.buttonSelect);
@@ -156,14 +158,31 @@
       this.clearValue = this.clearValue.bind(this);
       this.setValue = this.setValue.bind(this);
       this.updatePreview = this.updatePreview.bind(this);
-
       this.button.addEventListener('click', this.show);
+
+      this.updateActionButton(this.hasPreviewImage);
 
       if (this.buttonClearEl) {
         this.buttonClearEl.addEventListener('click', this.clearValue);
       }
 
       this.updatePreview();
+    }
+
+    updateActionButton(trigger) {
+      let input = this.querySelector(this.input);
+      const div = this.querySelector('.field-media-preview-wrapper');
+      if( trigger === '1' ) {
+        input.classList.remove('hidden');
+        div.classList.add('has-image');
+        this.button.classList.add("hidden")
+        this.buttonClearEl.classList.remove('hidden')
+      } else {
+        input.classList.add('hidden');
+        div.classList.remove('has-image');
+        this.buttonClearEl.classList.add("hidden")
+        this.button.classList.remove('hidden')
+      }
     }
 
     disconnectedCallback() {
@@ -175,11 +194,23 @@
       }
     }
 
+    attributeChangedCallback(attr, oldValue, newValue) {
+      switch (attr) {
+        case 'has-preview-image':
+          if (oldValue !== newValue && typeof this.button !== 'undefined' ) {
+            this.updateActionButton(newValue)
+          }
+          break;
+        default: 
+          break;
+        }
+      }
+
     onSelected(event) {
       // event.target.removeEventListener('click', this.onSelected);
       event.preventDefault();
       event.stopPropagation();
-
+      this.setAttribute('has-preview-image','1')
       this.modalClose();
       return false;
     }
@@ -202,6 +233,7 @@
     }
 
     clearValue() {
+      this.setAttribute('has-preview-image','');
       this.setValue('');
     }
 

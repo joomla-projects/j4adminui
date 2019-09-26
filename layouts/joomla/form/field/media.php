@@ -118,7 +118,9 @@ $url    = ($readonly ? ''
 		preview-container=".field-media-preview"
 		preview-width="<?php echo $previewWidth; ?>"
 		preview-height="<?php echo $previewHeight; ?>"
+		has-preview-image="<?php echo $src !== ""; ?>"
 >
+	<input type="text" name="<?php echo $name; ?>" id="<?php echo $id; ?>" value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>" readonly="readonly"<?php echo $attr; ?>>
 	<?php
 	HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 	HTMLHelper::_('webcomponent', 'system/fields/joomla-field-media.min.js', ['version' => 'auto', 'relative' => true]);
@@ -131,19 +133,18 @@ $url    = ($readonly ? ''
 			<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo Text::_('JCANCEL'); ?></button>
 		</footer>
 	</joomla-modal>
-	<?php if ($showPreview) : ?>
-		<div class="field-media-preview">
-			<?php echo ' ' . $previewImgEmpty; ?>
-			<?php echo ' ' . $previewImg; ?>
-		</div>
-	<?php endif; ?>
-	<div class="input-group">
-		<input type="text" name="<?php echo $name; ?>" id="<?php echo $id; ?>" value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>" readonly="readonly"<?php echo $attr; ?>>
-		<?php if ($disabled != true) : ?>
-			<div class="input-group-append">
-				<button  type="button" class="btn btn-secondary button-select"><?php echo Text::_("JLIB_FORM_BUTTON_SELECT"); ?></button>
-				<button type="button" class="btn btn-secondary button-clear"><span class="fa fa-times" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_("JLIB_FORM_BUTTON_CLEAR"); ?></span></button>
+	<div class="field-media-preview-wrapper">
+		<?php if ($showPreview) : ?>
+			<div class="field-media-preview">
+				<?php echo ' ' . $previewImgEmpty; ?>
+				<?php echo ' ' . $previewImg; ?>
 			</div>
+			<button type="button" class="btn btn-cancel button-clear"><?php echo Text::_("JLIB_FORM_BUTTON_REMOVE_MEDIA"); ?></button>
+		<?php endif; ?>
+
+		<?php if ($disabled != true) : ?>
+			<button  type="button" class="btn btn-link button-select"><span class="icon fas fa-plus" aria-hidden="true"></span><?php echo Text::_("JLIB_FORM_BUTTON_ADD_MEDIA"); ?></button>
 		<?php endif; ?>
 	</div>
+
 </joomla-field-media>

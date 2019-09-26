@@ -109,11 +109,11 @@ if($this->item->id > 0)
 									<div class="card-body">
 										<div class="row">
 											<div class="col-lg-4">
-												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro' ),'data' => $this)); ?>
+												<?php echo $this->form->renderFieldset('image-intro'); ?>
 											</div>
 
 											<div class="col-lg-8">
-												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_intro_alt', 'image_intro_caption', 'float_intro'),'data' => $this)); ?>
+												<?php echo $this->form->renderFieldset('image-intro-attr'); ?>
 											</div>
 										</div>
 									</div>
@@ -125,11 +125,11 @@ if($this->item->id > 0)
 									<div class="card-body">
 										<div class="row">
 											<div class="col-lg-4">
-												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext' ),'data' => $this)); ?>
+												<?php echo $this->form->renderFieldset('image-full'); ?>
 											</div>
 
 											<div class="col-lg-8">
-												<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'image_fulltext_alt', 'image_fulltext_caption', 'float_fulltext'),'data' => $this)); ?>
+												<?php echo $this->form->renderFieldset('image-full-attr'); ?>
 											</div>
 										</div>
 									</div>
@@ -142,24 +142,15 @@ if($this->item->id > 0)
 									<div class="row">
 										<div class="col-lg-6">
 											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLA_LABEL'); ?></h3>
-											<?php
-												$this->fieldset = 'linka';
-												echo LayoutHelper::render('joomla.edit.fieldset', $this);
-											?>
+											<?php echo $this->form->renderFieldset('linka'); ?>
 										</div>
 										<div class="col-lg-6">
 											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLB_LABEL'); ?></h3>
-											<?php
-												$this->fieldset = 'linkb';
-												echo LayoutHelper::render('joomla.edit.fieldset', $this);
-											?>
+											<?php echo $this->form->renderFieldset('linkb'); ?>
 										</div>
 										<div class="col-lg-6">
 											<h3 class="mt-3"><?php echo JText::_('COM_CONTENT_FIELD_URLC_LABEL'); ?></h3>
-											<?php
-												$this->fieldset = 'linkc';
-												echo LayoutHelper::render('joomla.edit.fieldset', $this);
-											?>
+											<?php echo $this->form->renderFieldset('linkc'); ?>
 										</div>
 									</div>
 								</div>
