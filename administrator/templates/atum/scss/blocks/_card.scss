@@ -453,6 +453,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 
 .j-card-image-mod-container{
 	padding: 50px 50px 30px;
+	img{
+		max-width: 100%;
+	}
 }
 
 .j-card-counter-msg{
