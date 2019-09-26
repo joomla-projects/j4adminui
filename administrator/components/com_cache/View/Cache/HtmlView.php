@@ -125,17 +125,14 @@ class HtmlView extends BaseHtmlView
 
 		/** @var Toolbar $toolbar */
 		$toolbar = Factory::getContainer()->get(ToolbarFactoryInterface::class)->createToolbar('toolbar');
-		ToolbarHelper::custom('delete', 'delete.png', 'delete_f2.png', 'JTOOLBAR_DELETE', true);
-		ToolbarHelper::custom('deleteAll', 'remove.png', 'delete_f2.png', 'JTOOLBAR_DELETE_ALL', false);
-		$toolbar->appendButton('Confirm', 'COM_CACHE_RESOURCE_INTENSIVE_WARNING', 'delete', 'COM_CACHE_PURGE_EXPIRED', 'purge', false);
-		ToolbarHelper::divider();
 
+		ToolbarHelper::custom('delete', 'delete.png', 'delete_f2.png', 'JTOOLBAR_DELETE', true);
+		ToolbarHelper::help('JHELP_SITE_MAINTENANCE_CLEAR_CACHE');
 		if (Factory::getUser()->authorise('core.admin', 'com_cache'))
 		{
 			ToolbarHelper::preferences('com_cache');
-			ToolbarHelper::divider();
 		}
-
-		ToolbarHelper::help('JHELP_SITE_MAINTENANCE_CLEAR_CACHE');
+		$toolbar->appendButton('Confirm', 'COM_CACHE_RESOURCE_INTENSIVE_WARNING', 'delete', 'COM_CACHE_PURGE_EXPIRED', 'purge', false);
+		ToolbarHelper::custom('deleteAll', 'remove.png', 'delete_f2.png', 'JTOOLBAR_DELETE_ALL', false);
 	}
 }
