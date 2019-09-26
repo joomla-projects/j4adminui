@@ -52,7 +52,6 @@
     @extend .d-inline-flex;
     @extend .j-card;
     @extend .align-items-center;
-    z-index: $zindex-tree-select;
 
     .treeselect-item-content {
       padding: 0.625rem 1rem;

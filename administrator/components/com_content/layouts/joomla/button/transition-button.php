@@ -21,6 +21,8 @@ HTMLHelper::_('bootstrap.popover');
  */
 extract($displayData, EXTR_OVERWRITE);
 
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', ['version' => 'auto', 'relative' => true]);
+
 $only_icon = empty($options['transitions']);
 $disabled = !empty($options['disabled']);
 $tip = !empty($options['tip']);
@@ -48,19 +50,32 @@ $default = [
     HTMLHelper::_('select.option', '-1', '--------', ['disable' => true])
 ];
 
+$options['transitions'] = json_decode(json_encode($options['transitions']));
+
 $transitions = array_merge($default, $options['transitions']);
+
+$args = "'" . $checkboxName . $this->escape($row ?? '') . "', " . "'articles.runTransition'";
+$onclick = "Joomla.listItemTask(" . $args . ");";
 
 $attribs = [
     'id'        => 'transition-select_' . (int) $id,
     'list.attr' => [
         'class'    => 'custom-select custom-select-sm form-control form-control-sm',
-        'data-color' => $color,
         'onchange' => "Joomla.listItemTask('" . $checkboxName . $this->escape($row ?? '') . "', 'articles.runTransition')"]
     ];
+
 ?>
 
-<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group">
-    <?php echo HTMLHelper::_('select.genericlist', $transitions, 'transition_' . (int) $id, $attribs); ?>
+
+<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group joomla-dropdown-container" data-color="<?php echo $color; ?>">
+    <a href="#" class="btn btn-link" data-target="<?php echo 'transition-select_' . (int) $id; ?>"><?php echo $this->escape($options['stage']); ?></a>
+    <joomla-dropdown for="<?php echo 'transition-select_' . (int) $id; ?>">
+        <?php foreach($transitions as $transition) : ?>
+            <li><a href="javascript:" class="dropdown-item" onclick="<?php echo $onclick; ?>"><?php echo $transition->text; ?></a></li>
+        <?php endforeach; ?>
+        <input type="hidden" name="transition_<?php echo (int)$id; ?>" value="">
+    </joomla-dropdown>
+    <?php //echo HTMLHelper::_('select.genericlist', $transitions, 'transition_' . (int) $id, $attribs); ?>
 </div>
 
 <joomla-callout action="hover" for="#publishColloutId-<?php echo $id; ?>" position="top">

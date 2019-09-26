@@ -132,18 +132,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_NEWSFEEDS_MANAGER_NEWSFEEDS'), 'rss newsfeeds');
 
-		if (count($user->getAuthorisedCategories('com_newsfeeds', 'core.create')) > 0)
-		{
-			$toolbar->addNew('newsfeed.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('fa fa-hand-pointer')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -182,12 +177,17 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_NEWSFEEDS_FEEDS');
+
 		if ($user->authorise('core.admin', 'com_newsfeeds') || $user->authorise('core.options', 'com_newsfeeds'))
 		{
 			$toolbar->preferences('com_newsfeeds');
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_NEWSFEEDS_FEEDS');
+		if (count($user->getAuthorisedCategories('com_newsfeeds', 'core.create')) > 0)
+		{
+			$toolbar->addNew('newsfeed.add');
+		}
 	}
 
 	/**

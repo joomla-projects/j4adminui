@@ -145,9 +145,9 @@ foreach ($fieldSets as $name => $fieldSet)
 		if (!$hasChildren)
 		{
 			echo '<fieldset id="fieldset-' . $name . '" class="form-no-margin options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
-			echo '<div class="card">';
-			echo '<div class="card-header">' . $label . '</div>';
-			echo '<div class="card-body">';
+			echo '<div class="j-card">';
+			echo '<div class="j-card-header">' . $label . '</div>';
+			echo '<div class="j-card-body">';
 
 			$opentab = 2;
 		}
