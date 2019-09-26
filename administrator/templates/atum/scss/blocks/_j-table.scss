@@ -1,5 +1,5 @@
-//Custom article table
-table{
+//j table style
+table {
     &.j-list-table {
         border-collapse:separate; 
         border-spacing: 0 10px;
@@ -165,4 +165,47 @@ table{
             }
         }
     }
+
+    //j striped table
+    &.j-striped-table {
+        border-radius: 3px;
+        background-color: $white;
+        color: var(--inverse-background);
+        margin-bottom: 0;
+        thead {
+            th {
+                color: var(--secondary-color);
+                border: 0;
+                font-size: 1rem;
+                border-bottom: 1px solid #f2f5fa;
+            }
+        }
+        tbody {
+            tr {
+                background-color: $white;
+                &:hover {
+                    background-color: $white;
+                }
+                &:nth-child(even){
+                    background-color: var(--submenu-background);
+                }
+            }
+            td {
+                border: 0;
+                padding: 15px 0;
+                line-height: 1;
+                .btn {
+                    line-height: 1;
+                    color: var(--inverse-background);
+                    &.btn-link {
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+

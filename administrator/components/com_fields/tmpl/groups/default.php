@@ -17,6 +17,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $app       = Factory::getApplication();
@@ -156,15 +157,14 @@ $context = $this->escape($this->state->get('filter.context'));
 					<?php if ($user->authorise('core.create', $component)
 						&& $user->authorise('core.edit', $component)
 						&& $user->authorise('core.edit.state', $component)) : ?>
-						<?php echo HTMLHelper::_(
-								'bootstrap.renderModal',
-								'collapseModal',
-								array(
-									'title' => Text::_('COM_FIELDS_VIEW_GROUPS_BATCH_OPTIONS'),
-									'footer' => $this->loadTemplate('batch_footer')
-								),
-								$this->loadTemplate('batch_body')
-							); ?>
+							<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_FIELDS_VIEW_GROUPS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+								<section>
+									<?php echo $this->loadTemplate('batch_body'); ?>
+								</section>
+								<footer>
+									<?php echo $this->loadTemplate('batch_footer'); ?>
+								</footer>
+							</joomla-modal>
 					<?php endif; ?>
 				<?php endif; ?>
 				<input type="hidden" name="task" value="">

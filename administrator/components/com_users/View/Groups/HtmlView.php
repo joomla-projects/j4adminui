@@ -103,16 +103,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_USERS_VIEW_GROUPS_TITLE'), 'users-cog groups');
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::addNew('group.add');
-		}
-
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'groups.delete', 'JTOOLBAR_DELETE');
 			ToolbarHelper::divider();
 		}
+
+		ToolbarHelper::help('JHELP_USERS_GROUPS');
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
@@ -120,7 +117,10 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		ToolbarHelper::help('JHELP_USERS_GROUPS');
+		if ($canDo->get('core.create'))
+		{
+			ToolbarHelper::addNew('group.add');
+		}
 	}
 
 	/**

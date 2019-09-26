@@ -32,21 +32,23 @@ $direction = Factory::getLanguage()->isRtl() ? 'dropdown-menu-right' : '';
 extract($displayData, EXTR_OVERWRITE);
 ?>
 <?php if ($hasButtons && trim($button) !== ''): ?>
-	<?php HTMLHelper::_('bootstrap.framework'); ?>
-	<div id="<?php echo $id; ?>" class="btn-group dropdown-<?php echo $name ?? ''; ?>" role="group">
-		<?php echo $button; ?>
-
+	<?php HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true)); ?>
+	<div id="<?php echo $id; ?>" class="joomla-dropdown-container" <?php echo $id; ?> role="group">
 		<?php if ($toggleSplit ?? true): ?>
-			<button type="button" class="<?php echo $caretClass ?? ''; ?> dropdown-toggle dropdown-toggle-split"
-				data-toggle="dropdown" data-target="#<?php echo $id; ?>" data-display="static" aria-haspopup="true" aria-expanded="false">
-				<span class="sr-only"><?php echo Text::_('JGLOBAL_TOGGLE_DROPDOWN'); ?></span>
-			</button>
-		<?php endif; ?>
-
-		<?php if (trim($dropdownItems) !== ''): ?>
-			<div class="dropdown-menu <?php echo $direction; ?>">
-				<?php echo $dropdownItems; ?>
+			<div class="toolbar-btn-group">
+				<?php echo $button; ?>
+				<button type="button" class="<?php echo $caretClass ?? ''; ?> dropdown-toggle dropdown-toggle-split" data-target="<?php echo $id; ?>" data-display="static" aria-haspopup="true" aria-expanded="false">
+					<span class="sr-only"><?php echo Text::_('JGLOBAL_TOGGLE_DROPDOWN'); ?></span>
+				</button>
 			</div>
+		<?php else: ?>
+			<?php echo $button; ?>
+		<?php endif; ?>
+		
+		<?php if (trim($dropdownItems) !== ''): ?>
+			<joomla-dropdown for="<?php echo $id; ?>">
+				<?php echo $dropdownItems; ?>
+			</joomla-dropdown>
 		<?php endif; ?>
 	</div>
 <?php endif; ?>

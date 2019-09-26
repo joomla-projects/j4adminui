@@ -16,6 +16,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $user      = Factory::getUser();
@@ -28,7 +29,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		<?php if ($this->redirectPluginId) : ?>
 			<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->redirectPluginId . '&tmpl=component&layout=modal'); ?>
 			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'plugin' . $this->redirectPluginId . 'Modal',
 				array(
 					'url'         => $link,
@@ -148,15 +149,14 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 			<?php if ($user->authorise('core.create', 'com_redirect')
 				&& $user->authorise('core.edit', 'com_redirect')
 				&& $user->authorise('core.edit.state', 'com_redirect')) : ?>
-				<?php echo HTMLHelper::_(
-					'bootstrap.renderModal',
-					'collapseModal',
-					array(
-						'title'  => Text::_('COM_REDIRECT_BATCH_OPTIONS'),
-						'footer' => $this->loadTemplate('batch_footer'),
-					),
-					$this->loadTemplate('batch_body')
-				); ?>
+					<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_REDIRECT_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('batch_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('batch_footer'); ?>
+						</footer>
+					</joomla-modal>
 			<?php endif; ?>
 
 		<input type="hidden" name="task" value="">

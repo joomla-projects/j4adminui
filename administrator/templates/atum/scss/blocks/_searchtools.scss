@@ -13,10 +13,7 @@
     display: none;
     @extend .flex-row;
     @extend .flex-wrap;
-    padding: 1rem .5rem .5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    width: 100%;
+    margin: 0 -0.5rem;
 
     joomla-field-fancy-select .choices,
     .custom-select {
@@ -38,8 +35,7 @@
   }
 
   .js-stools-field-filter {
-
-      margin: 0 .5rem .5rem;
+      margin: 0.5rem;
 
       @include media-breakpoint-down(sm)
       {
@@ -56,6 +52,7 @@
     }
 
     .js-stools-field-selector{
+      margin-right: 15px;
         @include media-breakpoint-down(sm) {
             max-width:100%;
             margin-right:0.5rem;
@@ -66,13 +63,10 @@
   .js-stools-container-bar {
 
     .btn-toolbar {
-
       .form-control{
-        height: 3.43rem;
         width: 21.49rem;
       }
       .input-group-append{
-        // .btn.btn-primary:focus, .btn.btn-primary:focus:active, .btn.btn-primary:not(:disabled):not(.disabled):active:focus
         .btn{
           &.btn-primary {
             &:focus,
@@ -134,15 +128,6 @@
       line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
-      &.btn-link:focus, &.btn-link:focus:active,
-      &.btn-link:not(:disabled):not(.disabled):active:focus,
-      &.btn-primary:not(:disabled):active,
-      &:active,
-      &:focus {
-        box-shadow: none;
-        color: var(--primary-color);
-        background-color: transparent;
-      }
       &.js-stools-btn-clear {
         margin-right: 1rem;
       }

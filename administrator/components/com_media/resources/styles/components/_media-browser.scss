@@ -1,7 +1,7 @@
 /* Media browser */
 .media-browser {
   position: relative;
-  width: 75%;
+  width: 100%;
   height: calc(100vh - 208px);
   overflow-y: auto;
   transition: width .3s cubic-bezier(.4, .0, .2, 1);
@@ -9,34 +9,34 @@
 
 // Grid View
 .media-browser-grid {
-  padding: $grid-outside-padding 0 $grid-outside-padding $grid-outside-padding;
+  padding: $grid-outside-padding 0;
 }
 
 .media-browser-items {
   display: flex;
   flex-wrap: wrap;
+  margin-left: -15px;
 }
 
 .media-browser-item {
   position: relative;
-  margin-right: $grid-gutter-width;
   margin-bottom: $grid-gutter-width;
   cursor: pointer;
   user-select: none;
   .media-browser-items-xs & {
-    width: calc(#{$grid-item-width-xs} - #{$grid-gutter-width});
+    width: calc(#{$grid-item-width-xs});
   }
   .media-browser-items-sm & {
-    width: calc(#{$grid-item-width-sm} - #{$grid-gutter-width});
+    width: calc(#{$grid-item-width-sm});
   }
   .media-browser-items-md & {
-    width: calc(#{$grid-item-width-md} - #{$grid-gutter-width});
+    width: calc(#{$grid-item-width-md});
   }
   .media-browser-items-lg & {
-    width: calc(#{$grid-item-width-lg} - #{$grid-gutter-width});
+    width: calc(#{$grid-item-width-lg});
   }
   .media-browser-items-xl & {
-    width: calc(#{$grid-item-width-xl} - #{$grid-gutter-width});
+    width: calc(#{$grid-item-width-xl});
   }
 }
 

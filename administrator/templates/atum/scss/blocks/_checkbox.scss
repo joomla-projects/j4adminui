@@ -1,6 +1,6 @@
-.jcheckbox-label input[type="checkbox"],
-.jcheckbox-group input[type="checkbox"],
-input[type="checkbox"].jcheckbox{
+.j-checkbox-label input[type="checkbox"],
+.j-checkbox-group input[type="checkbox"],
+input[type="checkbox"].j-checkbox{
     background: #fff;
     color: #555;
     clear: none;
@@ -58,8 +58,8 @@ input[type="checkbox"].jcheckbox{
     }
 }
 
-.jcheckbox-group label,
-.jcheckbox-label{
+.j-checkbox-group label,
+.j-checkbox-label{
     @extend .d-inline-flex;
     @extend .align-items-center;
     cursor: pointer;
@@ -70,7 +70,7 @@ input[type="checkbox"].jcheckbox{
     }
 }
 
-.jcheckbox-group{
+.j-checkbox-group{
 	margin-left: -0.714rem;
 	label{
 		padding-left: 0.714rem;

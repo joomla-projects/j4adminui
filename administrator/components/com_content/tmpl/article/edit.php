@@ -72,9 +72,9 @@ if($this->item->id > 0)
 					<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
 				</div>
 			</div>
-			<div class="col-lg-3">
-				<div class="jcard">
-					<div class="jcard-header artilce-preview-link">
+			<!-- <div class="col-lg-3">
+				<div class="j-card">
+					<div class="j-card-header artilce-preview-link">
 						<?php if( ($this->item->id > 0) && ($this->item->state === 1 || $this->item->state === 2) ): ?>
 							<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
 							<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
@@ -84,7 +84,7 @@ if($this->item->id > 0)
 						<?php endif; ?>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -176,47 +176,41 @@ if($this->item->id > 0)
 			<?php // Do not show the publishing options if the edit form is configured not to. ?>
 			<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('COM_CONTENT_FIELDSET_PUBLISHING')); ?>
-				<div class="row">
-					<div class="col-12 col-lg-6">
-						<fieldset id="fieldset-publishingdata" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
-							<div>
-								<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
-							</div>
-						</fieldset>
-					</div>
-					<div class="col-12 col-lg-6">
-						<fieldset id="fieldset-metadata" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?></legend>
-							<div>
-							<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
-							</div>
-						</fieldset>
-					</div>
-				</div>
+					<fieldset id="fieldset-publishingdata" class="j-card options-grid-form options-grid-form-half">
+						<div class="j-card-header">
+							<?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?>
+						</div>
+						<div class="j-card-body">
+							<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+						</div>
+					</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
 
 			<?php if (!$isModal && $assoc) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
 				<?php if ($hasAssoc) : ?>
-					<fieldset id="fieldset-associations" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
-					<div>
-					<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
-					</div>
-					</fieldset>
+					<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+						<div id="fieldset-associations" class="j-card options-grid-form options-grid-form-full">
+							<div class="j-card-header">
+								<?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?>
+							</div>
+							<div class="j-card-body">
+								<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
+							</div>
+						</div>
+					<?php echo HTMLHelper::_('uitab.endTab'); ?>
 				<?php endif; ?>
-				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php elseif ($isModal && $assoc) : ?>
 				<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 			<?php endif; ?>
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
-				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
-				<fieldset id="fieldset-editor" class="form-no-margin options-grid-form">
-					<legend><?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?></legend>
-					<div>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'editor-config', Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG')); ?>
+				<fieldset id="fieldset-editor-config" class="j-card form-no-margin options-grid-form">
+					<div class="j-card-header">
+						<?php echo Text::_('COM_CONTENT_SLIDER_EDITOR_CONFIG'); ?>
+					</div>
+					<div class="j-card-body">
 						<?php echo $this->form->renderFieldset('editorConfig'); ?>
 					</div>
 				</fieldset>
@@ -225,10 +219,10 @@ if($this->item->id > 0)
 
 			<?php if ($this->canDo->get('core.admin')) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_CONTENT_FIELDSET_RULES')); ?>
-				<fieldset id="fieldset-rules" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_CONTENT_FIELDSET_RULES'); ?></legend>
+				<fieldset id="fieldset-rules">
+					<legend><?php //echo Text::_('COM_CONTENT_FIELDSET_RULES'); ?></legend>
 					<div>
-					<?php echo $this->form->getInput('rules'); ?>
+						<?php echo $this->form->getInput('rules'); ?>
 					</div>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
@@ -249,8 +243,8 @@ if($this->item->id > 0)
 		</div>
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
-			<div class="form-no-margin jcard form-group-wrapper">
-				<div class="jcard-body">
+			<div class="form-no-margin j-card form-group-wrapper">
+				<div class="j-card-body">
 					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
 					<!-- featured & status -->
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>

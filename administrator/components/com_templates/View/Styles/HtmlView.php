@@ -119,9 +119,17 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_SITE'), 'paint-brush thememanager');
 		}
 
-		if ($canDo->get('core.edit.state'))
+		if ($canDo->get('core.delete'))
 		{
-			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
+			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
+			ToolbarHelper::divider();
+		}
+
+		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
+
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			ToolbarHelper::preferences('com_templates');
 			ToolbarHelper::divider();
 		}
 
@@ -131,18 +139,10 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		if ($canDo->get('core.delete'))
+		if ($canDo->get('core.edit.state'))
 		{
-			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
+			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
 			ToolbarHelper::divider();
 		}
-
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			ToolbarHelper::preferences('com_templates');
-			ToolbarHelper::divider();
-		}
-
-		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
 	}
 }

@@ -43,14 +43,14 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
 								<div class="col-md-3">
-									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> jcard jcard-has-hover mb-4">
+									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> j-card j-card-has-hover mb-4">
 										
-										<div class="jcard-header">
-											<h4 class="jcard-title">
+										<div class="j-card-header">
+											<h4 class="j-card-title">
 												<span class="mr-1">
 													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 												</span>
-												<span class="jcard-icon fas fa-info-circle" id="template-info-<?php echo $item->id; ?>"></span>
+												<span class="j-card-icon fas fa-info-circle" id="template-info-<?php echo $item->id; ?>"></span>
 												<span class="template-name">
 													<?php if ($canEdit) : ?>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
@@ -65,9 +65,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php endif; ?>
 											</h4>
 											<?php if ($canCreate || $canDelete): ?>
-											<div class="jcard-header-right">
+											<div class="j-card-header-right">
 												<div class="joomla-dropdown-container">
-													<a href="javascript:void(0);" id="template-style-actions-<?php echo $item->id; ?>"><span class="jcard-header-icon fas fa-ellipsis-h" area-hidden="true"></span></a>
+													<a href="javascript:void(0);" id="template-style-actions-<?php echo $item->id; ?>"><span class="j-card-header-icon fas fa-ellipsis-h" area-hidden="true"></span></a>
 													<joomla-dropdown for="#template-style-actions-<?php echo $item->id; ?>">
 														<?php if($canCreate) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
@@ -86,11 +86,11 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 											<?php endif; ?>
 										</div>
 
-										<div class="jcard-media">
+										<div class="j-card-media">
 											<div class="template-thumbnail">
 												<img src="<?php echo $item->thumbnail; ?>" alt="<?php echo $this->escape($item->title); ?>">
 												<?php if ($clientId === 0) : ?>
-													<div class="jcard-media-overlay align-items-center justify-content-center">
+													<div class="j-card-media-overlay align-items-center justify-content-center">
 														<a href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" target="_blank" class="btn btn-default">
 															<i class="fas fa-eye"></i> &nbsp;Preview
 														</a>
@@ -155,7 +155,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 											<?php if ($canEdit) : ?>
 												<div class="list-group-item py-4">
-													<div class="jcard-btn-group">
+													<div class="j-card-btn-group">
 														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-default">
 															<i class="fas fa-code"></i> Edit Files
 														</a>

@@ -19,8 +19,8 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-versions.js', ['versio
 ?>
 <form action="<?php echo Route::_('index.php?option=com_users&view=note&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="note-form" class="form-validate">
 	<fieldset class="adminform">
-	<div class="card mt-4">
-		<div class="card-body">
+	<div class="j-card mt-4">
+		<div class="j-card-body">
 			<div class="row">
 				<div class="col-lg-8 col-xl-6">
 				<?php echo $this->form->renderField('subject'); ?>

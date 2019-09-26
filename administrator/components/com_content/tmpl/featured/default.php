@@ -94,23 +94,26 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 						</caption>
 						<thead>
 							<tr>
+								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'fp.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								</th>
 								<td style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'fp.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								<th scope="col" style="width:3%" class="d-none d-lg-table-cell">
+									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">
 									<?php echo Text::_('JFEATURED'); ?>
 								</th>
-								<th scope="col" style="width:1%; min-width:85px" class="text-center">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
-								</th>
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
+								<th scope="col" style="min-width:60px">
+									<?php echo HTMLHelper::_('searchtools.sort', 'JCATEGORY', 'a.catid', $listDirn, $listOrder); ?>
+								</th>
+								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JAUTHOR', 'a.created_by', $listDirn, $listOrder); ?>
@@ -134,9 +137,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_RATINGS', 'rating', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:3%" class="d-none d-lg-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
-								</th>
 							</tr>
 						</thead>
 						<tbody<?php if ($saveOrder) : ?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>"<?php endif; ?>>
@@ -187,9 +187,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 								data-workflow_id="<?php echo (int) $item->workflow_id; ?>"
 								data-stage_id="<?php echo (int) $item->stage_id; ?>"
 							>
-								<td class="text-center">
-									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-								</td>
 								<td class="order text-center d-none d-md-table-cell">
 									<?php
 									$iconClass = '';
@@ -211,7 +208,85 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 									<?php endif; ?>
 								</td>
 								<td class="text-center">
+									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+								</td>
+								<td class="d-none d-lg-table-cell">
+									<?php echo (int) $item->id; ?>
+								</td>
+								<td class="text-center">
 									<?php echo $featuredButton->render($item->featured, $i, ['disabled' => !$canChange]); ?>
+								</td>
+								<th scope="row" class="has-context">
+									<div class="break-word">
+										<?php if ($item->checked_out) : ?>
+											<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'articles.', $canCheckin); ?>
+										<?php endif; ?>
+										<?php if ($canEdit) : ?>
+											<a href="<?php echo Route::_('index.php?option=com_content&task=article.edit&return=featured&id=' . $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+												<?php echo $this->escape($item->title); ?></a>
+										<?php else : ?>
+											<span title="<?php echo Text::sprintf('JFIELD_ALIAS_LABEL', $this->escape($item->alias)); ?>"><?php echo $this->escape($item->title); ?></span>
+										<?php endif; ?>
+										<span class="small break-word">
+											<?php if (empty($item->note)) : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
+											<?php else : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
+											<?php endif; ?>
+										</span>
+									</div>
+								</th>
+								<td>
+								<?php
+									$ParentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->parent_category_id . '&extension=com_content');
+									$CurrentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->catid . '&extension=com_content');
+									$EditCatTxt = Text::_('JACTION_EDIT') . ' ' . Text::_('JCATEGORY');
+									if ($item->category_level != '1') :
+										if ($item->parent_category_level != '1') :
+											echo ' &#187; ';
+										endif;
+									endif;
+									if (Factory::getLanguage()->isRtl())
+									{
+										if ($canEditCat || $canEditOwnCat) :
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+										endif;
+										echo $this->escape($item->category_title);
+										if ($canEditCat || $canEditOwnCat) :
+											echo '</a>';
+										endif;
+										if ($item->category_level != '1') :
+											echo ' &#171; ';
+											if ($canEditParCat || $canEditOwnParCat) :
+												echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
+											endif;
+											echo $this->escape($item->parent_category_title);
+											if ($canEditParCat || $canEditOwnParCat) :
+												echo '</a>';
+											endif;
+										endif;
+									}
+									else
+									{
+										if ($item->category_level != '1') :
+											if ($canEditParCat || $canEditOwnParCat) :
+												echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
+											endif;
+											echo $this->escape($item->parent_category_title);
+											if ($canEditParCat || $canEditOwnParCat) :
+												echo '</a>';
+											endif;
+											echo ' &#187; ';
+										endif;
+										if ($canEditCat || $canEditOwnCat) :
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+										endif;
+										echo $this->escape($item->category_title);
+										if ($canEditCat || $canEditOwnCat) :
+											echo '</a>';
+										endif;
+									}
+								?>
 								</td>
 								<td class="article-status">
 									<div class="d-flex">
@@ -239,82 +314,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</div>
 									</div>
 								</td>
-								<th scope="row" class="has-context">
-									<div class="break-word">
-										<?php if ($item->checked_out) : ?>
-											<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'articles.', $canCheckin); ?>
-										<?php endif; ?>
-										<?php if ($canEdit) : ?>
-											<a href="<?php echo Route::_('index.php?option=com_content&task=article.edit&return=featured&id=' . $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-												<?php echo $this->escape($item->title); ?></a>
-										<?php else : ?>
-											<span title="<?php echo Text::sprintf('JFIELD_ALIAS_LABEL', $this->escape($item->alias)); ?>"><?php echo $this->escape($item->title); ?></span>
-										<?php endif; ?>
-										<span class="small break-word">
-											<?php if (empty($item->note)) : ?>
-												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
-											<?php else : ?>
-												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
-											<?php endif; ?>
-										</span>
-										<div class="small">
-											<?php
-											$ParentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->parent_category_id . '&extension=com_content');
-											$CurrentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->catid . '&extension=com_content');
-											$EditCatTxt = Text::_('JACTION_EDIT') . ' ' . Text::_('JCATEGORY');
-											echo Text::_('JCATEGORY') . ': ';
-											if ($item->category_level != '1') :
-												if ($item->parent_category_level != '1') :
-													echo ' &#187; ';
-												endif;
-											endif;
-											if (Factory::getLanguage()->isRtl())
-											{
-												if ($canEditCat || $canEditOwnCat) :
-													echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
-												endif;
-												echo $this->escape($item->category_title);
-												if ($canEditCat || $canEditOwnCat) :
-													echo '</a>';
-												endif;
-												if ($item->category_level != '1') :
-													echo ' &#171; ';
-													if ($canEditParCat || $canEditOwnParCat) :
-														echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
-													endif;
-													echo $this->escape($item->parent_category_title);
-													if ($canEditParCat || $canEditOwnParCat) :
-														echo '</a>';
-													endif;
-												endif;
-											}
-											else
-											{
-												if ($item->category_level != '1') :
-													if ($canEditParCat || $canEditOwnParCat) :
-														echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
-													endif;
-													echo $this->escape($item->parent_category_title);
-													if ($canEditParCat || $canEditOwnParCat) :
-														echo '</a>';
-													endif;
-													echo ' &#187; ';
-												endif;
-												if ($canEditCat || $canEditOwnCat) :
-													echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
-												endif;
-												echo $this->escape($item->category_title);
-												if ($canEditCat || $canEditOwnCat) :
-													echo '</a>';
-												endif;
-											}
-											?>
-										</div>
-									</div>
-								</th>
-								<td class="small d-none d-md-table-cell">
-									<?php echo $this->escape($item->access_level); ?>
-								</td>
 								<td class="small d-none d-md-table-cell">
 									<?php if ((int) $item->created_by != 0) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->created_by); ?>">
@@ -322,9 +321,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</a>
 									<?php else : ?>
 										<?php echo Text::_('JNONE'); ?>
-									<?php endif; ?>
-									<?php if ($item->created_by_alias) : ?>
-										<div class="smallsub"><?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></div>
 									<?php endif; ?>
 								</td>
 								<?php if (Multilanguage::isEnabled()) : ?>
@@ -355,9 +351,6 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</span>
 									</td>
 								<?php endif; ?>
-								<td class="d-none d-lg-table-cell">
-									<?php echo (int) $item->id; ?>
-								</td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>
@@ -365,17 +358,14 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 
 					<?php // load the pagination. ?>
 					<?php echo $this->pagination->getListFooter(); ?>
-
-					<?php echo HTMLHelper::_(
-						'bootstrap.renderModal',
-						'stageModal',
-						array(
-							'title'  => Text::_('JTOOLBAR_CHANGE_STATUS'),
-							'footer' => $this->loadTemplate('stage_footer'),
-						),
-						$this->loadTemplate('stage_body')
-					); ?>
-
+					<joomla-modal role="dialog" id="stageModal" title="<?php echo Text::_('JTOOLBAR_CHANGE_STATUS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('stage_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('stage_footer'); ?>
+						</footer>
+					</joomla-modal>
 				<?php endif; ?>
 
 				<input type="hidden" name="task" value="">

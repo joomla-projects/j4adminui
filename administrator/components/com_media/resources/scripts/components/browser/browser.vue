@@ -5,7 +5,6 @@
             @drop="onDrop"
             @dragover="onDragOver"
             @dragleave="onDragLeave"
-            :style="mediaBrowserStyles"
             ref="browserItems">
             <div class="media-dragoutline">
                 <div class="joomla-drop-media-image"></div>
@@ -65,12 +64,6 @@
                     return file.name.toLowerCase().includes(this.$store.state.search.toLowerCase())
                 });
                 return [...directories, ...files];
-            },
-            /* The styles for the media-browser element */
-            mediaBrowserStyles() {
-                return {
-                    width: this.$store.state.showInfoBar ? '75%' : '100%'
-                }
             },
             /* The styles for the media-browser element */
             listView() {

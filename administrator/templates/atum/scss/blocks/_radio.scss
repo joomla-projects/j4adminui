@@ -1,9 +1,9 @@
 
 // radio button
 
-.jradio-label input[type="radio"],
-.jradio-group input[type="radio"],
-input[type="radio"].jradio{
+.j-radio-label input[type="radio"],
+.j-radio-group input[type="radio"],
+input[type="radio"].j-radio{
     -webkit-appearance: none;
     height: 18px;
     min-width: 18px;
@@ -39,11 +39,11 @@ input[type="radio"].jradio{
     }
 }
 
-.jradio-group{
-	@extend .jcheckbox-group;
+.j-radio-group{
+	@extend .j-checkbox-group;
 }
 
-.jradio-group label,
-.jradio-label{
-    @extend .jcheckbox-label;
+.j-radio-group label,
+.j-radio-label{
+    @extend .j-checkbox-label;
 }

@@ -18,6 +18,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $clientId  = (int) $this->state->get('client_id', 0);
@@ -198,15 +199,14 @@ if ($saveOrder && !empty($this->items))
 		<?php if ($user->authorise('core.create', 'com_modules')
 			&& $user->authorise('core.edit', 'com_modules')
 			&& $user->authorise('core.edit.state', 'com_modules')) : ?>
-			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
-				'collapseModal',
-				array(
-					'title'  => Text::_('COM_MODULES_BATCH_OPTIONS'),
-					'footer' => $this->loadTemplate('batch_footer'),
-				),
-				$this->loadTemplate('batch_body')
-			); ?>
+				<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_MODULES_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+					<section>
+						<?php echo $this->loadTemplate('batch_body'); ?>
+					</section>
+					<footer>
+						<?php echo $this->loadTemplate('batch_footer'); ?>
+					</footer>
+				</joomla-modal>
 		<?php endif; ?>
 		<input type="hidden" name="task" value="">
 		<input type="hidden" name="boxchecked" value="0">

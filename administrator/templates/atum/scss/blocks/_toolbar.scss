@@ -3,7 +3,7 @@
 }
 .subhead {
   position: sticky;
-  top: 0;
+  top: 60px;
   right: 0;
   left: 0;
   z-index: $zindex-toolbar;
@@ -13,6 +13,10 @@
   color: var(--atum-text-dark);
   background: var(--subhead-background);
   border-bottom: 1px solid #d0dae3;
+  margin-left: -14px;
+  margin-right: -14px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   .row {
     margin-right: 0;
@@ -23,6 +27,7 @@
     margin-bottom: 0;
 
     > joomla-toolbar-button,
+    > div,
     > .btn-group {
       margin-left: 1.4rem;
 
@@ -41,6 +46,22 @@
           box-shadow: none;
           color: var(--primary-color);
           background-color: transparent;
+        }
+      }
+    }
+    #toolbar-status-group {
+      .btn {
+        &.dropdown-toggle {
+          border-radius: 3px;
+          &:after{
+              margin-left: 2.14rem;
+          }
+          >span{
+            margin-right: 12px;
+          }
+          &.btn-white{
+            border-right-color: #e8ebf4;
+          }
         }
       }
     }

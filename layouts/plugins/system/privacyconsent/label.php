@@ -84,7 +84,7 @@ if (Factory::getLanguage()->isRtl())
 
 $attribs                = [];
 $attribs['data-toggle'] = 'modal';
-$attribs['data-target'] = '#consentModal';
+$attribs['data-href'] = '#consentModal';
 
 if ($article)
 {
@@ -96,7 +96,7 @@ else
 }
 
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'consentModal',
 	array(
 		'url'    => Route::_($article->link . '&tmpl=component'),

@@ -10,11 +10,15 @@
   }
   const selectors = {
     clearBtn: '#jclear-cache-btn',
+    cacheAnimationBtn: '.mod-extension-cache .j-cache-animation',
   };
-  const theClearnBtn = document.querySelector(selectors.clearBtn);
-  theClearnBtn.addEventListener('click', (event) => {
+  const theClearBtn = document.querySelector(selectors.clearBtn);
+  const theCacheAnimationBtn = document.querySelector(selectors.cacheAnimationBtn);
+  theClearBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    //$(this).data('id')
     const cacheurl = Joomla.getOptions('cacheurl');
+    const cashsize = theClearBtn.getAttribute('data-size');
     const data = '';
     Joomla.request({
         url: cacheurl,
@@ -25,8 +29,17 @@
           const response = typeof res === 'string' && res.length > 0 ? JSON.parse(res) : false;
           const data = response.data;
             if (data.status) {
-              // show success messages which get from helper
-              Joomla.renderMessages({ message: [data.messsage]});
+              let currentCashSize = Math.round(cashsize);
+              const clearedCashSize = 0;
+              const interval = setInterval(function () {
+                theCacheAnimationBtn.textContent = currentCashSize;
+                if (currentCashSize <= clearedCashSize) {
+                  clearInterval(interval);
+                  // show success messages which getting from helper
+                  Joomla.renderMessages({ message: [data.messsage] });
+                }
+                --currentCashSize;
+              }, 1);
             }
         },
         onError(xhr) {

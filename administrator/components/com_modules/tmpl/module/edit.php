@@ -63,10 +63,10 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_MODULES_MODULE')); ?>
 
-				<div class="card">
+				<div class="j-card">
 					<?php if ($this->item->xml) : ?>
 						<?php if ($this->item->xml->description) : ?>
-							<div class="card-header">
+							<div class="j-card-header">
 								<h2>
 									<?php
 									if ($this->item->xml)
@@ -108,7 +108,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 									?>
 									<p class="text-muted mb-0"><?php echo $short_description; ?></p>
 									<?php if ($long_description) : ?>
-										<p class="readmore card-link mt-2">
+										<p class="readmore j-card-link mt-2">
 											<a href="#" onclick="document.querySelector('#tab-description').click();">
 												<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
 											</a>
@@ -125,7 +125,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 							</div>
 						</div>
 					<?php endif; ?>
-					<div class="card-body">
+					<div class="j-card-body">
 						<?php
 						if ($hasContent)
 						{
@@ -141,8 +141,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php if (isset($long_description) && $long_description != '') : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
-					<div class="card">
-						<div class="card-body">
+					<div class="j-card">
+						<div class="j-card-body">
 							<?php echo $long_description; ?>
 						</div>
 					</div>
@@ -151,7 +151,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 			<?php if ($this->item->client_id == 0) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'assignment', Text::_('COM_MODULES_MENU_ASSIGNMENT')); ?>
-				<fieldset id="fieldset-assignment" class="pt-4">
+				<fieldset id="fieldset-assignment">
 					<?php echo $this->loadTemplate('assignment'); ?>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
@@ -166,10 +166,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<?php if ($this->canDo->get('core.admin')) : ?>
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_MODULES_FIELDSET_RULES')); ?>
 				<fieldset id="fieldset-permissions" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_MODULES_FIELDSET_RULES'); ?></legend>
-					<div>
 					<?php echo $this->form->getInput('rules'); ?>
-					</div>
 				</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
@@ -201,8 +198,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 			<!-- if site modules -->
 			<?php if ($this->item->client_id == 0) : ?>
 				<!-- title & status -->
-				<div class="jcard form-no-margin">
-					<div class="jcard-body p-4">
+				<div class="j-card form-no-margin">
+					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'showtitle', 'published' ), 'data' => $this)); ?>
 					</div>
 				</div>
@@ -220,8 +217,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 				</div>
 				<!-- schedule -->
 				<p class="mt-4"><?php echo JText::_('COM_MODULE_PUBLISH_SCHEDULE'); ?></p>
-				<div class="jcard form-no-margin">
-					<div class="jcard-body p-3">
+				<div class="j-card form-no-margin">
+					<div class="j-card-body">
 						<div class="row">
 							<div class="col-sm-6">
 								<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'publish_up' ), 'data' => $this)); ?>

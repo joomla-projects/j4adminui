@@ -30,8 +30,7 @@ extract($displayData, EXTR_OVERWRITE);
 
 $tagName = $tagName ?? 'button';
 
-$modalAttrs['data-toggle'] = 'modal';
-$modalAttrs['data-target'] = '#' . $selector;
+$modalAttrs['data-href'] = '#' . $selector;
 
 $idAttr   = !empty($id)        ? ' id="' . $id . '"' : '';
 $listAttr = !empty($listCheck) ? ' list-selection' : '';

@@ -15,18 +15,14 @@
 }
 .calendar-container table {
 	table-layout: fixed;
-	max-width: 340px;
+	max-width: 300px;
 	border-radius: 3px;
 	background-color: #ffffff !important;
 	z-index: 1100 !important;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	margin-left: 25px;
-	margin-right: 25px;
-	margin-top: 25px;
 }
 /* The main calendar widget.  DIV containing a table. */
 div.calendar-container table th, .calendar-container table td {
-	padding: .95rem 0;
+	padding: .75rem 0;
 	line-height: 1.1rem;
 	text-align: center;
 	border: none;
@@ -91,8 +87,7 @@ div.calendar-container table td.title { /* This holds the current "month, year" 
 .calendar-container table tbody td.day {
 	border: 0;
 	cursor : pointer;
-	font-size: 1rem;
-	min-width: 40px;
+	font-size: .85rem;
 }
 
 .calendar-container table tbody td.day.wn {
@@ -147,10 +142,10 @@ div.calendar-container table td.title { /* This holds the current "month, year" 
 .calendar-container .buttons-wrapper {
 	width: 100%;
 	border: 1px solid #bdc5c8;
-	margin-top: 25px;
 }
 .calendar-container .buttons-wrapper .btn{
 	border-radius: 0;
+	font-size: .85rem;
 }
 .calendar-container .buttons-wrapper .btn:not(:last-child){
 	border-right: 1px solid #bdc5c8;
@@ -161,21 +156,26 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	min-width: 60px;
 }
 .calendar-container .years-wrapper{
-	vertical-align: baseline;
+	vertical-align: inherit;
+}
+.calendar-container .years-wrapper .nav{
+	padding: 0;
 }
 .calendar-container .years-wrapper .js-btn{
-	font-size: 10px;
-	opacity: 0;
+	font-size: 8px;
 	transition: .3s;
 	margin-right: 5px;
 	margin-left: 5px;
 	cursor: pointer;
+	color: #808f94;
 }
-.calendar-container .years-wrapper:hover>tr{
-	background-color: #f4f5f9;
+.calendar-container .years-wrapper .js-btn.btn-prev-year{
+	position: relative;
+	top: -3px;
 }
-.calendar-container .years-wrapper:hover .js-btn{
-	opacity: 1;
+.calendar-container .years-wrapper .js-btn.btn-next-year{
+	position: relative;
+	top: 3px;
 }
 .calendar-container .years-wrapper .js-btn:hover,
 .calendar-container .years-wrapper .js-btn:focus{	
@@ -203,7 +203,7 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	color: var(--inverse-color) !important;
 }
 .calendar-container .calendar-head-row .years-wrapper{
-	padding-left: 5px;
+	padding-left: 10px;
 }
 .calendar-container .calendar-head-row td {
 	padding: 4px 0;
@@ -216,7 +216,7 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 	font-size: 1rem;
 }
 .calendar-container .time td {
-	padding: 8px 0 8px 8px;
+	padding: 1rem 0;
 }
 .calendar-container .time .time-title {
 	color: #565656;
@@ -224,10 +224,17 @@ a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
 }
 .calendar-container .time .custom-select{
 	padding: 5px 10px;
-	width: 60px;
+	width: 50px !important;
+	min-width: 50px;
+	height: 2.3rem;
 	border-radius: 3px;
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom-color: #bdc5c8;
+	background-color: #f3f3f3;
+	background-image: none;
+	-webkit-appearance: menulist;
+	-moz-appearance: menulist;
+	appearance: menulist;
 }
