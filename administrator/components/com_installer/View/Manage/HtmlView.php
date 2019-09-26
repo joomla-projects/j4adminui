@@ -84,23 +84,21 @@ class HtmlView extends InstallerViewDefault
 	{
 		$canDo = ContentHelper::getActions('com_installer');
 
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::publish('manage.publish', 'JTOOLBAR_ENABLE', true);
-			ToolbarHelper::unpublish('manage.unpublish', 'JTOOLBAR_DISABLE', true);
-			ToolbarHelper::divider();
-		}
-
 		ToolbarHelper::custom('manage.refresh', 'refresh', 'refresh', 'JTOOLBAR_REFRESH_CACHE', true);
-		ToolbarHelper::divider();
 
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('COM_INSTALLER_CONFIRM_UNINSTALL', 'manage.remove', 'JTOOLBAR_UNINSTALL');
-			ToolbarHelper::divider();
 		}
 
-		parent::addToolbar();
 		ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_MANAGE');
+
+		parent::addToolbar();
+
+		if ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::unpublish('manage.unpublish', 'JTOOLBAR_DISABLE', true);
+			ToolbarHelper::publish('manage.publish', 'JTOOLBAR_ENABLE', true);
+		}
 	}
 }
