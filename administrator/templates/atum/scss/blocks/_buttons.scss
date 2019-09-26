@@ -162,14 +162,11 @@
             background-color: var(--secondary-icon-color);
             color: var(--color);
         }
-        &:focus{
-            box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
-        }
-        &.active, &:active, &:focus:active{
-            box-shadow: none;
+        &:focus, &.active, &:active{
             border-color: var(--danger-button);
             background-color: var(--danger-button);
             color: #fff;
+            box-shadow: none;
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;
