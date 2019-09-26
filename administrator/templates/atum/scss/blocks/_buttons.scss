@@ -296,6 +296,9 @@
     &.dropdown-toggle {
         padding: 0 1.1rem;
     }
+    &.hidden {
+        display: none;
+    }
 }
 .btn-group, .toolbar-btn-group{
     position: relative;
