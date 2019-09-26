@@ -275,22 +275,16 @@
     &.btn-outline{
         border: 1px solid var(--dark-border-color);
     }
-    // &.dropdown-toggle {
-    //     padding: 0 1.1rem;
-    //     border-right: 1px solid rgba(var(--inverse-color-rgb), 0.1);
-    //     border-radius: 3px 0 0 3px;
-    //     +.btn,
-    //     +joomla-toolbar-button .btn{
-    //         border-radius: 0 3px 3px 0;
-    //     }
-    // }
+    &.dropdown-toggle {
+        padding: 0 1.1rem;
+    }
 }
-.btn-group{
+.btn-group, .toolbar-btn-group{
     position: relative;
     display: inline-flex;
     display: -ms-inline-flexbox;
     vertical-align: middle;
-    >.btn {
+    >.btn, >joomla-toolbar-button{
         position: relative;
         flex: 1 1 auto;
         border-radius: 3px;
@@ -298,6 +292,7 @@
             z-index: 1;
         }
     }
+    >joomla-toolbar-button:not(:last-child) >.btn,
     >.btn:not(:last-child),
     >.btn:not(:last-child):not(.dropdown-toggle) {
         border-top-right-radius: 0;
@@ -336,6 +331,11 @@
                 }
             }
         }
+    }
+}
+.toolbar-btn-group{
+    joomla-toolbar-button+.dropdown-toggle{
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 // iconic button
