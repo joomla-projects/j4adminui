@@ -1141,6 +1141,83 @@ window.Joomla.Modal = window.Joomla.Modal || {
       }
     }
   };
+
+  /**
+   * Cookie functions for get and set cookie in Joomla
+   *
+   * @since 4.0.0
+   */
+  Joomla.Cookies = {
+    /**
+     * Get a cookie.
+     *
+     * @param string  name  Cookie Name
+     */
+    get(name) {
+      let ex; let b;
+      const { cookie } = document;
+      const pair = `${name}=`;
+
+      if (!cookie) { return; }
+
+      b = cookie.indexOf(`; ${pair}`);
+
+      if (b === -1) {
+        b = cookie.indexOf(pair);
+        // eslint-disable-next-line consistent-return
+        if (b !== 0) { return null; }
+      } else {
+        b += 2;
+      }
+
+      ex = cookie.indexOf(';', b);
+
+      if (ex === -1) {
+        ex = cookie.length;
+      }
+
+      // eslint-disable-next-line consistent-return
+      return decodeURIComponent(cookie.substring(b + pair.length, ex));
+    },
+    /**
+     * Set Cookie
+     * @param {string} name
+     * @param {string} value
+     * @param {time} expires
+     * @param {string} path
+     * @param {string} domain
+     * @param {string} secure
+     */
+    set(name, value, expires, path, domain, secure) {
+      const date = new Date();
+
+      if (typeof (expires) === 'object' && expires.toGMTString) {
+        // eslint-disable-next-line no-param-reassign
+        expires = expires.toGMTString();
+      } else if (parseInt(expires, 10)) {
+        // time must be in milliseconds
+        date.setTime(date.getTime() + (parseInt(expires, 10) * 1000));
+        // eslint-disable-next-line no-param-reassign
+        expires = date.toGMTString();
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        expires = '';
+      }
+      console.log('set cookie: ', name, value);
+      document.cookie = `${name}=${encodeURIComponent(value)
+      }${expires ? `; expires=${expires}` : ''
+      }${path ? `; path=${path}` : ''
+      }${domain ? `; domain=${domain}` : ''
+      }${secure ? '; secure' : ''}`;
+    },
+
+    /**
+     * Remove a cookie.
+     */
+    remove(name, path, domain, secure) {
+      this.set(name, '', -1000, path, domain, secure);
+    },
+  };
 })(Joomla, document);
 
 /**

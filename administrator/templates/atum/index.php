@@ -24,6 +24,15 @@ $task       = $input->get('task', 'display');
 $itemid     = $input->get('Itemid', '');
 $cpanel     = $option === 'com_cpanel';
 $hiddenMenu = $app->input->get('hidemainmenu');
+$menuSettings = $app->input->cookie->get('atum-sidebar');
+
+// if( $menuSettings == NULL ) {
+//     $menuStatus = $hiddenMenu ? 'closed' : 'open';
+//     $app->input->cookie->set('atum-sidebar', $menuStatus, 31536000, '/', '','');
+// }
+
+$hiddenMenuClass = $hiddenMenu || $menuSettings == 'closed' ? 'closed' : '';
+
 $joomlaLogo = $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
 require_once __DIR__ . '/Service/HTML/Atum.php';
 // Template params
@@ -58,7 +67,7 @@ $css = '
 		opacity: 0;
 	}
 ';
-$this->addStyleDeclaration($css);
+// $this->addStyleDeclaration($css);
 $monochrome = (bool) $this->params->get('monochrome');
 HTMLHelper::getServiceRegistry()->register('atum', 'JHtmlAtum');
 HTMLHelper::_('atum.rootcolors', $this->params);
@@ -79,9 +88,9 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 </noscript>
 
 <?php // Wrapper ?>
-<div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenu ? 'closed' : ''; ?>">
+<div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
     <?php // Header ?>
-    <header id="header" class="header <?php echo $hiddenMenu ? 'closed': ''; ?>">
+    <header id="header" class="header <?php echo $hiddenMenuClass; ?>">
         <div class="logo-header">
             <div class="main-logo">
                 <?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
@@ -98,14 +107,13 @@ HTMLHelper::_('atum.rootcolors', $this->params);
                     </a>
                 <?php endif; ?>
             </div>
-            <?php if (!$hiddenMenu) : ?>
-            <div class="sidebar-toggle">
-                <a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
-                    <span id="menu-collapse-icon" class="fas fa-angle-double-left" aria-hidden="true"></span>
-                </a>
-            </div>
+            <?php if (!$hiddenMenu): ?>
+                <div class="sidebar-toggle">
+                    <a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
+                        <span id="menu-collapse-icon" class="fas <?php echo $hiddenMenuClass === 'closed' ? 'fa-angle-double-right' : 'fa-angle-double-left' ?>" aria-hidden="true"></span>
+                    </a>
+                </div>
             <?php endif; ?>
-
             <div class="header-version" title="<?php echo JVERSION; ?>">
                 <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
                 <span aria-hidden="true"><?php echo JVERSION; ?></span>

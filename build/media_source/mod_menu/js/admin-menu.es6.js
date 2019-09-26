@@ -56,28 +56,29 @@
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
 
   // Set the initial state of the sidebar based on the localStorage value
-  if (Joomla.localStorageEnabled()) {
-    const sidebarState = localStorage.getItem('atum-sidebar');
-    if (sidebarState === 'open' || sidebarState === null) {
-      wrapper.classList.remove('closed');
-      header.classList.remove('closed');
-      if (menuToggleIcon !== null) {
-        menuToggleIcon.classList.remove('fa-angle-double-right');
-        menuToggleIcon.classList.add('fa-angle-double-left');
-      }
-      localStorage.setItem('atum-sidebar', 'open');
-      Joomla.Event.dispatch('joomla:menu-toggle', 'open');
-    } else {
-      wrapper.classList.add('closed');
-      header.classList.add('closed');
-      if (menuToggleIcon !== null) {
-        menuToggleIcon.classList.remove('fa-angle-double-left');
-        menuToggleIcon.classList.add('fa-angle-double-right');
-      }
-      localStorage.setItem('atum-sidebar', 'closed');
-      Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
-    }
-  }
+  // if (Joomla.localStorageEnabled()) {
+  //   const sidebarState = localStorage.getItem('atum-sidebar');
+  //   if (sidebarState === 'open' || sidebarState === null) {
+  //     wrapper.classList.remove('closed');
+  //     header.classList.remove('closed');
+  //     if (menuToggleIcon !== null) {
+  //       menuToggleIcon.classList.remove('fa-angle-double-right');
+  //       menuToggleIcon.classList.add('fa-angle-double-left');
+  //     }
+  //     localStorage.setItem('atum-sidebar', 'open');
+  //     Joomla.Event.dispatch('joomla:menu-toggle', 'open');
+  //   } else {
+  //     wrapper.classList.add('closed');
+  //     header.classList.add('closed');
+  //     if (menuToggleIcon !== null) {
+  //       menuToggleIcon.classList.remove('fa-angle-double-left');
+  //       menuToggleIcon.classList.add('fa-angle-double-right');
+  //     }
+  //     localStorage.setItem('atum-sidebar', 'closed');
+  //     Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
+  //   }
+  // }
+
 
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
@@ -85,7 +86,7 @@
     header.classList.remove('closed');
   }
 
-  if (sidebar && !sidebar.getAttribute('data-hidden')) {
+  if (sidebar) {
     // Sidebar
     const menuToggle = document.getElementById('menu-collapse');
     const firsts = [].slice.call(sidebar.querySelectorAll('.collapse-level-1'));
@@ -104,38 +105,39 @@
     const menuClose = () => {
       sidebar.querySelector('.collapse').classList.remove('in');
     };
-
+    if (typeof menuToggle !== 'undefined') {
     // Toggle menu
-    menuToggle.addEventListener('click', () => {
-      wrapper.classList.toggle('closed');
-      header.classList.toggle('closed');
-      menuToggleIcon.classList.toggle('fa-angle-double-left');
-      menuToggleIcon.classList.toggle('fa-angle-double-right');
+      menuToggle.addEventListener('click', () => {
+        wrapper.classList.toggle('closed');
+        header.classList.toggle('closed');
+        menuToggleIcon.classList.toggle('fa-angle-double-left');
+        menuToggleIcon.classList.toggle('fa-angle-double-right');
 
-      const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
-      listItems.forEach((item) => {
-        item.classList.remove('open');
+        const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
+        listItems.forEach((item) => {
+          item.classList.remove('open');
+        });
+        const elem = document.querySelector('.child-open');
+        if (elem) {
+          elem.classList.remove('child-open');
+        }
+
+        // Save the sidebar state and dispatch event
+        if (wrapper.classList.contains('closed')) {
+          if (typeof Joomla.Cookies !== 'undefined') {
+          // localStorage.setItem('atum-sidebar', 'closed');
+            Joomla.Cookies.set('atum-sidebar', 'closed', 31536000, '/', '');
+          }
+          Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
+        } else {
+          if (typeof Joomla.Cookies !== 'undefined') {
+          // localStorage.setItem('atum-sidebar', 'open');
+            Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/', '');
+          }
+          Joomla.Event.dispatch('joomla:menu-toggle', 'open');
+        }
       });
-
-      const elem = document.querySelector('.child-open');
-      if (elem) {
-        elem.classList.remove('child-open');
-      }
-
-      // Save the sidebar state and dispatch event
-      const storageEnabled = Joomla.localStorageEnabled();
-      if (wrapper.classList.contains('closed')) {
-        if (storageEnabled) {
-          localStorage.setItem('atum-sidebar', 'closed');
-        }
-        Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
-      } else {
-        if (storageEnabled) {
-          localStorage.setItem('atum-sidebar', 'open');
-        }
-        Joomla.Event.dispatch('joomla:menu-toggle', 'open');
-      }
-    });
+    }
 
 
     /**
@@ -182,7 +184,9 @@
 
         wrapper.classList.remove('closed');
         header.classList.remove('closed');
-        localStorage.setItem('atum-sidebar', 'open');
+        if (typeof Joomla.Cookies !== 'undefined') {
+          Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/');
+        }
         if (menuToggleIcon.classList.contains('fa-angle-double-right')) {
           menuToggleIcon.classList.toggle('fa-angle-double-right');
           menuToggleIcon.classList.toggle('fa-angle-double-left');

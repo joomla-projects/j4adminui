@@ -1,7 +1,7 @@
 // Sidebar
 //$sidebar-width: auto;
 .wrapper {
-  transition: all .3s ease;
+  // transition: all .3s ease;
   @include media-breakpoint-down(sm) {
     padding-left: 0;
   }
@@ -27,7 +27,7 @@
     flex-direction: column;
     flex: 1 0 $sidebar-width;
     max-width: $sidebar-width;
-    transition: all .3s ease;
+    // transition: all .3s ease;
   }
 
   @include media-breakpoint-down(xs) {

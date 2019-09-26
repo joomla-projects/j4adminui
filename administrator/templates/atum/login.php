@@ -61,7 +61,7 @@ $css = '
 		opacity: 0;
 	}
 ';
-$this->addStyleDeclaration($css);
+// $this->addStyleDeclaration($css);
 $monochrome = (bool) $this->params->get('monochrome');
 HTMLHelper::getServiceRegistry()->register('atum', 'JHtmlAtum');
 HTMLHelper::_('atum.rootcolors', $this->params);

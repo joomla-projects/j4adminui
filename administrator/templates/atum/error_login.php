@@ -73,7 +73,7 @@ $css = '
 	}
 ';
 
-$this->addStyleDeclaration($css);
+// $this->addStyleDeclaration($css);
 
 $monochrome = (bool) $this->params->get('monochrome');
 

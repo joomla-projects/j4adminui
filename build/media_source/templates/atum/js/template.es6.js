@@ -328,7 +328,7 @@
 
   doc.addEventListener('DOMContentLoaded', () => {
     changeSVGLogoColor();
-    fade('in');
+    // fade('in');
     fadeLoginLogout();
     headerItemsInDropdown();
     reactToResize();
