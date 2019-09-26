@@ -111,13 +111,37 @@ class HtmlView extends BaseHtmlView
 		$title = $isNew ? Text::_('COM_NEWSFEEDS_MANAGER_NEWSFEED_NEW') : Text::_('COM_NEWSFEEDS_MANAGER_NEWSFEED_EDIT');
 		ToolbarHelper::title($title, 'rss newsfeeds');
 
+		if (!empty($this->item->id))
+		{
+			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
+			{
+				ToolbarHelper::versions('com_newsfeeds.newsfeed', $this->item->id);
+			}
+		}
+		
+		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+		{
+			ToolbarHelper::custom('newsfeed.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+		}
+		
+		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_COMPONENTS_NEWSFEEDS_FEEDS_EDIT');
+
+		if (!empty($this->item->id))
+		{
+			ToolbarHelper::cancel('newsfeed.cancel', 'JTOOLBAR_CLOSE');
+		}
+		else
+		{
+			ToolbarHelper::cancel('newsfeed.cancel');
+		}
+
 		$toolbarButtons = [];
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || count($user->getAuthorisedCategories('com_newsfeeds', 'core.create')) > 0))
 		{
-			ToolbarHelper::apply('newsfeed.apply');
-
+			$toolbarButtons[] = ['apply', 'newsfeed.apply'];
 			$toolbarButtons[] = ['save', 'newsfeed.save'];
 		}
 
@@ -136,27 +160,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-		{
-			ToolbarHelper::custom('newsfeed.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
-		}
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('newsfeed.cancel');
-		}
-		else
-		{
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
-			{
-				ToolbarHelper::versions('com_newsfeeds.newsfeed', $this->item->id);
-			}
-
-			ToolbarHelper::cancel('newsfeed.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_NEWSFEEDS_FEEDS_EDIT');
 	}
 }

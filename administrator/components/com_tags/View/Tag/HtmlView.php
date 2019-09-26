@@ -106,22 +106,40 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title($isNew ? Text::_('COM_TAGS_MANAGER_TAG_NEW') : Text::_('COM_TAGS_MANAGER_TAG_EDIT'), 'tag');
 
+		if (!$isNew)
+		{
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_user_id == $userId);
+
+			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
+			{
+				ToolbarHelper::versions('com_tags.tag', $this->item->id);
+			}
+		}
+
+		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_COMPONENTS_TAGS_MANAGER_EDIT');
+		
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{
-			ToolbarHelper::apply('tag.apply');
+			// Close button
+			ToolbarHelper::cancel('tag.cancel');
+
 			ToolbarHelper::saveGroup(
 				[
+					['apply', 'tag.apply'],
 					['save', 'tag.save'],
 					['save2new', 'tag.save2new']
 				],
 				'btn-success'
 			);
-
-			ToolbarHelper::cancel('tag.cancel');
 		}
 		else
 		{
+			// Close button
+			ToolbarHelper::cancel('tag.cancel', 'JTOOLBAR_CLOSE');
+
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_user_id == $userId);
 
@@ -130,7 +148,7 @@ class HtmlView extends BaseHtmlView
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{
-				ToolbarHelper::apply('tag.apply');
+				$toolbarButtons[] = ['apply', 'tag.apply'];
 				$toolbarButtons[] = ['save', 'tag.save'];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
@@ -150,16 +168,6 @@ class HtmlView extends BaseHtmlView
 				$toolbarButtons,
 				'btn-success'
 			);
-
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
-			{
-				ToolbarHelper::versions('com_tags.tag', $this->item->id);
-			}
-
-			ToolbarHelper::cancel('tag.cancel', 'JTOOLBAR_CLOSE');
 		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_TAGS_MANAGER_EDIT');
 	}
 }
