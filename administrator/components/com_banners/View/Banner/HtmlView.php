@@ -12,14 +12,15 @@ namespace Joomla\Component\Banners\Administrator\View\Banner;
 defined('_JEXEC') or die;
 
 use Exception;
-use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
-use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\Component\Banners\Administrator\Model\BannerModel;
 
 /**
@@ -102,49 +103,78 @@ class HtmlView extends BaseHtmlView
 
 		// Since we don't track these assets at the item level, use the category id.
 		$canDo = ContentHelper::getActions('com_banners', 'category', $this->item->catid);
-
+		
+		// toolbar
+		$toolbar = Toolbar::getInstance();
+		
 		ToolbarHelper::title($isNew ? Text::_('COM_BANNERS_MANAGER_BANNER_NEW') : Text::_('COM_BANNERS_MANAGER_BANNER_EDIT'), 'bookmark banners');
 
-		$toolbarButtons = [];
+		if (!empty($this->item->id) && ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
+		{
+			ToolbarHelper::versions('com_banners.banner', $this->item->id);
+		}
+		
+		// help button
+		$toolbar->help('JHELP_COMPONENTS_BANNERS_BANNERS_EDIT');
+
+		// cancel / close button
+		if (empty($this->item->id))
+		{
+			$toolbar->cancel('banner.cancel', 'JTOOLBAR_CANCEL');
+		}
+		else
+		{
+			$toolbar->cancel('banner.cancel', 'JTOOLBAR_CLOSE');
+		}
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || count($user->getAuthorisedCategories('com_banners', 'core.create')) > 0))
 		{
-			ToolbarHelper::apply('banner.apply');
-			$toolbarButtons[] = ['save', 'banner.save'];
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			if ($canDo->get('core.create'))
-			{
-				$toolbarButtons[] = ['save2new', 'banner.save2new'];
+			if($isNew) {
+				$saveGroup = $toolbar->dropdownButton('save-group');
+				$saveGroup->configure(
+					function (Toolbar $childBar) use ($canDo)
+					{
+						$childBar->apply('banner.apply');
+						$childBar->save('banner.save');
+						$childBar->save2new('banner.save2new');
+					}
+				);
+			} else {
+				$saveGroup = $toolbar->dropdownButton('save-group');
+				$saveGroup->configure(
+					function (Toolbar $childBar) use ($itemEditable, $canDo)
+					{
+						// Can't do this action if it's editable
+						if ($itemEditable)
+						{
+							$childBar->apply('banner.apply');
+							$childBar->save('banner.save');
+
+							// We can save this record, but check the create permission to see if we can return to make a new one.
+							if ($canDo->get('core.create'))
+							{
+								$childBar->save2new('banner.save2new');
+							}
+						}
+					}
+				);
 			}
 		}
 
 		// If an existing item, can save to a copy.
 		if (!$isNew && $canDo->get('core.create'))
 		{
-			$toolbarButtons[] = ['save2copy', 'banner.save2copy'];
+			$saveGroup->configure(
+				function (Toolbar $childBar)
+				{
+					$childBar->save2copy('banner.save2copy');
+				}
+			);	
 		}
 
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('banner.cancel');
-		}
-		else
-		{
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
-			{
-				ToolbarHelper::versions('com_banners.banner', $this->item->id);
-			}
-
-			ToolbarHelper::cancel('banner.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_BANNERS_EDIT');
 	}
 }
