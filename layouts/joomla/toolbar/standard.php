@@ -61,9 +61,9 @@ elseif (!empty($onclick))
 <<?php echo $tagName; ?>
 	class="<?php echo $btnClass ?? ''; ?>"
 	<?php echo $htmlAttributes ?? ''; ?>
-	>
-	<span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
-	<?php echo $text ?? ''; ?>
+    >
+    <span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
+    <?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
 <?php endif; ?>
 </joomla-toolbar-button>
