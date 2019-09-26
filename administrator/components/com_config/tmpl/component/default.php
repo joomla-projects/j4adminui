@@ -44,18 +44,18 @@ $xml = $this->form->getXml();
 	<div class="row">
 
 		<?php // Begin Sidebar ?>
-		<div class="col-md-3" id="sidebar">
+		<div class="col-md-2" id="sidebar">
 			<button class="btn btn-sm btn-secondary my-2 options-menu d-md-none" type="button" data-toggle="collapse" data-target=".sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
 				 <span class="fas fa-align-justify" aria-hidden="true"></span>
 				 <?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>
 			</button>
-			<div class="sidebar-nav bg-light p-2 my-2">
+			<div class="sidebar-nav">
 				<?php echo $this->loadTemplate('navigation'); ?>
 			</div>
 		</div>
 		<?php // End Sidebar ?>
 
-		<div class="col-md-9" id="config">
+		<div class="col-md-10" id="config">
 
 			<?php if ($this->fieldsets): ?>
 			<?php $opentab = 0; ?>

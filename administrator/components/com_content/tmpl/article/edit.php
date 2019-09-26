@@ -235,11 +235,9 @@ if($this->item->id > 0)
 		<div class="col-lg-3 mt-5">
 			<!-- alias, status, category -->
 			<div class="form-no-margin j-card form-group-wrapper">
-				<div class="j-card-body">
-					<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
-					<!-- featured & status -->
-					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
-				</div>
+				<?php echo LayoutHelper::render('joomla.edit.alias', $this); ?>
+				<!-- featured & status -->
+				<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'featured', 'transition', array('parent', 'parent_id'), array('published', 'state', 'enabled') ), 'data' => $this)); ?>
 			</div>
 
 			<!-- category -->

@@ -22,7 +22,7 @@ HTMLHelper::_('behavior.core');
 			<span class="fas fa-align-justify" aria-hidden="true"></span>
 			<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>
 		</button>
-		<div class="sidebar-nav bg-light p-2 my-2">
+		<div class="sidebar-nav p-2 my-2">
 			<?php if ($displayData->displayMenu) : ?>
 			<ul class="nav flex-column">
 				<?php foreach ($displayData->list as $item) :
