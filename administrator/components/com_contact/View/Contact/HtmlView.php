@@ -111,34 +111,53 @@ class HtmlView extends BaseHtmlView
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{
+			// help button
+			ToolbarHelper::divider();
+			ToolbarHelper::help('JHELP_COMPONENTS_CONTACTS_CONTACTS_EDIT');
+
+			// cancel button
+			ToolbarHelper::cancel('contact.cancel');
+
 			// For new records, check the create permission.
 			if ($isNew && (count($user->getAuthorisedCategories('com_contact', 'core.create')) > 0))
 			{
-				ToolbarHelper::apply('contact.apply');
-
 				ToolbarHelper::saveGroup(
 					[
+						['apply', 'contact.apply'],
 						['save', 'contact.save'],
 						['save2new', 'contact.save2new']
 					],
 					'btn-success'
 				);
 			}
-
-			ToolbarHelper::cancel('contact.cancel');
 		}
 		else
 		{
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			$toolbarButtons = [];
+			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
+			{
+				ToolbarHelper::versions('com_contact.contact', $this->item->id);
+			}
 
+			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+			{
+				ToolbarHelper::custom('contact.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+			}
+			
+			// help button
+			ToolbarHelper::divider();
+			ToolbarHelper::help('JHELP_COMPONENTS_CONTACTS_CONTACTS_EDIT');
+
+			// close button
+			ToolbarHelper::cancel('contact.cancel', 'JTOOLBAR_CLOSE');
+			
+			$toolbarButtons = [];
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{
-				ToolbarHelper::apply('contact.apply');
-
+				$toolbarButtons[] = ['apply', 'contact.apply'];
 				$toolbarButtons[] = ['save', 'contact.save'];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
@@ -158,21 +177,6 @@ class HtmlView extends BaseHtmlView
 				$toolbarButtons,
 				'btn-success'
 			);
-
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
-			{
-				ToolbarHelper::versions('com_contact.contact', $this->item->id);
-			}
-
-			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-			{
-				ToolbarHelper::custom('contact.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
-			}
-
-			ToolbarHelper::cancel('contact.cancel', 'JTOOLBAR_CLOSE');
 		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_COMPONENTS_CONTACTS_CONTACTS_EDIT');
 	}
 }
