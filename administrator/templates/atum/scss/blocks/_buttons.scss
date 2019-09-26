@@ -31,6 +31,9 @@
         background-image: none;
         background-color: var(--secondary-icon-color);
         color: var(--icon-color);
+        span, i{
+            color: var(--icon-color);
+        }
     }
     >.icon{
         margin-right: 12px;
@@ -64,6 +67,9 @@
         }
         &:focus, &:focus:active, &:not(:disabled):not(.disabled):active:focus{
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--link-color);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-default {
@@ -187,12 +193,18 @@
         &:hover, &:focus, &:active, &.active{
             background-color: var(--danger-button-dark);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-success{
         background-color: var(--success-button);
         color: #fff;
         &:hover, &:focus, &:active, &.active{
             background-color: var(--success-button-dark);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-warning{
@@ -201,12 +213,18 @@
         &:hover, &:focus, &:active, &.active{
             background-color: var(--warning-button-dark);
         }
+        span, i{
+            color: #fff;
+        }
     }
     &.btn-solid-primary{
         background-color: var(--link-color);
         color: #fff;
         &:hover, &:focus{
             background-color: var(--button-dark-color);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-info{
@@ -227,6 +245,9 @@
         color: #fff;
         &:hover, &:focus{
             background-color: var(--dark-primary-color);
+        }
+        span, i{
+            color: #fff;
         }
     }
     &.btn-light{
