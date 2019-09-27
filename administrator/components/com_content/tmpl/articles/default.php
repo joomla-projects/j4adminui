@@ -297,7 +297,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 
 								<td class="article-status">
 									<div class="d-flex">
-										<div class="btn-group tbody-icon mr-1">
+										<div class="btn-group">
 										<?php
 
 											$options = [

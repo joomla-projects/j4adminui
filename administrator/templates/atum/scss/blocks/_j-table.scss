@@ -89,12 +89,6 @@ table {
                             text-decoration: underline;
                         }
                     }
-                    &.row-selected {
-                        .custom-select {
-                            background-image: url(../images/select-bg-in-table.svg);
-                            background-color: var(--tr-hover-background);
-                        }
-                    }
                     .small,
                     &.small{
                         font-size: 1rem;
@@ -113,6 +107,7 @@ table {
                 }
                 .j-transition-group {
                     position: relative;
+                    min-width: 100px;
                     &::after {
                         content: "";
                         width: 7px;
@@ -141,20 +136,20 @@ table {
                         }
                     }
                 }
-                .custom-select {
-                    padding: 0;
-                    border: 0;
-                    box-shadow: none;
-                    color: var(--color);
-                    width: 110px;
-                    height: auto;
-                    background-image: url(../images/select-bg-white.svg);
-                    background-color: var(--input-background-color-white);
-                    option[selected],
-                    option:checked,
-                    option:hover {
-                        background: var(--success-color);
-                        color: var(--inverse-color);
+                .j-transition-select {
+                    span {
+                        font-size: .75rem;
+                        color: var(--secondary-icon-color);
+                    }
+                    &:hover {
+                        span {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+                joomla-dropdown {
+                    .dropdown-item {
+                        line-height: 1;
                     }
                 }
                 .badge.badge-info {
