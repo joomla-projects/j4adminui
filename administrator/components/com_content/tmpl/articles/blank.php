@@ -15,8 +15,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 ?>
 <div class="container" style="background:white; padding: 10px;">
         <h1> Demo Modal </h1>
-        <?php 
-        
+        <?php
+
             echo HTMLHelper::_(
                 'webcomponent.renderModal',
                 'associationSelect',
@@ -747,6 +747,29 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
             </div>
 
             <div class="col-4">
+
+				<div class="j-card j-card-skeleton">
+					<div class="j-card-header">
+						<h4></h4>
+						<div class="j-card-header-right">
+							<button class="j-card-header-icon fas fa-ellipsis-h"></button>
+						</div>
+					</div>
+					<div class="j-card-media"></div>
+					<div class="j-card-body">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="half"></span>
+					</div>
+					<div class="j-card-footer j-card-footer-lg">
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+
+				<hr>
+
                 <div class="j-card j-card-has-hover">
                     <div class="j-card-header">
                         <h4>Recent activities</h4>
