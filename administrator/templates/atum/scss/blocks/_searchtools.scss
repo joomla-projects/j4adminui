@@ -104,7 +104,7 @@
       @extend .align-items-center;
       border: 1px solid #e8ebf4;
       background: var(--inverse-color);
-      padding: 0px 5px 0px 15px;
+      padding: 0px 0px 0px 15px;
       margin-right: 10px;
     }
 
@@ -112,7 +112,6 @@
       margin-bottom: 0;
     }
     .ordering-select{
-      margin-left: auto;
       .btn{
         padding: 0;
         color: var(--secondary-icon-color);
@@ -124,12 +123,15 @@
         }
       }
     }
+    .js-stools-input {
+      margin-left: auto;
+    }
     .btn {
       line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
       &.js-stools-btn-clear {
-        margin-right: 1rem;
+        margin-right: 5px;
       }
     }
   }

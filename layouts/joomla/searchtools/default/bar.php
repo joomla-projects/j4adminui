@@ -31,7 +31,7 @@ $filters = $data['view']->filterForm->getGroup('filter');
 
 <?php if (!empty($filters['filter_search'])) : ?>
 	<?php if ($searchButton) : ?>
-		<div class="btn-group">
+		<div class="btn-group js-stools-input">
 			<div class="input-group">
 				<label for="filter_search" class="sr-only">
 					<?php if (isset($filters['filter_search']->label)) : ?>
@@ -55,11 +55,11 @@ $filters = $data['view']->filterForm->getGroup('filter');
 		</div>
 		<?php if($filterButton) : ?>
 			<div class="btn-group">
-				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter p-0 ml-3">
+				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter ml-3">
 					<span class="fa fa-plus" aria-hidden="true"></span>
 					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
 				</button>
-				<button type="button" class="btn btn-link js-stools-btn-clear p-0 ml-3">
+				<button type="button" class="btn btn-link js-stools-btn-clear">
 					<span class="fa fa-times" aria-hidden="true"></span>
 					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
