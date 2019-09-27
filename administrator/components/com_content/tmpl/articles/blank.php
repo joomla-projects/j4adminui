@@ -760,7 +760,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 						<span></span>
 						<span></span>
 						<span></span>
-						<span></span>
+						<span class="half"></span>
 					</div>
 					<div class="j-card-footer j-card-footer-lg">
 						<span></span>
