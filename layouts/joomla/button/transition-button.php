@@ -7,8 +7,10 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
+
 
 HTMLHelper::_('bootstrap.popover');
 
@@ -21,53 +23,67 @@ HTMLHelper::_('bootstrap.popover');
  */
 extract($displayData, EXTR_OVERWRITE);
 
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', ['version' => 'auto', 'relative' => true]);
+
 $only_icon = empty($options['transitions']);
 $disabled = !empty($options['disabled']);
 $tip = !empty($options['tip']);
 $id = (int) $options['id'];
 $tipTitle = $options['tip_title'];
 $checkboxName = $options['checkbox_name'];
+
+switch(strtoupper($options['stage']))
+{
+    case 'UNPUBLISHED':
+        $color = 'danger';
+    break;
+    case 'PUBLISHED':
+        $color = 'success';
+    break;
+    case 'TRASHED':
+        $color = 'warning';
+    break;
+    default:
+        $color = 'primary';
+}
+
+$default = [
+    HTMLHelper::_('select.option', '', $this->escape($options['stage'])),
+    HTMLHelper::_('select.option', '-1', '--------', ['disable' => true])
+];
+
+$options['transitions'] = json_decode(json_encode($options['transitions']));
+
+$transitions = array_merge($default, $options['transitions']);
+
+Factory::getDocument()->addScriptDeclaration("
+    function handleRunTransition(e, id, cb, task = 'articles.runTransition') {
+        document.getElementById(id).value = e.dataset.value;
+        Joomla.listItemTask(cb, task);
+    }
+");
+
+$attribs = [
+    'id'        => 'transition-select_' . (int) $id,
+    'list.attr' => [
+        'class'    => 'custom-select custom-select-sm form-control form-control-sm',
+        'onchange' => "Joomla.listItemTask('" . $checkboxName . $this->escape($row ?? '') . "', 'articles.runTransition')"]
+    ];
+
 ?>
-<?php if ($only_icon) : ?>
-	<span class="tbody-icon mr-1">
-		<span class="<?php echo $this->escape($icon ?? ''); ?> <?php echo $tip ? 'hasPopover' : ''; ?>"
-			title="<?php echo HTMLHelper::_('tooltipText', Text::_($tipTitle ? : $title), '', 0); ?>"
-			data-content="<?php echo HTMLHelper::_('tooltipText', Text::_($title), '', 0); ?>"
-			data-placement="top"
-		></span>
-	</span>
-	<div class="mr-auto"><?php echo $this->escape($options['stage']); ?></div>
-<?php else : ?>
-	<a class="tbody-icon mr-1 data-state-<?php echo $this->escape($value ?? ''); ?> <?php echo $this->escape(!empty($disabled) ? 'disabled' : null); ?> <?php echo $tip ? 'hasPopover' : ''; ?>"
-		<?php if (empty($disabled)) : ?>
-			href="javascript://"
-		<?php endif; ?>
 
-		title="<?php echo HTMLHelper::_('tooltipText', Text::_($tipTitle ? : $title), '', 0); ?>"
-		data-content="<?php echo HTMLHelper::_('tooltipText', Text::_($title), '', 0); ?>"
-		data-placement="top"
-		onclick="Joomla.toggleAllNextElements(this, 'd-none')"
-	>
-		<span class="<?php echo $this->escape($icon ?? ''); ?>" aria-hidden="true"></span>
-	</a>
-	<div class="mr-auto"><?php echo $this->escape($options['stage']); ?></div>
-	<div class="d-none">
-		<?php
-			$default = [
-				HTMLHelper::_('select.option', '', $this->escape($options['stage'])),
-				HTMLHelper::_('select.option', '-1', '--------', ['disable' => true])
-			];
 
-			$transitions = array_merge($default, $options['transitions']);
+<div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group joomla-dropdown-container" data-color="<?php echo $color; ?>">
+    <a href="#" class="btn btn-link" data-target="<?php echo 'transition-select_' . (int) $id; ?>"><?php echo $this->escape($options['stage']); ?> <span class="fa fa-chevron-down"></span></a>
+    <joomla-dropdown for="<?php echo 'transition-select_' . (int) $id; ?>">
+        <?php foreach($transitions as $transition) : ?>
+            <li><a href="javascript:" class="dropdown-item" onclick="handleRunTransition(this, <?php echo '\'' . 'transition_' . (int)$id . '\''; ?>, <?php echo '\'' . $checkboxName . $this->escape($row ?? '') . '\'' ?>);" data-value="<?php echo $transition->value; ?>"><?php echo $transition->text; ?></a></li>
+        <?php endforeach; ?>
+        <input type="hidden" id="transition_<?php echo (int)$id; ?>" name="transition_<?php echo (int)$id; ?>" value="">
+    </joomla-dropdown>
+</div>
 
-			$attribs = [
-				'id'        => 'transition-select_' . (int) $id,
-				'list.attr' => [
-					'class'    => 'custom-select custom-select-sm form-control form-control-sm',
-					'onchange' => "Joomla.listItemTask('" . $checkboxName . $this->escape($row ?? '') . "', 'articles.runTransition')"]
-				];
-
-			echo HTMLHelper::_('select.genericlist', $transitions, 'transition_' . (int) $id, $attribs);
-		?>
-	</div>
-<?php endif; ?>
+<joomla-callout action="hover" for="#publishColloutId-<?php echo $id; ?>" position="top">
+    <div class="callout-title"><?php echo HTMLHelper::_('tooltipText', Text::_($tipTitle ? : $title), '', 0); ?></div>
+    <div class="callout-content"><?php echo HTMLHelper::_('tooltipText', Text::_($title), '', 0); ?></div>
+</joomla-callout>
