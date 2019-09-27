@@ -484,3 +484,27 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		margin-right: 6px;
 	}
 }
+
+//.j-card-skeleton
+.j-card-skeleton{
+	.j-card-header{
+		> h4,
+		.j-card-title{
+			background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/3pkFbIT7_rn.gif);
+			flex-grow: 1;
+			color: transparent;
+		}
+		.j-card-header-right{
+			display: none;
+		}
+	}
+	.j-card-body > span{
+		height: 20px;
+		display: block;
+		margin-bottom: 6px;
+		background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/3pkFbIT7_rn.gif);
+		&:last-child{
+			width: 50%;
+		}
+	}
+}
