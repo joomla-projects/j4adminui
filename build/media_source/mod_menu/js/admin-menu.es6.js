@@ -55,31 +55,6 @@
   const sidebar = document.getElementById('sidebar-wrapper');
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
 
-  // Set the initial state of the sidebar based on the localStorage value
-  // if (Joomla.localStorageEnabled()) {
-  //   const sidebarState = localStorage.getItem('atum-sidebar');
-  //   if (sidebarState === 'open' || sidebarState === null) {
-  //     wrapper.classList.remove('closed');
-  //     header.classList.remove('closed');
-  //     if (menuToggleIcon !== null) {
-  //       menuToggleIcon.classList.remove('fa-angle-double-right');
-  //       menuToggleIcon.classList.add('fa-angle-double-left');
-  //     }
-  //     localStorage.setItem('atum-sidebar', 'open');
-  //     Joomla.Event.dispatch('joomla:menu-toggle', 'open');
-  //   } else {
-  //     wrapper.classList.add('closed');
-  //     header.classList.add('closed');
-  //     if (menuToggleIcon !== null) {
-  //       menuToggleIcon.classList.remove('fa-angle-double-left');
-  //       menuToggleIcon.classList.add('fa-angle-double-right');
-  //     }
-  //     localStorage.setItem('atum-sidebar', 'closed');
-  //     Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
-  //   }
-  // }
-
-
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
     wrapper.classList.remove('closed');
@@ -105,7 +80,7 @@
     const menuClose = () => {
       sidebar.querySelector('.collapse').classList.remove('in');
     };
-    if (typeof menuToggle !== 'undefined') {
+    if (typeof menuToggle !== 'undefined' && menuToggle !== null) {
     // Toggle menu
       menuToggle.addEventListener('click', () => {
         wrapper.classList.toggle('closed');

@@ -6,6 +6,26 @@
 ((tinyMCE, Joomla, window, document) => {
   'use strict';
 
+  /**
+   * Hide or Show editor toolbar on toogle button
+   * @param Element toxToolbar  Tox Toolbar group element
+   * @param int n               Number of element need to hide from behind
+   * @param boolean toggle      Hide|Show Toollbar
+   */
+  const toggleTinymceToolbars = (toxToolbar, n = 10, toggle = true) => {
+    let toolbars = toxToolbar.querySelectorAll('.tox-toolbar__group');
+    if (toolbars.length > 0) {
+      toolbars = [].slice.call(toolbars, 0).reverse();
+      for (let i = 0; i < n; i += 1) {
+        if (toggle) {
+          toolbars[i].classList.add('d-none');
+        } else {
+          toolbars[i].classList.remove('d-none');
+        }
+      }
+    }
+  };
+
   Joomla.JoomlaTinyMCE = {
     /**
      * Find all TinyMCE elements and initialize TinyMCE instance for each
@@ -93,14 +113,18 @@
       });
       const toggleButtonValues = (editor) => {
         const { parentNode } = editor.editorContainer;
+        const toxToolbar = editor.editorContainer.querySelector('.tox-toolbar');
         if (parentNode !== null) {
           if (parentNode.classList.contains('joomla-tinymce-hide-menu')) {
             parentNode.classList.remove('joomla-tinymce-hide-menu');
+            toggleTinymceToolbars(toxToolbar, 12, false);
           } else {
+            toggleTinymceToolbars(toxToolbar, 12);
             parentNode.classList.add('joomla-tinymce-hide-menu');
           }
         }
       };
+
       if (buttonValues.length) {
         options.setup = (editor) => {
           Object.keys(icons).forEach((icon) => {
@@ -120,12 +144,17 @@
           });
         };
       }
-
+      options.init_instance_callback = (editor) => {
+        const { parentNode } = editor.editorContainer;
+        if (parentNode.classList.contains('joomla-tinymce-hide-menu')) {
+          const toxToolbar = editor.editorContainer.querySelector('.tox-toolbar');
+          toggleTinymceToolbars(toxToolbar, 12);
+        }
+      };
       // Create a new instance
       // eslint-disable-next-line no-undef
       const ed = new tinyMCE.Editor(element.id, options, tinymce.EditorManager);
       ed.render();
-
       /** Register the editor's instance to Joomla Object */
       Joomla.editors.instances[element.id] = {
         // Required by Joomla's API for the XTD-Buttons
@@ -138,7 +167,6 @@
         instance: ed,
         onSave: () => { if (Joomla.editors.instances[element.id].instance.isHidden()) { Joomla.editors.instances[element.id].instance.show(); } return ''; },
       };
-
       /** On save * */
       document.getElementById(ed.id).form.addEventListener('submit', () => Joomla.editors.instances[ed.targetElm.id].onSave());
     },
