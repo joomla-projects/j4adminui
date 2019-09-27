@@ -202,17 +202,17 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		// statistics button
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
-
 		// help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_INDEXED_CONTENT');
-
+		
 		// option button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
+
+		// statistics button
+		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 
 		// clear index button
 		if ($canDo->get('core.edit.state'))
