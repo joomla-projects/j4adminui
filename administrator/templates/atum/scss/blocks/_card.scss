@@ -496,6 +496,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			@extend .skeleton-bg;
 			flex-grow: 1;
 			color: transparent;
+			height: 1.286rem;
 		}
 		
 		.j-card-header-right{
@@ -505,7 +506,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	}
 	.j-card-body > span{
 		@extend .skeleton-bg;
-		height: 20px;
+		height: 1.286rem;
 		display: block;
 		margin-bottom: 6px;
 		&:last-child{
@@ -523,9 +524,12 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		@extend .d-flex;
 		span{
 			flex-grow: 1;
-			height: 16px;
+			height: 1.143rem;
 			@extend .d-block;
 			@extend .skeleton-bg;
+			&:not(:last-child){
+				margin-right: 1.071rem;
+			}
 		}
 	}
 }

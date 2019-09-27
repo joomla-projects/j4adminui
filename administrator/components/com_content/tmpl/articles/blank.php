@@ -750,7 +750,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 
 				<div class="j-card j-card-skeleton">
 					<div class="j-card-header">
-						<h4>Recent activities</h4>
+						<h4></h4>
 						<div class="j-card-header-right">
 							<button class="j-card-header-icon fas fa-ellipsis-h"></button>
 						</div>
@@ -763,6 +763,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 						<span></span>
 					</div>
 					<div class="j-card-footer j-card-footer-lg">
+						<span></span>
 						<span></span>
 					</div>
 				</div>
