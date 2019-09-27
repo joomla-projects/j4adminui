@@ -763,9 +763,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 						<span></span>
 					</div>
 					<div class="j-card-footer j-card-footer-lg">
-						<div class="j-card-footer-item">
-							<a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
-						</div>
+						<span></span>
 					</div>
 				</div>
 
