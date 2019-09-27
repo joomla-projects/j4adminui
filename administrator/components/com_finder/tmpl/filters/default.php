@@ -112,11 +112,15 @@ HTMLHelper::_('script', 'com_finder/filters.js', ['version' => 'auto', 'relative
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-
-				<?php // load the pagination. ?>
-				<?php echo $this->pagination->getListFooter(); ?>
-
+				
+				<!-- load the pagination. -->
+				<div class="j-pagination-footer">
+					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+					<?php echo $this->pagination->getListFooter(); ?>
+				</div>
 				<?php endif; ?>
+
+
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>

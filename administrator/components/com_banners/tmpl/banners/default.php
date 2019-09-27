@@ -170,9 +170,6 @@ if ($saveOrder && !empty($this->items))
 						</tbody>
 					</table>
 
-					<?php // Load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
 					<?php // Load the batch processing form. ?>
 					<?php if ($user->authorise('core.create', 'com_banners')
 						&& $user->authorise('core.edit', 'com_banners')
@@ -189,7 +186,14 @@ if ($saveOrder && !empty($this->items))
 						); 
 						?>
 					<?php endif; ?>
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

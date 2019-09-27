@@ -99,8 +99,11 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 				<span class="icon-remove icon-remove" aria-hidden="true">&nbsp;</span><?php echo Text::_('COM_USERS_DEBUG_EXPLICIT_DENY'); ?>
 			</div>
 
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 		</div>
 		<input type="hidden" name="task" value="">
