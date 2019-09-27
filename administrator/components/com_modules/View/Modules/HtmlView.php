@@ -157,8 +157,8 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('fa fa-hand-pointer')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -207,8 +207,6 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
-
 		// add new module
 		if ($canDo->get('core.create'))
 		{
@@ -216,6 +214,8 @@ class HtmlView extends BaseHtmlView
 				->url('index.php?option=com_installer&amp;view=install')
 				->icon('icon-arrow-down-2');
 		}
+
+		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
 
 		if ($canDo->get('core.admin'))
 		{

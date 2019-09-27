@@ -100,11 +100,11 @@ class MenutypeField extends ListField
 				break;
 		}
 
-		$dropdownText = Text::_('JSELECT') . ' <span class="fas fa-sort-up menuitem-icon-right"></span><span class="fas fa-sort-down menuitem-icon-right"></span>';
+		$dropdownText = Text::_('JSELECT') . ' <span class="icon-menu-2"></span>';
 
 		if (!empty($value))
 		{
-			$dropdownText = $value . ' <span class="fas fa-sort-up menuitem-icon-right"></span><span class="fas fa-sort-down menuitem-icon-right"></span>';
+			$dropdownText = $value . ' <span class="icon-menu-2">';
 		}
 
 		$html[] = '<a href="javascript:" class="btn btn-secondary text-left" data-target="menuTypeDropdown">' . $dropdownText . '</a>';

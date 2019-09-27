@@ -256,9 +256,6 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 						</tbody>
 					</table>
 
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
 					<?php // Load the batch processing form if user is allowed ?>
 					<?php if ($user->authorise('core.create', 'com_menus') || $user->authorise('core.edit', 'com_menus')) : ?>
 						<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_MENUS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
@@ -270,7 +267,14 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 							</footer>
 						</joomla-modal>
 					<?php endif; ?>
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

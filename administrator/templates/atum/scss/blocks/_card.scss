@@ -484,3 +484,52 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		margin-right: 6px;
 	}
 }
+
+//.j-card-skeleton
+.j-card-skeleton{
+	.skeleton-bg{
+		background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/3pkFbIT7_rn.gif);
+	}
+	.j-card-header{
+		> h4,
+		.j-card-title{
+			@extend .skeleton-bg;
+			flex-grow: 1;
+			color: transparent;
+			height: 1.286rem;
+		}
+		
+		.j-card-header-right{
+			opacity: .5;
+			pointer-events: none;
+		}
+	}
+	.j-card-body > span{
+		@extend .skeleton-bg;
+		height: 1.286rem;
+		display: block;
+		margin-bottom: 6px;
+		&.half{
+			width: 50%;
+		}
+	}
+	
+	.j-card-media{
+		@extend .skeleton-bg;
+		height: 150px;
+	}
+	
+	.j-card-footer{
+		padding: 1rem .857143rem;
+		@extend .d-flex;
+		span{
+			flex-grow: 1;
+			height: 1.143rem;
+			@extend .d-block;
+			@extend .skeleton-bg;
+			&:not(:last-child){
+				margin-right: 1.071rem;
+			}
+		}
+	}
+}

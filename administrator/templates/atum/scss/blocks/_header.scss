@@ -42,32 +42,32 @@
       width: 100%;
     }
   }
-
+  
   .logo {
     display: inline-block;
     transition: width .3s ease;
-
+    
     &.small {
       width: $sidebar-width-closed;
       transition: width .3s ease;
-
+      
       svg, img {
-
+        
         &:not(.logo-small) {
           display: none;
         }
-
+        
         &.logo-small {
           display: inline-block;
         }
       }
     }
-
+    
     svg, img {
       margin-left: 0.8rem;
       max-height: 1.3rem;
       max-width: calc(15.625rem - 0.8rem);
-
+      
       &.logo-small {
         display: none;
         max-width: 1.3rem;
@@ -77,7 +77,7 @@
       height: 1.3rem;
     }
   }
-
+  
   .page-title {
     width: 100%;
     white-space: nowrap;
@@ -87,19 +87,19 @@
     font-size: 1.2rem;
     line-height: $header-height;
     color: var(--atum-special-color);
-
+    
     [class^='icon-'] {
       margin-right: 0.625rem;
       font-size: 1rem;
     }
   }
-
+  
   .header-items {
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
-
+  
   .header-item {
     position: relative;
     &:not(:last-child){
@@ -148,7 +148,7 @@
         display: inline-block;
         margin-right: 0.871rem;
       }
-  
+      
       span.header-user-icon{
         font-size: 22px;
         display: inline-block;
@@ -176,13 +176,20 @@
     }
     
   }
-
+  
   .fa, .fab {
     vertical-align: middle;
     transition: all .2s ease-in-out;
   }
-
+  
   joomla-dropdown[expanded] {
     z-index: $zindex-popover;
+  }
+  &.closed {
+    .header-title {
+      .d-flex {
+        padding-left: 60px;
+      }
+    }
   }
 }

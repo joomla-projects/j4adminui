@@ -189,7 +189,7 @@ class HtmlView extends BaseHtmlView
 				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
 				->icon('fa fa-hand-pointer')
-				->buttonClass('btn btn-secondary')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();

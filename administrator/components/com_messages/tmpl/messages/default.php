@@ -78,11 +78,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
-
+			
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 		<?php endif; ?>
+
+
 		<div>
 			<input type="hidden" name="task" value="">
 			<input type="hidden" name="boxchecked" value="0">

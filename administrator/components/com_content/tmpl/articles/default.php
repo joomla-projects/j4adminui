@@ -297,7 +297,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 
 								<td class="article-status">
 									<div class="d-flex">
-										<div class="btn-group tbody-icon mr-1">
+										<div class="btn-group">
 										<?php
 
 											$options = [
@@ -375,13 +375,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 							<?php echo $this->loadTemplate('stage_footer'); ?>
 						</footer>
 					</joomla-modal>
+					
+					<?php // load the pagination and limit items ?>
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
 
-				<?php // load the pagination and limit items ?>
-				<div class="j-pagination-footer">
-					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-				</div>
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

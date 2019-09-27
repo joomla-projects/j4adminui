@@ -306,8 +306,6 @@ Joomla = window.Joomla || {};
       els.forEach((item) => {
         if (item.classList.contains('active')) {
           activeFilterCount += 1;
-          cont.filterButton.classList.remove('btn-secondary');
-          cont.filterButton.classList.add('btn-primary');
         }
       });
 

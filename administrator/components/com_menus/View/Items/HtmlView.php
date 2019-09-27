@@ -353,7 +353,7 @@ class HtmlView extends BaseHtmlView
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
 				->icon('fa fa-hand-pointer')
-				->buttonClass('btn btn-action')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -395,15 +395,14 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
-		// toolbar help button
-		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
-		
-		// option toolbar button
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		// toolbar rebuild menuItem tree button
+		if (Factory::getUser()->authorise('core.admin'))
 		{
-			$toolbar->preferences('com_menus');
+			$toolbar->standardButton('refresh')
+				->text('JTOOLBAR_REBUILD')
+				->task('items.rebuild');
 		}
-		
+
 		// toolbar delete menuItem button
 		if (!$protected && $this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
@@ -413,12 +412,13 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		// toolbar rebuild menuItem tree button
-		if (Factory::getUser()->authorise('core.admin'))
+		// toolbar help button
+		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
+		
+		// option toolbar button
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
-			$toolbar->standardButton('refresh')
-				->text('JTOOLBAR_REBUILD')
-				->task('items.rebuild');
+			$toolbar->preferences('com_menus');
 		}
 
 		// toolbar addNew button

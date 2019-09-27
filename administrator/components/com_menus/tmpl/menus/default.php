@@ -229,13 +229,14 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 							<?php endforeach; ?>
 						</tbody>
 					</table>	
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
 				
-				<!-- load the pagination. -->
-				<div class="j-pagination-footer">
-					<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-				</div>
 
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">

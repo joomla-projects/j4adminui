@@ -114,8 +114,8 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 	<?php endif; ?>
 	<div class="js-stools-container-bar ml-auto">
 		<div class="btn-toolbar">
-			<?php echo $this->sublayout('bar', $data); ?>
 			<?php echo $this->sublayout('list', $data); ?>
+			<?php echo $this->sublayout('bar', $data); ?>
 		</div>
 	</div>
 	<!-- Filters div -->
