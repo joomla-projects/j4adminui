@@ -1203,7 +1203,6 @@ window.Joomla.Modal = window.Joomla.Modal || {
         // eslint-disable-next-line no-param-reassign
         expires = '';
       }
-      console.log('set cookie: ', name, value);
       document.cookie = `${name}=${encodeURIComponent(value)
       }${expires ? `; expires=${expires}` : ''
       }${path ? `; path=${path}` : ''
