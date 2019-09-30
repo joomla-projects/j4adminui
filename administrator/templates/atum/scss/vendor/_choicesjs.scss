@@ -209,41 +209,6 @@
 	color: var(--color);
 }
 
-//Toggle Button
-.switcher .toggle-inside {
-    height: 20px;
-    width: 20px;
-    background: var(--cancel-button-background);
-    position: absolute;
-    transition: all .4s ease;
-    border-radius: 50%;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
-    top: -3px;
-}
-.switcher .toggle-outside {
-    transition: all .2s ease;
-    background: rgba(189, 197, 200, .5);
-    position: absolute;
-    width: 36px;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 10px;
-    height: 15px;
-    overflow: visible;
-}
-.switcher input~input:checked~.toggle-outside .toggle-inside {
-    left: 16px;
-}
-.switcher input~input:checked~.toggle-outside {
-    background: rgba(1, 132, 255, .5);
-}
-.switcher input~input:checked~.toggle-outside .toggle-inside {
-    background: var(--primary-color);
-}
-.switcher label {
-    line-height: 1.2;
-    margin-left: 45px;
-}
 .is-open.is-focused {
 	.choices__inner {
 		border-color: var(--primary-color);
