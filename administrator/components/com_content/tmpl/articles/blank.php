@@ -813,37 +813,37 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         </div>
                     </div>
 
-                    <div class="j-activity-list">
-                        <div class="j-activity-item">
+                    <div class="j-list-group">
+                        <div class="j-list-item">
                             <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
                             </div>
                         </div>
-                        <div class="j-activity-item">
+                        <div class="j-list-item">
                             <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
                             </div>
                         </div>
-                        <div class="j-activity-item">
+                        <div class="j-list-item">
                             <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
 
                                 <p>
