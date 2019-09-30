@@ -188,7 +188,7 @@ joomla-modal {
 	
 }
 
-.modal-backdrop.show {
+.j-modal-backdrop.show {
 	opacity: 1;
 	&.fade {
 		opacity: 0;
@@ -198,7 +198,7 @@ joomla-modal {
 		opacity: 1;
 	}
 }
-.modal-backdrop {
+.j-modal-backdrop {
 	position: fixed;
 	top: 0;
 	right: 0;

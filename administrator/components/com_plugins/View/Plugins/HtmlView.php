@@ -104,6 +104,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
+		// action button
 		$dropdown = $toolbar->dropdownButton('status-group')
 			->text('JTOOLBAR_CHANGE_STATUS')
 			->toggleSplit(false)
@@ -120,12 +121,14 @@ class HtmlView extends BaseHtmlView
 			$childBar->checkin('plugins.checkin');
 		}
 
+		// help button
+		$toolbar->help('JHELP_EXTENSIONS_PLUGIN_MANAGER');
+
+		// option button
 		if ($canDo->get('core.admin'))
 		{
 			$toolbar->preferences('com_plugins');
 		}
-
-		$toolbar->help('JHELP_EXTENSIONS_PLUGIN_MANAGER');
 
 	}
 
