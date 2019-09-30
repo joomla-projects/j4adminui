@@ -299,7 +299,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		margin-right: 25px;
 		white-space: nowrap;
 		text-align: left;
-		span{
+		span:not(.month-text){
 			font-size: 3.857143rem;
 			line-height: 5.071429rem;
 			font-weight: 700;
@@ -488,7 +488,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 //.j-card-skeleton
 .j-card-skeleton{
 	.skeleton-bg{
-		background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/3pkFbIT7_rn.gif);
+		background: var(--skeleton-bg) !important;
 	}
 	.j-card-header{
 		> h4,
@@ -529,6 +529,64 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			@extend .skeleton-bg;
 			&:not(:last-child){
 				margin-right: 1.071rem;
+			}
+			&.half{
+				width: 50%;
+				flex-grow: 0;
+			}
+			&.center{
+				margin: 0 auto;
+			}
+		}
+	}
+	
+	.j-card-overview-box{
+		.j-card-overview-icon{
+			font-size: 0;
+			@extend .skeleton-bg;
+		}
+		
+		.j-card-overview-content sub{
+			color: transparent;
+			@extend .skeleton-bg;
+			width: 45px;
+			display: inline-block;
+			line-height: 16px;
+		}
+		
+		.j-counter-animation{
+			display: inline-block;
+			@extend .skeleton-bg;
+			line-height: 50px;
+			color: transparent;
+			width: 55px;
+		}
+	}
+	
+	.j-card-event-item{
+		time span{
+			&:first-child{
+				font-size: 50px;
+				line-height: 60px;
+				margin-bottom: 2px;
+			}
+			color: transparent;
+			@extend .skeleton-bg;
+		}
+		.j-card-event-content{
+			padding-top: 0;
+		}
+		
+		.j-card-event-content{
+			span{
+				color: transparent;
+				@extend .skeleton-bg;
+				display: block;
+				height: 16px;
+				margin-bottom: 4px;
+				&.half{
+					width: 50%;
+				}
 			}
 		}
 	}

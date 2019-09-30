@@ -12,7 +12,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=
 HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
+
+
 ?>
+
 <div class="container" style="background:white; padding: 10px;">
         <h1> Demo Modal </h1>
         <?php
@@ -614,14 +617,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box">
-                        <div class="j-card-overview-icon j-warning">
-                            <span class="fab fa-invision"></span>
-                        </div>
-                        <div class="j-card-overview-content">
-                            65 <sub>Article</sub>
-                        </div>
-                    </div>
+					<div class="j-card-overview-box">
+						<div class="j-card-overview-icon j-warning">
+							<span class="fab fa-invision"></span>
+						</div>
+						<div class="j-card-overview-content">
+							65 <sub>Article</sub>
+						</div>
+					</div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
                             <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
@@ -762,9 +765,41 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 						<span></span>
 						<span class="half"></span>
 					</div>
+
+
+					<div class="j-card-event-item">
+						<time datetime="2019-07-13"> <!-- yyyy-mm-dd -->
+							<span>00</span>
+							<span class="month-text">July 0000</span>
+						</time>
+						<div class="j-card-event-content">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span class="half"></span>
+						</div>
+					</div>
+
 					<div class="j-card-footer j-card-footer-lg">
 						<span></span>
 						<span></span>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="j-card j-card-skeleton">
+					<div class="j-card-overview-box pt-3">
+						<div class="j-card-overview-icon j-warning">
+							<span class="fab fa-invision"></span>
+						</div>
+						<div class="j-card-overview-content">
+							<span class="j-counter-animation">&nbsp;</span> <sub>&nbsp;</sub>
+						</div>
+					</div>
+
+					<div class="j-card-footer j-card-footer-lg">
+						<span class="half center"></span>
 					</div>
 				</div>
 
