@@ -83,7 +83,7 @@ if ($module->content) :
                     </div>
 				</div>
 			<?php endif; ?>
-			<div class="j-module-content" id="j-card-body-<?php echo $id; ?>">
+			<div class="j-module-content" id="module-<?php echo $id; ?>">
 				<?php echo $module->content; ?>
 			</div>
 		</<?php echo $moduleTag; ?>>

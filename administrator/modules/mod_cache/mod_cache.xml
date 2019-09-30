@@ -21,8 +21,20 @@
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_CACJE" />
 	<config>
 		<fields name="params">
-			<fieldset
-				name="advanced">
+			<fieldset name="basic">
+				<field
+					name="size_unit"
+					type="list"
+					label="MOD_CACHE_FIELD_SIZEUNIT_LABEL"
+					description="MOD_CACHE_FIELD_SIZEUNIT_LABEL_DESC"
+					default="mb"
+					>
+					<option value="MB">MOD_CACHE_FIELD_VALUE_SIZEUNIT_MB</option>
+					<option value="kB">MOD_CACHE_FIELD_VALUE_SIZEUNIT_KB</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="advanced">
 				<field
 					name="layout"
 					type="modulelayout"

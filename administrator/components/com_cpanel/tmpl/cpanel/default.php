@@ -44,7 +44,12 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 				foreach ($this->modules as $module)
 				{
 					$style = 'card';
-					if( $module->module == 'mod_quickicon' || $module->module == 'mod_logged' || $module->module == 'mod_latestactions' )
+					if( $module->module == 'mod_quickicon' ||
+						$module->module == 'mod_logged' ||
+						//$module->module == 'mod_content' ||
+						$module->module == 'mod_latestactions' ||
+						$module->module == 'mod_sampledata' 
+					)
 					{
 						$style = 'simple';
 					}

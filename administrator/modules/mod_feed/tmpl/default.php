@@ -65,36 +65,37 @@ else
 		$iTitle = $feed->imagetitle ?? null;
 		?>
 		<div style="direction: <?php echo $rssrtl ? 'rtl' : 'ltr'; ?>; text-align: <?php echo $rssrtl ? 'right' : 'left'; ?> !important" class="feed">
-		<?php
+		<div class="p-4">
+			<?php
+			// Feed title
+			if (!is_null($feed->title) && $params->get('rsstitle', 1)) : ?>
+				<h2 class="<?php echo $direction; ?>">
+					<a href="<?php echo str_replace('&', '&amp;', $rssurl); ?>" target="_blank">
+					<?php echo $feed->title; ?></a>
+				</h2>
+			<?php endif;
+			// Feed date
+			if ($params->get('rssdate', 1)) : ?>
+				<h3>
+				<?php echo HTMLHelper::_('date', $feed->publishedDate, Text::_('DATE_FORMAT_LC3')); ?>
+				</h3>
+			<?php endif; ?>
 
-		// Feed title
-		if (!is_null($feed->title) && $params->get('rsstitle', 1)) : ?>
-			<h2 class="<?php echo $direction; ?>">
-				<a href="<?php echo str_replace('&', '&amp;', $rssurl); ?>" target="_blank">
-				<?php echo $feed->title; ?></a>
-			</h2>
-		<?php endif;
-		// Feed date
-		if ($params->get('rssdate', 1)) : ?>
-			<h3>
-			<?php echo HTMLHelper::_('date', $feed->publishedDate, Text::_('DATE_FORMAT_LC3')); ?>
-			</h3>
-		<?php endif; ?>
+			<?php // Feed description ?>
+			<?php if ($params->get('rssdesc', 1)) : ?>
+				<?php echo $feed->description; ?>
+			<?php endif; ?>
 
-		<?php // Feed description ?>
-		<?php if ($params->get('rssdesc', 1)) : ?>
-			<?php echo $feed->description; ?>
-		<?php endif; ?>
-
-		<?php // Feed image ?>
-		<?php if ($params->get('rssimage', 1) && $iUrl) : ?>
-			<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>">
-		<?php endif; ?>
-
+			<?php // Feed image ?>
+			<?php if ($params->get('rssimage', 1) && $iUrl) : ?>
+				<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>">
+			<?php endif; ?>
+		</div>
 
 	<?php // Show items ?>
+
 	<?php if (!empty($feed)) : ?>
-		<ul class="newsfeed list-group">
+		<ul class="newsfeed list-group list-group-flush">
 		<?php for ($i = 0; $i < $params->get('rssitems', 3); $i++) :
 
 			if (!$feed->offsetExists($i)) :
@@ -104,7 +105,7 @@ else
 			$uri  = !$uri || stripos($uri, 'http') !== 0 ? $rssurl : $uri;
 			$text = $feed[$i]->content !== '' ? trim($feed[$i]->content) : '';
 			?>
-				<li class="list-group-item mb-2">
+				<li class="list-group-item">
 					<?php if (!empty($uri)) : ?>
 						<h5 class="feed-link">
 						<a href="<?php echo $uri; ?>" target="_blank">
@@ -120,7 +121,7 @@ else
 					<?php endif; ?>
 
 					<?php if ($params->get('rssitemdesc', 1) && $text !== '') : ?>
-						<div class="feed-item-description">
+						<div class="feed-item-description text-muted">
 						<?php
 							// Strip the images.
 							$text = OutputFilter::stripImages($text);

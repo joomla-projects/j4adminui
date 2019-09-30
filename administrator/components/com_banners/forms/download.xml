@@ -25,7 +25,7 @@
 			name="basename_info"
 			type="note"
 			description="COM_BANNERS_FIELD_BASENAME_DESC"
-			class="alert alert-info"
+			class="j-alert j-alert-info"
 		/>
 	</fieldset>
 </form>

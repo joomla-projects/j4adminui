@@ -21,7 +21,7 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 
 ?>
 
-<div class="alert alert-warning">
+<div class="j-alert j-alert-warning">
 	<h4 class="alert-heading">
 		<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_UPLOAD_CAPTIVE_INTRO_HEAD'); ?>
 	</h4>

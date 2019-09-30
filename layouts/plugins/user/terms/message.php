@@ -45,4 +45,4 @@ extract($displayData);
  * @var   array    $termsArticle           The Article ID holding the Terms Article
  */
 
-echo '<div class="alert alert-info">' . $termsnote . '</div>';
+echo '<div class="j-alert j-alert-info">' . $termsnote . '</div>';
