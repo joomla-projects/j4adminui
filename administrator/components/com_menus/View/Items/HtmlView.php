@@ -350,7 +350,7 @@ class HtmlView extends BaseHtmlView
 			|| $canDo->get('core.edit.state') && $this->state->get('filter.client_id') == 0)
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
 				->icon('fa fa-hand-pointer')
 				->buttonClass('btn btn-white')
