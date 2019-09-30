@@ -75,11 +75,8 @@
     }
 
     disconnectedCallback() {
-      this.removeEventListener('joomla.modal.show');
-      this.removeEventListener('joomla.modal.close');
-      this.removeEventListener('joomla.modal.closed');
       if (this.triggerBtn) {
-        this.triggerBtn.removeEventListener('click', this.open);
+        this.triggerBtn.removeEventListener('click', this.open.bind(this));
       }
     }
 
@@ -99,10 +96,9 @@
       // Comply with the Joomla API
       // Set the current Modal ID
       Joomla.Modal.setCurrent(this);
-
       this.dropShadow = document.createElement('div');
-      this.dropShadow.classList.add('modal-backdrop', 'fade');
-      this.dropShadow.classList.add('modal-backdrop', 'show');
+      this.dropShadow.classList.add('j-modal-backdrop', 'fade');
+      this.dropShadow.classList.add('j-modal-backdrop', 'show');
       document.body.appendChild(this.dropShadow);
       this.removeAttribute('aria-hidden');
       // Iframe specific code, reload
@@ -169,7 +165,6 @@
       this.setAttribute('aria-hidden', 'true');
       this.classList.remove('show');
       this.setAttribute('area-expand', 'false');
-      // this.main.innerHTML = '';
 
       if (this.triggerBtn) {
         this.triggerBtn.focus();
@@ -231,13 +226,19 @@
       bodyHeightOuter += parseInt(window.getComputedStyle(this.body).getPropertyValue('margin-top'), 10);
       bodyHeightOuter += parseInt(window.getComputedStyle(this.body).getPropertyValue('margin-bottom'), 10);
 
-      let headerHeight = this.header.offsetHeight;
-      headerHeight += parseInt(window.getComputedStyle(this.header).getPropertyValue('margin-top'), 10);
-      headerHeight += parseInt(window.getComputedStyle(this.header).getPropertyValue('margin-bottom'), 10);
+      let headerHeight = 0;
+      if (this.header !== null) {
+        headerHeight = this.header.offsetHeight;
+        headerHeight += parseInt(window.getComputedStyle(this.header).getPropertyValue('margin-top'), 10);
+        headerHeight += parseInt(window.getComputedStyle(this.header).getPropertyValue('margin-bottom'), 10);
+      }
 
-      let footerHeight = this.footer.offsetHeight;
-      footerHeight += parseInt(window.getComputedStyle(this.footer).getPropertyValue('margin-top'), 10);
-      footerHeight += parseInt(window.getComputedStyle(this.footer).getPropertyValue('margin-bottom'), 10);
+      let footerHeight = 0;
+      if (this.footer !== null) {
+        footerHeight = this.footer.offsetHeight;
+        footerHeight += parseInt(window.getComputedStyle(this.footer).getPropertyValue('margin-top'), 10);
+        footerHeight += parseInt(window.getComputedStyle(this.footer).getPropertyValue('margin-bottom'), 10);
+      }
 
       const padding = this.offsetTop;
       const maxModalHeight = window.height - (padding * 2);

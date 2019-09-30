@@ -170,6 +170,9 @@
 
         if (menuItem.parentNode.classList.contains('main-nav')) {
           menuItem.classList.add('open');
+          menuItem.querySelector('#collapse1').addEventListener('transitionend', () => {
+
+          });
         }
       }
 
