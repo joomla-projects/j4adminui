@@ -18,13 +18,13 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 <div class="mod-multilangstatus">
 	<?php if (!$this->language_filter && $this->switchers == 0) : ?>
 		<?php if ($this->homes == 1) : ?>
-			<div class="alert alert-info">
+			<div class="j-alert j-alert-info">
 				<span class="fa fa-info-circle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_NONE'); ?>
 			</div>
 		<?php else : ?>
-			<div class="alert alert-info">
+			<div class="j-alert j-alert-info">
 				<span class="fa fa-info-circle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_USELESS_HOMES'); ?>
@@ -32,28 +32,28 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 		<?php endif; ?>
 	<?php else : ?>
 		<?php if ($this->defaultHome == true) : ?>
-			<div class="alert alert-warning">
+			<div class="j-alert j-alert-warning">
 				<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_DEFAULT_HOME_MODULE_PUBLISHED'); ?>
 			</div>
 		<?php endif; ?>
 		<?php if ($notice_homes) : ?>
-			<div class="alert alert-warning">
+			<div class="j-alert j-alert-warning">
 				<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_HOMES_MISSING'); ?>
 			</div>
 		<?php endif; ?>	
 		<?php if ($notice_disabled) : ?>
-			<div class="alert alert-warning">
+			<div class="j-alert j-alert-warning">
 				<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_LANGUAGEFILTER_DISABLED'); ?>
 			</div>
 		<?php endif; ?>
 		<?php if ($notice_switchers) : ?>
-			<div class="alert alert-warning">
+			<div class="j-alert j-alert-warning">
 				<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_LANGSWITCHER_UNPUBLISHED'); ?>
@@ -61,21 +61,21 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 		<?php endif; ?>
 		<?php foreach ($this->contentlangs as $contentlang) : ?>
 			<?php if (array_key_exists($contentlang->lang_code, $this->homepages) && (!array_key_exists($contentlang->lang_code, $this->site_langs) || !$contentlang->published)) : ?>
-				<div class="alert alert-warning">
+				<div class="j-alert j-alert-warning">
 					<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 					<?php echo Text::sprintf('COM_LANGUAGES_MULTILANGSTATUS_ERROR_CONTENT_LANGUAGE', $contentlang->lang_code); ?>
 				</div>
 			<?php endif; ?>
 			<?php if (!array_key_exists($contentlang->lang_code, $this->site_langs)) : ?>
-				<div class="alert alert-warning">
+				<div class="j-alert j-alert-warning">
 					<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 					<?php echo Text::sprintf('COM_LANGUAGES_MULTILANGSTATUS_ERROR_LANGUAGE_TAG', $contentlang->lang_code); ?>
 				</div>
 			<?php endif; ?>
 			<?php if ($contentlang->published == -2) : ?>
-				<div class="alert alert-warning">
+				<div class="j-alert j-alert-warning">
 					<span class="fa fa-exclamation-triangle" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 					<?php echo Text::sprintf('COM_LANGUAGES_MULTILANGSTATUS_ERROR_CONTENT_LANGUAGE_TRASHED', $contentlang->lang_code); ?>
@@ -83,7 +83,7 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 			<?php endif; ?>
 		<?php endforeach; ?>
 		<?php if ($this->listUsersError) : ?>
-			<div class="alert alert-info">
+			<div class="j-alert j-alert-info">
 				<span class="fa fa-help" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('JHELP'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_CONTACTS_ERROR_TIP'); ?>

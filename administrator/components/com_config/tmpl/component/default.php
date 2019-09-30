@@ -106,9 +106,9 @@ $xml = $this->form->getXml();
 					<?php endif; ?>
 
 					<?php if (!empty($fieldSet->description)) : ?>
-						<div class="tab-description alert alert-info">
-							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-							<?php echo Text::_($fieldSet->description); ?>
+						<div class="tab-description j-alert j-alert-info">
+							<div class="j-alert-icon-wrap"><span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+							<div class="j-alert-info-wrap"><?php echo Text::_($fieldSet->description); ?></div>
 						</div>
 					<?php endif; ?>
 
@@ -133,9 +133,9 @@ $xml = $this->form->getXml();
 			</joomla-tab>
 
 			<?php else: ?>
-				<div class="alert alert-info">
-					<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-					<?php echo Text::_('COM_CONFIG_COMPONENT_NO_CONFIG_FIELDS_MESSAGE'); ?>
+				<div class="j-alert j-alert-info d-flex">
+					<div class="j-alert-icon-wrap"><span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+					<div class="j-alert-info-wrap"><?php echo Text::_('COM_CONFIG_COMPONENT_NO_CONFIG_FIELDS_MESSAGE'); ?></div>
 				</div>
 			<?php endif; ?>
 
