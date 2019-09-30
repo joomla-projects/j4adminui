@@ -45,5 +45,5 @@ extract($displayData);
  * @var   array    $privacyArticle         The Article ID holding the Privancy Article
  */
 
-echo '<div class="alert alert-info">' . $privacynote . '</div>';
+echo '<div class="j-alert j-alert-info">' . $privacynote . '</div>';
 

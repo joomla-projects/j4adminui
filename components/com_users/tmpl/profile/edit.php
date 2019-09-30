@@ -104,12 +104,12 @@ HTMLHelper::_('script', 'com_users/two-factor-switcher.min.js', array('version' 
 				<legend>
 					<?php echo Text::_('COM_USERS_PROFILE_OTEPS'); ?>
 				</legend>
-				<div class="alert alert-info">
+				<div class="j-alert j-alert-info">
 					<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 					<?php echo Text::_('COM_USERS_PROFILE_OTEPS_DESC'); ?>
 				</div>
 				<?php if (empty($this->otpConfig->otep)) : ?>
-					<div class="alert alert-warning">
+					<div class="j-alert j-alert-warning">
 						<span class="fa fa-exclamation-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 						<?php echo Text::_('COM_USERS_PROFILE_OTEPS_WAIT_DESC'); ?>
 					</div>

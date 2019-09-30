@@ -21,17 +21,17 @@ use Joomla\CMS\Router\Route;
 				<div id="j-main-container" class="j-main-container">
 					<?php if (count($this->messages)) : ?>
 						<?php foreach ($this->messages as $message) : ?>
-							<div class="alert alert-warning">
+							<div class="j-alert j-alert-warning">
 								<h4 class="alert-heading"><?php echo $message['message']; ?></h4>
 								<p class="mb-0"><?php echo $message['description']; ?></p>
 							</div>
 						<?php endforeach; ?>
-						<div class="alert alert-info">
+						<div class="j-alert j-alert-info">
 							<h4 class="alert-heading"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFO'); ?></h4>
 							<p class="mb-0"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFODESC'); ?></p>
 						</div>
 					<?php else: ?>
-						<div class="alert alert-info">
+						<div class="j-alert j-alert-info">
 							<h4 class="alert-heading"><?php echo Text::_('INFO'); ?></h4>
 							<p class="mb-0"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGS_NONE'); ?></p>
 						</div>

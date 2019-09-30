@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Text;
 	</legend>
 	<div>
 	<?php if ( !$this->getModel()->isDatabaseTypeSupported()) : ?>
-		<p class="alert alert-warning">
+		<p class="j-alert j-alert-warning">
 			<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_DEFAULT_DB_NOT_SUPPORTED'); ?>
 		</p>
 		<p>
@@ -28,7 +28,7 @@ use Joomla\CMS\Language\Text;
 		</p>
 	<?php endif; ?>
 	<?php if (!$this->getModel()->isPhpVersionSupported()) : ?>
-		<p class="alert alert-warning">
+		<p class="j-alert j-alert-warning">
 			<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_DEFAULT_PHP_VERSION_NOT_SUPPORTED'); ?>
 		</p>
 		<p>
@@ -36,7 +36,7 @@ use Joomla\CMS\Language\Text;
 		</p>
 	<?php endif; ?>
 	<?php if (!isset($this->updateInfo['object']->downloadurl->_data) && $this->updateInfo['installed'] < $this->updateInfo['latest'] && $this->getModel()->isPhpVersionSupported() && $this->getModel()->isDatabaseTypeSupported()) : ?>
-		<p class="alert alert-warning">
+		<p class="j-alert j-alert-warning">
 			<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_DEFAULT_NO_DOWNLOAD_URL'); ?>
 		</p>
 		<p>
