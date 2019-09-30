@@ -18,13 +18,13 @@ use Joomla\CMS\Updater\Update;
 	<legend>
 		<?php echo Text::_('COM_JOOMLAUPDATE_UPDATE_CHECK'); ?>
 	</legend>
-	<p class="alert alert-info">
+	<p class="j-alert j-alert-info">
 		<span class="fa fa-info-circle" aria-hidden="true"></span>
 		<span class="sr-only"><?php echo Text::_('NOTICE'); ?></span>
 		<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_DEFAULT_NOUPDATES'); ?>
 	</p>
 	<p><?php echo Text::sprintf($this->langKey, $this->updateSourceKey); ?></p>
-	<p class="alert alert-success">
+	<p class="j-alert j-alert-success">
 		<span class="fa fa-check-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('NOTICE'); ?></span>
 		<?php echo Text::sprintf('COM_JOOMLAUPDATE_VIEW_DEFAULT_NOUPDATESNOTICE', '&#x200E;' . JVERSION); ?>
 	</p>

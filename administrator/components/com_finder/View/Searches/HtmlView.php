@@ -128,20 +128,23 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = $this->canDo;
 
+		// set title
 		ToolbarHelper::title(Text::_('COM_FINDER_MANAGER_SEARCHES'), 'search');
 
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::custom('searches.reset', 'refresh.png', 'refresh_f2.png', 'JSEARCH_RESET', false);
-		}
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_SEARCHES');
 
+		// options button
 		ToolbarHelper::divider();
-
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_SEARCHES');
+		// reset button
+		if ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::custom('searches.reset', 'refresh.png', 'refresh_f2.png', 'JSEARCH_RESET', false);
+		}
 	}
 }

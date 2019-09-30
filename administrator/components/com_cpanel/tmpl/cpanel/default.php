@@ -44,7 +44,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 				foreach ($this->modules as $module)
 				{
 					$style = 'card';
-					if( $module->module == 'mod_quickicon' )
+					if( $module->module == 'mod_quickicon' || $module->module == 'mod_logged' || $module->module == 'mod_latestactions' )
 					{
 						$style = 'simple';
 					}
@@ -72,7 +72,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 	<?php endif; ?>
 </div>
 
-<joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>">
+<joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>" class="j-modal-gray">
 	<section>&nbsp;</section>
 	<footer>
 		<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>

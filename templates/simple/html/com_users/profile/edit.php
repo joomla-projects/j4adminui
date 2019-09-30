@@ -110,11 +110,11 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
 						<legend>
 							<?php echo JText::_('COM_USERS_PROFILE_OTEPS'); ?>
 						</legend>
-						<div class="alert alert-info">
+						<div class="j-alert j-alert-info">
 							<?php echo JText::_('COM_USERS_PROFILE_OTEPS_DESC'); ?>
 						</div>
 						<?php if (empty($this->otpConfig->otep)) : ?>
-							<div class="alert alert-warning">
+							<div class="j-alert j-alert-warning">
 								<?php echo JText::_('COM_USERS_PROFILE_OTEPS_WAIT_DESC'); ?>
 							</div>
 						<?php else : ?>

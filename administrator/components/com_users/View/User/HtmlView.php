@@ -142,11 +142,25 @@ class HtmlView extends BaseHtmlView
 			'user ' . ($isNew ? 'user-add' : ($isProfile ? 'user-profile' : 'user-edit'))
 		);
 
-		$toolbarButtons = [];
+		ToolbarHelper::divider();
+		// help button
+		ToolbarHelper::help('JHELP_USERS_USER_MANAGER_EDIT');
 
+		// close/cancel button
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('user.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('user.cancel', 'JTOOLBAR_CLOSE');
+		}
+
+		// button group
+		$toolbarButtons = [];
 		if ($canDo->get('core.edit') || $canDo->get('core.create'))
 		{
-			ToolbarHelper::apply('user.apply');
+			$toolbarButtons[] = ['apply', 'user.apply'];
 			$toolbarButtons[] = ['save', 'user.save'];
 		}
 
@@ -159,17 +173,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('user.cancel');
-		}
-		else
-		{
-			ToolbarHelper::cancel('user.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_USERS_USER_MANAGER_EDIT');
 	}
 }

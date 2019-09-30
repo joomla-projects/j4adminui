@@ -48,7 +48,7 @@ HTMLHelper::_('formbehavior.chosen', 'select');
 			<?php echo HTMLHelper::_('form.token'); ?>
 		</form>
 	<?php else : ?>
-		<div class="alert alert-warning">
+		<div class="j-alert j-alert-warning">
 			<span class="fa fa-exclamation-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 			<?php echo Text::_('COM_PRIVACY_WARNING_CANNOT_CREATE_REQUEST_WHEN_SENDMAIL_DISABLED'); ?>
 		</div>

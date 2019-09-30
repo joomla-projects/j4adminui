@@ -23,16 +23,21 @@ class ModCacheHelper
 {
     public static function clearCacheAjax()
 	{
+		$app = Factory::getApplication();
+		// get module params
+		$module = JModuleHelper::getModule('mod_cache','Cache');
+		$params = new JRegistry($module->params);
+		// get Cache unit
+		$cacheUnit = $params->get('size_unit', 'MB');
 
-        $data = array();
+		// declare variables
+		$data = array();
+		$allCleared = true;
 		$data['status'] = false;
 		
         // load cache model
         $cache_model = new CacheModel;
-        $app = Factory::getApplication();
-		$allCleared = true;
         $mCache = $cache_model->getCache();
-
 		foreach ($mCache->getAll() as $cache)
 		{
 			if ($mCache->clean($cache->group) === false)
@@ -44,7 +49,7 @@ class ModCacheHelper
 
 		if ($allCleared)
 		{
-            $data['size']     	= static::getCacheSize();
+            $data['size']     	= static::getCacheSize($cacheUnit);
             $data['status']     = true;
             $data['messsage']   = Text::_('MOD_CACHE_MSG_ALL_CACHE_GROUPS_CLEARED');
 		}
@@ -59,13 +64,12 @@ class ModCacheHelper
 		$app->close();
     }
     
-    public static function getCacheSize() 
+    public static function getCacheSize($cacheUnit = 'MB') 
     {
         $cache_model = new CacheModel;
 		$data = $cache_model->getData();
 		$size = 0;
 		$result = array();
-
 		if (!empty($data))
 		{
 			foreach ($data as $d)
@@ -75,7 +79,8 @@ class ModCacheHelper
 		}
 
 		// Number bytes are returned in format xxx.xx MB
-        $bytes = HTMLHelper::_('number.bytes', $size, 'kB', 1);
+		$bytes = HTMLHelper::_('number.bytes', $size, $cacheUnit, 1);
+		
 		if (!empty($bytes))
 		{
 			$sizeExplode = explode(' ', $bytes);

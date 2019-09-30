@@ -138,19 +138,13 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title(Text::_('COM_FINDER_FILTERS_TOOLBAR_TITLE'), 'zoom-in finder');
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::addNew('filter.add');
-			ToolbarHelper::divider();
-		}
-
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-globe')
-				->buttonClass('btn btn-info')
+				->icon('fa fa-hand-pointer')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -160,21 +154,31 @@ class HtmlView extends BaseHtmlView
 			$childBar->checkin('filters.checkin')->listCheck(true);
 		}
 
-		ToolbarHelper::divider();
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
-		ToolbarHelper::divider();
-
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('', 'filters.delete');
 			ToolbarHelper::divider();
 		}
 
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_SEARCH_FILTERS');
+
+		// options button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_SEARCH_FILTERS');
+		// statistics button
+		ToolbarHelper::divider();
+		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
+		ToolbarHelper::divider();
+
+		// new button
+		if ($canDo->get('core.create'))
+		{
+			ToolbarHelper::addNew('filter.add');
+			ToolbarHelper::divider();
+		}
 	}
 }

@@ -91,10 +91,9 @@ else
 			<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>">
 		<?php endif; ?>
 
-
 	<?php // Show items ?>
 	<?php if (!empty($feed)) : ?>
-		<ul class="newsfeed list-group">
+		<ul class="newsfeed list-group list-group-flush">
 		<?php for ($i = 0; $i < $params->get('rssitems', 3); $i++) :
 
 			if (!$feed->offsetExists($i)) :
@@ -104,7 +103,7 @@ else
 			$uri  = !$uri || stripos($uri, 'http') !== 0 ? $rssurl : $uri;
 			$text = $feed[$i]->content !== '' ? trim($feed[$i]->content) : '';
 			?>
-				<li class="list-group-item mb-2">
+				<li class="list-group-item">
 					<?php if (!empty($uri)) : ?>
 						<h5 class="feed-link">
 						<a href="<?php echo $uri; ?>" target="_blank">

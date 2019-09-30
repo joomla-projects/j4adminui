@@ -16,8 +16,10 @@ use Joomla\CMS\Helper\ModuleHelper;
 HTMLHelper::_('script', 'mod_cache/cache.min.js', ['version' => 'auto', 'relative' => true]);
 // include helper file
 require_once __DIR__ . '/helper.php';
+//get cache size unit
+$cacheUnit = $params->get('size_unit', 'MB');
 // load cache sizes info
-$cacheInfo   = ModCacheHelper::getCacheSize();
-$cacheInfo['unit'] = $cacheInfo['unit'] ? $cacheInfo['unit']: 'kB';
+$cacheInfo   = ModCacheHelper::getCacheSize($cacheUnit);
+$cacheInfo['unit'] = $cacheInfo['unit'] ? $cacheInfo['unit']: $cacheUnit;
 
 require ModuleHelper::getLayoutPath('mod_cache', $params->get('layout', 'default'));

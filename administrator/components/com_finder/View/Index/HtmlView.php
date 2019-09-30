@@ -183,10 +183,10 @@ class HtmlView extends BaseHtmlView
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-globe')
-				->buttonClass('btn btn-info')
+				->icon('fa fa-hand-pointer')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -202,17 +202,17 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		// statistics button
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
-
 		// help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_INDEXED_CONTENT');
-
+		
 		// option button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
+
+		// statistics button
+		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 
 		// clear index button
 		if ($canDo->get('core.edit.state'))

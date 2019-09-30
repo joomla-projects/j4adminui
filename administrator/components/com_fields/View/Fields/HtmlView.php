@@ -149,10 +149,10 @@ class HtmlView extends BaseHtmlView
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('fa fa-hand-pointer')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -175,15 +175,15 @@ class HtmlView extends BaseHtmlView
 			{
 				$childBar->trash('fields.trash')->listCheck(true);
 			}
-		}
 
-		// Add a batch button
-		if ($canDo->get('core.create') && $canDo->get('core.edit') && $canDo->get('core.edit.state'))
-		{
-			$toolbar->popupButton('batch')
-				->text('JTOOLBAR_BATCH')
-				->selector('collapseModal')
-				->listCheck(true);
+			// Add a batch button
+			if ($canDo->get('core.create') && $canDo->get('core.edit') && $canDo->get('core.edit.state'))
+			{
+				$childBar->popupButton('batch')
+					->text('JTOOLBAR_BATCH')
+					->selector('collapseModal')
+					->listCheck(true);
+			}
 		}
 
 		if ($this->state->get('filter.state') == -2 && $canDo->get('core.delete', $component))
