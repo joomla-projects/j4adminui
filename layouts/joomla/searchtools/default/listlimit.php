@@ -9,39 +9,23 @@
 
 defined('JPATH_BASE') or die;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 $data = $displayData;
 
-// Receive overridable options
-$data['options'] = !empty($data['options']) ? $data['options'] : array();
-
 // Load the form list fields
 $list = $data['view']->filterForm->getGroup('list');
-$listLimit = !empty($list['list_limit']) ? $list['list_limit'] :  array();
 
-$defaultLimit = !empty($data['options']['defaultLimit']) ? $data['options']['defaultLimit'] : Factory::getApplication()->get('list_limit', 20);
-
-$state = $data['view']->get('State');
-$limit = $state->get('list.limit', $defaultLimit);
-
-$totalItems = $data['view']->getModel()->getTotal() ?? 0;
-
-HTMLHelper::_('webcomponent', 'system/joomla-pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
 ?>
-<?php if ($list && $totalItems) : ?>
-	<div class="ordering-select">
-        <?php if(!empty($listLimit) && count((array)$listLimit->options) > 0) : ?>
-            <div class="limit-list">
-                <joomla-pagination class="j-list-limit" total-visible="7" input-name="list_limit" disable-btns="next, prev, first, last" result-msg="<?php echo Text::_('JSHOW'); ?>">
-                    <?php foreach($listLimit->options as $listOption) : ?>
-                        <li class="pagination-item <?php echo $limit === $listOption->value ? 'active': ''; ?>" value="<?php echo $listOption->value; ?>" style="display: none;" ><?php echo $listOption->value === 0 ? Text::_('JALL') : $listOption->value; ?></li>
-                    <?php endforeach; ?>
-                </joomla-pagination>
-                <input type="hidden" name="<?php echo $listLimit->name; ?>" id="list_limit" class="js-stools-limit-list" value="<?php echo $limit; ?>">
+<?php if(!empty($list) && isset($list['list_limit'])) : ?>
+    <div class="ordering-select">
+        <div class="j-list-limit">
+            <div class="j-list-limit-label">
+                <?php echo Text::_('JGLOBAL_ITEM_PER_PAGE'); ?>
             </div>
-        <?php endif; ?>
-	</div>
+            <div class="j-list-limit-input">
+                <?php echo $list['list_limit']->input; ?>
+            </div>
+        </div>
+    </div>
 <?php endif; ?>
