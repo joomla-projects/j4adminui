@@ -292,6 +292,13 @@
     }
     &.btn-outline{
         border: 1px solid var(--dark-border-color);
+        line-height: 2.75rem;
+        &.btn-lg{
+            line-height: 3.29rem;
+        }
+        &.btn-sm{
+            line-height: 2.15rem;
+        }
     }
     &.dropdown-toggle {
         padding: 0 1.1rem;
