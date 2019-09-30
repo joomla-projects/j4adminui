@@ -325,27 +325,29 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 
 // activity list
 
-.j-card-activity-item{
+.j-user-avatar{
+	height: 3.571429rem;
+	min-width: 3.571429rem;
+	max-width: 3.571429rem;
+	font-size: 1.428571rem;
+	color: var(--secondary-color);
+	background: var(--background);
+	border-radius: 50%;
+	@extend .d-inline-flex;
+	@extend .align-items-center;
+	@extend .justify-content-center;
+}
+.j-activity-item{
 	padding: 1.785714rem 2.142857rem 1.785714rem;
 	@extend .d-flex;
 	@extend .align-items-start;
 	&:not(:last-child){
 		border-bottom: 1px solid var(--background);
 	}
-	.j-card-activity-avatar{
-		height: 3.571429rem;
-		min-width: 3.571429rem;
-		max-width: 3.571429rem;
+	.j-user-avatar{
 		margin-right: 1.071429rem;
-		font-size: 1.428571rem;
-		color: var(--secondary-color);
-		background: var(--background);
-		border-radius: 50%;
-		@extend .d-inline-flex;
-		@extend .align-items-center;
-		@extend .justify-content-center;
 	}
-	.j-card-activity-content{
+	.j-activity-content{
 		flex-grow: 1;
 		color: var(--secondary-color);
 		p{
