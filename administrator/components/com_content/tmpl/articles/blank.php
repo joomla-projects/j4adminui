@@ -15,6 +15,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'a
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
 
 ?>
+
 <div class="container" style="background:white; padding: 10px;">
         <h1> Demo Modal </h1>
         <?php
@@ -616,14 +617,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                             <button class="j-card-header-icon fas fa-ellipsis-h"></button>
                         </div>
                     </div>
-                    <div class="j-card-overview-box">
-                        <div class="j-card-overview-icon j-warning">
-                            <span class="fab fa-invision"></span>
-                        </div>
-                        <div class="j-card-overview-content">
-                            65 <sub>Article</sub>
-                        </div>
-                    </div>
+					<div class="j-card-overview-box">
+						<div class="j-card-overview-icon j-warning">
+							<span class="fab fa-invision"></span>
+						</div>
+						<div class="j-card-overview-content">
+							65 <sub>Article</sub>
+						</div>
+					</div>
                     <div class="j-card-footer j-card-footer-lg">
                         <div class="j-card-footer-item">
                             <a href="#"> <span class="j-card-icon j-icon-lg fas fa-cloud-download-alt"></span> Details Information</a>
@@ -764,9 +765,41 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 						<span></span>
 						<span class="half"></span>
 					</div>
+
+
+					<div class="j-card-event-item">
+						<time datetime="2019-07-13"> <!-- yyyy-mm-dd -->
+							<span>00</span>
+							<span class="month-text">July 0000</span>
+						</time>
+						<div class="j-card-event-content">
+							<span></span>
+							<span></span>
+							<span></span>
+							<span class="half"></span>
+						</div>
+					</div>
+
 					<div class="j-card-footer j-card-footer-lg">
 						<span></span>
 						<span></span>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="j-card j-card-skeleton">
+					<div class="j-card-overview-box pt-3">
+						<div class="j-card-overview-icon j-warning">
+							<span class="fab fa-invision"></span>
+						</div>
+						<div class="j-card-overview-content">
+							<span class="j-counter-animation">&nbsp;</span> <sub>&nbsp;</sub>
+						</div>
+					</div>
+
+					<div class="j-card-footer j-card-footer-lg">
+						<span class="half center"></span>
 					</div>
 				</div>
 
@@ -780,37 +813,37 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                         </div>
                     </div>
 
-                    <div class="j-card-activity-list">
-                        <div class="j-card-activity-item">
-                            <div class="j-card-activity-avatar">
+                    <div class="j-list-group">
+                        <div class="j-list-item">
+                            <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-card-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-card-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
                             </div>
                         </div>
-                        <div class="j-card-activity-item">
-                            <div class="j-card-activity-avatar">
+                        <div class="j-list-item">
+                            <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-card-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-card-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
                             </div>
                         </div>
-                        <div class="j-card-activity-item">
-                            <div class="j-card-activity-avatar">
+                        <div class="j-list-item">
+                            <div class="j-user-avatar">
                                 <span class="fas fa-user"></span>
                             </div>
-                            <div class="j-card-activity-content">
+                            <div class="j-list-content">
                                 <time datetime="2008-02-14 20:00">31.08.2017 <span class="j-separator">|</span> 6:04</time>
                                 <h4>Obi-Wan Kenobi <span>(Admin)</span></h4>
-                                <h5 class="j-card-activity-type">Wrote Article: Service</h5>
+                                <h5 class="j-list-type">Wrote Article: Service</h5>
                                 <p>You can select from a number of options for customising the look of your templates. The Template Manager supports…</p>
 
                                 <p>
