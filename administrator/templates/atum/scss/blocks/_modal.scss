@@ -33,12 +33,14 @@ joomla-modal {
 	&.fade.show {
 		opacity: 1;
 	}
+	&.j-modal-gray {
+		.joomla-modal-dialog {
+			background-color: var(--background);
+		}
+	}
 	.joomla-modal-dialog {
 		position: relative;
 		background-color: #fff;
-		background-clip: padding-box;
-		border: 1px solid rgba(0, 0, 0, .2);
-		border-radius: 3px;
 		outline: 0;
 		width: 100%;
 		max-height: 90%;
@@ -48,10 +50,11 @@ joomla-modal {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 1.714rem 1.714rem 0.929rem 1.714rem;
+			padding: 1.57rem 1.714rem;
+			border-bottom: 1px solid #ccd3d7;
 			h5{
 				margin: 0;
-				font-size: 1.714rem;
+				font-size: 1.31rem;
 				line-height: 1.3rem;
 			}
 			button {
@@ -74,7 +77,7 @@ joomla-modal {
 		section {
 			position: relative;
 			flex: 1 1 auto;
-			padding: 0 1.714rem;
+			padding: 0 6rem;
 			
 			&.jviewport-height10 {
 				height: 10vh;

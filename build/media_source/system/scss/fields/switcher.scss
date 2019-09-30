@@ -1,18 +1,19 @@
 $off-background-colour: lightgrey;
 $on-background-colour: #2f7d32;
 $switcher-width:  62px;
-$switcher-height: 28px;
+$switcher-height: 22px;
 
 .switcher {
   position: relative;
   width: 18rem;
   height: 28px;
   float: left;
+  margin-top: 5px;
 }
 
 .switcher input {
   position: absolute;
-  top: 0;
+  top: -4px;
   z-index: 2;
   opacity: 0;
   cursor: pointer;

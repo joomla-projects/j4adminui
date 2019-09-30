@@ -104,11 +104,11 @@ class MenutypeField extends ListField
 
 		if (!empty($value))
 		{
-			$dropdownText = $value . ' <span class="icon-menu-2">';
+			$dropdownText = $value . ' <span class="fas fa-sort">';
 		}
 
 		$html[] = '<a href="javascript:" class="btn btn-secondary text-left" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
-		$html[] = '<joomla-dropdown for="menuTypeDropdown">';
+		$html[] = '<joomla-dropdown for="menuTypeDropdown" class="j-dropdown-sm">';
 		
 		if (!empty($menuTypes))
 		{
