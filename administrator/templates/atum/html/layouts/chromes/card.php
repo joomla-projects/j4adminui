@@ -53,7 +53,7 @@ if ($module->content) :
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header">
 					<h3 class="j-card-title<?php echo $headerClass; ?>">
-						<span class="j-card-icon fas fa-arrows-alt-v handle" area-hidden="true"></span>
+						<span class="j-card-icon fas fa-arrows-alt handle" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>

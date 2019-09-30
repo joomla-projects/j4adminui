@@ -53,7 +53,6 @@ table {
                 &:focus,
                 &:hover {
                     background-color: var(--inverse-color);
-                    box-shadow: none;
                 }
                 td:first-child { 
                     border-top-left-radius: 3px; 

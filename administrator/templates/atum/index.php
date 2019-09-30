@@ -11,6 +11,8 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
+
 /** @var JDocumentHtml $this */
 $app   = Factory::getApplication();
 $lang  = $app->getLanguage();
@@ -68,6 +70,11 @@ $css = '
 	}
 ';
 // $this->addStyleDeclaration($css);
+$this->addStyleDeclaration("
+    :root {
+        --skeleton-bg: url(". Uri::root() . 'media/system/images/skeleton.gif' .");
+    }
+");
 $monochrome = (bool) $this->params->get('monochrome');
 HTMLHelper::getServiceRegistry()->register('atum', 'JHtmlAtum');
 HTMLHelper::_('atum.rootcolors', $this->params);
@@ -139,7 +146,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 				<jdoc:include type="modules" name="menu" style="none" />
 			</div>
         </div>
-        
+
 	<?php //endif; ?>
 
 	<?php // container-fluid ?>

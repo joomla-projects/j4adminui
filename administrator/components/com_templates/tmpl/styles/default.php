@@ -67,8 +67,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 											<?php if ($canCreate || $canDelete): ?>
 											<div class="j-card-header-right">
 												<div class="joomla-dropdown-container">
-													<a href="javascript:void(0);" id="template-style-actions-<?php echo $item->id; ?>"><span class="j-card-header-icon fas fa-ellipsis-h" area-hidden="true"></span></a>
-													<joomla-dropdown for="#template-style-actions-<?php echo $item->id; ?>">
+													<a href="javascript:void(0);" data-target="template-style-actions-<?php echo $item->id; ?>"><span class="j-card-header-icon fas fa-ellipsis-h" area-hidden="true"></span></a>
+													<joomla-dropdown for="template-style-actions-<?php echo $item->id; ?>">
 														<?php if($canCreate) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
 															<span class="fas fa-clone fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DUPLICATE'); ?>
