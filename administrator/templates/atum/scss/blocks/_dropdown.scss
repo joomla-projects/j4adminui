@@ -97,6 +97,7 @@ joomla-dropdown {
     &:hover{
       box-shadow: 0 9px 8px -6px rgba(29, 36, 39, 0.2);
       color: var(--link-color);
+      background-color: var(--button-background);
       .menu-item-title {
         color: var(--link-color);
       }
@@ -130,6 +131,7 @@ joomla-dropdown {
     }
     .text-mute {
       color: var(--icon-color);
+      font-size: 12px;
     }
   }
 }

@@ -108,7 +108,7 @@ class MenutypeField extends ListField
 		}
 
 		$html[] = '<a href="javascript:" class="btn btn-secondary text-left" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
-		$html[] = '<joomla-dropdown for="menuTypeDropdown" class="j-dropdown-sm">';
+		$html[] = '<joomla-dropdown for="menuTypeDropdown">';
 		
 		if (!empty($menuTypes))
 		{
@@ -126,7 +126,7 @@ class MenutypeField extends ListField
 						$menutype = "'" . base64_encode(json_encode($menutype)) . "'";
 						$html[] = '<li><a class="dropdown-item" href="javascript:" onclick="Joomla.setMenuType(' . $menutype . ', ' . $tmpl . ');">';
 						$html[] = '<h4 class="menu-item-title">' . Text::_($child->title) . '</h4>';
-						$html[] = '<small class="text-mute">' . Text::_($child->description) . '</small>';
+						$html[] = '<span class="text-mute">' . Text::_($child->description) . '</span>';
 						$html[] = '</a></li>';
 					}
 					
