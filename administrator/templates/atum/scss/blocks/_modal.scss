@@ -12,7 +12,7 @@ joomla-modal {
 	visibility: hidden;
 	width: 100%;
 	height: 100%;
-	margin: 10px auto;
+	margin: 0 auto;
 	border-radius: 5px;
 	outline: 0;
 	align-items: center;
@@ -20,6 +20,14 @@ joomla-modal {
 	&,
 	*{
 		box-sizing: border-box;
+	}
+	iframe {
+		height: 80vh;
+	}
+	&#moduleDashboardAddModal {
+		iframe {
+			margin: 0 0 0 -4px;
+		}
 	}
 	&.show {
 		opacity: 1;
@@ -33,25 +41,27 @@ joomla-modal {
 	&.fade.show {
 		opacity: 1;
 	}
+	&.j-modal-gray {
+		.joomla-modal-dialog {
+			background-color: var(--background);
+		}
+	}
 	.joomla-modal-dialog {
 		position: relative;
 		background-color: #fff;
-		background-clip: padding-box;
-		border: 1px solid rgba(0, 0, 0, .2);
-		border-radius: 3px;
 		outline: 0;
-		width: 100%;
-		max-height: 90%;
-		overflow-y: auto;
-		overflow-x: hidden;
+		width: 80%;
+		height: auto;
+		overflow: hidden;
 		header {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 1.714rem 1.714rem 0.929rem 1.714rem;
+			padding: 1.57rem 1.714rem;
+			border-bottom: 1px solid #ccd3d7;
 			h5{
 				margin: 0;
-				font-size: 1.714rem;
+				font-size: 1.31rem;
 				line-height: 1.3rem;
 			}
 			button {
@@ -74,7 +84,6 @@ joomla-modal {
 		section {
 			position: relative;
 			flex: 1 1 auto;
-			padding: 0 1.714rem;
 			
 			&.jviewport-height10 {
 				height: 10vh;
@@ -203,4 +212,8 @@ joomla-modal {
 	left: 0;
 	z-index: 1040;
 	background-color:var(--overlay);
+}
+
+.contentpane {
+  padding: 0 6rem;
 }

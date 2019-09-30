@@ -42,8 +42,8 @@ echo HTMLHelper::_(
 			]
 		),
 		'title'  => $title,
-		'height' => '100%',
-		'width'  => '100%',
+		'height' => '60vh',
+		'width'  => '85vw',
 		'modalWidth'  => '80',
 		'bodyHeight'  => '60',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
