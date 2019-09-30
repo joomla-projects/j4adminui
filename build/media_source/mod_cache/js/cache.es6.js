@@ -29,8 +29,13 @@
           const response = typeof res === 'string' && res.length > 0 ? JSON.parse(res) : false;
           const data = response.data;
             if (data.status) {
+              // add disabled attribs and class after clear the cache 
+              theClearBtn.setAttribute('disabled', '');
+              theClearBtn.className += ' disabled';
+              // get cache current size
               let currentCashSize = Math.round(cashsize);
               const clearedCashSize = 0;
+              // cache size animation
               const interval = setInterval(function () {
                 theCacheAnimationBtn.textContent = currentCashSize;
                 if (currentCashSize <= clearedCashSize) {
