@@ -15,32 +15,34 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../administrator/templates/atum/scss/blocks/global";
 @import "../../../administrator/templates/atum/scss/blocks/header";
 @import "../../../administrator/templates/atum/scss/vendor/bootstrap/custom-forms";
+@import "../../../administrator/templates/atum/scss/blocks/form";
+@import "../../../administrator/templates/atum/scss/blocks/buttons";
 
 body {
-  background: var(--atum-bg-light);
+	background: var(--atum-bg-light);
 }
 
 *, *::after, *::before {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .j-install {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  .logo {
-     width: auto;
-  }
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	.logo {
+		width: auto;
+	}
 }
 
 .j-container {
-  width: 100%;
-  max-width: 660px;
-  margin: 0 auto;
-  h1 {
-    color: $dark-blue;
-    text-align: center;
-  }
+	width: 100%;
+	max-width: 660px;
+	margin: 0 auto;
+	h1 {
+		color: $dark-blue;
+		text-align: center;
+	}
 }
 
 .j-install-menu{
@@ -82,208 +84,197 @@ body {
 		}
 	}
 }
-
-.j-install-form{
+.j-install-form.active{
 	min-height: 100%;
 	width: 100%;
 	border-radius: 3px;
 	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 	border: solid 1px #eaeef5;
 	background: #fff;
-	margin-bottom: 30px;
+	padding: 2.143rem;
 }
 
 .j-install-step {
-  display: none;
-  //margin-bottom: 20px;
-  //background-color: #fff;
-  //box-shadow: 0 0 2px rgba(52, 58, 67, .1), 0 2px 5px rgba(52, 58, 67, .08), 0 5px 15px rgba(52, 58, 67, .08);
-  &.active {
-    display: block;
-  }
-  select {
-    width: 100%;
-    margin-left: 0 !important;
-  }
-  .btn-block {
-    margin-top: 40px;
-  }
+	display: none;
+	min-height: 100%;
+	&.active {
+		display: block;
+	}
+	select {
+		width: 100%;
+		margin-left: 0 !important;
+	}
+	.btn-block {
+		margin-top: 40px;
+	}
 }
-
-.j-install-step-form {
-  padding: 0.65rem 1.2rem 0.65rem;
-  .btn-block + .btn-block {
-    margin-top: .5rem;
-  }
-}
-
 
 .languageForm {
-  padding: 0 0 30px;
-  .custom-select {
-    width: 100%;
-  }
+	padding: 0 0 30px;
+	.custom-select {
+		width: 100%;
+	}
 }
 
 .system-message .alert {
-  margin: 25px 50px;
+	margin: 25px 50px;
 }
 
 .alert {
-  position: relative;
-  display: flex;
-  margin: 0 0 20px;
-  background: #fafafa;
-  border: 1px solid rgba(0,0,0,.1);
-  box-shadow: 0 0 10px rgba(0,0,0,.05);
-  p {
-    margin-bottom: 0;
-  }
+	position: relative;
+	display: flex;
+	margin: 0 0 20px;
+	background: #fafafa;
+	border: 1px solid rgba(0,0,0,.1);
+	box-shadow: 0 0 10px rgba(0,0,0,.05);
+	p {
+		margin-bottom: 0;
+	}
 }
 .alert-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 25%;
-  margin-bottom: 0;
-  font-size: 3rem;
-  opacity: .6;
-  .fa {
-    width: 100%;
-    text-align: center;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25%;
+	margin-bottom: 0;
+	font-size: 3rem;
+	opacity: .6;
+	.fa {
+		width: 100%;
+		text-align: center;
+	}
 }
 
 .alert-text {
-  width: 75%;
-  padding: 10px 20px;
+	width: 75%;
+	padding: 10px 20px;
 }
 
 .hidden, [hidden="hidden"] {
-  display: none;
+	display: none;
 }
 
 .btn-success {
-  color: #fff;
-  background-color: #75b544;
-  border-color: #75b544;
+	color: #fff;
+	background-color: #75b544;
+	border-color: #75b544;
 }
 
 
 // Form
 
 .form-control {
-  background-color: var(--white-offset);
-
-  &.input-full {
-    max-width: 100%;
-  }
-
+	background-color: var(--white-offset);
+	
+	&.input-full {
+		max-width: 100%;
+	}
+	
 }
 
 .control-group {
-  margin-bottom: 18px;
-
-  &::after {
-    display: table;
-    clear: both;
-    content: "";
-  }
-
-  .control-label {
-    float: left;
-    padding-top: 5px;
-    padding-right: 5px;
-    text-align: left;
-  }
+	margin-bottom: 18px;
+	
+	&::after {
+		display: table;
+		clear: both;
+		content: "";
+	}
+	
+	.control-label {
+		float: left;
+		padding-top: 5px;
+		padding-right: 5px;
+		text-align: left;
+	}
 }
 
 .form-no-margin {
-
-  .control-group {
-
-    .controls {
-      margin-left: 0;
-    }
-
-    .control-label {
-      float: none;
-    }
-
-  }
-
+	
+	.control-group {
+		
+		.controls {
+			margin-left: 0;
+		}
+		
+		.control-label {
+			float: none;
+		}
+		
+	}
+	
 }
 
 .spacer hr {
-  width: 380px;
+	width: 380px;
 }
 
 .card .custom-select {
-  width: 100%;
+	width: 100%;
 }
 
 td .form-control {
-  display: inline-block;
-  width: auto;
+	display: inline-block;
+	width: auto;
 }
 
 legend {
-  margin-bottom: 1.1rem;
+	margin-bottom: 1.1rem;
 }
 
 .checkboxes {
-  padding-top: 5px;
-
-  .checkbox input {
-    position: static;
-    margin-left: 0;
-  }
-
+	padding-top: 5px;
+	
+	.checkbox input {
+		position: static;
+		margin-left: 0;
+	}
+	
 }
 
 .form-check {
-  padding-top: 5px;
-  margin-bottom: 0;
+	padding-top: 5px;
+	margin-bottom: 0;
 }
 
 // Possibly temporary until Bootstrap support it themselves
 .custom-select[multiple] {
-  height: auto;
-  background: none;
+	height: auto;
+	background: none;
 }
 
 // Block display for the validation message
 .form-control-feedback {
-  display: block;
-  color: $red;
+	display: block;
+	color: $red;
 }
 
 // Language Table
 caption {
-  caption-side: top;
+	caption-side: top;
 }
 .badge-warning {
-  color: #292b2c;
+	color: #292b2c;
 }
 
 .fa-eye:before, .icon-eye-open:before, .icon-eye:before {
-  font-family:"Font Awesome 5 Free";
-  cursor: pointer;
-  content: "\f06e";
+	font-family:"Font Awesome 5 Free";
+	cursor: pointer;
+	content: "\f06e";
 }
 
 .fa-eye-slash:before, .icon-eye-close:before, .icon-eye-blocked:before, .icon-eye-2:before {
-  font-family:"Font Awesome 5 Free";
-  cursor: pointer;
-  content: "\f070";
+	font-family:"Font Awesome 5 Free";
+	cursor: pointer;
+	content: "\f070";
 }
 
 // footer
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .25);
-    z-index: $zindex-header;
-    background-color: $white;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .25);
+	z-index: $zindex-header;
+	background-color: $white;
 }

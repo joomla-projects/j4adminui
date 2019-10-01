@@ -13,13 +13,20 @@ label {
   }
 }
 
+.form-info{
+	font-size: 0.857rem;
+	line-height: 1.55;
+	color: var(--secondary-color);
+	margin-top: 0.571rem;
+	position: relative;
+}
+
 .form-group {
   margin-bottom: 1rem;
 }
 
 .control-group {
   margin-bottom: 1rem;
-  
   > .form-check {
     display: inline-block;
   }
@@ -45,9 +52,7 @@ label {
 }
 
 .form-no-margin {
-  
   .control-group {
-    
     .controls {
       margin-left: 0;
       .switcher__legend {
@@ -56,7 +61,6 @@ label {
         width: auto;
       }
     }
-    
     .control-label {
       float: none;
       width: auto;
