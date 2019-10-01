@@ -60,3 +60,10 @@
   border: solid 1px #eaeef5;
   padding: $pad1 $pad2;
 }
+//Active and Hover tab style
+@mixin tab-hover-active () {
+  background-color: var(--button-background);
+	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+  color: var(--color);
+  font-weight: 500;
+}
