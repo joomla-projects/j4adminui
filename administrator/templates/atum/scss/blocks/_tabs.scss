@@ -1,7 +1,7 @@
 //
 // Base styles
 //
-
+$table-data-border: 1px solid var(--page-background);
 joomla-tab {
 	display: flex;
 	flex-direction: column;
@@ -83,6 +83,40 @@ joomla-tab a[disabled=true]{
 joomla-tab > section {
 	position: relative;
 	display: none;
+	width: 100%;
+	.table:not(.j-striped-table) {
+		td,th {
+			padding: 1.1rem;
+		}
+		thead {
+			th {
+				border-top: 0;
+				font-size: 1rem;
+				color: var(--secondary-color);
+				border-bottom: $table-data-border;
+				border-right: $table-data-border;
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+		tbody {
+			td {
+				border-top: $table-data-border;
+				border-right: $table-data-border;
+				&:last-child {
+					border-right: 0;
+				}
+			}
+			tr{
+				&:hover,
+				&:focus,
+				&:active {
+					background-color: transparent;
+				}
+			}
+		}
+	}
 }
 
 joomla-tab > section[active] {
@@ -102,8 +136,14 @@ joomla-tab[orientation=vertical] > ul {
 	flex-direction: column;
     min-width: 30%;
 	height: auto;
-	border-right: 1px solid var(--page-background);
+	border-right: $table-data-border;
 	border-bottom: 0;
+	padding: 2.2rem 0px;
+	li {
+		a{
+			padding-left: 2.2rem;
+		}
+	}
 }
 
 joomla-tab[orientation=vertical] a[disabled=true]:hover,
