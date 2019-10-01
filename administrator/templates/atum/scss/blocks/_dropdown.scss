@@ -120,7 +120,14 @@ joomla-dropdown {
         left: 0;
       }
   }
+  &[position="right"]{
+    right: 0;
+  }
+  &[position="left"] {
+    left: 0;
+  }
 }
+
   
 .joomla-dropdown-container {
     position: relative;

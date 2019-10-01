@@ -165,13 +165,46 @@
           }
         }
       }
-
       // Convert tabs to accordian
       self.checkView(self);
       window.addEventListener('resize', () => {
         self.checkView(self);
       });
+      this.checkoverflow();
     }
+
+    /* Check overflow for tabs */
+    checkoverflow() {
+      const tablist = this.querySelector('[role="tablist"]');        
+      const listItems = [...tablist.querySelectorAll('li:not(.-more)')];
+      const moreLi = tablist.querySelector('li.-more');
+      if(this.view === 'tabs') {
+        const totalListWidth = listItems.reduce((total, listItem) => {
+          return total += listItem.offsetWidth;  
+        }, 0)
+
+        if(totalListWidth > tablist.offsetWidth) {
+          if(!moreLi) {
+            // overflow scroller
+            tablist.insertAdjacentHTML('beforeend', `
+              <li class="-more">
+                <span class="scroll-right">&gt;</span>
+              </li>
+            `);
+          }
+        } else {
+          if(moreLi) {
+            tablist.removeChild(moreLi);
+          }
+        }
+
+      } else {
+          if(moreLi) {
+            tablist.removeChild(moreLi);
+          }
+      }
+    }
+
 
     /* Lifecycle, element removed from the DOM */
     disconnectedCallback() {
@@ -345,6 +378,8 @@
       const el = element;
       const nav = el.querySelector('ul');
       const tabsEl = [];
+      this.checkoverflow();
+
       if (document.body.getBoundingClientRect().width > 920) {
         if (this.view === 'tabs') {
           return;
