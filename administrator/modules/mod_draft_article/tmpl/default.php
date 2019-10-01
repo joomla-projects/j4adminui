@@ -20,6 +20,9 @@ HTMLHelper::_('behavior.keepalive');
 Factory::getDocument()->addScriptOptions('saveurl', Uri::root() . 'administrator/index.php?option=com_ajax&module=draft_article&method=saveDraftArticle&format=json');
 Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator/index.php?option=com_content&task=article.edit&id=');
 
+Factory::getDocument()->getWebAssetManager()->enableAsset('choicesjs');
+HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', ['version' => 'auto', 'relative' => true]);
+
 ?>
 
 <form class="j-card-body" name="draftArticleForm" id="form-draftarticle" method="post" action="#">
@@ -36,6 +39,19 @@ Factory::getDocument()->addScriptOptions('editurl', Uri::root() . 'administrator
                     class="form-control input-full"
                     required="required"
                 >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mod-draftarticle-category">
+                <?php echo Text::_('JGLOBAL_CATEGORY_OPTIONS'); ?>
+            </label>
+            <div class="input-group">
+                <?php if(!empty($categoryField)) : ?>
+                    <joomla-field-fancy-select>
+                        <?php echo $categoryField; ?>
+                    </joomla-field-fancy-select>
+                <?php endif; ?>
             </div>
         </div>
 
