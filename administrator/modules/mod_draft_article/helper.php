@@ -189,7 +189,7 @@ class ModDraftArticleHelper
          * If there is a level greated than 1 then append (-) with the category title
          */
         $options = array();
-        
+
         if (!empty($categories))
         {
             foreach($categories as $category)
