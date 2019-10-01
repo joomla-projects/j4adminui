@@ -13,7 +13,7 @@ use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
-HTMLHelper::_('script', 'vendor/metismenujs/metismenujs.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('script', 'mod_menu/main-menu.min.js', ['version' => 'auto', 'relative' => true], ['defer' => true]);
 HTMLHelper::_('script', 'mod_menu/admin-menu.min.js', ['version' => 'auto', 'relative' => true], ['defer' => true]);
 HTMLHelper::_('script', 'com_cpanel/admin-system-loader.js', ['version' => 'auto', 'relative' => true]);
 
