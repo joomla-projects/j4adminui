@@ -23,6 +23,12 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 
 <div id="installer-view" data-page-name="setup">
 
+	<div class="row">
+		<div class="col">
+			Hello world
+		</div>
+	</div>
+
 	<div class="row no-gutters">
 		<div class="col-auto">
 			<ul class="j-install-menu">
@@ -62,7 +68,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 				</fieldset>
 			</form>
 			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form active">
-				<fieldset id="installStep1" class="j-install-step ">
+				<fieldset id="installStep1" class="j-install-step active">
 					<div class="form-group">
 						<?php echo $this->form->getLabel('site_name'); ?>
 						<?php echo $this->form->getInput('site_name'); ?>
@@ -71,7 +77,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<button class="btn btn-primary btn-block" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
-				<fieldset id="installStep2" class="j-install-step active">
+				<fieldset id="installStep2" class="j-install-step">
 					<div class="form-group">
 						<?php echo $this->form->getLabel('admin_user'); ?>
 						<?php echo $this->form->getInput('admin_user'); ?>
