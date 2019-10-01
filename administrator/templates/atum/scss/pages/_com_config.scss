@@ -22,7 +22,7 @@
       margin-left: 0;
     }
   }
-  .com-config-sidebar{
+  .sidebar-content{
     .nav-header{
       font-size: 1.14rem;
       font-weight: 400;
@@ -45,5 +45,12 @@
         }
       }
     }
+  }
+  .com-config-sidebar{
+    min-width: 240px;
+    margin-right: 30px;
+  }
+  .com-config-content{
+    flex: auto;
   }
 }
