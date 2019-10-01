@@ -33,10 +33,9 @@ body {
   }
 }
 
-
 .j-container {
   width: 100%;
-  max-width: 40rem;
+  max-width: 660px;
   margin: 0 auto;
   h1 {
     color: $dark-blue;
@@ -44,11 +43,61 @@ body {
   }
 }
 
+.j-install-menu{
+	margin: 0;
+	padding: 0;
+	width: 235px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+	background-color: #ffffff;
+	list-style: none;
+	button{
+		display: block;
+		width: 100%;
+		padding: 0.857rem 1.143rem 0.857rem 2.714rem;
+		text-align: left;
+		background: transparent;
+		border: none;
+		position: relative;
+		border-left: 3px solid transparent;
+		color: var(--secondary-color);
+		&::before{
+			content: '';
+			position: absolute;
+			height: 1.071rem;
+			width: 1.071rem;
+			border: 1px solid var(--icon-color);
+			border-radius: 50%;
+			left: 1.143rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&.active{
+			border-left-color: var(--primary-color);
+			background: rgba(var(--primary-color-rgb), .1);
+			color: var(--color);
+			&::before{
+				background: var(--primary-color);
+				border-color: var(--primary-color);
+			}
+		}
+	}
+}
+
+.j-install-form{
+	min-height: 100%;
+	width: 100%;
+	border-radius: 3px;
+	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+	border: solid 1px #eaeef5;
+	background: #fff;
+	margin-bottom: 30px;
+}
+
 .j-install-step {
   display: none;
-  margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 2px rgba(52, 58, 67, .1), 0 2px 5px rgba(52, 58, 67, .08), 0 5px 15px rgba(52, 58, 67, .08);
+  //margin-bottom: 20px;
+  //background-color: #fff;
+  //box-shadow: 0 0 2px rgba(52, 58, 67, .1), 0 2px 5px rgba(52, 58, 67, .08), 0 5px 15px rgba(52, 58, 67, .08);
   &.active {
     display: block;
   }
@@ -58,22 +107,6 @@ body {
   }
   .btn-block {
     margin-top: 40px;
-  }
-}
-
-.j-install-step-header {
-  position: relative;
-  padding: 10px 25px;
-  font-size: 1.1rem;
-  line-height: 2.4rem;
-  color: $dark-blue;
-  background-color: #fff;
-  border-bottom: 1px solid #efefef;
-
-  span {
-    position: relative;
-    margin-right: 5px;
-    font-size: 1.2rem;
   }
 }
 
