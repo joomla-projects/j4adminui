@@ -96,12 +96,21 @@
       }
       span{
         margin-right: 0;
+        color: var(--secondary-icon-color);
+        @include transition(.3s);
       }
       &.btn-primary {
         &:not(:disabled):not(.disabled):active:focus,
+        &:hover,
         &:active,
         &:focus {
+          background-color: transparent;
           box-shadow: none;
+        }
+      }
+      &:hover {
+        span {
+          color: var(--primary-color);
         }
       }
     }
@@ -146,7 +155,7 @@
     height: 1rem;
     line-height: 1;
     margin: 0;
-    top: 1.2rem;
+    top: 1rem;
 	  .btn-primary {
       background: var(--transparent-bg);
       color: var(--secondary-icon-color);
