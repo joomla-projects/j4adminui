@@ -48,7 +48,8 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 						$module->module == 'mod_logged' ||
 						//$module->module == 'mod_content' ||
 						$module->module == 'mod_latestactions' ||
-						$module->module == 'mod_sampledata' 
+						$module->module == 'mod_sampledata' ||
+						$module->module == 'mod_resources'
 					)
 					{
 						$style = 'simple';

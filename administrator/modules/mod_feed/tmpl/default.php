@@ -95,8 +95,8 @@ else
 	<?php // Show items ?>
 
 	<?php if (!empty($feed)) : ?>
-		<ul class="newsfeed list-group list-group-flush">
-		<?php for ($i = 0; $i < $params->get('rssitems', 3); $i++) :
+		<div class="j-card-event-list">
+			<?php for ($i = 0; $i < $params->get('rssitems', 3); $i++) :
 
 			if (!$feed->offsetExists($i)) :
 				break;
@@ -105,34 +105,38 @@ else
 			$uri  = !$uri || stripos($uri, 'http') !== 0 ? $rssurl : $uri;
 			$text = $feed[$i]->content !== '' ? trim($feed[$i]->content) : '';
 			?>
-				<li class="list-group-item">
-					<?php if (!empty($uri)) : ?>
-						<h5 class="feed-link">
-						<a href="<?php echo $uri; ?>" target="_blank">
-						<?php echo trim($feed[$i]->title); ?></a></h5>
-					<?php else : ?>
-						<h5 class="feed-link"><?php echo trim($feed[$i]->title); ?></h5>
-					<?php endif; ?>
-
+				<div class="j-card-event-item">
 					<?php if ($params->get('rssitemdate', 0)) : ?>
-						<div class="feed-item-date">
-							<?php echo HTMLHelper::_('date', $feed[$i]->publishedDate, Text::_('DATE_FORMAT_LC3')); ?>
-						</div>
+						<time datetime="<?php echo HTMLHelper::_('date', $feed[$i]->publishedDate, Text::_('DATE_FORMAT_LC3')); ?>">
+							<span><?php echo HTMLHelper::_('date', $feed[$i]->publishedDate, 'd'); ?></span>
+							<?php echo HTMLHelper::_('date', $feed[$i]->publishedDate, 'M Y'); ?>
+						</time>
 					<?php endif; ?>
 
-					<?php if ($params->get('rssitemdesc', 1) && $text !== '') : ?>
-						<div class="feed-item-description text-muted">
-						<?php
-							// Strip the images.
-							$text = OutputFilter::stripImages($text);
-							$text = HTMLHelper::_('string.truncate', $text, $params->get('word_count', 0), true, false);
-							echo str_replace('&apos;', "'", $text);
-						?>
-						</div>
-					<?php endif; ?>
-				</li>
+					<div class="j-card-event-content">
+						<span>Project Release News</span>
+						<?php if (!empty($uri)) : ?>
+							<h5 class="feed-link">
+							<a href="<?php echo $uri; ?>" target="_blank">
+							<?php echo trim($feed[$i]->title); ?></a></h5>
+						<?php else : ?>
+							<h5 class="feed-link"><?php echo trim($feed[$i]->title); ?></h5>
+						<?php endif; ?>
+
+						<?php if ($params->get('rssitemdesc', 1) && $text !== '') : ?>
+							<div class="feed-item-description text-muted">
+							<?php
+								// Strip the images.
+								$text = OutputFilter::stripImages($text);
+								$text = HTMLHelper::_('string.truncate', $text, $params->get('word_count', 0), true, false);
+								echo str_replace('&apos;', "'", $text);
+							?>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
 		<?php endfor; ?>
-		</ul>
+		</div>
 	<?php endif; ?>
 	</div>
 	<?php endif;
