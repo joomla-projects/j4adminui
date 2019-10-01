@@ -48,7 +48,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
             </label>
             <div class="input-group">
                 <?php if(!empty($categoryField)) : ?>
-                    <joomla-field-fancy-select>
+                    <joomla-field-fancy-select search-placeholder="<?php echo Text::_('MOD_DRAFT_ARTICLE_SEARCH_CATEGORY'); ?>">
                         <?php echo $categoryField; ?>
                     </joomla-field-fancy-select>
                 <?php endif; ?>
