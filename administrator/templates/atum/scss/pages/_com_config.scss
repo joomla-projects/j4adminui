@@ -53,4 +53,9 @@
   .com-config-content{
     flex: auto;
   }
+  @include media-breakpoint-down(lg){
+    .j-table-responsive{
+      max-width: 500px;
+    }
+  }
 }
