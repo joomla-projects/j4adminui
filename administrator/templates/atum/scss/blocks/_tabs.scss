@@ -33,7 +33,7 @@ joomla-tab a[role=tab][active] {
 	color: var(--color);
 }
 joomla-tab a[role=tab]:after {
-	background-color: var(--primary-gradient-color);
+	background-color: var(--primary-color);
 	bottom: 0px;
 	content: "";
 	height: 2px;
@@ -49,7 +49,7 @@ joomla-tab a[role=tab]:after {
 
 joomla-tab a[role=tab][active]{
 	&::after {
-		background-color: var(--primary-gradient-color);
+		background-color: var(--primary-color);
 		opacity: 1;
 		visibility: visible;
 	}
@@ -98,7 +98,7 @@ joomla-tab[orientation=vertical] > ul {
 	flex-direction: column;
     min-width: 30%;
 	height: auto;
-	border-left: 1px solid var(--secondary-icon-color);
+	border-right: 1px solid var(--secondary-icon-color);
 }
 
 joomla-tab[orientation=vertical] a[disabled=true]:hover,
@@ -115,7 +115,7 @@ joomla-tab[orientation=vertical] a {
 	text-decoration: none;
 }
 joomla-tab[orientation=vertical] a[role=tab]:after{
-	right: auto;
+	right: 0;
 	border-radius: 0;
 }
 joomla-tab[orientation=vertical] a:hover {
@@ -131,7 +131,7 @@ joomla-tab[orientation=vertical] a[role=tab]:active {
 }
 
 joomla-tab[orientation=vertical] a[active]:after {
-	left: 0;
+	left: auto;
     width: 3px;
 	height: auto;
 	top: 0;

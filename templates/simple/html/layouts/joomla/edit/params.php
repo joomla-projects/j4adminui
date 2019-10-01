@@ -115,7 +115,7 @@ foreach ($fieldSets as $name => $fieldSet)
 	// Include the description when available
 	if (isset($fieldSet->description) && trim($fieldSet->description))
 	{
-		echo '<p class="alert alert-info">' . $this->escape(JText::_($fieldSet->description)) . '</p>';
+		echo '<p class="j-alert j-alert-info">' . $this->escape(JText::_($fieldSet->description)) . '</p>';
 	}
 
 	// The name of the fieldset to render

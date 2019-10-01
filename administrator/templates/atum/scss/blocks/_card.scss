@@ -337,7 +337,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	@extend .align-items-center;
 	@extend .justify-content-center;
 }
-.j-activity-item{
+.j-list-item{
 	padding: 1.785714rem 2.142857rem 1.785714rem;
 	@extend .d-flex;
 	@extend .align-items-start;
@@ -347,7 +347,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	.j-user-avatar{
 		margin-right: 1.071429rem;
 	}
-	.j-activity-content{
+	.j-list-content{
 		flex-grow: 1;
 		color: var(--secondary-color);
 		p{

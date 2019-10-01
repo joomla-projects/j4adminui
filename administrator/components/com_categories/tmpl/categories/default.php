@@ -58,9 +58,9 @@ if ($saveOrder && !empty($this->items))
 				echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 				?>
 				<?php if (empty($this->items)) : ?>
-					<div class="alert alert-info">
-						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex">
+						<div class="j-alert-icon-wrap"><span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else : ?>
 					<table class="table j-list-table" id="categoryList">
@@ -83,25 +83,25 @@ if ($saveOrder && !empty($this->items))
 								</th>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_published')) : ?>
 									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
-										<span class="icon-publish" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?>"></span>
+										<span class="icon-publish j-text-success" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_unpublished')) : ?>
 									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
-										<span class="icon-unpublish" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?>"></span>
+										<span class="icon-unpublish j-text-mute" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_archived')) : ?>
 									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
-										<span class="icon-archive" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?>"></span>
+										<span class="icon-briefcase j-text-warning" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_trashed')) : ?>
 									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
-										<span class="icon-trash" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?>"></span>
+										<span class="icon-trash j-text-danger" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>

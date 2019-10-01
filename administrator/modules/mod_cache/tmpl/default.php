@@ -32,12 +32,17 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
         <div class="j-card-footer j-card-footer-lg">
             <div class="j-card-footer-item">
                 <?php if($cacheInfo['raw']): ?>
-                    <a id="jclear-cache-btn" data-size="<?php echo $cacheInfo['size']; ?>" href="javascript:;">
-                        <span class="fa fa-trash-alt j-card-icon" aria-hidden="true"></span>
-                        <span aria-hidden="true"><?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?></span>
-                    </a>
+                    <button id="jclear-cache-btn" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
+                        <span class="j-card-footer-item-text p-0">
+                            <span class="j-card-icon j-icon-lg fas fa-trash-alt" aria-hidden="true"></span>
+                            <?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?>
+                        </span>
+                    </button>
                 <?php else: ?>
-                    <span class="no-link"><?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?></span>
+                    <span class="j-card-footer-item-text">
+                        <span class="j-card-icon j-icon-lg fas fa-exclamation-circle" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?>
+                    </span>
                 <?php endif;?>
             </div>
         </div>

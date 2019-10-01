@@ -156,7 +156,7 @@ foreach ($fieldSets as $name => $fieldSet)
 	// Include the description when available
 	if (isset($fieldSet->description) && trim($fieldSet->description))
 	{
-		echo '<div class="alert alert-info">' . $this->escape(Text::_($fieldSet->description)) . '</div>';
+		echo '<div class="j-alert j-alert-info">' . $this->escape(Text::_($fieldSet->description)) . '</div>';
 	}
 
 	// We're on the deepest level => output fields

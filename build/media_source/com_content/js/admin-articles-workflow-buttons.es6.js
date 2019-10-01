@@ -60,9 +60,11 @@ Joomla.toggleAllNextElements = (element, className) => {
       articleListRows = [].slice.call(articleList.querySelectorAll('tbody tr'));
     }
     // TODO: remove jQuery dependency, when we have a new modal script
-    modal.addEventListener('joomla.modal.close', () => {
-      modalcontent.innerHTML = '';
-    });
+    if (modal !== null) {
+      modal.addEventListener('joomla.modal.close', () => {
+        modalcontent.innerHTML = '';
+      });
+    }
 
     function checkTransition(e, task) {
       // Let's check for n:1 connections

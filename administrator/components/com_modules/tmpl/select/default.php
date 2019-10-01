@@ -46,7 +46,7 @@ endif;
 
 					<div class="j-card-footer">
 						<div class="j-card-footer-item">
-							<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>" class="j-card-link">
+							<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>">
 								<?php echo Text::_('COM_MODULES_SELECT'); ?>
 							</a>
 						</div>

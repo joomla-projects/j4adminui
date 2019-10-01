@@ -119,7 +119,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						<?php endif; ?>
 					<?php else : ?>
 						<div class="p-3">
-							<div class="alert alert-danger">
+							<div class="j-alert j-alert-danger">
 								<span class="fa fa-exclamation-triangle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('ERROR'); ?></span>
 								<?php echo Text::_('COM_MODULES_ERR_XML'); ?>
 							</div>

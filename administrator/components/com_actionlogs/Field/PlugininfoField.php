@@ -58,7 +58,7 @@ class PlugininfoField extends FormField
 			array('class' => 'alert-link')
 		);
 
-		return '<div class="alert alert-info">'
+		return '<div class="j-alert j-alert-info">'
 			. '<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only">'
 			. Text::_('INFO')
 			. '</span>'

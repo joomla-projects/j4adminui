@@ -60,7 +60,7 @@ Factory::getDocument()->addScriptDeclaration($js);
 				<h3 class="j-card-header"><?php echo Text::_('COM_PRIVACY_HEADING_ACTION_LOG'); ?></h3>
 				<div class="j-card-body">
 					<?php if (empty($this->actionlogs)) : ?>
-						<div class="alert alert-info">
+						<div class="j-alert j-alert-info">
 							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 							<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 						</div>
