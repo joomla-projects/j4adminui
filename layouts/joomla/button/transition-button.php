@@ -47,14 +47,7 @@ switch(strtoupper($options['stage']))
         $color = 'primary';
 }
 
-$default = [
-    HTMLHelper::_('select.option', '', $this->escape($options['stage'])),
-    HTMLHelper::_('select.option', '-1', '--------', ['disable' => true])
-];
-
-$options['transitions'] = json_decode(json_encode($options['transitions']));
-
-$transitions = array_merge($default, $options['transitions']);
+$transitions = json_decode(json_encode($options['transitions']));
 
 Factory::getDocument()->addScriptDeclaration("
     function handleRunTransition(e, id, cb, task = 'articles.runTransition') {

@@ -44,7 +44,7 @@ class MenutypeField extends ListField
 	 */
 	protected function getInput()
 	{
-		HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('verion' => 'auto', 'relative' => true));
+		HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' => 'auto', 'relative' => true));
 		HTMLHelper::_('script', 'com_menus/admin-item-modal.js', ['version' => 'auto', 'relative' => true]);
 		
 		$html     = array();
@@ -107,7 +107,7 @@ class MenutypeField extends ListField
 			$dropdownText = $value . ' <span class="fas fa-sort">';
 		}
 
-		$html[] = '<a href="javascript:" class="btn btn-secondary text-left" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
+		$html[] = '<a href="javascript:" class="btn btn-secondary text-left j-has-dropdown" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
 		$html[] = '<joomla-dropdown for="menuTypeDropdown">';
 		
 		if (!empty($menuTypes))
