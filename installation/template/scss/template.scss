@@ -62,6 +62,7 @@ body {
 		position: relative;
 		border-left: 3px solid transparent;
 		color: var(--secondary-color);
+		font-size: 1.143rem;
 		&::before{
 			content: '';
 			position: absolute;
