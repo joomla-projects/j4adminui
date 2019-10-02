@@ -44,8 +44,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 			</ul>
 		</div>
 		<div class="col">
-			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
-				<fieldset id="installStep0" class="j-install-step active">
+			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form d-none">
+				<fieldset id="installStep0" class="j-install-step">
 					<div class="j-install-step-body">
 						<div class="form-group">
 							<?php echo $this->form->getLabel('language'); ?>
@@ -60,7 +60,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 			</form>
-			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
+			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form active">
 				<fieldset id="installStep1" class="j-install-step">
 					<div class="form-group">
 						<?php echo $this->form->getLabel('site_name'); ?>
@@ -70,7 +70,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<button class="btn btn-primary btn-block" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
-				<fieldset id="installStep2" class="j-install-step">
+				<fieldset id="installStep2" class="j-install-step active">
 					<div class="form-group">
 						<?php echo $this->form->getLabel('admin_user'); ?>
 						<?php echo $this->form->getInput('admin_user'); ?>
