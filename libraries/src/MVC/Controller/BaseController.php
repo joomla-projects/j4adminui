@@ -1154,4 +1154,40 @@ class BaseController implements ControllerInterface
 
 		return $this;
 	}
+
+	/**
+	 * Shorten long number to K/M/B/T
+	 * 
+	 * @param	int		$number		valid number
+	 * @param	int 	$percision	Get the numbers after point
+	 * @param	int 	$devisors	Devisors by
+	 * 
+	 * @since	4.0.0
+	 */
+	public function numberShorten($number, $precision = 1, $divisors = null) {
+
+		if (!isset($divisors)) {
+			$divisors = array(
+				pow(1000, 0) => '', // 1000^0 == 1
+				pow(1000, 1) => 'K', // Thousand
+				pow(1000, 2) => 'M', // Million
+				pow(1000, 3) => 'B', // Billion
+				pow(1000, 4) => 'T', // Trillion
+				pow(1000, 5) => 'Qa', // Quadrillion
+				pow(1000, 6) => 'Qi', // Quintillion
+			);    
+		}
+
+		foreach ($divisors as $divisor => $shorthand) {
+			if (abs($number) < ($divisor * 1000)) {
+				break; // We found a match!
+			}
+		}
+	
+		if($number % $divisor > 0) {
+			return number_format($number / $divisor, $precision) . $shorthand;
+		} else {
+			return round($number / $divisor) . $shorthand;
+		}
+	}
 }

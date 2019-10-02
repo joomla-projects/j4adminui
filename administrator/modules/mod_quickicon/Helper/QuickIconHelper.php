@@ -301,7 +301,7 @@ abstract class QuickIconHelper
 	 * @param	Array	List of buttons
 	 * @param	Array 	Module params for get the order values
 	 * 
-	 * @since   4.0.1
+	 * @since   4.0.0
 	 */
 	private static function getOrderedModuleList($buttons, $params ) 
 	{

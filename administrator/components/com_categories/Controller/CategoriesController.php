@@ -57,7 +57,7 @@ class CategoriesController extends AdminController
 
 		$result = [];
 
-		$result['amount'] = $amount;
+		$result['amount'] = $this->numberShorten($amount);
 		$result['sronly'] = Text::plural('COM_CATEGORIES_N_QUICKICON_SRONLY', $amount);
 		$result['name'] = Text::plural('COM_CATEGORIES_N_QUICKICON', $amount);
 
