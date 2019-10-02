@@ -30,7 +30,7 @@
     }
     ul.nav{
       @include media-breakpoint-down(lg){
-        @extend .flex-direction-column;
+        flex-direction: row !important;
         >li{
           margin-right: 15px;
         }
@@ -58,13 +58,61 @@
   }
   .com-config-content{
     flex: auto;
+    joomla-tab{
+      >ul{
+        border-bottom: none;
+        flex-wrap: wrap;
+      }
+    }
     .form-control{
       width: 100%;
     }
+    #fieldset-permissions{
+      .control-group.revert-controls{
+        >.control-label.sr-only{
+          display: none;
+        }
+        >.controls{
+          margin-left: 0;
+        }
+      }
+    }
+    #page-system{
+      #jform_helpurl+button{
+        margin-top: 10px;
+      }
+    }
+    .badge.badge-success{
+      .icon-white{
+        color: inherit;
+      }
+    }
+    .control-group .control-label {
+      #jform_return_any_or_all-lbl,
+      #jform_all_tags_orderby_direction-lbl,
+      #jform_tag_list_orderby_direction-lbl{
+        display: none;
+      }
+    }
+    joomla-field-send-test-mail{
+      display: block;
+      @extend .j-card;
+      >fieldset.j-card{
+        background: transparent;
+        box-shadow: none;
+      }
+      >button{
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .content main>form{
+    display: flex;
   }
   @include media-breakpoint-down(lg){
-    form#application-form{
-      @extend .flex-direction-column;
+    .content main>form{
+      flex-direction: column;
     }
   }
 }

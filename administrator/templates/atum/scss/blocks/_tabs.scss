@@ -130,6 +130,9 @@ joomla-tab[orientation=vertical] {
 	box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
 	border: solid 1px var(--cancel-button-background);
 	background-color: $white;
+	&.j-card{
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+	}
 }
 
 joomla-tab[orientation=vertical] > ul {

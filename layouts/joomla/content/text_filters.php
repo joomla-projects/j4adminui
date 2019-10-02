@@ -14,20 +14,22 @@ use Joomla\CMS\Language\Text;
 ?>
 
 <fieldset class="<?php echo !empty($displayData->formclass) ? $displayData->formclass : 'form-horizontal'; ?>">
-	<legend><?php echo $displayData->name; ?></legend>
-	<details>
+	<div class="j-card no-boxshadow">
+		<div class="j-card-header"><?php echo $displayData->name; ?></div>
+	</div>
+	<details class="j-card">
 		<summary class="filter-notes"><?php echo Text::_('COM_CONFIG_TEXT_FILTERS_SUMMARY'); ?></summary>
 		<div class="filter-notes"><?php echo Text::_('COM_CONFIG_TEXT_FILTERS_DESC'); ?></div>
 	</details>
-	<details>
+	<details class="j-card">
 		<summary class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_TYPE_LABEL'); ?></summary>
 		<div class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_TYPE_DESC'); ?></div>
 	</details>
-	<details>
+	<details class="j-card">
 		<summary class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_TAGS_LABEL'); ?></summary>
 		<div class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_TAGS_DESC'); ?></div>
 	</details>
-	<details>
+	<details class="j-card">
 		<summary class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_ATTRIBUTES_LABEL'); ?></summary>
 		<div class="filter-notes"><?php echo Text::_('JGLOBAL_FILTER_ATTRIBUTES_DESC'); ?></div>
 	</details>

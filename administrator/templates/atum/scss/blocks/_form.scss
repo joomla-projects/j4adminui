@@ -101,7 +101,7 @@ legend {
 }
 
 // Validation
-.invalid {
+.invalid, .form-title-wrap label.invalid {
   color: var(--danger-color);
   border-color: var(--danger-color);
 }

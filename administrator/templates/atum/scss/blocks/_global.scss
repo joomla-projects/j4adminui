@@ -365,3 +365,6 @@ body .container-main {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+.no-boxshadow{
+  box-shadow: none !important;
+}
