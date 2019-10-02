@@ -1,18 +1,17 @@
-$off-background-colour: lightgrey;
-$on-background-colour: #2f7d32;
 $switcher-width:  62px;
-$switcher-height: 28px;
+$switcher-height: 22px;
 
 .switcher {
   position: relative;
   width: 18rem;
   height: 28px;
   float: left;
+  margin-top: 10px;
 }
 
 .switcher input {
   position: absolute;
-  top: 0;
+  top: -4px;
   z-index: 2;
   opacity: 0;
   cursor: pointer;
@@ -34,43 +33,47 @@ $switcher-height: 28px;
 }
 
 .switcher label {
-  line-height: $switcher-height;
   display: inline-block;
   width: auto;
   min-width: 6rem;
   height: 100%;
-  margin-left: 70px;
   text-align: left;
   position: absolute;
   transition: opacity 0.25s ease;
   margin-bottom: 0;
+  line-height: 1.2;
+  margin-left: 45px;
 }
 
 .switcher .toggle-outside {
-  height: 100%;
-  overflow: hidden;
-  transition: 0.2s ease all;
-  background: $off-background-colour;
+  transition: all .2s ease;
+  background: rgba(189, 197, 200, .5);
   position: absolute;
-  width: 58px;
-  box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,.18);
+  width: 36px;
+  border: 0;
+  border-radius: 10px;
+  height: 15px;
+  overflow: visible;
 }
 
 .switcher input ~ input:checked ~ .toggle-outside{
-  background: $on-background-colour;
+  background: rgba(1, 132, 255, .5);
 }
 
 .switcher .toggle-inside {
-  height: $switcher-height;
-  width: ($switcher-width - 6) / 2;
-  background: white;
+  height: 20px;
+  width: 20px;
+  background: var(--cancel-button-background);
   position: absolute;
-  transition: 0.4s ease all;
+  transition: all .4s ease;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+  top: -3px;
 }
 
 .switcher input ~ input:checked ~ .toggle-outside .toggle-inside {
-  left: ($switcher-width / 2) - 1;
+  left: 16px;
+  background: var(--primary-color);
 }
 
 .switcher__legend {

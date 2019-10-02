@@ -48,7 +48,11 @@ const runScss = () => {
     });
     monitor.on('changed', (file) => {
       if (file.match(/\.scss/)) {
-        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        let templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        if (file.match(/installation/)) {
+          templatesSccs = Path.join(RootPath, 'installation/template/scss/template.scss');
+        }
+
         debounce(CompileScss.compile(templatesSccs), 300);
       }
       // @todo css and scss

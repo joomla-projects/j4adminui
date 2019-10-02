@@ -12,11 +12,12 @@ namespace Joomla\Component\Plugins\Administrator\View\Plugin;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
  * View to edit a plugin.
@@ -79,25 +80,13 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
-
 		$canDo = ContentHelper::getActions('com_plugins');
-
-		ToolbarHelper::title(Text::sprintf('COM_PLUGINS_MANAGER_PLUGIN', Text::_($this->item->name)), 'power-cord plugin');
-
-		// If not checked out, can save the item.
-		if ($canDo->get('core.edit'))
-		{
-			ToolbarHelper::apply('plugin.apply');
-
-			ToolbarHelper::save('plugin.save');
-		}
-
-		ToolbarHelper::cancel('plugin.cancel', 'JTOOLBAR_CLOSE');
-		ToolbarHelper::divider();
+		$toolbar = Toolbar::getInstance();
 
 		// Get the help information for the plugin item.
 		$lang = Factory::getLanguage();
 
+		ToolbarHelper::divider();
 		$help = $this->get('Help');
 
 		if ($lang->hasKey($help->url))
@@ -111,6 +100,28 @@ class HtmlView extends BaseHtmlView
 			$url = null;
 		}
 
+		// set page title
+		ToolbarHelper::title(Text::sprintf('COM_PLUGINS_MANAGER_PLUGIN', Text::_($this->item->name)), 'power-cord plugin');
+
+		// help button
 		ToolbarHelper::help($help->key, false, $url);
+		
+		// cancel button
+		ToolbarHelper::cancel('plugin.cancel', 'JTOOLBAR_CLOSE');
+
+		// Save item group 
+		$saveGroup = $toolbar->dropdownButton('save-group');
+
+		$saveGroup->configure(
+			function (Toolbar $childBar) use ($canDo)
+			{
+				// If not checked out, can save the item.
+				if ($canDo->get('core.edit'))
+				{
+					$childBar->apply('plugin.apply');
+					$childBar->save('plugin.save');
+				}
+			}
+		);
 	}
 }

@@ -44,7 +44,7 @@ class MenutypeField extends ListField
 	 */
 	protected function getInput()
 	{
-		HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('verion' => 'auto', 'relative' => true));
+		HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' => 'auto', 'relative' => true));
 		HTMLHelper::_('script', 'com_menus/admin-item-modal.js', ['version' => 'auto', 'relative' => true]);
 		
 		$html     = array();
@@ -104,10 +104,10 @@ class MenutypeField extends ListField
 
 		if (!empty($value))
 		{
-			$dropdownText = $value . ' <span class="icon-menu-2">';
+			$dropdownText = $value . ' <span class="fas fa-sort">';
 		}
 
-		$html[] = '<a href="javascript:" class="btn btn-secondary text-left" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
+		$html[] = '<a href="javascript:" class="btn btn-secondary text-left j-has-dropdown" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
 		$html[] = '<joomla-dropdown for="menuTypeDropdown">';
 		
 		if (!empty($menuTypes))
@@ -126,7 +126,7 @@ class MenutypeField extends ListField
 						$menutype = "'" . base64_encode(json_encode($menutype)) . "'";
 						$html[] = '<li><a class="dropdown-item" href="javascript:" onclick="Joomla.setMenuType(' . $menutype . ', ' . $tmpl . ');">';
 						$html[] = '<h4 class="menu-item-title">' . Text::_($child->title) . '</h4>';
-						$html[] = '<small class="text-mute">' . Text::_($child->description) . '</small>';
+						$html[] = '<span class="text-mute">' . Text::_($child->description) . '</span>';
 						$html[] = '</a></li>';
 					}
 					

@@ -89,11 +89,25 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_($isNew ? 'COM_USERS_VIEW_NEW_GROUP_TITLE' : 'COM_USERS_VIEW_EDIT_GROUP_TITLE'), 'users-cog groups-add');
 
-		$toolbarButtons = [];
+		ToolbarHelper::divider();
+		// help button
+		ToolbarHelper::help('JHELP_USERS_GROUPS_EDIT');
 
+		// save cancel button
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('group.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('group.cancel', 'JTOOLBAR_CLOSE');
+		}
+
+		$toolbarButtons = [];
+		// save, save and close button
 		if ($canDo->get('core.edit') || $canDo->get('core.create'))
 		{
-			ToolbarHelper::apply('group.apply');
+			$toolbarButtons[] = ['apply', 'group.apply'];
 			$toolbarButtons[] = ['save', 'group.save'];
 		}
 
@@ -112,17 +126,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('group.cancel');
-		}
-		else
-		{
-			ToolbarHelper::cancel('group.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_USERS_GROUPS_EDIT');
 	}
 }

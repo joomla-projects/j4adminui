@@ -168,14 +168,14 @@ jQuery(function ($) {
 
                 if(data.status == 'pending') {
                     body.find('.alert').remove();
-                    body.append( "<div class='alert alert-warning'>"+ data.message +"</div>" );
+                    body.append( "<div class='j-alert j-alert-warning'>"+ data.message +"</div>" );
                     btn.find('.newsletter-btn-icon').removeClass('fa-spinner fa-spin').removeClass('fa-check').addClass('fa-envelope');
                     btn.find('.newsletter-btn-text').text('Subscribe');
                 }
 
                 if(data.status == 400) {
                     body.find('.alert').remove();
-                    body.append( "<div class='alert alert-danger'>"+ data.message +"</div>" );
+                    body.append( "<div class='j-alert j-alert-danger'>"+ data.message +"</div>" );
                     btn.find('.newsletter-btn-icon').removeClass('fa-spinner fa-spin').removeClass('fa-check').addClass('fa-envelope');
                     btn.find('.newsletter-btn-text').text('Subscribe');
                 }
@@ -187,7 +187,7 @@ jQuery(function ($) {
                     data = data + ' ' + obj[key] + '<br/>';
                 }
                 body.find('.alert').remove();
-                body.append( "<div class='alert alert-danger'>"+ data +"</div>" );
+                body.append( "<div class='j-alert j-alert-danger'>"+ data +"</div>" );
                 btn.find('.newsletter-btn-icon').removeClass('fa-spinner fa-spin').removeClass('fa-check').addClass('fa-envelope');
                 btn.find('.newsletter-btn-text').text('Subscribe');
             }

@@ -2,7 +2,7 @@
 .media-browser {
   position: relative;
   width: 100%;
-  height: calc(100vh - 208px);
+  height: 100vh;
   overflow-y: auto;
   transition: width .3s cubic-bezier(.4, .0, .2, 1);
 }

@@ -231,16 +231,81 @@ class HtmlView extends BaseHtmlView
 		$explodeArray = explode('.', $this->fileName);
 		$ext = end($explodeArray);
 
+		// set title
 		ToolbarHelper::title(Text::sprintf('COM_TEMPLATES_MANAGER_VIEW_TEMPLATE', ucfirst($this->template->name)), 'paint-brush thememanager');
+		
+		// Add a Template preview button
+		if ($this->preview->client_id == 0)
+		{
+			$bar->appendButton('Popup', 'picture', 'COM_TEMPLATES_BUTTON_PREVIEW', Uri::root() . 'index.php?tp=1&templateStyle=' . $this->preview->id, 800, 520);
+		}
 
-		// Only show file edit buttons for global SuperUser
+		// Only show file manage buttons for global SuperUser
 		if ($isSuperUser)
 		{
+			// Add a new file button 
+			if ($this->type != 'home')
+			{
+				ToolbarHelper::modal('fileModal', 'icon-file', 'COM_TEMPLATES_BUTTON_FILE', 'secondary');
+			}
+			// Add Manage folders button
+			ToolbarHelper::modal('folderModal', 'icon-folder icon white', 'COM_TEMPLATES_BUTTON_FOLDERS');
+			// Add a copy template button
+			ToolbarHelper::modal('copyModal', 'icon-copy', 'COM_TEMPLATES_BUTTON_COPY_TEMPLATE');
+			// Add a Delete file Button
+			if ($this->type != 'home')
+			{
+				ToolbarHelper::modal('deleteModal', 'icon-remove', 'COM_TEMPLATES_BUTTON_DELETE_FILE');
+			}
+		}
+
+		if (count($this->updatedList) !== 0 && $this->pluginState)
+		{
+			ToolbarHelper::custom('template.deleteOverrideHistory', 'delete', 'move', 'COM_TEMPLATES_BUTTON_DELETE_LIST_ENTRY', true, 'updateForm');
+		}
+		
+		ToolbarHelper::divider();
+		// help button
+		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_TEMPLATES_EDIT');
+
+		// cancel button
+		if ($this->type == 'home')
+		{
+			ToolbarHelper::cancel('template.cancel', 'JTOOLBAR_CLOSE');
+		}
+		else
+		{
+			ToolbarHelper::cancel('template.close', 'COM_TEMPLATES_BUTTON_CLOSE_FILE');
+		}
+
+		// Only show file manage buttons for global SuperUser
+		if ($isSuperUser)
+		{
+			// check file edit view
+			$isFileEditView =  ($this->type == 'file') ? 'secondary' : '';
+
+			// Add a new file button
+			if ($this->type == 'home')
+			{
+				ToolbarHelper::modal('fileModal', 'icon-file', 'COM_TEMPLATES_BUTTON_FILE');
+			}
+			// Add a Rename file Button
+			if ($this->type != 'home')
+			{
+				ToolbarHelper::modal('renameModal', 'icon-refresh', 'COM_TEMPLATES_BUTTON_RENAME_FILE', 'secondary');
+			}
 			// Add an Apply and save button
 			if ($this->type == 'file')
 			{
-				ToolbarHelper::apply('template.apply');
-				ToolbarHelper::save('template.save');
+				// save, save & close button
+				$toolbarButtons = [];
+				$toolbarButtons[] = ['apply', 'template.apply'];
+				$toolbarButtons[] = ['save', 'template.save'];
+
+				ToolbarHelper::saveGroup(
+					$toolbarButtons,
+					'btn-success'
+				);
 			}
 			// Add a Crop and Resize button
 			elseif ($this->type == 'image')
@@ -253,55 +318,8 @@ class HtmlView extends BaseHtmlView
 			{
 				ToolbarHelper::custom('template.extractArchive', 'arrow-down', 'arrow-down', 'COM_TEMPLATES_BUTTON_EXTRACT_ARCHIVE', false);
 			}
-
-			// Add a copy template button
-			ToolbarHelper::modal('copyModal', 'icon-copy', 'COM_TEMPLATES_BUTTON_COPY_TEMPLATE');
 		}
 
-		// Add a Template preview button
-		if ($this->preview->client_id == 0)
-		{
-			$bar->appendButton('Popup', 'picture', 'COM_TEMPLATES_BUTTON_PREVIEW', Uri::root() . 'index.php?tp=1&templateStyle=' . $this->preview->id, 800, 520);
-		}
-
-		// Only show file manage buttons for global SuperUser
-		if ($isSuperUser)
-		{
-			// Add Manage folders button
-			ToolbarHelper::modal('folderModal', 'icon-folder icon white', 'COM_TEMPLATES_BUTTON_FOLDERS');
-
-			// Add a new file button
-			ToolbarHelper::modal('fileModal', 'icon-file', 'COM_TEMPLATES_BUTTON_FILE');
-
-			// Add a Rename file Button
-			if ($this->type != 'home')
-			{
-				ToolbarHelper::modal('renameModal', 'icon-refresh', 'COM_TEMPLATES_BUTTON_RENAME_FILE');
-			}
-
-			// Add a Delete file Button
-			if ($this->type != 'home')
-			{
-				ToolbarHelper::modal('deleteModal', 'icon-remove', 'COM_TEMPLATES_BUTTON_DELETE_FILE');
-			}
-		}
-
-		if (count($this->updatedList) !== 0 && $this->pluginState)
-		{
-			ToolbarHelper::custom('template.deleteOverrideHistory', 'delete', 'move', 'COM_TEMPLATES_BUTTON_DELETE_LIST_ENTRY', true, 'updateForm');
-		}
-
-		if ($this->type == 'home')
-		{
-			ToolbarHelper::cancel('template.cancel', 'JTOOLBAR_CLOSE');
-		}
-		else
-		{
-			ToolbarHelper::cancel('template.close', 'COM_TEMPLATES_BUTTON_CLOSE_FILE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_TEMPLATES_EDIT');
 	}
 
 	/**

@@ -22,7 +22,7 @@
   };
 
   // eslint-disable-next-line no-new
-  new window.MetisMenu('#menu');
+  // new window.MetisMenu('#menu');
 
   const closest = (element, selector) => {
     let matchesFn;
@@ -133,9 +133,7 @@
           const firstLevel = closest(link, '.collapse-level-1');
           const secondLevel = closest(link, '.collapse-level-2');
           if (firstLevel) firstLevel.parentNode.classList.add('active');
-          if (firstLevel) firstLevel.classList.add('in');
           if (secondLevel) secondLevel.parentNode.classList.add('active');
-          if (secondLevel) secondLevel.classList.add('in');
         }
       }
     });
@@ -211,4 +209,6 @@
       }
     }
   }
+  // eslint-disable-next-line no-new
+  new JoomlaMenu('#menu');
 })(window.Joomla, document);

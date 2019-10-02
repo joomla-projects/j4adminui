@@ -79,7 +79,7 @@ $input = Factory::getApplication()->input;
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>
 			<?php else : ?>
-				<div class="alert alert-success">
+				<div class="j-alert j-alert-success">
 					<span class="fa fa-check-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('NOTICE'); ?></span>
 					<?php echo Text::_('COM_TEMPLATES_OVERRIDE_UPTODATE'); ?>
 				</div>
