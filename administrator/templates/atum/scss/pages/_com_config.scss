@@ -29,6 +29,12 @@
       margin-bottom: 15px;
     }
     ul.nav{
+      @include media-breakpoint-down(lg){
+        @extend .flex-direction-column;
+        >li{
+          margin-right: 15px;
+        }
+      }
       >li {
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 5px;
@@ -52,10 +58,13 @@
   }
   .com-config-content{
     flex: auto;
+    .form-control{
+      width: 100%;
+    }
   }
   @include media-breakpoint-down(lg){
-    .j-table-responsive{
-      max-width: 500px;
+    form#application-form{
+      @extend .flex-direction-column;
     }
   }
 }
