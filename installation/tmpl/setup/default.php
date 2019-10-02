@@ -44,8 +44,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 			</ul>
 		</div>
 		<div class="col">
-			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
-				<fieldset id="installStep0" class="j-install-step active">
+			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form d-none">
+				<fieldset id="installStep0" class="j-install-step">
 					<div class="j-install-step-body">
 						<div class="form-group">
 							<?php echo $this->form->getLabel('language'); ?>
@@ -60,66 +60,148 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 			</form>
-			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
+			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form active">
 				<fieldset id="installStep1" class="j-install-step">
-					<div class="form-group">
-						<?php echo $this->form->getLabel('site_name'); ?>
-						<?php echo $this->form->getInput('site_name'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('site_name'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('site_name'); ?>
+							</div>
+						</div>
 					</div>
 					<div class="j-install-step-footer">
 						<button class="btn btn-primary" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
-				<fieldset id="installStep2" class="j-install-step">
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('admin_user'); ?>
-						<?php echo $this->form->getInput('admin_user'); ?>
-						<p class="form-info">Either a username you created or a username provided by your host.</p>
+				<fieldset id="installStep2" class="j-install-step active">
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_user'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_user'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('admin_username'); ?>
-						<?php echo $this->form->getInput('admin_username'); ?>
+
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_username'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_username'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('admin_password'); ?>
-						<?php echo $this->form->getInput('admin_password'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_password'); ?>
+							</div>
+							<div class="controls">
+								<?php echo $this->form->getInput('admin_password'); ?>
+							</div>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('admin_email'); ?>
-						<?php echo $this->form->getInput('admin_email'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
 					<div class="j-install-step-footer">
 						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_CONNECT_DB'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
 				<fieldset id="installStep3" class="j-install-step" >
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_type'); ?>
-						<?php echo $this->form->getInput('db_type'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_type'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('db_type'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_host'); ?>
-						<?php echo $this->form->getInput('db_host'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_host'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('db_host'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_user'); ?>
-						<?php echo $this->form->getInput('db_user'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_user'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('db_user'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_pass'); ?>
-						<?php echo $this->form->getInput('db_pass'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_pass'); ?>
+							</div>
+							<div class="controls">
+								<?php echo $this->form->getInput('db_pass'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_name'); ?>
-						<?php echo $this->form->getInput('db_name'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_name'); ?>
+							</div>
+							<div class="controls">
+								<?php echo $this->form->getInput('db_name'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_prefix'); ?>
-						<?php echo $this->form->getInput('db_prefix'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_prefix'); ?>
+							</div>
+							<div class="controls">
+								<?php echo $this->form->getInput('db_prefix'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
-					<div class="form-group input-container">
-						<?php echo $this->form->getLabel('db_old'); ?>
-						<?php echo $this->form->getInput('db_old'); ?>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('db_old'); ?>
+							</div>
+							<div class="controls">
+								<?php echo $this->form->getInput('db_old'); ?>
+							</div>
+							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+						</div>
 					</div>
 					<div class="j-install-step-footer">
 						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>

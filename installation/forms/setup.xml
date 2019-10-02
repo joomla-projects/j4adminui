@@ -53,7 +53,9 @@
 			class="form-control"
 			required="true"
 			autocomplete="off"
-			strengthmeter="on"
+			strengthmeter="true"
+			force="on"
+			size="30"
 		/>
 		<field
 			name="db_type"
