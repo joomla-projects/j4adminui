@@ -23,34 +23,34 @@ $class   = '';
 // Build the CSS class suffix
 if (!$this->enabled)
 {
-	$class = ' class="disabled"';
+	$class = "disabled";
 }
 elseif ($current->type == 'separator')
 {
-	$class = $current->title ? ' class="menuitem-group"' : ' class="divider"';
+	$class = $current->title ? "menuitem-group" : "divider";
 }
 elseif ($current->hasChildren())
 {
-	$class = ' class="dropdown-submenu"';
+	$class = "dropdown-submenu";
 
 	if ($current->level == 1)
 	{
-		$class = ' class="parent"';
+		$class = "parent";
 	}
 	elseif ($current->get('class') === 'scrollable-menu')
 	{
-		$class = ' class="dropdown scrollable-menu"';
+		$class = "dropdown scrollable-menu";
 	}
 }
-
+$class = $class ? 'class="'.$class.'"' : '';
 // Set the correct aria role and print the item
 if ($current->type == 'separator')
 {
-	echo '<li' . $class . ' role="presentation">';
+	echo '<li ' .$class. ' role="presentation">';
 }
 else
 {
-	echo '<li' . $class . ' role="menuitem">';
+	echo '<li ' .$class. ' role="menuitem">';
 }
 
 // Print a link if it exists
