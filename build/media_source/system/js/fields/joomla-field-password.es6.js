@@ -283,8 +283,8 @@
           this.indicatorsContainer.append(this.indicatorText);
 
           // appending
-          this.inputGroup.append(this.indicatorsContainer);
           this.inputGroup.append(this.inputContainer);
+          this.inputGroup.append(this.indicatorsContainer);
           this.passwordGroup.append(this.inputGroup);
           this.append(this.passwordGroup);
         }
