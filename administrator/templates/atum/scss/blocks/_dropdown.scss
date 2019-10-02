@@ -98,6 +98,7 @@ joomla-dropdown {
     cursor: pointer;
     color: var(--text-color);
     transition: 300ms;
+    min-width: 100%;
     &:not([href]):not([tabindex]):hover,
     &:hover{
       color: var(--link-color);
