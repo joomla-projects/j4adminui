@@ -49,6 +49,7 @@
 			class="form-control"
 			size="30"
 		/>
+
 		<field
 			name="admin_password"
 			type="password"

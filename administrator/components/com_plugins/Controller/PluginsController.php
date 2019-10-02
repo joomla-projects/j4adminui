@@ -47,18 +47,23 @@ class PluginsController extends AdminController
 	 */
 	public function getQuickiconContent()
 	{
-		$model = $this->getModel('Plugins');
+		try {
+			$model = $this->getModel('Plugins');
 
-		$model->setState('filter.enabled', 1);
-
-		$amount = (int) $model->getTotal();
-
-		$result = [];
-
-		$result['amount'] = $amount;
-		$result['sronly'] = Text::plural('COM_PLUGINS_N_QUICKICON_SRONLY', $amount);
-		$result['name'] = Text::plural('COM_PLUGINS_N_QUICKICON', $amount);
-
-		echo new JsonResponse($result);
+			$model->setState('filter.enabled', 1);
+	
+			$amount = (int) $model->getTotal();
+	
+			$result = [];
+	
+			$result['amount'] = $this->numberShorten($amount);
+			$result['sronly'] = Text::plural('COM_PLUGINS_N_QUICKICON_SRONLY', $amount);
+			$result['name'] = Text::plural('COM_PLUGINS_N_QUICKICON', $amount);
+	
+			echo new JsonResponse($result);
+		} catch ( Exception $e) {
+			echo new JsonResponse(['success'=>false, 'message'=>$e->getMessage()]);
+		}
+		
 	}
 }

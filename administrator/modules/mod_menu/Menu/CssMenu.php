@@ -147,7 +147,6 @@ class CssMenu
 				return $this->root;
 			}
 		}
-
 		$this->preprocess($this->root);
 
 		return $this->root;

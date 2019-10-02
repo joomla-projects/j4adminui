@@ -1,7 +1,14 @@
 //
 // Base styles
 //
-
+$table-data-border: 1px solid var(--page-background);
+//Active and Hover style mixin
+@mixin tab-hover-active () {
+	background-color: var(--button-background);
+	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+	color: var(--color);
+	font-weight: 500;
+}
 joomla-tab {
 	display: flex;
 	flex-direction: column;
@@ -83,6 +90,42 @@ joomla-tab a[disabled=true]{
 joomla-tab > section {
 	position: relative;
 	display: none;
+	width: 100%;
+	.table {
+		&.j-permission-table {
+			td,th {
+				padding: 1.1rem;
+			}
+			thead {
+				th {
+					border-top: 0;
+					font-size: 1rem;
+					color: var(--secondary-color);
+					border-bottom: $table-data-border;
+					border-right: $table-data-border;
+					&:last-child {
+						border-right: 0;
+					}
+				}
+			}
+			tbody {
+				td {
+					border-top: $table-data-border;
+					border-right: $table-data-border;
+					&:last-child {
+						border-right: 0;
+					}
+				}
+				tr{
+					&:hover,
+					&:focus,
+					&:active {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+	}
 }
 
 joomla-tab > section[active] {
@@ -92,13 +135,27 @@ joomla-tab > section[active] {
 joomla-tab[orientation=vertical] {
 	flex-direction: row;
 	align-items: flex-start;
+	border-radius: 3px;
+	box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
+	border: solid 1px var(--cancel-button-background);
+	background-color: $white;
+	&.j-card{
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+	}
 }
 
 joomla-tab[orientation=vertical] > ul {
 	flex-direction: column;
-    min-width: 30%;
+	min-width: 30%;
 	height: auto;
-	border-right: 1px solid var(--secondary-icon-color);
+	border-right: $table-data-border;
+	border-bottom: 0;
+	padding: 2.2rem 0px;
+	li {
+		a{
+			padding-left: 2.2rem;
+		}
+	}
 }
 
 joomla-tab[orientation=vertical] a[disabled=true]:hover,
@@ -110,32 +167,40 @@ joomla-tab[orientation=vertical] a {
 	color: var(--secondary-color);
 	padding: .45rem 1rem;
 	position: relative;
-	border-top: 1px solid var(--background);
-	box-shadow: none;
 	text-decoration: none;
-}
-joomla-tab[orientation=vertical] a[role=tab]:after{
-	right: 0;
-	border-radius: 0;
+	&::after {
+		display: none;
+	}
+	&::before {
+		background-color: var(--primary-color);
+		bottom: 0px;
+		content: "";
+		top: 0;
+		left: auto;
+		position: absolute;
+		right: 0;
+		opacity: 0;
+		visibility: hidden;
+		transition: .35s;
+		width: 3px;
+	}
 }
 joomla-tab[orientation=vertical] a:hover {
-	color: var(--secondary-color);
+	@include tab-hover-active();
+	&::before {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 joomla-tab[orientation=vertical] a[active] {
-	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
-	color: var(--color);
-	font-weight: 500;
+	@include tab-hover-active();
+	&::before {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 joomla-tab[orientation=vertical] a[role=tab]:active {
 	outline: none;
-}
-
-joomla-tab[orientation=vertical] a[active]:after {
-	left: auto;
-    width: 3px;
-	height: auto;
-	top: 0;
-	bottom: 0;
 }
 
 joomla-tab[view=accordion] > ul {

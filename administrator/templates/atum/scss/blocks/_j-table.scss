@@ -73,11 +73,18 @@ table {
                 th,
                 td {
                     a {
-                        
                         color: var(--inverse-background);
                         font-weight: $normal-weight;
                         text-decoration: none;
                         color: var(--inverse-background);
+                        &.j-has-dropdown,
+                        &.j-has-dropdown:hover,
+                        &.j-has-dropdown:focus,
+                        &.j-has-dropdown:active,
+                        &.j-transition-select:hover,
+                        &.j-transition-select:active,
+                        &.j-transition-select:focus,
+                        &.j-transition-select,
                         &:not(.badge) {
                             text-decoration: none;
                         }
@@ -149,6 +156,11 @@ table {
                 joomla-dropdown {
                     .dropdown-item {
                         line-height: 1;
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            text-decoration: none;
+                        }
                     }
                 }
                 .badge.badge-info {

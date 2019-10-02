@@ -28,6 +28,7 @@
     });
     document.querySelectorAll('.j-quickicon').forEach((quickicon) => {
       const pulse = quickicon.querySelector('.pulse');
+      quickicon.classList.add('j-skeleton');
       const counterAnimate = quickicon.querySelector('.j-counter-animation');
       if (quickicon.dataset.url) {
         Joomla.request({
@@ -36,6 +37,7 @@
           onSuccess: ((resp) => {
             const response = JSON.parse(resp);
             quickicon.removeAttribute('data-loading');
+            quickicon.classList.remove('j-skeleton');
 
             if (typeof response.data !== 'undefined') {
               if (pulse) {
@@ -48,6 +50,7 @@
                 quickicon.setAttribute('data-status', 'success');
               }
               // Set amount of number into counter span
+              // counterAnimate.textContent = numberFormatter(response.data.amount, 1);
               counterAnimate.textContent = `\u200E${response.data.amount}`;
 
               // Insert screenreader text

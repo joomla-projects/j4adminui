@@ -39,7 +39,8 @@ body {
 	width: 100%;
 	max-width: 660px;
 	margin: 0 auto;
-	padding-top: 4.286rem 8.571rem;
+	padding: 4.286rem 0 8.571rem;
+	position: relative;
 	h1 {
 		color: $dark-blue;
 		text-align: center;
@@ -177,108 +178,8 @@ body {
 	}
 }
 
-.alert-text {
-	width: 75%;
-	padding: 10px 20px;
-}
-
 .hidden, [hidden="hidden"] {
 	display: none;
-}
-
-.btn-success {
-	color: #fff;
-	background-color: #75b544;
-	border-color: #75b544;
-}
-
-
-// Form
-
-.form-control {
-	background-color: var(--white-offset);
-	
-	&.input-full {
-		max-width: 100%;
-	}
-	
-}
-
-.control-group {
-	margin-bottom: 18px;
-	
-	&::after {
-		display: table;
-		clear: both;
-		content: "";
-	}
-	
-	.control-label {
-		float: left;
-		padding-top: 5px;
-		padding-right: 5px;
-		text-align: left;
-	}
-}
-
-.form-no-margin {
-	
-	.control-group {
-		
-		.controls {
-			margin-left: 0;
-		}
-		
-		.control-label {
-			float: none;
-		}
-		
-	}
-	
-}
-
-.spacer hr {
-	width: 380px;
-}
-
-.card .custom-select {
-	width: 100%;
-}
-
-td .form-control {
-	display: inline-block;
-	width: auto;
-}
-
-legend {
-	margin-bottom: 1.1rem;
-}
-
-.checkboxes {
-	padding-top: 5px;
-	
-	.checkbox input {
-		position: static;
-		margin-left: 0;
-	}
-	
-}
-
-.form-check {
-	padding-top: 5px;
-	margin-bottom: 0;
-}
-
-// Possibly temporary until Bootstrap support it themselves
-.custom-select[multiple] {
-	height: auto;
-	background: none;
-}
-
-// Block display for the validation message
-.form-control-feedback {
-	display: block;
-	color: $red;
 }
 
 // Language Table
@@ -303,8 +204,21 @@ caption {
 
 // footer
 .footer {
-	position: fixed;
+	position: absolute;
 	bottom: 1.857rem;
 	left: 0;
 	z-index: $zindex-header;
+}
+
+.form-control-feedback{
+	font-size: 0.643rem;
+}
+
+.j-install-step .input-group{
+	display: block;
+}
+
+.j-install-from-pass-info{
+	padding-left: 20px;
+	margin: 5px 0 0;
 }

@@ -347,15 +347,6 @@
           }
         ]
       },
-      "metismenujs": {
-        "name": "metismenujs",
-        "licenseFilename": "LICENSE",
-        "js": {
-          "dist/metismenujs.js": "js/metismenujs.js",
-          "dist/metismenujs.min.js": "js/metismenujs.min.js",
-          "dist/metismenujs.min.js.map": "js/metismenujs.min.js.map"
-        }
-      },
       "skipto": {
         "name": "skipto",
         "licenseFilename": "LICENSE.md",

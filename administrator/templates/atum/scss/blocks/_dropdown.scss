@@ -74,6 +74,11 @@ joomla-dropdown {
         transform: translateY(-50%) rotate(90deg)
       }
     }
+    &:last-child {
+      .dropdown-item {
+        border-bottom: 0;
+      }
+    }
   }
   
   &[expanded] {
@@ -93,9 +98,9 @@ joomla-dropdown {
     cursor: pointer;
     color: var(--text-color);
     transition: 300ms;
+    min-width: 100%;
     &:not([href]):not([tabindex]):hover,
     &:hover{
-      box-shadow: 0 9px 8px -6px rgba(29, 36, 39, 0.2);
       color: var(--link-color);
       background-color: var(--button-background);
       .menu-item-title {
@@ -133,6 +138,9 @@ joomla-dropdown {
       color: var(--icon-color);
       font-size: 12px;
     }
+    &:last-child {
+      border-bottom: 0;
+    }
   }
 }
 
@@ -141,7 +149,11 @@ joomla-dropdown {
   display: inline-flex;
   vertical-align: middle;
 }
-
+.j-has-dropdown {
+  span {
+    margin-left: .5rem;
+  }
+}
 // RTL overrides
 html[dir=rtl] joomla-dropdown {
   right: 0;

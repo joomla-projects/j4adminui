@@ -1,6 +1,6 @@
 // Edit Form
 
-.title-alias {
+.title-alias, .form-title-wrap {
 	.form-control {
 		max-width: 100%;
 	}
@@ -12,8 +12,8 @@
 	.form-control-feedback {
 		text-align: left;
 		position: absolute;
-		bottom: -1.2rem;
-		font-size: .88rem;
+		bottom: -1.4rem;
+		font-size: .9rem;
 	}
 }
 

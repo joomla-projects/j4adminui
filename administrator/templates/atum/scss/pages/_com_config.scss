@@ -22,13 +22,19 @@
       margin-left: 0;
     }
   }
-  .com-config-sidebar{
+  .sidebar-content{
     .nav-header{
       font-size: 1.14rem;
       font-weight: 400;
       margin-bottom: 15px;
     }
     ul.nav{
+      @include media-breakpoint-down(lg){
+        flex-direction: row !important;
+        >li{
+          margin-right: 15px;
+        }
+      }
       >li {
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 5px;
@@ -44,6 +50,72 @@
           color: var(--link-color);
         }
       }
+    }
+  }
+  .com-config-sidebar{
+    min-width: 240px;
+    margin-right: 30px;
+  }
+  .com-config-content{
+    flex: auto;
+    joomla-tab{
+      >ul{
+        border-bottom: none;
+        flex-wrap: wrap;
+      }
+    }
+    .form-control{
+      width: 100%;
+    }
+    #fieldset-permissions{
+      .control-group.revert-controls{
+        >.control-label.sr-only{
+          display: none;
+        }
+        >.controls{
+          margin-left: 0;
+        }
+      }
+    }
+    #page-system{
+      #jform_helpurl+button{
+        margin-top: 10px;
+      }
+    }
+    .badge.badge-success{
+      .icon-white{
+        color: inherit;
+      }
+    }
+    .filter-notes.j-card-header{
+      justify-content: flex-start !important;
+    }
+    .control-group .control-label {
+      #jform_return_any_or_all-lbl,
+      #jform_all_tags_orderby_direction-lbl,
+      #jform_tag_list_orderby_direction-lbl{
+        display: none;
+      }
+    }
+    joomla-field-send-test-mail{
+      display: block;
+      @extend .j-card;
+      >fieldset.j-card{
+        background: transparent;
+        box-shadow: none;
+      }
+      >button{
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .content main>form{
+    display: flex;
+  }
+  @include media-breakpoint-down(lg){
+    .content main>form{
+      flex-direction: column;
     }
   }
 }

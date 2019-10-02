@@ -359,3 +359,12 @@ body .container-main {
     }
   }
 }
+.j-table-responsive{
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.no-boxshadow{
+  box-shadow: none !important;
+}

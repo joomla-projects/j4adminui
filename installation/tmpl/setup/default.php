@@ -32,6 +32,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
+<<<<<<< HEAD
 					<button type="button" role="button" id="navStep2" data-step="step2">Login Data</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
@@ -39,6 +40,12 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 				</li>
 				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
 					<button type="button" role="button" id="navStep4" data-step="step3">Installing Site</button>
+=======
+					<button type="button" role="button" id="navStep2" data-step="step2">User Profile</button>
+				</li>
+				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
+					<button type="button" role="button" id="navStep3" data-step="step3">Database Configuration</button>
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 				</li>
 				<li>
 					<button type="button" role="button" id="navStep5" data-step="step4">Finalizion Installation</button>
@@ -82,6 +89,20 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 								<?php echo $this->form->getInput('site_name'); ?>
 							</div>
 							<small class="form-text text-muted">Enter the name of your Joomla site.</small>
+<<<<<<< HEAD
+=======
+						</div>
+					</div>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text text-muted">Enter the name of your Joomla site.</small>
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 						</div>
 					</div>
 					<div class="j-install-step-footer">
@@ -98,7 +119,11 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_user'); ?>
 							</div>
+<<<<<<< HEAD
 							<small class="form-text text-muted">Enter the real name of your Super User.</small>
+=======
+							<small class="form-text text-muted">Enter the real name of your Super User</small>
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 						</div>
 					</div>
 
@@ -110,7 +135,11 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_username'); ?>
 							</div>
+<<<<<<< HEAD
 							<small class="form-text text-muted">Enter super user's username.</small>
+=======
+							<small class="form-text text-muted">Enter the real name of your Super User</small>
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -123,8 +152,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							</div>
 							<div class="form-text text-muted">
 								<small>Set the password for your Super User account.</small>
-								<small>To make your password stronger-</small>
-								<ul>
+								<ul class="j-install-from-pass-info">
+									<li><small>To make your password stronger-</small></li>
 									<li><small>Make it at least 8 characters.</small></li>
 									<li><small>Add uppercase letters.</small></li>
 									<li><small>Add numbers and punctuations.</small></li>
@@ -133,6 +162,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -144,6 +174,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<small class="form-text text-muted">Enter the super user's email address.</small>
 						</div>
 					</div>
+=======
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 					<div class="j-install-step-footer">
 						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
@@ -158,7 +190,11 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_type'); ?>
 							</div>
+<<<<<<< HEAD
 							<small class="form-text text-muted">Select a database type form the options.</small>
+=======
+							<small class="form-text text-muted">Select the database type</small>
+>>>>>>> eb7d4b72d49e2cc9300a27e66cbd7f099c0ab9d2
 						</div>
 					</div>
 					<div class="form-no-margin">
