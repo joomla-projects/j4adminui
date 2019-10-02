@@ -45,6 +45,7 @@
 			class="form-control"
 			size="30"
 		/>
+
 		<field
 			name="admin_password"
 			type="password"
@@ -55,6 +56,11 @@
 			required="true"
 			autocomplete="off"
 			strengthmeter="true"
+			minLength="8"
+			minIntegers="1"
+			minSymbols="1"
+			minUppercase="1"
+			minLowercase="1"
 			force="on"
 			size="30"
 		/>

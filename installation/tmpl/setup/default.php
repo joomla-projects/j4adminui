@@ -32,10 +32,10 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
-					<button type="button" role="button" id="navStep2" data-step="step2">Database Configuration</button>
+					<button type="button" role="button" id="navStep2" data-step="step2">User Profile</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
-					<button type="button" role="button" id="navStep3" data-step="step3">Installing Site</button>
+					<button type="button" role="button" id="navStep3" data-step="step3">Database Configuration</button>
 				</li>
 				<li>
 					<button type="button" role="button" id="navStep4" data-step="step4">Finalizion Installation</button>
@@ -70,6 +70,18 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('site_name'); ?>
 							</div>
+							<small class="form-text text-muted">Enter the name of your Joomla site.</small>
+						</div>
+					</div>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text text-muted">Enter the name of your Joomla site.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
@@ -85,7 +97,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_user'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the real name of your Super User</small>
 						</div>
 					</div>
 
@@ -97,7 +109,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_username'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the real name of your Super User</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -110,25 +122,14 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							</div>
 							<div class="form-text text-muted">
 								<small>Set the password for your Super User account.</small>
-								<small>To make your password stronger-</small>
-								<ul>
+								<ul class="j-install-from-pass-info">
+									<li><small>To make your password stronger-</small></li>
 									<li><small>Make it at least 8 characters.</small></li>
 									<li><small>Add uppercase letters.</small></li>
 									<li><small>Add numbers and punctuations.</small></li>
 									<li><small>Make it different from username.</small></li>
 								</ul>
 							</div>
-						</div>
-					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
@@ -144,7 +145,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_type'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Select the database type</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -155,7 +156,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_host'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the host name, usually "localhost" or a name provided by your host.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -177,7 +178,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_pass'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Either a password you created or a password provided by your host.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -188,7 +189,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_name'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the database name</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -199,7 +200,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_prefix'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter a table prefix or use the randomly generated one</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
