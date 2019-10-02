@@ -17,7 +17,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 /**
  * Utility class for Webcomponent elements.
  *
- * @since  4.0.1
+ * @since  4.0.0
  */
 abstract class JHtmlWebcomponent
 {
@@ -25,7 +25,7 @@ abstract class JHtmlWebcomponent
 
     /**
 	 * @var    array  Array containing information for loaded files
-	 * @since  4.0.1
+	 * @since  4.0.0
 	 */
 	protected static $loaded = array();
 
@@ -36,7 +36,7 @@ abstract class JHtmlWebcomponent
      * 
      * @param   string  $selector  The ID selector for the modal.
      * 
-     * @since  4.0.1
+     * @since  4.0.0
      */
     public static function renderModal($selector = 'modal', $params = array(), $body = '') 
     {
@@ -69,7 +69,7 @@ abstract class JHtmlWebcomponent
 	 *
 	 * @return  void
 	 *
-	 * @since   4.0.1
+	 * @since   4.0.0
 	 */
 	public static function assets($filename, $debug = null)
 	{

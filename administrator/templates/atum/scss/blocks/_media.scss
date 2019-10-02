@@ -1,5 +1,17 @@
 //Media Manager Style
-
+//Media action popup style mixin
+@mixin media-popup-action ($width, $pad1, $pad2) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 25px;
+    width: $width;
+    background: var(--inverse-color);
+    border-radius: 3px;
+    box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+    border: solid 1px #eaeef5;
+    padding: $pad1 $pad2;
+}
 //Progress bar style
 .joomla-progress {
     background: #f1f8ec;
@@ -708,7 +720,7 @@ table {
             }
         }
         .checkmark {
-           width: 3%;
+            width: 3%;
         }
     }
 }

@@ -34,36 +34,3 @@
 
   animation: fadein $fadetime;
 }
-
-//Input style mixin
-@mixin input-style () {
-  border: 2px solid var(--input-border-color);
-  border-radius: 3px;
-  background-color: var(--input-background-color);
-  color: var(--icon-color);
-  display: block;
-  height: 2.86rem;
-  min-width: 100%;
-  font-size: 1rem;
-}
-
-//Media action popup style
-@mixin media-popup-action ($width, $pad1, $pad2) {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 25px;
-  width: $width;
-  background: var(--inverse-color);
-  border-radius: 3px;
-  box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
-  border: solid 1px #eaeef5;
-  padding: $pad1 $pad2;
-}
-//Active and Hover tab style
-@mixin tab-hover-active () {
-  background-color: var(--button-background);
-	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
-  color: var(--color);
-  font-weight: 500;
-}
