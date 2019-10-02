@@ -49,6 +49,7 @@
 			name="admin_password"
 			type="password"
 			label="INSTL_ADMIN_PASSWORD_DESC"
+			description=""
 			id="admin_password"
 			class="form-control"
 			required="true"

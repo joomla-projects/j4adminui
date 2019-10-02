@@ -44,8 +44,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 			</ul>
 		</div>
 		<div class="col">
-			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form d-none">
-				<fieldset id="installStep0" class="j-install-step">
+			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
+				<fieldset id="installStep0" class="j-install-step active">
 					<div class="j-install-step-body">
 						<div class="form-group">
 							<?php echo $this->form->getLabel('language'); ?>
@@ -60,8 +60,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 			</form>
-			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form active">
-				<fieldset id="installStep1" class="j-install-step">
+			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
+				<fieldset id="installStep1" class="j-install-step active">
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -107,6 +107,16 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							</div>
 							<div class="controls">
 								<?php echo $this->form->getInput('admin_password'); ?>
+							</div>
+							<div class="form-text text-muted">
+								<small>Set the password for your Super User account.</small>
+								<small>To make your password stronger-</small>
+								<ul>
+									<li><small>Make it at least 8 characters.</small></li>
+									<li><small>Add uppercase letters.</small></li>
+									<li><small>Add numbers and punctuations.</small></li>
+									<li><small>Make it different from username.</small></li>
+								</ul>
 							</div>
 						</div>
 					</div>

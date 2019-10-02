@@ -89,6 +89,19 @@ body {
 				border-color: var(--primary-color);
 			}
 		}
+		&.completed{
+			&::before{
+				background: var(--primary-color);
+				border-color: var(--primary-color);
+				content: "\f00c";
+				font-family: Font Awesome\ 5 Free;
+				color: #fff;
+				font-size: 8px;
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
 	}
 }
 .j-install-form.active{

@@ -162,6 +162,19 @@ const clearAllActives = function() {
 	navStep3.classList.remove('active');
 };
 
+const completePath = function(index) {
+	const navSteps = [];
+	navSteps.push(document.querySelector('#navStep0'));
+	navSteps.push(document.querySelector('#navStep1'));
+	navSteps.push(document.querySelector('#navStep2'));
+	navSteps.push(document.querySelector('#navStep3'));
+	
+	for (let i = 0; i < index - 1 ; i += 1) {
+		navSteps[i].classList.add('completed');
+	}
+
+};
+
 (function() {
 	// Merge options from the session storage
 	if (sessionStorage && sessionStorage.getItem('installation-data')) {
@@ -235,6 +248,7 @@ const clearAllActives = function() {
 				installStep1.classList.add('active');
 				navStep1.classList.add('active');
 				navStep0.classList.remove('active');
+				completePath(2);
 			}
 		});
 	}
@@ -246,6 +260,7 @@ const clearAllActives = function() {
 				clearAllActives();
 				installStep2.classList.add('active');
 				navStep2.classList.add('active');
+				completePath(3);
 			}
 		});
 	}
@@ -257,6 +272,7 @@ const clearAllActives = function() {
 				clearAllActives();
 				installStep3.classList.add('active');
 				navStep3.classList.add('active');
+				completePath(4);
 			}
 		});
 	}
