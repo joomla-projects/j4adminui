@@ -71,20 +71,20 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 				<fieldset id="installStep2" class="j-install-step">
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('admin_user'); ?>
 						<?php echo $this->form->getInput('admin_user'); ?>
 						<p class="form-info">Either a username you created or a username provided by your host.</p>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('admin_username'); ?>
 						<?php echo $this->form->getInput('admin_username'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('admin_password'); ?>
 						<?php echo $this->form->getInput('admin_password'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('admin_email'); ?>
 						<?php echo $this->form->getInput('admin_email'); ?>
 					</div>
@@ -93,31 +93,31 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 				<fieldset id="installStep3" class="j-install-step" >
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_type'); ?>
 						<?php echo $this->form->getInput('db_type'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_host'); ?>
 						<?php echo $this->form->getInput('db_host'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_user'); ?>
 						<?php echo $this->form->getInput('db_user'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_pass'); ?>
 						<?php echo $this->form->getInput('db_pass'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_name'); ?>
 						<?php echo $this->form->getInput('db_name'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_prefix'); ?>
 						<?php echo $this->form->getInput('db_prefix'); ?>
 					</div>
-					<div class="form-group">
+					<div class="form-group input-container">
 						<?php echo $this->form->getLabel('db_old'); ?>
 						<?php echo $this->form->getInput('db_old'); ?>
 					</div>
