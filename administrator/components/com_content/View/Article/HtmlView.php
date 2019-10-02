@@ -236,7 +236,7 @@ class HtmlView extends BaseHtmlView
 						'closeButton' => false,
 						'url' => $urlNew,
 						'height' => '400px',
-						'width' => '800px',
+						'width' => '80%',
 						'bodyHeight' => 70,
 						'modalWidth' => 80,
 						'footer' => '<button type="button" class="btn btn-secondary" aria-hidden="true"'

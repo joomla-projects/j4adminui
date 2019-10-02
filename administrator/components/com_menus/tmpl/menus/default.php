@@ -36,6 +36,7 @@ foreach ($this->items as $item)
 Factory::getDocument()->addScriptOptions('menus-default', ['items' => $itemIds]);
 HTMLHelper::_('jquery.framework');
 HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' => 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' => 'auto', 'relative' => true));
 ?>
 <form action="<?php echo Route::_('index.php?option=com_menus&view=menus'); ?>" method="post" name="adminForm" id="adminForm">
 	<div class="row">
@@ -143,23 +144,26 @@ HTMLHelper::_('script', 'com_menus/admin-menus-default.min.js', array('version' 
 								</td>
 								<td class="text-center d-none d-lg-table-cell">
 									<?php if (isset($this->modules[$item->menutype])) : ?>
-										<div class="dropdown">
-											<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
+										<div class="joomla-dropdown-container">
+											<a href="javascript:;" class="btn btn-secondary btn-sm j-has-dropdown" data-target="menuTypeModule<?php echo $item->id; ?>">
 												<?php echo Text::_('COM_MENUS_MODULES'); ?>
-												<span class="caret"></span>
-											</button>
-											<div class="dropdown-menu dropdown-menu-right">
+												<span class="fa fa-caret-down"></span>
+											</a>
+											<joomla-dropdown for="menuTypeModule<?php echo $item->id; ?>">
 												<?php foreach ($this->modules[$item->menutype] as &$module) : ?>
 													<?php if ($user->authorise('core.edit', 'com_modules.module.' . (int) $module->id)) : ?>
 														<?php $link = Route::_('index.php?option=com_modules&task=module.edit&id=' . $module->id . '&return=' . $return . '&tmpl=component&layout=modal'); ?>
-														<button type="button" class="dropdown-item" data-href="#moduleEdit<?php echo $module->id; ?>Modal" data-toggle="modal" title="<?php echo Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'); ?>">
-															<?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?></button>
+														<li>
+															<a href="javascript:;" class="dropdown-item" data-href="#moduleEdit<?php echo $module->id; ?>Modal" data-toggle="modal" title="<?php echo Text::_('COM_MENUS_EDIT_MODULE_SETTINGS'); ?>">
+																<?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?>
+															</a>
+														</li>
 													<?php else : ?>
-														<span class="dropdown-item"><?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?></span>
+														<li><span class="dropdown-item"><?php echo Text::sprintf('COM_MENUS_MODULE_ACCESS_POSITION', $this->escape($module->title), $this->escape($module->access_title), $this->escape($module->position)); ?></span></li>
 													<?php endif; ?>
 												<?php endforeach; ?>
-											</div>
-										 </div>
+											</joomla-dropdown>
+										</div>
 										<?php foreach ($this->modules[$item->menutype] as &$module) : ?>
 											<?php if ($user->authorise('core.edit', 'com_modules.module.' . (int) $module->id)) : ?>
 												<?php $link = Route::_('index.php?option=com_modules&task=module.edit&id=' . $module->id . '&return=' . $return . '&tmpl=component&layout=modal'); ?>
