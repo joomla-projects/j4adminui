@@ -22,37 +22,30 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 
 
 <div id="installer-view" data-page-name="setup">
-
-	<div class="row">
-		<div class="col">
-			Hello world
-		</div>
-	</div>
-
 	<div class="row no-gutters">
 		<div class="col-auto">
 			<ul class="j-install-menu">
 				<li>
-					<button data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>">Choose Language</button>
+					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>">Choose Language</button>
 				</li>
 				<li>
-					<button data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
+					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
-					<button data-step="step2">Database Configuration</button>
+					<button type="button" role="button" id="navStep2" data-step="step2">Database Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
-					<button data-step="step3">Installing Site</button>
+					<button type="button" role="button" id="navStep3" data-step="step3">Installing Site</button>
 				</li>
 				<li>
-					<button data-step="step4">Finalizion Installation</button>
+					<button type="button" role="button" id="navStep4" data-step="step4">Finalizion Installation</button>
 				</li>
 
 			</ul>
 		</div>
 		<div class="col">
-			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form">
-				<fieldset id="installStep0" class="j-install-step">
+			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
+				<fieldset id="installStep0" class="j-install-step active">
 					<div class="j-install-step-body">
 						<div class="form-group">
 							<?php echo $this->form->getLabel('language'); ?>
@@ -67,8 +60,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset>
 			</form>
-			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form active">
-				<fieldset id="installStep1" class="j-install-step active">
+			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
+				<fieldset id="installStep1" class="j-install-step">
 					<div class="form-group">
 						<?php echo $this->form->getLabel('site_name'); ?>
 						<?php echo $this->form->getInput('site_name'); ?>
@@ -125,7 +118,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo $this->form->getInput('db_prefix'); ?>
 					</div>
 					<div class="form-group">
-						<?php //echo $this->form->getLabel('db_old'); ?>
+						<?php echo $this->form->getLabel('db_old'); ?>
 						<?php echo $this->form->getInput('db_old'); ?>
 					</div>
 					<div class="form-group">
