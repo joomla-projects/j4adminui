@@ -56,7 +56,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo HTMLHelper::_('form.token'); ?>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" data-step="step1">Save & Next <span class="fas fa-angle-right icon right"></span></button>
+						<button class="btn btn-primary" data-step="step0">Save & Next <span class="fas fa-angle-right icon right"></span></button>
 					</div>
 				</fieldset>
 			</form>
