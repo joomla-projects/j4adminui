@@ -54,7 +54,7 @@ if ($module->content) :
 				<div class="d-flex mb-3 align-items-center">
 					<?php if ($module->showtitle) : ?>
 						<div class="flex-grow-1">
-							<h2<?php echo $headerClass; ?>><?php echo $headerIcon . htmlspecialchars($module->title); ?></h2>
+							<h2 <?php echo $headerClass; ?>><?php echo $headerIcon . htmlspecialchars($module->title); ?></h2>
 						</div>
 					<?php endif; ?>
 					<?php if ($canEdit || $canChange) : ?>
@@ -82,5 +82,7 @@ if ($module->content) :
 				<?php echo $module->content; ?>
 			</div>
 		</<?php echo $moduleTag; ?>>
+		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
+		<input type="hidden" value="<?php echo $module->ordering; ?>" name="order[]">
 	</div>
 <?php endif; ?>

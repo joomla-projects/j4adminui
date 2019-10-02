@@ -25,17 +25,13 @@ HTMLHelper::_('script', 'com_cpanel/admin-cpanel-default.min.js', array('version
 
 $user = Factory::getUser();
 
-HTMLHelper::_('script', 'system/joomla-modal.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
 HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
 HTMLHelper::_('script', 'mod_quickicon/quickicon-draggble.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
 
-
-// $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
-
 ?>
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>">
@@ -77,8 +73,25 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 	</div>
 	<?php endif; ?>
 </div>
-
-<joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>" class="j-modal-gray">
+<?php 
+echo HTMLHelper::_(
+	'webcomponent.renderModal',
+	'moduleDashboardAddModal',
+	array(
+		'title'       => Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'),
+		'backdrop'    => 'static',
+		'url'         => Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)),
+		'height'      => '400px',
+		'width'       => '80%',
+		'class'		  => 'j-modal-gray',
+		'bodyHeight'  => 70,
+		'modalWidth'  => 80,
+		'footer'      => '<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>'. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') .'</button>
+						<button type="button" class="button-save btn btn-sm btn-success hidden" data-target="#saveBtn" aria-hidden="true"><span class="icon-save" aria-hidden="true"></span>'. Text::_('JSAVE') .' </button>',
+	)
+);
+?>
+<!-- <joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>" class="j-modal-gray">
 	<section>&nbsp;</section>
 	<footer>
 		<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>
@@ -86,4 +99,4 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 		<button type="button" class="button-save btn btn-sm btn-success hidden" data-target="#saveBtn" aria-hidden="true"><span class="icon-save" aria-hidden="true"></span>
 			<?php echo Text::_('JSAVE'); ?> </button>
 	</footer>
-</joomla-modal>
+</joomla-modal> -->

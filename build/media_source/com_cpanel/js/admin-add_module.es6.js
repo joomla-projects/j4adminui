@@ -18,52 +18,45 @@ Joomla = window.Joomla || {};
         }, 1000);
       }
     };
-
-    const buttons = document.querySelectorAll('#moduleDashboardAddModal footer .btn');
-    const hideButtons = [];
+    let hideButtons = [];
     let isSaving = false;
-
-    if (buttons.length) {
-      buttons.forEach((button) => {
-        if (button.classList.contains('hidden')) {
-          hideButtons.push(button);
-        }
-        button.addEventListener('click', (event) => {
-          let elem = event.currentTarget;
-          // There is some bug with events in iframe where currentTarget is "null"
-          // => prevent this here by bubble up
-          if (!elem) {
-            elem = event.target;
+    document.getElementById('moduleDashboardAddModal').addEventListener('joomla.modal.show', () => {
+      const buttons = document.querySelectorAll('#moduleDashboardAddModal footer .btn');
+      hideButtons = [];
+      if (buttons.length) {
+        buttons.forEach((button) => {
+          if (button.classList.contains('hidden')) {
+            hideButtons.push(button);
           }
-
-          if (elem) {
-            const clickTarget = elem.getAttribute('data-target');
-            if (clickTarget === null) {
-              // eslint-disable-next-line no-console
-              console.warn('Save Target Missting!');
-              return false;
+          // eslint-disable-next-line consistent-return
+          button.addEventListener('click', (event) => {
+            let elem = event.currentTarget;
+            // There is some bug with events in iframe where currentTarget is "null"
+            // => prevent this here by bubble up
+            if (!elem) {
+              elem = event.target;
             }
-            // We remember to be in the saving process
-            isSaving = clickTarget === '#saveBtn';
+            if (elem) {
+              const clickTarget = elem.getAttribute('data-target');
+              if (clickTarget === null) {
+              // eslint-disable-next-line no-console
+                console.warn('Save Target Missting!');
+                return false;
+              }
+              // We remember to be in the saving process
+              isSaving = clickTarget === '#saveBtn';
 
-            // Reset saving process, if e.g. the validation of the form fails
-            setTimeout(() => { isSaving = false; }, 1500);
+              // Reset saving process, if e.g. the validation of the form fails
+              setTimeout(() => { isSaving = false; }, 1500);
 
-            const iframe = document.querySelector('#moduleDashboardAddModal iframe');
-            const content = iframe.contentDocument || iframe.contentWindow.document;
+              const iframe = document.querySelector('#moduleDashboardAddModal iframe');
+              const content = iframe.contentDocument || iframe.contentWindow.document;
 
-            content.querySelector(clickTarget).click();
-          }
+              content.querySelector(clickTarget).click();
+            }
+          });
         });
-      });
-    }
-
-    // @TODO remove jQuery dependency, when the modal is not bootstrap anymore
-    /* global jQuery */
-    jQuery('#moduleDashboardAddModal').on('hide.bs.modal', () => {
-      hideButtons.forEach((button) => {
-        button.classList.add('hidden');
-      });
+      }
     });
 
     document.getElementById('moduleDashboardAddModal').addEventListener('joomla.modal.close', () => {
@@ -72,12 +65,6 @@ Joomla = window.Joomla || {};
       });
     });
     document.getElementById('moduleDashboardAddModal').addEventListener('joomla.modal.closed', () => {
-      if (isSaving) {
-        setTimeout(() => { window.parent.location.reload(); }, 1000);
-      }
-    });
-
-    jQuery('#moduleDashboardAddModal').on('hidden.bs.modal', () => {
       if (isSaving) {
         setTimeout(() => { window.parent.location.reload(); }, 1000);
       }

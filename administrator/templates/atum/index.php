@@ -28,11 +28,6 @@ $cpanel     = $option === 'com_cpanel';
 $hiddenMenu = $app->input->get('hidemainmenu');
 $menuSettings = $app->input->cookie->get('atum-sidebar');
 
-// if( $menuSettings == NULL ) {
-//     $menuStatus = $hiddenMenu ? 'closed' : 'open';
-//     $app->input->cookie->set('atum-sidebar', $menuStatus, 31536000, '/', '','');
-// }
-
 $hiddenMenuClass = $hiddenMenu || $menuSettings == 'closed' ? 'closed' : '';
 
 $joomlaLogo = $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
