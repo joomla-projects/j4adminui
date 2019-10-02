@@ -192,6 +192,11 @@ const completePath = function(index) {
 	const navStep1 	= document.querySelector('#navStep1');
 	const navStep2 	= document.querySelector('#navStep2');
 	const navStep3 	= document.querySelector('#navStep3');
+
+	const btnStep0 	= document.querySelector('#step0');
+	const btnStep1 	= document.querySelector('#step1');
+	const btnStep2 	= document.querySelector('#step2');
+	const btnStep3 	= document.querySelector('#setupButton');
 	
 	Joomla.pageInit();
 
@@ -212,7 +217,7 @@ const completePath = function(index) {
 	if (languageEl) {
 		languageEl.addEventListener('change', function(e) {
 			var form = document.getElementById('languageForm');
-			Joomla.setlanguage(form)
+			Joomla.setlanguage(form);
 		})
 	}
 
@@ -277,6 +282,36 @@ const completePath = function(index) {
 		});
 	}
 
+	if (btnStep0) {
+		btnStep0.addEventListener('click', function(e){
+			e.preventDefault();
+			
+			if (Joomla.isFilled('#installStep0')) {
+				if (installStep1) {
+					clearAllActives();
+					if (adminForm.classList.contains('d-none')) {
+						adminForm.classList.remove('d-none');
+						adminForm.classList.add('active');
+						languageForm.classList.remove('active');
+						languageForm.classList.add('d-none');
+					}
+					
+					installStep1.classList.add('active');
+					navStep1.classList.add('active');
+					navStep0.classList.remove('active');
+					
+					// Focus to the next field
+					if (document.getElementById('jform_site_name')) {
+						document.getElementById('jform_site_name').focus();
+					}
+					
+					completePath(2);
+
+				}
+			}
+		});
+	}
+
 
 	if (document.getElementById('step1')) {
 		document.getElementById('step1').addEventListener('click', function(e) {
@@ -292,7 +327,6 @@ const completePath = function(index) {
 					if (document.getElementById('jform_admin_user')) {
 						document.getElementById('jform_admin_user').focus();
 					}
-					
 					completePath(3);
 				}
 			}

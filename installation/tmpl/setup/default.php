@@ -32,13 +32,16 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
-					<button type="button" role="button" id="navStep2" data-step="step2">Database Configuration</button>
+					<button type="button" role="button" id="navStep2" data-step="step2">Login Data</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
-					<button type="button" role="button" id="navStep3" data-step="step3">Installing Site</button>
+					<button type="button" role="button" id="navStep3" data-step="step3">Database Configuration</button>
+				</li>
+				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
+					<button type="button" role="button" id="navStep4" data-step="step3">Installing Site</button>
 				</li>
 				<li>
-					<button type="button" role="button" id="navStep4" data-step="step4">Finalizion Installation</button>
+					<button type="button" role="button" id="navStep5" data-step="step4">Finalizion Installation</button>
 				</li>
 
 			</ul>
@@ -47,19 +50,27 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
 				<fieldset id="installStep0" class="j-install-step active">
 					<div class="j-install-step-body">
-						<div class="form-group">
-							<?php echo $this->form->getLabel('language'); ?>
-							<?php echo $this->form->getInput('language'); ?>
+						<div class="form-no-margin">
+							<div class="control-group">
+								<div class="control-label">
+									<?php echo $this->form->getLabel('language'); ?>
+								</div>
+								<div class="controlls">
+									<?php echo $this->form->getInput('language'); ?>
+								</div>
+								<small class="form-text text-muted">Select your prefered language for joomla installation</small>
+							</div>
 						</div>
 						<input type="hidden" name="task" value="language.set">
 						<input type="hidden" name="format" value="json">
 						<?php echo HTMLHelper::_('form.token'); ?>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" data-step="step0">Save & Next <span class="fas fa-angle-right icon right"></span></button>
+						<button class="btn btn-primary" type="button" id="step0"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
-				</fieldset>
+				</fieldset><!-- /#installStep0 -->
 			</form>
+
 			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
 				<fieldset id="installStep1" class="j-install-step active">
 					<div class="form-no-margin">
@@ -70,12 +81,14 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('site_name'); ?>
 							</div>
+							<small class="form-text text-muted">Enter the name of your Joomla site.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+						<button class="btn btn-primary" id="step1"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
-				</fieldset>
+				</fieldset><!-- /#installStep1 -->
+
 				<fieldset id="installStep2" class="j-install-step active">
 					<div class="form-no-margin">
 						<div class="control-group">
@@ -85,7 +98,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_user'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the real name of your Super User.</small>
 						</div>
 					</div>
 
@@ -97,7 +110,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_username'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter super user's username.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -128,13 +141,14 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_email'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the super user's email address.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_CONNECT_DB'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
-				</fieldset>
+				</fieldset> <!-- /#installStep2 -->
+
 				<fieldset id="installStep3" class="j-install-step" >
 					<div class="form-no-margin">
 						<div class="control-group">
@@ -144,7 +158,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_type'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Select a database type form the options.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -155,7 +169,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_host'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the host name, usually "localhost" or a name provided by your host.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -177,7 +191,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_pass'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Either a password you created or a password provided by your host.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -188,7 +202,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_name'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter the database name</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -199,24 +213,23 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controls">
 								<?php echo $this->form->getInput('db_prefix'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
+							<small class="form-text text-muted">Enter a table prefix or use the randomly generated one</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
-								<?php echo $this->form->getLabel('db_old'); ?>
+								<?php //echo $this->form->getLabel('db_old'); ?>
 							</div>
 							<div class="controls">
 								<?php echo $this->form->getInput('db_old'); ?>
 							</div>
-							<small class="form-text text-muted">Either a username you created or a username provided by your host.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?></button>
 					</div>
-				</fieldset>
+				</fieldset><!-- /#installStep3 -->
 
 				<input type="hidden" name="admin_password2" id="jform_admin_password2">
 				<?php echo HTMLHelper::_('form.token'); ?>
