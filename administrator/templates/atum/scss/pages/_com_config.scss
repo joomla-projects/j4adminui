@@ -87,6 +87,9 @@
         color: inherit;
       }
     }
+    .filter-notes.j-card-header{
+      justify-content: flex-start !important;
+    }
     .control-group .control-label {
       #jform_return_any_or_all-lbl,
       #jform_all_tags_orderby_direction-lbl,
