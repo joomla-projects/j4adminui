@@ -74,6 +74,11 @@ body {
 			top: 50%;
 			transform: translateY(-50%);
 		}
+		&:active,
+		&:focus{
+			outline: 1px dotted rgba(var(--primary-color-rgb), .5);
+			outline-offset: -1px;
+		}
 		&.active{
 			border-left-color: var(--primary-color);
 			background: rgba(var(--primary-color-rgb), .1);
@@ -92,8 +97,20 @@ body {
 	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 	border: solid 1px #eaeef5;
 	background: #fff;
-	padding: 2.143rem;
+	padding: 2.143rem 2.143rem 7.5rem;
+	position: relative;
 }
+
+.j-install-step-footer{
+	position: absolute;
+	width: 100%;
+	bottom: 2.143rem;
+	text-align: right;
+	padding: 0 2.143rem;
+	box-sizing: border-box;
+	right: 0;
+}
+
 
 .j-install-step {
 	display: none;

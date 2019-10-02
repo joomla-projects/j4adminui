@@ -56,7 +56,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo HTMLHelper::_('form.token'); ?>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary">Save & Next <span class="fas fa-angle-right icon right"></span></button>
+						<button class="btn btn-primary" data-step="step1">Save & Next <span class="fas fa-angle-right icon right"></span></button>
 					</div>
 				</fieldset>
 			</form>
@@ -66,8 +66,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo $this->form->getLabel('site_name'); ?>
 						<?php echo $this->form->getInput('site_name'); ?>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-primary btn-block" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+					<div class="j-install-step-footer">
+						<button class="btn btn-primary" id="step1"><?php echo Text::_('INSTL_SETUP_LOGIN_DATA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
 				<fieldset id="installStep2" class="j-install-step active">
@@ -88,8 +88,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo $this->form->getLabel('admin_email'); ?>
 						<?php echo $this->form->getInput('admin_email'); ?>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-primary btn-block" id="step2"><?php echo Text::_('INSTL_CONNECT_DB'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+					<div class="j-install-step-footer">
+						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_CONNECT_DB'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
 				<fieldset id="installStep3" class="j-install-step" >
@@ -121,7 +121,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<?php echo $this->form->getLabel('db_old'); ?>
 						<?php echo $this->form->getInput('db_old'); ?>
 					</div>
-					<div class="form-group">
+					<div class="j-install-step-footer">
 						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
 					</div>
 				</fieldset>
