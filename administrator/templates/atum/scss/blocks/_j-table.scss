@@ -73,11 +73,14 @@ table {
                 th,
                 td {
                     a {
-                        
                         color: var(--inverse-background);
                         font-weight: $normal-weight;
                         text-decoration: none;
                         color: var(--inverse-background);
+                        &.j-has-dropdown,
+                        &.j-has-dropdown:hover,
+                        &.j-has-dropdown:focus,
+                        &.j-has-dropdown:active,
                         &.j-transition-select:hover,
                         &.j-transition-select:active,
                         &.j-transition-select:focus,

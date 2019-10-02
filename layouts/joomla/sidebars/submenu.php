@@ -23,27 +23,31 @@ HTMLHelper::_('behavior.core');
 			<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>
 		</button>
 		<div class="sidebar-nav p-2 my-2">
-			<?php if ($displayData->displayMenu) : ?>
-			<ul class="nav flex-column">
-				<?php foreach ($displayData->list as $item) :
-				if (isset ($item[2]) && $item[2] == 1) : ?>
-					<li class="active">
-				<?php else : ?>
-					<li>
-				<?php endif;
-				if ($displayData->hide) : ?>
-					<a class="nolink"><?php echo $item[0]; ?></a>
-				<?php else :
-					if ($item[1] !== '') : ?>
-						<a href="<?php echo OutputFilter::ampReplace($item[1]); ?>"><?php echo $item[0]; ?></a>
-					<?php else : ?>
-						<?php echo $item[0]; ?>
-					<?php endif;
-				endif; ?>
-				</li>
-				<?php endforeach; ?>
-			</ul>
-			<?php endif; ?>
+			<div class="j-card">
+				<div class="j-card-body">
+					<?php if ($displayData->displayMenu) : ?>
+					<ul class="nav flex-column">
+						<?php foreach ($displayData->list as $item) :
+						if (isset ($item[2]) && $item[2] == 1) : ?>
+							<li class="active">
+						<?php else : ?>
+							<li>
+						<?php endif;
+						if ($displayData->hide) : ?>
+							<a class="nolink"><?php echo $item[0]; ?></a>
+						<?php else :
+							if ($item[1] !== '') : ?>
+								<a href="<?php echo OutputFilter::ampReplace($item[1]); ?>"><?php echo $item[0]; ?></a>
+							<?php else : ?>
+								<?php echo $item[0]; ?>
+							<?php endif;
+						endif; ?>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+					<?php endif; ?>
+				</div>
+			</div>
 			<?php if ($displayData->displayMenu && $displayData->displayFilters) : ?>
 			<hr>
 			<?php endif; ?>
