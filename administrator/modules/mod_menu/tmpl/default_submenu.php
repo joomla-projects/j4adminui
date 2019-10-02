@@ -42,7 +42,10 @@ elseif ($current->hasChildren())
 		$class = "dropdown scrollable-menu";
 	}
 }
-$class = $class ? 'class="'.$class.'"' : '';
+
+// if the menu is help then set class to li
+$class = ($current->title == 'MOD_MENU_HELP' && $current->element == 'com_cpanel') ? ' class="j-help-menu"' : $class;
+
 // Set the correct aria role and print the item
 if ($current->type == 'separator')
 {

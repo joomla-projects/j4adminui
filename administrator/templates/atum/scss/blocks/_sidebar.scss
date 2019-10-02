@@ -1,7 +1,5 @@
 // Sidebar
-//$sidebar-width: auto;
 .wrapper {
-  // transition: all .3s ease;
   @include media-breakpoint-down(sm) {
     padding-left: 0;
   }
@@ -161,6 +159,7 @@
   opacity: 1;
   margin: 0;
   padding: 0;
+  min-height: 100%;
   .divider {
     height: 1px;
     margin: -1px 20px 0;
@@ -175,9 +174,9 @@
   li {
     list-style-type: none;
     position: relative;
-    // > a {
-    //   flex-grow: 2;
-    // }
+    &.j-help-menu {
+      margin-top: auto;
+    }
     .menu-quicktask{
       position: absolute;
       top: 7px;
@@ -605,3 +604,30 @@
   }
   
 }
+
+//com_config, smart search sidebar style
+.sidebar-nav,
+.com-config-sidebar{
+  .nav-header{
+    font-size: 1.14rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  ul.nav{
+    >li {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 5px;
+      >a{
+        color: var(--secondary-color);
+        font-size: 1rem;
+        font-weight: 400;
+        &:hover, &:focus{
+          color: var(--link-color);
+        }
+      }
+      &.active>a{
+        color: var(--link-color);
+      }
+    }
+  }
+} 

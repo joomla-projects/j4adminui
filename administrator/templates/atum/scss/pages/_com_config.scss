@@ -22,28 +22,4 @@
       margin-left: 0;
     }
   }
-  .com-config-sidebar{
-    .nav-header{
-      font-size: 1.14rem;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-    ul.nav{
-      >li {
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 5px;
-        >a{
-          color: var(--secondary-color);
-          font-size: 1rem;
-          font-weight: 400;
-          &:hover, &:focus{
-            color: var(--link-color);
-          }
-        }
-        &.active>a{
-          color: var(--link-color);
-        }
-      }
-    }
-  }
 }
