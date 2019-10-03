@@ -54,7 +54,6 @@
 			name="admin_password"
 			type="password"
 			label="INSTL_ADMIN_PASSWORD_DESC"
-			hint="****************"
 			description=""
 			id="admin_password"
 			class="form-control"

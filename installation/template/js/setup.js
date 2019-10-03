@@ -13,7 +13,7 @@ Joomla.setlanguage = function(form) {
 	var data = Joomla.serialiseForm(form);
 
 	Joomla.loadingLayer("show");
-	Joomla.removeMessages();
+	// Joomla.removeMessages();
 
 	Joomla.request({
 		url: Joomla.baseUrl,
@@ -81,6 +81,7 @@ Joomla.checkDbCredentials = function() {
 		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		onSuccess: function(response, xhr){
 			response = JSON.parse(response);
+			
 			Joomla.updateProgress();
 			if (dbCheck) dbCheck.classList.add('done');
 
@@ -89,7 +90,6 @@ Joomla.checkDbCredentials = function() {
 				if (response.messages.error) {
 					Joomla.updateProgress(-25);
 					dbCheck.classList.remove('done');
-					dbCheck.classList.add('inactive');
 				}
 			}
 

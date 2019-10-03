@@ -58,7 +58,7 @@
 	 */
 	Joomla.goToPage = function(page, fromSubmit) {
 		if (!fromSubmit) {
-			Joomla.removeMessages();
+			// Joomla.removeMessages();
 			// Joomla.loadingLayer("show");
 		}
 		Joomla.updateProgress();
@@ -79,7 +79,7 @@
 		var data = Joomla.serialiseForm(form);
 
 		// Joomla.loadingLayer("show");
-		Joomla.removeMessages();
+		// Joomla.removeMessages();
 
 		Joomla.request({
 			type     : "POST",
