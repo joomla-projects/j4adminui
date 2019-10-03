@@ -85,7 +85,7 @@
 .main-nav-container {
   position: fixed;
   left: 0;
-  top: 60px;
+  top: $header-height;
   bottom: 0;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -98,7 +98,7 @@
   position: relative;
   color: var(--secondary-color);
   font-size: 0.857rem;
-  height: 60px;
+  height: $header-height;
   transition: 300ms;
   min-width: $sidebar-width + 0.050;
   .main-logo{

@@ -2,11 +2,6 @@
 
 .js-stools {
   position: relative;
-  margin-bottom: 1rem;
-
-  > div {
-      margin-bottom: 0.5rem;
-  }
 
   .js-stools-container-filters {
     display: none;
@@ -35,7 +30,6 @@
 
   .js-stools-field-filter {
       margin: 0.5rem;
-
       @include media-breakpoint-down(sm)
       {
           width: 100%;
@@ -44,12 +38,6 @@
 
   .js-stools-container-selector,
   .js-stools-container-selector-first  {
-     @include media-breakpoint-down(md){
-        float:none;
-        width:100%;
-        margin-right:0.5rem;
-    }
-
     .js-stools-field-selector{
       margin-right: 15px;
         @include media-breakpoint-down(sm) {
@@ -124,6 +112,9 @@
     }
     .js-stools-input {
       margin-left: auto;
+      @include media-breakpoint-down(lg) {
+        margin-left: 0;
+      }
     }
     .btn {
       line-height: 1;
