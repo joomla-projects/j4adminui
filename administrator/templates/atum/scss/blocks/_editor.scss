@@ -81,6 +81,10 @@ div {
         }
         .tox-statusbar {
             border-color: var(--page-background);
+            height: 30px;
+            button {
+                color: var(--icon-color);
+            }
         }
     }
 }
