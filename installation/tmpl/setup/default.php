@@ -72,7 +72,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 			</form>
 
 			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
-				<fieldset id="installStep1" class="j-install-step active">
+				<fieldset id="installStep1" class="j-install-step" title="Site Configuration">
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -89,7 +89,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset><!-- /#installStep1 -->
 
-				<fieldset id="installStep2" class="j-install-step active">
+				<fieldset id="installStep2" class="j-install-step" title="Login Data">
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -149,7 +149,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 					</div>
 				</fieldset> <!-- /#installStep2 -->
 
-				<fieldset id="installStep3" class="j-install-step" >
+				<fieldset id="installStep3" class="j-install-step" title="Database Configuration" >
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -230,6 +230,26 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep3 -->
+
+				<fieldset id="installStep4" class="j-install-step" title="Installing Site" >
+					<p class="installation-message"><?php echo Text::_('Please wait while your site is installing…'); ?></p>
+					<div class="progress">
+						<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" id="installation-progress" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+
+					<div class="j-install-completing-list">
+						<ul class="j-install-progress">
+							<li class="list-item" id="db-check"><span class="j-spinner inactive"></span><?php echo Text::_('Checking database setup'); ?></li>
+							<li class="list-item" id="db-backup"><span class="j-spinner inactive"></span><?php echo Text::_('Backing up old tables'); ?></li>
+							<li class="list-item" id="db-create"><span class="j-spinner inactive"></span><?php echo Text::_('Creating database tables'); ?></li>
+							<li class="list-item" id="configuration-file"><span class="j-spinner inactive"></span><?php echo Text::_('Creating configuration file'); ?></li>
+						</ul>
+					</div>
+
+					<div class="j-install-step-footer">
+						<button class="btn btn-primary btn-block" id="step4"><?php echo Text::_('JNEXT'); ?></button>
+					</div>
+				</fieldset><!-- /#installStep4 -->
 
 				<input type="hidden" name="admin_password2" id="jform_admin_password2">
 				<?php echo HTMLHelper::_('form.token'); ?>

@@ -111,11 +111,10 @@
 			name="db_name"
 			type="text"
 			label="INSTL_DATABASE_NAME_DESC"
-			hint="eg. joomla"
+			hint="eg. joomla_db"
 			id="db_name"
 			class="form-control"
 			required="true"
-			default="joomla_db"
 		/>
 	</fieldset>
 

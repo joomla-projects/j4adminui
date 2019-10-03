@@ -40,7 +40,7 @@
     }
 
     get inputId() {
-      return this.getAttribute('id');
+      return this.getAttribute('input-id');
     }
 
     get customClass() {

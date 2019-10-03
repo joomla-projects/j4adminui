@@ -3,10 +3,32 @@
  * @copyright   Copyright (C) 2005 - 2019 Open Source Matters. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 (function() {
 	// Make sure that we have the Joomla object
 	Joomla = window.Joomla || {};
 	Joomla.installation = Joomla.installation || {};
+
+	Joomla.progressValue = 0;
+	Joomla.progress = document.querySelector('#installation-progress');
+
+	Joomla.updateProgress = function(updateValue = 25, defaultValue = 0) {
+		if (defaultValue > 0) {
+			Joomla.progressValue = defaultValue;	
+		} else {
+			if (updateValue >= 0) {
+				Joomla.progressValue += updateValue;
+			} else {
+				console.log('before', Joomla.progressValue);
+				Joomla.progressValue -= (updateValue * (-1));
+			}
+		}
+		
+		if (Joomla.progressValue < 0) Joomla.progressValue = 0;
+
+		Joomla.progress.style.width = `${Joomla.progressValue}%`;
+		Joomla.progress.innerHTML = `${Joomla.progressValue}%`;
+	};
 
 	Joomla.serialiseForm = function( form ) {
 		var i, l, obj = [], elements = form.querySelectorAll( "input, select, textarea" );
@@ -22,6 +44,9 @@
 		return obj.join("&");
 	};
 
+	const dbBackup = document.querySelector('#db-backup .j-spinner');
+	const dbCreate = document.querySelector('#db-create .j-spinner');
+	const configFile = document.querySelector('#configuration-file .j-spinner');
 
 	/**
 	 * Method to request a different page via AJAX
@@ -34,10 +59,11 @@
 	Joomla.goToPage = function(page, fromSubmit) {
 		if (!fromSubmit) {
 			Joomla.removeMessages();
-			Joomla.loadingLayer("show");
+			// Joomla.loadingLayer("show");
 		}
-
+		Joomla.updateProgress();
 		if (page) {
+			Joomla.updateProgress(0, 100);
 			window.location = Joomla.baseUrl + '?view=' + page + '&layout=default';
 		}
 
@@ -52,7 +78,7 @@
 	Joomla.submitform = function(form) {
 		var data = Joomla.serialiseForm(form);
 
-		Joomla.loadingLayer("show");
+		// Joomla.loadingLayer("show");
 		Joomla.removeMessages();
 
 		Joomla.request({
@@ -69,16 +95,19 @@
 
 				if (response.error) {
 					Joomla.renderMessages({'error': [response.message]});
-					Joomla.loadingLayer("hide");
+					// Joomla.loadingLayer("hide");
+					Joomla.updateProgress(-25);
 				} else {
-					Joomla.loadingLayer("hide");
+					// Joomla.loadingLayer("hide");
 					if (response.data && response.data.view) {
 						Install.goToPage(response.data.view, true);
 					}
+					Joomla.updateProgress();
 				}
 			},
 			onError  : function (xhr) {
-				Joomla.loadingLayer("hide");
+				// Joomla.loadingLayer("hide");
+				Joomla.updateProgress(-25);
 				busy = false;
 				try {
 					var r = JSON.parse(xhr.responseText);
@@ -178,7 +207,21 @@
 
 		var task = tasks.shift();
 		var data = Joomla.serialiseForm(form);
-		Joomla.loadingLayer("show");
+		// Joomla.loadingLayer("show");
+		
+		dbBackup.classList.remove('inactive');
+		dbCreate.classList.remove('inactive');
+		configFile.classList.remove('inactive');
+
+		if (tasks.indexOf('backup') == -1) {
+			Joomla.updateProgress();
+			dbBackup.classList.add('done');
+		}
+
+		if (tasks.indexOf('database')) {
+			Joomla.updateProgress();
+			dbCreate.classList.add('done');
+		}
 
 		Joomla.request({
 			method: "POST",
@@ -191,18 +234,45 @@
 
 				if (response.error === true)
 				{
-					Joomla.loadingLayer('hide');
+					// Joomla.loadingLayer('hide');
 					Joomla.renderMessages({"error": [response.message]});
 					return false;
 				}
 
 				if (response.messages) {
-					Joomla.loadingLayer('hide');
+					// Joomla.loadingLayer('hide');
 					Joomla.renderMessages(response.messages);
 					return false;
 				}
+				
+				if (!response.error) {
+					if (task == 'config') {
+						Joomla.updateProgress();
+						configFile.classList.add('done');
+					} else if (task == 'database') {
+						Joomla.updateProgress();
+						dbCreate.classList.add('done');
+					} else if (task == 'backup') {
+						Joomla.updateProgress();
+						dbBackup.classList.add('done');
+					}
+				} else {
+					if (task == 'config') {
+						Joomla.updateProgress(-25);
+						configFile.classList.remove('done');
+						configFile.classList.add('inactive');
+					} else if (task == 'database') {
+						Joomla.updateProgress(-25);
+						dbCreate.classList.remove('done');
+						dbCreate.classList.add('inactive');
+					} else if (task == 'backup') {
+						Joomla.updateProgress(-25);
+						dbBackup.classList.remove('done');
+						dbBackup.classList.add('inactive');
+					}
+				}
 
-				Joomla.loadingLayer('hide');
+				// Joomla.loadingLayer('hide');
 				Joomla.install(tasks, form);
 			},
 			onError: function(xhr){

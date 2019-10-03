@@ -58,12 +58,6 @@ Joomla.checkInputs = function() {
 		if (!item.valid) state = false;
 	});
 
-	// Reveal everything
-	document.getElementById('installStep1').classList.add('active');
-	document.getElementById('installStep2').classList.add('active');
-	document.getElementById('installStep3').classList.add('active');
-
-
 	if (Joomla.checkFormField(['#jform_site_name', '#jform_admin_user', '#jform_admin_email', '#jform_admin_password', '#jform_db_type', '#jform_db_host', '#jform_db_user', '#jform_db_name'])) {
 		Joomla.checkDbCredentials();
 	}
@@ -71,11 +65,14 @@ Joomla.checkInputs = function() {
 
 
 Joomla.checkDbCredentials = function() {
-	Joomla.loadingLayer("show");
+	// Joomla.loadingLayer("show");
+	const dbCheck = document.querySelector('#db-check .j-spinner');
 
 	var form = document.getElementById('adminForm'),
 		data = Joomla.serialiseForm(form);
-
+	
+	if (dbCheck) dbCheck.classList.remove('inactive');
+	
 	Joomla.request({
 		method: "POST",
 		url : Joomla.installationBaseUrl + '?task=installation.dbcheck&format=json',
@@ -84,15 +81,26 @@ Joomla.checkDbCredentials = function() {
 		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		onSuccess: function(response, xhr){
 			response = JSON.parse(response);
+			Joomla.updateProgress();
+			if (dbCheck) dbCheck.classList.add('done');
+
 			if (response.messages) {
 				Joomla.renderMessages(response.messages);
+				if (response.messages.error) {
+					Joomla.updateProgress(-25);
+					dbCheck.classList.remove('done');
+					dbCheck.classList.add('inactive');
+				}
 			}
 
 			Joomla.replaceTokens(response.token);
-			Joomla.loadingLayer("hide");
+			// Joomla.loadingLayer("hide");
 
 			if (response.error) {
-				Joomla.renderMessages({'error': [response.message]});
+				Joomla.updateProgress(-25);
+				dbCheck.classList.remove('done');
+				dbCheck.classList.add('inactive');
+				Joomla.renderMessages(response.message);
 			} else if (response.data && response.data.validated === true) {
 				// Run the installer - we let this handle the redirect for now
 				// TODO: Convert to promises
@@ -102,7 +110,8 @@ Joomla.checkDbCredentials = function() {
 		onError:   function(xhr){
 			Joomla.renderMessages([['', Joomla.JText._('JLIB_DATABASE_ERROR_DATABASE_CONNECT', 'A Database error occurred.')]]);
 			//Install.goToPage('summary');
-			Joomla.loadingLayer('hide');
+			// Joomla.loadingLayer('hide');
+			Joomla.updateProgress(-25);
 			try {
 				var r = JSON.parse(xhr.responseText);
 				Joomla.replaceTokens(r.token);
@@ -145,21 +154,29 @@ const clearAllActives = function() {
 	const installStep1 = document.querySelector('#installStep1');
 	const installStep2 = document.querySelector('#installStep2');
 	const installStep3 = document.querySelector('#installStep3');
+	const installStep4 = document.querySelector('#installStep4');
+	const installStep5 = document.querySelector('#installStep5');
 
 	const navStep0 	= document.querySelector('#navStep0');
 	const navStep1 	= document.querySelector('#navStep1');
 	const navStep2 	= document.querySelector('#navStep2');
 	const navStep3 	= document.querySelector('#navStep3');
+	const navStep4 	= document.querySelector('#navStep4');
+	const navStep5 	= document.querySelector('#navStep5');
 
 	installStep0.classList.remove('active');
 	installStep1.classList.remove('active');
 	installStep2.classList.remove('active');
 	installStep3.classList.remove('active');
+	installStep4.classList.remove('active');
+	// installStep5.classList.remove('active');
 	
 	navStep0.classList.remove('active');
 	navStep1.classList.remove('active');
 	navStep2.classList.remove('active');
 	navStep3.classList.remove('active');
+	navStep4.classList.remove('active');
+	// navStep5.classList.remove('active');
 };
 
 const completePath = function(index) {
@@ -168,11 +185,12 @@ const completePath = function(index) {
 	navSteps.push(document.querySelector('#navStep1'));
 	navSteps.push(document.querySelector('#navStep2'));
 	navSteps.push(document.querySelector('#navStep3'));
+	navSteps.push(document.querySelector('#navStep4'));
+	navSteps.push(document.querySelector('#navStep5'));
 
-	for (let i = 0; i < index - 1 ; i += 1) {
+	for (let i = 0; i < index ; i += 1) {
 		navSteps[i].classList.add('completed');
 	}
-	console.log(navSteps, index);
 };
 
 (function() {
@@ -181,22 +199,29 @@ const completePath = function(index) {
 		Joomla.extend(this.options, sessionStorage.getItem('installation-data'));
 	}
 
-	const languageForm = document.querySelector('#languageForm');
-	const adminForm    = document.querySelector('#adminForm');
-	const installStep0 = document.querySelector('#installStep0');
-	const installStep1 = document.querySelector('#installStep1');
-	const installStep2 = document.querySelector('#installStep2');
-	const installStep3 = document.querySelector('#installStep3');
+	const languageForm 	= document.querySelector('#languageForm');
+	const adminForm    	= document.querySelector('#adminForm');
+
+	const installStep0 	= document.querySelector('#installStep0');
+	const installStep1 	= document.querySelector('#installStep1');
+	const installStep2 	= document.querySelector('#installStep2');
+	const installStep3 	= document.querySelector('#installStep3');
+	const installStep4 	= document.querySelector('#installStep4');
+	const installStep5 	= document.querySelector('#installStep5');
 
 	const navStep0 	= document.querySelector('#navStep0');
 	const navStep1 	= document.querySelector('#navStep1');
 	const navStep2 	= document.querySelector('#navStep2');
 	const navStep3 	= document.querySelector('#navStep3');
+	const navStep4 	= document.querySelector('#navStep4');
+	const navStep5 	= document.querySelector('#navStep5');
 
 	const btnStep0 	= document.querySelector('#step0');
 	const btnStep1 	= document.querySelector('#step1');
 	const btnStep2 	= document.querySelector('#step2');
 	const btnStep3 	= document.querySelector('#setupButton');
+	const btnStep4 	= document.querySelector('#step4');
+	const btnStep5 	= document.querySelector('#step5');
 	
 	Joomla.pageInit();
 
@@ -253,7 +278,7 @@ const completePath = function(index) {
 				installStep1.classList.add('active');
 				navStep1.classList.add('active');
 				navStep0.classList.remove('active');
-				completePath(2);
+				completePath(1);
 			}
 		});
 	}
@@ -265,7 +290,7 @@ const completePath = function(index) {
 				clearAllActives();
 				installStep2.classList.add('active');
 				navStep2.classList.add('active');
-				completePath(3);
+				completePath(2);
 			}
 		});
 	}
@@ -277,11 +302,27 @@ const completePath = function(index) {
 				clearAllActives();
 				installStep3.classList.add('active');
 				navStep3.classList.add('active');
+				completePath(3);
+			}
+		});
+	}
+
+	// go to step5
+	if (navStep4) {
+		navStep4.addEventListener('click', function(e){
+			e.preventDefault();
+			if (Joomla.isFilled('#installStep3')) {
+				clearAllActives();
+				installStep4.classList.add('active');
+				navStep4.classList.add('active');
 				completePath(4);
 			}
 		});
 	}
 
+
+
+	// button clicks
 	if (btnStep0) {
 		btnStep0.addEventListener('click', function(e){
 			e.preventDefault();
@@ -305,7 +346,7 @@ const completePath = function(index) {
 						document.getElementById('jform_site_name').focus();
 					}
 					
-					completePath(2);
+					completePath(1);
 
 				}
 			}
@@ -327,7 +368,7 @@ const completePath = function(index) {
 					if (document.getElementById('jform_admin_user')) {
 						document.getElementById('jform_admin_user').focus();
 					}
-					completePath(3);
+					completePath(2);
 				}
 			}
 		});
@@ -351,7 +392,7 @@ const completePath = function(index) {
 					if (document.getElementById('jform_db_type')) {
 						document.getElementById('jform_db_type').focus();
 					}
-					completePath(4);
+					completePath(3);
 				}
 			}
 		});
@@ -359,8 +400,13 @@ const completePath = function(index) {
 		document.getElementById('setupButton').addEventListener('click', function(e) {
 			e.preventDefault();
 			e.stopPropagation();
-			Joomla.checkInputs();
-			completePath(3);
+			if (Joomla.isFilled('#installStep3')) {
+				clearAllActives();
+				installStep4.classList.add('active');
+				navStep4.classList.add('active');
+				completePath(4);
+				Joomla.checkInputs();
+			}
 		});
 	}
 

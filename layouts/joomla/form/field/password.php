@@ -67,7 +67,7 @@ $class 	= !empty($class) ? 'form-control ' . $class : 'form-control';
 <joomla-field-password 
 	type="password"
 	name="<?php echo $name; ?>"
-	id="<?php echo $id; ?>"
+	input-id="<?php echo $id; ?>"
 	custom-class="<?php echo $class; ?>"
 	value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
 	strength-meter="<?php echo $meter; ?>"
