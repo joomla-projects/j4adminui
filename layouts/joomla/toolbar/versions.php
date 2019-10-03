@@ -51,7 +51,7 @@ echo HTMLHelper::_(
 	)
 );
 ?>
-<joomla-toolbar-button id="toolbar-versions">
+<joomla-toolbar-button id="toolbar-versions" class="d-none d-lg-block">
 	<button
 		class="btn btn-secondary"
 		type="button"

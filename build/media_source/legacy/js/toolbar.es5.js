@@ -42,10 +42,10 @@ Joomla = window.Joomla || {};
 			toolbarHelp = document.getElementById('toolbar-help');
 
 		if (toolbarHelp && !toolbarOptions) {
-			toolbarHelp.classList.add('ml-auto');
+			toolbarHelp.classList.add('ml-auto', 'd-none', 'd-lg-block');
 		}
 		if (toolbarOptions && !toolbarHelp) {
-			toolbarOptions.classList.add('ml-auto');
+			toolbarOptions.classList.add('ml-auto', 'd-none', 'd-lg-block');
 		}
 
 	});

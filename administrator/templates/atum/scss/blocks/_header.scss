@@ -18,8 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  // transition: .3s ease;
+  height: $header-height;
   position: fixed;
   width: 100%;
   top: 0;
@@ -109,13 +108,13 @@
   }
   
   .header-item-content{
-    line-height: 60px;
+    line-height: $header-height;
     joomla-dropdown,
     joomla-callout {
       line-height: 1;
     }
     .joomlaversion {
-      line-height: 60px;
+      line-height: $header-height;
       .align-items-end {
         margin-right: .5rem;
       }
@@ -136,7 +135,7 @@
       border: none;
       padding: 0 2.107rem;
       align-items: center;
-      line-height: 59px;
+      line-height: 58px;
       background-color: #fff;
       img{
         height: 32px;
@@ -189,8 +188,21 @@
   &.closed {
     .header-title {
       .d-flex {
-        padding-left: 60px;
+        padding-left: $header-height;
       }
+    }
+  }
+  @include media-breakpoint-down(lg){
+    .header-user-name,
+    .joomlaversion,
+    .header-user-name,
+    .fa-angle-right,
+    .header-item-text {
+      display: none !important;
+    }
+    .header-item-content {
+      height: $header-height;
+      display: flex;
     }
   }
 }

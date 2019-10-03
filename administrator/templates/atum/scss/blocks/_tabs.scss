@@ -18,10 +18,10 @@ joomla-tab {
 
 joomla-tab > ul {
 	display: flex;
+	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	white-space: nowrap;
 	position: relative;
 	z-index: 1;
 	border-bottom: 1px solid var(--secondary-icon-color);
