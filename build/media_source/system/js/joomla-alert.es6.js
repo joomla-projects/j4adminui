@@ -98,6 +98,7 @@
     /* Method to close the alert */
     close() {
       this.dispatchCustomEvent('joomla.alert.close');
+      this.style.animation = "fadeOutUp .4s";
       this.addEventListener('transitionend', () => {
         this.dispatchCustomEvent('joomla.alert.closed');
         this.parentNode.removeChild(this);

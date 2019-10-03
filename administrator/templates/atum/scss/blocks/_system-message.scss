@@ -1,12 +1,10 @@
 
 .notify-alerts {
   position: fixed;
-  top: 15px;
-  left: 50%;
+  bottom: 5px;
+  right: 25px;
   z-index: 1030;
   transition: all .5s ease;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
 }
 // #system-message-container {
 //   background: var(--atum-bg-light);

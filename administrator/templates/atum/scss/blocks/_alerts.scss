@@ -44,7 +44,7 @@ joomla-alert, .alert {
         display: flex;
         opacity: 1;
         flex-wrap: wrap;
-        animation: fadeInDown .5s;
+        animation: fadeInUp .5s;
         will-change: transform;
         z-index: auto;
     }
@@ -52,6 +52,9 @@ joomla-alert, .alert {
     .joomla-alert--collapse-container,
     .joomla-alert-content{
         flex-grow: 1;
+        p:last-child{
+            margin-bottom: 0;
+        }
     }
 
     .joomla-alert--icon{
@@ -91,6 +94,7 @@ joomla-alert, .alert {
 
     .joomla-alert--collapse{
         display: none;
+        animation: fadeInUp .5s;
         &.show{
             display: block;
         }
@@ -228,33 +232,39 @@ html[dir=rtl] joomla-alert {
     opacity: 1;
     z-index: auto;
 }
-@keyframes showJoomlaAlert {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-    1% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5)
-    }
-    45% {
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05)
-    }
-    80% {
-        -webkit-transform: scale(.95);
-        transform: scale(.95)
-    }
-    to {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-}
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes fadeOutUp {
   from {
+    opacity: 1;
+  }
+
+  to {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.fadeOutUp {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp;
+}
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 
   to {
@@ -264,11 +274,11 @@ html[dir=rtl] joomla-alert {
   }
 }
 
-@keyframes fadeInDown {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 
   to {
@@ -278,7 +288,7 @@ html[dir=rtl] joomla-alert {
   }
 }
 
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
 }
