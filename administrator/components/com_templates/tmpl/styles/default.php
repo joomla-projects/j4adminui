@@ -17,7 +17,6 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
-HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
@@ -46,9 +45,6 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> j-card j-card-has-hover mb-4">
 										<div class="j-card-header">
 											<h4 class="j-card-title">
-												<span class="mr-2">
-													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-												</span>
 												<span class="template-name">
 													<?php if ($canEdit) : ?>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
