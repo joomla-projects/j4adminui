@@ -44,7 +44,7 @@ joomla-alert, .alert {
         display: flex;
         opacity: 1;
         flex-wrap: wrap;
-        animation: fadeInUp .5s;
+        animation: fadeInUp .3s;
         will-change: transform;
         z-index: auto;
     }
@@ -94,7 +94,6 @@ joomla-alert, .alert {
 
     .joomla-alert--collapse{
         display: none;
-        animation: fadeInUp .5s;
         &.show{
             display: block;
         }
@@ -239,8 +238,8 @@ html[dir=rtl] joomla-alert {
 
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
   }
 }
 
@@ -251,8 +250,8 @@ html[dir=rtl] joomla-alert {
 
   to {
     opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
   }
 }
 
@@ -263,8 +262,8 @@ html[dir=rtl] joomla-alert {
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100px, 0);
   }
 
   to {
@@ -277,8 +276,8 @@ html[dir=rtl] joomla-alert {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100px, 0);
+    transform: translate3d(0, 100px, 0);
   }
 
   to {
