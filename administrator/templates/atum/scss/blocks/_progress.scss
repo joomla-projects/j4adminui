@@ -14,6 +14,11 @@ joomla-progress{
     @extend .progress;
     border-radius: 10px;
     height: 10px;
+	position: relative;
+	overflow: inherit;
+	&.j-has-percent{
+		margin-right: 40px;
+	}
 	.progress-bar{
         background-color: var(--primary-color);
         border-radius: 10px;
@@ -22,6 +27,14 @@ joomla-progress{
             background-size: 10px 10px;
 	        animation: j-progress-bar-stripes 1s linear infinite;
         }
+	}
+	.j-progress-percent{
+		position: absolute;
+		right: -40px;
+		width: 40px;
+		text-align: right;
+		line-height: 10px;
+		font-size: 14px;
 	}
 }
 

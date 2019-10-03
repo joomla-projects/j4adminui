@@ -233,8 +233,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 
 				<fieldset id="installStep4" class="j-install-step" title="Installing Site" >
 					<p class="installation-message"><?php echo Text::_('Please wait while your site is installing…'); ?></p>
-					<div class="j-progress">
-						<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" id="installation-progress" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+					<div class="j-progress j-has-percent">
+						<div class="progress-bar progress-bar-striped progress-bar-animated" id="installation-progress" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
 						<span class="j-progress-percent"></span>
 					</div>
 

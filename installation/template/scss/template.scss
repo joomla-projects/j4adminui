@@ -22,7 +22,7 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../administrator/templates/atum/scss/blocks/progress";
 
 body {
-	background: var(--atum-bg-light);
+	background: var(--background);
 }
 
 *, *::after, *::before {
