@@ -19,7 +19,6 @@
 			if (updateValue >= 0) {
 				Joomla.progressValue += updateValue;
 			} else {
-				console.log('before', Joomla.progressValue);
 				Joomla.progressValue -= (updateValue * (-1));
 			}
 		}
@@ -27,7 +26,7 @@
 		if (Joomla.progressValue < 0) Joomla.progressValue = 0;
 
 		Joomla.progress.style.width = `${Joomla.progressValue}%`;
-		Joomla.progress.innerHTML = `${Joomla.progressValue}%`;
+		document.querySelector('.j-progress-percent').innerHTML = `${Joomla.progressValue}%`;
 	};
 
 	Joomla.serialiseForm = function( form ) {
@@ -58,10 +57,10 @@
 	 */
 	Joomla.goToPage = function(page, fromSubmit) {
 		if (!fromSubmit) {
-			// Joomla.removeMessages();
+			Joomla.removeMessages();
 			// Joomla.loadingLayer("show");
 		}
-		Joomla.updateProgress();
+		
 		if (page) {
 			Joomla.updateProgress(0, 100);
 			window.location = Joomla.baseUrl + '?view=' + page + '&layout=default';
@@ -79,7 +78,7 @@
 		var data = Joomla.serialiseForm(form);
 
 		// Joomla.loadingLayer("show");
-		// Joomla.removeMessages();
+		Joomla.removeMessages();
 
 		Joomla.request({
 			type     : "POST",
@@ -214,12 +213,12 @@
 		configFile.classList.remove('inactive');
 
 		if (tasks.indexOf('backup') == -1) {
-			Joomla.updateProgress();
+			Joomla.updateProgress(25);
 			dbBackup.classList.add('done');
 		}
 
-		if (tasks.indexOf('database')) {
-			Joomla.updateProgress();
+		if (tasks.indexOf('database') == -1) {
+			Joomla.updateProgress(30);
 			dbCreate.classList.add('done');
 		}
 
@@ -247,22 +246,22 @@
 				
 				if (!response.error) {
 					if (task == 'config') {
-						Joomla.updateProgress();
+						Joomla.updateProgress(35);
 						configFile.classList.add('done');
 					} else if (task == 'database') {
-						Joomla.updateProgress();
+						Joomla.updateProgress(30);
 						dbCreate.classList.add('done');
 					} else if (task == 'backup') {
-						Joomla.updateProgress();
+						Joomla.updateProgress(25);
 						dbBackup.classList.add('done');
 					}
 				} else {
 					if (task == 'config') {
-						Joomla.updateProgress(-25);
+						Joomla.updateProgress(-35);
 						configFile.classList.remove('done');
 						configFile.classList.add('inactive');
 					} else if (task == 'database') {
-						Joomla.updateProgress(-25);
+						Joomla.updateProgress(-30);
 						dbCreate.classList.remove('done');
 						dbCreate.classList.add('inactive');
 					} else if (task == 'backup') {

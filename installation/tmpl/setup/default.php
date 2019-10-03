@@ -84,8 +84,19 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<small class="form-text info">Enter the name of your Joomla site.</small>
 						</div>
 					</div>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text info">Enter the site email address.</small>
+						</div>
+					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" id="step1"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
+						<button class="btn btn-primary" id="step1" ><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep1 -->
 
@@ -133,19 +144,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							</div>
 						</div>
 					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
-							<small class="form-text info">Enter the super user's email address.</small>
-						</div>
-					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" id="step2"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
+						<button class="btn btn-primary" id="step2" ><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
 				</fieldset> <!-- /#installStep2 -->
 
@@ -180,7 +180,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_user'); ?>
 							</div>
-							<small class="form-text info">Either a username you created or a username provided by your host.</small>
+							<small class="form-text info">Enter the username for the host.</small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -227,14 +227,15 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 						</div>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary btn-block" id="setupButton"><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?></button>
+						<button class="btn btn-primary btn-block" id="setupButton" ><?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep3 -->
 
 				<fieldset id="installStep4" class="j-install-step" title="Installing Site" >
 					<p class="installation-message"><?php echo Text::_('Please wait while your site is installing…'); ?></p>
-					<div class="progress">
+					<div class="j-progress">
 						<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" id="installation-progress" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+						<span class="j-progress-percent"></span>
 					</div>
 
 					<div class="j-install-completing-list">
@@ -244,10 +245,6 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 							<li class="list-item" id="db-create"><span class="j-spinner inactive"></span><?php echo Text::_('Creating database tables'); ?></li>
 							<li class="list-item" id="configuration-file"><span class="j-spinner inactive"></span><?php echo Text::_('Creating configuration file'); ?></li>
 						</ul>
-					</div>
-
-					<div class="j-install-step-footer">
-						<button class="btn btn-primary btn-block" id="step4"><?php echo Text::_('JNEXT'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep4 -->
 
