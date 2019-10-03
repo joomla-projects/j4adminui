@@ -94,7 +94,7 @@ $ajaxUri = Route::_('index.php?option=com_config&task=application.store&format=j
 
 <?php // Begin tabs ?>
 <joomla-field-permissions data-uri="<?php echo $ajaxUri; ?>">
-	<joomla-tab orientation="vertical" id="permissions-sliders">
+	<joomla-tab orientation="vertical" id="permissions-sliders" class="j-card">
 	<?php // Initial Active Pane ?>
 		<?php foreach ($groups as $group) : ?>
 			<?php $active = (int) $group->value === 1 ? ' active' : ''; ?>
