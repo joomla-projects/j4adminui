@@ -266,7 +266,8 @@ body .container-main {
     }
   }
   .field-calendar{
-    &,.input-group, input{
+    &,.input-group,
+    input{
       height: 100%;
     }
     >.input-group{
