@@ -211,7 +211,7 @@ caption {
 }
 
 .form-control-feedback{
-	font-size: 0.643rem;
+	font-size: 0.786rem;
 }
 
 .j-install-step .input-group{
@@ -280,7 +280,6 @@ caption {
 	  }
   }
 .j-install-step small.form-text{
-	color: var(--icon-color);
 	overflow: hidden;
 	margin-top: 0.714rem;
 	&.info::before{
@@ -305,4 +304,8 @@ caption {
 		margin-top: 1px;
 		margin-right: 0.357rem;
 	}
+}
+
+.form-text{
+	color: var(--icon-color);
 }

@@ -9,11 +9,14 @@ label {
 	border: 2px solid var(--input-border-color);
 	border-radius: 3px;
 	background-color: var(--input-background-color);
-	color: var(--icon-color);
 	display: block;
 	height: 2.86rem;
 	min-width: 100%;
 	font-size: 1rem;
+	color: var(--color);
+	&::placeholder{
+		color: var(--icon-color);
+	}
 }
 
 .form-control {
