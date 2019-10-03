@@ -44,7 +44,7 @@ joomla-alert, .alert {
         display: flex;
         opacity: 1;
         flex-wrap: wrap;
-        animation: showJoomlaAlert .3s;
+        animation: fadeInDown .5s;
         will-change: transform;
         z-index: auto;
     }
@@ -249,4 +249,36 @@ html[dir=rtl] joomla-alert {
         -webkit-transform: scale(1);
         transform: scale(1)
     }
+}
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
 }
