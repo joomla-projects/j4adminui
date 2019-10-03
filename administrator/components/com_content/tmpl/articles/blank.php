@@ -747,6 +747,16 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 					</joomla-progress>
 				</div>
 
+				<hr>
+
+				<div class="j-card">
+					<div class="j-card-body">
+						<div class="j-progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+						</div>
+					</div>
+				</div>
+
             </div>
 
             <div class="col-4">
