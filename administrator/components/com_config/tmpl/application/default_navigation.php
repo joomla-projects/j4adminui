@@ -12,7 +12,7 @@ use Joomla\CMS\Language\Text;
 defined('_JEXEC') or die;
 ?>
 
-<div class="com-config-sidebar">
+<div class="sidebar-content">
 	<?php if ($this->userIsSuperAdmin) : ?>
 	<h3 class="nav-header"><?php echo Text::_('COM_CONFIG_SYSTEM'); ?></h3>
 	<div class="j-card mb-4">

@@ -232,6 +232,9 @@ body .container-main {
       padding-left: 25px;
       margin-left: 0;
       color: var(--color);
+      @include media-breakpoint-down(lg){
+        padding-left: 0;
+      }
       .choices{
         &,
         .choices__inner{
@@ -253,6 +256,9 @@ body .container-main {
         -moz-appearance: menulist-button;
         appearance: menulist-button;
         padding-right: 15px;
+        @include media-breakpoint-down(lg){
+          padding-right: 0;
+        }
       }
       .switcher__legend{
         display: none;
@@ -266,7 +272,8 @@ body .container-main {
     }
   }
   .field-calendar{
-    &,.input-group, input{
+    &,.input-group,
+    input{
       height: 100%;
     }
     >.input-group{
@@ -358,4 +365,13 @@ body .container-main {
       border-width: 1px;
     }
   }
+}
+.j-table-responsive{
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.no-boxshadow{
+  box-shadow: none !important;
 }

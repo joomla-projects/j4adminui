@@ -10,6 +10,10 @@ table {
             border:none;
             padding: 1rem;
             vertical-align: middle;
+            @include media-breakpoint-down(lg){
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
         
         td.icon-1p5x, th.icon-1p5x {
@@ -108,6 +112,12 @@ table {
                         &.dropdown-toggle {
                             border-color: var(--secondary-icon-color);
                             border-radius: 3px;
+                        }
+                    }
+                    @include media-breakpoint-down (lg) {
+                        .btn.btn-sm {
+                            padding-left: .8rem;
+                            padding-right: .8rem;
                         }
                     }
                 }

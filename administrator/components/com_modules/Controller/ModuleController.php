@@ -354,7 +354,7 @@ class ModuleController extends FormController
 	 * Set the module ordering params from dashboard with ajax call
 	 * 
 	 * @return 	String 	Return success true or false with data
-	 * @since  	4.0.1
+	 * @since  	4.0.0
 	 */
 	public function saveParamsOrderAjax(){
 		try{

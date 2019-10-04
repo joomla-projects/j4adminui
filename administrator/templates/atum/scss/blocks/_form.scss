@@ -4,6 +4,19 @@ label {
   font-size: $display1-size;
 }
 
+//Input style mixin
+@mixin input-style () {
+  border: 2px solid var(--input-border-color);
+  border-radius: 3px;
+  background-color: var(--input-background-color);
+  color: var(--icon-color);
+  display: block;
+  height: 2.86rem;
+  min-width: 100%;
+  max-width: 100%;
+  font-size: 1rem;
+}
+
 .form-control {
   @include input-style();
   padding: 0 0 0 1.2rem;
@@ -258,5 +271,41 @@ input {
 .j-main-container {
   .form-control {
     background-color: var(--input-background-color-white);
+  }
+}
+
+//Password Indecator
+.strength-indicator-container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin-top: 1rem;
+}
+.indicator-text {
+  flex: 0 0 100%;
+  color: var(--icon-color);
+  font-size: .895rem;
+  margin-top: 5px;
+}
+.strength-indicator {
+  max-width: 60px;
+  height: 2px;
+  border-radius: 3px;
+  margin-right: 4px;
+  background-color: #ccd3d7;
+  flex: 0 0 60px;
+  &.very-weak {
+    background-color: var(--danger-button);
+  }
+  &.weak {
+    background-color: var(--danger-button-dark);
+  }
+  &.good {
+    background-color: var(--warning-color);
+  }
+  &.great {
+    background-color: var(--success-color);
+  }
+  &.strong {
+    background-color: var(--success-button-dark);
   }
 }

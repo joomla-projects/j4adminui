@@ -17,7 +17,7 @@
   margin-right: -14px;
   padding-left: 15px;
   padding-right: 15px;
-
+  
   .row {
     margin-right: 0;
     margin-left: 0;
@@ -25,14 +25,19 @@
   
   .btn-toolbar {
     margin-bottom: 0;
-
+    
     > joomla-toolbar-button,
     > div,
     > .btn-group {
       margin-left: 1.4rem;
-
+      
       &:first-child {
         margin-left: 0;
+      }
+      @include media-breakpoint-down(lg) {
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
     #toolbar-help {
@@ -54,7 +59,7 @@
         &.dropdown-toggle {
           border-radius: 3px;
           &:after{
-              margin-left: 2.14rem;
+            margin-left: 2.14rem;
           }
           >span{
             margin-right: 12px;
@@ -108,7 +113,9 @@
           box-shadow: none;
         }
       }
-      &:hover {
+      &:hover,
+      &:active,
+      &:focus {
         span {
           color: var(--primary-color);
         }
@@ -148,108 +155,80 @@
     }
   }
 }
-  
+
 .btn-toolbar{
-	
-	.input-group-append {
+  
+  .input-group-append {
     height: 1rem;
     line-height: 1;
     margin: 0;
     top: 1rem;
-	  .btn-primary {
+    .btn-primary {
       background: var(--transparent-bg);
       color: var(--secondary-icon-color);
       box-shadow: none;
       line-height: 1;
-	  }
-	}
-	> joomla-toolbar-button,
-	> .btn-group {
-	  @include media-breakpoint-down(lg) {
-      margin-left:0 !important;
-      margin-right:0.75rem;
-      margin-bottom:0.75rem;
     }
   }
   
-	
 }
 
 .js-stools{
   @include media-breakpoint-down(lg) {
     justify-content:flex-start;
     .js-stools-container-bar{
-        .btn-toolbar{
-          justify-content:flex-start;
-        }
+      width: 100%;
+      margin-top: 1rem;
+      .btn-toolbar{
+        justify-content:flex-start;
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .js-stools-container-bar{
+      .ordering-select {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .js-stools-input {
+        margin-left: 0;
+      }
     }
   }
   @include media-breakpoint-down(xs) {
     display: block;
-      .joomla-toolbar-button,
-      .btn-group,
-      .input-group,
-      .ordering-select,
-      .js-stools-field-list,
-      .js-stools-container-selector      {
+    .joomla-toolbar-button,
+    .btn-group,
+    .input-group,
+    .ordering-select,
+    .js-stools-field-list,
+    .js-stools-container-selector {
+      @include media-breakpoint-down(sm) {
+        width:100%;
+      }
+    }
+    .ordering-select,
+    .js-stools-container-selector{
+      margin-right:.5rem;
+    }
+    .btn-group{
+      @include media-breakpoint-down(sm) {
+        margin-right:0;
+      }
+    }
+    .js-stools-container-bar{
+      .js-stools-field-list{
         @include media-breakpoint-down(sm) {
-            width:100%;
+          margin-bottom: .75rem;
         }
-     }
-     .ordering-select,
-     .js-stools-container-selector{
-        margin-right:.5rem;
-     }
-     .btn-group{
-        @include media-breakpoint-down(sm) {
-            margin-right:0;
-        }
-     }
-     .js-stools-container-bar{
-        .js-stools-field-list{
-            @include media-breakpoint-down(sm) {
-                margin-bottom: .75rem;
-            }
-         }    
+      }    
     }
   }
 }
 .js-calendar{
-	.calendar-container{
-		.btn{
-			padding: 0 1.75rem;
-		}
-	}
-}
-
-//TinyMCE editor
-.js-editor-tinymce {
-  &.joomla-tinymce-hide-menu {
-    .tox-menubar {
-      display: none;
-    }
-    .tox {
-      .tox-toolbar {
-        border: none;
-      }
-    }
-  }
-  .tox {
-    .tox-tbtn {
-      svg {
-        fill: var(--icon-color);
-        &.toggle-elipsis {
-          fill: var(--secondary-icon-color);
-          &:hover {
-            fill: var(--success-color);
-          }
-        }
-      }
-      &:hover {
-        svg {
-          fill: var(--success-color);
-        }
-      }
+  .calendar-container{
+    .btn{
+      padding: 0 1.75rem;
     }
   }
 }

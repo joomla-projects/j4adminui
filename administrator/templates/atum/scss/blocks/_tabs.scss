@@ -2,6 +2,13 @@
 // Base styles
 //
 $table-data-border: 1px solid var(--page-background);
+//Active and Hover style mixin
+@mixin tab-hover-active () {
+	background-color: var(--button-background);
+	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
+	color: var(--color);
+	font-weight: 500;
+}
 joomla-tab {
 	display: flex;
 	flex-direction: column;
@@ -11,10 +18,10 @@ joomla-tab {
 
 joomla-tab > ul {
 	display: flex;
+	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	white-space: nowrap;
 	position: relative;
 	z-index: 1;
 	border-bottom: 1px solid var(--secondary-icon-color);
@@ -84,35 +91,37 @@ joomla-tab > section {
 	position: relative;
 	display: none;
 	width: 100%;
-	.table:not(.j-striped-table) {
-		td,th {
-			padding: 1.1rem;
-		}
-		thead {
-			th {
-				border-top: 0;
-				font-size: 1rem;
-				color: var(--secondary-color);
-				border-bottom: $table-data-border;
-				border-right: $table-data-border;
-				&:last-child {
-					border-right: 0;
+	.table {
+		&.j-permission-table {
+			td,th {
+				padding: 1.1rem;
+			}
+			thead {
+				th {
+					border-top: 0;
+					font-size: 1rem;
+					color: var(--secondary-color);
+					border-bottom: $table-data-border;
+					border-right: $table-data-border;
+					&:last-child {
+						border-right: 0;
+					}
 				}
 			}
-		}
-		tbody {
-			td {
-				border-top: $table-data-border;
-				border-right: $table-data-border;
-				&:last-child {
-					border-right: 0;
+			tbody {
+				td {
+					border-top: $table-data-border;
+					border-right: $table-data-border;
+					&:last-child {
+						border-right: 0;
+					}
 				}
-			}
-			tr{
-				&:hover,
-				&:focus,
-				&:active {
-					background-color: transparent;
+				tr{
+					&:hover,
+					&:focus,
+					&:active {
+						background-color: transparent;
+					}
 				}
 			}
 		}
@@ -130,11 +139,14 @@ joomla-tab[orientation=vertical] {
 	box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
 	border: solid 1px var(--cancel-button-background);
 	background-color: $white;
+	&.j-card{
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
+	}
 }
 
 joomla-tab[orientation=vertical] > ul {
 	flex-direction: column;
-    min-width: 30%;
+	min-width: 30%;
 	height: auto;
 	border-right: $table-data-border;
 	border-bottom: 0;

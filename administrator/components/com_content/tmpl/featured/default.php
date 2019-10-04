@@ -123,17 +123,17 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell text-center">
+								<th scope="col" style="width:10%" class="d-none d-xl-table-cell text-center">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTENT_HEADING_DATE_' . strtoupper($orderingColumn), 'a.' . $orderingColumn, $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:3%" class="d-none d-lg-table-cell text-center">
+								<th scope="col" style="width:3%" class="d-none d-xl-table-cell text-center">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
 								</th>
 								<?php if ($this->vote) : ?>
-									<th scope="col" style="width:3%" class="d-none d-md-table-cell text-center">
+									<th scope="col" style="width:3%" class="d-none d-xl-table-cell text-center">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_VOTES', 'rating_count', $listDirn, $listOrder); ?>
 									</th>
-									<th scope="col" style="width:3%" class="d-none d-md-table-cell text-center">
+									<th scope="col" style="width:3%" class="d-none d-xl-table-cell text-center">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_RATINGS', 'rating', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
@@ -328,24 +328,24 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 									</td>
 								<?php endif; ?>
-								<td class="small d-none d-md-table-cell text-center">
+								<td class="small d-none d-xl-table-cell text-center">
 									<?php
 									$date = $item->{$orderingColumn};
 									echo $date > 0 ? HTMLHelper::_('date', $date, Text::_('DATE_FORMAT_LC4')) : '-';
 									?>
 								</td>
-								<td class="d-none d-lg-table-cell text-center">
+								<td class="d-none d-xl-table-cell text-center">
 									<span class="badge badge-info">
 									<?php echo (int) $item->hits; ?>
 									</span>
 								</td>
 								<?php if ($this->vote) : ?>
-									<td class="d-none d-md-table-cell text-center">
+									<td class="d-none d-xl-table-cell text-center">
 										<span class="badge badge-success" >
 										<?php echo (int) $item->rating_count; ?>
 										</span>
 									</td>
-									<td class="d-none d-md-table-cell text-center">
+									<td class="d-none d-xl-table-cell text-center">
 										<span class="badge badge-warning" >
 										<?php echo (int) $item->rating; ?>
 										</span>
