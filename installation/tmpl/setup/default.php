@@ -23,24 +23,23 @@ use Joomla\CMS\Factory;
 		<div class="col-auto">
 			<ul class="j-install-menu">
 				<li>
-					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>">Choose Language</button>
+					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>"><?php echo Text::_('INSTL_CHANGE_LANG'); ?></button>
 				</li>
 				<li>
-					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
+					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>"><?php echo Text::_('INSTL_SITE_CONFIG'); ?></button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
-					<button type="button" role="button" id="navStep2" data-step="step2">Login Data</button>
+					<button type="button" role="button" id="navStep2" data-step="step2"><?php echo Text::_('INSTL_LOGIN_DATA'); ?></button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
-					<button type="button" role="button" id="navStep3" data-step="step3">Database Configuration</button>
+					<button type="button" role="button" id="navStep3" data-step="step3"><?php echo Text::_('INSTL_DATABASE_CONFIG'); ?></button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
-					<button type="button" role="button" id="navStep4" data-step="step3">Installing Site</button>
+					<button type="button" role="button" id="navStep4" data-step="step3"><?php echo Text::_('INSTL_INSTALLING_SITE'); ?></button>
 				</li>
 				<li>
-					<button type="button" role="button" id="navStep5" data-step="step4">Finalizion Installation</button>
+					<button type="button" role="button" id="navStep5" data-step="step4"><?php echo Text::_('INSTL_FINALIZE_INSTALLATION'); ?></button>
 				</li>
-
 			</ul>
 		</div>
 		<div class="col">
@@ -55,7 +54,7 @@ use Joomla\CMS\Factory;
 								<div class="controlls">
 									<?php echo $this->form->getInput('language'); ?>
 								</div>
-								<small class="form-text info">Select your prefered language for joomla installation</small>
+								<small class="form-text info"><?php echo Text::_('INSTL_SELECT_LANGUAGE_DESC'); ?></small>
 							</div>
 						</div>
 						<input type="hidden" name="task" value="language.set">
@@ -78,7 +77,18 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('site_name'); ?>
 							</div>
-							<small class="form-text info">Enter the name of your Joomla site.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_SITE_NAME_DESCRIPTION'); ?></small>
+						</div>
+					</div>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text info"><?php echo Text::_('INSTL_SITE_EMAIL_ADDRESS'); ?></small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
@@ -95,7 +105,7 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_user'); ?>
 							</div>
-							<small class="form-text info">Enter the real name of your Super User.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_LOGIN_DATA_SUPER_USER_NAME_DESC'); ?></small>
 						</div>
 					</div>
 
@@ -107,7 +117,7 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_username'); ?>
 							</div>
-							<small class="form-text info">Enter super user's username.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_LOGIN_DATA_USERNAME_DESC'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -119,26 +129,15 @@ use Joomla\CMS\Factory;
 								<?php echo $this->form->getInput('admin_password'); ?>
 							</div>
 							<div class="form-text info">
-								<small>Set the password for your Super User account.</small>
+								<small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_DESC'); ?></small>
 								<ul class="j-install-from-pass-info">
-									<li><small>To make your password stronger-</small></li>
-									<li><small>Make it at least 8 characters.</small></li>
-									<li><small>Add uppercase letters.</small></li>
-									<li><small>Add numbers and punctuations.</small></li>
-									<li><small>Make it different from username.</small></li>
+									<li><small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_HINT_STRENGTH'); ?></small></li>
+									<li><small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_HINT_LENGTH'); ?></small></li>
+									<li><small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_HINT_UPPERCASE'); ?></small></li>
+									<li><small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_HINT_PUNTUATION'); ?></small></li>
+									<li><small><?php echo Text::_('INSTL_LOGIN_DATA_PASSWORD_HINT_DIFF_USER'); ?></small></li>
 								</ul>
 							</div>
-						</div>
-					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
-							<small class="form-text info">Enter the site email address.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">
@@ -155,7 +154,7 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_type'); ?>
 							</div>
-							<small class="form-text info">Select a database type form the options.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_TYPE_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -166,7 +165,7 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_host'); ?>
 							</div>
-							<small class="form-text info">Enter the host name, usually "localhost" or a name provided by your host.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_HOST_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -177,7 +176,7 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('db_user'); ?>
 							</div>
-							<small class="form-text info">Enter the username for the host.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_HOST_USERNAME_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -188,7 +187,7 @@ use Joomla\CMS\Factory;
 							<div class="controls">
 								<?php echo $this->form->getInput('db_pass'); ?>
 							</div>
-							<small class="form-text info">Either a password you created or a password provided by your host.</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_HOST_PASSWORD_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -199,7 +198,7 @@ use Joomla\CMS\Factory;
 							<div class="controls">
 								<?php echo $this->form->getInput('db_name'); ?>
 							</div>
-							<small class="form-text info">Enter the database name</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_NAME_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -210,7 +209,7 @@ use Joomla\CMS\Factory;
 							<div class="controls">
 								<?php echo $this->form->getInput('db_prefix'); ?>
 							</div>
-							<small class="form-text info">Enter a table prefix or use the randomly generated one</small>
+							<small class="form-text info"><?php echo Text::_('INSTL_DATABASE_TABLE_PREFIX_DESCRIPTION'); ?></small>
 						</div>
 					</div>
 					<div class="form-no-margin">
@@ -237,10 +236,10 @@ use Joomla\CMS\Factory;
 
 					<div class="j-install-completing-list">
 						<ul class="j-install-progress">
-							<li class="list-item" id="db-check"><span class="j-spinner inactive"></span><?php echo Text::_('Checking database setup'); ?></li>
-							<li class="list-item" id="db-backup"><span class="j-spinner inactive"></span><?php echo Text::_('Backing up old tables'); ?></li>
-							<li class="list-item" id="db-create"><span class="j-spinner inactive"></span><?php echo Text::_('Creating database tables'); ?></li>
-							<li class="list-item" id="configuration-file"><span class="j-spinner inactive"></span><?php echo Text::_('Creating configuration file'); ?></li>
+							<li class="list-item" id="db-check"><span class="j-spinner inactive"></span><?php echo Text::_('INSTL_INSTALL_STATUS_CHK_DB'); ?></li>
+							<li class="list-item" id="db-backup"><span class="j-spinner inactive"></span><?php echo Text::_('INSTL_INSTALL_STATUS_BKUP_DB'); ?></li>
+							<li class="list-item" id="db-create"><span class="j-spinner inactive"></span><?php echo Text::_('INSTL_INSTALL_STATUS_CREATE_DB'); ?></li>
+							<li class="list-item" id="configuration-file"><span class="j-spinner inactive"></span><?php echo Text::_('INSTL_INSTALL_STATUS_CREATE_CONFIG_FILE'); ?></li>
 						</ul>
 					</div>
 				</fieldset><!-- /#installStep4 -->

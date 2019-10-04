@@ -67,11 +67,13 @@ Joomla.checkInputs = function() {
 Joomla.checkDbCredentials = function() {
 	// Joomla.loadingLayer("show");
 	const dbCheck = document.querySelector('#db-check .j-spinner');
+	const dbCheckLi = document.querySelector('#db-check');
 
 	var form = document.getElementById('adminForm'),
 		data = Joomla.serialiseForm(form);
 	
 	if (dbCheck) dbCheck.classList.remove('inactive');
+	if (dbCheckLi) dbCheckLi.classList.add('active');
 	
 	Joomla.request({
 		method: "POST",
@@ -246,23 +248,6 @@ const completePath = function(index) {
 		})
 	}
 
-	// navsteps
-	// if (navStep0) {
-	// 	navStep0.addEventListener('click', function(e){
-	// 		e.preventDefault();
-	// 		if (adminForm.classList.contains('active')) adminForm.classList.remove('active');
-	// 		adminForm.classList.add('d-none');
-	// 		if (languageForm.classList.contains('d-none')) languageForm.classList.remove('d-none');
-	// 		languageForm.classList.add('active');
-			
-	// 		clearAllActives();
-	// 		navStep0.classList.add('active');
-	// 		installStep0.classList.add('active');
-
-	// 		Joomla.removeMessages();
-	// 	});
-	// }
-
 	if (navStep1) {
 		navStep1.addEventListener('click', function(e){
 			e.preventDefault();
@@ -314,22 +299,6 @@ const completePath = function(index) {
 			}
 		});
 	}
-
-	// go to step5
-	// if (navStep4) {
-	// 	navStep4.addEventListener('click', function(e){
-	// 		e.preventDefault();
-	// 		if (Joomla.isFilled('#installStep3')) {
-	// 			clearAllActives();
-	// 			installStep4.classList.add('active');
-	// 			navStep4.classList.add('active');
-	// 			completePath(4);
-
-	// 			Joomla.removeMessages();
-	// 		}
-	// 	});
-	// }
-
 
 
 	// button clicks
