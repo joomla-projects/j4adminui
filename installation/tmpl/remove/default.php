@@ -146,7 +146,7 @@ use Joomla\CMS\Uri\Uri;
 								<thead>
 								<tr>
 									<td scope="col">
-										<input type="checkbox" name="" id="j-install-check-all-lang" class="j-checkbox">
+										<input type="checkbox" id="j-install-check-all-lang" class="j-checkbox">
 									</td>
 									<th scope="col">
 										<?php echo Text::_('INSTL_LANGUAGES_COLUMN_HEADER_LANGUAGE'); ?>
@@ -159,7 +159,7 @@ use Joomla\CMS\Uri\Uri;
 									</th>
 								</tr>
 								</thead>
-								<tbody>
+								<tbody id="j-lang-checkboxes">
 								<?php $version = new \Joomla\CMS\Version; ?>
 								<?php $currentShortVersion = preg_replace('#^([0-9\.]+)(|.*)$#', '$1', $version->getShortVersion()); ?>
 								<?php foreach ($this->items as $i => $language) : ?>
@@ -192,7 +192,7 @@ use Joomla\CMS\Uri\Uri;
 						<div class="j-install-step-body pt-4 pb-4 text-right">
 							<?php echo HTMLHelper::_('form.token'); ?>
 							<?php endif; ?>
-							<button id="skipLanguages" class="btn btn-secondary">
+							<button id="skipLanguages" class="btn">
 								<?php echo Text::_('JSKIP'); ?>
 							</button>
 							<button id="installLanguagesButton" class="btn btn-primary">
@@ -204,24 +204,21 @@ use Joomla\CMS\Uri\Uri;
 			</fieldset>
 
 			<fieldset id="installSampleData" class="j-install-step j-install-form">
-				<div class="j-install-step-header">
-					<span class="fa fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?>
-				</div>
 				<div class="j-install-step-form">
 					<h2><?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE_LABEL'); ?></h2>
 					<p><?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE_DESC'); ?></p>
 
 
-					<form action="index.php" method="post" id="sampleDataForm" class="form-validate">
+					<form action="index.php" method="post" id="sampleDataForm" class="form-validate j-install-step-footer">
 						<div class="">
 							<input type="hidden" name="sample_file" value="sample_testing.sql">
 							<?php echo HTMLHelper::_('form.token'); ?>
-							<div class="btn-group btn-group-lg">
-								<button id="installSampleDataButton" class="btn btn-primary">
-									<?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span>
-								</button>
+							<div class="btn-wrapper">
 								<button id="skipSampleData" class="btn">
 									<?php echo Text::_('JSKIP'); ?>
+								</button>
+								<button id="installSampleDataButton" class="btn btn-primary">
+									<?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?>
 								</button>
 							</div>
 						</div>
@@ -229,16 +226,18 @@ use Joomla\CMS\Uri\Uri;
 				</div>
 			</fieldset>
 
-			<fieldset id="installFinal" class="j-install-step j-install-form">
-				<div class="j-install-step-header">
-					<span class="fab fa-joomla" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_FINAL'); ?>
+			<fieldset id="installFinal" class="j-install-form no-padding j-install-step">
+				<div class="j-install-step-iconic-header">
+					<span class="fas fa-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
 				</div>
-				<div class="j-install-step-form">
+
+				<div class="j-install-step-form j-install-step-body pt-4">
 					<p><?php echo Text::_('INSTL_COMPLETE_FINAL_DESC'); ?></p>
-					<div class="form-group">
-						<a class="btn btn-primary btn-block" href="<?php echo Uri::root(); ?>"><span class="fa fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
-						<a class="btn btn-primary btn-block" href="<?php echo Uri::root(); ?>administrator/"><span class="fa fa-lock" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
-					</div>
+				</div>
+
+				<div class="btn-group btn-group-lg j-install-step-btn-group">
+					<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
+					<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="fas fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
 				</div>
 			</fieldset>
 		</div><!-- right side information column -->
