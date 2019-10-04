@@ -44,8 +44,11 @@
 	};
 
 	const dbBackup = document.querySelector('#db-backup .j-spinner');
+	const dbBackupLi = document.querySelector('#db-backup');
 	const dbCreate = document.querySelector('#db-create .j-spinner');
+	const dbCreateLi = document.querySelector('#db-create');
 	const configFile = document.querySelector('#configuration-file .j-spinner');
+	const configFileLi = document.querySelector('#configuration-file');
 
 	/**
 	 * Method to request a different page via AJAX
@@ -209,8 +212,11 @@
 		// Joomla.loadingLayer("show");
 		
 		dbBackup.classList.remove('inactive');
+		dbBackupLi.classList.add('active');
 		dbCreate.classList.remove('inactive');
+		dbCreateLi.classList.add('active');
 		configFile.classList.remove('inactive');
+		configFileLi.classList.add('active');
 
 		if (tasks.indexOf('backup') == -1) {
 			Joomla.updateProgress(25);
@@ -260,14 +266,17 @@
 						Joomla.updateProgress(-35);
 						configFile.classList.remove('done');
 						configFile.classList.add('inactive');
+						configFile.classList.remove('active');
 					} else if (task == 'database') {
 						Joomla.updateProgress(-30);
 						dbCreate.classList.remove('done');
 						dbCreate.classList.add('inactive');
+						dbCreate.classList.remove('active');
 					} else if (task == 'backup') {
 						Joomla.updateProgress(-25);
 						dbBackup.classList.remove('done');
 						dbBackup.classList.add('inactive');
+						dbBackupLi.classList.remove('active');
 					}
 				}
 
