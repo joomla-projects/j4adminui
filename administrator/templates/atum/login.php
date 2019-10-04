@@ -103,7 +103,9 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 									<li><?php echo JText::_('TPL_ATUM_INFO_EXTENSIONS'); ?></li>
 								</ul>
 							</div>
-							<jdoc:include type="modules" name="sidebar" style="body" />
+							<div class="sidebar-modules">
+								<jdoc:include type="modules" name="sidebar" style="body" />
+							</div>
 						</div>
 					</div> <!-- /.main-sidebar -->
 				
