@@ -27,19 +27,26 @@
   @include media-breakpoint-down(xs){
     padding-left: 0;
     max-width: 100%;
-    overflow: hidden;
   }
   .header-title {
     flex-grow: 1;
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+    }
     .d-flex {
       padding-left: 30px;
       padding-right: 30px;
+      @include media-breakpoint-down(xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     }
     .container-title {
       width: 100%;
     }
     @include media-breakpoint-down(xs) {
-      width: 100%;
+      padding-left: 0;
     }
   }
   
@@ -71,6 +78,9 @@
       &.logo-small {
         display: none;
         max-width: 1.3rem;
+        @include media-breakpoint-down(xs) {
+          max-width: 4rem;
+        }
       }
     }
     svg {
@@ -104,6 +114,9 @@
     position: relative;
     &:not(:last-child){
       border-right: 1px solid var(--background);
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
     }
   }
   
@@ -137,6 +150,9 @@
       align-items: center;
       line-height: 58px;
       background-color: #fff;
+      @include media-breakpoint-down(xs) {
+        padding: 0 1.107rem;
+      }
       img{
         height: 32px;
         width: 32px;

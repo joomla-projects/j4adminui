@@ -4,6 +4,9 @@ joomla-pagination {
     display: -ms-flexbox;
     display: flex;
     align-items: center;
+    @include media-breakpoint-down(xs) {
+      flex-wrap: wrap;
+    }
     .pagination-label {
       padding: 0 10px;
       color: var(--secondary-color);
@@ -168,4 +171,8 @@ joomla-pagination {
 .j-pagination-footer {
   display: flex;
   justify-content: space-between;
+  @include media-breakpoint-down(xs) {
+    justify-content: center;
+    padding-bottom: 50px;
+  }
 }
