@@ -81,6 +81,17 @@ use Joomla\CMS\Factory;
 							<small class="form-text info">Enter the name of your Joomla site.</small>
 						</div>
 					</div>
+					<div class="form-no-margin">
+						<div class="control-group">
+							<div class="control-label">
+								<?php echo $this->form->getLabel('admin_email'); ?>
+							</div>
+							<div class="controlls">
+								<?php echo $this->form->getInput('admin_email'); ?>
+							</div>
+							<small class="form-text info">Enter the site email address.</small>
+						</div>
+					</div>
 					<div class="j-install-step-footer">
 						<button class="btn btn-primary" id="step1" ><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
@@ -128,17 +139,6 @@ use Joomla\CMS\Factory;
 									<li><small>Make it different from username.</small></li>
 								</ul>
 							</div>
-						</div>
-					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
-							<small class="form-text info">Enter the site email address.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">

@@ -64,6 +64,9 @@ class HtmlView extends DefaultView
 	 */
 	public function display($tpl = null)
 	{
+		echo '<pre>';
+		print_r((new Version)->isInDevelopmentState());
+		echo '</pre>';
 		$this->development = (new Version)->isInDevelopmentState();
 		$this->items       = $this->get('Items', 'Languages');
 		$this->phpoptions  = $this->get('PhpOptions', 'Checks');

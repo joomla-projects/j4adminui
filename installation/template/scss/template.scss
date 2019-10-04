@@ -18,8 +18,9 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../administrator/templates/atum/scss/blocks/form";
 @import "../../../administrator/templates/atum/scss/blocks/buttons";
 @import "../../../administrator/templates/atum/scss/blocks/alerts";
-
 @import "../../../administrator/templates/atum/scss/blocks/progress";
+@import "../../../administrator/templates/atum/scss/blocks/j-table";
+@import "../../../administrator/templates/atum/scss/blocks/checkbox";
 
 body {
 	background: var(--background);
@@ -115,8 +116,10 @@ body {
 	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 	border: solid 1px #eaeef5;
 	background: #fff;
-	padding: 2.143rem 2.143rem 7.5rem;
 	position: relative;
+	&:not(.no-padding){
+		padding: 2.143rem 2.143rem 7.5rem;
+	}
 }
 
 .j-install-step-footer{
@@ -249,39 +252,44 @@ caption {
 	background-repeat: no-repeat;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='22 22 44 44'%3E%3Ccircle class='background' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23dddddd'%3E%3C/circle%3E%3Ccircle class='spinner-circle-dash' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23288feb' stroke-dasharray='119.38052083641213' stroke-dashoffset='-80'%3E%3C/circle%3E%3C/svg%3E");
 	vertical-align: top;
-  }
-  
-  
-  .j-spinner.inactive{
+}
+
+
+.j-spinner.inactive{
 	animation: none;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='22 22 44 44'%3E%3Ccircle class='background' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23dddddd'%3E%3C/circle%3E%3Ccircle class='spinner-circle-dash' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23288feb' stroke-dasharray='119.38052083641213' stroke-dashoffset='-119.38052083641213'%3E%3C/circle%3E%3C/svg%3E");
-  }
-  
-  .j-spinner.done{
+}
+
+.j-spinner.done{
 	animation: none;
 	background: #288feb;
 	background-size: 55%;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='9'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M4.571 8.8L0 4.569l1.28-1.184 3.291 3.046L11.52 0l1.28 1.185z'/%3E%3C/svg%3E");
-  }
+}
 
-  .j-install-completing-list {
-	  margin-top: 30px;
-	  ul{
-		  list-style: none;
-		  padding: 0;
-		  li{
+.j-install-completing-list {
+	margin-top: 30px;
+	ul{
+		list-style: none;
+		padding: 0;
+		li{
 			display: flex;
 			align-items: center;
-			padding: 15px 0;
-			border-bottom: 1px solid #eaeef5;
-			span.j-spinner {
-				margin: 0 5px 0 0;
+			padding: 10px 0;
+			&:not(:first-child){
+				border-top: 1px solid #eaeef5;
 			}
-		  }
-	  }
-  }
+			&:not(.active){
+				opacity: .4;
+			}
+			span.j-spinner {
+				margin: 0 10px 0 0;
+			}
+		}
+	}
+}
 .j-install-step small.form-text{
 	overflow: hidden;
 	margin-top: 0.714rem;
@@ -311,4 +319,77 @@ caption {
 
 .form-text{
 	color: var(--icon-color);
+}
+
+.j-install-step-iconic-header{
+	padding: 23px 30px;
+	border-bottom: 1px solid var(--background);
+	overflow: hidden;
+	span{
+		line-height: 23px;
+		color: var(--success-color)
+	}
+	.icon{
+		height: 23px;
+		width: 23px;
+		text-align: center;
+		background: var(--success-color);
+		color: #fff;
+		border-radius: 50%;
+		font-size: 10px;
+		float: left;
+		margin-right: 15px;
+	}
+}
+
+.j-install-step-body{
+	padding: 0 30px;
+}
+
+.j-install-step-btn-group{
+	width: 100%;
+}
+
+.j-install-scrollable-table table,
+.j-install-step-table{
+	width: 100%;
+	thead{
+		td,
+		th{
+			border-bottom: 1px solid var(--background);
+		}
+	}
+	th,
+	td{
+		padding: 11px 30px;
+		&:not(:first-child){
+			text-align: center;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		&:first-child{
+			padding-right: 15px;
+		}
+		&:last-child{
+			padding-left: 15px;
+		}
+		.success{
+			color: var(--success-color);
+		}
+		.danger{
+			color: var(--danger-color);
+		}
+	}
+	tr:nth-child(even){
+		th,
+		td{
+			background: var(--background);
+		}
+	}
+}
+
+
+.j-install-scrollable-table{
+	max-height: 450px;
+	overflow-y: auto;
 }

@@ -70,9 +70,9 @@ Joomla.checkDbCredentials = function() {
 
 	var form = document.getElementById('adminForm'),
 		data = Joomla.serialiseForm(form);
-	
+
 	if (dbCheck) dbCheck.classList.remove('inactive');
-	
+
 	Joomla.request({
 		method: "POST",
 		url : Joomla.installationBaseUrl + '?task=installation.dbcheck&format=json',
@@ -81,7 +81,7 @@ Joomla.checkDbCredentials = function() {
 		headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 		onSuccess: function(response, xhr){
 			response = JSON.parse(response);
-			
+
 			Joomla.updateProgress(10);
 			if (dbCheck) dbCheck.classList.add('done');
 
@@ -124,7 +124,7 @@ Joomla.checkDbCredentials = function() {
 
 /**
  * Visible section and check if it is allowed to visible
- * 
+ *
  */
 Joomla.isFilled = function(src) {
 	const srcEl = document.querySelector(src);
@@ -169,7 +169,7 @@ const clearAllActives = function() {
 	installStep3.classList.remove('active');
 	installStep4.classList.remove('active');
 	// installStep5.classList.remove('active');
-	
+
 	navStep0.classList.remove('active');
 	navStep1.classList.remove('active');
 	navStep2.classList.remove('active');
@@ -222,7 +222,7 @@ const completePath = function(index) {
 	const btnStep3 	= document.querySelector('#setupButton');
 	const btnStep4 	= document.querySelector('#step4');
 	const btnStep5 	= document.querySelector('#step5');
-	
+
 	Joomla.pageInit();
 
 	var el = document.querySelector('.nav-steps.hidden');
@@ -254,7 +254,7 @@ const completePath = function(index) {
 	// 		adminForm.classList.add('d-none');
 	// 		if (languageForm.classList.contains('d-none')) languageForm.classList.remove('d-none');
 	// 		languageForm.classList.add('active');
-			
+
 	// 		clearAllActives();
 	// 		navStep0.classList.add('active');
 	// 		installStep0.classList.add('active');
@@ -266,7 +266,7 @@ const completePath = function(index) {
 	if (navStep1) {
 		navStep1.addEventListener('click', function(e){
 			e.preventDefault();
-			
+
 			if (Joomla.isFilled('#installStep0')) {
 				clearAllActives();
 
@@ -276,7 +276,7 @@ const completePath = function(index) {
 					languageForm.classList.remove('active');
 					languageForm.classList.add('d-none');
 				}
-				
+
 				installStep1.classList.add('active');
 				navStep1.classList.add('active');
 				navStep0.classList.remove('active');
@@ -336,7 +336,7 @@ const completePath = function(index) {
 	if (btnStep0) {
 		btnStep0.addEventListener('click', function(e){
 			e.preventDefault();
-			
+
 			if (Joomla.isFilled('#installStep0')) {
 				if (installStep1) {
 					clearAllActives();
@@ -346,16 +346,16 @@ const completePath = function(index) {
 						languageForm.classList.remove('active');
 						languageForm.classList.add('d-none');
 					}
-					
+
 					installStep1.classList.add('active');
 					navStep1.classList.add('active');
 					navStep0.classList.remove('active');
-					
+
 					// Focus to the next field
 					if (document.getElementById('jform_site_name')) {
 						document.getElementById('jform_site_name').focus();
 					}
-					
+
 					completePath(1);
 					Joomla.removeMessages();
 				}
@@ -367,7 +367,7 @@ const completePath = function(index) {
 	if (document.getElementById('step1')) {
 		document.getElementById('step1').addEventListener('click', function(e) {
 			e.preventDefault();
-			
+
 			if (Joomla.isFilled('#installStep1')) {
 				if (installStep2) {
 					clearAllActives();
@@ -396,9 +396,9 @@ const completePath = function(index) {
 					installStep3.classList.add('active');
 					navStep3.classList.add('active');
 					document.getElementById('setupButton').style.display = 'block';
-					
+
 					Joomla.makeRandomDbPrefix();
-					
+
 					// Focus to the next field
 					if (document.getElementById('jform_db_type')) {
 						document.getElementById('jform_db_type').focus();
