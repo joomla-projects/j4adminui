@@ -17,7 +17,7 @@ use Joomla\CMS\Uri\Uri;
     title="<?php echo Text::sprintf('MOD_FRONTEND_PREVIEW', $sitename); ?>"
     target="_blank">
     <span class="header-item-text">
-        <?php echo HTMLHelper::_('string.truncate', $sitename, 28, false, false); ?>
+        <?php echo Text::_('MOD_FRONTEND_VIEW_SITE'); ?>
     </span>
     <span class="header-item-icon fa fa-external-link-alt" aria-hidden="true"></span>
 </a>
