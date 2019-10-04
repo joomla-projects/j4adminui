@@ -12,9 +12,6 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 ?>
 <section class="loginsupport">
-	<div class="py-3 px-4">
-		<strong><?php echo Text::_('MOD_LOGINSUPPORT_HEADLINE'); ?></strong>
-	</div>
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item"><a href="<?php echo $params->get('forum_url') ?>" target="_blank" rel="nofollow noopener">
 			<?php echo Text::_('MOD_LOGINSUPPORT_FORUM'); ?></a>

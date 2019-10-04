@@ -17,7 +17,6 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
-HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
@@ -42,15 +41,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								$canEdit   = $user->authorise('core.edit',       'com_templates');
 								$canChange = $user->authorise('core.edit.state', 'com_templates');
 							?>
-								<div class="col-md-3">
+								<div class="col-sm-6 col-lg-4 col-xl-3">
 									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> j-card j-card-has-hover mb-4">
-										
 										<div class="j-card-header">
 											<h4 class="j-card-title">
-												<span class="mr-1">
-													<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-												</span>
-												<span class="j-card-icon fas fa-info-circle" id="template-info-<?php echo $item->id; ?>"></span>
 												<span class="template-name">
 													<?php if ($canEdit) : ?>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
@@ -63,6 +57,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($version = $item->xmldata->get('version')) : ?>
 													<span class="template-version small text-muted">v<?php echo $this->escape($version); ?></span>
 												<?php endif; ?>
+												<span id="template-info-<?php echo $item->id; ?>" class="j-card-icon fas fa-info-circle ml-1" area-hidden="true"></span>
 											</h4>
 											<?php if ($canCreate || $canDelete): ?>
 											<div class="j-card-header-right">
@@ -92,7 +87,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($clientId === 0) : ?>
 													<div class="j-card-media-overlay align-items-center justify-content-center">
 														<a href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" target="_blank" class="btn btn-default">
-															<i class="fas fa-eye"></i> &nbsp;Preview
+															<i class="fas fa-eye"></i> &nbsp;<?php echo Text::_('COM_TEMPLATES_PREVIEW'); ?>
 														</a>
 													</div>
 												<?php endif; ?>
@@ -157,10 +152,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<div class="list-group-item py-4">
 													<div class="j-card-btn-group">
 														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-default">
-															<i class="fas fa-code"></i> Edit Files
+															<span class="fas fa-code" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_TEMPLATE_EDIT_FILES'); ?>
 														</a>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary">
-															<i class="fas fa-cog"></i> Options
+															<span class="fas fa-cog" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_OPTIONS'); ?>
 														</a>
 													</div>
 												</div>
@@ -169,31 +164,31 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									</div>
 								</div>
 
-								<!-- Style Information Callout -->
+								<!-- Style Information -->
 								<joomla-callout for="#template-info-<?php echo $item->id; ?>" action="hover" position="bottom">
-									<div class="callout-title">Information</div>
-									<div class="callout-content p-0">
+									<div class="callout-title"><?php echo Text::_('COM_TEMPLATES_STYLE_INFO'); ?></div>
+									<div class="callout-content">
 										<div class="template-info">
 											<ul class="list-group list-group-flush">
-												<li class="list-group-item">
-													<span class="text-muted">Created: </span> <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
+												<li class="list-group-item px-0">
+													<span class="text-muted"><?php echo Text::_('COM_TEMPLATES_CREATED'); ?>: </span> <?php echo $this->escape($item->xmldata->get('creationDate')); ?>
 												</li>
 												
 												<?php if ($author = $item->xmldata->get('author')) : ?>
-													<li class="list-group-item">
-													<span class="text-muted">Author: </span><?php echo $this->escape($author); ?>
+													<li class="list-group-item px-0">
+													<span class="text-muted"><?php echo Text::_('COM_TEMPLATES_AUTHOR'); ?>: </span><?php echo $this->escape($author); ?>
 													</li>
 												<?php endif; ?>
 												
 												<?php if ($email = $item->xmldata->get('authorEmail')) : ?>
-													<li class="list-group-item">
-														<span class="text-muted">Author Email: </span> <?php echo $this->escape($email); ?>
+													<li class="list-group-item px-0">
+														<span class="text-muted"><?php echo Text::_('COM_TEMPLATES_AUTHOR_EMAIL'); ?>: </span> <?php echo $this->escape($email); ?>
 													</li>
 												<?php endif; ?>
 
 												<?php if ($url = $item->xmldata->get('authorUrl')) : ?>
-													<li class="list-group-item">
-														<span class="text-muted">Author Website: </span> <a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a>
+													<li class="list-group-item px-0">
+														<span class="text-muted"><?php echo Text::_('COM_TEMPLATES_AUTHOR_WEBSITE'); ?>: </span> <a href="<?php echo $this->escape($url); ?>"><?php echo $this->escape($url); ?></a>
 													</li>
 												<?php endif; ?>
 											</ul>
@@ -203,7 +198,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							<?php endforeach; ?>
 						</div>
 					</div>
-
+	
 					<!-- load the pagination. -->
 					<div class="j-pagination-footer">
 						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>

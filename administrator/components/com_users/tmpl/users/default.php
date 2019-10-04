@@ -54,7 +54,7 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_USERS_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" class="text-center d-none d-md-table-cell">
+								<th scope="col" class="text-center d-none d-lg-table-cell">
 									<?php echo Text::_('COM_USERS_DEBUG_PERMISSIONS'); ?>
 								</th>
 								<th scope="col" style="width:10%; " class="d-none d-md-table-cell">
@@ -132,7 +132,7 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 										<span class="badge badge-warning"><?php echo Text::_('COM_USERS_PASSWORD_RESET_REQUIRED'); ?></span>
 									<?php endif; ?>
 								</th>
-								<td class="text-center btns d-none d-md-table-cell">
+								<td class="text-center btns d-none d-lg-table-cell">
 									<a href="<?php echo Route::_('index.php?option=com_users&view=debuguser&user_id=' . (int) $item->id); ?>">
 										<span class="fa fa-list" aria-hidden="true"></span>
 										<span class="sr-only"><?php echo Text::_('COM_USERS_DEBUG_PERMISSIONS'); ?></span>

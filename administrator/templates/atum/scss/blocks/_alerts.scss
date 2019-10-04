@@ -44,7 +44,7 @@ joomla-alert, .alert {
         display: flex;
         opacity: 1;
         flex-wrap: wrap;
-        animation: showJoomlaAlert .3s;
+        animation: fadeInUp .3s;
         will-change: transform;
         z-index: auto;
     }
@@ -52,6 +52,9 @@ joomla-alert, .alert {
     .joomla-alert--collapse-container,
     .joomla-alert-content{
         flex-grow: 1;
+        p:last-child{
+            margin-bottom: 0;
+        }
     }
 
     .joomla-alert--icon{
@@ -227,26 +230,4 @@ html[dir=rtl] joomla-alert {
 .alert {
     opacity: 1;
     z-index: auto;
-}
-@keyframes showJoomlaAlert {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
-    1% {
-        -webkit-transform: scale(.5);
-        transform: scale(.5)
-    }
-    45% {
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05)
-    }
-    80% {
-        -webkit-transform: scale(.95);
-        transform: scale(.95)
-    }
-    to {
-        -webkit-transform: scale(1);
-        transform: scale(1)
-    }
 }

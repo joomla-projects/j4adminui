@@ -32,6 +32,7 @@ joomla-modal {
 	&.show {
 		opacity: 1;
 		visibility: visible;
+		animation: modalDown .4s;
 	}
 	
 	&.fade {
@@ -212,6 +213,7 @@ joomla-modal {
 	left: 0;
 	z-index: 1040;
 	background-color:var(--overlay);
+	animation: fadeIn .5s;
 }
 
 .contentpane {
