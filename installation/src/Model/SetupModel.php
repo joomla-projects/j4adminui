@@ -366,7 +366,6 @@ class SetupModel extends BaseInstallationModel
 				$options->db_prefix,
 				isset($options->db_select) ? $options->db_select : false
 			);
-
 			$db->connect();
 
 			return true;

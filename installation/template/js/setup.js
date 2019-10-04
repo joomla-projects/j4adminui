@@ -82,7 +82,6 @@ Joomla.checkDbCredentials = function() {
 		onSuccess: function(response, xhr){
 			response = JSON.parse(response);
 			
-
 			Joomla.updateProgress(10);
 			if (dbCheck) dbCheck.classList.add('done');
 
@@ -132,7 +131,6 @@ Joomla.isFilled = function(src) {
 
 	if (srcEl) {
 		const fields = [...srcEl.querySelectorAll('input[required], select[required]')];
-		console.log(fields);
 		let counter = 0;
 
 		if (fields.length) {
