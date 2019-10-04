@@ -171,7 +171,9 @@
       }
       this.dispatchCustomEvent('joomla.modal.close');
 
-      this.addEventListener('transitionend', () => {
+      this.style.animation = "fadeOutUp .3s";
+      this.style.opacity = 0;
+      setTimeout(() => {
         if (this.dropShadow) {
           document.body.removeChild(this.dropShadow);
         }
@@ -179,7 +181,9 @@
           this.main.removeChild(this.main.querySelector('iframe'));
         }
         this.dispatchCustomEvent('joomla.modal.closed');
-      }, { once: true });
+        this.style.animation = null;
+        this.style.opacity = null;
+      }, 200);
     }
 
     documentClose(event) {
