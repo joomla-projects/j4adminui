@@ -39,7 +39,7 @@ use Joomla\CMS\Uri\Uri;
 
 			</ul>
 		</div><!-- left side navigation column -->
-		<div class="col">
+		<div class="col j-install-righ-col">
 			<fieldset id="installCongrat" class="j-install-form no-padding j-install-step active">
 				<div class="j-install-step-iconic-header">
 					<span class="fas fa-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
@@ -58,8 +58,7 @@ use Joomla\CMS\Uri\Uri;
 								<?php $displayTable = true; ?>
 							<?php endif; ?>
 						<?php endforeach; ?>
-						<?php
-						if ($displayTable) : ?>
+						<?php if ($displayTable) : ?>
 							<hr>
 							<div class="j-install-step-body">
 								<?php echo Text::_('INSTL_PRECHECK_RECOMMENDED_SETTINGS_DESC'); ?>
@@ -110,7 +109,7 @@ use Joomla\CMS\Uri\Uri;
 						<?php echo HTMLHelper::_('form.token'); ?>
 
 						<div class="btn-group btn-group-lg j-install-step-btn-group">
-							<a class="btn btn-primary" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
+							<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
 							<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="fas fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
 						</div>
 
@@ -190,46 +189,50 @@ use Joomla\CMS\Uri\Uri;
 								</tbody>
 							</table>
 						</div>
-						<div class="j-install-step-body btn-group-lg pt-4 pb-4">
+						<div class="j-install-step-body pt-4 pb-4 text-right">
 							<?php echo HTMLHelper::_('form.token'); ?>
 							<?php endif; ?>
-							<button id="installLanguagesButton" class="btn btn-primary">
-								<?php echo Text::_('JNEXT'); ?>
-							</button>
 							<button id="skipLanguages" class="btn btn-secondary">
 								<?php echo Text::_('JSKIP'); ?>
+							</button>
+							<button id="installLanguagesButton" class="btn btn-primary">
+								<?php echo Text::_('JNEXT'); ?>
 							</button>
 						</div>
 					</form>
 				</div>
 			</fieldset>
 
-			<fieldset id="installSampleData" class="j-install-step">
-				<legend class="j-install-step-header">
+			<fieldset id="installSampleData" class="j-install-step j-install-form">
+				<div class="j-install-step-header">
 					<span class="fa fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?>
-				</legend>
+				</div>
 				<div class="j-install-step-form">
 					<h2><?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE_LABEL'); ?></h2>
 					<p><?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE_DESC'); ?></p>
 
 
 					<form action="index.php" method="post" id="sampleDataForm" class="form-validate">
-						<div class="form-group">
+						<div class="">
 							<input type="hidden" name="sample_file" value="sample_testing.sql">
 							<?php echo HTMLHelper::_('form.token'); ?>
-							<button id="installSampleDataButton" class="btn btn-primary btn-block"><?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
-							<button id="skipSampleData" class="btn btn-block btn-secondary">
-								<?php echo Text::_('JSKIP'); ?>
-							</button>
+							<div class="btn-group btn-group-lg">
+								<button id="installSampleDataButton" class="btn btn-primary">
+									<?php echo Text::_('INSTL_SITE_INSTALL_SAMPLE'); ?> <span class="fa fa-chevron-right" aria-hidden="true"></span>
+								</button>
+								<button id="skipSampleData" class="btn">
+									<?php echo Text::_('JSKIP'); ?>
+								</button>
+							</div>
 						</div>
 					</form>
 				</div>
 			</fieldset>
 
-			<fieldset id="installFinal" class="j-install-step">
-				<legend class="j-install-step-header">
+			<fieldset id="installFinal" class="j-install-step j-install-form">
+				<div class="j-install-step-header">
 					<span class="fab fa-joomla" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_FINAL'); ?>
-				</legend>
+				</div>
 				<div class="j-install-step-form">
 					<p><?php echo Text::_('INSTL_COMPLETE_FINAL_DESC'); ?></p>
 					<div class="form-group">
