@@ -95,3 +95,12 @@ $switcher-height: 22px;
 .col-md-3 .switcher__legend {
   margin-left: 0;
 }
+
+@media (max-width: 1199px){
+  .switcher {
+    width: auto;
+    label {
+      min-width: auto;
+    }
+  }
+}

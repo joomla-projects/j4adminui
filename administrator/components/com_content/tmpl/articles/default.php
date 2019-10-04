@@ -118,7 +118,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 								<th scope="col" style="min-width:100px">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="min-width:60px">
+								<th scope="col" style="min-width:60px" class="d-none d-sm-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JCATEGORY', 'a.catid', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">

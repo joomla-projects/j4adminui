@@ -1,0 +1,13 @@
+//com_media
+.com_media {
+    .btn-toolbar {
+        joomla-toolbar-button {
+            &#toolbar-options,
+            &#toolbar-help {
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

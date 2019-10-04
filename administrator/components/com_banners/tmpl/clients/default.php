@@ -66,19 +66,19 @@ $params     = $this->state->params ?? new CMSObject;
 								<th scope="col" style="width:15%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_BANNERS_HEADING_CONTACT', 'a.contact', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:3%" class="text-center d-none d-lg-table-cell">
 									<span class="icon-publish j-text-success" aria-hidden="true" title="<?php echo Text::_('COM_BANNERS_COUNT_PUBLISHED_ITEMS'); ?>"></span>
 									<span class="sr-only"><?php echo Text::_('COM_BANNERS_COUNT_PUBLISHED_ITEMS'); ?></span>
 								</th>
-								<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:3%" class="text-center d-none d-lg-table-cell">
 									<span class="icon-unpublish j-text-mute" aria-hidden="true" title="<?php echo Text::_('COM_BANNERS_COUNT_UNPUBLISHED_ITEMS'); ?>"></span>
 									<span class="sr-only"><?php echo Text::_('COM_BANNERS_COUNT_UNPUBLISHED_ITEMS'); ?></span>
 								</th>
-								<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:3%" class="text-center d-none d-lg-table-cell">
 									<span class="icon-archive j-text-warning" aria-hidden="true" title="<?php echo Text::_('COM_BANNERS_COUNT_ARCHIVED_ITEMS'); ?>"></span>
 									<span class="sr-only"><?php echo Text::_('COM_BANNERS_COUNT_ARCHIVED_ITEMS'); ?></span>
 								</th>
-								<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:3%" class="text-center d-none d-lg-table-cell">
 									<span class="icon-trash j-text-danger" aria-hidden="true" title="<?php echo Text::_('COM_BANNERS_COUNT_TRASHED_ITEMS'); ?>"></span>
 									<span class="sr-only"><?php echo Text::_('COM_BANNERS_COUNT_TRASHED_ITEMS'); ?></span>
 								</th>

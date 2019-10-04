@@ -22,7 +22,7 @@ if (isset($list['list_fullordering'])) {
 
 ?>
 <?php if ($list) : ?>
-	<div class="ordering-select">
+	<div class="ordering-select d-none d-xl-block">
 		<?php foreach ($list as $fieldName => $field) : ?>
 			<?php if($fieldName !== 'list_limit') : ?>
 				<div class="js-stools-field-list">

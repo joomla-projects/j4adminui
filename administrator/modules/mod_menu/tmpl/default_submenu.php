@@ -44,8 +44,8 @@ elseif ($current->hasChildren())
 }
 
 // if the menu is help then set class to li
-$class = ($current->title == 'MOD_MENU_HELP' && $current->element == 'com_cpanel') ? ' class="j-help-menu"' : $class;
-
+$class = ($current->title == 'MOD_MENU_HELP' && $current->element == 'com_cpanel') ? ' "j-help-menu"' : $class;
+$class = $class == '' ? '' : 'class="'.$class.'"';
 // Set the correct aria role and print the item
 if ($current->type == 'separator')
 {
