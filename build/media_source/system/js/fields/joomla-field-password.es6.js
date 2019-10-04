@@ -40,7 +40,7 @@
     }
 
     get inputId() {
-      return this.getAttribute('id');
+      return this.getAttribute('input-id');
     }
 
     get customClass() {
@@ -284,7 +284,12 @@
 
           // appending
           this.inputGroup.append(this.inputContainer);
-          this.inputGroup.append(this.indicatorsContainer);
+
+          // If strengthmeter enabled then append the indicators
+          if (this.strengthMeter) {
+            this.inputGroup.append(this.indicatorsContainer);
+          }
+          
           this.passwordGroup.append(this.inputGroup);
           this.append(this.passwordGroup);
         }
