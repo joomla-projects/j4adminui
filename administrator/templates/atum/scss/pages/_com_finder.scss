@@ -1,0 +1,16 @@
+//com_finder
+.com_finder {
+    .btn-toolbar {
+        joomla-toolbar-button {
+            &#toolbar-options,
+            &#toolbar-bars {
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+            }
+            &#toolbar-trash {
+                margin-left: auto;
+            }
+        }
+    }
+}

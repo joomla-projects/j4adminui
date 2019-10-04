@@ -40,8 +40,16 @@
         }
       }
     }
+    #toolbar-options {
+      @include media-breakpoint-down(md) {
+        margin-left: auto;
+      }
+    }
     #toolbar-help {
       margin-left: auto;
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
       .btn {
         padding: 0;
         color: var(--secondary-color);
