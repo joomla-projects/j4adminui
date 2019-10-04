@@ -130,6 +130,10 @@ body {
 	padding: 0 2.143rem;
 	box-sizing: border-box;
 	right: 0;
+	&.no-padding{
+		bottom: 0;
+		padding: 0;
+	}
 }
 
 
