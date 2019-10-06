@@ -88,17 +88,6 @@ use Joomla\CMS\Factory;
 							<div class="controlls">
 								<?php echo $this->form->getInput('admin_email'); ?>
 							</div>
-							<small class="form-text info"><?php echo Text::_('INSTL_SITE_EMAIL_ADDRESS'); ?></small>
-						</div>
-					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
 							<small class="form-text info">Enter the site email address.</small>
 						</div>
 					</div>
