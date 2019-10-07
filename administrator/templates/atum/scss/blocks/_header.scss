@@ -112,6 +112,9 @@
   
   .header-item {
     position: relative;
+    min-height: 60px;
+    @extend .d-flex;
+    @extend .align-items-center;
     &:not(:last-child){
       border-right: 1px solid var(--background);
       @include media-breakpoint-down(xs) {
@@ -127,7 +130,7 @@
       line-height: 1;
     }
     .joomlaversion {
-      line-height: $header-height;
+      line-height: 1;
       .align-items-end {
         margin-right: .5rem;
       }
@@ -148,7 +151,7 @@
       border: none;
       padding: 0 2.107rem;
       align-items: center;
-      line-height: 58px;
+      line-height: 1;
       background-color: #fff;
       @include media-breakpoint-down(xs) {
         padding: 0 1.107rem;
@@ -215,10 +218,6 @@
     .fa-angle-right,
     .header-item-text {
       display: none !important;
-    }
-    .header-item-content {
-      height: $header-height;
-      display: flex;
     }
   }
 }
