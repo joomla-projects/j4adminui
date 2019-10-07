@@ -22,22 +22,22 @@ use Joomla\CMS\Factory;
 	<div class="row no-gutters">
 		<div class="col-12 col-md-auto">
 			<ul class="j-install-menu">
-				<li>
+				<li id="navStepLi0">
 					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>"><?php echo Text::_('INSTL_CHANGE_LANG'); ?></button>
 				</li>
-				<li>
+				<li id="navStepLi1">
 					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>"><?php echo Text::_('INSTL_SITE_CONFIG'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
+				<li id="navStepLi2" title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
 					<button type="button" role="button" id="navStep2" data-step="step2"><?php echo Text::_('INSTL_LOGIN_DATA'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
+				<li id="navStepLi3" title="<?php echo Text::_('INSTL_DATABASE'); ?>">
 					<button type="button" role="button" id="navStep3" data-step="step3"><?php echo Text::_('INSTL_DATABASE_CONFIG'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
+				<li id="navStepLi4" title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
 					<button type="button" role="button" id="navStep4" data-step="step3"><?php echo Text::_('INSTL_INSTALLING_SITE'); ?></button>
 				</li>
-				<li>
+				<li id="navStepLi5">
 					<button type="button" role="button" id="navStep5" data-step="step4"><?php echo Text::_('INSTL_FINALIZE_INSTALLATION'); ?></button>
 				</li>
 			</ul>

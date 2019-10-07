@@ -30,6 +30,23 @@
 		}
 	};
 
+	// If invalid step then add exclamation error beside the step text
+	Joomla.setValidationStatus = function(selector, status) {
+		const element = document.querySelector(selector);
+
+		if (element) {
+			if (status == 'show') {
+				if (!element.classList.contains('j-insallation-has-error')) {
+					element.classList.add('j-insallation-has-error');
+				}
+			} else if (status == 'hide') {
+				if (element.classList.contains('j-insallation-has-error')) {
+					element.classList.remove('j-insallation-has-error');
+				}
+			}
+		}
+	};
+
 	Joomla.serialiseForm = function( form ) {
 		var i, l, obj = [], elements = form.querySelectorAll( "input, select, textarea" );
 		for(i = 0, l = elements.length; i < l; i++) {

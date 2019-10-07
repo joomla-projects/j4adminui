@@ -113,6 +113,27 @@ body .container-main{
 			}
 		}
 	}
+
+	li{
+		&.j-insallation-has-error{
+			button {
+				border-left-color: var(--danger-color);
+				background: rgba(var(--danger-color-rgb),.1);
+				color: var(--color);
+				&::before {
+					content: '\f12a';
+					font-family: Font Awesome\ 5 Free;
+					background: var(--danger-color);
+					border-color: var(--danger-color);
+					color: #fff;
+					font-size: 10px;
+					display: inline-flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}	
+		}
+	}
 }
 .j-install-form.active{
 	min-height: 100%;
