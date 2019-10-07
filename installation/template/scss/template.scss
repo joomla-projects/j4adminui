@@ -39,10 +39,14 @@ body {
 	}
 }
 
+body .container-main{
+	min-height: 100vh;
+}
+
 .j-container {
 	width: 100%;
 	max-width: 660px;
-	margin: 0 auto;
+	margin: 0 auto;form-no-margin
 	padding: 4.286rem 0 8.571rem;
 	position: relative;
 	h1 {
@@ -150,6 +154,9 @@ body {
 	.btn-block {
 		margin-top: 40px;
 	}
+	.btn-wrapper .btn + .btn{
+		margin-left: 0.429rem;
+	}
 }
 
 .languageForm {
@@ -217,7 +224,8 @@ caption {
 	position: absolute;
 	bottom: 1.857rem;
 	left: 0;
-	z-index: $zindex-header;
+	width: 100%;
+	text-align: center;
 }
 
 .form-control-feedback{
@@ -348,10 +356,24 @@ caption {
 
 .j-install-step-body{
 	padding: 0 30px;
+	color: var(--secondary-color)
+}
+
+.j-install-step-body h4{
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.571rem;
+	margin-bottom: 0.571rem;
+	color: var(--inverse-background)
 }
 
 .j-install-step-btn-group{
 	width: 100%;
+}
+
+.j-install-step-table{
+	margin-bottom: 3.071rem;
+	margin-top: 0.714rem;
 }
 
 .j-install-scrollable-table table,
@@ -361,6 +383,8 @@ caption {
 		td,
 		th{
 			border-bottom: 1px solid var(--background);
+			font-weight: 400;
+			color: var(--secondary-color);
 		}
 	}
 	th,
@@ -392,7 +416,6 @@ caption {
 	}
 }
 
-
 .j-install-scrollable-table{
 	max-height: 450px;
 	overflow-y: auto;
@@ -400,4 +423,12 @@ caption {
 
 .j-install-righ-col{
 	max-width: 425px;
+}
+
+.j-install-remove-check{
+	position: absolute;
+	bottom: -46px;
+	text-align: center;
+	width: 100%;
+	z-index: 9;
 }
