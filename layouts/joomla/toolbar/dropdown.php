@@ -31,7 +31,7 @@ extract($displayData, EXTR_OVERWRITE);
 ?>
 <?php if ($hasButtons && trim($button) !== ''): ?>
 	<?php HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true)); ?>
-	<div id="<?php echo $id; ?>" class="joomla-dropdown-container" <?php echo $id; ?> role="group">
+	<div id="<?php echo $id; ?>" class="joomla-dropdown-container" role="group">
 		<?php if ($toggleSplit ?? true): ?>
 			<div class="toolbar-btn-group">
 				<?php echo $button; ?>
