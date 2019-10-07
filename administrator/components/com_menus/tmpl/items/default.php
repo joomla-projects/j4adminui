@@ -165,43 +165,45 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'items.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
 								</td>
 								<th scope="row">
-									<?php $prefix = LayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level)); ?>
-									<?php echo $prefix; ?>
-									<?php if ($item->checked_out) : ?>
-										<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
-									<?php endif; ?>
-									<?php if ($canEdit && !$item->protected) : ?>
-										<a href="<?php echo Route::_('index.php?option=com_menus&task=item.edit&id=' . (int) $item->id); ?>"
-										   title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
-											<?php echo $this->escape($item->title); ?></a>
-									<?php else : ?>
-										<?php echo $this->escape($item->title); ?>
-									<?php endif; ?>
-									<span class="small">
-									<?php if ($item->type != 'url') : ?>
-										<?php if (empty($item->note)) : ?>
-											<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
-										<?php else : ?>
-											<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
-										<?php endif; ?>
-									<?php elseif ($item->type == 'url' && $item->note) : ?>
-										<?php echo Text::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
-									<?php endif; ?>
-									</span>
-									<?php echo HTMLHelper::_('menus.visibility', $item->params); ?>
-									<div title="<?php echo $this->escape($item->path); ?>">
+									<div class="menu-title">
+										<?php $prefix = LayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level)); ?>
 										<?php echo $prefix; ?>
-										<span class="small"
-											  title="<?php echo isset($item->item_type_desc) ? htmlspecialchars($this->escape($item->item_type_desc), ENT_COMPAT, 'UTF-8') : ''; ?>">
-											<?php echo $this->escape($item->item_type); ?></span>
+										<?php if ($item->checked_out) : ?>
+											<?php echo HTMLHelper::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'items.', $canCheckin); ?>
+										<?php endif; ?>
+										<?php if ($canEdit && !$item->protected) : ?>
+											<a href="<?php echo Route::_('index.php?option=com_menus&task=item.edit&id=' . (int) $item->id); ?>"
+											   title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
+												<?php echo $this->escape($item->title); ?></a>
+										<?php else : ?>
+											<?php echo $this->escape($item->title); ?>
+										<?php endif; ?>
+										<span class="small">
+										<?php if ($item->type != 'url') : ?>
+											<?php if (empty($item->note)) : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
+											<?php else : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
+											<?php endif; ?>
+										<?php elseif ($item->type == 'url' && $item->note) : ?>
+											<?php echo Text::sprintf('JGLOBAL_LIST_NOTE', $this->escape($item->note)); ?>
+										<?php endif; ?>
+										</span>
+										<?php echo HTMLHelper::_('menus.visibility', $item->params); ?>
+										<!-- <div title="<?php echo $this->escape($item->path); ?>">
+											<?php echo $prefix; ?>
+											<span class="small"
+												  title="<?php echo isset($item->item_type_desc) ? htmlspecialchars($this->escape($item->item_type_desc), ENT_COMPAT, 'UTF-8') : ''; ?>">
+												<?php echo $this->escape($item->item_type); ?></span>
+										</div> -->
+										<?php if ($item->type === 'component' && !$item->enabled) : ?>
+											<div>
+												<span class="badge badge-secondary">
+													<?php echo Text::_($item->enabled === null ? 'JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND' : 'COM_MENUS_LABEL_DISABLED'); ?>
+												</span>
+											</div>
+										<?php endif; ?>
 									</div>
-									<?php if ($item->type === 'component' && !$item->enabled) : ?>
-										<div>
-											<span class="badge badge-secondary">
-												<?php echo Text::_($item->enabled === null ? 'JLIB_APPLICATION_ERROR_COMPONENT_NOT_FOUND' : 'COM_MENUS_LABEL_DISABLED'); ?>
-											</span>
-										</div>
-									<?php endif; ?>
 								</th>
 								<td class="small d-none d-md-table-cell">
 									<?php echo $this->escape($item->menutype_title ?: ucwords($item->menutype)); ?>

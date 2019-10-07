@@ -69,3 +69,16 @@ if (document.getElementById('installSampleDataButton')) {
 		}
 	})
 }
+
+if (document.getElementById('j-install-check-all-lang')) {
+	document.getElementById('j-install-check-all-lang').addEventListener('change', function(e){
+		const checkboxes = [...document.querySelectorAll('#j-lang-checkboxes input[type="checkbox"]')];
+		checkboxes.forEach(box => {
+			if (e.target.checked) {
+				box.checked = true;
+			} else {
+				box.checked = false;
+			}
+		});
+	});
+}

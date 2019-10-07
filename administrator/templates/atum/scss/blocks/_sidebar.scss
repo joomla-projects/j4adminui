@@ -91,6 +91,9 @@
   overflow-x: hidden;
   width: $sidebar-width;
   background-color: #fff;
+  @include media-breakpoint-down(xs) {
+    width: 100%;
+  }
 }
 
 .logo-header{
@@ -101,6 +104,15 @@
   height: $header-height;
   transition: 300ms;
   min-width: $sidebar-width + 0.050;
+  @include media-breakpoint-down(xs) {
+    padding-left: 1rem;
+    padding-right: 0;
+    min-width: 1rem;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+  }
   .main-logo{
     svg{
       width: 102px;
@@ -558,6 +570,9 @@
     overflow-y: scroll;
     padding-bottom: 85px;
     transition: 300ms;
+    @include media-breakpoint-down(xs) {
+      top: 60px;
+    }
     &.show {
       transition-property: all;
       transition-duration: 1s;

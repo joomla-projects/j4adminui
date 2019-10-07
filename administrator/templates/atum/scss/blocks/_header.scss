@@ -27,19 +27,26 @@
   @include media-breakpoint-down(xs){
     padding-left: 0;
     max-width: 100%;
-    overflow: hidden;
   }
   .header-title {
     flex-grow: 1;
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+    }
     .d-flex {
       padding-left: 30px;
       padding-right: 30px;
+      @include media-breakpoint-down(xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     }
     .container-title {
       width: 100%;
     }
     @include media-breakpoint-down(xs) {
-      width: 100%;
+      padding-left: 0;
     }
   }
   
@@ -71,6 +78,9 @@
       &.logo-small {
         display: none;
         max-width: 1.3rem;
+        @include media-breakpoint-down(xs) {
+          max-width: 4rem;
+        }
       }
     }
     svg {
@@ -102,8 +112,14 @@
   
   .header-item {
     position: relative;
+    min-height: 60px;
+    @extend .d-flex;
+    @extend .align-items-center;
     &:not(:last-child){
       border-right: 1px solid var(--background);
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
     }
   }
   
@@ -114,7 +130,7 @@
       line-height: 1;
     }
     .joomlaversion {
-      line-height: $header-height;
+      line-height: 1;
       .align-items-end {
         margin-right: .5rem;
       }
@@ -135,8 +151,11 @@
       border: none;
       padding: 0 2.107rem;
       align-items: center;
-      line-height: 58px;
+      line-height: 1;
       background-color: #fff;
+      @include media-breakpoint-down(xs) {
+        padding: 0 1.107rem;
+      }
       img{
         height: 32px;
         width: 32px;
@@ -199,10 +218,6 @@
     .fa-angle-right,
     .header-item-text {
       display: none !important;
-    }
-    .header-item-content {
-      height: $header-height;
-      display: flex;
     }
   }
 }

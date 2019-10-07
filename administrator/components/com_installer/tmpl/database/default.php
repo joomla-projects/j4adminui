@@ -45,7 +45,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 										<th scope="col">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_NAME', 'name', $listDirection, $listOrder); ?>
 										</th>
-										<th scope="col" style="width:10%">
+										<th scope="col" style="width:10%" class="d-none d-lg-table-cell">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_LOCATION', 'client_translated', $listDirection, $listOrder); ?>
 										</th>
 										<th scope="col" style="width:10%">
@@ -62,7 +62,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 												<?php echo Text::_('COM_INSTALLER_HEADING_UPDATE_VERSION'); ?>
 											</span>
 										</th>
-										<th scope="col" class="d-none d-md-table-cell" style="width:10%">
+										<th scope="col" class="d-none d-lg-table-cell" style="width:10%">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder_translated', $listDirection, $listOrder); ?>
 										</th>
 										<th scope="col" class="d-none d-md-table-cell" style="width:1%">
@@ -87,7 +87,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 													<?php echo Text::_($manifest->description); ?>
 												</div>
 											</th>
-											<td>
+											<td class="d-none d-lg-table-cell">
 												<?php echo $extension->client_translated; ?>
 											</td>
 											<td>
@@ -108,7 +108,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 											<td class="d-none d-md-table-cell">
 												<?php echo '&#x200E;' . $extension->version; ?>
 											</td>
-											<td class="d-none d-md-table-cell">
+											<td class="d-none d-lg-table-cell">
 												<?php echo $extension->folder_translated; ?>
 											</td>
 											<td class="d-none d-md-table-cell">

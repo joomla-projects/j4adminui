@@ -104,7 +104,7 @@
       this.pageNav = JoomlaPagination.createDOMElement('nav', {
         class: 'pagination-navigation', role: 'navigation', 'aria-label': 'Pagination', tabindex: '-1',
       });
-      this.pageLabel = JoomlaPagination.createDOMElement('span', { class: 'pagination-label' });
+      this.pageLabel = JoomlaPagination.createDOMElement('span', { class: 'pagination-label d-none d-sm-block' });
       this.pageUl = JoomlaPagination.createDOMElement('ul', { class: 'pagination-list' });
       this.pageNav.appendChild(this.pageLabel);
       this.pageNav.appendChild(this.pageUl);
