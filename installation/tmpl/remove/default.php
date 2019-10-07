@@ -16,7 +16,7 @@ use Joomla\CMS\Uri\Uri;
 ?>
 <div id="installer-view" data-page-name="remove">
 	<div class="row no-gutters">
-		<div class="col-auto">
+		<div class="col-12 col-md-auto">
 			<ul class="j-install-menu">
 				<li>
 					<button type="button" role="button" data-step="step" class="completed" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>">Choose Language</button>
@@ -85,10 +85,10 @@ use Joomla\CMS\Uri\Uri;
 											<td>
 												<?php echo $setting->label; ?>
 											</td>
-											<td>
+											<td class="text-uppercase">
 												<?php echo Text::_($setting->recommended ? 'JON' : 'JOFF'); ?>
 											</td>
-											<td>
+											<td class="text-uppercase">
 												<?php echo Text::_($setting->state ? 'JON' : 'JOFF'); ?>
 											</td>
 										</tr>
@@ -99,7 +99,7 @@ use Joomla\CMS\Uri\Uri;
 
 						<?php endif; ?>
 						<?php if ($this->development) : ?>
-							<div class="j-install-step-body pt-4 pb-4">
+							<div class="j-install-remove-check">
 								<div class="j-checkbox-group">
 									<label><input type="checkbox" checked> <?php echo Text::_('INSTL_SITE_DEVMODE_DESC'); ?></label>
 								</div>
@@ -108,7 +108,7 @@ use Joomla\CMS\Uri\Uri;
 						<?php endif; ?>
 						<?php echo HTMLHelper::_('form.token'); ?>
 
-						<div class="btn-group btn-group-lg j-install-step-btn-group">
+						<div class="btn-group btn-group-lg j-install-step-btn-group j-install-step-footer no-padding">
 							<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
 							<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="fas fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
 						</div>
@@ -118,7 +118,7 @@ use Joomla\CMS\Uri\Uri;
 			</fieldset>
 
 
-			<fieldset id="installLanguages" class="j-install-step j-install-form no-padding">
+			<fieldset id="installLanguages" class="j-install-step j-install-form only-pb">
 				<div class="j-install-step-body pt-4">
 					<h3><?php echo Text::_('INSTL_LANGUAGES'); ?></h3>
 				</div>
@@ -189,7 +189,7 @@ use Joomla\CMS\Uri\Uri;
 								</tbody>
 							</table>
 						</div>
-						<div class="j-install-step-body pt-4 pb-4 text-right">
+						<div class="j-install-step-body btn-wrapper j-install-step-footer">
 							<?php echo HTMLHelper::_('form.token'); ?>
 							<?php endif; ?>
 							<button id="skipLanguages" class="btn">

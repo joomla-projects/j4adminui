@@ -39,6 +39,10 @@ body {
 	}
 }
 
+body .container-main{
+	min-height: 100vh;
+}
+
 .j-container {
 	width: 100%;
 	max-width: 660px;
@@ -54,14 +58,14 @@ body {
 .j-install-menu{
 	margin: 0;
 	padding: 0;
-	width: 235px;
+	width: 100%;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 	background-color: #ffffff;
 	list-style: none;
 	button{
 		display: block;
 		width: 100%;
-		padding: 0.857rem 1.143rem 0.857rem 2.714rem;
+		padding: 0.857rem 1.143rem 0.857rem 2.857rem;
 		text-align: left;
 		background: transparent;
 		border: none;
@@ -72,11 +76,12 @@ body {
 		&::before{
 			content: '';
 			position: absolute;
-			height: 1.071rem;
-			width: 1.071rem;
+			height: 1.143rem;
+			line-height: 1rem;
+			width: 1.143rem;
 			border: 1px solid var(--icon-color);
 			border-radius: 50%;
-			left: 1.143rem;
+			left: 1rem;
 			top: 50%;
 			transform: translateY(-50%);
 		}
@@ -120,6 +125,12 @@ body {
 	&:not(.no-padding){
 		padding: 2.143rem 2.143rem 7.5rem;
 	}
+	&.no-padding{
+		padding-bottom: 3.571rem;
+	}
+	&.only-pb{
+		padding: 0 0 7.5rem;
+	}
 }
 
 .j-install-step-footer{
@@ -149,6 +160,9 @@ body {
 	}
 	.btn-block {
 		margin-top: 40px;
+	}
+	.btn-wrapper .btn + .btn{
+		margin-left: 0.429rem;
 	}
 }
 
@@ -214,10 +228,13 @@ caption {
 
 // footer
 .footer {
+	font-size: 0.857rem;
 	position: absolute;
 	bottom: 1.857rem;
 	left: 0;
-	z-index: $zindex-header;
+	width: 100%;
+	text-align: center;
+	color: var(--icon-color);
 }
 
 .form-control-feedback{
@@ -348,10 +365,24 @@ caption {
 
 .j-install-step-body{
 	padding: 0 30px;
+	color: var(--secondary-color)
+}
+
+.j-install-step-body h4{
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.571rem;
+	margin-bottom: 0.571rem;
+	color: var(--inverse-background)
 }
 
 .j-install-step-btn-group{
 	width: 100%;
+}
+
+.j-install-step-table{
+	margin-bottom: 3.071rem;
+	margin-top: 0.714rem;
 }
 
 .j-install-scrollable-table table,
@@ -361,6 +392,8 @@ caption {
 		td,
 		th{
 			border-bottom: 1px solid var(--background);
+			font-weight: 400;
+			color: var(--secondary-color);
 		}
 	}
 	th,
@@ -392,12 +425,21 @@ caption {
 	}
 }
 
-
 .j-install-scrollable-table{
 	max-height: 450px;
 	overflow-y: auto;
 }
 
-.j-install-righ-col{
-	max-width: 425px;
+@media only screen and (min-width: 768px) {
+	.j-install-righ-col{
+		max-width: 425px;
+	}
+}
+
+.j-install-remove-check{
+	position: absolute;
+	bottom: -46px;
+	text-align: center;
+	width: 100%;
+	z-index: 9;
 }
