@@ -622,7 +622,7 @@ class MenusHelper extends ContentHelper
 			static::addPreset('menus', 'JLIB_MENUS_PRESET_MENUS', JPATH_ADMINISTRATOR . '/components/com_menus/presets/menus.xml');
 			static::addPreset('components', 'JLIB_MENUS_PRESET_COMPONENTS', JPATH_ADMINISTRATOR . '/components/com_menus/presets/components.xml');
 			static::addPreset('users', 'JLIB_MENUS_PRESET_USERS', JPATH_ADMINISTRATOR . '/components/com_menus/presets/users.xml');
-			static::addPreset('navfeatured', 'JLIB_MENUS_PRESET_QUICK_MENU', JPATH_ADMINISTRATOR . '/components/com_menus/presets/quickmenu.xml');
+			static::addPreset('quickmenu', 'JLIB_MENUS_PRESET_QUICK_MENU', JPATH_ADMINISTRATOR . '/components/com_menus/presets/quickmenu.xml');
 
 			// Load from template folder automatically
 			$app = Factory::getApplication();
