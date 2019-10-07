@@ -20,7 +20,7 @@ use Joomla\CMS\Factory;
 
 <div id="installer-view" data-page-name="setup">
 	<div class="row no-gutters">
-		<div class="col-auto">
+		<div class="col-12 col-md-auto">
 			<ul class="j-install-menu">
 				<li>
 					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>"><?php echo Text::_('INSTL_CHANGE_LANG'); ?></button>
@@ -45,7 +45,7 @@ use Joomla\CMS\Factory;
 		<div class="col">
 			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
 				<fieldset id="installStep0" class="j-install-step active">
-					<div class="j-install-step-body">
+					<div>
 						<div class="form-no-margin">
 							<div class="control-group">
 								<div class="control-label">
