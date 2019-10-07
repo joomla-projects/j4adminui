@@ -137,7 +137,7 @@ Joomla.isFilled = function(src) {
 
 		if (fields.length) {
 			fields.forEach((field) => {
-				if (field.value != '') {
+				if (field.value != '' && !field.classList.contains('invalid')) {
 					counter += 1;
 				}
 			});

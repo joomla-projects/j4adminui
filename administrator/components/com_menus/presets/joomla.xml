@@ -24,10 +24,15 @@
 			type="component"
 			element="com_content"
 			link="index.php?option=com_content&amp;view=articles"
-			quicktask="index.php?option=com_content&amp;task=article.add"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
 		/>
-
+		
+		<menuitem
+			title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
+			type="component"
+			element="com_content"
+			icon="fa fa-plus"
+			link="index.php?option=com_content&amp;task=article.add"
+		/>
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_FEATURED"
 			type="component"
@@ -38,11 +43,11 @@
 
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_CATEGORY_MANAGER"
+			quicktask-title="MOD_MENU_COM_CONTENT_NEW_CATEGORY"
 			type="component"
 			element="com_categories"
 			link="index.php?option=com_categories&amp;view=categories&amp;extension=com_content"
 			quicktask="index.php?option=com_categories&amp;extension=com_content&amp;task=category.add"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_CATEGORY"
 		/>
 
 		<menuitem
@@ -72,7 +77,7 @@
 		/>
 
 		<menuitem
-			type="separator"
+				type="separator"
 		/>
 
 		<menuitem
@@ -81,19 +86,6 @@
 			element="com_media"
 			link="index.php?option=com_media"
 			class="class:image"
-		/>
-		
-		<menuitem
-			type="separator"
-		/>
-
-		<menuitem
-			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_MODULES"
-			type="component"
-			element="com_modules"
-			link="index.php?option=com_modules&amp;view=modules&amp;client_id=0"
-			quicktask="index.php?option=com_modules&amp;view=select"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_MODULE"
 		/>
 	</menuitem>
 
@@ -141,13 +133,13 @@
 			>
 			<menuitem
 				title="{sql:title} "
+				quicktask-title="MOD_MENU_MENU_MANAGER_NEW_MENU_ITEM"
 				type="component"
 				element="com_menus"
 				link="index.php?option=com_menus&amp;view=items&amp;menutype={sql:menutype}"
 				icon="{sql:icon}"
 				class="class:menu"
 				quicktask="index.php?option=com_menus&amp;task=item.add&amp;menutype={sql:menutype}"
-				quicktask-title="MOD_MENU_MENU_MANAGER_NEW_MENU_ITEM"
 			/>
 		</menuitem>
 
@@ -189,11 +181,11 @@
 		>
 		<menuitem
 			title="MOD_MENU_COM_USERS_USER_MANAGER"
+			quicktask-title="MOD_MENU_COM_USERS_ADD_USER"
 			type="component"
 			element="com_users"
 			link="index.php?option=com_users&amp;view=users"
 			quicktask="index.php?option=com_users&amp;task=user.add"
-			quicktask-title="MOD_MENU_COM_USERS_ADD_USER"
 		/>
 
 		<menuitem
@@ -310,7 +302,15 @@
 			title="MOD_MENU_TEMPLATE_SITE_TEMPLATES"
 			type="component"
 			element="com_templates"
-			link="index.php?option=com_templates&amp;view=templates&amp;client_id=0"
+			link="index.php?option=com_templates&amp;view=styles"
+		/>
+		<menuitem
+			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_MODULES"
+			quicktask-title="MOD_MENU_COM_CONTENT_NEW_MODULE"
+			type="component"
+			element="com_modules"
+			link="index.php?option=com_modules&amp;view=modules"
+			quicktask="index.php?option=com_modules&amp;view=select"
 		/>
 		<menuitem
 			title="MOD_MENU_MANAGE_PLUGINS"
@@ -318,10 +318,6 @@
 			element="com_plugins"
 			link="index.php?option=com_plugins"
 			permission="core.manage;com_plugins"
-		/>
-
-		<menuitem
-			type="separator"
 		/>
 
 		<menuitem
@@ -403,131 +399,130 @@
 		</menuitem>		
 
 		<menuitem
+			type="separator"
+		/>
+
+		<menuitem
 			title="MOD_MENU_MANAGE"
 			type="heading"
 			icon="tasks"
 		>
-			<menuitem
-				title="MOD_MENU_MANAGE_EXTENSIONS"
-				type="component"
-				element="com_installer"
-				link="index.php?option=com_installer&amp;view=manage"
-				permission="core.manage;com_installer"
-			/>
-
-			<menuitem
-				title="MOD_MENU_MANAGE_LANGUAGES"
-				type="component"
-				element="com_language"
-				link="index.php?option=com_languages&amp;view=installed"
-				permission="core.manage;com_language"
-			/>
-
-			<menuitem
-				title="MOD_MENU_MANAGE_LANGUAGES_CONTENT"
-				type="component"
-				element="com_language"
-				link="index.php?option=com_languages&amp;view=languages"
-				permission="core.manage;com_language"
-			/>
-
-			<menuitem
-				title="MOD_MENU_MANAGE_LANGUAGES_OVERRIDES"
-				type="component"
-				element="com_language"
-				link="index.php?option=com_languages&amp;view=overrides"
-				permission="core.manage;com_language"
-			/>
-
-			<menuitem
-				title="MOD_MENU_MANAGE_CSP"
-				type="component"
-				element="com_csp"
-				link="index.php?option=com_csp"
-				permission="core.manage;com_csp"
-			/>
-
-			<menuitem
-				title="MOD_MENU_MANAGE_REDIRECTS"
-				type="component"
-				element="com_redirect"
-				link="index.php?option=com_redirect"
-				permission="core.manage;com_redirect"
-			/>
-		</menuitem>
+		<menuitem
+			title="MOD_MENU_MANAGE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=manage"
+			permission="core.manage;com_installer"
+		/>
 
 		<menuitem
-			title="MOD_MENU_UPDATE"
-			type="heading"
-			icon="sync"
-			>
-			<menuitem
-				title="MOD_MENU_UPDATE_JOOMLA"
-				type="component"
-				element="com_joomlaupdate"
-				link="index.php?option=com_joomlaupdate"
-				permission="core.manage;com_joomlaupdate"
-				ajax-badge="index.php?option=com_joomlaupdate&amp;task=getMenuBadgeData&amp;format=json"
-			/>
-
-			<menuitem
-				title="MOD_MENU_UPDATE_EXTENSIONS"
-				type="component"
-				element="com_installer"
-				link="index.php?option=com_installer&amp;view=update"
-				permission="core.manage;com_installer"
-				ajax-badge="index.php?option=com_installer&amp;task=update.getMenuBadgeData&amp;format=json"
-			/>
-
-			<menuitem
-				title="MOD_MENU_UPDATE_SOURCES"
-				type="component"
-				element="com_installer"
-				link="index.php?option=com_installer&amp;view=updatesites"
-				permission="core.manage;com_installer"
-			/>
-		</menuitem>
+			title="MOD_MENU_MANAGE_LANGUAGES"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=installed"
+			permission="core.manage;com_language"
+		/>
 
 		<menuitem
-			title="MOD_MENU_INFORMATION"
-			type="heading"
-			icon="info-circle"
-			>
-			<menuitem
-				title="MOD_MENU_INFORMATION_WARNINGS"
-				type="component"
-				element="com_installer"
-				link="index.php?option=com_installer&amp;view=warnings"
-				permission="core.manage;com_installer"
-				ajax-badge="index.php?option=com_installer&amp;task=getMenuBadgeData&amp;format=json"
-			/>
+			title="MOD_MENU_MANAGE_LANGUAGES_CONTENT"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=languages"
+			permission="core.manage;com_language"
+		/>
 
-			<menuitem
-				title="MOD_MENU_INFORMATION_POST_INSTALL_MESSAGES"
-				type="component"
-				element="com_postinstall"
-				link="index.php?option=com_postinstall"
-				permission="core.manage;com_postinstall"
-				ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
-			/>
+		<menuitem
+			title="MOD_MENU_MANAGE_LANGUAGES_OVERRIDES"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=overrides"
+			permission="core.manage;com_language"
+		/>
 
-			<menuitem
-				title="MOD_MENU_SYSTEM_INFORMATION_SYSINFO"
-				type="component"
-				element="com_admin"
-				link="index.php?option=com_admin&amp;view=sysinfo"
-				permission="core.admin"
-			/>
+		<menuitem
+			title="MOD_MENU_MANAGE_CSP"
+			type="component"
+			element="com_csp"
+			link="index.php?option=com_csp"
+			permission="core.manage;com_csp"
+		/>
 
-			<menuitem
-				title="MOD_MENU_SYSTEM_INFORMATION_DATABASE"
-				type="component"
-				element="com_installer"
-				link="index.php?option=com_installer&amp;view=database"
-				permission="core.manage;com_installer"
-				ajax-badge="index.php?option=com_installer&amp;task=database.getMenuBadgeData&amp;format=json"
-			/>
-		</menuitem>
+		<menuitem
+			title="MOD_MENU_MANAGE_REDIRECTS"
+			type="component"
+			element="com_redirect"
+			link="index.php?option=com_redirect"
+			permission="core.manage;com_redirect"
+		/>
+	</menuitem>
+
+	<menuitem
+		type="separator"
+	/>
+
+	<menuitem
+		title="MOD_MENU_UPDATE"
+		type="heading"
+		icon="sync"
+		>
+		<menuitem
+			title="MOD_MENU_UPDATE_JOOMLA"
+			type="component"
+			element="com_joomlaupdate"
+			link="index.php?option=com_joomlaupdate"
+			permission="core.manage;com_joomlaupdate"
+			ajax-badge="index.php?option=com_joomlaupdate&amp;task=getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=update"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=update.getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_SOURCES"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=updatesites"
+			permission="core.manage;com_installer"
+		/>
+	</menuitem>
+
+	<menuitem
+		title="MOD_MENU_INFORMATION"
+		type="heading"
+		icon="info-circle"
+		>
+		<menuitem
+			title="MOD_MENU_INFORMATION_WARNINGS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=warnings"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_SYSTEM_INFORMATION_SYSINFO"
+			type="component"
+			element="com_admin"
+			link="index.php?option=com_admin&amp;view=sysinfo"
+			permission="core.admin"
+		/>
+
+		<menuitem
+			title="MOD_MENU_SYSTEM_INFORMATION_DATABASE"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=database"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=database.getMenuBadgeData&amp;format=json"
+		/>
+	</menuitem>
 	</menuitem>
 
 	<menuitem
@@ -537,4 +532,24 @@
 		class="class:info-circle"
 		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=help"
 	/>
+
+	<menuitem
+		title="MOD_MENU_INFORMATION_NOTIFICATIONS"
+		type="component"
+		element="com_postinstall"
+		class="class:envelope"
+		link="index.php?option=com_postinstall"
+		permission="core.manage;com_postinstall"
+		ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
+	/>
+
+	<menuitem
+		title="MOD_MESSAGES_PRIVATE_MESSAGES"
+		type="component"
+		element="com_messages"
+		class="class:bell"
+		link="index.php?option=com_messages&amp;view=messages"
+		ajax-badge="index.php?option=com_messages&amp;task=getMenuBadgeData&amp;format=json"
+	/>
+
 </menu>
