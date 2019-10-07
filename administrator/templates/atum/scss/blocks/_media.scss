@@ -491,6 +491,10 @@
         &::placeholder{
             color: var(--icon-color);
         }
+        @include media-breakpoint-down(md) {
+            height: 2.8rem;
+            width: 17.45rem;
+        }
     }
 }
 

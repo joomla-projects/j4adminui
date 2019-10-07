@@ -59,7 +59,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_TYPE', 'type_translated', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+								<th scope="col" style="width:10%" class="d-none d-lg-table-cell">
 									<?php echo Text::_('JVERSION'); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
@@ -68,7 +68,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<th scope="col" style="width:15%" class="d-none d-md-table-cell">
 									<?php echo Text::_('JAUTHOR'); ?>
 								</th>
-								<th scope="col" class="d-none d-md-table-cell">
+								<th scope="col" class="d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder_translated', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%" class="d-none d-md-table-cell">
@@ -94,7 +94,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<td>
 									<?php echo $item->type_translated; ?>
 								</td>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-lg-table-cell">
 									<?php echo !empty($item->version) ? $item->version : '&#160;'; ?>
 								</td>
 								<td class="d-none d-md-table-cell">
@@ -103,7 +103,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<td class="d-none d-md-table-cell">
 									<?php echo !empty($item->author) ? $item->author : '&#160;'; ?>
 								</td>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-lg-table-cell">
 									<?php echo $item->folder_translated; ?>
 								</td>
 								<td class="d-none d-md-table-cell">

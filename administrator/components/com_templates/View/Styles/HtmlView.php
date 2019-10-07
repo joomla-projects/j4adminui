@@ -119,30 +119,12 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_SITE'), 'paint-brush thememanager');
 		}
 
-		if ($canDo->get('core.delete'))
-		{
-			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
-			ToolbarHelper::divider();
-		}
-
 		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_templates');
-			ToolbarHelper::divider();
 		}
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::custom('styles.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-			ToolbarHelper::divider();
-		}
-
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
-			ToolbarHelper::divider();
-		}
 	}
 }

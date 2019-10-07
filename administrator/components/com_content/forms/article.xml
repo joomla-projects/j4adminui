@@ -238,7 +238,7 @@
 	</fieldset>
 
 	<fields name="images" label="COM_CONTENT_FIELD_IMAGE_OPTIONS">
-		<fieldset name="image-intro" label="COM_CONTENT_FIELD_INTRO_LABEL">
+		<fieldset name="image-intro" label="COM_CONTENT_FIELD_INTRO_LABEL" hidden="true">
 			<field
 				name="image_intro"
 				type="media"
@@ -246,7 +246,7 @@
 			/>
 		</fieldset>
 
-		<fieldset name="image-intro-attr" label="COM_CONTENT_FIELD_INTRO_LABEL">
+		<fieldset name="image-intro-attr" label="COM_CONTENT_FLOAT_LABEL" hidden="true">
 			<field
 				name="float_intro"
 				type="list"
@@ -273,7 +273,7 @@
 			/>
 		</fieldset>
 
-		<fieldset name="image-full" label="COM_CONTENT_FIELD_FULL_LABEL">
+		<fieldset name="image-full" label="COM_CONTENT_FIELD_FULL_LABEL" hidden="true">
 			<field
 				name="image_fulltext"
 				type="media"
@@ -281,7 +281,7 @@
 			/>
 		</fieldset>	
 
-		<fieldset name="image-full-attr" label="COM_CONTENT_FIELD_FULL_LABEL">
+		<fieldset name="image-full-attr" label="COM_CONTENT_FIELD_FULL_LABEL" hidden="true">
 			<field
 				name="float_fulltext"
 				type="list"
@@ -310,7 +310,7 @@
 	</fields>
 
 	<fields name="urls" label="COM_CONTENT_FIELD_URLS_OPTIONS">
-		<fieldset name="linka" label="COM_CONTENT_FIELD_URLA_LABEL">
+		<fieldset name="linka" label="COM_CONTENT_FIELD_URLA_LABEL" hidden="true">
 			<field
 				name="urla"
 				type="url"
@@ -342,7 +342,7 @@
 			</field>
 		</fieldset>
 
-		<fieldset name="linkb" label="COM_CONTENT_FIELD_URLB_LABEL">
+		<fieldset name="linkb" label="COM_CONTENT_FIELD_URLB_LABEL" hidden="true">
 			<field
 				name="urlb"
 				type="url"
@@ -374,7 +374,7 @@
 			</field>
 		</fieldset>
 
-		<fieldset name="linkc" label="COM_CONTENT_FIELD_URLC_LABEL">
+		<fieldset name="linkc" label="COM_CONTENT_FIELD_URLC_LABEL" hidden="true">
 			<field
 				name="urlc"
 				type="url"

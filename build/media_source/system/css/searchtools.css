@@ -83,11 +83,3 @@ html[dir=rtl] .js-stools .chosen-container {
 		margin-top: 20px;
 	}
 }
-@media (min-width: 768px) and (max-width: 979px) {
-	.js-stools .js-stools-container-selector,
-	.js-stools .js-stools-container-bar,
-	.js-stools .js-stools-container-list {
-		float: none;
-		display: block;
-	}
-}

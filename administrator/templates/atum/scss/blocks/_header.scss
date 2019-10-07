@@ -18,8 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  // transition: .3s ease;
+  height: $header-height;
   position: fixed;
   width: 100%;
   top: 0;
@@ -28,19 +27,26 @@
   @include media-breakpoint-down(xs){
     padding-left: 0;
     max-width: 100%;
-    overflow: hidden;
   }
   .header-title {
     flex-grow: 1;
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+    }
     .d-flex {
       padding-left: 30px;
       padding-right: 30px;
+      @include media-breakpoint-down(xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     }
     .container-title {
       width: 100%;
     }
     @include media-breakpoint-down(xs) {
-      width: 100%;
+      padding-left: 0;
     }
   }
   
@@ -72,6 +78,9 @@
       &.logo-small {
         display: none;
         max-width: 1.3rem;
+        @include media-breakpoint-down(xs) {
+          max-width: 4rem;
+        }
       }
     }
     svg {
@@ -105,17 +114,20 @@
     position: relative;
     &:not(:last-child){
       border-right: 1px solid var(--background);
+      @include media-breakpoint-down(xs) {
+        display: none;
+      }
     }
   }
   
   .header-item-content{
-    line-height: 60px;
+    line-height: $header-height;
     joomla-dropdown,
     joomla-callout {
       line-height: 1;
     }
     .joomlaversion {
-      line-height: 60px;
+      line-height: $header-height;
       .align-items-end {
         margin-right: .5rem;
       }
@@ -136,8 +148,11 @@
       border: none;
       padding: 0 2.107rem;
       align-items: center;
-      line-height: 59px;
+      line-height: 58px;
       background-color: #fff;
+      @include media-breakpoint-down(xs) {
+        padding: 0 1.107rem;
+      }
       img{
         height: 32px;
         width: 32px;
@@ -189,8 +204,21 @@
   &.closed {
     .header-title {
       .d-flex {
-        padding-left: 60px;
+        padding-left: $header-height;
       }
+    }
+  }
+  @include media-breakpoint-down(lg){
+    .header-user-name,
+    .joomlaversion,
+    .header-user-name,
+    .fa-angle-right,
+    .header-item-text {
+      display: none !important;
+    }
+    .header-item-content {
+      height: $header-height;
+      display: flex;
     }
   }
 }

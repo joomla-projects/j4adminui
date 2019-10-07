@@ -97,12 +97,14 @@
 
     /* Method to close the alert */
     close() {
-      this.dispatchCustomEvent('joomla.alert.close');
-      this.addEventListener('transitionend', () => {
+      this.style.animation = "fadeOutUp .3s";
+      this.style.opacity = 0;
+      setTimeout(() => {
+        this.dispatchCustomEvent('joomla.alert.close');
         this.dispatchCustomEvent('joomla.alert.closed');
         this.parentNode.removeChild(this);
-      }, false);
-      this.classList.remove('joomla-alert--show');
+        this.classList.remove('joomla-alert--show');
+      }, 500);
     }
 
     /* Method to dispatch events */

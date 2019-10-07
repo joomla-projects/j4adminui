@@ -79,5 +79,12 @@ div {
             border-color: #eaeef5;
             box-shadow: 0 30px 60px -10px rgba(0,28,73,.15);
         }
+        .tox-statusbar {
+            border-color: var(--page-background);
+            height: 30px;
+            button {
+                color: var(--icon-color);
+            }
+        }
     }
 }
