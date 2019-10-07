@@ -12,6 +12,9 @@
     joomla-field-fancy-select .choices,
     .custom-select {
       min-width: 15rem;
+      @include media-breakpoint-down(xs) {
+        min-width: 100%;
+      }
     }
 
     &.js-filters-show {
