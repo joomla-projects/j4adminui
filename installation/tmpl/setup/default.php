@@ -62,7 +62,7 @@ use Joomla\CMS\Factory;
 						<?php echo HTMLHelper::_('form.token'); ?>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" type="button" id="step0"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
+						<button class="btn btn-primary" type="submit" id="step0"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep0 -->
 			</form>

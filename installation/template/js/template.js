@@ -178,6 +178,10 @@
 		// Check for FTP credentials
 		Joomla.installation = Joomla.installation || {};
 
+		// autofocus the language selector at the beginning
+		if (document.querySelector('#installStep0'))
+			document.querySelector('#installStep0').querySelector('select').focus();
+
 		// @todo FTP persistent data ?
 		// Initialize the FTP installation data
 		// if (sessionStorage && sessionStorage.getItem('installation-data')) {
