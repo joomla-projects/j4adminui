@@ -28,7 +28,6 @@ $target = empty($target) ? '' : 'target="' . $target . '"';
 ?>
 <joomla-toolbar-button class="<?php echo $margin; ?>" <?php echo $id; ?>>
 	<a
-		id="<?php echo $id; ?>"
 		class="<?php echo $btnClass; ?>"
 		href="<?php echo $url; ?>"
 		<?php echo $target; ?>

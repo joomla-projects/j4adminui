@@ -57,7 +57,7 @@ if ($saveOrder && !empty($this->items))
 								<td style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:1%" class="text-center d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">
@@ -72,7 +72,7 @@ if ($saveOrder && !empty($this->items))
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_BANNERS_HEADING_CLIENT', 'client_name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+								<th scope="col" style="width:10%" class="d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_BANNERS_HEADING_IMPRESSIONS', 'impmade', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
@@ -101,7 +101,7 @@ if ($saveOrder && !empty($this->items))
 									<td class="text-center">
 										<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 									</td>
-									<td class="order text-center d-none d-md-table-cell">
+									<td class="order text-center d-none d-lg-table-cell">
 										<?php
 										$iconClass = '';
 
@@ -150,7 +150,7 @@ if ($saveOrder && !empty($this->items))
 									<td class="small d-none d-md-table-cell">
 										<?php echo $item->client_name; ?>
 									</td>
-									<td class="small d-none d-md-table-cell">
+									<td class="small d-none d-lg-table-cell">
 										<?php echo Text::sprintf('COM_BANNERS_IMPRESSIONS', $item->impmade, $item->imptotal ?: Text::_('COM_BANNERS_UNLIMITED')); ?>
 									</td>
 									<td class="small d-none d-md-table-cell">
