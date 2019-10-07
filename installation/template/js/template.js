@@ -24,9 +24,10 @@
 		}
 		
 		if (Joomla.progressValue < 0) Joomla.progressValue = 0;
-
-		Joomla.progress.style.width = `${Joomla.progressValue}%`;
-		document.querySelector('.j-progress-percent').innerHTML = `${Joomla.progressValue}%`;
+		if (Joomla.progress) {
+			Joomla.progress.style.width = `${Joomla.progressValue}%`;
+			document.querySelector('.j-progress-percent').innerHTML = `${Joomla.progressValue}%`;
+		}
 	};
 
 	Joomla.serialiseForm = function( form ) {
@@ -211,21 +212,21 @@
 		var data = Joomla.serialiseForm(form);
 		// Joomla.loadingLayer("show");
 		
-		dbBackup.classList.remove('inactive');
-		dbBackupLi.classList.add('active');
-		dbCreate.classList.remove('inactive');
-		dbCreateLi.classList.add('active');
-		configFile.classList.remove('inactive');
-		configFileLi.classList.add('active');
+		if (dbBackup && dbBackup.classList.contains('inactive')) dbBackup.classList.remove('inactive');
+		if (dbBackupLi) dbBackupLi.classList.add('active');
+		if (dbCreate && dbCreate.classList.contains('inactive')) dbCreate.classList.remove('inactive');
+		if (dbCreateLi) dbCreateLi.classList.add('active');
+		if (configFile && configFile.classList.contains('inactive')) configFile.classList.remove('inactive');
+		if (configFileLi) configFileLi.classList.add('active');
 
 		if (tasks.indexOf('backup') == -1) {
 			Joomla.updateProgress(25);
-			dbBackup.classList.add('done');
+			if (dbBackup) dbBackup.classList.add('done');
 		}
 
 		if (tasks.indexOf('database') == -1) {
 			Joomla.updateProgress(30);
-			dbCreate.classList.add('done');
+			if (dbCreate) dbCreate.classList.add('done');
 		}
 
 		Joomla.request({
@@ -253,30 +254,36 @@
 				if (!response.error) {
 					if (task == 'config') {
 						Joomla.updateProgress(35);
-						configFile.classList.add('done');
+						if (configFile) configFile.classList.add('done');
 					} else if (task == 'database') {
 						Joomla.updateProgress(30);
-						dbCreate.classList.add('done');
+						if (dbCreate) dbCreate.classList.add('done');
 					} else if (task == 'backup') {
 						Joomla.updateProgress(25);
-						dbBackup.classList.add('done');
+						if (dbBackup) dbBackup.classList.add('done');
 					}
 				} else {
 					if (task == 'config') {
 						Joomla.updateProgress(-35);
-						configFile.classList.remove('done');
-						configFile.classList.add('inactive');
-						configFile.classList.remove('active');
+						if (configFile) {
+							if (configFile.classList.contains('done')) configFile.classList.remove('done');
+							configFile.classList.add('inactive');
+							configFile.classList.remove('active');
+						}
 					} else if (task == 'database') {
 						Joomla.updateProgress(-30);
-						dbCreate.classList.remove('done');
-						dbCreate.classList.add('inactive');
-						dbCreate.classList.remove('active');
+						if (dbCreate) {
+							if (dbCreate.classList.contains('done')) dbCreate.classList.remove('done');
+							dbCreate.classList.add('inactive');
+							dbCreate.classList.remove('active');
+						}
 					} else if (task == 'backup') {
 						Joomla.updateProgress(-25);
-						dbBackup.classList.remove('done');
-						dbBackup.classList.add('inactive');
-						dbBackupLi.classList.remove('active');
+						if (dbBackup) {
+							if (dbBackup.classList.contains('done')) dbBackup.classList.remove('done');
+							dbBackup.classList.add('inactive');
+							dbBackupLi.classList.remove('active');
+						}
 					}
 				}
 

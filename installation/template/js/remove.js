@@ -75,9 +75,9 @@ if (document.getElementById('j-install-check-all-lang')) {
 		const checkboxes = [...document.querySelectorAll('#j-lang-checkboxes input[type="checkbox"]')];
 		checkboxes.forEach(box => {
 			if (e.target.checked) {
-				box.setAttribute('checked', 'checked');
+				box.checked = true;
 			} else {
-				box.removeAttribute('checked');
+				box.checked = false;
 			}
 		});
 	});
