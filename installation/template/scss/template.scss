@@ -46,7 +46,7 @@ body .container-main{
 .j-container {
 	width: 100%;
 	max-width: 660px;
-	margin: 0 auto;form-no-margin
+	margin: 0 auto;
 	padding: 4.286rem 0 8.571rem;
 	position: relative;
 	h1 {
@@ -221,11 +221,13 @@ caption {
 
 // footer
 .footer {
+	font-size: 0.857rem;
 	position: absolute;
 	bottom: 1.857rem;
 	left: 0;
 	width: 100%;
 	text-align: center;
+	color: var(--icon-color);
 }
 
 .form-control-feedback{
