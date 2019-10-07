@@ -12,9 +12,13 @@
 defined('_JEXEC') or die;
 
 $module  = $displayData['module'];
-
+// echo '<pre>';
+// print_r($module);
+// switch($module->module){
+//  case 
+// }
 if ($module->content) : ?>
-	<div class="header-item">
+	<div class="header-item ">
 		<div class="header-item-content">
 			<?php echo $module->content; ?>
 		</div>
