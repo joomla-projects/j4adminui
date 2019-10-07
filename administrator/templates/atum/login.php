@@ -32,7 +32,7 @@ $siteLogo  = $this->params->get('siteLogo')
 	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla-blue.svg';
 $loginLogo = $this->params->get('loginLogo')
 	? JUri::root() . $this->params->get('loginLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo-white.svg';
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-glossy.svg';
 $smallLogo = $this->params->get('smallLogo')
 	? JUri::root() . $this->params->get('smallLogo')
 	: $this->baseurl . '/templates/' . $this->template . '/images/logo-blue.svg';
@@ -91,7 +91,8 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 						<div class="main-brand text-center">
 							<div id="main-brand-logo" class="main-brand-logo">
 								<img src="<?php echo $loginLogo; ?>"
-								alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>">
+								alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>" width="50" height="50">
+								<p><span class="small mx-1 form-text"><?php echo JVERSION; ?></span></p>
 							</div> <!-- /.main-brand-logo -->
 							<div class="main-greetings">
 								<h3><?php echo JText::_('TPL_ATUM_WELCOME_BEGINNERS_TITLE'); ?></h3>
@@ -111,7 +112,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 				
 					<div class="login">
 						<div id="main-brand" class="main-brand">
-							<h3><?php echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
+							<h3><?php //echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
 						</div>
 						<jdoc:include type="component" />
 					</div>
