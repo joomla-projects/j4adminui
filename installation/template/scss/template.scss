@@ -58,14 +58,14 @@ body .container-main{
 .j-install-menu{
 	margin: 0;
 	padding: 0;
-	width: 235px;
+	width: 100%;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 	background-color: #ffffff;
 	list-style: none;
 	button{
 		display: block;
 		width: 100%;
-		padding: 0.857rem 1.143rem 0.857rem 2.714rem;
+		padding: 0.857rem 1.143rem 0.857rem 2.857rem;
 		text-align: left;
 		background: transparent;
 		border: none;
@@ -76,11 +76,12 @@ body .container-main{
 		&::before{
 			content: '';
 			position: absolute;
-			height: 1.071rem;
-			width: 1.071rem;
+			height: 1.143rem;
+			line-height: 1rem;
+			width: 1.143rem;
 			border: 1px solid var(--icon-color);
 			border-radius: 50%;
-			left: 1.143rem;
+			left: 1rem;
 			top: 50%;
 			transform: translateY(-50%);
 		}
@@ -123,6 +124,12 @@ body .container-main{
 	position: relative;
 	&:not(.no-padding){
 		padding: 2.143rem 2.143rem 7.5rem;
+	}
+	&.no-padding{
+		padding-bottom: 3.571rem;
+	}
+	&.only-pb{
+		padding: 0 0 7.5rem;
 	}
 }
 
@@ -423,8 +430,10 @@ caption {
 	overflow-y: auto;
 }
 
-.j-install-righ-col{
-	max-width: 425px;
+@media only screen and (min-width: 768px) {
+	.j-install-righ-col{
+		max-width: 425px;
+	}
 }
 
 .j-install-remove-check{
