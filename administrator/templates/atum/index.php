@@ -127,9 +127,14 @@ HTMLHelper::_('atum.rootcolors', $this->params);
         <div class="header-items">
             <jdoc:include type="modules" name="status" style="header-item" />
         </div>
-        <button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="navbar-wrap">
+            <div class="navbar-mobile-quick-wrap">
+                <jdoc:include type="modules" name="quickmenu" style="none" />
+            </div>
+            <button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </header>
 
     <?php // Sidebar ?>
