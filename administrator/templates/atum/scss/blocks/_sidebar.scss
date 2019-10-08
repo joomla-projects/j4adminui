@@ -566,6 +566,7 @@
 						color: var(--icon-color);
 						padding-bottom: 4px;
 					}
+					span.system-counter,
 					span.badge{
 						padding: 0px 4px;
 						background: red;
@@ -578,6 +579,10 @@
 						display: inline-block;
 						border-radius: 30px;
 						left: 50%;
+					}
+					span.system-counter{
+						color: var(--secondary-color);
+						background: none;
 					}
 				}
 			}
