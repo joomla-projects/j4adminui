@@ -35,6 +35,9 @@ label {
 
 .control-group {
 	margin-bottom: 1rem;
+	#helpsite-refresh {
+		margin-top: 1rem;
+	}
 	
 	> .form-check {
 		display: inline-block;
@@ -236,6 +239,11 @@ input {
 .col-md-9 .switcher__legend,
 .col-md-12 .switcher__legend {
 	margin-left: -170px;
+	@include media-breakpoint-down(xs){
+		margin-left: 0;
+		width: 100%;
+		margin-bottom: 0;
+	}
 }
 
 .form-inline {
@@ -274,6 +282,9 @@ input {
 		color: var(--icon-color);
 		line-height: 1;
 		cursor: pointer;
+		@include media-breakpoint-down(xs){
+			top: 38px;
+		}
 	}
 }
 //When container background not white this CSS will apply for form fields

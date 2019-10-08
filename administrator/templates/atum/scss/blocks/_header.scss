@@ -100,6 +100,10 @@
     font-size: 1.2rem;
     line-height: $header-height;
     color: var(--atum-special-color);
+    @include media-breakpoint-down(xs) {
+      white-space: normal;
+      line-height: 1.2;
+    }
     
     [class^='icon-'] {
       margin-right: 0.625rem;
