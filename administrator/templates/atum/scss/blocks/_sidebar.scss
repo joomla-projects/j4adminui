@@ -666,7 +666,6 @@
 		+ .container-main{
 			position: relative;
 			&::after{
-				transition-timing-function: line;
 				transition-property: all;
 				transition-duration: 800ms;
 				transition-delay: 0ms;
@@ -679,6 +678,7 @@
 				left: 0;
 				pointer-events: none;
 				opacity: 0;
+				z-index: 9;
 			}
 		}
 		&.show {
