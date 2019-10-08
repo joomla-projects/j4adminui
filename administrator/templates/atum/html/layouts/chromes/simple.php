@@ -43,9 +43,9 @@ if ($module->content) :
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
 
-	if (!empty($params->get('header_icon')))
+	if (!empty($params->get('header_icon', 'fas fa-arrows-alt')))
 	{
-		$headerIcon = '<span class="handle ' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
+		$headerIcon = '<span class="j-simple-icon handle ' . htmlspecialchars($params->get('header_icon', 'fas fa-arrows-alt')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
 	<div class="module-wrapper">
@@ -54,7 +54,7 @@ if ($module->content) :
 				<div class="d-flex mb-3 align-items-center">
 					<?php if ($module->showtitle) : ?>
 						<div class="flex-grow-1">
-							<h2 <?php echo $headerClass; ?>><?php echo $headerIcon . htmlspecialchars($module->title); ?></h2>
+							<h3 <?php echo $headerClass; ?> class="j-simple-title"><?php echo $headerIcon . htmlspecialchars($module->title); ?></h3>
 						</div>
 					<?php endif; ?>
 					<?php if ($canEdit || $canChange) : ?>
