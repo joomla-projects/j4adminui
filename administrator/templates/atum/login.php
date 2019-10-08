@@ -112,7 +112,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 				
 					<div class="login">
 						<div id="main-brand" class="main-brand">
-							<h3><?php //echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
+							<h3><?php echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
 						</div>
 						<jdoc:include type="component" />
 					</div>
