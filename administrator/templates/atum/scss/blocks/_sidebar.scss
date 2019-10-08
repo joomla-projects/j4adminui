@@ -676,29 +676,6 @@
 		}
 	}
 	
-	//#wrapper::before{
-	//	content: '';
-	//	position: fixed;
-	//	z-index: 999999;
-	//	width: 100%;
-	//	height: 65px;
-	//	bottom: 0;
-	//	background: $white;
-	//	transform: translateY(40px);
-	//}
-	//#wrapper::after{
-	//	content: '';
-	//	width: 100%;
-	//	height: 71px;
-	//	bottom: 0;
-	//	position: fixed;
-	//	z-index: 999999;
-	//	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='527' height='62'%3E%3Cdefs%3E%3Cpath id='b' d='M0 0h515v50H0V0zm257.548.03H199c14.51-.474 25.038 4.785 31.581 15.775 6.543 10.99 15.533 16.722 26.967 17.195 11.435-.473 20.424-6.205 26.968-17.195 6.543-10.99 17.07-16.249 31.58-15.776h-58.548z'/%3E%3Cfilter id='a' width='105.4%25' height='156%25' x='-2.7%25' y='-40%25' filterUnits='objectBoundingBox'%3E%3CfeMorphology in='SourceAlpha' radius='1' result='shadowSpreadOuter1'/%3E%3CfeOffset dy='-6' in='shadowSpreadOuter1' result='shadowOffsetOuter1'/%3E%3CfeGaussianBlur in='shadowOffsetOuter1' result='shadowBlurOuter1' stdDeviation='4'/%3E%3CfeColorMatrix in='shadowBlurOuter1' result='shadowMatrixOuter1' values='0 0 0 0 0.0156862745 0 0 0 0 0.0901960784 0 0 0 0 0.219607843 0 0 0 0.13 0'/%3E%3CfeOffset dy='-1' in='SourceAlpha' result='shadowOffsetOuter2'/%3E%3CfeGaussianBlur in='shadowOffsetOuter2' result='shadowBlurOuter2' stdDeviation='.5'/%3E%3CfeColorMatrix in='shadowBlurOuter2' result='shadowMatrixOuter2' values='0 0 0 0 0.0169894885 0 0 0 0 0.0909468795 0 0 0 0 0.217730978 0 0 0 0.05 0'/%3E%3CfeMerge%3E%3CfeMergeNode in='shadowMatrixOuter1'/%3E%3CfeMergeNode in='shadowMatrixOuter2'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg fill='none' fill-rule='evenodd' transform='translate(6 12)'%3E%3Cuse fill='%23000' filter='url(%23a)' xlink:href='%23b'/%3E%3Cuse fill='%23FFF' xlink:href='%23b'/%3E%3C/g%3E%3C/svg%3E");
-	//	background-position: top center;
-	//	background-size: auto 62px;
-	//	background-repeat: repeat-x;
-	//}
-	
 }
 
 //com_config, smart search sidebar style

@@ -12,7 +12,7 @@
 }
 
 .header {
-  background: #ffffff;
+  background: $white;
   z-index: $zindex-header;
   color: var(--atum-special-color);
   @extend .d-flex;
@@ -159,7 +159,7 @@
       padding: 0 2.107rem;
       align-items: center;
       line-height: 1;
-      background-color: #fff;
+      background-color: $white;
       @include media-breakpoint-down(xs) {
         padding: 0 1.107rem;
       }
