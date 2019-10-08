@@ -14,7 +14,7 @@
             <label for="media_search" class="sr-only">{{ translate('COM_MEDIA_SEARCH') }}</label>
             <input id="media_search" class="form-control" type="text" @input="changeSearch" :placeholder="translate('COM_MEDIA_SEARCH')"/>
         </div>
-        <div class="media-view-icons">
+        <div class="media-view-icons d-none d-sm-flex">
             <div class="media-toolbar-view-type" :class="activGridClass">
                 <button type="button" href="#" class="media-toolbar-icon media-toolbar-grid-view" 
                 @click.stop.prevent="changeListView('grid')"

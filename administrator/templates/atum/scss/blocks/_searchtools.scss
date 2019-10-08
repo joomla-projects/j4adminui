@@ -40,12 +40,20 @@
   }
 
   .js-stools-container-selector,
-  .js-stools-container-selector-first  {
+  .js-stools-container-selector-first {
+    @include media-breakpoint-down(xs) {
+      margin-right: 0;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
     .js-stools-field-selector{
       margin-right: 15px;
         @include media-breakpoint-down(sm) {
             max-width:100%;
             margin-right:0.5rem;
+        }
+        @include media-breakpoint-down(xs) {
+            margin-right: 0;
         }
     }
   }
@@ -55,6 +63,9 @@
     .btn-toolbar {
       .form-control{
         width: 21.49rem;
+        @include media-breakpoint-down(md) {
+          width: 19.49rem;
+        }
       }
       .input-group-append{
         .btn{
@@ -118,9 +129,11 @@
       @include media-breakpoint-down(lg) {
         margin-left: 0;
       }
+      @include media-breakpoint-down(xs) {
+        margin-bottom: 1rem;
+      }
     }
     .btn {
-      line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
       &.js-stools-btn-clear {

@@ -109,7 +109,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="min-width:60px">
+								<th scope="col" style="min-width:60px" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JCATEGORY', 'a.catid', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%; min-width:85px" class="text-center">
@@ -236,7 +236,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										</span>
 									</div>
 								</th>
-								<td>
+								<td class="d-none d-md-table-cell">
 								<?php
 									$ParentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->parent_category_id . '&extension=com_content');
 									$CurrentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->catid . '&extension=com_content');

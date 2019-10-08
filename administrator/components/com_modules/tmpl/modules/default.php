@@ -76,9 +76,6 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" width="5%" class="text-center d-md-table-cell">
-							<?php echo JText::_('JGRID_HEADING_ACTION'); ?>
-						</th>	
 					</tr>
 				</thead>
 				<tbody <?php if ($saveOrder) :?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="false"<?php endif; ?>>
@@ -178,9 +175,6 @@ if ($saveOrder && !empty($this->items))
 						<?php endif; ?>
 						<td class="small d-none d-md-table-cell">
 							<?php echo $this->escape($item->access_level); ?>
-						</td>
-						<td class="text-center">
-							<i class="fas fa-ellipsis-h"></i>
 						</td>
 					</tr>
 					<?php endforeach; ?>

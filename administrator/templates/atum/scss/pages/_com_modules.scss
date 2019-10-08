@@ -4,3 +4,15 @@
         min-height: 130px;
     }
 }
+.j-simple-title {
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.714rem;
+    color: var(--color);
+    .j-simple-icon {
+        color: var(--icon-color);
+        display: inline-block;
+        margin-right: .293rem;
+        cursor: move;
+    }
+}

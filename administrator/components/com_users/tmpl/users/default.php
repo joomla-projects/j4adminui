@@ -54,13 +54,13 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_USERS_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" class="text-center d-none d-lg-table-cell">
+								<th scope="col" class="text-center">
 									<?php echo Text::_('COM_USERS_DEBUG_PERMISSIONS'); ?>
 								</th>
 								<th scope="col" style="width:10%; " class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_USERNAME', 'a.username', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:5%;" class="text-center d-none d-md-table-cell">
+								<th scope="col" style="width:5%;" class="text-center d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_USERS_HEADING_ENABLED', 'a.block', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:5%;" class="text-center d-none d-md-table-cell">
