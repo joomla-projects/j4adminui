@@ -17,20 +17,18 @@
 
 .sidebar-wrapper {
 	width: $sidebar-width;
-	background-color: #ffffff;
-	box-shadow: 0 10px 30px 0 rgba(209, 213, 223, 0.5);
+	background-color: $white;
+	box-shadow: $atum-box-shadow;
 	height: 100vh;
 	@include media-breakpoint-up(sm) {
 		display: flex;
 		flex-direction: column;
 		flex: 1 0 $sidebar-width;
 		max-width: $sidebar-width;
-		// transition: all .3s ease;
 	}
 	
 	@include media-breakpoint-down(xs) {
 		&.sidebar-menu {
-			/*height: 0;*/
 			bottom: 0;
 			top: auto;
 		}
@@ -90,7 +88,7 @@
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: $sidebar-width;
-	background-color: #fff;
+	background-color: $white;
 	@include media-breakpoint-down(xs) {
 		width: 100%;
 		position: static;
@@ -98,68 +96,67 @@
 }
 
 .logo-header{
-	padding: 0.536rem 2.071rem 0.321rem 1.643rem;
-	position: relative;
-	color: var(--secondary-color);
-	font-size: 0.857rem;
-	height: $header-height;
-	transition: 300ms;
-	min-width: $sidebar-width + 0.050;
-	@include media-breakpoint-down(xs) {
-		padding-left: 1rem;
-		padding-right: 0;
-		min-width: 1rem;
-		width: 20%;
-		display: flex;
-		align-items: center;
-		padding-top: 0;
-	}
-	.main-logo{
-		svg{
-			width: 102px;
-			margin-left: 0;
-		}
-		.logo-small{
-			display: none;
-			width: auto;
-			height: auto;
-			padding-left: 6px;
-			transition: 300ms;
-		}
-		
-	}
-	.sidebar-toggle{
-		position: absolute;
-		width: 2.071rem;
-		height: 100%;
-		right: 0;
-		top: 0;
-		border-left: 1px solid var(--background);
-		border-right: 1px solid var(--background);
-		background: #ffffff;
-		transition: 300ms;
-		a{
-			height: 100%;
-			width: 100%;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			text-decoration: none;
-			font-size: 1.143rem;
-			transition: 300ms;
-		}
-	}
-	.header-version{
-		margin-bottom: 0;
-		margin-top: 0.386rem;
-		line-height: 1.643rem;
-		width: 100%;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		position: relative;
-		color: var(--secondary-color);
-	}
+  padding: 0.536rem 2.071rem 0.321rem 1.643rem;
+  position: relative;
+  color: var(--secondary-color);
+  font-size: 0.857rem;
+  height: $header-height;
+  transition: 300ms;
+  min-width: $sidebar-width + 0.050;
+  @include media-breakpoint-down(xs) {
+    padding: 0;
+    min-width: 1rem;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-logo{
+    svg{
+      width: 102px;
+      margin-left: 0;
+    }
+    .logo-small{
+      display: none;
+      width: auto;
+      height: auto;
+      padding-left: 6px;
+      transition: 300ms;
+    }
+    
+  }
+  .sidebar-toggle{
+    position: absolute;
+    width: 2.071rem;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-left: 1px solid var(--background);
+    border-right: 1px solid var(--background);
+    background: $white;
+    transition: 300ms;
+    a{
+      height: 100%;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.143rem;
+      transition: 300ms;
+    }
+  }
+  .header-version{
+    margin-bottom: 0;
+    margin-top: 0.386rem;
+    line-height: 1.643rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    color: var(--secondary-color);
+  }
 }
 
 .menu-toggle-icon {
@@ -238,7 +235,7 @@
 				right: 17px;
 				top: 50%;
 				background: var(--success-color);
-				color: #fff !important;
+				color: $white !important;
 				height: 12px;
 				width: 12px;
 				line-height: 12px;
@@ -525,7 +522,7 @@
 				position: absolute;
 				width: 100%;
 				height: 50px;
-				background: #fff;
+				background: $white;
 				top: 60px;
 				z-index: -1;
 			}
@@ -576,7 +573,7 @@
 						position: absolute;
 						top: 9px;
 						font-size: 10px;
-						color: #fff;
+						color: $white;
 						line-height: 11px;
 						border: none;
 						display: inline-block;
@@ -610,7 +607,7 @@
 		.navbar-toggler-icon {
 			height: 2.21px;
 			width: 20px;
-			background: #ffffff;
+			background: $white;
 			position: relative;
 			transition: .3s;
 			transform: rotate(-135deg);
@@ -620,7 +617,7 @@
 				position: absolute;
 				width: 100%;
 				height: 100%;
-				background: #fff;
+				background: $white;
 				left: 0;
 				top: -5.89px;
 				border-radius: 1.5px;
@@ -638,19 +635,15 @@
 		&.collapsed {
 			.navbar-toggler-icon {
 				transform: none;
-				background: #fff;
+				background: $white;
 				&::before,
 				&::after{
 					transform: none;
-					background: #fff;
+					background: $white;
 				}
 			}
 		}
 		
-	}
-	
-	#wrapper{
-		position: relative;
 	}
 	
 	#sidebar-wrapper {
@@ -662,39 +655,26 @@
 		height: auto;
 		overflow-x: hidden;
 		overflow-y: scroll;
+		padding-bottom: 85px;
 		transition: 300ms;
-		padding-bottom: 0;
 		z-index: 99;
 		transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-		transition-property: all;
-		display: flex;
-		flex-direction: column;
-		max-height: 0;
-		+ .navbar-mobile-overlay{
-			transition-property: all;
-			transition-duration: .8s;
-			transition-delay: 0ms;
-			content: "";
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background: rgba(0,0,0,.35);
-			top: 0;
-			left: 0;
-			opacity: 0;
-			z-index: 9;
-			right: 0;
-			pointer-events: none;
+		&:not(.show) {
+			max-height: 0;
 		}
 		&.show {
+			transition-property: all;
+			transition-duration: 1s;
+			display: flex;
+			flex-direction: column;
 			max-height: calc(100vh - 60px);
-			padding-bottom: 85px;
-			box-shadow: 0 -6px 14px rgba(0,0,0,.25);
-			transition-duration: 800ms;
-			transition-delay: 0ms;
-			+ .navbar-mobile-overlay{
-				opacity: 1;
-				pointer-events: all;
+		}
+	}
+	
+	#sidebar-wrapper {
+		&:not(.show) {
+			&:not(.collapse) {
+				display: none;
 			}
 		}
 	}

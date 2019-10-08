@@ -54,7 +54,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 					$bootstrap_size = $params->get('bootstrap_size', 12);
 					$columns = ($bootstrap_size == 0) ? 12 : $bootstrap_size;
 					?>
-					<div class="col-<?php echo $columns; ?>" data-dragable-group="dashboard_module">
+					<div class="col-md-<?php echo $columns; ?>" data-dragable-group="dashboard_module">
 						<?php echo ModuleHelper::renderModule($module, array('style' => $style)); ?>
 					</div>
 					<?php

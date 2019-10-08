@@ -22,6 +22,5 @@ extract($displayData);
 
 if ($level > 1)
 {
-	// echo '<span class="text-muted">' . str_repeat('&#8942;&nbsp;&nbsp;&nbsp;', (int) $level - 2) . '</span>&ndash;&nbsp;';
-	echo '<span class="tree-handle" style="width: '.(($level-2) * 30).'px; height: 2px; background: var(--icon-color); display: inline-block;"></span>';
+	echo '<span class="text-muted">' . str_repeat('&#8942;&nbsp;&nbsp;&nbsp;', (int) $level - 2) . '</span>&ndash;&nbsp;';
 }
