@@ -150,6 +150,8 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 		</div>
 	</div>
 
+	<span class="navbar-mobile-overlay navbar-toggler collapsed" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false"></span>
+
 	<?php //endif; ?>
 
 	<?php // container-fluid ?>
