@@ -37,23 +37,21 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 				<?php foreach ($child->getChildren() as $item) : ?>
 					<li class="mobile-quickmenu-item">
 						<?php $params = $item->getParams(); ?>
-						<?php if($item->type == 'viewsite') : 
+						<?php if($item->type == 'viewsite') :
 							$sitename = htmlspecialchars($app->get('sitename', ''), ENT_QUOTES, 'UTF-8');
 							?>
-							<a class="header-item-link" href="<?php echo Uri::root(); ?>" title="<?php echo Text::sprintf('MOD_FRONTEND_PREVIEW', $sitename); ?>" target="_blank">
+							<a href="<?php echo Uri::root(); ?>" title="<?php echo Text::sprintf('MOD_MENU_VIEWSITE', $sitename); ?>" target="_blank">
 								<span class="fas fa-external-link-square-alt" aria-hidden="true"></span>
-								<span class="header-item-text">
-									<?php echo Text::_('MOD_FRONTEND_VIEW_SITE'); ?>
-								</span>
+								<?php echo Text::_('MOD_MENU_VIEWSITE'); ?>
 							</a>
 						<?php else : ?>
-							<a class="flex-grow-1" href="<?php echo $item->link; ?>" target="<?php echo $item->target; ?>">
+							<a href="<?php echo $item->link; ?>" target="<?php echo $item->target; ?>">
 								<?php if ($item->icon) : ?>
 									<span class="<?php echo $item->icon;?>" aria-hidden="true"></span>
 								<?php elseif (!empty($params->get('menu_image'))) : ?>
 									<?php echo HTMLHelper::_('image', $image, $alt, 'class="' . $class . '"'); ?>
 								<?php endif; ?>
-								
+
 								<?php echo ($params->get('menu_text', 1)) ? Text::_($item->title) : ''; ?>
 								<?php if ($params->get('menu-quicktask', false)) : ?>
 									<span class="menu-quicktask">
@@ -81,9 +79,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 									</span>
 								<?php endif; ?>
 								<?php if ($item->ajaxbadge) : ?>
-									<span class="menu-badge">
-										<span class="fas fa-spin fa-spinner mt-1 system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
-									</span>
+									<span class="fas fa-spin fa-spinner system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
 								<?php endif; ?>
 							</a>
 							<?php if ($item->dashboard) : ?>
@@ -93,7 +89,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 									</a>
 								</span>
 							<?php endif; ?>
-						<?php endif; ?>	
+						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>
 			</ul>
