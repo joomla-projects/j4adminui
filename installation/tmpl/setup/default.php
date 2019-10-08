@@ -20,24 +20,24 @@ use Joomla\CMS\Factory;
 
 <div id="installer-view" data-page-name="setup">
 	<div class="row no-gutters">
-		<div class="col-auto">
+		<div class="col-12 col-md-auto">
 			<ul class="j-install-menu">
-				<li>
+				<li id="navStepLi0">
 					<button type="button" role="button" id="navStep0" data-step="step" class="active" title="<?php echo Text::_('INSTL_SELECT_INSTALL_LANG'); ?>"><?php echo Text::_('INSTL_CHANGE_LANG'); ?></button>
 				</li>
-				<li>
+				<li id="navStepLi1">
 					<button type="button" role="button" id="navStep1" data-step="step1" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>"><?php echo Text::_('INSTL_SITE_CONFIG'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
+				<li id="navStepLi2" title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
 					<button type="button" role="button" id="navStep2" data-step="step2"><?php echo Text::_('INSTL_LOGIN_DATA'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
+				<li id="navStepLi3" title="<?php echo Text::_('INSTL_DATABASE'); ?>">
 					<button type="button" role="button" id="navStep3" data-step="step3"><?php echo Text::_('INSTL_DATABASE_CONFIG'); ?></button>
 				</li>
-				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
+				<li id="navStepLi4" title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
 					<button type="button" role="button" id="navStep4" data-step="step3"><?php echo Text::_('INSTL_INSTALLING_SITE'); ?></button>
 				</li>
-				<li>
+				<li id="navStepLi5">
 					<button type="button" role="button" id="navStep5" data-step="step4"><?php echo Text::_('INSTL_FINALIZE_INSTALLATION'); ?></button>
 				</li>
 			</ul>
@@ -45,7 +45,7 @@ use Joomla\CMS\Factory;
 		<div class="col">
 			<form action="index.php" method="post" id="languageForm" class="lang-select j-install-form active">
 				<fieldset id="installStep0" class="j-install-step active">
-					<div class="j-install-step-body">
+					<div>
 						<div class="form-no-margin">
 							<div class="control-group">
 								<div class="control-label">
@@ -62,7 +62,7 @@ use Joomla\CMS\Factory;
 						<?php echo HTMLHelper::_('form.token'); ?>
 					</div>
 					<div class="j-install-step-footer">
-						<button class="btn btn-primary" type="button" id="step0"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
+						<button class="btn btn-primary" type="submit" id="step0"><?php echo Text::_('INSTL_SAVE_AND_NEXT'); ?></button>
 					</div>
 				</fieldset><!-- /#installStep0 -->
 			</form>
@@ -89,17 +89,6 @@ use Joomla\CMS\Factory;
 								<?php echo $this->form->getInput('admin_email'); ?>
 							</div>
 							<small class="form-text info"><?php echo Text::_('INSTL_SITE_EMAIL_ADDRESS'); ?></small>
-						</div>
-					</div>
-					<div class="form-no-margin">
-						<div class="control-group">
-							<div class="control-label">
-								<?php echo $this->form->getLabel('admin_email'); ?>
-							</div>
-							<div class="controlls">
-								<?php echo $this->form->getInput('admin_email'); ?>
-							</div>
-							<small class="form-text info">Enter the site email address.</small>
 						</div>
 					</div>
 					<div class="j-install-step-footer">

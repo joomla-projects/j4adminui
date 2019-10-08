@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<menu
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:joomla.org"
+	xsi:schemaLocation="urn:joomla.org menu.xsd"
+	>
+	<menuitem type="heading">
+		<menuitem
+			title="MOD_MENU_ACCESS_SETTINGS"
+			type="component"
+			element="com_config"
+			link="index.php?option=com_config#page-permissions"
+			permission="core.manage"
+			icon="fas fa-sliders-h"
+		/>
+
+		<menuitem
+			title="MOD_MENU_VIEWSITE"
+			type="viewsite"
+			icon="fa fa-external-link-alt"
+		/>
+
+		<menuitem
+			title="MOD_MENU_INFORMATION_NOTIFICATIONS"
+			type="component"
+			element="com_postinstall"
+			icon="fa-fw fa fa-bell"
+			link="index.php?option=com_postinstall"
+			permission="core.manage;com_postinstall"
+			ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			type="component"
+			title="MOD_MENU_CONTROL_PANEL"
+			link="index.php"
+			icon="fa-fw fa fa-home"
+			element="com_cpanel"
+		/>
+	</menuitem>
+</menu>

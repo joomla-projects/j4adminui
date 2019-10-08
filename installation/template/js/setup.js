@@ -92,6 +92,9 @@ Joomla.checkDbCredentials = function() {
 				if (response.messages.error) {
 					Joomla.updateProgress(-10);
 					dbCheck.classList.remove('done');
+					Joomla.setValidationStatus('#navStepLi3', 'show');
+				} else {
+					Joomla.setValidationStatus('#navStepLi3', 'hide');
 				}
 			}
 
@@ -114,6 +117,7 @@ Joomla.checkDbCredentials = function() {
 			//Install.goToPage('summary');
 			// Joomla.loadingLayer('hide');
 			Joomla.updateProgress(-10);
+			Joomla.setValidationStatus('#navStepLi3', 'show');
 			try {
 				var r = JSON.parse(xhr.responseText);
 				Joomla.replaceTokens(r.token);
@@ -137,7 +141,7 @@ Joomla.isFilled = function(src) {
 
 		if (fields.length) {
 			fields.forEach((field) => {
-				if (field.value != '') {
+				if (field.value != '' && !field.classList.contains('invalid')) {
 					counter += 1;
 				}
 			});
@@ -266,8 +270,11 @@ const completePath = function(index) {
 				navStep1.classList.add('active');
 				navStep0.classList.remove('active');
 				completePath(1);
-
 				Joomla.removeMessages();
+
+				Joomla.setValidationStatus('#navStepLi0', 'hide');
+			} else {
+				Joomla.setValidationStatus('#navStepLi0', 'show');
 			}
 		});
 	}
@@ -282,6 +289,9 @@ const completePath = function(index) {
 				completePath(2);
 
 				Joomla.removeMessages();
+				Joomla.setValidationStatus('#navStepLi1', 'hide');
+			} else {
+				Joomla.setValidationStatus('#navStepLi1', 'show');
 			}
 		});
 	}
@@ -296,6 +306,9 @@ const completePath = function(index) {
 				completePath(3);
 
 				Joomla.removeMessages();
+				Joomla.setValidationStatus('#navStepLi2', 'hide');
+			} else {
+				Joomla.setValidationStatus('#navStepLi2', 'show');
 			}
 		});
 	}
@@ -327,7 +340,10 @@ const completePath = function(index) {
 					
 					completePath(1);
 					Joomla.removeMessages();
+					Joomla.setValidationStatus('#navStepLi0', 'hide');
 				}
+			} else {
+				Joomla.setValidationStatus('#navStepLi0', 'show');
 			}
 		});
 	}
@@ -349,7 +365,10 @@ const completePath = function(index) {
 					}
 					completePath(2);
 					Joomla.removeMessages();
+					Joomla.setValidationStatus('#navStepLi1', 'hide');
 				}
+			} else {
+				Joomla.setValidationStatus('#navStepLi1', 'show');
 			}
 		});
 	}
@@ -374,7 +393,10 @@ const completePath = function(index) {
 					}
 					completePath(3);
 					Joomla.removeMessages();
+					Joomla.setValidationStatus('#navStepLi2', 'hide');
 				}
+			} else {
+				Joomla.setValidationStatus('#navStepLi2', 'show');
 			}
 		});
 
@@ -388,6 +410,9 @@ const completePath = function(index) {
 				completePath(4);
 				Joomla.checkInputs();
 				Joomla.removeMessages();
+				Joomla.setValidationStatus('#navStepLi3', 'hide');
+			} else {
+				Joomla.setValidationStatus('#navStepLi3', 'show');
 			}
 		});
 	}

@@ -91,9 +91,6 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 
 <?php // Wrapper ?>
 <div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
-    <button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
     <?php // Header ?>
     <header id="header" class="header <?php echo $hiddenMenuClass; ?>">
         <div class="logo-header">
@@ -113,13 +110,13 @@ HTMLHelper::_('atum.rootcolors', $this->params);
                 <?php endif; ?>
             </div>
             <?php if (!$hiddenMenu): ?>
-                <div class="sidebar-toggle d-none d-sm-block">
+                <div class="sidebar-toggle">
                     <a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
                         <span id="menu-collapse-icon" class="fas <?php echo $hiddenMenuClass === 'closed' ? 'fa-angle-double-right' : 'fa-angle-double-left' ?>" aria-hidden="true"></span>
                     </a>
                 </div>
             <?php endif; ?>
-            <div class="header-version d-none d-sm-block" title="<?php echo JVERSION; ?>">
+            <div class="header-version" title="<?php echo JVERSION; ?>">
                 <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
                 <span aria-hidden="true"><?php echo JVERSION; ?></span>
             </div>
@@ -129,6 +126,14 @@ HTMLHelper::_('atum.rootcolors', $this->params);
         </div>
         <div class="header-items">
             <jdoc:include type="modules" name="status" style="header-item" />
+        </div>
+        <div class="navbar-wrap">
+            <div class="navbar-mobile-quick-wrap">
+                <jdoc:include type="modules" name="quickmenu" style="none" />
+            </div>
+            <button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </header>
 
