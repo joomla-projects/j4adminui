@@ -27,6 +27,7 @@ table {
                 border:none;
                 padding-bottom: 0;
                 font-size: 1rem;
+                white-space: nowrap;
             }
             a{
                 color: var(--table-sort-color);

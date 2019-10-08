@@ -52,10 +52,16 @@ label {
 		padding-top: 5px;
 		padding-right: 5px;
 		text-align: left;
+		@include media-breakpoint-down(xs) {
+			width: 100%;
+		}
 	}
 	
 	.controls {
 		margin-left: 170px;
+		@include media-breakpoint-down(xs) {
+			margin-left: 0;
+		}
 	}
 	
 }

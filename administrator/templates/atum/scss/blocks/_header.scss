@@ -15,9 +15,9 @@
   background: #ffffff;
   z-index: $zindex-header;
   color: var(--atum-special-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
   height: $header-height;
   position: fixed;
   width: 100%;
@@ -57,7 +57,9 @@
     &.small {
       width: $sidebar-width-closed;
       transition: width .3s ease;
-      
+      @include media-breakpoint-down(xs) {
+        width: auto;
+      }
       svg, img {
         
         &:not(.logo-small) {
@@ -80,6 +82,7 @@
         max-width: 1.3rem;
         @include media-breakpoint-down(xs) {
           max-width: 4rem;
+          padding-left: 0;
         }
       }
     }
@@ -118,7 +121,7 @@
     &:not(:last-child){
       border-right: 1px solid var(--background);
       @include media-breakpoint-down(xs) {
-        display: none;
+        display: none !important;
       }
     }
   }
@@ -203,13 +206,6 @@
   
   joomla-dropdown[expanded] {
     z-index: $zindex-popover;
-  }
-  &.closed {
-    .header-title {
-      .d-flex {
-        padding-left: $header-height;
-      }
-    }
   }
   @include media-breakpoint-down(lg){
     .header-user-name,

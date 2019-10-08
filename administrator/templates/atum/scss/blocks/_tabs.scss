@@ -25,6 +25,9 @@ joomla-tab > ul {
 	position: relative;
 	z-index: 1;
 	border-bottom: 1px solid var(--secondary-icon-color);
+	li {
+		width: 100%;
+	}
 }
 
 joomla-tab a[role=tab] {
@@ -212,6 +215,7 @@ joomla-tab[view=accordion] > ul {
 joomla-tab[view=accordion] section {
 	display: none;
 	padding: 15px;
+	overflow-x: scroll;
 }
 
 joomla-tab[view=accordion] section[active] {

@@ -24,19 +24,36 @@
   cursor: pointer;
   user-select: none;
   .media-browser-items-xs & {
-    width: calc(#{$grid-item-width-xs});
+    width: $grid-item-width-xs;
   }
   .media-browser-items-sm & {
-    width: calc(#{$grid-item-width-sm});
+    width: $grid-item-width-sm;
   }
   .media-browser-items-md & {
-    width: calc(#{$grid-item-width-md});
+    width: $grid-item-width-md;
   }
   .media-browser-items-lg & {
-    width: calc(#{$grid-item-width-lg});
+    width: $grid-item-width-lg;
   }
   .media-browser-items-xl & {
-    width: calc(#{$grid-item-width-xl});
+    width: $grid-item-width-xl;
+  }
+  @media (max-width: 575.98px) {
+    .media-browser-items-xs & {
+      width: 50%;
+    }
+    .media-browser-items-sm & {
+      width: 50%;
+    }
+    .media-browser-items-md & {
+      width: 50%;
+    }
+    .media-browser-items-lg & {
+      width: 50%;
+    }
+    .media-browser-items-xl & {
+      width: 50%;
+    }
   }
 }
 

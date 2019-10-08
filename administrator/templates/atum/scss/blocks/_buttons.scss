@@ -35,6 +35,9 @@
             color: var(--icon-color);
         }
     }
+    @include media-breakpoint-down(xs){
+        padding: 0 1rem;
+    }
     >.icon{
         margin-right: 12px;
         &.right{
@@ -135,6 +138,9 @@
         box-shadow: none;
         color: var(--dark-primary-color);
         padding: 0 1.2rem;
+        @include media-breakpoint-down(xs){
+            padding: 0 .8rem;
+        }
         &:hover, &:active, &.active{
             color: var(--link-color);
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);

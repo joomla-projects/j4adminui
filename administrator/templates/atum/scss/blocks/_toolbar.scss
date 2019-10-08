@@ -1,4 +1,4 @@
-.toggle-toolbar {
+.toggle-toolbar.btn {
   display: block;
 }
 .subhead {
@@ -17,6 +17,10 @@
   margin-right: -14px;
   padding-left: 15px;
   padding-right: 15px;
+  @include media-breakpoint-down(xs){
+    padding-left: 0;
+    padding-right: 0;
+  }
   
   .row {
     margin-right: 0;
@@ -30,7 +34,11 @@
     > div,
     > .btn-group {
       margin-left: 1.4rem;
-      
+      @include media-breakpoint-down(xs){
+        margin-left: 0;
+        margin-right: .75rem;
+        margin-bottom: .75rem;
+      }
       &:first-child {
         margin-left: 0;
       }
@@ -40,14 +48,14 @@
         }
       }
     }
-    #toolbar-options {
-      @include media-breakpoint-down(md) {
-        margin-left: auto;
+    #toolbar-preview {
+      @include media-breakpoint-down(xs){
+        margin-bottom: 1rem;
       }
     }
     #toolbar-help {
       margin-left: auto;
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(xs){
         display: none;
       }
       .btn {
@@ -189,6 +197,9 @@
       margin-top: 1rem;
       .btn-toolbar{
         justify-content:flex-start;
+        @include media-breakpoint-down(xs) {
+          width: 100%;
+        }
       }
     }
   }
@@ -217,7 +228,7 @@
     }
     .ordering-select,
     .js-stools-container-selector{
-      margin-right:.5rem;
+      margin-bottom: 1rem;
     }
     .btn-group{
       @include media-breakpoint-down(sm) {

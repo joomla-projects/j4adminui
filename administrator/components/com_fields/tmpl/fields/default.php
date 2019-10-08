@@ -80,7 +80,7 @@ if ($saveOrder && !empty($this->items))
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FIELDS_FIELD_TYPE_LABEL', 'a.type', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col">
+								<th scope="col" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FIELDS_FIELD_GROUP_LABEL', 'g.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
@@ -158,7 +158,7 @@ if ($saveOrder && !empty($this->items))
 									<td class="small">
 										<?php echo $this->escape($item->type); ?>
 									</td>
-									<td>
+									<td class="d-none d-md-table-cell">
 										<?php echo $this->escape($item->group_title); ?>
 									</td>
 									<td class="small d-none d-md-table-cell">

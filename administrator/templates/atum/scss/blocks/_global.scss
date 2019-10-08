@@ -96,6 +96,9 @@ caption {
 .container-main,
 .system-debug {
   padding-bottom: 50px;
+  @include media-breakpoint-down(xs){
+    padding-bottom: 110px;
+  }
 }
 
 body .container-main {

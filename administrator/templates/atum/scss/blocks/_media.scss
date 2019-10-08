@@ -389,6 +389,9 @@
     &:hover {
         background-color: transparent;
     }
+    @include media-breakpoint-down(xs) {
+        width: 50px;
+    }
 }
 .media-view-icons {
     border-left: 1px solid var(--media-border);
@@ -494,6 +497,10 @@
         @include media-breakpoint-down(md) {
             height: 2.8rem;
             width: 17.45rem;
+        }
+        @include media-breakpoint-down(xs) {
+            width: 8.45rem;
+            padding-left: 3rem;
         }
     }
 }
@@ -612,12 +619,18 @@
         @extend .align-items-center;
         text-decoration: none;
         line-height: 4.9rem;
+        @include media-breakpoint-down(xs) {
+            line-height: 3.9rem;
+        }
         span {
             display: inline-block;
             padding: 0 15px 0 0;
             &.media-folder-icon {
                 font-size: 3rem;
                 color: #93ceff;
+                @include media-breakpoint-down(xs) {
+                    font-size: 2rem;
+                }
             }
             &.media-chevron-icon {
                 padding: 0 15px;

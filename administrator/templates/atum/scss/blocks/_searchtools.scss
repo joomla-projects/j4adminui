@@ -47,6 +47,9 @@
             max-width:100%;
             margin-right:0.5rem;
         }
+        @include media-breakpoint-down(xs) {
+            margin-right: 0;
+        }
     }
   }
 
@@ -118,9 +121,11 @@
       @include media-breakpoint-down(lg) {
         margin-left: 0;
       }
+      @include media-breakpoint-down(xs) {
+        margin-bottom: 1rem;
+      }
     }
     .btn {
-      line-height: 1;
       color: var(--table-sort-color);
       background-image: none;
       &.js-stools-btn-clear {

@@ -27,6 +27,7 @@ joomla-field-media {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    width: 100%;
     &.has-image {
       .field-media-preview {
         &::after {
