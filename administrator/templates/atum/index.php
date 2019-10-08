@@ -34,11 +34,11 @@ $joomlaLogo = $this->baseurl . '/templates/' . $this->template . '/images/logo.s
 require_once __DIR__ . '/Service/HTML/Atum.php';
 // Template params
 $siteLogo  = $this->params->get('siteLogo')
-    ? JUri::root() . $this->params->get('siteLogo')
-    : $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla-blue.svg';
+	? JUri::root() . $this->params->get('siteLogo')
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla-blue.svg';
 $smallLogo = $this->params->get('smallLogo')
-    ? JUri::root() . $this->params->get('smallLogo')
-    : $this->baseurl . '/templates/' . $this->template . '/images/logo-blue.svg';
+	? JUri::root() . $this->params->get('smallLogo')
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-blue.svg';
 $logoAlt = htmlspecialchars($this->params->get('altSiteLogo', ''), ENT_COMPAT, 'UTF-8');
 $logoSmallAlt = htmlspecialchars($this->params->get('altSmallLogo', ''), ENT_COMPAT, 'UTF-8');
 // Enable assets
@@ -77,75 +77,78 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
-    <jdoc:include type="metas" />
-    <jdoc:include type="styles" />
+	<jdoc:include type="metas" />
+	<jdoc:include type="styles" />
 </head>
 
 <body class="admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ($task ? ' task-' . $task : '') . ($monochrome ? ' monochrome' : ''); ?>">
 
 <noscript>
-    <div class="j-alert j-alert-danger" role="alert">
-        <?php echo Text::_('JGLOBAL_WARNJAVASCRIPT'); ?>
-    </div>
+	<div class="j-alert j-alert-danger" role="alert">
+		<?php echo Text::_('JGLOBAL_WARNJAVASCRIPT'); ?>
+	</div>
 </noscript>
 
 <?php // Wrapper ?>
 <div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
-    <?php // Header ?>
-    <header id="header" class="header <?php echo $hiddenMenuClass; ?>">
-        <div class="logo-header">
-            <div class="main-logo">
-                <?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
-                <?php if ($hiddenMenu || $cpanel) : ?>
-                    <div class="logo">
-                        <img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
-                        <img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
-                    </div>
-                <?php else : ?>
-                    <a class="logo" href="<?php echo Route::_('index.php'); ?>"
-                        aria-label="<?php echo Text::_('TPL_BACK_TO_CONTROL_PANEL'); ?>">
-                        <img src="<?php echo $siteLogo; ?>" alt="">
-                        <img class="logo-small" src="<?php echo $smallLogo; ?>" alt="">
-                    </a>
-                <?php endif; ?>
-            </div>
-            <?php if (!$hiddenMenu): ?>
-                <div class="sidebar-toggle">
-                    <a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
-                        <span id="menu-collapse-icon" class="fas <?php echo $hiddenMenuClass === 'closed' ? 'fa-angle-double-right' : 'fa-angle-double-left' ?>" aria-hidden="true"></span>
-                    </a>
-                </div>
-            <?php endif; ?>
-            <div class="header-version" title="<?php echo JVERSION; ?>">
-                <span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
-                <span aria-hidden="true"><?php echo JVERSION; ?></span>
-            </div>
-        </div>
-        <div class="header-title">
-            <jdoc:include type="modules" name="title" />
-        </div>
-        <div class="header-items">
-            <jdoc:include type="modules" name="status" style="header-item" />
-        </div>
-        <div class="navbar-wrap">
-            <div class="navbar-mobile-quick-wrap">
-                <jdoc:include type="modules" name="quickmenu" style="none" />
-            </div>
-            <button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </header>
-
-    <?php // Sidebar ?>
-
-    <?php //if (!$hiddenMenu) : ?>
-
-        <div id="sidebar-wrapper" class="sidebar-wrapper sidebar-menu" <?php echo $hiddenMenu ? 'data-hidden="' . $hiddenMenu . '"' : ''; ?>>
-            <div id="sidebarmenu">
-				<jdoc:include type="modules" name="menu" style="none" />
+	<button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<?php // Header ?>
+	<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
+		<div class="logo-header">
+			<div class="main-logo">
+				<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
+				<?php if ($hiddenMenu || $cpanel) : ?>
+					<div class="logo">
+						<img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
+						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
+					</div>
+				<?php else : ?>
+					<a class="logo" href="<?php echo Route::_('index.php'); ?>"
+					   aria-label="<?php echo Text::_('TPL_BACK_TO_CONTROL_PANEL'); ?>">
+						<img src="<?php echo $siteLogo; ?>" alt="">
+						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="">
+					</a>
+				<?php endif; ?>
 			</div>
-        </div>
+			<?php if (!$hiddenMenu): ?>
+				<div class="sidebar-toggle d-none d-sm-block">
+					<a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
+						<span id="menu-collapse-icon" class="fas <?php echo $hiddenMenuClass === 'closed' ? 'fa-angle-double-right' : 'fa-angle-double-left' ?>" aria-hidden="true"></span>
+					</a>
+				</div>
+			<?php endif; ?>
+			<div class="header-version d-none d-sm-block" title="<?php echo JVERSION; ?>">
+				<span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
+				<span aria-hidden="true"><?php echo JVERSION; ?></span>
+			</div>
+		</div>
+		<div class="header-title">
+			<jdoc:include type="modules" name="title" />
+		</div>
+		<div class="header-items">
+			<jdoc:include type="modules" name="status" style="header-item" />
+		</div>
+		<div class="navbar-wrap">
+			<div class="navbar-mobile-quick-wrap">
+				<jdoc:include type="modules" name="quickmenu" style="none" />
+			</div>
+			<button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</header>
+
+	<?php // Sidebar ?>
+
+	<?php //if (!$hiddenMenu) : ?>
+
+	<div id="sidebar-wrapper" class="sidebar-wrapper sidebar-menu" <?php echo $hiddenMenu ? 'data-hidden="' . $hiddenMenu . '"' : ''; ?>>
+		<div id="sidebarmenu">
+			<jdoc:include type="modules" name="menu" style="none" />
+		</div>
+	</div>
 
 	<?php //endif; ?>
 
@@ -154,9 +157,9 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 		<?php if (!$cpanel) : ?>
 			<?php // Subheader ?>
 			<button type="button" class="toggle-toolbar mx-auto btn btn-secondary my-2 d-md-none d-lg-none d-xl-none" data-toggle="collapse"
-				data-target=".subhead"><?php echo Text::_('TPL_ATUM_TOOLBAR'); ?>
+					data-target=".subhead"><?php echo Text::_('TPL_ATUM_TOOLBAR'); ?>
 				<span class="icon-chevron-down" aria-hidden="true"></span>
-            </button>
+			</button>
 			<div id="subhead" class="subhead mb-4">
 				<div id="container-collapse" class="container-collapse"></div>
 				<div class="row">
