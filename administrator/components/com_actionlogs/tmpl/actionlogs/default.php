@@ -77,7 +77,7 @@ Factory::getDocument()->addScriptDeclaration('
 						<th scope="col" width="15%" class="nowrap">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_EXTENSION', 'a.extension', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" width="15%" class="nowrap">
+						<th scope="col" width="15%" class="nowrap d-none d-sm-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_DATE', 'a.log_date', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" width="10%" class="nowrap">
@@ -88,7 +88,7 @@ Factory::getDocument()->addScriptDeclaration('
 								<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_IP_ADDRESS', 'a.ip_address', $listDirn, $listOrder); ?>
 							</th>
 						<?php endif; ?>
-						<th scope="col" width="1%" class="nowrap hidden-phone">
+						<th scope="col" width="1%" class="nowrap d-none d-sm-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 					</tr>
@@ -107,7 +107,7 @@ Factory::getDocument()->addScriptDeclaration('
 							<td>
 								<?php echo $this->escape(Text::_($extension)); ?>
 							</td>
-							<td>
+							<td class="d-none d-sm-table-cell">
 								<?php echo HTMLHelper::_('date.relative', $item->log_date); ?>
 								<div class="small">
 									<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC6')); ?>
@@ -121,7 +121,7 @@ Factory::getDocument()->addScriptDeclaration('
 									<?php echo Text::_($this->escape($item->ip_address)); ?>
 								</td>
 							<?php endif;?>
-							<td class="hidden-phone">
+							<td class="d-none d-sm-table-cell">
 								<?php echo (int) $item->id; ?>
 							</td>
 						</tr>

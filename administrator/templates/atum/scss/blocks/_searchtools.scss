@@ -63,6 +63,9 @@
     .btn-toolbar {
       .form-control{
         width: 21.49rem;
+        @include media-breakpoint-down(md) {
+          width: 19.49rem;
+        }
       }
       .input-group-append{
         .btn{

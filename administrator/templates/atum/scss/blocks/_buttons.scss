@@ -52,10 +52,16 @@
     &.btn-lg{
         padding: 0 2.857rem;
         line-height: 3.429rem;
+        @include media-breakpoint-down(xs){
+            padding: 0 1rem;
+        }
     }
     &.btn-sm{
         padding: 0 1.7rem;
         line-height: 2.286rem;
+        @include media-breakpoint-down(xs){
+            padding: 0 1rem;
+        }
     }
     &.btn-primary {
         background-color: var(--link-color);

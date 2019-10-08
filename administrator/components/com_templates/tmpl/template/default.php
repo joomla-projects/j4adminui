@@ -89,14 +89,14 @@ if ($this->type == 'font')
 	<?php endif; ?>
 </div>
 <div class="row mt-2">
-	<div id="treeholder" class="col-md-3 tree-holder">
+	<div id="treeholder" class="col-md-5 tree-holder">
 		<div class="j-card">
 			<div class="j-card-body">
 				<?php echo $this->loadTemplate('tree'); ?>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<fieldset class="options-grid-form options-grid-form-full">
 		<?php if ($this->type == 'home') : ?>
 			<legend><?php echo Text::_('COM_TEMPLATES_HOME_HEADING'); ?></legend>
@@ -242,7 +242,7 @@ if ($this->type == 'font')
 	<div class="col-md-12">
 		<div class="j-card-body">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_MODULES'); ?></legend>
 					<ul class="list-unstyled">
@@ -261,7 +261,7 @@ if ($this->type == 'font')
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_COMPONENTS'); ?></legend>
 					<ul class="list-unstyled">
@@ -289,7 +289,7 @@ if ($this->type == 'font')
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_PLUGINS'); ?></legend>
 					<ul class="list-unstyled">
@@ -317,7 +317,7 @@ if ($this->type == 'font')
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_LAYOUTS'); ?></legend>
 					<ul class="list-unstyled">

@@ -17,20 +17,18 @@
 
 .sidebar-wrapper {
 	width: $sidebar-width;
-	background-color: #ffffff;
-	box-shadow: 0 10px 30px 0 rgba(209, 213, 223, 0.5);
+	background-color: $white;
+	box-shadow: $atum-box-shadow;
 	height: 100vh;
 	@include media-breakpoint-up(sm) {
 		display: flex;
 		flex-direction: column;
 		flex: 1 0 $sidebar-width;
 		max-width: $sidebar-width;
-		// transition: all .3s ease;
 	}
 	
 	@include media-breakpoint-down(xs) {
 		&.sidebar-menu {
-			/*height: 0;*/
 			bottom: 0;
 			top: auto;
 		}
@@ -90,7 +88,7 @@
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: $sidebar-width;
-	background-color: #fff;
+	background-color: $white;
 	@include media-breakpoint-down(xs) {
 		width: 100%;
 		position: static;
@@ -135,7 +133,7 @@
     top: 0;
     border-left: 1px solid var(--background);
     border-right: 1px solid var(--background);
-    background: #ffffff;
+    background: $white;
     transition: 300ms;
     a{
       height: 100%;
@@ -237,7 +235,7 @@
 				right: 17px;
 				top: 50%;
 				background: var(--success-color);
-				color: #fff !important;
+				color: $white !important;
 				height: 12px;
 				width: 12px;
 				line-height: 12px;
@@ -529,7 +527,7 @@
 				position: absolute;
 				width: 100%;
 				height: 50px;
-				background: #fff;
+				background: $white;
 				top: 40px;
 				z-index: -1;
 			}
@@ -572,7 +570,7 @@
 						position: absolute;
 						top: 9px;
 						font-size: 10px;
-						color: #fff;
+						color: $white;
 						line-height: 11px;
 						border: none;
 						display: inline-block;
@@ -606,7 +604,7 @@
 		.navbar-toggler-icon {
 			height: 2.21px;
 			width: 20px;
-			background: #ffffff;
+			background: $white;
 			position: relative;
 			transition: .3s;
 			transform: rotate(-135deg);
@@ -616,7 +614,7 @@
 				position: absolute;
 				width: 100%;
 				height: 100%;
-				background: #fff;
+				background: $white;
 				left: 0;
 				top: -5.89px;
 				border-radius: 1.5px;
@@ -634,11 +632,11 @@
 		&.collapsed {
 			.navbar-toggler-icon {
 				transform: none;
-				background: #fff;
+				background: $white;
 				&::before,
 				&::after{
 					transform: none;
-					background: #fff;
+					background: $white;
 				}
 			}
 		}
@@ -685,7 +683,7 @@
 	//	width: 100%;
 	//	height: 65px;
 	//	bottom: 0;
-	//	background: #ffffff;
+	//	background: $white;
 	//	transform: translateY(40px);
 	//}
 	//#wrapper::after{

@@ -26,7 +26,9 @@ joomla-tab > ul {
 	z-index: 1;
 	border-bottom: 1px solid var(--secondary-icon-color);
 	li {
-		width: 100%;
+		@include media-breakpoint-down(xs) {
+			width: 100%;
+		}
 	}
 }
 
