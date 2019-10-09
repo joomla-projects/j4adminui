@@ -176,8 +176,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 															'keyboard'    => false,
 															'closeButton' => false,
 															'url'         => $link,
-															'height'      => '400px',
-															'width'       => '800px',
+															'height'      => '75vh',
+															'width'       => '85vw',
 															'bodyHeight'  => 70,
 															'modalWidth'  => 80,
 															'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal"'
@@ -205,8 +205,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 													'keyboard'    => false,
 													'closeButton' => false,
 													'url'         => $link,
-													'height'      => '400px',
-													'width'       => '800px',
+													'height'      => '75vh',
+													'width'       => '85vw',
 													'bodyHeight'  => 70,
 													'modalWidth'  => 80,
 													'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal"'
