@@ -8,15 +8,14 @@
 		type="component"
 		title="MOD_MENU_CONTROL_PANEL"
 		link="index.php"
-		class="class:home"
+		icon="icon-dashboard duotone"
 		element="com_cpanel"
 	/>
 
 	<menuitem
 		title="MOD_MENU_COM_CONTENT"
 		type="heading"
-		icon="file-alt"
-		class="class:file-alt"
+		icon="icon-articles duotone"
 		dashboard="content"
 		>
 		<menuitem
@@ -92,8 +91,7 @@
 	<menuitem
 		title="MOD_MENU_MENUS"
 		type="heading"
-		icon="list"
-		class="class:list"
+		icon="icon-menu duotone"
 		dashboard="menus"
 		>
 		<menuitem
@@ -167,15 +165,14 @@
 	<menuitem
 		title="MOD_MENU_COMPONENTS"
 		type="container"
-		class="class:puzzle-piece"
+		icon="icon-cube duotone"
 		dashboard="components"
 	/>
 
 	<menuitem
 		title="MOD_MENU_COM_USERS_USERS"
 		type="heading"
-		icon="users"
-		class="class:users"
+		icon="icon-users duotone"
 		alias="users"
 		dashboard="users"
 		>
@@ -296,7 +293,7 @@
 		title="MOD_MENU_EXTEND"
 		type="heading"
 		element="com_cpanel"
-		class="class:cog"
+		icon="icon-modules duotone"
 	>
 		<menuitem
 			title="MOD_MENU_TEMPLATE_SITE_TEMPLATES"
@@ -355,7 +352,7 @@
 		title="MOD_MENU_SYSTEM"
 		type="component"
 		element="com_cpanel"
-		class="class:wrench"
+		icon="icon-equalizer duotone"
 		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=system"
 		dashboard="system"
 	>
@@ -529,7 +526,7 @@
 		title="MOD_MENU_HELP"
 		type="component"
 		element="com_cpanel"
-		class="class:info-circle"
+		icon="icon-question-sign-circle duotone"
 		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=help"
 	/>
 
@@ -537,7 +534,7 @@
 		title="MOD_MENU_INFORMATION_NOTIFICATIONS"
 		type="component"
 		element="com_postinstall"
-		class="class:envelope"
+		icon="icon-notification duotone"
 		link="index.php?option=com_postinstall"
 		permission="core.manage;com_postinstall"
 		ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
@@ -547,7 +544,7 @@
 		title="MOD_MESSAGES_PRIVATE_MESSAGES"
 		type="component"
 		element="com_messages"
-		class="class:bell"
+		icon="icon-messaging duotone"
 		link="index.php?option=com_messages&amp;view=messages"
 		ajax-badge="index.php?option=com_messages&amp;task=getMenuBadgeData&amp;format=json"
 	/>

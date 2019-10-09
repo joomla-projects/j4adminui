@@ -190,10 +190,10 @@ select{
 	color: var(--secondary-color);
 	width: 170px;
 }
-[class^="icon-"]:not(.input-group-text),
-[class*=" icon-"]:not(.input-group-text) {
-	margin-right: 0.5em;
-}
+// [class^="icon-"]:not(.input-group-text),
+// [class*=" icon-"]:not(.input-group-text) {
+// 	margin-right: 0.5em;
+// }
 
 //Form elements custom design
 textarea.form-control {
