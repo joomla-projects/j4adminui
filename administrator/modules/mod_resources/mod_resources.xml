@@ -23,7 +23,17 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				
+				<field
+					name="show_resources"
+					type="list"
+					label="MOD_RESOURCES_SHOW_RESOURCES"
+					description="MOD_RESOURCES_SHOW_RESOURCES_DESC"
+					default="both"
+				>
+					<option value="both">MOD_RESOURCES_TYPE_BOTH</option>
+					<option value="jrd">MOD_RESOURCES_TYPE_RESOURCE</option>
+					<option value="help">MOD_RESOURCES_TYPE_HELP</option>
+				</field>
 			</fieldset>
 			<fieldset name="advanced">
 				<field
