@@ -13,6 +13,9 @@
 			display: none;
 		}
 	}
+	.container-main{
+		max-width: calc(100% - #{$sidebar-width});
+	}
 }
 
 .sidebar-wrapper {

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 <div class="mod-resources mod-resources-<?php echo $params->get('moduleclass_sfx', ''); ?>" id="mod-resources-<?php echo $module->id; ?>">
     <div class="info-cards-container">
         <div class="row justify-content-center">
-            <div class="col-6 info-card-help">
+            <div class="info-card-help col-12">
                 <div class="j-card j-card-quick-link j-success j-card-has-hover">
                     <div class="j-card-header j-card-header-sm">
                         <div class="j-card-header-right">
@@ -32,7 +32,7 @@ defined('_JEXEC') or die;
                     </div>
                 </div>
             </div><!-- /.info-card-help -->
-            <div class="col-6 info-card-shop">
+            <div class="info-card-shop col-12">
                 <div class="j-card j-card-quick-link j-danger j-card-has-hover">
                     <div class="j-card-header j-card-header-sm">
                         <div class="j-card-header-right">
@@ -84,7 +84,7 @@ defined('_JEXEC') or die;
                 </div>
             </div><!-- /.info-card-learn -->
         </div>
-        
+
     </div><!-- /.info-cards-container -->
 
     <div class="resources-card-container mt-4">
@@ -140,13 +140,13 @@ defined('_JEXEC') or die;
                             </div>
                         </div>
                         <!-- <div class="row mt-3">
-                            
+
                         </div>
                         <div class="row mt-3">
-                            
+
                         </div>
                         <div class="row mt-3">
-                            
+
                         </div> -->
                     </div>
                 </div>

@@ -49,7 +49,7 @@ if ($module->content) :
 	}
 	?>
 	<div class="module-wrapper" data-dragable-group="dashboard_module">
-		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
+		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header">
 					<h3 class="j-card-title<?php echo $headerClass; ?>">

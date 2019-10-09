@@ -35,7 +35,7 @@ if ($module->content) :
 	$headerClass = ($headerClass) ? ' ' . htmlspecialchars($headerClass) : '';
 	?>
 	<div class="<?php echo $moduleClass; ?> module-wrapper">
-		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
+		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange) : ?>
 				<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 				<div class="module-actions dropdown">

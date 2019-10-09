@@ -434,6 +434,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
                     <h4 class="j-card-title">
                         <span class="j-card-icon fas fa-pen-alt"></span>
                         Card Footer Large
+						<small>Card subtitle</small>
                     </h4>
                     <div class="j-card-header-right">
                         <button class="j-card-header-icon fas fa-ellipsis-h"></button>

@@ -16,7 +16,7 @@ use Joomla\CMS\Language\Text;
 <div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>" class="row">
 	<?php if (count($list)) : ?>
 		<?php foreach ($list as $i => $item) : ?>
-			<div class="col-6 col-md-3 col-lg">
+			<div class="col-12">
 				<div class="j-card mb-4">
 					<div class="j-card-body">
 						<p class="text-muted">
