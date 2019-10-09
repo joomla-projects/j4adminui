@@ -33,7 +33,7 @@ $app->getDocument()->addScriptOptions(
 		<?php foreach($items as $i => $item) : ?>
 			<div class="list-group-item py-4 sampledata-<?php echo $item->name; ?>">
 				<div class="d-flex">
-					<span class="fas fa-<?php echo $item->icon; ?> fa-fw fa-2x mr-3" aria-hidden="true"></span>
+					<span class="fas fa-<?php echo $item->icon; ?> fa-fw mr-3" aria-hidden="true"></span>
 					<div class="w-100">
 						<div class="d-flex w-100 justify-content-between">
 							<h4 class="mb-1"><?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?></h4>
