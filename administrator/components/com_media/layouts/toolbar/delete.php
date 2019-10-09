@@ -16,6 +16,6 @@ HTMLHelper::_('webcomponent', 'system/joomla-toolbar-button.min.js', ['version' 
 
 $title = Text::_('JTOOLBAR_DELETE');
 ?>
-<joomla-toolbar-button id="mediaDelete" class="btn btn-danger" onclick="MediaManager.Event.fire('onClickDelete');">
+<joomla-toolbar-button id="mediaDelete" class="btn btn-danger mb-3" onclick="MediaManager.Event.fire('onClickDelete');">
 	<span class="icon-delete"></span> <?php echo $title; ?>
 </joomla-toolbar-button>

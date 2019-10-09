@@ -119,17 +119,10 @@
       const button = document.querySelector(`[data-target=${this.for}]`);
       const buttonRect = button.getBoundingClientRect();
 
-      const diffWidth = Math.round(Math.abs(dropdownRect.width - buttonRect.width));
       if (this.position === 'left' && (dropdownRect.width + buttonRect.width) > dropdownRect.right) {
         this.setAttribute('position', 'left');
-        if(buttonRect.width <= dropdownRect.width) {
-          this.style.transform = `translateX(${diffWidth}px)`
-        }
       } else if (this.position === 'right' && (buttonRect.right + dropdownRect.width) > window.innerWidth) {
         this.setAttribute('position', 'right');
-        if(buttonRect.width <= dropdownRect.width) {
-          this.style.transform = `translateX(-${diffWidth}px)`
-        }
       }
     }
 

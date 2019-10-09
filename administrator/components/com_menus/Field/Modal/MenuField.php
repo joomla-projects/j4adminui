@@ -353,8 +353,8 @@ class MenuField extends FormField
 				array(
 					'title'       => $modalTitle,
 					'url'         => $urlSelect,
-					'height'      => '400px',
-					'width'       => '80%',
+					'height'      => '75vh',
+					'width'       => '85vw',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
 					'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
@@ -375,8 +375,8 @@ class MenuField extends FormField
 					'keyboard'    => false,
 					'closeButton' => false,
 					'url'         => $urlNew,
-					'height'      => '400px',
-					'width'       => '80%',
+					'height'      => '75vh',
+					'width'       => '85vw',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
 					'footer'      => '<button type="button" class="btn btn-secondary"'
@@ -404,8 +404,8 @@ class MenuField extends FormField
 					'keyboard'    => false,
 					'closeButton' => false,
 					'url'         => $urlEdit,
-					'height'      => '400px',
-					'width'       => '80%',
+					'height'      => '75vh',
+					'width'       => '85vw',
 					'bodyHeight'  => 70,
 					'modalWidth'  => 80,
 					'footer'      => '<button type="button" class="btn btn-secondary"'

@@ -245,10 +245,10 @@ class ArticleField extends FormField
 					'keyboard'    => false,
 					'closeButton' => false,
 					'url'         => $urlNew,
-					'height'      => '400px',
-					'width'       => '80%',
-					'bodyHeight'  => 70,
-					'modalWidth'  => 80,
+					'height'      => '75vh',
+					'width'       => '85vw',
+					'bodyHeight'  => 75,
+					'modalWidth'  => 85,
 					'footer'      => '<button type="button" class="btn btn-secondary"'
 							. ' onclick="window.processModalEdit(this, \'' . $this->id . '\', \'add\', \'article\', \'cancel\', \'item-form\'); return false;">'
 							. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>'
