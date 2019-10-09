@@ -81,11 +81,11 @@ echo HTMLHelper::_(
 		'title'       => Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'),
 		'backdrop'    => 'static',
 		'url'         => Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)),
-		'height'      => '400px',
-		'width'       => '80%',
+		'height'      => '75vh',
+		'width'       => '85%',
 		'class'		  => 'j-modal-gray',
-		'bodyHeight'  => 70,
-		'modalWidth'  => 80,
+		'bodyHeight'  => 75,
+		'modalWidth'  => 85,
 		'footer'      => '<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>'. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') .'</button>
 						<button type="button" class="button-save btn btn-sm btn-success hidden" data-target="#saveBtn" aria-hidden="true"><span class="icon-save" aria-hidden="true"></span>'. Text::_('JSAVE') .' </button>',
 	)

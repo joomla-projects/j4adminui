@@ -42,10 +42,10 @@ echo HTMLHelper::_(
 			]
 		),
 		'title'  => $title,
-		'height' => '60vh',
+		'height' => '75vh',
 		'width'  => '85vw',
-		'modalWidth'  => '80',
-		'bodyHeight'  => '60',
+		'modalWidth'  => '85',
+		'bodyHeight'  => '75',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
 			. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>'
 	)

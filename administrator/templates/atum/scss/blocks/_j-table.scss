@@ -1,5 +1,13 @@
 //j table style
 table {
+    &.table {
+        thead {
+            td,
+            th {
+                border: 0;
+            }
+        }
+    }
     &.j-list-table {
         border-collapse:separate; 
         border-spacing: 0 10px;
@@ -209,7 +217,12 @@ table {
         background-color: $white;
         color: var(--inverse-background);
         margin-bottom: 0;
+        td,
+        th {
+            border: 0;
+        }
         thead {
+            td,
             th {
                 color: var(--secondary-color);
                 border: 0;
@@ -239,6 +252,9 @@ table {
                             box-shadow: none;
                         }
                     }
+                }
+                &.text-right {
+                    padding-right: 10px;
                 }
             }
         }
