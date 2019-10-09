@@ -73,48 +73,23 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 				<div class="quickicon-sr-desc sr-only"></div>
 			</div>
 		</div>
-
 		
 		<div class="j-card-footer j-card-footer-lg">
+			<div class="j-card-footer-item">
+				<a href="<?php echo $displayData['link']; ?>">
+					<span class="icon-eye-open j-card-icon" aria-hidden="true"></span>
+					<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
+					<span aria-hidden="true"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span>
+				</a>
+			</div>
 			<?php // Add the link to the edit-form
 			if (isset($displayData['linkadd'])): ?>
-				<div class="j-card-footer-item">
-					<a href="<?php echo $displayData['linkadd']; ?>">
-						<span class="fa fa-plus j-card-icon" aria-hidden="true"></span>
-						<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
-						<span aria-hidden="true"><?php echo Text::_($displayData['name'] . '_ADD'); ?></span>
-					</a>
+				<div class="j-card-footer-item j-card-footer-icon">
+					<a href="<?php echo $displayData['linkadd']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_ADD_NEW', Text::_($displayData['name'])); ?>"><span class="icon-plus" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
 				</div>
 			<?php endif; ?>
-			<div class="j-card-footer-item j-card-footer-icon">
-				<a href="<?php echo $displayData['link']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?>"><span class="fas fa-eye" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
-			</div>
 		</div>
 
-		<!-- <div class="card-body">
-			<div class="d-flex align-items-center">
-				<div class="quickicon-icon">
-					<div class="<?php echo $displayData['image']; ?> fa-2x" aria-hidden="true"></div>
-				</div>
-				
-				<?php if (isset($displayData['ajaxurl'])) : ?>
-					<div class="quickicon-amount" <?php echo $dataAttributes ?> aria-hidden="true">
-						<span class="fa fa-spinner" aria-hidden="true"></span>
-					</div>
-					<div class="quickicon-sr-desc sr-only"></div>
-				<?php endif; ?>
-
-				
-			</div>
-			
-			<?php // Information or action from plugins
-			if (isset($displayData['text'])): ?>
-				<div class="quickicon-text d-flex align-items-center">
-					<?php echo $text; ?>
-				</div>
-			<?php endif; ?>
-			<a href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>" class="stretched-link"><span class="sr-only"><?php echo $title; ?></span></a>
-		</div> -->
 		<input type="hidden" name="sub_module_name[]" value="<?php echo Text::_($displayData['name']); ?>" class="width-20 text-area-order">
 	</div>
 </div>
