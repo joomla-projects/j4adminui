@@ -14,6 +14,7 @@ defined('_JEXEC') or die;
 $resourceStatus = $params->get('show_resources', 'both');
 ?>
 <div class="mod-resources mod-resources-<?php echo $params->get('moduleclass_sfx', ''); ?>" id="mod-resources-<?php echo $module->id; ?>">
+    <span class="icon-accessibility" aria-hidden="true"></span>
     <?php if( $resourceStatus === 'help' || $resourceStatus === 'both') : ?>
         <div class="info-cards-container">
             <div class="row justify-content-center">

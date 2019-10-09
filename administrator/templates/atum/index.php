@@ -70,6 +70,9 @@ $this->addStyleDeclaration("
         --skeleton-bg: url(". Uri::root() . 'media/system/images/skeleton.gif' .");
     }
 ");
+
+$this->addStylesheet(Uri::root() . 'administrator/templates/atum/css/joomla-fonts.css');
+
 $monochrome = (bool) $this->params->get('monochrome');
 HTMLHelper::getServiceRegistry()->register('atum', 'JHtmlAtum');
 HTMLHelper::_('atum.rootcolors', $this->params);
