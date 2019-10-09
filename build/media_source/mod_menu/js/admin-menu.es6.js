@@ -54,13 +54,17 @@
   const wrapper = document.getElementById('wrapper');
   const sidebar = document.getElementById('sidebar-wrapper');
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
-
+  const documentContainer = document.querySelector('.container-main');
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
     wrapper.classList.remove('closed');
     header.classList.remove('closed');
   }
-
+  if (wrapper) {
+    if (documentContainer && !wrapper.classList.contains('closed')) {
+      documentContainer.classList.add('menu-collapsed');
+    }
+  }
   if (sidebar) {
     // Sidebar
     const menuToggle = document.getElementById('menu-collapse');
@@ -87,7 +91,9 @@
         header.classList.toggle('closed');
         menuToggleIcon.classList.toggle('fa-angle-double-left');
         menuToggleIcon.classList.toggle('fa-angle-double-right');
-
+        if (documentContainer) {
+          documentContainer.classList.toggle('menu-collapsed');
+        }
         const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
         listItems.forEach((item) => {
           item.classList.remove('open');
