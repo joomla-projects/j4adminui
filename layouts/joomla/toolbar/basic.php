@@ -63,5 +63,8 @@ elseif (!empty($onclick))
 	>
 	<span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
 	<?php echo $text ?? ''; ?>
+	<?php if(isset($hasButtons) && !empty($dropdownItems)) : ?>
+		<span class="fa fa-chevron-down" aria-hidden="true"></span>
+	<?php endif; ?>
 </<?php echo $tagName; ?>>
 </joomla-toolbar-button>
