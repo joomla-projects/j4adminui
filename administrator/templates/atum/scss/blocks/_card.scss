@@ -33,7 +33,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		border-bottom: 1px solid var(--background);
 		@extend .d-flex;
 		@extend .justify-content-between;
-		@extend .align-items-center;
+		@extend .align-items-start;
 		.j-card-header-right{
 			margin-left: auto;
 			@extend .d-inline-flex;
@@ -51,6 +51,14 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 				color: var(--icon-color);
 				display: inline-block;
 				margin-right: 0.293rem;
+				~ small{
+					margin-left: 1.786rem;
+				}
+			}
+			small{
+				display: block;
+				font-size: 0.857rem;
+				color: var(--icon-color)
 			}
 		}
 
