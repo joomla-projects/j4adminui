@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Unauthorized Access');
 
 	<?php if ($private > 0 || $team > 0) { ?>
 	<div class="eb-empty">
-		<i class="fa fa-info-circle"></i>
+		<i class="icon-info-circle"></i>
 		<?php if ($private > 0 && $team > 0) { ?>
 			<div><?php echo JText::sprintf('COM_EASYBLOG_TAG_PRIVATE_AND_TEAM_BLOG_INFO', $private, $team); ?></div>
 		<?php } elseif ($private > 0) { ?>
@@ -53,7 +53,7 @@ defined('_JEXEC') or die('Unauthorized Access');
 		<?php } ?>
 	<?php } else { ?>
 		<div class="eb-empty">
-			<i class="fa fa-info-circle"></i>
+			<i class="icon-info-circle"></i>
 			<?php echo JText::_('COM_EASYBLOG_NO_BLOG_ENTRY');?>
 		</div>
 	<?php } ?>

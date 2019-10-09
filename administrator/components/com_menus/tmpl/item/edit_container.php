@@ -46,7 +46,7 @@ HTMLHelper::_('script', 'legacy/treeselectmenu.min.js', array('version' => 'auto
 			<?php if (count($menuLinks)) : ?>
 				<?php $prevlevel = 0; ?>
 				<div class="j-alert j-alert-info">
-					<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+					<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 					<?php echo Text::_('COM_MENUS_ITEM_FIELD_COMPONENTS_CONTAINER_HIDE_ITEMS_DESC'); ?>
 				</div>
 				<li>

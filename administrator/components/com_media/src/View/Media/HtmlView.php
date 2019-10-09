@@ -91,7 +91,7 @@ class HtmlView extends BaseHtmlView
 		$user = Factory::getUser();
 
 		// Set the title
-		ToolbarHelper::title(Text::_('COM_MEDIA'), 'images mediamanager');
+		ToolbarHelper::title(Text::_('COM_MEDIA'), 'media mediamanager');
 
 		// Add a delete button
 		if ($user->authorise('core.delete', 'com_media'))

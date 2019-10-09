@@ -34,7 +34,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 					<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 					<?php if (empty($this->items)) : ?>
 						<div class="j-alert j-alert-info">
-							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+							<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 							<?php echo Text::_('COM_INSTALLER_MSG_UPDATE_NOUPDATES'); ?>
 						</div>
 					<?php else : ?>

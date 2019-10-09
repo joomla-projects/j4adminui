@@ -150,7 +150,7 @@ class HtmlView extends BaseHtmlView
 
 		$workflow = !empty($this->state->get('active_workflow', '')) ? Text::_($this->state->get('active_workflow', '')) . ': ' : '';
 
-		ToolbarHelper::title(Text::sprintf('COM_WORKFLOW_TRANSITIONS_LIST', $this->escape($workflow)), 'address contact');
+		ToolbarHelper::title(Text::sprintf('COM_WORKFLOW_TRANSITIONS_LIST', $this->escape($workflow)), 'workflows contact');
 
 		$isCore = $this->workflow->core;
 		$arrow  = Factory::getLanguage()->isRtl() ? 'arrow-right' : 'arrow-left';

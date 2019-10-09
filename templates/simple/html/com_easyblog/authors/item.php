@@ -48,7 +48,7 @@ defined('_JEXEC') or die('Unauthorized Access');
 		<?php } ?>
 	<?php } else { ?>
 		<div class="eb-empty">
-			<i class="fa fa-info-circle"></i>
+			<i class="icon-info-circle"></i>
 			<?php echo JText::_('COM_EASYBLOG_NO_BLOG_ENTRY');?>
 		</div>
 	<?php } ?>

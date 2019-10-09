@@ -135,7 +135,7 @@ class HtmlView extends BaseHtmlView
 		$toolbar = Toolbar::getInstance('toolbar');
 		
 		// set title
-		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'address contact');
+		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'workflows');
 
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{

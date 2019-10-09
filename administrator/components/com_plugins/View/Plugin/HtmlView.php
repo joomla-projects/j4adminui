@@ -101,7 +101,7 @@ class HtmlView extends BaseHtmlView
 		}
 
 		// set page title
-		ToolbarHelper::title(Text::sprintf('COM_PLUGINS_MANAGER_PLUGIN', Text::_($this->item->name)), 'power-cord plugin');
+		ToolbarHelper::title(Text::sprintf('COM_PLUGINS_MANAGER_PLUGIN', Text::_($this->item->name)), 'plugins plugin');
 
 		// help button
 		ToolbarHelper::help($help->key, false, $url);

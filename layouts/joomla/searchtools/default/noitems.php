@@ -14,6 +14,6 @@ use Joomla\CMS\Language\Text;
 $data = $displayData;
 ?>
 <div class="j-alert j-alert-info">
-	<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+	<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 	<?php echo $data['options']['noResultsText']; ?>
 </div>

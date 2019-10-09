@@ -90,7 +90,7 @@ $this->useCoreUI = true;
 			<?php echo Text::_('COM_USERS_USER_OTEPS'); ?>
 		</legend>
 		<div class="j-alert j-alert-info">
-			<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+			<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 			<?php echo Text::_('COM_USERS_USER_OTEPS_DESC'); ?>
 		</div>
 		<?php if (empty($this->otpConfig->otep)) : ?>

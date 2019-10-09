@@ -19,13 +19,13 @@ $notice_switchers = !$this->switchers && ($this->homes > 1 || $this->language_fi
 	<?php if (!$this->language_filter && $this->switchers == 0) : ?>
 		<?php if ($this->homes == 1) : ?>
 			<div class="j-alert j-alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span>
+				<span class="icon-info-circle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_NONE'); ?>
 			</div>
 		<?php else : ?>
 			<div class="j-alert j-alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span>
+				<span class="icon-info-circle" aria-hidden="true"></span>
 				<span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 				<?php echo Text::_('COM_LANGUAGES_MULTILANGSTATUS_USELESS_HOMES'); ?>
 			</div>

@@ -181,7 +181,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_CONTENT_ARTICLES_TITLE'), 'stack article');
+		ToolbarHelper::title(Text::_('COM_CONTENT_ARTICLES_TITLE'), 'articles');
 
 		if ($canDo->get('core.edit.state') || $canDo->get('core.execute.transition'))
 		{
