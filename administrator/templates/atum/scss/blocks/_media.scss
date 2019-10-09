@@ -1,4 +1,5 @@
 //Media Manager Style
+
 //Media action popup style mixin
 @mixin media-popup-action ($width, $pad1, $pad2) {
     display: block;
@@ -12,6 +13,7 @@
     border: solid 1px #eaeef5;
     padding: $pad1 $pad2;
 }
+
 //Progress bar style
 .joomla-progress {
     background: #f1f8ec;
@@ -38,7 +40,6 @@
 }
 
 //Custom Design for modal
-
 .joomla-recent-uploaded-media {
     color: var(--inverse-background);
     max-height: 300px;
@@ -366,47 +367,6 @@
 }
 
 //Folder browse breadcrumb style
-.media-breadcrumb {
-    border-color: var(--media-border);
-}
-.media-breadcrumb-item {
-    background: transparent;
-    padding: 0;
-    &::before,
-    &::after {
-        display: none;
-    }
-    &:last-of-type {
-        .media-chevron-icon {
-            display: none;
-        }
-    }
-    a {
-        color: var(--secondary-color);
-        font-size: 1.14rem;
-        @extend .d-flex;
-        @extend .align-items-center;
-        text-decoration: none;
-        line-height: 4.9rem;
-        @include media-breakpoint-down(xs) {
-            line-height: 3.9rem;
-        }
-        span {
-            display: inline-block;
-            padding: 0 15px 0 0;
-            &.media-folder-icon {
-                font-size: 3rem;
-                color: #93ceff;
-                @include media-breakpoint-down(xs) {
-                    font-size: 2rem;
-                }
-            }
-            &.media-chevron-icon {
-                padding: 0 15px;
-            }
-        }
-    }
-}
 .media-infobar {
     top: 68px;
 }

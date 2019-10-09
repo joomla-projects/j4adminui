@@ -158,7 +158,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 	<div class="container-fluid container-main">
 		<?php if (!$cpanel) : ?>
 			<?php // Subheader ?>
-			<button type="button" class="toggle-toolbar mx-auto btn btn-secondary my-2 d-md-none d-lg-none d-xl-none" data-toggle="collapse"
+			<button type="button" class="toggle-toolbar mx-auto btn btn-secondary my-3 d-md-none d-lg-none d-xl-none" data-toggle="collapse"
 					data-target=".subhead"><?php echo Text::_('TPL_ATUM_TOOLBAR'); ?>
 				<span class="icon-chevron-down" aria-hidden="true"></span>
 			</button>

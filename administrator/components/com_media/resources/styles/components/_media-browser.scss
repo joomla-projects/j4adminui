@@ -491,3 +491,14 @@
     }
   }
 }
+
+@media (max-width: 575.98px) {
+  .media-browser-table {
+    .size {
+      width: 25%;
+    }
+    .name {
+      padding-left: .5rem;
+    }
+  }
+}

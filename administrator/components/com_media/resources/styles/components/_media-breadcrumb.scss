@@ -5,14 +5,14 @@
   font-size: .9rem;
   line-height: $toolbar-height;
   background: transparent;
-  border-left: 1px solid $border-color;
-
+  border-left: 1px solid var(--media-border);
+  
   ol {
     display: flex;
     margin: 0;
     padding: 0;
     list-style: outside none none;
-
+    
     & > li > a {
       cursor: pointer;
     }
@@ -20,8 +20,6 @@
 }
 
 .media-breadcrumb-item {
-  padding: 0 8px 0 22px;
-  background-color: $breadcrumbs-bg;
   &:first-of-type {
     padding-left: 16px;
   }
@@ -30,34 +28,31 @@
     &::after {
       border-left-color: $breadcrumbs-current-bg;
     }
+    .media-chevron-icon {
+      display: none;
+    }
   }
   &:hover {
     color: $highlight-color;
   }
-}
-
-.media-breadcrumb-item {
-  position: relative;
-  &::before, &::after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-    z-index: 2;
-    display: block;
-    width: 0;
-    height: 0;
-    margin: auto;
-    content: "" !important;
-    border-top: 23px solid transparent;
-    border-bottom: 23px solid transparent;
-    border-left: 10px solid transparent;
-  }
-  &::before {
-    border-left-color: $border-color;
-  }
-  &::after {
-    border-left-color: $breadcrumbs-bg;
+  a {
+    color: var(--secondary-color);
+    font-size: 1.14rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 4.9rem;
+    span {
+      display: inline-block;
+      padding: 0 15px 0 0;
+      &.media-folder-icon {
+        font-size: 3rem;
+        color: #93ceff;
+      }
+      &.media-chevron-icon {
+        padding: 0 15px;
+      }
+    }
   }
 }
 
@@ -92,4 +87,17 @@ html[dir=rtl] .media-breadcrumb-item:first-of-type {
 
 html[dir=rtl] .media-breadcrumb-item:last-of-type::after {
   border-right: 10px solid #fff;
+}
+
+@media (max-width: 575.98px) {
+  .media-breadcrumb-item {
+    a {
+      line-height: 3.9rem;
+      span {
+        &.media-folder-icon {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
 }

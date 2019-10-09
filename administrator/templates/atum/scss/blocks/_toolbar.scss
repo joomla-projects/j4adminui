@@ -216,7 +216,6 @@
     }
   }
   @include media-breakpoint-down(xs) {
-    display: block;
     .joomla-toolbar-button,
     .btn-group,
     .input-group,
@@ -233,7 +232,7 @@
     }
     .btn-group{
       @include media-breakpoint-down(sm) {
-        margin-right:0;
+        margin-right: 0 !important;
       }
     }
     .js-stools-container-bar{

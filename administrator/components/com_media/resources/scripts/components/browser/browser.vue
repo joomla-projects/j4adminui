@@ -23,12 +23,12 @@
                                 </a>
                             </div>
                         </th>
-                        <th class="type" scope="col"></th>
+                        <th class="type d-none d-sm-table-cell" scope="col"></th>
                         <th class="name" scope="col">{{ translate('COM_MEDIA_MEDIA_NAME') }}</th>
                         <th class="size" scope="col">{{ translate('COM_MEDIA_MEDIA_SIZE') }} {{translate('COM_MEDIA_MEDIA_BYTES')}}</th>
                         <th class="dimension" scope="col">{{ translate('COM_MEDIA_MEDIA_DIMENSION') }}</th>
-                        <th class="created" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_CREATED') }}</th>
-                        <th class="modified" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_MODIFIED') }}</th>
+                        <th class="created d-none d-sm-table-cell" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_CREATED') }}</th>
+                        <th class="modified d-none d-sm-table-cell" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_MODIFIED') }}</th>
                     </tr>
                 </thead>
                 <media-browser-item-row v-for="item in items" :key="item.path" :item="item"></media-browser-item-row>

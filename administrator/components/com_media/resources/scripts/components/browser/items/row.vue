@@ -8,7 +8,7 @@
                 </a>
             </div>
         </td>
-        <td class="type" :data-type="item.extension">
+        <td class="type d-none d-sm-table-cell" :data-type="item.extension">
         </td>
         <td scope="row" class="name">
             {{ item.name }}
@@ -19,10 +19,10 @@
         <td class="dimension">
             {{ dimension }}
         </td>
-        <td class="created">
+        <td class="created d-none d-sm-table-cell">
             {{ item.create_date_formatted }}
         </td>
-        <td class="modified">
+        <td class="modified d-none d-sm-table-cell">
             {{ item.modified_date_formatted }}
         </td>
     </tr>
