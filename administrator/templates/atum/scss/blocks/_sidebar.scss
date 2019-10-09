@@ -596,7 +596,7 @@
 		bottom: 40px;
 		left: 50%;
 		transform: translateX(-50%);
-		z-index: 9999999;
+		z-index: $zindex-mobile-nav;
 		padding: 0;
 		margin: 0;
 		display: flex;
@@ -660,7 +660,7 @@
 		overflow-y: scroll;
 		transition: 300ms;
 		padding-bottom: 0;
-		z-index: 9999;
+		z-index: $zindex-mobile-nav;
 		transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 		transition-property: all;
 		display: flex;
@@ -678,7 +678,7 @@
 			top: 0;
 			left: 0;
 			opacity: 0;
-			z-index: 9;
+			z-index: $zindex-mobile-nav - 1;
 			right: 0;
 			pointer-events: none;
 			display: block;
