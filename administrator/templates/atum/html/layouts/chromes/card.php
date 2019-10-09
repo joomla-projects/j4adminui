@@ -48,7 +48,7 @@ if ($module->content) :
 		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
 	}
 	?>
-	<div class="module-wrapper">
+	<div class="module-wrapper" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="j-card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header">

@@ -35,44 +35,38 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 ?>
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>">
-		<div class="row js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+		<?php
+			foreach ($this->modules as $module)
+			{
+				if( $module->module == 'mod_quickicon' )
+				{
+					echo ModuleHelper::renderModule($module, array('style' => 'simple'));
+				}
+			}
+		?>
+		<div class="j-card-columns js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
 			<?php
 				foreach ($this->modules as $module)
 				{
-					$style = 'card';
-					if( $module->module == 'mod_quickicon' ||
-						$module->module == 'mod_logged' ||
-						//$module->module == 'mod_content' ||
-						$module->module == 'mod_latestactions' ||
-						$module->module == 'mod_sampledata' ||
-						$module->module == 'mod_resources'
-					)
+					if( $module->module != 'mod_quickicon' )
 					{
-						$style = 'simple';
+						echo ModuleHelper::renderModule($module, array('style' => 'card'));
 					}
-					$params = new Registry($module->params);
-					$bootstrap_size = $params->get('bootstrap_size', 12);
-					$columns = ($bootstrap_size == 0) ? 12 : $bootstrap_size;
-					?>
-					<div class="col-md-<?php echo $columns; ?>" data-dragable-group="dashboard_module">
-						<?php echo ModuleHelper::renderModule($module, array('style' => $style)); ?>
-					</div>
-					<?php
 				}
 			?>
 		</div>
 
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>
+			<div>
+				<a href="#moduleEditModal" data-href="#moduleDashboardAddModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" role="button">
+					<span class="fas fa-plus mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
+				</a>
+			</div>
+		<?php endif; ?>
 	</div>
+	
 </div>
-<div class="row justify-content-center mt-4">
-	<div class="col-md-11">
-		<a href="#moduleEditModal" data-href="#moduleDashboardAddModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" role="button">
-			<span class="fas fa-plus mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
-		</a>
-	</div>
-	<?php endif; ?>
-</div>
+
 <?php 
 echo HTMLHelper::_(
 	'webcomponent.renderModal',
@@ -81,8 +75,8 @@ echo HTMLHelper::_(
 		'title'       => Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'),
 		'backdrop'    => 'static',
 		'url'         => Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)),
-		'height'      => '400px',
-		'width'       => '80%',
+		'height'      => '75vh',
+		'width'       => '85vw',
 		'class'		  => 'j-modal-gray',
 		'bodyHeight'  => 70,
 		'modalWidth'  => 80,
