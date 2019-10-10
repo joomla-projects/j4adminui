@@ -18,7 +18,7 @@ use Joomla\CMS\Extension\ExtensionHelper;
 
 /**
  * mod_extension_updates_helper helper class for the module
- * 
+ *
  */
 abstract class ExtensionUpdatesHelper
 {
@@ -48,7 +48,7 @@ abstract class ExtensionUpdatesHelper
             'package' => 0
         );
 
-        if (empty($extensions)) 
+        if (empty($extensions))
         {
             return $result;
         }
@@ -63,21 +63,26 @@ abstract class ExtensionUpdatesHelper
 
     private static function calculatePercentage($total, $updatable) : float
     {
+		$updateJoomla = static::checkJoomlaUpdate();
         $updatedExtensions = $total - count($updatable);
-        $updatePercentage = (float)($updatedExtensions * 100) / $total;
+        $updatePercentage = (float)($updatedExtensions * .5 * 100) / $total;
 
-        return round($updatePercentage);
+        if(!$updateJoomla){
+			$updatePercentage = $updatePercentage + 50;
+		};
+
+        return floor($updatePercentage);
     }
-    
+
     private static function checkJoomlaUpdate()
     {
         $updateModel = Factory::getApplication()->bootComponent('com_installer')
             ->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
-        
+
         $eid = ExtensionHelper::getExtensionRecord('files_joomla')->extension_id;
         $updateModel->setState('filter.extension_id', $eid);
         $extensions = $updateModel->getItems();
-        
+
         return !empty($extensions) ? $extensions[0]->version : false;
     }
 
@@ -85,7 +90,7 @@ abstract class ExtensionUpdatesHelper
     {
         $updateModel = Factory::getApplication()->bootComponent('com_installer')
             ->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
-        
+
         $extensions = $updateModel->getItems();
 
         return $extensions;

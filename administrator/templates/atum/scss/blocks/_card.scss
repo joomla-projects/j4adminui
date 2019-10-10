@@ -6,6 +6,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 .j-card-columns{
 	column-count: 2;
 	column-gap: 30px;
+	@include media-breakpoint-down(sm) {
+		column-count: 1;
+	}
 	.module-wrapper{
 		display: inline-block;
 		width: 100%;
@@ -91,6 +94,27 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		padding: 1.5rem;
 		&:last-child p:last-child{
 			margin-bottom: 0;
+		}
+	}
+	
+	.j-card-vertical-content{
+		h4{
+			font-size: 1.286rem;
+			margin-bottom: 0.857rem;
+			line-height: 1.5;
+		}
+		p{
+			font-size: 1.143rem;
+			color: var(--secondary-color);
+			margin: 0;
+		}
+		.j-card-vertical-btn-group{
+			margin-top: 2.357rem;
+			margin-left: -0.429rem;
+			.btn{
+				margin-top: 0.571rem;
+				margin-left: 0.429rem;
+			}
 		}
 	}
 	
@@ -491,7 +515,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 
 .j-card-counter-msg{
 	color: var(--secondary-color);
-	margin-top: 1.071rem;
+	margin-bottom: 1.071rem;
 	span:not(.j-count-icon){
 		font-size: 3.857rem;
 		line-height: 5.071rem;
