@@ -14,14 +14,13 @@ defined('_JEXEC') or die;
 $resourceStatus = $params->get('show_resources', 'both');
 ?>
 <div class="mod-resources mod-resources-<?php echo $params->get('moduleclass_sfx', ''); ?>" id="mod-resources-<?php echo $module->id; ?>">
-    <span class="icon-accessibility" aria-hidden="true"></span>
     <?php if( $resourceStatus === 'help' || $resourceStatus === 'both') : ?>
         <div class="info-cards-container">
             <div class="row justify-content-center">
                 <div class="col-6 info-card-help">
                     <div class="j-card j-card-quick-link j-success j-card-has-hover">
                         <div class="j-card-quick-link-body">
-                            <span class="fas fa-life-ring j-card-icon"></span>
+                            <span class="icon-support j-card-icon"></span>
                             <div class="j-card-quick-link-content">
                                 <a href="https://forum.joomla.org" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_HELP_LABEL'); ?></a>
                                 <p><?php echo Text::_('MOD_RESOURCES_GET_HELP_DESC'); ?></p>

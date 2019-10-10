@@ -89,6 +89,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	
 	.j-card-body {
 		padding: 1.5rem;
+		&:last-child p:last-child{
+			margin-bottom: 0;
+		}
 	}
 	
 	.j-card-footer{
@@ -401,6 +404,14 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		}
 	}
 }
+
+// list group padding
+
+.j-card .list-group .list-group-item{
+	padding-left: 2.142857rem;
+	padding-right: 2.142857rem;
+}
+
 
 // quick links
 

@@ -13,19 +13,17 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 ?>
-<div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>" class="row">
+<div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<?php if (count($list)) : ?>
 		<?php foreach ($list as $i => $item) : ?>
-			<div class="col-12">
-				<div class="j-card mb-4">
-					<div class="j-card-body">
-						<p class="text-muted">
-							<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
-						</p>
-						<?php echo $item->message; ?>
-					</div>
-				</div>
-			</div>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<h5 class="text-muted">
+						<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
+					</h5>
+					<?php echo $item->message; ?>
+				</li>
+			</ul>
 		<?php endforeach; ?>
 	<?php else : ?>
 		<div class="col">
