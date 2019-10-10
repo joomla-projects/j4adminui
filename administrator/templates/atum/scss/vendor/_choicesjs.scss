@@ -165,6 +165,9 @@
 	.choices__input {
 		padding: 0.2rem 0 0.356rem;
 		color: var(--color);
+		&::placeholder {
+			color: var(--color);
+		}
 	}
 	.choices__list--dropdown{
 		margin-top: 0;
