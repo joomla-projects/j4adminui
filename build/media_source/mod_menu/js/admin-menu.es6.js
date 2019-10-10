@@ -176,7 +176,6 @@
           menuItem.classList.add('open');
         }
       }
-
       Joomla.Event.dispatch('joomla:menu-toggle', 'open');
     };
 

@@ -50,7 +50,6 @@
                 quickicon.setAttribute('data-status', 'success');
               }
               // Set amount of number into counter span
-              // counterAnimate.textContent = numberFormatter(response.data.amount, 1);
               counterAnimate.textContent = `\u200E${response.data.amount}`;
 
               // Insert screenreader text
