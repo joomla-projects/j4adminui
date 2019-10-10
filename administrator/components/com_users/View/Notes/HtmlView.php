@@ -122,7 +122,7 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_users', 'category', $this->state->get('filter.category_id'));
 
-		ToolbarHelper::title(Text::_('COM_USERS_VIEW_NOTES_TITLE'), 'users user');
+		ToolbarHelper::title(Text::_('COM_USERS_VIEW_NOTES_TITLE'), 'user-notes user');
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');

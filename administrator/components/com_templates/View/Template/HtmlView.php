@@ -232,7 +232,7 @@ class HtmlView extends BaseHtmlView
 		$ext = end($explodeArray);
 
 		// set title
-		ToolbarHelper::title(Text::sprintf('COM_TEMPLATES_MANAGER_VIEW_TEMPLATE', ucfirst($this->template->name)), 'paint-brush thememanager');
+		ToolbarHelper::title(Text::sprintf('COM_TEMPLATES_MANAGER_VIEW_TEMPLATE', ucfirst($this->template->name)), 'brush thememanager');
 		
 		// Add a Template preview button
 		if ($this->preview->client_id == 0)
