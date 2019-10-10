@@ -59,7 +59,7 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>
 			<div>
 				<a href="#moduleEditModal" data-href="#moduleDashboardAddModal" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" role="button">
-					<span class="fas fa-plus mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
+					<span class="icon-new mr-3"></span> <?php echo Text::_('COM_CPANEL_ADD_DASHBOARD_MODULE'); ?>
 				</a>
 			</div>
 		<?php endif; ?>

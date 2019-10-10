@@ -212,7 +212,7 @@ class HtmlView extends BaseHtmlView
 		}
 
 		// statistics button
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
+		$toolbar->appendButton('Popup', 'bar', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 
 		// clear index button
 		if ($canDo->get('core.edit.state'))
@@ -222,7 +222,7 @@ class HtmlView extends BaseHtmlView
 
 		// index button
 		$toolbar->appendButton(
-			'Popup', 'archive', 'COM_FINDER_INDEX', 'index.php?option=com_finder&view=indexer&tmpl=component', 500, 210, 0, 0,
+			'Popup', 'briefcase', 'COM_FINDER_INDEX', 'index.php?option=com_finder&view=indexer&tmpl=component', 500, 210, 0, 0,
 			'window.parent.location.reload()', 'COM_FINDER_HEADING_INDEXER'
 		);
 	}

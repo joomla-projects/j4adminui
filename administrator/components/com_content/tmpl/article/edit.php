@@ -72,19 +72,6 @@ if($this->item->id > 0)
 					<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
 				</div>
 			</div>
-			<!-- <div class="col-lg-3">
-				<div class="j-card">
-					<div class="j-card-header artilce-preview-link">
-						<?php if( ($this->item->id > 0) && ($this->item->state === 1 || $this->item->state === 2) ): ?>
-							<span class="link-info"><i class="fas fa-eye"></i><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE'); ?></span>
-							<a class="field-view-url <?php echo $articleUrlClass; ?>" target="_blank" href="<?php echo $articleUrl; ?>"><span class="icon fas fa-external-link-alt"></span></a>
-						<?php else: ?>
-							<i class="fas fa-eye"></i>
-							<span><?php echo JText::_('COM_CONTENT_VIEW_ARTICLE_NOT_AVAILABLE'); ?></span>
-						<?php endif; ?>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</div>
 
