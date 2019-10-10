@@ -85,12 +85,3 @@ echo HTMLHelper::_(
 	)
 );
 ?>
-<!-- <joomla-modal id="moduleDashboardAddModal" title="<?php echo Text::_('COM_CPANEL_ADD_MODULE_MODAL_TITLE'); ?>" width="80vw" height="400px" iframe="<?php echo Route::_('index.php?option=com_cpanel&task=addModule&function=jSelectModuleType&position=' . $this->escape($this->position)); ?>" class="j-modal-gray">
-	<section>&nbsp;</section>
-	<footer>
-		<button type="button" class="button-cancel btn btn-sm btn-danger" data-dismiss aria-hidden="true"><span class="icon-cancel" aria-hidden="true"></span>
-			<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?> </button>
-		<button type="button" class="button-save btn btn-sm btn-success hidden" data-target="#saveBtn" aria-hidden="true"><span class="icon-save" aria-hidden="true"></span>
-			<?php echo Text::_('JSAVE'); ?> </button>
-	</footer>
-</joomla-modal> -->
