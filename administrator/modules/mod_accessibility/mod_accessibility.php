@@ -11,4 +11,12 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 
+// include helper file
+require_once __DIR__ . '/helper.php';
+
+//includes js and css
+$doc        = JFactory::getDocument();
+$doc->addStylesheet(JURI::root(true) . '/administrator/modules/' . $module->module . '/style.css');
+$doc->addScript(JURI::root(true) . '/administrator/modules/' . $module->module . '/script.js');
+
 require ModuleHelper::getLayoutPath('mod_accessibility', $params->get('layout', 'default'));

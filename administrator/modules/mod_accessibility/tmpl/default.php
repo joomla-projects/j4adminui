@@ -9,14 +9,85 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
+
+// cache ajax URL
+Factory::getDocument()->addScriptOptions('accessibilityUrl', Uri::root() . 'administrator/index.php?option=com_ajax&module=accessibility&method=doAccessible&format=json');
 
 ?>
+<div class="mod-accessibility module-<?php echo $module->id; ?>" id="mod-accessibility-<?php echo $module->id; ?>">
 
-<a class="header-item-link" href="" target="_blank">
-    <span class="header-item-icon fab fa-accessible-icon" aria-hidden="true"></span>
-    <span class="header-item-text">
-        <?php echo Text::_('MOD_ACCESSIBILITY'); ?>
-    </span>
-</a>
+    <a class="header-item-link" href="" target="_blank">
+        <span class="header-item-icon fab fa-accessible-icon" aria-hidden="true"></span>
+        <span class="header-item-text">
+            <?php echo Text::_('MOD_ACCESSIBILITY'); ?>
+        </span>
+    </a>
+
+    <!-- /.offcanvas -->
+    <div class="accessibility-sidebar j-card pr-2">
+        <!-- <div class=" pr-2"> -->
+        <div class="j-card-body">
+            <div class="accessibility-scallig">
+
+            </div>
+            <div class="accessibility-items-wrap mb-4">
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="grayscale" href="javascript;">
+                        <span class="fas fa-adjust mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
+                    </a>
+                </div>
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="nomotion" href="javascript;">
+                        <span class="fas fa-radiation-alt mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_DISABLE_MOTION'); ?>
+                    </a>
+                </div>
+
+            </div>
+            <div class="accessibility-items-wrap mb-4">
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bbcursor" href="javascript;">
+                        <span class="fas fa-radiation-alt mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_BIG_BLACK_CURSOR'); ?>
+                    </a>
+                </div>
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bhcursor" href="javascript;">
+                        <span class="fas fa-radiation-alt mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_BIG_WHITE_CURSOR'); ?>
+                    </a>
+                </div>
+            </div>
+
+            <div class="accessibility-items-wrap mb-4">
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="magnifier" href="javascript;">
+                        <span class="fas fa-radiation-alt mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_MAGNIFIER'); ?>
+                    </a>
+                </div>
+                <div class="accessibility--item">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="contrast" href="javascript;">
+                        <span class="fas fa-radiation-alt mb-2" aria-hidden="true"></span>
+                        <?php echo Text::_('MOD_ACCESSIBILITY_CONTRAST'); ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="j-card-footer j-card-footer-sm accessibility-mouse-highligther">
+            <div class="j-checkbox-group">
+                <label>
+                    <input type="checkbox" name="mouse-highlighter" id="a11y-mouse-highlighter" data-type="mouse-highlighter"> <?php echo Text::_('MOD_ACCESSIBILITY_MOUSE_HIGHLIGHTER'); ?>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="a11y-cursor-pointer"><div class="a11y-cursor-pointer-inner"></div></div>
+    
+</div>
