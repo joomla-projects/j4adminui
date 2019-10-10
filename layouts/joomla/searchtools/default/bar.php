@@ -48,7 +48,7 @@ $filters = $data['view']->filterForm->getGroup('filter');
 				<?php endif; ?>
 				<span class="input-group-append">
 					<button type="submit" class="btn btn-primary" aria-label="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>">
-						<span class="fa fa-search" aria-hidden="true"></span>
+						<span class="icon-search" aria-hidden="true"></span>
 					</button>
 				</span>
 			</div>
@@ -56,11 +56,11 @@ $filters = $data['view']->filterForm->getGroup('filter');
 		<?php if($filterButton) : ?>
 			<div class="btn-group">
 				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter ml-3">
-					<span class="fa fa-plus" aria-hidden="true"></span>
+					<span class="icon-new" aria-hidden="true"></span>
 					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
 				</button>
 				<button type="button" class="btn btn-link js-stools-btn-clear">
-					<span class="fa fa-times" aria-hidden="true"></span>
+					<span class="icon-remove" aria-hidden="true"></span>
 					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
 			</div>
