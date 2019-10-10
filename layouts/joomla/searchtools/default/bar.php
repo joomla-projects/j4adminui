@@ -60,7 +60,7 @@ $filters = $data['view']->filterForm->getGroup('filter');
 					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
 				</button>
 				<button type="button" class="btn btn-link js-stools-btn-clear">
-					<span class="icon-remove" aria-hidden="true"></span>
+					<span class="icon-cancel" aria-hidden="true"></span>
 					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
 			</div>

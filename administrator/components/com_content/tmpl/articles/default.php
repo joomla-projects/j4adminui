@@ -358,8 +358,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 					<?php if ($user->authorise('core.create', 'com_content')
 						&& $user->authorise('core.edit', 'com_content')
 						&& $user->authorise('core.edit.state', 'com_content')) : ?>
-						<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_CONTENT_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
-							<section>
+						<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_CONTENT_BATCH_OPTIONS'); ?>" class="j-modal-gray" width="85vw" height="100%">
+							<section class="mt-5">
 								<?php echo $this->loadTemplate('batch_body'); ?>
 							</section>
 							<footer>
@@ -367,8 +367,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 							</footer>
 						</joomla-modal>
 					<?php endif; ?>
-					<joomla-modal role="dialog" id="stageModal" title="<?php echo Text::_('JTOOLBAR_CHANGE_STATUS'); ?>" width="80vw" height="100%">
-						<section>
+					<joomla-modal role="dialog" id="stageModal" title="<?php echo Text::_('JTOOLBAR_CHANGE_STATUS'); ?>" class="j-modal-gray" width="85vw" height="100%">
+						<section class="mt-5">
 							<?php echo $this->loadTemplate('stage_body'); ?>
 						</section>
 						<footer>

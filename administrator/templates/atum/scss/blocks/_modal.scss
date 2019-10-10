@@ -24,11 +24,6 @@ joomla-modal {
 	iframe {
 		height: 85vh;
 	}
-	&#moduleDashboardAddModal {
-		iframe {
-			margin: 0 0 0 -4px;
-		}
-	}
 	&.show {
 		opacity: 1;
 		visibility: visible;

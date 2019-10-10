@@ -270,7 +270,8 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			@extend .justify-content-center;
 			font-size: 1.714286rem;
 			height: 3.571429rem;
-			width: 3.571429rem;
+			max-width: 3.571429rem;
+			min-width: 3.571429rem;
 			border-radius: 50%;
 			margin-right: 1.428571rem;
 			background: rgba(var(--primary-color-rgb), .2);
@@ -439,69 +440,46 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 
 // quick links
 
+.j-card-quick-link-col{
+	//border-top: 1px solid var(--border-color);
+	&:not(:last-child){
+		border-bottom: 1px solid var(--border-color);
+	}
+	@media (min-width: 1340px) {
+		flex: 0 0 50%;
+		max-width: 50%;
+		&:not(:nth-child(even)):nth-last-child(2){
+			border-bottom: none;
+		}
+		&:not(:nth-child(2n)){
+			border-right: 1px solid var(--border-color);
+		}
+	}
+}
+
 .j-card-quick-link{
 	z-index: 1;
 	overflow: hidden;
+	box-shadow: none;
 	.j-card-quick-link-body{
 		@extend .d-flex;
-		padding-bottom: 1.928571rem;
-		padding-left: 2.142857rem;
-		padding-right: 2.142857rem;
+		@extend .align-items-center;
+		padding: 1.928571rem 2.142857rem;
 		.j-card-icon{
-			font-size: 80px;
-			margin-right: 60px;
-			color: var(--link-color);
+			font-size: 2.857rem;
+			margin-right: 3.214rem;
+			color: var(--icon-color);
 		}
 		.j-card-quick-link-content{
 			a{
 				font-size: 1.714286rem;
 				display: block;
 				margin-bottom: .571429rem;
-				color: var(--color);
 				@extend .stretched-link;
 			}
 			p{
 				margin: 0;
 			}
-		}
-	}
-	&::after{
-		content: '';
-		position: absolute;
-		background: var(--link-color);
-		width: 300px;
-		height: 300px;
-		border-radius: 50%;
-		left: -150px;
-		top: -50px;
-		z-index: -1;
-		opacity: .15;
-	}
-
-	&.j-warning{
-		.j-card-quick-link-body .j-card-icon{
-			color: var(--warning-color);
-		}
-		&::after{
-			background: var(--warning-color);
-		}
-	}
-
-	&.j-success{
-		.j-card-quick-link-body .j-card-icon{
-			color: var(--success-color);
-		}
-		&::after{
-			background: var(--success-color);
-		}
-	}
-
-	&.j-danger{
-		.j-card-quick-link-body .j-card-icon{
-			color: var(--danger-color);
-		}
-		&::after{
-			background: var(--danger-color);
 		}
 	}
 }

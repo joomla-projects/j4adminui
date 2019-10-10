@@ -52,7 +52,7 @@ if (!empty($displayData['class']))
 // Make the class string
 $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 ?>
-<div class="col-lg-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
+<div class="col-md-6 col-lg-4 col-xl-3 j-quickicon" data-dragable-group="none" <?php echo $dataAttributes; ?>>
 	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
 		<div class="j-card-overview-box pt-3">
 			<div class="j-card-overview-icon j-<?php echo $displayData['icon_class']; ?>">
@@ -73,7 +73,7 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 				<div class="quickicon-sr-desc sr-only"></div>
 			</div>
 		</div>
-		
+
 		<div class="j-card-footer j-card-footer-lg">
 			<div class="j-card-footer-item">
 				<a href="<?php echo $displayData['link']; ?>">

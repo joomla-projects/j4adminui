@@ -67,7 +67,7 @@ $attribs = [
 
 
 <div id="publishColloutId-<?php echo $id; ?>" class="j-transition-group" data-color="<?php echo $color; ?>">
-    <a href="#" class="j-transition-select" data-target="<?php echo 'transition-select_' . (int) $id; ?>"><?php echo $this->escape($options['stage']); ?> <span class="fa fa-chevron-down"></span></a>
+    <a href="#" class="j-transition-select" data-target="<?php echo 'transition-select_' . (int) $id; ?>"><?php echo $this->escape($options['stage']); ?> <span class="icon-chevron-down"></span></a>
     <joomla-dropdown for="<?php echo 'transition-select_' . (int) $id; ?>">
         <?php foreach($transitions as $transition) : ?>
             <li><a href="javascript:" class="dropdown-item" onclick="handleRunTransition(this, <?php echo '\'' . 'transition_' . (int)$id . '\''; ?>, <?php echo '\'' . $checkboxName . $this->escape($row ?? '') . '\'' ?>);" data-value="<?php echo $transition->value; ?>"><?php echo $transition->text; ?></a></li>
