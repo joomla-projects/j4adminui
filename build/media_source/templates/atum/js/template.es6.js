@@ -221,7 +221,7 @@
    */
   function setDesktop() {
     const sidebarWrapper = doc.querySelector('.sidebar-wrapper');
-    const wrapper = doc.querySelector('.wrapper');
+    const wrapper = doc.querySelector('#wrapper');
     const menu = doc.querySelector('#menu');
     if (!sidebarWrapper) {
       changeLogo('closed');
@@ -237,9 +237,9 @@
       }
     }
     const state = Joomla.Cookies.get('atum-sidebar');
-    if (state === 'closed') {
-      wrapper.classList.add(state);
-    } else if (!menu.classList.contains('disabled')) {
+    if (state === 'closed' || menu.classList.contains('disabled')) {
+      wrapper.classList.add('closed');
+    } else {
       wrapper.classList.remove('closed');
     }
     toggleArrowIcon('top');

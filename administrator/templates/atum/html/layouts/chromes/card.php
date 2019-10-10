@@ -60,7 +60,7 @@ if ($module->content) :
 					</h3>
 
 					<div class="j-card-header-right">
-						<button class="j-card-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="card-body-<?php echo $id; ?>"></button>
+						<button class="j-card-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="module-<?php echo $id; ?>"></button>
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
