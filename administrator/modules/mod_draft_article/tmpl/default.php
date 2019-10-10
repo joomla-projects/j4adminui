@@ -27,31 +27,36 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
 
 <form class="j-card-body" name="draftArticleForm" id="form-draftarticle" method="post" action="#">
     <fieldset>
-        <div class="form-group">
-            <label for="mod-draftarticle-title" >
-                <?php echo Text::_('JGLOBAL_TITLE'); ?>
-            </label>
-            <div class="input-group">
-                <input
-                    type="text"
-                    id="mod-draftarticle-title"
-                    name="title"
-                    class="form-control input-full"
-                    required="required"
-                >
+        <div class="row">
+            <div class="col-12 col-xl-6">
+                <div class="form-group">
+                    <label for="mod-draftarticle-title" >
+                        <?php echo Text::_('JGLOBAL_TITLE'); ?>
+                    </label>
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            id="mod-draftarticle-title"
+                            name="title"
+                            class="form-control input-full"
+                            required="required"
+                        >
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="mod-draftarticle-category">
-                <?php echo Text::_('JGLOBAL_CATEGORY_OPTIONS'); ?>
-            </label>
-            <div class="input-group">
-                <?php if(!empty($categoryField)) : ?>
-                    <joomla-field-fancy-select search-placeholder="<?php echo Text::_('MOD_DRAFT_ARTICLE_SEARCH_CATEGORY'); ?>">
-                        <?php echo $categoryField; ?>
-                    </joomla-field-fancy-select>
-                <?php endif; ?>
+            <div class="col-12 col-xl-6">
+                <div class="form-group">
+                    <label for="mod-draftarticle-category">
+                        <?php echo Text::_('JGLOBAL_CATEGORY_OPTIONS'); ?>
+                    </label>
+                    <div class="input-group">
+                        <?php if(!empty($categoryField)) : ?>
+                            <joomla-field-fancy-select search-placeholder="<?php echo Text::_('MOD_DRAFT_ARTICLE_SEARCH_CATEGORY'); ?>">
+                                <?php echo $categoryField; ?>
+                            </joomla-field-fancy-select>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -70,8 +75,8 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
                 ></textarea>
             </div>
         </div>
-
-        <div class="form-group">
+        
+        <div class="form-group text-right mt-4">
             <button class="btn btn-cancel" type="button" role="button" id="mod-draftarticle-clear">
                 <?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
             </button>
@@ -79,6 +84,5 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
                 <?php echo Text::_('MOD_DRAFTARTICLE_SAVE_ARTICLE'); ?>
             </button>
         </div>
-
     </fieldset>
 </form>

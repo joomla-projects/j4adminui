@@ -90,8 +90,8 @@ class AssociationField extends FormField
 				'title'       => Text::_('COM_ASSOCIATIONS_SELECT_TARGET'),
 				'backdrop'    => 'static',
 				'url'         => $urlSelect,
-				'height'      => '400px',
-				'width'       => '800px',
+				'height'      => '75vh',
+				'width'       => '85vw',
 				'bodyHeight'  => 70,
 				'modalWidth'  => 80,
 				'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'

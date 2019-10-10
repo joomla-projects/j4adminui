@@ -30,8 +30,8 @@ echo JHtml::_(
 	array(
 		'url'    => $link,
 		'title'  => $title,
-		'height' => array_key_exists('height', $options) ? $options['height'] : '400px',
-		'width'  => array_key_exists('width', $options) ? $options['width'] : '800px',
+		'height' => array_key_exists('height', $options) ? $options['height'] : '75vh',
+		'width'  => array_key_exists('width', $options) ? $options['width'] : '85vw',
 		'bodyHeight'  => array_key_exists('wibodyHeightdth', $options) ? $options['bodyHeight'] : '70',
 		'modalWidth'  => array_key_exists('modalWidth', $options) ? $options['modalWidth'] : '80',
 		'footer' => '<button class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'

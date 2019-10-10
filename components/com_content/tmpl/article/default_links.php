@@ -69,8 +69,8 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 								array(
 									'url'    => $link,
 									'title'  => $label,
-									'height' => '100%',
-									'width'  => '100%',
+									'height' => '75vh',
+									'width'  => '85vw',
 									'modalWidth'  => '500',
 									'bodyHeight'  => '500',
 									'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'

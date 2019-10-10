@@ -101,8 +101,8 @@ echo HTMLHelper::_(
 	array(
 		'url'    => Route::_($article->link . '&tmpl=component'),
 		'title'  => $text,
-		'height' => '100%',
-		'width'  => '100%',
+		'height' => '75vh',
+		'width'  => '85vw',
 		'modalWidth'  => '800',
 		'bodyHeight'  => '500',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'

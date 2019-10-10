@@ -180,8 +180,8 @@ class JFormFieldConsentBox extends JFormFieldCheckboxes
 		{
 			$modalParams['title']  = $layoutData['label'];
 			$modalParams['url']    = $this->getAssignedArticleUrl();
-			$modalParams['height'] = 800;
-			$modalParams['width']  = '100%';
+			$modalParams['height'] = '75vh';
+			$modalParams['width']  = '80vw';
 			$modalHtml = HTMLHelper::_('webcomponent.renderModal', 'modal-' . $this->id, $modalParams);
 		}
 

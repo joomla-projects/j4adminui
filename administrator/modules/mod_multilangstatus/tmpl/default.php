@@ -33,8 +33,8 @@ HTMLHelper::_('script', 'mod_multilangstatus/admin-multilangstatus.min.js', arra
 		array(
 			'title'      => Text::_('MOD_MULTILANGSTATUS'),
 			'url'        => Route::_('index.php?option=com_languages&view=multilangstatus&tmpl=component'),
-			'height'     => '400px',
-			'width'      => '800px',
+			'height'     => '75vh',
+			'width'      => '85vw',
 			'bodyHeight' => 70,
 			'modalWidth' => 80,
 			'footer'     => '<button type="button" class="btn btn-secondary" data-dismiss="modal">' . Text::_('JTOOLBAR_CLOSE') . '</button>',
