@@ -7,7 +7,7 @@
 */
 
 @font-face
-{
+{ 
   font-family: "JoomlaFont";
   font-weight: Normal;
   font-style: "Regular";
@@ -1962,7 +1962,7 @@
   content: "\137dc";
 }
 
-.icon-delete:before,.icon-remove:before,.icon-cancel-2:before
+.icon-delete:before,.icon-remove:before,.icon-cancel-2:before,.icon-cancel:before
 {
   content: "\137dd";
 }
@@ -2382,7 +2382,7 @@
   content: "\1382e";
 }
 
-.icon-options-cog:before
+.icon-options:before,.icon-cog:before
 {
   content: "\1382f";
 }
@@ -2732,7 +2732,7 @@
   content: "\13874";
 }
 
-.icon-unpublish:before,.icon-cancel:before
+.icon-unpublish:before
 {
   content: "\13875";
 }
@@ -3045,3 +3045,4 @@
 {
   color: #fff;
 }
+	
