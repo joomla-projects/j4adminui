@@ -9,4 +9,4 @@
 
 defined('_JEXEC') or die;
 
-echo $module->content;
+echo "<div class='j-card-body'>$module->content</div>";
