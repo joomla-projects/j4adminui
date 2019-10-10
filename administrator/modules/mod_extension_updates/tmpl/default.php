@@ -85,7 +85,7 @@ if (!empty($extensionContents['updatableInfo']['package']))
 						if($update_condition){
 							?>
 							<a href="<?php echo Route::_('index.php?option=com_installer&view=update'); ?>" class="btn btn-primary">
-								<span class="fas fa-sync"></span>
+								<span class="icon-rebuild"></span>
 								<?php echo JText::_('MOD_EXTENSION_UPDATES_UPDATE_ALL'); ?>
 							</a>
 							<?php

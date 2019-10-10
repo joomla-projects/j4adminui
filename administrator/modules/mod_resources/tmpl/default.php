@@ -20,7 +20,7 @@ $resourceStatus = $params->get('show_resources', 'both');
 				<div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
 					<div class="j-card j-card-quick-link j-success">
 						<div class="j-card-quick-link-body">
-							<span class="icon-support j-card-icon"></span>
+							<span class="icon-support duotone j-card-icon"></span>
 							<div class="j-card-quick-link-content">
 								<a href="https://forum.joomla.org" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_HELP_LABEL'); ?></a>
 								<p><?php echo Text::_('MOD_RESOURCES_GET_HELP_DESC'); ?></p>
@@ -31,7 +31,7 @@ $resourceStatus = $params->get('show_resources', 'both');
 				<div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
 					<div class="j-card j-card-quick-link j-danger">
 						<div class="j-card-quick-link-body">
-							<span class="fas fa-shopping-cart j-card-icon"></span>
+							<span class="icon-cart duotone j-card-icon"></span>
 							<div class="j-card-quick-link-content">
 								<a href="https://community.joomla.org/the-joomla-shop.html" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_SHOP_LABEL'); ?></a>
 								<p><?php echo Text::_('MOD_RESOURCES_GET_SHOP_DESC'); ?></p>
@@ -42,7 +42,7 @@ $resourceStatus = $params->get('show_resources', 'both');
                 <div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
                     <div class="j-card j-card-quick-link j-warning">
                         <div class="j-card-quick-link-body">
-                            <span class="fas fa-comments j-card-icon"></span>
+                            <span class="icon-comment duotone j-card-icon"></span>
                             <div class="j-card-quick-link-content">
                                 <a href="https://issues.joomla.org/" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_FEEDBACK_LABEL'); ?></a>
                                 <p><?php echo Text::_('MOD_RESOURCES_GET_FEEDBACK_DESC'); ?></p>
@@ -53,7 +53,7 @@ $resourceStatus = $params->get('show_resources', 'both');
                 <div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
                     <div class="j-card j-card-quick-link j-info">
                         <div class="j-card-quick-link-body">
-                            <span class="fas fa-graduation-cap j-card-icon"></span>
+                            <span class="icon-learn duotone j-card-icon"></span>
                             <div class="j-card-quick-link-content">
                                 <a href="https://docs.joomla.org/" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_LEARN_LABEL'); ?></a>
                                 <p><?php echo Text::_('MOD_RESOURCES_GET_LEARN_DESC'); ?></p>

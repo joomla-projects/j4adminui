@@ -143,7 +143,7 @@ class HtmlView extends BaseHtmlView
 
 			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
 			{
-				ToolbarHelper::custom('contact.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+				ToolbarHelper::custom('contact.editAssociations', 'multilingual', 'multilingual', 'JTOOLBAR_ASSOCIATIONS', false, false);
 			}
 			
 			// help button

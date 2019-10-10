@@ -94,7 +94,7 @@ class HtmlView extends BaseHtmlView
 
 		$isNew = ($this->item->id == 0);
 
-		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_MENU_TITLE' : 'COM_MENUS_VIEW_EDIT_MENU_TITLE'), 'list menu');
+		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_MENU_TITLE' : 'COM_MENUS_VIEW_EDIT_MENU_TITLE'), 'menu	 menu');
 
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER_EDIT');
