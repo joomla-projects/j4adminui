@@ -33,7 +33,7 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 					<p>This tool will delete all Cache files from the cache folders - including current ones - from your web server.</p>
 					<div class="j-card-vertical-btn-group">
 						<?php if($cacheInfo['raw']): ?>
-							<button id="btn btn-primary" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
+							<button id="jclear-cache-btn" class="btn btn-primary" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
 								<span class="icon fas fa-trash-alt" aria-hidden="true"></span>
 								<?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?>
 							</button>

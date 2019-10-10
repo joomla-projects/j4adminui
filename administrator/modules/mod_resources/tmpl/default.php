@@ -14,46 +14,33 @@ defined('_JEXEC') or die;
 $resourceStatus = $params->get('show_resources', 'both');
 ?>
 <div class="mod-resources mod-resources-<?php echo $params->get('moduleclass_sfx', ''); ?>" id="mod-resources-<?php echo $module->id; ?>">
-    <?php if( $resourceStatus === 'help' || $resourceStatus === 'both') : ?>
+    <?php if( $resourceStatus === 'help') : ?>
         <div class="info-cards-container">
-            <div class="row justify-content-center">
-                <div class="col-6 info-card-help">
-                    <div class="j-card j-card-quick-link j-success j-card-has-hover">
-                        <div class="j-card-quick-link-body">
-                            <span class="icon-support j-card-icon"></span>
-                            <div class="j-card-quick-link-content">
-                                <a href="https://forum.joomla.org" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_HELP_LABEL'); ?></a>
-                                <p><?php echo Text::_('MOD_RESOURCES_GET_HELP_DESC'); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- /.info-card-help -->
-                <div class="col-6 info-card-shop">
-                    <div class="j-card j-card-quick-link j-danger j-card-has-hover">
-                        <div class="j-card-header j-card-header-sm">
-                            <div class="j-card-header-right">
-                                <button class="j-card-header-icon fas fa-ellipsis-h"></button>
-                            </div>
-                        </div>
-                        <div class="j-card-quick-link-body">
-                            <span class="fas fa-shopping-cart j-card-icon"></span>
-                            <div class="j-card-quick-link-content">
-                                <a href="https://community.joomla.org/the-joomla-shop.html" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_SHOP_LABEL'); ?></a>
-                                <p><?php echo Text::_('MOD_RESOURCES_GET_SHOP_DESC'); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- /.info-card-shop -->
-            </div>
-
-            <div class="row justify-content-center mt-4">
-                <div class="col info-card-feedback">
-                    <div class="j-card j-card-quick-link j-warning j-card-has-hover">
-                        <div class="j-card-header j-card-header-sm">
-                            <div class="j-card-header-right">
-                                <button class="j-card-header-icon fas fa-ellipsis-h"></button>
-                            </div>
-                        </div>
+            <div class="row no-gutters justify-content-center">
+				<div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
+					<div class="j-card j-card-quick-link j-success">
+						<div class="j-card-quick-link-body">
+							<span class="icon-support j-card-icon"></span>
+							<div class="j-card-quick-link-content">
+								<a href="https://forum.joomla.org" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_HELP_LABEL'); ?></a>
+								<p><?php echo Text::_('MOD_RESOURCES_GET_HELP_DESC'); ?></p>
+							</div>
+						</div>
+					</div>
+				</div><!-- /.info-card-help -->
+				<div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
+					<div class="j-card j-card-quick-link j-danger">
+						<div class="j-card-quick-link-body">
+							<span class="fas fa-shopping-cart j-card-icon"></span>
+							<div class="j-card-quick-link-content">
+								<a href="https://community.joomla.org/the-joomla-shop.html" target="_blank"><?php echo Text::_('MOD_RESOURCES_GET_SHOP_LABEL'); ?></a>
+								<p><?php echo Text::_('MOD_RESOURCES_GET_SHOP_DESC'); ?></p>
+							</div>
+						</div>
+					</div>
+				</div><!-- /.info-card-shop -->
+                <div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
+                    <div class="j-card j-card-quick-link j-warning">
                         <div class="j-card-quick-link-body">
                             <span class="fas fa-comments j-card-icon"></span>
                             <div class="j-card-quick-link-content">
@@ -63,13 +50,8 @@ $resourceStatus = $params->get('show_resources', 'both');
                         </div>
                     </div>
                 </div><!-- /.info-card-feedback -->
-                <div class="col info-card-learn">
-                    <div class="j-card j-card-quick-link j-info j-card-has-hover">
-                        <div class="j-card-header j-card-header-sm">
-                            <div class="j-card-header-right">
-                                <button class="j-card-header-icon fas fa-ellipsis-h"></button>
-                            </div>
-                        </div>
+                <div class="col-12 j-card-quick-link-col d-inline-flex align-items-center">
+                    <div class="j-card j-card-quick-link j-info">
                         <div class="j-card-quick-link-body">
                             <span class="fas fa-graduation-cap j-card-icon"></span>
                             <div class="j-card-quick-link-content">
@@ -83,7 +65,7 @@ $resourceStatus = $params->get('show_resources', 'both');
         </div><!-- /.info-cards-container -->
     <?php endif; ?>
 
-    <?php if($resourceStatus === 'jrd' || $resourceStatus === 'both') : ?>
+    <?php if($resourceStatus === 'jrd') : ?>
         <div class="resources-card-container mt-4">
             <div class="j-card">
                 <div class="j-card-body">
@@ -131,13 +113,13 @@ $resourceStatus = $params->get('show_resources', 'both');
                                 </div>
                             </div>
                             <!-- <div class="row mt-3">
-                                
+
                             </div>
                             <div class="row mt-3">
-                                
+
                             </div>
                             <div class="row mt-3">
-                                
+
                             </div> -->
                         </div>
                     </div>
