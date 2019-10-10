@@ -96,6 +96,9 @@
 		width: 100%;
 		position: static;
 	}
+	&::-webkit-scrollbar{
+		display: none;
+	}
 }
 
 .logo-header{
