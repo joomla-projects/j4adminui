@@ -12,12 +12,9 @@
 		.menu-dashboard {
 			display: none;
 		}
-	}
-	.container-main{
-		max-width: calc(100% - #{$sidebar-width});
-	}
-	&.closed .container-main{
-		max-width: calc(100% - #{$sidebar-width-closed});
+		.container-main{
+			max-width: calc(100% - #{$sidebar-width-closed});
+		}
 	}
 }
 
