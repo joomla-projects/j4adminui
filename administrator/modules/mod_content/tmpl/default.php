@@ -40,7 +40,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 							<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>
 						<?php endif; ?>
 					</td>
-					<td width="20%" class="text-right">
+					<td width="30%" class="text-right">
 						<?php echo HTMLHelper::_('date', $item->publish_up, Text::_('DATE_FORMAT_LC4')); ?>
 					</td>
 				</tr>

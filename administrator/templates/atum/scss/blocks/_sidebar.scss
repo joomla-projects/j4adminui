@@ -16,6 +16,9 @@
 	.container-main{
 		max-width: calc(100% - #{$sidebar-width});
 	}
+	&.closed .container-main{
+		max-width: calc(100% - #{$sidebar-width-closed});
+	}
 }
 
 .sidebar-wrapper {
@@ -390,7 +393,6 @@
 	
 	.collapse {
 		display: none;
-		
 		&.in {
 			display: block;
 		}
@@ -423,10 +425,7 @@
 		text-align: center;
 	}
 	
-	
-	
 	.active {
-		
 		> .has-arrow::after {
 			-webkit-transform: translateY(-50%) rotate(90deg);
 			transform: translateY(-50%) rotate(90deg);
@@ -453,9 +452,9 @@
 		}
 	}
 	.sidebar-wrapper{
-		width: 73px;
-		flex: 1 0 73px;
-		max-width: 73px;
+		width: $sidebar-width-closed;
+		flex: 1 0 $sidebar-width-closed;
+		max-width: $sidebar-width-closed;
 	}
 	.sidebar-toggle{
 		transform: translateX(100%);
