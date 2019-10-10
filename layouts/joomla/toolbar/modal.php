@@ -32,7 +32,7 @@ $text     = isset($displayData['text']) ? $displayData['text'] : '';
 ?>
 
 <!-- Render the button -->
-<joomla-toolbar-button<?php echo $id; ?> onclick="document.getElementById('modal_<?php echo $selector; ?>').open()" class="<?php echo $class; ?>" data-toggle="modal">
+<joomla-toolbar-button <?php echo $id; ?> onclick="document.getElementById('modal_<?php echo $selector; ?>').open()" class="<?php echo $class; ?>" data-toggle="modal">
 	<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </joomla-toolbar-button>
@@ -44,8 +44,8 @@ echo HTMLHelper::_('webcomponent.renderModal',
 	[
 		'url'         => $displayData['doTask'],
 		'title'       => $text,
-		'height'      => '100%',
-		'width'       => '100%',
+		'height'      => '75vh',
+		'width'       => '85vw',
 		'modalWidth'  => 80,
 		'bodyHeight'  => 60,
 		'closeButton' => true,

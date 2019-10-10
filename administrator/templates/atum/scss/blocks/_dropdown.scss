@@ -10,7 +10,6 @@ joomla-dropdown {
   text-align: left;
   list-style: none;
   background-color: #ffffff;
-  border: 1px solid #eaeef5;
   box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
   border-radius: 3px;
   &.j-dropdown-sm {
@@ -137,9 +136,6 @@ joomla-dropdown {
     .text-mute {
       color: var(--icon-color);
       font-size: 12px;
-    }
-    &:last-child {
-      border-bottom: 0;
     }
   }
   &[position="right"]{

@@ -1,8 +1,9 @@
 <?php
 defined('_JEXEC') or die;
 
-use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
 
 HTMLHelper::_('webcomponent', 'system/pagination.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
@@ -13,6 +14,27 @@ HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=
 HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-alert.min.js', array('version'=> 'auto', 'relative' => true));
 HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=> 'auto', 'relative' => true));
+
+// $text = file_get_contents(Uri::root() . 'administrator/components/com_content/icons.txt');
+// $icons = explode("\n", $text);
+
+// $json = array();
+
+// if (!empty($icons))  
+// {
+//     foreach($icons as $icon) {
+//         $split = array_map(function($sub){return trim($sub);}, explode("/", $icon));
+
+//         if (!empty($split) && count($split) > 1) {
+//             $key = array_shift($split);
+//             $json[$key] = $split;
+//         }
+//     }
+// }
+
+// $fp = fopen("joomla-icons.json", "w");
+// fwrite($fp, json_encode($json));
+// fclose($fp);
 
 ?>
 

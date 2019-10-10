@@ -94,8 +94,8 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 					[
 						'title'       => Text::_('COM_BANNERS_TRACKS_DOWNLOAD'),
 						'url'         => Route::_('index.php?option=com_banners&amp;view=download&amp;tmpl=component'),
-						'height'      => '370px',
-						'width'       => '300px',
+						'height'      => '75vh',
+						'width'       => '85vw',
 						'modalWidth'  => '40',
 						'footer'      => '<button type="button" class="btn" data-dismiss="modal"'
 								. ' onclick="Joomla.iframeButtonClick({iframeSelector: \'#downloadModal\', buttonSelector: \'#closeBtn\'})">'

@@ -53,8 +53,8 @@ echo HTMLHelper::_(
 	array(
 		'url'    => $link,
 		'title'  => $label,
-		'height' => '100%',
-		'width'  => '100%',
+		'height' => '75vh',
+		'width'  => '85vw',
 		'modalWidth'  => '80',
 		'bodyHeight'  => '60',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
