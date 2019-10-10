@@ -12,12 +12,9 @@
 		.menu-dashboard {
 			display: none;
 		}
-	}
-	.container-main{
-		max-width: calc(100% - #{$sidebar-width});
-	}
-	&.closed .container-main{
-		max-width: calc(100% - #{$sidebar-width-closed});
+		.container-main{
+			max-width: calc(100% - #{$sidebar-width-closed});
+		}
 	}
 }
 
@@ -98,6 +95,9 @@
 	@include media-breakpoint-down(xs) {
 		width: 100%;
 		position: static;
+	}
+	&::-webkit-scrollbar{
+		display: none;
 	}
 }
 
