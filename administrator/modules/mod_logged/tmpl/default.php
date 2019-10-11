@@ -19,7 +19,7 @@ use Joomla\CMS\Language\Text;
 				<div class="row align-items-center">
 					<div class="col-auto">
 						<div class="j-user-avatar">
-							<span class="fas fa-user" area-hidden="true"></span>
+							<span class="icon-user" area-hidden="true"></span>
 						</div>
 					</div>
 

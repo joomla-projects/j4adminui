@@ -123,7 +123,7 @@ if ($current->getParams()->get('menu-quicktask', false))
 	if (!$permission || $user->authorise($permission, $scope))
 	{
 		echo '<span class="menu-quicktask"><a href="' . $link . '">';
-		echo '<span class="fa fa-' . $icon . '" title="' . htmlentities(Text::_($title)) . '" aria-hidden="true"></span>';
+		echo '<span class="icon-' . $icon . '" title="' . htmlentities(Text::_($title)) . '" aria-hidden="true"></span>';
 		echo '<span class="sr-only">' . Text::_($title) . '</span>';
 		echo '</a></span>';
 	}

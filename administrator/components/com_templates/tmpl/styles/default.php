@@ -152,10 +152,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<div class="list-group-item py-4">
 													<div class="j-card-btn-group">
 														<a href="<?php echo Route::_('index.php?option=com_templates&view=template&id=' . (int) $item->e_id); ?>" class="btn btn-default">
-															<span class="fas fa-code" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_TEMPLATE_EDIT_FILES'); ?>
+															<span class="icon-edit" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_TEMPLATE_EDIT_FILES'); ?>
 														</a>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary">
-															<span class="icon-cog" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_OPTIONS'); ?>
+															<span class="icon-options-cog" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_OPTIONS'); ?>
 														</a>
 													</div>
 												</div>

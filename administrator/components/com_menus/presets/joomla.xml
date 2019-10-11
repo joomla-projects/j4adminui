@@ -165,7 +165,7 @@
 	<menuitem
 		title="MOD_MENU_COMPONENTS"
 		type="container"
-		icon="icon-cube duotone"
+		icon="icon-components duotone"
 		dashboard="components"
 	/>
 

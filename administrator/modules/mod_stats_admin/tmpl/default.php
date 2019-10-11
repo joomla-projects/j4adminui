@@ -33,8 +33,8 @@ $app->getDocument()->addScriptDeclaration('
 	<?php foreach ($list as $item) : ?>
 		<li class="list-group-item">
 			<div class="d-flex align-items-center">
-				<div class="mr-4">
-					<span class="icon-<?php echo $item->icon; ?> icon-2x text-muted" aria-hidden="true"></span>
+				<div class="mr-3">
+					<span class="icon-<?php echo $item->icon; ?> icon-fw text-muted" aria-hidden="true"></span>
 				</div>
 				<div>
 					<?php echo $item->title; ?>

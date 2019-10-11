@@ -50,7 +50,7 @@ class StatsAdminHelper
 		{
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_PHP');
-			$rows[$i]->icon  = 'cogs duotone';
+			$rows[$i]->icon  = 'php';
 			$rows[$i]->data  = PHP_VERSION;
 			$i++;
 
@@ -62,13 +62,13 @@ class StatsAdminHelper
 
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_CACHING');
-			$rows[$i]->icon  = 'tachometer-alt';
+			$rows[$i]->icon  = 'lighting';
 			$rows[$i]->data  = $app->get('caching') ? Text::_('JENABLED') : Text::_('JDISABLED');
 			$i++;
 
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_GZIP');
-			$rows[$i]->icon  = 'flush';
+			$rows[$i]->icon  = 'archive duotone';
 			$rows[$i]->data  = $app->get('gzip') ? Text::_('JENABLED') : Text::_('JDISABLED');
 			$i++;
 		}
