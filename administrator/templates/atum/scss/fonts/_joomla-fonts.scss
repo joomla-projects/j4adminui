@@ -753,12 +753,12 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13b41";
 }
 
-.duotone.icon-increase:after
+.duotone.icon-adjust:after
 {
   content: "\13b42";
 }
 
-.duotone.icon-increase:before
+.duotone.icon-adjust:before
 {
   content: "\13b43";
 }
@@ -1568,7 +1568,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13be4";
 }
 
-.icon-Increase-contrast:before
+.icon-adjust:before
 {
   content: "\13be5";
 }
@@ -2278,12 +2278,14 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c6f";
 }
 
-.icon-menu-horizontal:before,.icon-more:before,.icon-overflow-menu:before
+.icon-ellipsis-h:before,
+.icon-more:before,
+.icon-overflow-menu:before
 {
   content: "\13c70";
 }
 
-.icon-menu-vertical:before
+.icon-ellipsis-v:before
 {
   content: "\13c71";
 }

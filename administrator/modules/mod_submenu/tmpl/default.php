@@ -41,7 +41,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 				<div class="j-card-header">
 					<h3 class="j-card-title">
 						<?php if ($child->icon) : ?>
-							<span class="j-card-icon fas fa-<?php echo $child->icon; ?>" aria-hidden="true"></span>
+							<span class="j-card-icon icon-<?php echo $child->icon; ?>" aria-hidden="true"></span>
 						<?php endif; ?>
 						<?php echo Text::_($child->title); ?>
 					</h3>
@@ -51,7 +51,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
 								<a href="javascript:;" class="j-card-header-icon" data-target="dropdownMenuButton-<?php echo $id . '-' . $key; ?>">
-									<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
+									<span class="icon-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
 								<joomla-dropdown for="dropdownMenuButton-<?php echo $id . '-' . $key; ?>">

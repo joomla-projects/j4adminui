@@ -25,25 +25,25 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=>
         <button data-target="header-user-dropdown" class="header-dropdown-button <?php echo ($hideLinks ? 'disabled' : ''); ?>" type="button" <?php echo ($hideLinks ? 'disabled' : ''); ?> title="<?php echo Text::_('MOD_USER_MENU'); ?>">
             <span class="header-user-icon fas fa-user"></span>
             <span class="header-user-name"><?php echo $user->name; ?></span>
-            <span class="fa fa-angle-down" aria-hidden="true"></span>
+            <span class="icon-angle-down" aria-hidden="true"></span>
         </button>
         
         <joomla-dropdown for="header-user-dropdown">
             <?php $uri   = Uri::getInstance(); ?>
 		    <?php $route = 'index.php?option=com_users&task=user.edit&id=' . $user->id . '&return=' . base64_encode($uri); ?>
             <a href="<?php echo Route::_($route); ?>" class="dropdown-item">
-                <span class="fa fa-user"></span>
+                <span class="icon-user"></span>
 				<?php echo Text::_('MOD_USER_EDIT_ACCOUNT'); ?>
             </a>
             <?php // TODO: route to accessibility settings ?>
             <a href="#" class="dropdown-item">
-                <span class="fa fa-universal-access"></span>
+                <span class="icon-shield"></span>
 				<?php echo Text::_('MOD_USER_ACCESSIBILITY_SETTINGS'); ?>
             </a>
             <?php $route = 'index.php?option=com_login&task=logout&amp;' . Session::getFormToken() . '=1'; ?>
             <a href="<?php echo Route::_($route); ?>" class="dropdown-item text-center">
                 <?php echo Text::_('JLOGOUT'); ?>
-                <span class="fa fa-power-off"></span>
+                <span class="icon-exit"></span>
             </a>
         </joomla-dropdown>
     </div>

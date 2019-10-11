@@ -60,22 +60,22 @@ if ($module->content) :
 					</h3>
 
 					<div class="j-card-header-right">
-						<button class="j-card-header-icon fas fa-chevron-down joomla-collapse-card-body" data-target="module-<?php echo $id; ?>"></button>
+						<button class="j-card-header-icon icon-chevron-down joomla-collapse-card-body" data-target="module-<?php echo $id; ?>"></button>
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
 								<a href="javascript:;" class="j-card-header-icon" data-target="dropdownMenuButton-<?php echo $id; ?>">
-									<span class="fas fa-ellipsis-h" aria-hidden="true"></span>
+									<span class="icon-ellipsis-h" aria-hidden="true"></span>
 									<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
 								</a>
 								<joomla-dropdown for="dropdownMenuButton-<?php echo $id; ?>">
 									<?php if ($canEdit) : ?>
 										<?php $uri = Uri::getInstance(); ?>
 										<?php $url = Route::_('index.php?option=com_modules&task=module.edit&id=' . $id . '&return=' . base64_encode($uri)); ?>
-										<a class="dropdown-item" href="<?php echo $url; ?>"><span class="fas fa-edit" aria-hidden="true"></span> <?php echo Text::_('JACTION_EDIT'); ?></a>
+										<a class="dropdown-item" href="<?php echo $url; ?>"><span class="icon-edit" aria-hidden="true"></span> <?php echo Text::_('JACTION_EDIT'); ?></a>
 									<?php endif; ?>
 									<?php if ($canChange) : ?>
-										<button type="button" class="dropdown-item unpublish-module" data-module-id="<?php echo $id; ?>"><span class="fas fa-eye-slash" aria-hidden="true"></span> <?php echo Text::_('JACTION_UNPUBLISH'); ?></button>
+										<button type="button" class="dropdown-item unpublish-module" data-module-id="<?php echo $id; ?>"><span class="icon-eye-close" aria-hidden="true"></span> <?php echo Text::_('JACTION_UNPUBLISH'); ?></button>
 									<?php endif; ?>
 								</joomla-dropdown>
 							</div>

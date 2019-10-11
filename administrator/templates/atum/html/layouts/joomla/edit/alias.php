@@ -39,6 +39,6 @@ $document->addScriptDeclaration('
 		<?php echo $form->renderField('alias'); ?>
 	</div>
 
-	<a id="edit-alias" href="javascript:void(0);"><i class="fas fa-edit"></i></a>
-	<a id="remove-edit" href="javascript:void(0);"><i class="fas fa-times-circle"></i></a>
+	<a id="edit-alias" href="javascript:void(0);"><i class="icon-edit"></i></a>
+	<a id="remove-edit" href="javascript:void(0);"><i class="icon-cancel-circle"></i></a>
 </div>

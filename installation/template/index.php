@@ -69,7 +69,7 @@ Text::script('INSTL_FTP_SETTINGS_CORRECT');
 					</div>
 					<div class="d-flex flex-wrap align-items-center mx-auto">
 						<h1 class="h2 mx-1 d-flex align-items-baseline">
-							<span class="fab fa-joomla d-none d-md-block mx-2 alig-items-center" aria-hidden="true"></span>
+							<span class="icon-joomla d-none d-md-block mx-2 alig-items-center" aria-hidden="true"></span>
 							<?php echo Text::_('INSTL_PAGE_TITLE'); ?>
 						</h1>
 						<span class="small mx-1 form-text">

@@ -61,7 +61,7 @@ if (Multilanguage::isEnabled())
 				</div>
 				<div class="btn-group">
 					<button type="button" class="btn btn-danger" data-submit-task="modules.cancel">
-						<span class="fa fa-times" aria-hidden="true"></span>
+						<span class="icon-times" aria-hidden="true"></span>
 						<?php echo Text::_('JCANCEL') ?>
 					</button>
 				</div>

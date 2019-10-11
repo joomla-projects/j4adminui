@@ -29,7 +29,7 @@ HTMLHelper::_('script', 'com_config/config-default.js', ['version' => 'auto', 'r
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-danger" data-submit-task="config.cancel">
-				<span class="fa fa-times" aria-hidden="true"></span>
+				<span class="icon-times" aria-hidden="true"></span>
 				<?php echo Text::_('JCANCEL') ?>
 			</button>
 		</div>

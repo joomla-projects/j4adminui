@@ -36,7 +36,7 @@ use Joomla\CMS\Language\Text;
             <div class="accessibility-items-wrap mb-4">
                 <div class="accessibility--item">
                     <a class="btn btn-secondary accessible-action-btn p-5" data-type="grayscale" href="javascript;">
-                        <span class="fas fa-adjust mb-2" aria-hidden="true"></span>
+                        <span class="icon-adjust mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
                     </a>
                 </div>
