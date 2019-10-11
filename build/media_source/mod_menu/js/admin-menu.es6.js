@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -103,13 +104,11 @@
         // Save the sidebar state and dispatch event
         if (wrapper.classList.contains('closed')) {
           if (typeof Joomla.Cookies !== 'undefined') {
-          // localStorage.setItem('atum-sidebar', 'closed');
             Joomla.Cookies.set('atum-sidebar', 'closed', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
         } else {
           if (typeof Joomla.Cookies !== 'undefined') {
-          // localStorage.setItem('atum-sidebar', 'open');
             Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'open');
@@ -211,6 +210,6 @@
       }
     }
   }
-  // eslint-disable-next-line no-use-before-define
-  const JoomlaMenu = new JoomlaMenu('#menu');
+  // eslint-disable-next-line no-new
+  new JoomlaMenu('#menu');
 })(window.Joomla, document);
