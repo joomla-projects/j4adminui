@@ -15,7 +15,7 @@ use Joomla\CMS\Router\Route;
 <table class="j-card-table">
 	<thead>
 		<tr>
-			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
+			<th scope="col" width="25%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
 			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_CHECK'); ?></th>
 		</tr>
 	</thead>
@@ -23,17 +23,17 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($privacyPolicyInfo['published'] && $privacyPolicyInfo['articlePublished']) : ?>
-					<small class="j-text-success">
+					<small class="text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JPUBLISHED'); ?>
 					</small>
 				<?php elseif ($privacyPolicyInfo['published'] && !$privacyPolicyInfo['articlePublished']) : ?>
-					<small class="j-text-warning">
+					<small class="text-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JUNPUBLISHED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="j-text-warning">
+					<small class="text-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
 					</small>
@@ -52,17 +52,17 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<small class="j-text-success">
+					<small class="text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JPUBLISHED'); ?>
 					</small>
 				<?php elseif (!$requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<small class="j-text-warning">
+					<small class="text-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JUNPUBLISHED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="j-text-warning">
+					<small class="text-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
 					</small>
@@ -78,12 +78,12 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($numberOfUrgentRequests === 0) : ?>
-					<small class="j-text-success">
+					<small class="text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JNONE'); ?>
 					</small>
 				<?php else : ?>
-					<small class="j-text-danger">
+					<small class="text-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('WARNING'); ?>
 					</small>
@@ -100,12 +100,12 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($sendMailEnabled) : ?>
-					<small class="j-text-success">
+					<small class="text-success">
 						<span class="icon-checkbox" aria-hidden="true"></span>
 						<?php echo Text::_('JENABLED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="j-text-danger">
+					<small class="text-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JDISABLED'); ?>
 					</small>
