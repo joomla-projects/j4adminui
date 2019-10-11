@@ -1,12 +1,12 @@
 //
 // Base styles
 //
-$table-data-border: 1px solid var(--page-background);
+$table-data-border: 1px solid var(--bg-color);
 //Active and Hover style mixin
 @mixin tab-hover-active () {
-	background-color: var(--button-background);
+	background-color: var(--primary-lighter-color);
 	box-shadow: 0 4px 8px -3px rgba(29, 36, 39, 0.2);
-	color: var(--color);
+	color: var(--primary-text-color);
 	font-weight: 500;
 }
 joomla-tab {
@@ -34,7 +34,7 @@ joomla-tab > ul {
 
 joomla-tab a[role=tab] {
 	display: block;
-	color: var(--secondary-color);
+	color: var(--secondary-text-color);
 	padding: .75em 1em;
 	position: relative;
 	text-decoration: none;
@@ -42,7 +42,7 @@ joomla-tab a[role=tab] {
 }
 
 joomla-tab a[role=tab][active] {
-	color: var(--color);
+	color: var(--primary-text-color);
 }
 joomla-tab a[role=tab]:after {
 	background-color: var(--primary-color);
@@ -68,7 +68,7 @@ joomla-tab a[role=tab][active]{
 }
 joomla-tab a[role=tab]:not([active]):hover{
 	&::after {
-		background-color: var(--secondary-color);
+		background-color: var(--secondary-text-color);
 		opacity: 1;
 		visibility: visible;
 	}
@@ -105,7 +105,7 @@ joomla-tab > section {
 				th {
 					border-top: 0;
 					font-size: 1rem;
-					color: var(--secondary-color);
+					color: var(--secondary-text-color);
 					border-bottom: $table-data-border;
 					border-right: $table-data-border;
 					&:last-child {
@@ -142,7 +142,7 @@ joomla-tab[orientation=vertical] {
 	align-items: flex-start;
 	border-radius: 3px;
 	box-shadow: 0 1px 1px 0 rgba(94, 114, 124, 0.05), 0 1px 0 0 rgba(94, 114, 124, 0.03);
-	border: solid 1px var(--cancel-button-background);
+	border: solid 1px var(--bg-color);
 	background-color: $white;
 	&.j-card{
 		box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
@@ -169,7 +169,7 @@ joomla-tab[orientation=vertical] a[disabled=true] {
 }
 joomla-tab[orientation=vertical] a {
 	display: block;
-	color: var(--secondary-color);
+	color: var(--secondary-text-color);
 	padding: .45rem 1rem;
 	position: relative;
 	text-decoration: none;
@@ -222,11 +222,11 @@ joomla-tab[view=accordion] section {
 
 joomla-tab[view=accordion] section[active] {
 	display: block;
-	border-bottom: 1px solid var(--background);
+	border-bottom: 1px solid var(--bg-color);
 }
 
 joomla-tab[view=accordion] a[role=tab] {
-	border-bottom: 1px solid var(--background);
+	border-bottom: 1px solid var(--bg-color);
 }
 
 joomla-tab[view=accordion] a[role=tab][active]:after {

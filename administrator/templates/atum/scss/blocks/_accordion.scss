@@ -17,9 +17,9 @@ joomla-accordion {
         font-size: 1rem;
         line-height: 1.614rem;
         font-weight: 400;
-        color: var(--secondary-color);
-        border-top: 1px solid var(--background);
-        border-bottom: 1px solid var(--background);
+        color: var(--secondary-text-color);
+        border-top: 1px solid var(--bg-color);
+        border-bottom: 1px solid var(--bg-color);
         margin: -1px 0 0;
         padding: 0.643rem 1.143rem;
         cursor: pointer;
@@ -28,10 +28,10 @@ joomla-accordion {
         justify-content: space-between;
         transition: 300ms;
         &:hover{
-            background: var(--button-background);
+            background: var(--primary-lighter-color);
         }
         &.active{
-            color: var(--color);
+            color: var(--primary-text-color);
             border-bottom-color: transparent;
         }
         > span{
@@ -48,7 +48,7 @@ joomla-accordion {
             transform: rotate(180deg);
         }
         &:focus{
-            outline: 1px solid var(--link-color);
+            outline: 1px solid var(--primary-color);
         }
     }
     
@@ -83,7 +83,7 @@ joomla-accordion {
             align-items: center;
             justify-content: space-between;
             transition: .3s;
-            color: var(--secondary-color);
+            color: var(--secondary-text-color);
             .accordion-arrow{
               pointer-events: none;
               font-size: 50%;
@@ -92,7 +92,7 @@ joomla-accordion {
               transform: rotate(0deg);
             }
             &[aria-expanded="true"]{
-              color: var(--color);
+              color: var(--primary-text-color);
               .accordion-arrow{
                 transform: rotate(180deg);
               }

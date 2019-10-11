@@ -24,36 +24,36 @@
     margin-bottom: 15px;
   }
   &.j-alert-success{
-	  background-color: rgba(var(--success-color-rgb), .15);
+	  background-color: rgba(var(--success-rgb), .15);
 	  border-top-color: var(--success-color);
     .j-alert-icon-wrap i{
-	    background-color: rgba(var(--success-color-rgb), .25);
+	    background-color: rgba(var(--success-rgb), .25);
 	    color: var(--success-color);
     }
   }
 	&.j-alert-info{
-		background-color: rgba(var(--primary-color-rgb), .1);
+		background-color: rgba(var(--primary-rgb), .1);
 		border-top-color: var(--primary-color);
 		.j-alert-icon-wrap i{
-			background-color: rgba(var(--primary-color-rgb), .25);
+			background-color: rgba(var(--primary-rgb), .25);
 			color: var(--primary-color);
 		}
 	}
-	
+
 	&.j-alert-warning{
-		background-color: rgba(var(--warning-color-rgb), .1);
+		background-color: rgba(var(--warning-rgb), .1);
 		border-top-color: var(--warning-color);
 		.j-alert-icon-wrap i{
-			background-color: rgba(var(--warning-color-rgb), .25);
+			background-color: rgba(var(--warning-rgb), .25);
 			color: var(--warning-color);
 		}
 	}
-	
+
 	&.j-alert-danger{
-		background-color: rgba(var(--danger-color-rgb), .1);
+		background-color: rgba(var(--danger-rgb), .1);
 		border-top-color: var(--danger-color);
 		.j-alert-icon-wrap i{
-			background-color: rgba(var(--danger-color-rgb), .25);
+			background-color: rgba(var(--danger-rgb), .25);
 			color: var(--danger-color);
 		}
 	}

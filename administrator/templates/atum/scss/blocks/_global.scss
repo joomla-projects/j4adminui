@@ -14,9 +14,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color);
+  color: var(--primary-text-color);
   text-align: left;
-  background-color: var(--background);
+  background-color: var(--bg-color);
   padding: 0;
   margin: 0;
   &.monochrome {
@@ -130,7 +130,7 @@ body .container-main {
 }
 
 .row-selected {
-  background-color: var(--tr-hover-background);
+  background-color: var(--primary-lighter-color);
 }
 
 // Chosen (TEMPORARY)
@@ -202,179 +202,16 @@ body .container-main {
 }
 .form-title-wrap{
   label{
-    color: var(--color);
+    color: var(--primary-text-color);
     font-size: 1rem;
   }
   input{
-    color: var(--color);
-    background: var(--inverse-color);
+    color: var(--primary-text-color);
+    background: var(--white);
     font-size: 1.15rem;
     height: 3.4rem;
     padding-left: 1.7rem;
     padding-right: 1.7rem;
-  }
-}
-.form-inline-group{
-  .control-group{
-    padding-left: 1.07rem;
-    @extend .d-flex;
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
-    background: var(--inverse-color);
-    border-radius: 3px;
-    transition: .3s;
-    font-size: 1rem;
-    min-height: 40px;
-    .control-label{
-      width: auto;
-      border-right: 1px solid var(--page-background);
-      padding-right: 35px;
-      flex: 0 0 90px;
-      max-width: 90px;
-      @extend .d-flex;
-      @extend .align-items-center;
-      &.sr-only{
-        position: initial;
-        margin: 0;
-        height: auto;
-      }
-    }
-    .controls{
-      flex: 1;
-      padding-left: 25px;
-      margin-left: 0;
-      color: var(--color);
-      @include media-breakpoint-down(lg){
-        padding-left: 0;
-      }
-      .choices{
-        &,
-        .choices__inner{
-          height: 100%;
-        }
-      }
-      input, select{
-        height: 100%;
-        border-width: 1px;
-        &:focus, &:active{
-          border-color: var(--primary-color);
-        }
-      }
-      select{
-        color: var(--color);
-        background: transparent;
-        border-color: transparent;
-        -webkit-appearance: menulist-button;
-        -moz-appearance: menulist-button;
-        appearance: menulist-button;
-        padding-right: 15px;
-        @include media-breakpoint-down(lg){
-          padding-right: 0;
-        }
-      }
-      .switcher__legend{
-        display: none;
-      }
-      .switcher{
-        padding-top: 6px;
-        label{
-          color: var(--color);
-        }
-      }
-    }
-  }
-  .field-calendar{
-    &,.input-group,
-    input{
-      height: 100%;
-    }
-    >.input-group{
-      input{
-        border-color: transparent;
-        background: transparent;
-        &:active,
-        &:focus {
-          border-color: var(--primary-color);
-        }
-      }
-    }
-  }
-  .choices{
-    .choices__inner{
-      border-color: transparent;
-      border-width: 1px;
-    }
-  }
-}
-.alias-wrap{
-  margin-bottom: 15px;
-  border-bottom: 1px solid var(--background);
-  padding-bottom: 10px;
-  max-width: 100%;
-  @extend .d-flex;
-  @extend .align-items-center;
-  @extend .justify-content-between;
-  .alias-text{
-    @extend .d-flex;
-    @extend .align-items-center;
-    margin: 0;
-    .control-label{
-      min-width: 110px;
-    }
-    .controls{
-      color: var(--color);
-    }
-  }
-  #remove-edit,
-  #edit-alias{
-    color: var(--button-border-color);
-    font-size: 12px;
-    
-  }
-  .alias-edit{
-    display: none;
-    .control-group{
-      margin-bottom: 0;
-      .control-label{
-        min-width: 90px;
-      }
-      .controls{
-        input{
-          padding-right: 2.2rem;
-          width: 100%;
-        }
-      }
-    }
-    .control-group{
-      @extend .d-flex;
-      @extend .align-items-center;
-    }
-  }
-  #remove-edit{
-    display: none;
-    position: absolute;
-    right: 30px;
-  }
-  &.active{
-    #edit-alias,
-    .alias-text{
-      display: none !important;
-    }
-    #remove-edit,
-    .alias-edit{
-      display: block;
-    }
-  }
-}
-.tags-group{
-  .tags-label{
-    color: var(--color);
-    margin-bottom: 10px;
-  }
-  .choices{
-    .choices__inner{
-      border-color: transparent;
-      border-width: 1px;
-    }
   }
 }
 .j-table-responsive{

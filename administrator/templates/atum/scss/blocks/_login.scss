@@ -2,7 +2,7 @@
 
 .view-login {
   position: relative;
-  background-color: var(--link-color);
+  background-color: var(--primary-color);
   &:before{
     content: "";
     position: absolute;
@@ -48,11 +48,11 @@
       flex-direction: column;
     }
     .main-sidebar{
-      background: var(--color);
+      background: var(--primary-text-color);
       flex: 0 0 43%;
       max-width: 43%;
       padding: 4.2rem 2rem 2rem 2rem;
-      color: var(--inverse-color);
+      color: var(--white);
       border-radius: 3px 0px 0px 3px;
       @include media-breakpoint-down(sm) {
         flex: 0 0 100%;
@@ -111,7 +111,7 @@
     .loginsupport{
       font-weight: 500;
       a{
-        color: var(--button-color);
+        color: var(--primary-color);
         transition: .3s;
         &:hover, &:focus{
           color: #fff;
@@ -139,7 +139,7 @@
               content: "";
               width: 7px;
               height: 7px;
-              background-color: var(--button-color);
+              background-color: var(--primary-color);
               border-radius: 10px;
               margin-right: 5px;
               opacity: 0.5;
@@ -168,7 +168,7 @@
         text-align: center;
         font-weight: normal;
         margin-bottom: 4rem;
-        color: var(--color);
+        color: var(--primary-text-color);
         @include media-breakpoint-down(sm) {
           font-size: 1.2rem;
           margin-bottom: 1rem;
@@ -177,7 +177,7 @@
       a{
         color: var(--icon-color);
         &:hover, &:focus{
-          color: var(--link-color);
+          color: var(--primary-color);
           text-decoration: none;
         }
       }
@@ -288,7 +288,7 @@
     }
   }
   .input-group{
-    background-color: var(--input-background-color);
+    background-color: var(--bg-light-color);
   }
 
   h1 {
@@ -379,7 +379,7 @@
 }
 
 label {
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
 }
 
 .com_login .sidebar-wrapper .main-brand {

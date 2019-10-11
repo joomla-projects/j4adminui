@@ -1,4 +1,4 @@
-// fake checkbox 
+// fake checkbox
 .switcher-wrap{
 	@extend .d-inline-flex;
 	@extend .align-items-center;
@@ -7,7 +7,7 @@
 	}
 
 	> *{
-		color: var(--secondary-color)
+		color: var(--secondary-text-color)
 	}
 }
 .switcher-alt{
@@ -36,7 +36,7 @@
 		transition: 200ms;
 	}
 	&.checked{
-		background-color: rgba(var(--primary-color-rgb), .5);
+		background-color: rgba(var(--primary-rgb), .5);
 		&::after{
 			background-color: var(--primary-color);
 			left: auto;

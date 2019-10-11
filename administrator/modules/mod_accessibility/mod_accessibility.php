@@ -9,6 +9,11 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ModuleHelper;
+
+//include js
+HTMLHelper::_('script', 'mod_accessibility/accessibility.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('stylesheet', 'mod_accessibility/style.css', ['relative' => true]);
 
 require ModuleHelper::getLayoutPath('mod_accessibility', $params->get('layout', 'default'));

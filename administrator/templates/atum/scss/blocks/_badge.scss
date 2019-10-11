@@ -8,22 +8,22 @@
     padding: 4px 8px;
     margin-left: 6px;
     &.badge-warning {
-        background: rgba(var(--warning-color-rgb), .1);
+        background: rgba(var(--warning-rgb), .1);
         border-color: var(--warning-color);
         color: var(--warning-color);
     }
     &.badge-info {
-        background: rgba(var(--primary-color-rgb), .1);
+        background: rgba(var(--primary-rgb), .1);
         border-color: var(--primary-color);
         color: var(--primary-color);
     }
     &.badge-success {
-        background: rgba(var(--success-color-rgb), .1);
+        background: rgba(var(--success-rgb), .1);
         border-color: var(--success-color);
         color: var(--success-color);
     }
     &.badge-danger {
-        background: rgba(var(--danger-color-rgb), .1);
+        background: rgba(var(--danger-rgb), .1);
         border-color: var(--danger-color);
         color: var(--danger-color);
     }

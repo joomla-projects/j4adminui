@@ -23,7 +23,7 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../administrator/templates/atum/scss/blocks/checkbox";
 
 body {
-	background: var(--background);
+	background: var(--bg-color);
 }
 
 *, *::after, *::before {
@@ -71,7 +71,7 @@ body .container-main{
 		border: none;
 		position: relative;
 		border-left: 3px solid transparent;
-		color: var(--secondary-color);
+		color: var(--secondary-text-color);
 		font-size: 1.143rem;
 		&::before{
 			content: '';
@@ -87,13 +87,13 @@ body .container-main{
 		}
 		&:active,
 		&:focus{
-			outline: 1px dotted rgba(var(--primary-color-rgb), .5);
+			outline: 1px dotted rgba(var(--primary-rgb), .5);
 			outline-offset: -1px;
 		}
 		&.active{
 			border-left-color: var(--primary-color);
-			background: rgba(var(--primary-color-rgb), .1);
-			color: var(--color);
+			background: rgba(var(--primary-rgb), .1);
+			color: var(--primary-text-color);
 			&::before{
 				background: var(--primary-color);
 				border-color: var(--primary-color);
@@ -118,8 +118,8 @@ body .container-main{
 		&.j-insallation-has-error{
 			button {
 				border-left-color: var(--danger-color);
-				background: rgba(var(--danger-color-rgb),.1);
-				color: var(--color);
+				background: rgba(var(--danger-rgb),.1);
+				color: var(--primary-text-color);
 				&::before {
 					content: '\f12a';
 					font-family: Font Awesome\ 5 Free;
@@ -131,7 +131,7 @@ body .container-main{
 					justify-content: center;
 					align-items: center;
 				}
-			}	
+			}
 		}
 	}
 }
@@ -365,7 +365,7 @@ caption {
 
 .j-install-step-iconic-header{
 	padding: 23px 30px;
-	border-bottom: 1px solid var(--background);
+	border-bottom: 1px solid var(--bg-color);
 	overflow: hidden;
 	span{
 		line-height: 23px;
@@ -386,7 +386,7 @@ caption {
 
 .j-install-step-body{
 	padding: 0 30px;
-	color: var(--secondary-color)
+	color: var(--secondary-text-color)
 }
 
 .j-install-step-body h4{
@@ -394,7 +394,7 @@ caption {
 	font-weight: 400;
 	line-height: 1.571rem;
 	margin-bottom: 0.571rem;
-	color: var(--inverse-background)
+	color: var(--primary-text-color)
 }
 
 .j-install-step-btn-group{
@@ -412,9 +412,9 @@ caption {
 	thead{
 		td,
 		th{
-			border-bottom: 1px solid var(--background);
+			border-bottom: 1px solid var(--bg-color);
 			font-weight: 400;
-			color: var(--secondary-color);
+			color: var(--secondary-text-color);
 		}
 	}
 	th,
@@ -441,7 +441,7 @@ caption {
 	tr:nth-child(even){
 		th,
 		td{
-			background: var(--background);
+			background: var(--bg-color);
 		}
 	}
 }

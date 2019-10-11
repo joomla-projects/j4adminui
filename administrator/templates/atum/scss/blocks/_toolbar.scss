@@ -11,7 +11,7 @@
   min-height: 43px;
   padding: 13px 15px;
   color: var(--atum-text-dark);
-  background: var(--subhead-background);
+  background: var(--bg-dark-color);
   border-bottom: 1px solid #d0dae3;
   margin-left: -14px;
   margin-right: -14px;
@@ -61,7 +61,7 @@
       }
       .btn {
         padding: 0;
-        color: var(--secondary-color);
+        color: var(--secondary-text-color);
         &:hover,
         &:active,
         &:focus {
@@ -108,7 +108,7 @@
     margin: auto;
     z-index: 4;
     .btn{
-      background: var(--transparent-bg);
+      background: transparent;
       border: 0;
       padding: 0 0 0 10px;
       color: var(--icon-color);
@@ -141,7 +141,7 @@
       }
     }
     .input-group-text{
-      background: var(--transparent-bg);
+      background: transparent;
       color: var(--icon-color);
       &.input-password-toggle{
         padding: 0;
@@ -183,7 +183,7 @@
     margin: 0;
     top: 1rem;
     .btn-primary {
-      background: var(--transparent-bg);
+      background: transparent;
       color: var(--secondary-icon-color);
       box-shadow: none;
       line-height: 1;
@@ -242,7 +242,7 @@
         @include media-breakpoint-down(sm) {
           margin-bottom: .75rem;
         }
-      }    
+      }
     }
   }
 }
