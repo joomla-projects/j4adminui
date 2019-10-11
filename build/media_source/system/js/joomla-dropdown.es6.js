@@ -6,6 +6,8 @@
       super();
       this.position = 'right';
       this.checkSubmenu = this.checkSubmenu.bind(this);
+      this.clickOutside = this.clickOutside.bind(this);
+      this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     /* Attributes to monitor */
@@ -19,10 +21,10 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(`[data-target=${this.for}]`);
+      this.button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
-      if (!button.hasAttribute('data-target')) {
+      if (!this.button.hasAttribute('data-target')) {
         return;
       }
 
@@ -33,43 +35,45 @@
           link.parentElement.classList.add(this.position);
         }
       });
-      button.setAttribute('aria-haspopup', true);
-      button.setAttribute('aria-expanded', false);
+      this.button.setAttribute('aria-haspopup', true);
+      this.button.setAttribute('aria-expanded', false);
+      this.button.addEventListener('click', this.toggleMenu, true);
+    }
 
-      button.addEventListener('click', (event) => {
+    disconnectedCallback() {
+      this.button.removeEventListener('click', this.toggleMenu, true);
+    }
+
+    toggleMenu(event) {
+      if (event.target.tagName === 'A') {
         event.preventDefault();
-        if (this.hasAttribute('expanded')) {
-          this.removeAttribute('expanded');
-          event.target.setAttribute('aria-expanded', false);
-        } else {
-          this.setAttribute('expanded', '');
-          event.target.setAttribute('aria-expanded', true);
+      }
+      if (this.hasAttribute('expanded')) {
+        this.removeAttribute('expanded');
+        event.target.setAttribute('aria-expanded', false);
+      } else {
+        this.setAttribute('expanded', '');
+        event.target.setAttribute('aria-expanded', true);
+      }
+
+      this.setPosition();
+
+      document.addEventListener('click', this.clickOutside, true);
+      const innerLinks = this.querySelectorAll('a');
+      innerLinks.forEach((innerLink) => {
+        innerLink.addEventListener('click', this.checkSubmenu, true);
+      });
+      // toggle dropdown onhover
+      const lists = this.querySelectorAll('li.has-submenu');
+      lists.forEach((list) => {
+        if (list.getAttribute('data-action') !== 'click') {
+          list.addEventListener('mouseenter', this.showSubmenu, true);
+          list.addEventListener('mouseleave', this.hideSubmenu, true);
         }
-
-        this.setPosition();
-
-        document.addEventListener('click', (event) => {
-          if (!button.contains(event.target) && event.target !== button) {
-            if (!this.findAncestor(event.target, 'joomla-dropdown')) {
-              this.close();
-            }
-          }
-        });
-
-        innerLinks.forEach((innerLink) => {
-          innerLink.addEventListener('click', this.checkSubmenu, true);
-        });
-        // toggle dropdown onhover
-        const lists = this.querySelectorAll('li.has-submenu');
-        lists.forEach((list) => {
-          if (list.getAttribute('data-action') !== 'click') {
-            list.addEventListener('mouseenter', this.showSubmenu, true);
-            list.addEventListener('mouseleave', this.hideSubmenu, true);
-          }
-        });
       });
     }
 
+    // eslint-disable-next-line class-methods-use-this
     showSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu')) {
@@ -77,10 +81,19 @@
       }
     }
 
+    // eslint-disable-next-line class-methods-use-this
     hideSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
         event.target.toggleAttribute('open');
+      }
+    }
+
+    clickOutside(event) {
+      if (this.button.contains(event.target) === false && event.target !== this.button) {
+        if (!this.findAncestor(event.target, 'joomla-dropdown')) {
+          this.close();
+        }
       }
     }
 
@@ -144,10 +157,11 @@
       });
       const button = document.querySelector(`[data-target=${this.getAttribute('aria-labelledby')}]`);
       this.removeAttribute('expanded');
-      button && button.setAttribute('aria-expanded', false);
+      if (button) button.setAttribute('aria-expanded', false);
 
       // remove the click listener on list items
       window.removeEventListener('click', this.checkSubmenu, true);
+      document.removeEventListener('click', this.clickOutside, true);
     }
 
     // eslint-disable-next-line class-methods-use-this
