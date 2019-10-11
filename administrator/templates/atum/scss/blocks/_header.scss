@@ -123,7 +123,7 @@
     @extend .d-flex;
     @extend .align-items-center;
     &:not(:last-child){
-      border-right: 1px solid var(--background);
+      border-right: 1px solid var(--bg-color);
       @include media-breakpoint-down(xs) {
         display: none !important;
       }
@@ -184,10 +184,10 @@
     
     .header-item-link{
       font-size: 1.143rem;
-      color: var(--color);
+      color: var(--primary-text-color);
       transition: .2s ease-in;
       span.header-item-icon{
-        color: var(--link-color);
+        color: var(--primary-color);
         display: inline-block;
       }
       
@@ -196,7 +196,7 @@
       }
       
       &:hover{
-        color: var(--link-color);
+        color: var(--primary-color);
         text-decoration: none;
       }
     }

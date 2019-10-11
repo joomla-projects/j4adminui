@@ -104,7 +104,7 @@
 .logo-header{
   padding: 0.536rem 2.071rem 0.321rem 1.643rem;
   position: relative;
-  color: var(--secondary-color);
+  color: var(--secondary-text-color);
   font-size: 0.857rem;
   height: $header-height;
   transition: 300ms;
@@ -137,8 +137,8 @@
     height: 100%;
     right: 0;
     top: 0;
-    border-left: 1px solid var(--background);
-    border-right: 1px solid var(--background);
+    border-left: 1px solid var(--bg-color);
+    border-right: 1px solid var(--bg-color);
     background: $white;
     transition: 300ms;
     a{
@@ -161,7 +161,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
   }
 }
 
@@ -179,7 +179,7 @@
 	.divider {
 		height: 1px;
 		margin: -1px 20px 0;
-		background-color: var(--background);
+		background-color: var(--bg-color);
 	}
 	
 	@include media-breakpoint-down(xs) {
@@ -201,10 +201,10 @@
 			width: 20px;
 			border-radius: 50%;
 			display: inline-block;
-			background: var(--background);
+			background: var(--bg-color);
 			transition: 300ms;
 			&:hover{
-				background: var(--button-background);
+				background: var(--primary-lighter-color);
 				border-radius: 50%;
 			}
 			> a{
@@ -215,7 +215,7 @@
 				span{
 					line-height: 21px;
 					display: block;
-					color: var(--link-color);
+					color: var(--primary-color);
 					font-size: 0.921rem;
 					text-align: center;
 				}
@@ -265,7 +265,7 @@
 		
 		&.dropdown-submenu > ul{
 			> li > a{
-				color: var(--secondary-color);
+				color: var(--secondary-text-color);
 				padding-left: 75px;
 				.sidebar-item-title{
 					margin-left: 0;
@@ -274,7 +274,7 @@
 			> li.active a,
 			> li a.active,
 			> li a:hover{
-				color: var(--link-color);
+				color: var(--primary-color);
 				background: transparent;
 			}
 		}
@@ -288,7 +288,7 @@
 	// All links
 	a {
 		position: relative;
-		color: var(--color);
+		color: var(--primary-text-color);
 		font-size: 1rem;
 		line-height: 1.786rem;
 		padding-top: 0.393rem;
@@ -299,19 +299,19 @@
 	}
 	li > a.active,
 	li.active > a{
-		color: var(--link-color);
+		color: var(--primary-color);
 		text-decoration: none;
-		background: var(--background);
+		background: var(--bg-color);
 		&.has-arrow::after{
-			color: var(--link-color);
+			color: var(--primary-color);
 		}
 	}
 	
 	
 	a:hover{
-		color: var(--link-color);
+		color: var(--primary-color);
 		&.has-arrow::after{
-			color: var(--link-color);
+			color: var(--primary-color);
 		}
 	}
 	
@@ -327,7 +327,7 @@
 			font-size: 1.143rem;
 			border-left: 2px solid transparent;
 			transition: .3s;
-			border-top: 1px solid var(--background);
+			border-top: 1px solid var(--bg-color);
 			> span:first-child{
 				position: relative;
 				display: inline-block;
@@ -342,27 +342,27 @@
 		
 		&.active > a,
 		> a.active{
-			color: var(--link-color);
-			background-color: var(--button-background);
-			border-top-color: var(--button-background);
-			border-left-color: var(--link-color);
+			color: var(--primary-color);
+			background-color: var(--primary-lighter-color);
+			border-top-color: var(--primary-lighter-color);
+			border-left-color: var(--primary-color);
 			[class^="icon-"],
 			[class*=" icon-"] {
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 			&.has-arrow::after{
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 		}
 		
 		> a:hover{
-			color: var(--link-color);
+			color: var(--primary-color);
 			text-decoration: none;
 			span.fa{
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 			&.has-arrow::after{
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 		}
 		
@@ -381,7 +381,7 @@
 			position: relative;
 			&.active > a,
 			> a.active{
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 		}
 		
@@ -440,7 +440,7 @@
 	}
 	
 	.sidebar-wrapper .logo-header .sidebar-toggle{
-		border-right: 1px solid var(--background);
+		border-right: 1px solid var(--bg-color);
 	}
 	
 	.logo-header{
@@ -554,7 +554,7 @@
 					display: block;
 					text-align: center;
 					font-size: 0.714rem;
-					color: var(--secondary-color);
+					color: var(--secondary-text-color);
 					cursor: pointer;
 					position: relative;
 					&:focus{
@@ -583,7 +583,7 @@
 						left: 50%;
 					}
 					span.system-counter{
-						color: var(--secondary-color);
+						color: var(--secondary-text-color);
 						background: none;
 					}
 				}
@@ -714,15 +714,15 @@
 			border-bottom: 1px solid var(--border-color);
 			padding-bottom: 5px;
 			>a{
-				color: var(--secondary-color);
+				color: var(--secondary-text-color);
 				font-size: 1rem;
 				font-weight: 400;
 				&:hover, &:focus{
-					color: var(--link-color);
+					color: var(--primary-color);
 				}
 			}
 			&.active>a{
-				color: var(--link-color);
+				color: var(--primary-color);
 			}
 		}
 	}

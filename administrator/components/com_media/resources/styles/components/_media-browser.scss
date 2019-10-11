@@ -5,7 +5,7 @@
   right: 0;
   top: 25px;
   width: $width;
-  background: var(--inverse-color);
+  background: var(--white);
   border-radius: 3px;
   box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
   border: solid 1px #eaeef5;
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: var(--inverse-color);
+    color: var(--white);
     text-align: center;
     white-space: nowrap;
     background-color: var(--success-color);
@@ -39,7 +39,7 @@
 
 //Custom Design for modal
 .joomla-recent-uploaded-media {
-  color: var(--inverse-background);
+  color: var(--primary-text-color);
   max-height: 300px;
   overflow-y: scroll;
   .joomla-recent-uploaded-media-item {
@@ -59,7 +59,7 @@
       margin-right: 15px;
       span {
         padding-left: 15px;
-        color: var(--secondary-color);
+        color: var(--secondary-text-color);
       }
     }
     .joomla-recent-upload-file {
@@ -96,11 +96,11 @@
       }
       span {
         padding-left: 5px;
-        color: var(--secondary-color);
+        color: var(--secondary-text-color);
       }
     }
     .joomla-file-upload-cancel-btn{
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
       text-decoration: none;
     }
     .joomla-media-upload-error {
@@ -116,7 +116,7 @@
     .joomla-file-remove-btn {
       border-radius: 3px;
       border: solid 1px var(--secondary-icon-color);
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
       text-decoration: none;
       line-height: 1.9rem;
       padding-right: 23px;
@@ -127,9 +127,9 @@
       &:hover {
         border-color: var(--danger-color);
         background-color: var(--danger-color);
-        color: var(--inverse-color);
+        color: var(--white);
         i {
-          color: var(--inverse-color);
+          color: var(--white);
         }
       }
       i {
@@ -237,7 +237,7 @@
   line-height: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--inverse-background);
+  color: var(--primary-text-color);
 }
 
 .media-browser-select {
@@ -272,7 +272,7 @@
     content: "\F00C";
     opacity: 1;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--inverse-color);
+    color: var(--white);
     margin: auto;
     right: 0;
     bottom: 0;
@@ -284,7 +284,7 @@
     }
   }
   .selected & {
-    color: var(--inverse-color);
+    color: var(--white);
     background-color: var(--primary-color);
     opacity: 1;
   }
@@ -324,11 +324,11 @@
         margin: 0;
         padding: 0 10px;
         border-bottom: 1px solid rgba(234, 238, 245, .5);
-        color: var(--secondary-color);
+        color: var(--secondary-text-color);
         &:hover {
           color: var(--primary-color);
-          background-color: var(--button-background);
-          .image-browser-action { 
+          background-color: var(--primary-lighter-color);
+          .image-browser-action {
             color: var(--primary-color);
           }
         }
@@ -400,7 +400,7 @@
 }
 
 .image-background {
-  background-color: var(--tr-hover-background);
+  background-color: var(--primary-lighter-color);
 }
 
 .image-cropped {
@@ -414,7 +414,7 @@
   border-top-right-radius: 0;
 }
 
-.file-background, 
+.file-background,
 .folder-background {
   padding-bottom: 80%;
 }
@@ -434,7 +434,7 @@
 
 .media-dragoutline {
   background-color: rgba(0, 0, 0, 0.5);
-  border: 2px dashed var(--inverse-color);
+  border: 2px dashed var(--white);
   position: absolute;
   top: 6px;
   right: 6px;
@@ -490,7 +490,7 @@
 .media-browser-image {
   border-radius: 3px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-  background-color: var(--inverse-color);
+  background-color: var(--white);
   position: relative;
   margin: 0 0 0 15px;
 }
@@ -507,9 +507,9 @@
       padding: 5px 0;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid var(--background);
+      border-bottom: 1px solid var(--bg-color);
       .media-info-title {
-        color: var(--secondary-color);
+        color: var(--secondary-text-color);
         flex: 0 0 50%;
       }
       .media-info-details {
@@ -560,17 +560,17 @@
   .media-toolbar-decrease-grid-size,
   .media-toolbar-increase-grid-size {
     &:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--secondary-text-color);
     }
   }
   &.grid-active {
     .media-toolbar-grid-view {
-      background-color: var(--secondary-color);
+      background-color: var(--secondary-text-color);
     }
   }
   &.list-active {
     .media-toolbar-list-view {
-      background-color: var(--secondary-color);
+      background-color: var(--secondary-text-color);
     }
   }
 }
@@ -583,7 +583,7 @@
   border-radius: 3px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
   border: solid 1px var(--secondary-icon-color);
-  background-color: var(--inverse-color);
+  background-color: var(--white);
   position: relative;
   &.active {
     background-color: var(--primary-color);
@@ -594,8 +594,8 @@
       transform: rotate(45deg);
       height: 12px;
       width: 8px;
-      border-bottom: 2px solid var(--inverse-color);
-      border-right: 2px solid var(--inverse-color);
+      border-bottom: 2px solid var(--white);
+      border-right: 2px solid var(--white);
       position: absolute;
       left: 0;
       right: 0;
@@ -618,7 +618,7 @@
 .joomla-docker-panel {
   position: fixed;
   box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
-  background: var(--inverse-color);
+  background: var(--white);
   width: 550px;
   border-radius: 3px;
   overflow: hidden;
@@ -641,7 +641,7 @@
   }
   .joomla-docker-panel-header {
     background: #000;
-    color: var(--inverse-color);
+    color: var(--white);
     display: flex;
     padding: 15px 15px 12px;
     .joomla-docker-panel-title {
@@ -689,10 +689,10 @@
 //Media listview table
 table {
   &.media-browser-table {
-    border-collapse:separate; 
+    border-collapse:separate;
     border-spacing: 0 10px;
     background-color: transparent;
-    color: var(--inverse-background);
+    color: var(--primary-text-color);
     td,
     th {
       border:none;
@@ -711,7 +711,7 @@ table {
         border:none;
         padding-bottom: 0;
         font-size: 1rem;
-        color: var(--table-sort-color);
+        color: var(--primary-text-color-alt);
         &.type {
           border: 0;
           background: transparent;
@@ -725,7 +725,7 @@ table {
       }
     }
     tr {
-      background: var(--inverse-color);
+      background: var(--white);
       box-shadow: 0 1px 1px 0 rgba(0,0,0,.15);
       transition: .35s;
       .media-view-icons {
@@ -752,17 +752,17 @@ table {
           }
         }
       }
-      td:first-child { 
-        border-top-left-radius: 3px; 
+      td:first-child {
+        border-top-left-radius: 3px;
       }
-      td:last-child { 
-        border-top-right-radius: 3px; 
+      td:last-child {
+        border-top-right-radius: 3px;
       }
-      td:first-child { 
-        border-bottom-left-radius: 3px; 
+      td:first-child {
+        border-bottom-left-radius: 3px;
       }
-      td:last-child { 
-        border-bottom-right-radius: 3px; 
+      td:last-child {
+        border-bottom-right-radius: 3px;
       }
     }
     .media-toolbar-icon {

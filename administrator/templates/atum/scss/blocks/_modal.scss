@@ -39,7 +39,7 @@ joomla-modal {
 	}
 	&.j-modal-gray {
 		.joomla-modal-dialog {
-			background-color: var(--background);
+			background-color: var(--bg-color);
 		}
 	}
 	.joomla-modal-dialog {
@@ -129,7 +129,7 @@ joomla-modal {
 			.modal-footer-left-text{
 				flex-grow: 1;
 				text-align: left;
-				color: var(--secondary-color);
+				color: var(--secondary-text-color);
 			}
 			.btn {
 				margin-left: 10px;

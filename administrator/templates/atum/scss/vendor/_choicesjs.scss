@@ -19,7 +19,7 @@
 	border-radius: 3px;
 	position: relative;
 	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1854.54 295' preserveAspectRatio='xMinYMid' width='1854.54' height='295'%3E%3Cpath d='M1825.1,145.7l6.9,6.9c0.1,0.1,0.2,0.1,0.3,0.1c0.1,0,0.2,0,0.3-0.1l6.9-6.9c0.1-0.1,0.1-0.2,0.1-0.3c0-0.1,0-0.2-0.1-0.3l-0.7-0.7c-0.1-0.1-0.2-0.1-0.3-0.1s-0.2,0-0.3,0.1l-5.8,5.8l-5.8-5.8c-0.1-0.1-0.2-0.1-0.3-0.1c-0.1,0-0.2,0-0.3,0.1l-0.7,0.7c-0.1,0.1-0.1,0.2-0.1,0.3C1824.9,145.5,1825,145.6,1825.1,145.7z' fill='%235e727c'/%3E%3Crect width='1810' height='295' fill='%23fafbfc'/%3E%3C/svg%3E%0A") no-repeat 100%/100rem;
-	background-color: var(--input-background-color);
+	background-color: var(--bg-light-color);
 }
 
 // Fix position
@@ -36,8 +36,8 @@
     .choices__item{
       font-size: 1rem;
       padding: 6px 15px;
-      color: var(--secondary-color);
-      border-bottom: solid 1px var(--page-background);
+      color: var(--secondary-text-color);
+      border-bottom: solid 1px var(--bg-color);
       line-height: 1;
       transition: .35s;
       &:hover {
@@ -68,7 +68,7 @@
 		left: 0px;
 		font-size: 1rem;
 		line-height: 1;
-		color: var(--inverse-color);
+		color: var(--white);
 		font-weight: 500;
 	}
 
@@ -87,7 +87,7 @@
 	}
 	.choices__input {
 		padding: 6px 15px;
-		border-color: var(--page-background);
+		border-color: var(--bg-color);
 	}
 
 	.choices__button_joomla {
@@ -99,7 +99,7 @@
 		height: 12px;
 		padding: 0;
 		border-radius: 10em;
-		background-color: var(--secondary-color);
+		background-color: var(--secondary-text-color);
 
 		&:hover,
 		&:focus {
@@ -139,7 +139,7 @@
 		line-height: 1;
 		border: 0;
 		opacity: 1;
-		background-color: var(--secondary-color);
+		background-color: var(--secondary-text-color);
 		border-radius: 50%;
 		transform: translateY(-50%);
 		padding: 0;
@@ -164,9 +164,9 @@
 	}
 	.choices__input {
 		padding: 0.2rem 0 0.356rem;
-		color: var(--color);
+		color: var(--primary-text-color);
 		&::placeholder {
-			color: var(--color);
+			color: var(--primary-text-color);
 		}
 	}
 	.choices__list--dropdown{
@@ -177,16 +177,16 @@
 .choices__list--multiple {
 	.choices__item {
 		position: relative;
-		background-color: var(--inverse-color);
+		background-color: var(--white);
 		border: 1px solid #ccd3d7;
-		color: var(--color);
+		color: var(--primary-text-color);
 		border-radius: 10px;
 		padding: 0px 5px;
 		font-weight: 400;
 		font-size: .85rem;
 	
 		&.is-highlighted {
-			background-color: var(--tr-hover-background);
+			background-color: var(--primary-lighter-color);
 			border-color: #ccd3d7;
 			opacity: 1;
 		}
@@ -209,7 +209,7 @@
 .choices__list--single {
 	padding: 0;
 	font-size: $display1-size;
-	color: var(--color);
+	color: var(--primary-text-color);
 }
 
 .is-open {

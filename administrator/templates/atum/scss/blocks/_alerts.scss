@@ -7,7 +7,7 @@ joomla-alert, .alert {
     opacity: 0;
     border-radius: 3px;
     box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 1px 0 rgba(9, 30, 66, 0.31);
-    color: var(--color);
+    color: var(--primary-text-color);
     position: relative;
     line-height: 1.643rem;
     transform: scale(1);
@@ -23,7 +23,7 @@ joomla-alert, .alert {
     
     &[type='danger'],&.alert-danger{
         background-color: var(--danger-color);
-        color: var(--inverse-color);
+        color: var(--white);
     }
     
     &[type='warning'],&.alert-warning{
@@ -32,11 +32,11 @@ joomla-alert, .alert {
 
     &[type='success'],&.alert-success{
         background-color: var(--success-color);
-        color: var(--inverse-color);
+        color: var(--white);
     }
     &[type='info'],&.alert-info{
         background-color: var(--primary-color);
-        color: var(--inverse-color);
+        color: var(--white);
     }
 
 
