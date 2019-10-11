@@ -15,7 +15,7 @@ joomla-dropdown {
   &.j-dropdown-sm {
     line-height: 1;
   }
-  
+
   li{
     position: relative;
     ul{
@@ -79,11 +79,11 @@ joomla-dropdown {
       }
     }
   }
-  
+
   &[expanded] {
     display: block;
   }
-  
+
   .dropdown-item {
     display: block;
     padding: 0.571rem 1.143rem;
@@ -93,24 +93,24 @@ joomla-dropdown {
     background-color: transparent;
     border: 0;
     text-decoration: none;
-    border-bottom: 1px solid var(--background);
+    border-bottom: 1px solid var(--bg-color);
     cursor: pointer;
     color: var(--text-color);
     transition: 300ms;
     min-width: 100%;
     &:not([href]):not([tabindex]):hover,
     &:hover{
-      color: var(--link-color);
-      background-color: var(--button-background);
+      color: var(--primary-color);
+      background-color: var(--primary-lighter-color);
       .menu-item-title {
-        color: var(--link-color);
+        color: var(--primary-color);
       }
     }
     &:active{
       background: #ffffff;
     }
     &:focus {
-      outline: 2px solid var(--link-color);
+      outline: 2px solid var(--primary-color);
       background: #ffffff;
     }
     > p{
@@ -130,7 +130,7 @@ joomla-dropdown {
       left: 0;
     }
     .menu-item-title {
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
       font-weight: $medium-weight;
     }
     .text-mute {

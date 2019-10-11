@@ -1,6 +1,6 @@
 // Callout Web Component style
 joomla-callout {
-    background-color: var(--inverse-color);
+    background-color: var(--white);
     box-shadow: 0 1.2px 3.6px -1px rgba(29, 36, 39, 0.1), 0 6.4px 14.4px -3px rgba(29, 36, 39, 0.15);
     display: none;
     position: fixed;
@@ -40,27 +40,27 @@ joomla-callout::before {
     border: .7rem solid transparent;
     position: absolute;
     left: -20px;
-    border-right: 0.7rem solid var(--inverse-color);
+    border-right: 0.7rem solid var(--white);
     top: 0;
     margin: auto;
     bottom: 0;
 }
 .callout-title{
     font-size: 1.143rem;
-    color: var(--color);
+    color: var(--primary-text-color);
     margin-bottom: .8rem;
 }
 .callout-content{
     font-size: 1rem;
     line-height: 1.61;
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
 }
 .callout-link{
     display: inline-block;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.61;
-    color: var(--link-color);
+    color: var(--primary-color);
     text-decoration: none;
     margin-top: .65rem;
 }

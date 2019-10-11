@@ -30,7 +30,7 @@
 		.artilce-preview-link{
 			justify-content: center !important;
 			position: relative;
-			color: var(--inverse-background);
+			color: var(--primary-text-color);
 			.link-info{
 				display: flex;
 				i{
@@ -42,7 +42,7 @@
 			>a{
 				position: absolute;
 				right: 0;
-				color: var(--inverse-background);
+				color: var(--primary-text-color);
 				font-size: 16px;
 				border-left: solid 1px #f4f7fc;
 				width: 50px;
@@ -51,7 +51,7 @@
 				line-height: 44px;
 				transition: .3s;
 				&:hover, &:focus{
-					color: var(--link-color);
+					color: var(--primary-color);
 				}
 			}
 		}
@@ -90,7 +90,7 @@
 					.switcher{
 						padding-top: 5px;
 						label{
-							color: var(--color);
+							color: var(--primary-text-color);
 						}
 					}
 				}

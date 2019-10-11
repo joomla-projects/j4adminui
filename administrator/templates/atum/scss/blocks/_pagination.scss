@@ -9,7 +9,7 @@ joomla-pagination {
     }
     .pagination-label {
       padding: 0 10px;
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
     }
     ul{
       display: -ms-inline-flexbox;
@@ -22,7 +22,7 @@ joomla-pagination {
       .pagination-item {
         padding: 2px 7px;
         margin: 0 5px 0 0;
-        color: var(--secondary-color);;
+        color: var(--secondary-text-color);;
         width: 100%;
         text-align: center;
         cursor: pointer;
@@ -33,7 +33,7 @@ joomla-pagination {
         &:active {
           background: #ffffff;
           border-radius: 3px;
-          color: var(--inverse-background);
+          color: var(--primary-text-color);
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
         }
         &.dot-item {
@@ -66,14 +66,14 @@ joomla-pagination {
   }
   .pagination-item{
     a{
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
       text-decoration: none;
       display: block;
       line-height: 1.4rem;
       padding: 1px 6px;
       border-radius: 3px;
       &:hover, &:focus, &.active{
-        color: var(--inverse-background);
+        color: var(--primary-text-color);
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
         background-color: #ffffff;
       }
@@ -109,10 +109,10 @@ joomla-pagination {
         margin-right: 0;
         >a{
           padding: 1px 5px;
-          border-bottom: 1px solid var(--page-background);
+          border-bottom: 1px solid var(--bg-color);
           border-radius: 0px;
           &:hover, &:focus{
-            color: var(--link-color);
+            color: var(--primary-color);
 
           }
           &:after{
@@ -123,7 +123,7 @@ joomla-pagination {
     }
   }
   .items-toggler{
-    color: var(--primary-gradient-color);
+    color: var(var(--primary-light-color));
     cursor: pointer;
   }
   .minimize-items-wrapper.active {
@@ -146,16 +146,16 @@ joomla-pagination {
   max-width: 40px;
 
   .pagination-item {
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
     padding: 6px 8px;
-    border-bottom: 1px solid var(--page-background);
+    border-bottom: 1px solid var(--bg-color);
     cursor: pointer;
     transition: all .3s ease;
     width: 100%;
     line-height: 1;
     &:hover {
       color: var(--primary-color);
-      background-color: var(--button-background);
+      background-color: var(--primary-lighter-color);
     }
   }
 }
@@ -164,7 +164,7 @@ joomla-pagination {
   scrollbar-width: none;  // Firefox
 }
 
-.dot-item-list::-webkit-scrollbar { 
+.dot-item-list::-webkit-scrollbar {
   display: none;  // Safari and Chrome
 }
 

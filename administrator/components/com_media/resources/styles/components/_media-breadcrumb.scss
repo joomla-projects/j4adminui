@@ -9,7 +9,7 @@
   font-size: .9rem;
   line-height: $toolbar-height;
   background: transparent;
-  border-left: 1px solid var(--media-border);
+  border-left: 1px solid var(--bg-dark-color);
   
   ol {
     display: flex;
@@ -40,7 +40,7 @@
     color: $highlight-color;
   }
   a {
-    color: var(--secondary-color);
+    color: var(--secondary-text-color);
     font-size: 1.14rem;
     display: flex;
     align-items: center;

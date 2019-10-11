@@ -8,15 +8,15 @@ label {
 @mixin input-style () {
 	border: 2px solid var(--input-border-color);
 	border-radius: 3px;
-	background-color: var(--input-background-color);
+	background-color: var(--bg-light-color);
 	display: block;
 	height: 2.86rem;
 	min-width: 100%;
 	font-size: 1rem;
 	max-width: 100%;
-	color: var(--color);
+	color: var(--primary-text-color);
 	&::placeholder{
-		color: var(--color);
+		color: var(--primary-text-color);
 	}
 }
 
@@ -187,7 +187,7 @@ select{
 }
 
 .switcher__legend {
-	color: var(--secondary-color);
+	color: var(--secondary-text-color);
 	width: 170px;
 }
 // [class^="icon-"]:not(.input-group-text),
@@ -203,7 +203,7 @@ textarea.form-control {
 .custom-select {
 	@include input-style();
 	background: $custom-select-indicator no-repeat 100%/100rem;
-	background-color: var(--input-background-color);
+	background-color: var(--bg-light-color);
 	padding: 0 1.2rem;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -274,7 +274,7 @@ input {
 .input-container {
 	position: relative;
 	.input-group-text {
-		background: var(--transparent-bg);
+		background: transparent;
 		position: absolute;
 		right: 2px;
 		top: 4px;
@@ -290,7 +290,7 @@ input {
 //When container background not white this CSS will apply for form fields
 .j-main-container {
 	.form-control {
-		background-color: var(--input-background-color-white);
+		background-color: var(--white);
 	}
 }
 
@@ -315,10 +315,10 @@ input {
 		margin-right: 5px;
 	}
 	&.very-weak {
-		background-color: var(--danger-button);
+		background-color: var(--danger-color);
 	}
 	&.weak {
-		background-color: var(--danger-button-dark);
+		background-color: var(--danger-light-color);
 	}
 	&.good {
 		background-color: var(--warning-color);
@@ -327,6 +327,6 @@ input {
 		background-color: var(--success-color);
 	}
 	&.strong {
-		background-color: var(--success-button-dark);
+		background-color: var(--success-light-color);
 	}
 }

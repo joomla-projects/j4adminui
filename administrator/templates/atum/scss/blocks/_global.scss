@@ -14,9 +14,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color);
+  color: var(--primary-text-color);
   text-align: left;
-  background-color: var(--background);
+  background-color: var(--bg-color);
   padding: 0;
   margin: 0;
   &.monochrome {
@@ -130,7 +130,7 @@ body .container-main {
 }
 
 .row-selected {
-  background-color: var(--tr-hover-background);
+  background-color: var(--primary-lighter-color);
 }
 
 // Chosen (TEMPORARY)
@@ -202,12 +202,12 @@ body .container-main {
 }
 .form-title-wrap{
   label{
-    color: var(--color);
+    color: var(--primary-text-color);
     font-size: 1rem;
   }
   input{
-    color: var(--color);
-    background: var(--inverse-color);
+    color: var(--primary-text-color);
+    background: var(--white);
     font-size: 1.15rem;
     height: 3.4rem;
     padding-left: 1.7rem;

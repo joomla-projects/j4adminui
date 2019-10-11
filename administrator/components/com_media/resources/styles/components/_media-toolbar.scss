@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   padding: 0;
-  background-color: var(--inverse-color);
+  background-color: var(--white);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
   
@@ -31,7 +31,7 @@
 
 .media-view-icons {
   display: flex;
-  border-left: 1px solid var(--media-border);
+  border-left: 1px solid var(--bg-dark-color);
 }
 
 .media-view-icons {

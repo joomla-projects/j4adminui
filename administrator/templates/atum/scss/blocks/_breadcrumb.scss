@@ -21,10 +21,10 @@ joomla-breadcrumb{
     &:not(:last-child)>a:after {
       content: ">";
       margin-left: 8px;
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
     }
     a{
-      color: var(--secondary-color);
+      color: var(--secondary-text-color);
       text-decoration: none;
       display: block;
       line-height: 1.4rem;
@@ -33,10 +33,10 @@ joomla-breadcrumb{
       text-overflow: ellipsis;
       overflow: hidden;
       &:hover, &:focus{
-        color: var(--inverse-background);
+        color: var(--primary-text-color);
       }
       &.active{
-        color: var(--inverse-background);
+        color: var(--primary-text-color);
         pointer-events: none;
       }
     }
@@ -81,8 +81,8 @@ joomla-breadcrumb{
         >a{
           padding: 6px 18px;
           &:hover, &:focus{
-            background-color: var(--button-background);
-            color: var(--inverse-background);
+            background-color: var(--primary-lighter-color);
+            color: var(--primary-text-color);
           }
           &:after{
             display: none;
@@ -92,7 +92,7 @@ joomla-breadcrumb{
     }
   }
   .items-toggler{
-    color: var(--primary-gradient-color);
+    color: var(var(--primary-light-color));
     cursor: pointer;
   }
   .minimize-items-wrapper.active {

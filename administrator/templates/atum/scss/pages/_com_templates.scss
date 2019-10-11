@@ -4,7 +4,7 @@
     .template-name {
       font-size: $h3-font-size;
       a {
-        color: var(--color);
+        color: var(--primary-text-color);
         &:hover {
           color: var(--primary-color);
         }
