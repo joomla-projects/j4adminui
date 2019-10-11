@@ -34,6 +34,6 @@ echo JHtml::_('webcomponent.renderModal',
 	)
 );
 ?>
-<button<?php echo $id; ?> onclick="jQuery('#modal_<?php echo $selector; ?>').modal('show')" class="<?php echo $class; ?>" data-toggle="modal" title="<?php echo $text; ?>">
+<button<?php echo $id; ?> onclick="document.getElementById('#modal_<?php echo $selector; ?>').modal('show')" class="<?php echo $class; ?>" data-toggle="modal" title="<?php echo $text; ?>">
 	<span class="icon-<?php echo $icon; ?>" aria-hidden="true"></span><?php echo $text; ?>
 </button>
