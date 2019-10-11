@@ -18,33 +18,34 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 
 ?>
 
-<div class="mod-extension-cache module-<?php echo $module->id; ?>" id="mod-extension-cache-<?php echo $module->id; ?>">
-    <div class="j-card">
-        <div class="j-card-image-mod-container text-center">
-			<div class="j-card-img">
+<div class="mod-extension-cache text-center text-xl-left module-<?php echo $module->id; ?>" id="mod-extension-cache-<?php echo $module->id; ?>">
+	<div class="j-card-body">
+		<div class="row align-items-center">
+			<div class="col-12 col-xl-auto mb-4 mb-xl-0">
 				<img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
 			</div>
-			<div class="j-card-counter-msg">
-				<span class="j-count-number j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
-				<?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?>
+			<div class="col">
+				<div class="j-card-vertical-content pl-xl-4">
+					<div class="j-card-counter-msg">
+						<span class="j-count-number j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
+						<?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?>
+					</div>
+					<p>This tool will delete all Cache files from the cache folders - including current ones - from your web server.</p>
+					<div class="j-card-vertical-btn-group">
+						<?php if($cacheInfo['raw']): ?>
+							<button id="jclear-cache-btn" class="btn btn-primary" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
+								<span class="icon-trash" aria-hidden="true"></span>
+								<?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?>
+							</button>
+						<?php else: ?>
+							<button class="btn btn-primary disabled">
+								<span class="icon-info-circle" aria-hidden="true"></span>
+								<?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?>
+							</button>
+						<?php endif;?>
+					</div>
+				</div>
 			</div>
-        </div>
-        <div class="j-card-footer j-card-footer-lg">
-            <div class="j-card-footer-item">
-                <?php if($cacheInfo['raw']): ?>
-                    <button id="jclear-cache-btn" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
-                        <span class="j-card-footer-item-text p-0">
-                            <span class="j-card-icon j-icon-lg fas fa-trash-alt" aria-hidden="true"></span>
-                            <?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?>
-                        </span>
-                    </button>
-                <?php else: ?>
-                    <span class="j-card-footer-item-text">
-                        <span class="j-card-icon j-icon-lg fas fa-exclamation-circle" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?>
-                    </span>
-                <?php endif;?>
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>

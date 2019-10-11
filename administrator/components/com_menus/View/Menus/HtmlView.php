@@ -117,9 +117,9 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_menus');
 
-		ToolbarHelper::title(Text::_('COM_MENUS_VIEW_MENUS_TITLE'), 'list menumgr');
+		ToolbarHelper::title(Text::_('COM_MENUS_VIEW_MENUS_TITLE'), 'menu menumgr');
 
-		ToolbarHelper::custom('menus.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
+		ToolbarHelper::custom('menus.rebuild', 'refresh', 'refresh', 'JTOOLBAR_REBUILD', false);
 
 		if ($canDo->get('core.delete'))
 		{

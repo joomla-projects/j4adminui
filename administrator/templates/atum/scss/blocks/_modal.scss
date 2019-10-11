@@ -24,11 +24,6 @@ joomla-modal {
 	iframe {
 		height: 85vh;
 	}
-	&#moduleDashboardAddModal {
-		iframe {
-			margin: 0 0 0 -4px;
-		}
-	}
 	&.show {
 		opacity: 1;
 		visibility: visible;
@@ -218,4 +213,7 @@ joomla-modal {
 
 .contentpane {
   padding: 2rem 6rem 0;
+  @include media-breakpoint-down(xs) {
+	padding: 2rem 2rem 0;
+  }
 }

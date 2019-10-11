@@ -82,11 +82,11 @@ class HtmlView extends BaseHtmlView
 		$clientId = (int) $state->get('client_id', 0);
 
 		// Add page title
-		ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_SITE'), 'cube module');
+		ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_SITE'), 'modules module');
 
 		if ($clientId === 1)
 		{
-			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_ADMIN'), 'cube module');
+			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_ADMIN'), 'modules module');
 		}
 
 		// Get the toolbar object instance

@@ -38,8 +38,8 @@ $saveOrder = $listOrder == 'a.id';
 						array(
 							'url'         => $link,
 							'title'       => Text::_('COM_CSP_EDIT_PLUGIN_SETTINGS'),
-							'height'      => '400px',
-							'width'       => '800px',
+							'height'      => '75vh',
+							'width'       => '85vw',
 							'bodyHeight'  => '70',
 							'modalWidth'  => '80',
 							'closeButton' => false,

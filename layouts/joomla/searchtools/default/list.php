@@ -36,7 +36,7 @@ if (isset($list['list_fullordering'])) {
 						</div>
 					</div>
 					<?php if($fieldName === 'list_fullordering') : ?>
-						<button type="button" class="btn js-stools-order-toggler"><i class="fa <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'fa-sort-amount-up-alt' : 'fa-sort-amount-down-alt'; ?>"></i></button>
+						<button type="button" class="btn js-stools-order-toggler"><i class="duotone <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></i></button>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

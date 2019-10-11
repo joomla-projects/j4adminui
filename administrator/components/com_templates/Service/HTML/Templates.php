@@ -86,8 +86,8 @@ class Templates
 				$template . '-Modal',
 				array(
 					'title'  => Text::_('COM_TEMPLATES_BUTTON_PREVIEW'),
-					'height' => '500px',
-					'width'  => '800px',
+					'height' => '75vh',
+					'width'  => '85vw',
 					'footer' => $footer,
 				),
 				$body = '<div><img src="' . $preview . '" style="max-width:100%" alt="' . $template . '"></div>'

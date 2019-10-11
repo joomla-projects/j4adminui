@@ -12,6 +12,7 @@ namespace Joomla\Component\Banners\Administrator\View\Tracks;
 defined('_JEXEC') or die;
 
 use Exception;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
@@ -141,6 +142,16 @@ class HtmlView extends BaseHtmlView
 				'doTask'   => Route::_('index.php?option=com_banners&view=download&tmpl=component'),
 			]
 		);
+
+		// We have to move the modal, otherwise we get problems with the backdrop
+			// TODO: There should be a better workaround than this
+			Factory::getDocument()->addScriptDeclaration(
+				<<<JS
+window.addEventListener('DOMContentLoaded', function() {
+	document.body.appendChild(document.getElementById('modal_downloadModal'));
+});
+JS
+			);
 
 		$bar->appendButton('Custom', $dHtml, 'download');
 

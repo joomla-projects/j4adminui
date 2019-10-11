@@ -106,7 +106,7 @@ abstract class QuickIconHelper
 			if ($params->get('show_articles'))
 			{
 				$tmp = [
-					'image'   => 'icon-articles duotone',
+					'image'   => 'icon-content duotone',
 					'icon_class'   => 'success',
 					'link'    => Route::_('index.php?option=com_content'),
 					'linkadd' => Route::_('index.php?option=com_content&task=article.add'),
@@ -196,7 +196,7 @@ abstract class QuickIconHelper
 			if ($params->get('show_templates'))
 			{
 				self::$buttons[$key][] = [
-					'image'  => 'icon-paint-brush duotone',
+					'image'  => 'icon-brush duotone',
 					'icon_class'   => 'danger',
 					'link'   => Route::_('index.php?option=com_templates&client_id=0'),
 					'name'   => 'MOD_QUICKICON_TEMPLATES',

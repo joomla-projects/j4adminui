@@ -100,7 +100,7 @@ class MenutypeField extends ListField
 				break;
 		}
 
-		$dropdownText = Text::_('JSELECT') . ' <span class="icon-menu-2"></span>';
+		$dropdownText = Text::_('JSELECT') . ' <span class="icon-menu-dropdown"></span>';
 
 		if (!empty($value))
 		{

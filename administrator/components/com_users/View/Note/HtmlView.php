@@ -101,7 +101,7 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance();
 
-		ToolbarHelper::title(Text::_('COM_USERS_NOTES'), 'users user');
+		ToolbarHelper::title(Text::_('COM_USERS_NOTES'), 'user-notes user');
 
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_USERS_USER_NOTES_EDIT');
