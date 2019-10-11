@@ -19,5 +19,5 @@ use Joomla\CMS\Uri\Uri;
     <span class="header-item-text">
         <?php echo Text::_('MOD_FRONTEND_VIEW_SITE'); ?>
     </span>
-    <span class="header-item-icon fa fa-external-link-alt" aria-hidden="true"></span>
+    <span class="header-item-icon icon-new-tab" aria-hidden="true"></span>
 </a>

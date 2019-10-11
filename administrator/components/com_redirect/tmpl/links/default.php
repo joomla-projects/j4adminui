@@ -137,6 +137,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 				</tbody>
 			</table>
 
+			<div class="mb-4">
+				<?php echo $this->loadTemplate('addform'); ?>
+			</div>
+
 			<!-- load the pagination. -->
 			<div class="j-pagination-footer">
 				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
@@ -145,9 +149,6 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 		<?php endif; ?>
 
-		<?php if (!empty($this->items)) : ?>
-			<?php echo $this->loadTemplate('addform'); ?>
-		<?php endif; ?>
 		<?php // Load the batch processing form if user is allowed ?>
 			<?php if ($user->authorise('core.create', 'com_redirect')
 				&& $user->authorise('core.edit', 'com_redirect')

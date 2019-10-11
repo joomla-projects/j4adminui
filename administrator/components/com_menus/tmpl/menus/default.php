@@ -147,7 +147,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 										<div class="joomla-dropdown-container">
 											<a href="javascript:;" class="btn btn-secondary btn-sm j-has-dropdown" data-target="menuTypeModule<?php echo $item->id; ?>">
 												<?php echo Text::_('COM_MENUS_MODULES'); ?>
-												<span class="fa fa-caret-down"></span>
+												<span class="icon-arrow-down-4"></span>
 											</a>
 											<joomla-dropdown for="menuTypeModule<?php echo $item->id; ?>">
 												<?php foreach ($this->modules[$item->menutype] as &$module) : ?>

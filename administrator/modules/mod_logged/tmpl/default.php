@@ -30,7 +30,7 @@ use Joomla\CMS\Language\Text;
 
 				<div class="j-card-body text-center">
 					<div class="j-user-avatar mb-3">
-						<span class="fas fa-user" area-hidden="true"></span>
+						<span class="icon-user" area-hidden="true"></span>
 					</div>
 					<div>
 						<?php if (isset($user->editLink)) : ?>

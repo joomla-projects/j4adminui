@@ -133,15 +133,15 @@ HTMLHelper::_('script', 'com_modules/admin-module-edit_assignment.min.js', array
 			<div style="display:none" id="treeselectmenu">
 				<div class="nav-hover treeselect-menu">
 					<a href="javascript:;" class="treeselect-options-toggle" data-target="treemenu" role="button">
-						<span class="fas fa-ellipsis-h" area-hidden="true"></span>
+						<span class="icon-menu-horizontal" area-hidden="true"></span>
 						<span class="sr-only"><?php echo Text::sprintf('JGLOBAL_TOGGLE_DROPDOWN'); ?></span>
 					</a>
 					<joomla-dropdown for="treemenu">
-						<a class="dropdown-item checkall" href="javascript://"><span class="fas fa-check-square fa-fw" aria-hidden="true"></span> <?php echo Text::_('JSELECT'); ?></a>
-						<a class="dropdown-item uncheckall" href="javascript://"><span class="fas fa-square fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_DESELECT'); ?></a>
+						<a class="dropdown-item checkall" href="javascript://"><span class="icon-checkbox-checked" aria-hidden="true"></span> <?php echo Text::_('JSELECT'); ?></a>
+						<a class="dropdown-item uncheckall" href="javascript://"><span class="icon-checkbox-unchecked" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_DESELECT'); ?></a>
 						<div class="treeselect-menu-expand">
-							<a class="dropdown-item expandall" href="javascript://"><span class="fas fa-plus fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_EXPAND'); ?></a>
-							<a class="dropdown-item collapseall" href="javascript://"><span class="fas fa-minus fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_COLLAPSE'); ?></a>
+							<a class="dropdown-item expandall" href="javascript://"><span class="icon-expand-full" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_EXPAND'); ?></a>
+							<a class="dropdown-item collapseall" href="javascript://"><span class="icon-contract-2" aria-hidden="true"></span> <?php echo Text::_('COM_MODULES_COLLAPSE'); ?></a>
 						</div>
 					</joomla-dropdown>
 				</div>

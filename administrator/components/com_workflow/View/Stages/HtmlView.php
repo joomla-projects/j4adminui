@@ -156,7 +156,8 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		$canDo = ContentHelper::getActions($this->extension, 'workflow', $this->workflowID);
+		$canDo 	= ContentHelper::getActions($this->extension, 'workflow', $this->workflowID);
+		$user 	= Factory::getUser();
 
 		$toolbar = Toolbar::getInstance('toolbar');
 
@@ -173,7 +174,7 @@ class HtmlView extends BaseHtmlView
 			$arrow
 		);
 
-		if (!$isCore)
+		if ($isCore)
 		{
 			if ($canDo->get('core.create'))
 			{
@@ -186,7 +187,7 @@ class HtmlView extends BaseHtmlView
 					->text('JTOOLBAR_CHANGE_STATUS')
 					->toggleSplit(false)
 					->icon('fa fa-globe')
-					->buttonClass('btn btn-info')
+					->buttonClass('btn btn-white')
 					->listCheck(true);
 
 				$childBar = $dropdown->getChildToolbar();

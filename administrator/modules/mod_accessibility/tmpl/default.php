@@ -15,7 +15,7 @@ use Joomla\CMS\Language\Text;
 ?>
 
 <a class="header-item-link" href="" target="_blank">
-    <span class="header-item-icon fab fa-accessible-icon" aria-hidden="true"></span>
+    <span class="header-item-icon accessibility duotone" aria-hidden="true"></span>
     <span class="header-item-text">
         <?php echo Text::_('MOD_ACCESSIBILITY'); ?>
     </span>
