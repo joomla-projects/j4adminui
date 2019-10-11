@@ -91,6 +91,7 @@ else
 				<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>">
 			<?php endif; ?>
 		</div>
+		<hr class="m-0" />
 
 	<?php // Show items ?>
 
@@ -114,7 +115,6 @@ else
 					<?php endif; ?>
 
 					<div class="j-card-event-content">
-						<span>Project Release News</span>
 						<?php if (!empty($uri)) : ?>
 							<h5 class="feed-link">
 							<a href="<?php echo $uri; ?>" target="_blank">

@@ -46,7 +46,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($version = $item->xmldata->get('version')) : ?>
 													<span class="template-version small text-muted">v<?php echo $this->escape($version); ?></span>
 												<?php endif; ?>
-												<span id="template-info-<?php echo $item->extension_id; ?>" class="j-card-icon fas fa-info-circle ml-1" area-hidden="true"></span>
+												<span id="template-info-<?php echo $item->extension_id; ?>" class="j-card-icon icon-info-circle ml-1" area-hidden="true"></span>
 											</h4>
 										</div>
 

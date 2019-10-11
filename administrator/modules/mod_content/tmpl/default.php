@@ -18,15 +18,21 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 
 <joomla-tab>
 	<section orientation="vertical" id="module-content-latest-<?php echo $module->id; ?>" name="<?php echo Text::_('MOD_CONTENT_LATEST'); ?>">
-		<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+		<table class="table j-striped-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 			<caption class="sr-only"><?php echo $module->title; ?></caption>
+			<thead>
+				<tr>
+					<th scope="col" class="text-center" width="10%"><?php echo Text::_('JGRID_HEADING_ID'); ?></th>
+					<th scope="col"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
+					<th scope="col" class="text-center" width="20%"><?php echo Text::_('JDATE'); ?></th>
+				</tr>
+			</thead>
 			<tbody>
 				<?php if (count($latests)) : ?>
 				<?php foreach ($latests as $i => $item) : ?>
 				<tr>
-					<th scope="row" width="100px">
-						<?php echo Text::_('JGRID_HEADING_ID'); ?>
-						<small class="text-munted">(<?php echo $item->id; ?>)</small>
+					<th scope="row" class="text-center">
+						<?php echo $item->id; ?>
 					</th>
 					<td>
 						<?php if ($item->checked_out) : ?>
@@ -40,7 +46,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 							<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>
 						<?php endif; ?>
 					</td>
-					<td width="30%" class="text-right">
+					<td class="text-center">
 						<?php echo HTMLHelper::_('date', $item->publish_up, Text::_('DATE_FORMAT_LC4')); ?>
 					</td>
 				</tr>
@@ -56,15 +62,23 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 		</table>
 	</section>
 	<section id="module-content-popular-<?php echo $module->id; ?>" name="<?php echo Text::_('MOD_CONTENT_POPULAR'); ?>">
-		<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+		<table class="table j-striped-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 			<caption class="sr-only"><?php echo $module->title; ?></caption>
+			<thead>
+				<tr>
+					<th scope="col" class="text-center" width="10%"><?php echo Text::_('JGRID_HEADING_ID'); ?></th>
+					<th scope="col"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
+					<th scope="col" class="text-center" width="20%"><?php echo Text::_('JGLOBAL_HITS'); ?></th>
+				</tr>
+			</thead>
 			<tbody>
 				<?php if (count($popular)) : ?>
 				<?php foreach ($popular as $i => $item) : ?>
+				<?php $hits = (int) $item->hits; ?>
+				<?php $hits_class = ($hits >= 10000 ? 'danger' : ($hits >= 1000 ? 'warning' : ($hits >= 100 ? 'info' : 'secondary'))); ?>
 				<tr>
-					<th scope="row" width="100px">
-						<?php echo Text::_('JGRID_HEADING_ID'); ?>
-						<small class="text-munted">(<?php echo $item->id; ?>)</small>
+					<th scope="row" class="text-center">
+						<?php echo $item->id; ?>
 					</th>
 					<td scope="row">
 						<?php if ($item->checked_out) : ?>
@@ -78,9 +92,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 							<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>
 						<?php endif; ?>
 					</td>
-					<td width="20%" class="text-right">
-						<?php echo Text::_('JGLOBAL_HITS'); ?>
-						<span class="badge badge-warning"><?php echo $item->id; ?></span>
+					<td class="text-center">
+						<span class="badge badge-<?php echo $hits_class; ?> m-0"><?php echo $item->id; ?></span>
 					</td>
 				</tr>
 				<?php endforeach; ?>

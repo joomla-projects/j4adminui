@@ -857,7 +857,10 @@ window.Joomla.Modal = window.Joomla.Modal || {
     try {
       xhr = new XMLHttpRequest();
 
-      // Set progress report when upload or download files
+      /**
+       * Set progress report when upload or download files
+       * @since   4.0.0
+       */
       if (newOptions.onProgress) {
         xhr.upload.onprogress = newOptions.onProgress;
       }

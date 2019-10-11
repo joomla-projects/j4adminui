@@ -111,6 +111,13 @@
 
         buttonValues.push(tmp);
       });
+
+      /**
+       * Toggle menubar and some tools
+       * @param {Object} editor
+       *
+       * @since 4.0.0
+       */
       const toggleButtonValues = (editor) => {
         const { parentNode } = editor.editorContainer;
         const toxToolbar = editor.editorContainer.querySelector('.tox-toolbar');
@@ -139,11 +146,17 @@
           });
           editor.ui.registry.addButton('jstogglebutton', {
             icon: 'toogle_icon',
-            tooltip: 'Toggle Menubar',
+            tooltip: Joomla.JText._('PLG_TINY_TOGGLE_BUTTONS'),
             onAction: toggleButtonValues.bind(this, editor),
           });
         };
       }
+
+      /**
+       * After initiate the tinymce editor check if it has hide-menu class
+       * If it has hide-menu class then remove first 12 icons
+       * @since 4.0.0
+       */
       options.init_instance_callback = (editor) => {
         const { parentNode } = editor.editorContainer;
         if (parentNode.classList.contains('joomla-tinymce-hide-menu')) {

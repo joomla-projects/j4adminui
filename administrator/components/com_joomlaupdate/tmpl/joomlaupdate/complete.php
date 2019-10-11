@@ -21,7 +21,7 @@ use Joomla\CMS\Router\Route;
 	</legend>
 	<div>
 		<div class="j-alert j-alert-success">
-			<span class="fa fa-check-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('NOTICE'); ?></span>
+			<span class="icon-checkinmark" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('NOTICE'); ?></span>
 			<?php echo Text::sprintf('COM_JOOMLAUPDATE_VIEW_COMPLETE_MESSAGE', JVERSION); ?>
 		</div>
 	</div>

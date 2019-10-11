@@ -15,16 +15,16 @@ use Joomla\CMS\Language\Text;
 ?>
 <div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<?php if (count($list)) : ?>
+		<ul class="list-group list-group-flush">
 		<?php foreach ($list as $i => $item) : ?>
-			<ul class="list-group">
-				<li class="list-group-item">
-					<h5 class="text-muted">
-						<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
-					</h5>
-					<?php echo $item->message; ?>
-				</li>
-			</ul>
-		<?php endforeach; ?>
+			<li class="list-group-item py-4">
+				<h5 class="text-muted">
+					<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
+				</h5>
+				<?php echo $item->message; ?>
+			</li>
+			<?php endforeach; ?>
+		</ul>
 	<?php else : ?>
 		<div class="col">
 			<div class="j-card">

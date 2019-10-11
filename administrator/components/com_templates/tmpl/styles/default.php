@@ -57,22 +57,22 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($version = $item->xmldata->get('version')) : ?>
 													<span class="template-version small text-muted">v<?php echo $this->escape($version); ?></span>
 												<?php endif; ?>
-												<span id="template-info-<?php echo $item->id; ?>" class="j-card-icon fas fa-info-circle ml-1" area-hidden="true"></span>
+												<span id="template-info-<?php echo $item->id; ?>" class="j-card-icon icon-info-circle ml-1" area-hidden="true"></span>
 											</h4>
 											<?php if ($canCreate || $canDelete): ?>
 											<div class="j-card-header-right">
 												<div class="joomla-dropdown-container">
-													<a href="javascript:void(0);" data-target="template-style-actions-<?php echo $item->id; ?>"><span class="j-card-header-icon fas fa-ellipsis-h" area-hidden="true"></span></a>
+													<a href="javascript:void(0);" data-target="template-style-actions-<?php echo $item->id; ?>"><span class="j-card-header-icon icon-menu-horizontal" area-hidden="true"></span></a>
 													<joomla-dropdown for="template-style-actions-<?php echo $item->id; ?>">
 														<?php if($canCreate) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.duplicate')">
-															<span class="fas fa-clone fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DUPLICATE'); ?>
+															<span class="icon-copy" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DUPLICATE'); ?>
 														</a>
 														<?php endif; ?>
 
 														<?php if($canDelete) : ?>
 														<a class="dropdown-item" href="javascript:void(0);" onclick="return Joomla.listItemTask('cb<?php echo $i; ?>', 'styles.delete')">
-															<span class="fas fa-trash fa-fw" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DELETE'); ?>
+															<span class="icon-trash" aria-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_DELETE'); ?>
 														</a>
 														<?php endif; ?>
 													</joomla-dropdown>
@@ -87,7 +87,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<?php if ($clientId === 0) : ?>
 													<div class="j-card-media-overlay align-items-center justify-content-center">
 														<a href="<?php echo Route::_( Uri::root() . 'index.php?tp=1&templateStyle=' . (int) $item->id); ?>" target="_blank" class="btn btn-default">
-															<i class="fas fa-eye"></i> &nbsp;<?php echo Text::_('COM_TEMPLATES_PREVIEW'); ?>
+															<i class="icon-eye"></i> &nbsp;<?php echo Text::_('COM_TEMPLATES_PREVIEW'); ?>
 														</a>
 													</div>
 												<?php endif; ?>
@@ -125,7 +125,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 												<div class="d-flex align-items-center">
 													<div class="flex-grow-1">
 														<?php if ( $item->home != '0' && $item->image) : ?>
-															<span class="fas fa-language fa-fw mr-2" area-hidden="true" aria-label="<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>" title="<?php echo Text::sprintf('COM_TEMPLATES_STYLE_SET_GRID_DEFAULT', $item->language_title); ?>"></span>
+															<span class="icon-multilingual mr-2" area-hidden="true" aria-label="<?php echo Text::sprintf('COM_TEMPLATES_GRID_UNSET_LANGUAGE', $item->language_title); ?>" title="<?php echo Text::sprintf('COM_TEMPLATES_STYLE_SET_GRID_DEFAULT', $item->language_title); ?>"></span>
 														<?php endif; ?>
 														<?php echo Text::_('COM_TEMPLATES_STYLE_SET_DEFAULT'); ?>
 													</div>
@@ -155,7 +155,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 															<span class="fas fa-code" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_TEMPLATE_EDIT_FILES'); ?>
 														</a>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>" class="btn btn-primary">
-															<span class="fas fa-cog" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_OPTIONS'); ?>
+															<span class="icon-cog" area-hidden="true"></span> <?php echo Text::_('COM_TEMPLATES_STYLE_OPTIONS'); ?>
 														</a>
 													</div>
 												</div>

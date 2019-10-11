@@ -21,7 +21,7 @@ $app      = Factory::getApplication();
 ?>
 
 <a class="header-item-link <?php echo ($hideLinks ? 'disabled' : ''); ?>" <?php echo ($hideLinks ? '' : 'href="' . Route::_($route) . '"'); ?> title="<?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>">
-	<span class="header-item-icon fa fa-envelope" aria-hidden="true"></span>
+	<span class="header-item-icon icon-envelope" aria-hidden="true"></span>
 	<span class="header-item-text">
 		<?php echo Text::_('MOD_MESSAGES_PRIVATE_MESSAGES'); ?>
 	</span>

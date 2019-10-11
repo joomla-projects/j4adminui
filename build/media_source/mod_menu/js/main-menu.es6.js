@@ -1,8 +1,8 @@
 /**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
  *
- * Name v0.0.1
- * Description: Initiate the joomla admin menu
- *
+ * @since   4.0.0
  */
 
 /* eslint-disable */
@@ -15,8 +15,7 @@
   /* eslint-enable */
   // eslint-disable-next-line func-names
   const JoomlaMenu = (function () {
-    // eslint-disable-next-line no-shadow
-    class JoomlaMenu {
+    class JoomlaMenuClass {
       constructor(element, options) {
         this.settings = {
           triggerParent: 'li',
@@ -41,6 +40,11 @@
 
       /**
        * Initiate function for the admin menu
+       * If has no element then return false
+       *
+       * Collect all sub menu ul and check if any one has open class
+       * If has open class then show otherwise hide them
+       * Bind click event each link which has sub-menus
        */
       init() {
         if (this.element === null) { return; }
@@ -90,7 +94,10 @@
           .call(li.parentNode.children)
           .filter(c => c !== li);
         if (eleParentSiblins.length > 0) {
-          for (let i = 0, itemParentSiblins = eleParentSiblins; i < itemParentSiblins.length; i += 1) {
+          for (
+            let i = 0,
+              itemParentSiblins = eleParentSiblins;
+            i < itemParentSiblins.length; i += 1) {
             const sibli = itemParentSiblins[i];
             const sibUl = sibli.querySelector(this.config.subMenuEl);
             if (sibUl !== null) {
@@ -132,6 +139,10 @@
         a.classList.add(this.classList.COLLAPSED);
       }
 
+      /**
+       * Toggle provide ul element
+       * @param {element} ul
+       */
       toggle(ul) {
         if (ul.parentNode.classList.contains(this.classList.ACTIVE)) {
           this.hide(ul);
@@ -150,7 +161,7 @@
         this.toggle(ul);
       }
     }
-    return JoomlaMenu;
+    return JoomlaMenuClass;
   }());
   return JoomlaMenu;
 }));

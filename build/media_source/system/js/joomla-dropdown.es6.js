@@ -1,11 +1,29 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-cond-assign */
+/* eslint-disable class-methods-use-this */
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla dropdown web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  for                 uniqueue ID with hash(#) for target button.
+ */
+
 (() => {
   class JoomlaDropdownElement extends HTMLElement {
     constructor() {
       super();
       this.position = 'right';
       this.checkSubmenu = this.checkSubmenu.bind(this);
+      this.clickOutside = this.clickOutside.bind(this);
+      this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     /* Attributes to monitor */
@@ -19,10 +37,10 @@
 
     connectedCallback() {
       this.setAttribute('aria-labelledby', this.for.substring(1));
-      const button = document.querySelector(`[data-target=${this.for}]`);
+      this.button = document.querySelector(`[data-target=${this.for}]`);
       const innerLinks = this.querySelectorAll('a');
 
-      if (!button.hasAttribute('data-target')) {
+      if (!this.button.hasAttribute('data-target')) {
         return;
       }
 
@@ -33,43 +51,52 @@
           link.parentElement.classList.add(this.position);
         }
       });
-      button.setAttribute('aria-haspopup', true);
-      button.setAttribute('aria-expanded', false);
+      this.button.setAttribute('aria-haspopup', true);
+      this.button.setAttribute('aria-expanded', false);
+      this.button.addEventListener('click', this.toggleMenu, true);
+    }
 
-      button.addEventListener('click', (event) => {
+    disconnectedCallback() {
+      this.button.removeEventListener('click', this.toggleMenu, true);
+    }
+
+    /**
+     * Hide or Show menu when click on target element
+     * @param {Object} event
+     */
+    toggleMenu(event) {
+      if (event.target.tagName === 'A') {
         event.preventDefault();
-        if (this.hasAttribute('expanded')) {
-          this.removeAttribute('expanded');
-          event.target.setAttribute('aria-expanded', false);
-        } else {
-          this.setAttribute('expanded', '');
-          event.target.setAttribute('aria-expanded', true);
+      }
+      if (this.hasAttribute('expanded')) {
+        this.removeAttribute('expanded');
+        event.target.setAttribute('aria-expanded', false);
+      } else {
+        this.setAttribute('expanded', '');
+        event.target.setAttribute('aria-expanded', true);
+      }
+      this.setPosition();
+
+      document.addEventListener('click', this.clickOutside, true);
+
+      const innerLinks = this.querySelectorAll('a');
+      innerLinks.forEach((innerLink) => {
+        innerLink.addEventListener('click', this.checkSubmenu, true);
+      });
+      // toggle dropdown onhover
+      const lists = this.querySelectorAll('li.has-submenu');
+      lists.forEach((list) => {
+        if (list.getAttribute('data-action') !== 'click') {
+          list.addEventListener('mouseenter', this.showSubmenu, true);
+          list.addEventListener('mouseleave', this.hideSubmenu, true);
         }
-
-        this.setPosition();
-
-        document.addEventListener('click', (event) => {
-          if (!button.contains(event.target) && event.target !== button) {
-            if (!this.findAncestor(event.target, 'joomla-dropdown')) {
-              this.close();
-            }
-          }
-        });
-
-        innerLinks.forEach((innerLink) => {
-          innerLink.addEventListener('click', this.checkSubmenu, true);
-        });
-        // toggle dropdown onhover
-        const lists = this.querySelectorAll('li.has-submenu');
-        lists.forEach((list) => {
-          if (list.getAttribute('data-action') !== 'click') {
-            list.addEventListener('mouseenter', this.showSubmenu, true);
-            list.addEventListener('mouseleave', this.hideSubmenu, true);
-          }
-        });
       });
     }
 
+    /**
+     * Show sub-menu when trigger on parent link
+     * @param {Object} event
+     */
     showSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu')) {
@@ -77,6 +104,10 @@
       }
     }
 
+    /**
+     * Hide sub-menu
+     * @param {Obejct} event
+     */
     hideSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
@@ -84,6 +115,23 @@
       }
     }
 
+    /**
+     * Check if click outside of dropdown
+     * If click outside then close dropdown
+     * @param {Object} event
+     */
+    clickOutside(event) {
+      if (this.button.contains(event.target) === false && event.target !== this.button) {
+        if (!this.findAncestor(event.target, 'joomla-dropdown')) {
+          this.close();
+        }
+      }
+    }
+
+    /**
+     * Check if dropdown has sub-menu
+     * @param {Object} event
+     */
     checkSubmenu(event) {
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
@@ -101,6 +149,13 @@
       }
     }
 
+    /**
+     * Check if the attribute changed
+     * If position change then update the position
+     * @param {String} attr
+     * @param {String} oldValue
+     * @param {String} newValue
+     */
     attributeChangedCallback(attr, oldValue, newValue) {
       switch (attr) {
         case 'position':
@@ -114,6 +169,10 @@
       }
     }
 
+    /**
+     * Check dropdown position only for left and right
+     * If current position not satisfied then move it to oposite
+     */
     setPosition() {
       const dropdownRect = this.getBoundingClientRect();
       const button = document.querySelector(`[data-target=${this.for}]`);
@@ -134,6 +193,9 @@
       this.removeEventListener(eventName, this);
     }
 
+    /**
+     * Close the dropdown
+     */
     close() {
       // removing 'open' attribute of dropdown items
       const dropdownItems = document.querySelectorAll('.has-submenu');
@@ -144,14 +206,15 @@
       });
       const button = document.querySelector(`[data-target=${this.getAttribute('aria-labelledby')}]`);
       this.removeAttribute('expanded');
-      button && button.setAttribute('aria-expanded', false);
+      if (button) button.setAttribute('aria-expanded', false);
 
-      // remove the click listener on list items
+      // remove unnecessary events when dropdown closed
       window.removeEventListener('click', this.checkSubmenu, true);
+      document.removeEventListener('click', this.clickOutside, true);
     }
 
-    // eslint-disable-next-line class-methods-use-this
     findAncestor(el, tagName) {
+      // eslint-disable-next-line no-param-reassign
       while ((el = el.parentElement) && el.nodeName.toLowerCase() !== tagName);
       return el;
     }

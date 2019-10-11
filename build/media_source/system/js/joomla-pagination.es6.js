@@ -1,5 +1,25 @@
-/* eslint-disable no-useless-return */
-/* eslint-disable max-len */
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla pagination web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  href        By this attribute anchor a tag will get href value <a href="href">
+ * @param   string  text        By this attribute anchor a tag will
+ *                              get innertext <a href="href">text</a>
+ * @param   string  value       By this attribute anchor a tag will
+ *                              get value <a value="12"></a>
+ * @param   string  class       Add custom class
+ * @param   string  activeClass Add active item class
+ */
+
 ((Joomla) => {
   class JoomlaPagination extends HTMLElement {
     constructor() {
@@ -23,7 +43,8 @@
         lastText: 'Last',
         lastIcon: '>>',
         navBtnsState: 'icon', // allowed values are ['icon', 'text', 'text-icon'],
-        disableBtns: [], // this allowes disable the navigation buttons if anywant wants, allowed texts [next, prev, first, last]
+        disableBtns: [], // this allowes disable the navigation buttons
+        // if anywant wants, allowed texts [next, prev, first, last]
         limit: 10, // how many steps it will go after clicking next
         inputSelector: '#list_limit', // the hidden input field name
         formSelector: '#adminForm', // the form id
@@ -161,6 +182,7 @@
     }
 
     submitPaginationForm() {
+      // eslint-disable-next-line max-len
       this.inputField.value = parseInt(this.options.limit, 10) * parseInt(this.currentItemIndex, 10);
       this.adminForm.submit();
     }
@@ -238,8 +260,13 @@
       JoomlaPagination.clearChildren(this.pageUl);
       this.removeActiveElement();
 
-      const visibleLength = (this.options.totalVisible > this.pageCount ? this.pageCount : this.options.totalVisible) || this.pageCount;
-      const paginationArray = JoomlaPagination.generatePaginationList(this.currentItemIndex + 1, this.rawItems.length, visibleLength);
+      const visibleLength = (this.options.totalVisible > this.pageCount
+        ? this.pageCount
+        : this.options.totalVisible) || this.pageCount;
+      const paginationArray = JoomlaPagination.generatePaginationList(
+        this.currentItemIndex + 1,
+        this.rawItems.length, visibleLength,
+      );
       this.dotItems = [];
       if (paginationArray.length > 0) {
         paginationArray.forEach((itemIndex, index) => {
@@ -294,8 +321,6 @@
           dotItemsUl.appendChild(this.rawItems[item - 1]);
         });
         this.appendChild(dotItemsUl);
-      } else {
-        return;
       }
     }
 
