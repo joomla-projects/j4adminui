@@ -197,16 +197,15 @@
 
     /* Check overflow for tabs */
     checkoverflow() {
-      const tablist = this.querySelector('[role="tablist"]');        
+      const tablist = this.querySelector('[role="tablist"]');
       const listItems = [...tablist.querySelectorAll('li:not(.-more)')];
       const moreLi = tablist.querySelector('li.-more');
-      if(this.view === 'tabs') {
-        const totalListWidth = listItems.reduce((total, listItem) => {
-          return total += listItem.offsetWidth;  
-        }, 0)
-
-        if(totalListWidth > tablist.offsetWidth) {
-          if(!moreLi) {
+      if (this.view === 'tabs') {
+        /* eslint-disable */
+        const totalListWidth = listItems.reduce((total, listItem) => total += listItem.offsetWidth, 0);
+        /* eslint-enable */
+        if (totalListWidth > tablist.offsetWidth) {
+          if (!moreLi) {
             // overflow scroller
             tablist.insertAdjacentHTML('beforeend', `
               <li class="-more">
@@ -214,16 +213,11 @@
               </li>
             `);
           }
-        } else {
-          if(moreLi) {
-            tablist.removeChild(moreLi);
-          }
+        } else if (moreLi) {
+          tablist.removeChild(moreLi);
         }
-
-      } else {
-          if(moreLi) {
-            tablist.removeChild(moreLi);
-          }
+      } else if (moreLi) {
+        tablist.removeChild(moreLi);
       }
     }
 

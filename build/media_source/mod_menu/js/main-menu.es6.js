@@ -15,7 +15,7 @@
   /* eslint-enable */
   // eslint-disable-next-line func-names
   const JoomlaMenu = (function () {
-    class JoomlaMenu {
+    class JoomlaMenuClass {
       constructor(element, options) {
         this.settings = {
           triggerParent: 'li',
@@ -161,7 +161,7 @@
         this.toggle(ul);
       }
     }
-    return JoomlaMenu;
+    return JoomlaMenuClass;
   }());
   return JoomlaMenu;
 }));
