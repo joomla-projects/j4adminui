@@ -22,12 +22,19 @@ extract($displayData);
 
 $classes = array_filter((array) $classes);
 
+$sronly = strtolower($displayData['field']->type) === 'editor' ? 'sr-only' : '';
+
 $id    = $for . '-lbl';
 $forAttr = '';
 
 if ($required)
 {
 	$classes[] = 'required';
+}
+
+if (!empty($sronly))
+{
+	$classes[] = $sronly;
 }
 
 if(!isset($displayData['field']->skipLabelFor) || $displayData['field']->skipLabelFor !== true)
