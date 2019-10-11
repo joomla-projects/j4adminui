@@ -502,3 +502,19 @@ body .container-main {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+
+.j-text-success{
+	color: var(--success-color) !important;
+}
+
+.j-text-warning{
+	color: var(--warning-color) !important;
+}
+
+.j-text-danger{
+	color: var(--danger-color) !important;
+}
+
+.j-text-primary{
+	color: var(--primary-color) !important;
+}
