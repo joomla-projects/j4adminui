@@ -1,3 +1,25 @@
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla tab web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  orientation         Vertical or landscape position of tab
+ *
+ * Section Attributes
+ * @param   string  id                  uniqueue ID.
+ * @param   string  name                This attribute is responsible for tab menu name
+ * @param   boolean disable             If true then this tab will be disabled
+ *
+ */
+
 (() => {
   customElements.define('joomla-tab', class extends HTMLElement {
     /* Attributes to monitor */

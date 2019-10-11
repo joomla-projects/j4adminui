@@ -170,18 +170,18 @@
     }
 
     updateActionButton(trigger) {
-      let input = this.querySelector(this.input);
+      const input = this.querySelector(this.input);
       const div = this.querySelector('.field-media-preview-wrapper');
-      if( trigger === '1' ) {
+      if (trigger === '1') {
         input.classList.remove('hidden');
         div.classList.add('has-image');
-        this.button.classList.add("hidden")
-        this.buttonClearEl.classList.remove('hidden')
+        this.button.classList.add('hidden');
+        this.buttonClearEl.classList.remove('hidden');
       } else {
         input.classList.add('hidden');
         div.classList.remove('has-image');
-        this.buttonClearEl.classList.add("hidden")
-        this.button.classList.remove('hidden')
+        this.buttonClearEl.classList.add('hidden');
+        this.button.classList.remove('hidden');
       }
     }
 
@@ -197,20 +197,20 @@
     attributeChangedCallback(attr, oldValue, newValue) {
       switch (attr) {
         case 'has-preview-image':
-          if (oldValue !== newValue && typeof this.button !== 'undefined' ) {
-            this.updateActionButton(newValue)
+          if (oldValue !== newValue && typeof this.button !== 'undefined') {
+            this.updateActionButton(newValue);
           }
           break;
-        default: 
+        default:
           break;
-        }
       }
+    }
 
     onSelected(event) {
       // event.target.removeEventListener('click', this.onSelected);
       event.preventDefault();
       event.stopPropagation();
-      this.setAttribute('has-preview-image','1')
+      this.setAttribute('has-preview-image', '1');
       this.modalClose();
       return false;
     }
@@ -233,7 +233,7 @@
     }
 
     clearValue() {
-      this.setAttribute('has-preview-image','');
+      this.setAttribute('has-preview-image', '');
       this.setValue('');
     }
 

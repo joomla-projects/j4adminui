@@ -128,7 +128,10 @@ class PlgEditorTinymce extends CMSPlugin
 		// Set editor to readonly mode
 		$textarea->readonly = !empty($params['readonly']);
 
-		// Render Editor markup
+		/**
+		 * Render Editor markup
+		 * Add extra class for tinymce menu-hide in initiale time
+		 */
 		$editor = '<div class="js-editor-tinymce joomla-tinymce-hide-menu">';
 		$editor .= LayoutHelper::render('joomla.tinymce.textarea', $textarea);
 		$editor .= $this->_toogleButton($id);

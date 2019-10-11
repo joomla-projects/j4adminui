@@ -1,9 +1,26 @@
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla callout web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  for                 uniqueue ID with hash(#) for target button.
+ * @param   boolean dismiss             True if you need close button in callout
+ */
+
 (() => {
   class JoomlaCalloutElement extends HTMLElement {
     constructor() {
       super();
-      this.space = 15;
-      this.action = 'click';
+      this.space = 15; // Minimum Space
+      this.action = 'click'; // Action
       this.disableEvent = this.disableEvent.bind(this);
       this.setPositionOnScroll = this.setPositionOnScroll.bind(this);
     }
@@ -49,6 +66,10 @@
       });
     }
 
+    /**
+     * Open callout method
+     * @param {Object} event
+     */
     open(event) {
       const innerLinks = this.querySelectorAll('a');
       if (this.hasAttribute('expanded')) {
@@ -74,6 +95,10 @@
       });
     }
 
+    /**
+     * Close callout on outside trigger
+     * @param {object} event
+     */
     disableEvent(event) {
       if (
         !this.button.contains(event.target)
@@ -100,6 +125,14 @@
     }
 
     // eslint-disable-next-line class-methods-use-this
+    /**
+     * Check the callout position
+     * If position right and have no space then set position to oposite
+     * Same as for top|bottom|left
+     * @param {String} currentPosition
+     * @param {Object} buttonRect
+     * @param {Object} calloutRect
+     */
     checkPosition(currentPosition, buttonRect, calloutRect) {
       if (currentPosition === 'bottom' && (buttonRect.top + calloutRect.height) > window.innerHeight) {
         this.setAttribute('position', 'top');
@@ -117,6 +150,13 @@
       return currentPosition;
     }
 
+    /**
+     * Calculate position and set inline style in element
+     * @param {Object} copyPosition
+     * @param {Object} buttonRect
+     * @param {Object} calloutRect
+     * @param {Int} space
+     */
     calloutPosition(copyPosition, buttonRect, calloutRect, space) {
       const diffWidth = Math.round(Math.abs(calloutRect.width - buttonRect.width) / 2);
       const diffHeight = Math.round(Math.abs(calloutRect.height - buttonRect.height) / 2);
@@ -156,8 +196,6 @@
       }
     }
 
-
-    /*eslint-disable */
     /* Method to dispatch events */
     dispatchCustomEvent(eventName) {
       const OriginalCustomEvent = new CustomEvent(eventName);
@@ -166,9 +204,9 @@
       this.removeEventListener(eventName, this);
     }
 
-
-    /* eslint-enable */
-
+    /**
+     * Close method for close the callout
+     */
     close() {
       const button = document.querySelector(`#${this.getAttribute('aria-labelledby')}`);
       this.removeAttribute('expanded');
@@ -178,6 +216,9 @@
       window.removeEventListener('scroll', this.setPositionOnScroll, true);
     }
 
+    /**
+     * Append close button if dismiss set to true
+     */
     appendCloseButton() {
       const self = this;
       const closeButton = document.createElement('button');
@@ -186,13 +227,11 @@
         closeButton.innerHTML = '<span aria-hidden="true">&times;</span>';
         closeButton.setAttribute('aria-label', this.getText('JCLOSE', 'Close'));
       }
-
       if (this.firstChild) {
         this.insertBefore(closeButton, this.firstChild);
       } else {
         this.appendChild(closeButton);
       }
-
       /* Add the required listener */
       if (closeButton) {
         closeButton.addEventListener('click', (e) => {
@@ -203,6 +242,11 @@
       }
     }
     /* eslint-disable */
+    /**
+     * Find the ancestor element from target element
+     * @param {Object} el 
+     * @param {String} tagName 
+     */
     findAncestor(el, tagName) {
       while ((el = el.parentElement) && el.nodeName.toLowerCase() !== tagName);
       return el;

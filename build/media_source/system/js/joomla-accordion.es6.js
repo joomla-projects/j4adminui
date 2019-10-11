@@ -1,3 +1,26 @@
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla accordion web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  toggle              This attribute is responsible for collapsing open element
+ * @param   boolean animation           If true then animation will be applied
+ *
+ * Section Attributes
+ * @param   string  id                  uniqueue ID.
+ * @param   string  name                This attribute is responsible for tab menu name
+ * @param   string  class               Classes of the accordion
+ *
+ */
+
 (() => {
   class JoomlaAccordionElement extends HTMLElement {
     /* Attributes to monitor */

@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
 ((Joomla) => {
   class JoomlaFieldPassword extends HTMLElement {
     constructor() {
@@ -289,7 +296,6 @@
           if (this.strengthMeter) {
             this.inputGroup.append(this.indicatorsContainer);
           }
-          
           this.passwordGroup.append(this.inputGroup);
           this.append(this.passwordGroup);
         }

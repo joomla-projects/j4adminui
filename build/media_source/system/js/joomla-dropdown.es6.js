@@ -1,5 +1,21 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-cond-assign */
+/* eslint-disable class-methods-use-this */
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla dropdown web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  for                 uniqueue ID with hash(#) for target button.
+ */
+
 (() => {
   class JoomlaDropdownElement extends HTMLElement {
     constructor() {
@@ -44,6 +60,10 @@
       this.button.removeEventListener('click', this.toggleMenu, true);
     }
 
+    /**
+     * Hide or Show menu when click on target element
+     * @param {Object} event
+     */
     toggleMenu(event) {
       if (event.target.tagName === 'A') {
         event.preventDefault();
@@ -55,10 +75,10 @@
         this.setAttribute('expanded', '');
         event.target.setAttribute('aria-expanded', true);
       }
-
       this.setPosition();
 
       document.addEventListener('click', this.clickOutside, true);
+
       const innerLinks = this.querySelectorAll('a');
       innerLinks.forEach((innerLink) => {
         innerLink.addEventListener('click', this.checkSubmenu, true);
@@ -73,7 +93,10 @@
       });
     }
 
-    // eslint-disable-next-line class-methods-use-this
+    /**
+     * Show sub-menu when trigger on parent link
+     * @param {Object} event
+     */
     showSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu')) {
@@ -81,7 +104,10 @@
       }
     }
 
-    // eslint-disable-next-line class-methods-use-this
+    /**
+     * Hide sub-menu
+     * @param {Obejct} event
+     */
     hideSubmenu(event) {
       event.preventDefault();
       if (event.target.classList.contains('has-submenu') && event.target.hasAttribute('open')) {
@@ -89,6 +115,11 @@
       }
     }
 
+    /**
+     * Check if click outside of dropdown
+     * If click outside then close dropdown
+     * @param {Object} event
+     */
     clickOutside(event) {
       if (this.button.contains(event.target) === false && event.target !== this.button) {
         if (!this.findAncestor(event.target, 'joomla-dropdown')) {
@@ -97,6 +128,10 @@
       }
     }
 
+    /**
+     * Check if dropdown has sub-menu
+     * @param {Object} event
+     */
     checkSubmenu(event) {
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
@@ -114,6 +149,13 @@
       }
     }
 
+    /**
+     * Check if the attribute changed
+     * If position change then update the position
+     * @param {String} attr
+     * @param {String} oldValue
+     * @param {String} newValue
+     */
     attributeChangedCallback(attr, oldValue, newValue) {
       switch (attr) {
         case 'position':
@@ -127,6 +169,10 @@
       }
     }
 
+    /**
+     * Check dropdown position only for left and right
+     * If current position not satisfied then move it to oposite
+     */
     setPosition() {
       const dropdownRect = this.getBoundingClientRect();
       const button = document.querySelector(`[data-target=${this.for}]`);
@@ -147,6 +193,9 @@
       this.removeEventListener(eventName, this);
     }
 
+    /**
+     * Close the dropdown
+     */
     close() {
       // removing 'open' attribute of dropdown items
       const dropdownItems = document.querySelectorAll('.has-submenu');
@@ -159,13 +208,13 @@
       this.removeAttribute('expanded');
       if (button) button.setAttribute('aria-expanded', false);
 
-      // remove the click listener on list items
+      // remove unnecessary events when dropdown closed
       window.removeEventListener('click', this.checkSubmenu, true);
       document.removeEventListener('click', this.clickOutside, true);
     }
 
-    // eslint-disable-next-line class-methods-use-this
     findAncestor(el, tagName) {
+      // eslint-disable-next-line no-param-reassign
       while ((el = el.parentElement) && el.nodeName.toLowerCase() !== tagName);
       return el;
     }

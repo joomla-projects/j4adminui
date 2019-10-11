@@ -1,3 +1,28 @@
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla alert web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  type                This attribute is responsible for the looks.
+ * @param   boolean dismiss             Appends the x button. True is the only value.
+ * @param   boolean auto-dismiss        Controls the auto close functionality of the alert.
+ *                                      Values (integers) represent milliseconds
+ * @param   boolean acknowledge         Appends a generic button with a title Ok.
+ *                                      True is the only value.
+ * @param   string  href                If is set a redirect button is created.
+ *                                      Value must be an actual url
+ * @param   string  position            Adjust the alerts's position to different corners.
+ *                                      Possible values: top-left, top-center and top-right
+ */
+
 (() => {
   class JoomlaAlertElement extends HTMLElement {
     /* Attributes to monitor */
@@ -97,7 +122,7 @@
 
     /* Method to close the alert */
     close() {
-      this.style.animation = "fadeOutUp .3s";
+      this.style.animation = 'fadeOutUp .3s';
       this.style.opacity = 0;
       setTimeout(() => {
         this.dispatchCustomEvent('joomla.alert.close');

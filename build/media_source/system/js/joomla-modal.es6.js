@@ -1,3 +1,25 @@
+/**
+ * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ *
+ * @since   4.0.0
+ */
+
+/**
+ * Joomla modal web component
+ *
+ * More info about Web Component
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components
+ *
+ * @param   string  id                  uniqueue ID.
+ *                                      This ID will pass by target attribute (data-href)
+ * @param   string  class               classes
+ * @param   string  title               The new title for the modal.
+ * @param   string  close-button-title  Close button text
+ * @param   string  iframe              Iframe url for open iframe into modal
+ *
+ */
+
 (() => {
   customElements.define('joomla-modal', class extends HTMLElement {
     constructor() {
@@ -171,7 +193,7 @@
       }
       this.dispatchCustomEvent('joomla.modal.close');
 
-      this.style.animation = "fadeOutUp .3s";
+      this.style.animation = 'fadeOutUp .3s';
       this.style.opacity = 0;
       setTimeout(() => {
         if (this.dropShadow) {
@@ -219,8 +241,6 @@
     }
 
     adjustDimensions() {
-      // Legacy code
-      // Height
       let modalHeight = this.offsetHeight;
       modalHeight += parseInt(window.getComputedStyle(this).getPropertyValue('margin-top'), 10);
       modalHeight += parseInt(window.getComputedStyle(this).getPropertyValue('margin-bottom'), 10);

@@ -21,9 +21,6 @@
     }
   };
 
-  // eslint-disable-next-line no-new
-  // new window.MetisMenu('#menu');
-
   const closest = (element, selector) => {
     let matchesFn;
     let parent;
@@ -214,6 +211,6 @@
       }
     }
   }
-  // eslint-disable-next-line no-new
-  new JoomlaMenu('#menu');
+  // eslint-disable-next-line no-use-before-define
+  const JoomlaMenu = new JoomlaMenu('#menu');
 })(window.Joomla, document);
