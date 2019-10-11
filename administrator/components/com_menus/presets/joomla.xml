@@ -29,7 +29,7 @@
 			title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
 			type="component"
 			element="com_content"
-			icon="fa fa-plus"
+			icon="icon-new"
 			link="index.php?option=com_content&amp;task=article.add"
 		/>
 		<menuitem

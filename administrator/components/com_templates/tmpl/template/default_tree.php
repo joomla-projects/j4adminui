@@ -51,7 +51,7 @@ ksort($this->files, SORT_STRING);
 			?>
 			<li class="<?php echo $class; ?>">
 				<a class="folder-url" href="">
-					<span class="fa-fw fa fa-folder" aria-hidden="true"></span>&nbsp;<?php $explodeArray = explode('/', $key); echo $this->escape(end($explodeArray)); ?>
+					<span class="icon-folder-2" aria-hidden="true"></span>&nbsp;<?php $explodeArray = explode('/', $key); echo $this->escape(end($explodeArray)); ?>
 				</a>
 				<?php echo $this->directoryTree($value); ?>
 			</li>
@@ -59,7 +59,7 @@ ksort($this->files, SORT_STRING);
 		<?php if (is_object($value)) : ?>
 			<li>
 				<a class="file" href='<?php echo Route::_('index.php?option=com_templates&view=template&id=' . $this->id . '&file=' . $value->id); ?>'>
-					<span class="fa fa-fw fa-file" aria-hidden="true"></span>&nbsp;<?php echo $this->escape($value->name); ?>
+					<span class="icon-file" aria-hidden="true"></span>&nbsp;<?php echo $this->escape($value->name); ?>
 				</a>
 			</li>
 		<?php endif; ?>
