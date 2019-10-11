@@ -207,7 +207,7 @@ class HtmlView extends BaseHtmlView
 			$languageKey = strtoupper($this->extensionName) . '_CATEGORIES';
 		}
 
-		ToolbarHelper::title(Text::sprintf('COM_ASSOCIATIONS_TITLE_EDIT', Text::_($this->extensionName), Text::_($languageKey)), 'language assoc');
+		ToolbarHelper::title(Text::sprintf('COM_ASSOCIATIONS_TITLE_EDIT', Text::_($this->extensionName), Text::_($languageKey)), 'multilingual assoc');
 
 		// copy refference button
 		if ($this->typeName === 'category' || $this->extensionName === 'com_menus' || $this->save2copy === true)

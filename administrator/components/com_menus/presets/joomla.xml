@@ -15,7 +15,7 @@
 	<menuitem
 		title="MOD_MENU_COM_CONTENT"
 		type="heading"
-		icon="icon-articles duotone"
+		icon="icon-content duotone"
 		dashboard="content"
 		>
 		<menuitem

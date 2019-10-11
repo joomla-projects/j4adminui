@@ -153,13 +153,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(
 			Text::_('COM_CONTENT_PAGE_' . ($checkedOut ? 'VIEW_ARTICLE' : ($isNew ? 'ADD_ARTICLE' : 'EDIT_ARTICLE'))),
-			'pencil-2 article-add'
+			'edit article-add'
 		);
 
 		// language association
 		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
 		{
-			$toolbar->standardButton('contract')
+			$toolbar->standardButton('multilingual')
 				->text('JTOOLBAR_ASSOCIATIONS')
 				->task('article.editAssociations');
 		}

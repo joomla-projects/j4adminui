@@ -109,7 +109,7 @@ class HtmlView extends BaseHtmlView
 		$canDo = ContentHelper::getActions('com_newsfeeds', 'category', $this->item->catid);
 
 		$title = $isNew ? Text::_('COM_NEWSFEEDS_MANAGER_NEWSFEED_NEW') : Text::_('COM_NEWSFEEDS_MANAGER_NEWSFEED_EDIT');
-		ToolbarHelper::title($title, 'rss newsfeeds');
+		ToolbarHelper::title($title, 'feed newsfeeds');
 
 		if (!empty($this->item->id))
 		{
@@ -121,7 +121,7 @@ class HtmlView extends BaseHtmlView
 		
 		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
 		{
-			ToolbarHelper::custom('newsfeed.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+			ToolbarHelper::custom('newsfeed.editAssociations', 'multilingual', 'multilingual', 'JTOOLBAR_ASSOCIATIONS', false, false);
 		}
 		
 		ToolbarHelper::divider();

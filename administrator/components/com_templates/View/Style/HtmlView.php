@@ -105,7 +105,7 @@ class HtmlView extends BaseHtmlView
 		// set title
 		ToolbarHelper::title(
 			$isNew ? Text::_('COM_TEMPLATES_MANAGER_ADD_STYLE')
-			: Text::_('COM_TEMPLATES_MANAGER_EDIT_STYLE'), 'paint-brush thememanager'
+			: Text::_('COM_TEMPLATES_MANAGER_EDIT_STYLE'), 'brush thememanager'
 		);
 
 		ToolbarHelper::divider();

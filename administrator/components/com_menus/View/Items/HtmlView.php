@@ -335,11 +335,11 @@ class HtmlView extends BaseHtmlView
 		// toolbar title
 		if ($menuTypeTitle)
 		{
-			ToolbarHelper::title(Text::sprintf('COM_MENUS_VIEW_ITEMS_MENU_TITLE', $menuTypeTitle), 'list menumgr');
+			ToolbarHelper::title(Text::sprintf('COM_MENUS_VIEW_ITEMS_MENU_TITLE', $menuTypeTitle), 'menu menumgr');
 		}
 		else
 		{
-			ToolbarHelper::title(Text::_('COM_MENUS_VIEW_ITEMS_ALL_TITLE'), 'list menumgr');
+			ToolbarHelper::title(Text::_('COM_MENUS_VIEW_ITEMS_ALL_TITLE'), 'menu menumgr');
 		}
 
 		// menutype filter

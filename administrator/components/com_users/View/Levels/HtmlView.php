@@ -101,7 +101,7 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_users');
 
-		ToolbarHelper::title(Text::_('COM_USERS_VIEW_LEVELS_TITLE'), 'user-lock levels');
+		ToolbarHelper::title(Text::_('COM_USERS_VIEW_LEVELS_TITLE'), 'lock levels');
 
 		if ($canDo->get('core.delete'))
 		{

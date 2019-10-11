@@ -134,14 +134,14 @@ class HtmlView extends BaseHtmlView
 		$canDo      = $this->canDo;
 		$clientId   = $this->state->get('item.client_id', 0);
 
-		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_ITEM_TITLE' : 'COM_MENUS_VIEW_EDIT_ITEM_TITLE'), 'list menu-add');
+		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_ITEM_TITLE' : 'COM_MENUS_VIEW_EDIT_ITEM_TITLE'), 'menu menu-add');
 
 		$toolbar = Toolbar::getInstance();
 
 		// language association
 		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations') && $clientId != 1)
 		{
-			$toolbar->standardButton('contract')
+			$toolbar->standardButton('multilingual')
 				->text('JTOOLBAR_ASSOCIATIONS')
 				->task('item.editAssociations');
 		}

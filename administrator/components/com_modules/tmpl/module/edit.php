@@ -67,7 +67,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 					<?php if ($this->item->xml) : ?>
 						<?php if ($this->item->xml->description) : ?>
 							<div class="j-card-header">
-								<h2>
+								<h2 class="j-card-title">
 									<?php
 									if ($this->item->xml)
 									{
@@ -81,40 +81,39 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 									<span class="badge badge-success">
 										<?php echo $this->item->client_id == 0 ? Text::_('JSITE') : Text::_('JADMINISTRATOR'); ?>
 									</span>
-								</h2>
+									<small class="d-block mt-2">
+										<?php
+										$this->fieldset    = 'description';
+										$short_description = Text::_($this->item->xml->description);
+										$this->fieldset    = 'description';
+										$long_description  = LayoutHelper::render('joomla.edit.fieldset', $this);
 
-								<div>
-									<?php
-									$this->fieldset    = 'description';
-									$short_description = Text::_($this->item->xml->description);
-									$this->fieldset    = 'description';
-									$long_description  = LayoutHelper::render('joomla.edit.fieldset', $this);
-
-									if (!$long_description)
-									{
-										$truncated = JHtmlString::truncate($short_description, 550, true, false);
-
-										if (strlen($truncated) > 500)
+										if (!$long_description)
 										{
-											$long_description  = $short_description;
-											$short_description = JHtmlString::truncate($truncated, 250);
+											$truncated = JHtmlString::truncate($short_description, 550, true, false);
 
-											if ($short_description == $long_description)
+											if (strlen($truncated) > 500)
 											{
-												$long_description = '';
+												$long_description  = $short_description;
+												$short_description = JHtmlString::truncate($truncated, 250);
+
+												if ($short_description == $long_description)
+												{
+													$long_description = '';
+												}
 											}
 										}
-									}
-									?>
-									<p class="text-muted mb-0"><?php echo $short_description; ?></p>
-									<?php if ($long_description) : ?>
-										<p class="readmore j-card-link mt-2">
-											<a href="#" onclick="document.querySelector('#tab-description').click();">
-												<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
-											</a>
-										</p>
-									<?php endif; ?>
-								</div>
+										?>
+										<?php echo $short_description; ?>
+										<?php if ($long_description) : ?>
+											<span class="readmore d-block j-card-link">
+												<a href="#" onclick="document.querySelector('#tab-description').click();">
+													<?php echo Text::_('JGLOBAL_SHOW_FULL_DESCRIPTION'); ?>
+												</a>
+											</span>
+										<?php endif; ?>
+									</small>
+								</h2>
 							</div>
 						<?php endif; ?>
 					<?php else : ?>
