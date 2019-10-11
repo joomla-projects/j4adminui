@@ -7,12 +7,13 @@
 */
 
 @font-face
-{ 
+{
+ 
   font-family: "JoomlaFont";
-  font-weight: Normal;
-  font-style: "Regular";
-  src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") format("woff2"),
-  url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("woff");
+font-weight: Normal;
+font-style: "Regular";
+src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") format("woff2"),
+url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("woff");
 }
 
 [class^="icon-"], [class*=" icon-"]
@@ -1924,6 +1925,11 @@
 
 .icon-contract-alt:before,.icon-contract-2:before
 {
+  content: "\13cde";
+}
+
+.icon-contract:before
+{
   content: "\13c2c";
 }
 
@@ -1935,6 +1941,11 @@
 .icon-credit:before,.icon-credit-card:before,.icon-card:before
 {
   content: "\13c2e";
+}
+
+.icon-css:before
+{
+  content: "\13cdf";
 }
 
 .icon-cube:before
@@ -2160,6 +2171,11 @@
 .icon-home:before
 {
   content: "\13c5b";
+}
+
+.icon-html:before
+{
+  content: "\13ce0";
 }
 
 .icon-info-bubble:before,.icon-help:before,.icon-help-2:before
@@ -2425,6 +2441,11 @@
 .icon-phone:before
 {
   content: "\13c90";
+}
+
+.icon-php:before
+{
+  content: "\13ce1";
 }
 
 .icon-pictures:before,.icon-images:before
@@ -3050,3 +3071,4 @@
 {
   color: #fff;
 }
+	
