@@ -15,7 +15,7 @@ use Joomla\CMS\Router\Route;
 <table class="j-card-table">
 	<thead>
 		<tr>
-			<th scope="col-6" width="25%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
+			<th scope="col" width="25%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_STATUS'); ?></th>
 			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_CHECK'); ?></th>
 		</tr>
 	</thead>
