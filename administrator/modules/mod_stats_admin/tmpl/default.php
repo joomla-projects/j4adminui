@@ -11,20 +11,21 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 
-HTMLHelper::_('jquery.framework');
 $app->getDocument()->addScriptDeclaration('
-	jQuery(document).ready(function($) {
-		$("a.js-revert").on("click", function(e) {
-			e.preventDefault();
-			e.stopPropagation();
-
-			var activeTab = [];
-			activeTab.push("#" + e.target.href.split("#")[1]);
-			var path = window.location.pathname;
-			localStorage.removeItem(e.target.href.replace(/&return=[a-zA-Z0-9%]+/, "").replace(/&[a-zA-Z-_]+=[0-9]+/, ""));
-			localStorage.setItem(path + e.target.href.split("index.php")[1].split("#")[0], JSON.stringify(activeTab));
-			return window.location.href = e.target.href.split("#")[0];
-		});
+	document.addEventListener("DOMContentLoaded", function() {
+		const allReverts = document.querySelectorAll("a.js-revert")
+		allReverts.forEach( item => {
+			item.addEventListener("click", (e) => { 
+				e.preventDefault();
+				e.stopPropagation();
+				var activeTab = [];
+				activeTab.push("#" + e.target.href.split("#")[1]);
+				var path = window.location.pathname;
+				localStorage.removeItem(e.target.href.replace(/&return=[a-zA-Z0-9%]+/, "").replace(/&[a-zA-Z-_]+=[0-9]+/, ""));
+				localStorage.setItem(path + e.target.href.split("index.php")[1].split("#")[0], JSON.stringify(activeTab));
+				return window.location.href = e.target.href.split("#")[0];
+			})
+		})
 	});
 ');
 ?>
@@ -40,7 +41,7 @@ $app->getDocument()->addScriptDeclaration('
 				</div>
 				<div class="ml-auto">
 					<?php if(isset($item->link)) : ?>
-						<a class="js-revert" href="<?php echo $item->link; ?>"><strong><?php echo $item->data; ?></strong></a>
+					<strong><a class="js-revert" href="<?php echo $item->link; ?>"><?php echo $item->data; ?></a></strong>
 					<?php else : ?>
 						<strong><?php echo $item->data; ?></strong>
 					<?php endif; ?>
