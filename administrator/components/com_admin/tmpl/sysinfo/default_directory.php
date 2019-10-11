@@ -16,31 +16,35 @@ use Joomla\CMS\Language\Text;
 
 ?>
 <div class="sysinfo">
-	<table class="table j-list-table">
-		<caption class="sr-only">
-			<?php echo Text::_('COM_ADMIN_DIRECTORY_PERMISSIONS'); ?>
-		</caption>
-		<thead>
-			<tr>
-				<th scope="col" style="width:850px">
-					<?php echo Text::_('COM_ADMIN_DIRECTORY'); ?>
-				</th>
-				<th scope="col">
-					<?php echo Text::_('COM_ADMIN_STATUS'); ?>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->directory as $dir => $info) : ?>
-				<tr>
-					<th scope="row">
-						<?php echo '&#x200E;' . HTMLHelper::_('directory.message', $dir, $info['message']); ?>
-					</th>
-					<td>
-						<?php echo HTMLHelper::_('directory.writable', $info['writable']); ?>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<div class="j-card">
+		<div class="j-card-body">
+			<table class="table j-striped-table">
+				<caption class="sr-only">
+					<?php echo Text::_('COM_ADMIN_DIRECTORY_PERMISSIONS'); ?>
+				</caption>
+				<thead>
+					<tr>
+						<th scope="col" style="width:850px">
+							<?php echo Text::_('COM_ADMIN_DIRECTORY'); ?>
+						</th>
+						<th scope="col">
+							<?php echo Text::_('COM_ADMIN_STATUS'); ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($this->directory as $dir => $info) : ?>
+						<tr>
+							<th scope="row">
+								<?php echo '&#x200E;' . HTMLHelper::_('directory.message', $dir, $info['message']); ?>
+							</th>
+							<td>
+								<?php echo HTMLHelper::_('directory.writable', $info['writable']); ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

@@ -14,31 +14,35 @@ use Joomla\CMS\Language\Text;
 /** @var \Joomla\Component\Admin\Administrator\View\Sysinfo\HtmlView $this */
 ?>
 <div class="sysinfo">
-	<table class="table j-list-table">
-		<caption class="sr-only">
-			<?php echo Text::_('COM_ADMIN_CONFIGURATION_FILE'); ?>
-		</caption>
-		<thead>
-			<tr>
-				<th scope="col" style="width:300px">
-					<?php echo Text::_('COM_ADMIN_SETTING'); ?>
-				</th>
-				<th scope="col">
-					<?php echo Text::_('COM_ADMIN_VALUE'); ?>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($this->config as $key => $value) : ?>
-				<tr>
-					<th scope="row">
-						<?php echo $key; ?>
-					</th>
-					<td>
-						<?php echo htmlspecialchars($value, ENT_QUOTES); ?>
-					</td>
-				</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+	<div class="j-card">
+		<div class="j-card-body">
+			<table class="table j-striped-table">
+				<caption class="sr-only">
+					<?php echo Text::_('COM_ADMIN_CONFIGURATION_FILE'); ?>
+				</caption>
+				<thead>
+					<tr>
+						<th scope="col" style="width:300px">
+							<?php echo Text::_('COM_ADMIN_SETTING'); ?>
+						</th>
+						<th scope="col">
+							<?php echo Text::_('COM_ADMIN_VALUE'); ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($this->config as $key => $value) : ?>
+						<tr>
+							<th scope="row">
+								<?php echo $key; ?>
+							</th>
+							<td>
+								<?php echo htmlspecialchars($value, ENT_QUOTES); ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
