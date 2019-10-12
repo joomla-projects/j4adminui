@@ -44,10 +44,10 @@ class Redirect
 
 		// Array of image, task, title, action
 		$states = array(
-			1  => array('fas fa-toggle-on', 'links.unpublish', 'JENABLED', 'COM_REDIRECT_DISABLE_LINK'),
-			0  => array('fas fa-toggle-off', 'links.publish', 'JDISABLED', 'COM_REDIRECT_ENABLE_LINK'),
-			2  => array('fas fa-archive', 'links.unpublish', 'JARCHIVED', 'JUNARCHIVE'),
-			-2 => array('fas fa-trash-alt', 'links.publish', 'JTRASHED', 'COM_REDIRECT_ENABLE_LINK'),
+			1  => array('icon-toggle-on', 'links.unpublish', 'JENABLED', 'COM_REDIRECT_DISABLE_LINK'),
+			0  => array('icon-toggle-off', 'links.publish', 'JDISABLED', 'COM_REDIRECT_ENABLE_LINK'),
+			2  => array('icon-archive', 'links.unpublish', 'JARCHIVED', 'JUNARCHIVE'),
+			-2 => array('icon-trash', 'links.publish', 'JTRASHED', 'COM_REDIRECT_ENABLE_LINK'),
 		);
 
 		$state = ArrayHelper::getValue($states, (int) $value, $states[0]);

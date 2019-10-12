@@ -61,7 +61,7 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 			<div class="j-card-overview-content" area-hidden="true">
 				<?php if (isset($displayData['ajaxurl'])): ?>
 					<span class="j-counter-animation">
-						<i class="fa fa-spinner" aria-hidden="true"></i>
+						<i class="icon-spinner" aria-hidden="true"></i>
 					</span>
 				<?php endif; ?>
 				<?php // Name indicates the component

@@ -85,7 +85,7 @@ $link      = $current->get('link');
 // Get the menu icon
 $icon      = $this->getIconClass($current);
 $iconClass = ($icon != '' && $current->level == 1) ? '<span class="' . $icon . '" aria-hidden="true"></span>' : '';
-$ajax      = $current->ajaxbadge ? '<span class="menu-badge"><span class="fa fa-spin fa-spinner mt-1 system-counter" data-url="' . $current->ajaxbadge . '"></span></span>' : '';
+$ajax      = $current->ajaxbadge ? '<span class="menu-badge"><span class="icon-spin icon-spinner mt-1 system-counter" data-url="' . $current->ajaxbadge . '"></span></span>' : '';
 
 if ($link != '' && $current->target != '')
 {

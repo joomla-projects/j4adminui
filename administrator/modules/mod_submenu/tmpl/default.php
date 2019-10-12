@@ -107,7 +107,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 												?>
 												<?php if (!$permission || $user->authorise($permission, $scope)) : ?>
 													<a href="<?php echo $link; ?>">
-														<span class="fas fa-<?php echo $icon; ?> fa-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
+														<span class="icon-<?php echo $icon; ?> icon-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
 														<span class="sr-only"><?php echo  htmlentities($sronly); ?></span>
 													</a>
 												<?php endif; ?>
@@ -115,14 +115,14 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 										<?php endif; ?>
 										<?php if ($item->ajaxbadge) : ?>
 											<span class="menu-badge">
-												<span class="fas fa-spin fa-spinner mt-1 system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
+												<span class="icon-spin icon-spinner mt-1 system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
 											</span>
 										<?php endif; ?>
 									</a>
 									<?php if ($item->dashboard) : ?>
 										<span class="menu-dashboard">
 											<a href="<?php echo JRoute::_('index.php?option=com_cpanel&view=cpanel&dashboard=' . $item->dashboard); ?>">
-												<span class="fas fa-th-large" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
+												<span class="icon-menu" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
 											</a>
 										</span>
 									<?php endif; ?>

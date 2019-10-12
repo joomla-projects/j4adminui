@@ -19,7 +19,7 @@ $hideLinks = $app->input->getBool('hidemainmenu');
 <?php if ($user->authorise('core.manage', 'com_postinstall')) : ?>
 	<div class="j-card-body">
 		<a href="#" id="showCollout" class="header-item-link<?php echo ($hideLinks ? ' disabled' : ''); ?>"<?php echo ($hideLinks ? ' disabled' : ''); ?> title="<?php echo Text::_('MOD_POST_INSTALLATION_MESSAGES'); ?>" role="button">
-			<span class="header-item-icon fa fa-bell" aria-hidden="true"></span> <span class="header-item-text"><?php echo Text::_('MOD_POST_INSTALLATION_MESSAGES'); ?></span> <span class="icon-chevron-right" aria-hidden="true"></span>
+			<span class="header-item-icon icon-notification" aria-hidden="true"></span> <span class="header-item-text"><?php echo Text::_('MOD_POST_INSTALLATION_MESSAGES'); ?></span> <span class="icon-chevron-right" aria-hidden="true"></span>
 			<?php if (count($messages) > 0) : ?>
 				<span class="badge badge-pill badge-danger"><?php echo count($messages); ?></span>
 			<?php endif; ?>

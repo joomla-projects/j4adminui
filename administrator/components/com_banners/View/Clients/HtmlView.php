@@ -122,7 +122,7 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-hand-pointer')
+				->icon('mouse-pointer-highlighter')
 				->buttonClass('btn btn-white')
 				->listCheck(true);
 

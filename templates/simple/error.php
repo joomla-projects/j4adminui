@@ -62,7 +62,7 @@ $theme_url = URI::base(true) . '/templates/'. $this->template;
 					<h1 class="error-code mt-5 mt-md-0"><?php echo $this->error->getCode(); ?> Error</h1>
 					<h2 class="error-message"><?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></h2>
 
-					<a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-primary"><span class="fa fa-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a>
+					<a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-primary"><span class="icon-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a>
 
 					<?php if ($this->debug) : ?>
 						<div class="error-debug mt-3">

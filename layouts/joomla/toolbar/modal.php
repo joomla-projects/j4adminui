@@ -27,7 +27,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-toolbar-button.min.js', ['version' 
 $selector = $displayData['selector'];
 $id       = isset($displayData['id']) ? $displayData['id'] : '';
 $class    = isset($displayData['class']) ? $displayData['class'] : 'btn btn-secondary';
-$icon     = isset($displayData['icon']) ? $displayData['icon'] : 'fa fa-download';
+$icon     = isset($displayData['icon']) ? $displayData['icon'] : 'icon-download';
 $text     = isset($displayData['text']) ? $displayData['text'] : '';
 ?>
 

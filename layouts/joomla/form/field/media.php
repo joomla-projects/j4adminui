@@ -143,7 +143,7 @@ $url    = ($readonly ? ''
 		<?php endif; ?>
 
 		<?php if ($disabled != true) : ?>
-			<button  type="button" class="btn btn-link button-select"><span class="icon fas fa-plus" aria-hidden="true"></span><?php echo Text::_("JLIB_FORM_BUTTON_ADD_MEDIA"); ?></button>
+			<button  type="button" class="btn btn-link button-select"><span class="icon icon-plus" aria-hidden="true"></span><?php echo Text::_("JLIB_FORM_BUTTON_ADD_MEDIA"); ?></button>
 		<?php endif; ?>
 	</div>
 

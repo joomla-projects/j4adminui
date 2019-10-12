@@ -41,7 +41,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 							$sitename = htmlspecialchars($app->get('sitename', ''), ENT_QUOTES, 'UTF-8');
 							?>
 							<a href="<?php echo Uri::root(); ?>" title="<?php echo Text::sprintf('MOD_MENU_VIEWSITE', $sitename); ?>" target="_blank">
-								<span class="fas fa-external-link-square-alt" aria-hidden="true"></span>
+								<span class="icon-external-link" aria-hidden="true"></span>
 								<?php echo Text::_('MOD_MENU_VIEWSITE'); ?>
 							</a>
 						<?php else : ?>
@@ -72,20 +72,20 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 										?>
 										<?php if (!$permission || $user->authorise($permission, $scope)) : ?>
 											<a href="<?php echo $link; ?>">
-												<span class="fas fa-<?php echo $icon; ?> fa-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
+												<span class="icon-<?php echo $icon; ?> icon-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
 												<span class="sr-only"><?php echo  htmlentities($sronly); ?></span>
 											</a>
 										<?php endif; ?>
 									</span>
 								<?php endif; ?>
 								<?php if ($item->ajaxbadge) : ?>
-									<span class="fas fa-spin fa-spinner system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
+									<span class="icon-spin icon-spinner system-counter" data-url="<?php echo $item->ajaxbadge; ?>"></span>
 								<?php endif; ?>
 							</a>
 							<?php if ($item->dashboard) : ?>
 								<span class="menu-dashboard">
 									<a href="<?php echo JRoute::_('index.php?option=com_cpanel&view=cpanel&dashboard=' . $item->dashboard); ?>">
-										<span class="fas fa-th-large" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
+										<span class="icon-menu" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
 									</a>
 								</span>
 							<?php endif; ?>

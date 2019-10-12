@@ -29,7 +29,7 @@ use Joomla\CMS\Language\Text;
 
 						<div class="alert preinstall-alert alert option-<?php echo $optionStatus; ?>">
 							<div class="alert-icon">
-								<span class="alert-icon fa fa-exclamation-triangle" aria-hidden="true"></span>
+								<span class="alert-icon icon-warning" aria-hidden="true"></span>
 							</div>
 							<div class="alert-text">
 								<strong><?php echo $option->label; ?></strong>
@@ -38,10 +38,10 @@ use Joomla\CMS\Language\Text;
 							<div class="alert-status">
 								<!-- if option isn't true -->
 								<?php if( $isResolved ) : ?>
-									<span class="fas fa-check-circle"></span> 
+									<span class="icon-check-circle"></span> 
 									<?php echo Text::_('INSTL_PRECHECK_OPTION_RESOLVED'); ?>
 								<?php else : ?>
-									<button class="btn btn-info" onClick="window.location.reload();"><span class="fas fa-sync-alt"></span> <?php echo Text::_('INSTL_PRECHECK_OPTION_CHECKNOW'); ?></button>
+									<button class="btn btn-info" onClick="window.location.reload();"><span class="icon-loop"></span> <?php echo Text::_('INSTL_PRECHECK_OPTION_CHECKNOW'); ?></button>
 								<?php endif; ?>
 							</div>
 						</div>
@@ -97,6 +97,6 @@ use Joomla\CMS\Language\Text;
 		</div>
 	</div>
 	<div class="installer-footer">
-		<button class="btn btn-secondary" onClick="window.location.reload();"><span class="fas fa-sync-alt"></span> <?php echo Text::_('INSTL_PRECHECK_OPTION_CHECKALL'); ?></button>
+		<button class="btn btn-secondary" onClick="window.location.reload();"><span class="icon-loop"></span> <?php echo Text::_('INSTL_PRECHECK_OPTION_CHECKALL'); ?></button>
 	</div>
 </div>

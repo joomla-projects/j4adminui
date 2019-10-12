@@ -36,7 +36,7 @@ extract($displayData, EXTR_OVERWRITE);
 			<div class="toolbar-btn-group">
 				<?php echo $button; ?>
 				<button type="button" class="<?php echo $caretClass ?? ''; ?> dropdown-toggle dropdown-toggle-split" data-target="<?php echo $id; ?>" data-display="static" aria-haspopup="true" aria-expanded="false">
-					<span class="fas fa-caret-down" area-hidden="true" title="<?php echo Text::_('JGLOBAL_TOGGLE_DROPDOWN'); ?>"></span>
+					<span class="icon-chevron-down" area-hidden="true" title="<?php echo Text::_('JGLOBAL_TOGGLE_DROPDOWN'); ?>"></span>
 				</button>
 			</div>
 		<?php else: ?>

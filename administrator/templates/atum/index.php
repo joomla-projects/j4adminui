@@ -116,7 +116,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 			<?php if (!$hiddenMenu): ?>
 				<div class="sidebar-toggle d-none d-sm-block">
 					<a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
-						<span id="menu-collapse-icon" class="fas <?php echo $hiddenMenuClass === 'closed' ? 'fa-angle-double-right' : 'fa-angle-double-left' ?>" aria-hidden="true"></span>
+						<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'chevron-right' : 'chevron-left' ?>" aria-hidden="true"></span>
 					</a>
 				</div>
 			<?php endif; ?>

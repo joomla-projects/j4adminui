@@ -42,7 +42,7 @@ use Joomla\CMS\Uri\Uri;
 		<div class="col j-install-righ-col">
 			<fieldset id="installCongrat" class="j-install-form no-padding j-install-step active">
 				<div class="j-install-step-iconic-header">
-					<span class="fas fa-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
+					<span class="icon-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
 				</div>
 
 				<div class="j-install-step-form j-install-step-body pt-4">
@@ -109,8 +109,8 @@ use Joomla\CMS\Uri\Uri;
 						<?php echo HTMLHelper::_('form.token'); ?>
 
 						<div class="btn-group btn-group-lg j-install-step-btn-group j-install-step-footer no-padding">
-							<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
-							<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="fas fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
+							<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="icon-eye-open" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
+							<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="icon-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
 						</div>
 
 					</div>
@@ -129,7 +129,7 @@ use Joomla\CMS\Uri\Uri;
 							<a href="#"
 							   class="btn btn-primary"
 							   onclick="return Install.goToPage('remove');">
-								<span class="fa fa-arrow-left icon-white" aria-hidden="true"></span>
+								<span class="icon-arrow-left icon-white" aria-hidden="true"></span>
 								<?php echo Text::_('INSTL_LANGUAGES_WARNING_BACK_BUTTON'); ?>
 							</a>
 						</p>
@@ -228,7 +228,7 @@ use Joomla\CMS\Uri\Uri;
 
 			<fieldset id="installFinal" class="j-install-form no-padding j-install-step">
 				<div class="j-install-step-iconic-header">
-					<span class="fas fa-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
+					<span class="icon-check icon" aria-hidden="true"></span> <span><?php echo Text::_('INSTL_COMPLETE_CONGRAT'); ?></span>
 				</div>
 
 				<div class="j-install-step-form j-install-step-body pt-4">
@@ -236,8 +236,8 @@ use Joomla\CMS\Uri\Uri;
 				</div>
 
 				<div class="btn-group btn-group-lg j-install-step-btn-group j-install-step-footer no-padding">
-					<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="fas fa-eye" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
-					<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="fas fa-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
+					<a class="btn btn-default" href="<?php echo Uri::root(); ?>" title="<?php echo Text::_('JSITE'); ?>"><span class="icon-eye-open" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_SITE_BTN'); ?></a>
+					<a class="btn btn-primary" href="<?php echo Uri::root(); ?>administrator/" title="<?php echo Text::_('JADMINISTRATOR'); ?>"><span class="icon-cog" aria-hidden="true"></span> <?php echo Text::_('INSTL_COMPLETE_ADMIN_BTN'); ?></a>
 				</div>
 			</fieldset>
 		</div><!-- right side information column -->

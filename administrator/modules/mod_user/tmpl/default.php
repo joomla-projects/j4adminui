@@ -23,7 +23,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=>
 <div class="header-item-content header-profile">
     <div class="joomla-dropdown-container">
         <button data-target="header-user-dropdown" class="header-dropdown-button <?php echo ($hideLinks ? 'disabled' : ''); ?>" type="button" <?php echo ($hideLinks ? 'disabled' : ''); ?> title="<?php echo Text::_('MOD_USER_MENU'); ?>">
-            <span class="header-user-icon fas fa-user"></span>
+            <span class="header-user-icon icon-user"></span>
             <span class="header-user-name"><?php echo $user->name; ?></span>
             <span class="icon-angle-down" aria-hidden="true"></span>
         </button>

@@ -154,7 +154,7 @@ if (!$editoroptions)
 		</fieldset>
 		<div class="mb-2">
 			<button type="button" class="btn btn-primary" data-submit-task="article.save">
-				<span class="fa fa-check" aria-hidden="true"></span>
+				<span class="icon-check" aria-hidden="true"></span>
 				<?php echo Text::_('JSAVE'); ?>
 			</button>
 			<button type="button" class="btn btn-danger" data-submit-task="article.cancel">
