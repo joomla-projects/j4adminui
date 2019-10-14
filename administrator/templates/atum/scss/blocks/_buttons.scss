@@ -143,25 +143,16 @@
         border: none;
         box-shadow: none;
         color: var(--primary-text-color);
-        padding: 0 1.2rem;
-        @include media-breakpoint-down(xs){
-            padding: 0 .8rem;
-        }
+        padding: 0;
         &:hover, &:active, &.active{
             color: var(--primary-color);
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
             text-decoration: underline;
-        }
-        &:hover{
-            background-color: var(--primary-lighter-color);
         }
         &:active, &.active{
             color: var(--primary-color);
-            background-color: #fff;
         }
         &:focus, &:focus:active, &:not(:disabled):active:focus{
             color: var(--primary-color);
-            box-shadow: 0px 0px 0px 1px var(--primary-color);
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;

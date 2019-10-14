@@ -16,7 +16,8 @@ label {
 	max-width: 100%;
 	color: var(--primary-text-color);
 	&::placeholder{
-		color: var(--primary-text-color);
+		color: var(--secondary-text-color);
+		opacity: 1;
 	}
 }
 
@@ -273,6 +274,7 @@ input {
 //User profile edit
 .input-container {
 	position: relative;
+	min-width: 100%;
 	.input-group-text {
 		background: transparent;
 		position: absolute;
@@ -299,6 +301,7 @@ input {
 	display: flex;
 	flex-wrap: wrap-reverse;
 	margin-top: 0.714rem;
+	min-width: 100%;
 }
 .indicator-text {
 	flex: 0 0 100%;
