@@ -202,7 +202,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 						<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'showtitle', 'published' ), 'data' => $this)); ?>
 					</div>
 				</div>
-				<!-- possition -->
+				<!-- position -->
 				<div class="form-inline-group mt-4">
 					<?php echo LayoutHelper::render('joomla.edit.fields', array( 'fields' => array( 'position' ), 'data' => $this)); ?>
 				</div>
