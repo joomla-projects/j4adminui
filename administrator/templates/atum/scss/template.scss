@@ -61,15 +61,28 @@
 @import "blocks/alert";
 @import "blocks/editor";
 
-// Vendor overrides
+// Vendor add/overrides
+@import "vendor/bootstrap/mixins";
 @import "vendor/awesomplete";
 @import "vendor/bootstrap/list-group";
 @import "vendor/bootstrap/collapse";
 @import "vendor/bootstrap/lists";
 @import "vendor/bootstrap/modal";
 @import "vendor/bootstrap/nav";
+@import "vendor/bootstrap/navbar";
+@import "vendor/bootstrap/card";
+@import "vendor/bootstrap/breadcrumb";
 @import "vendor/bootstrap/pagination";
+@import "vendor/bootstrap/jumbotron";
+@import "vendor/bootstrap/alert";
+@import "vendor/bootstrap/progress";
+@import "vendor/bootstrap/media";
+@import "vendor/bootstrap/close";
+@import "vendor/bootstrap/tooltip";
+@import "vendor/bootstrap/popover";
+@import "vendor/bootstrap/carousel";
 @import "vendor/bootstrap/table";
+@import "vendor/bootstrap/utilities";
 @import "vendor/codemirror";
 @import "vendor/chosen";
 @import "vendor/choicesjs";
