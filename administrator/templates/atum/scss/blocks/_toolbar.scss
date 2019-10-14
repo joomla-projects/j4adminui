@@ -98,7 +98,7 @@
   display: block;
   .input-group-append {
     position: absolute;
-    right: 0;
+    right: 2px;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -107,6 +107,7 @@
       background: var(--input-border-color);
       border: 0;
       padding: 0px 12px;
+      border-radius: 0;
       box-shadow: none;
       line-height: 1;
       &::before,
