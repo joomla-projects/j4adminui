@@ -27,7 +27,7 @@ if ($function) :
 		'modalLink' 		=> $this->modalLink,
 		'functionPlain' 	=> $function,
 		'functionEscape' 	=> $this->escape($function),
-		'routeUrl' 			=> Route::_('index.php')
+		'routeUrl' 			=> Route::_('index.php?option=com_modules&task=module.add&client_id=')
 	);
 
 	Factory::getDocument()->addScriptOptions('modules', $moduleData);
@@ -38,7 +38,7 @@ endif;
 <div class="j-search-module-container mb-4">
 	<h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
 	<div class="input-group">
-		<input type="text" class="form-control" id="j-search-cpanel-module" placeholder="<?php echo Text::sprintf('JSEARCH_TITLE', 'Modules'); ?>">
+		<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" placeholder="<?php echo Text::sprintf('JSEARCH_TITLE', 'Modules'); ?>">
 		<div class="input-group-append">
 			<button class="btn btn-primary" readonly>
 				<span class="icon-search" aria-hidden="true"></span>

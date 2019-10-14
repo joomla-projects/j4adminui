@@ -14,6 +14,34 @@
     const modules = moduleOptions.items;
     const modulesContainer = document.querySelector('#new-modules-list');
 
+    const initAddModule = () => {
+      const elems = document.querySelectorAll('#new-modules-list a.select-link');
+
+      elems.forEach((elem) => {
+        elem.addEventListener('click', (event) => {
+          let targetElem = event.currentTarget;
+  
+          // There is some bug with events in iframe where currentTarget is "null"
+          // => prevent this here by bubble up
+          if (!targetElem) {
+            targetElem = event.target;
+  
+            if (targetElem && !targetElem.classList.contains('select-link')) {
+              targetElem = targetElem.parentNode;
+            }
+          }
+  
+          const functionName = targetElem.getAttribute('data-function');
+          
+          if (functionName && typeof window.parent[functionName] === 'function') {
+            window.parent[functionName](targetElem);
+          }
+        });
+      });
+    };
+
+    initAddModule();
+
     /**
      * Find match modules
      * @param {string} keyword - search keyword
@@ -22,10 +50,14 @@
      * @since 4.0.0
      */
     const findMatches = (keyword) => {
+      keyword = keyword.replace(/\s+/g, ' ').trim();
+      if (keyword == '') return modules;
+
       const keywords = keyword.split(' ').join('|');
-      const regex = new RegExp(keywords);
+      const regex = new RegExp(keywords, 'i');
+
       return modules.filter(module => {
-        if (regex.test(module.name.toLowerCase())) {
+        if (regex.test(module.name) || regex.test(module.desc)) {
           return module;
         }
       });
@@ -43,7 +75,7 @@
       let html = '<div class="row">';
       if (!!items) {
         items.forEach(item => {
-          let link = `${moduleOptions.routeUrl}?option=com_modules&task=module.add&client_id=${moduleOptions.clientId}${moduleOptions.modalLink}&eid=${item.extension_id}`;
+          let link = `${moduleOptions.routeUrl}${moduleOptions.clientId}${moduleOptions.modalLink}&eid=${item.extension_id}`;
           let description = (typeof item.desc != 'undefined' && item.desc.length > 0) ? item.desc.substring(0, Math.min(200, item.desc.length)) : '';
           description = description.length === item.desc.length ? description : description + '...';
 
@@ -62,7 +94,7 @@
       
                 <div class="j-card-footer">
                   <div class="j-card-footer-item">
-                    <a href="${link}" class="${moduleOptions.functionPlain ? ' select-link' : ''}" data-function="${moduleOptions.functionPlain ? moduleOptions.functionEscape : ''}" >
+                    <a href="${link}" class="${moduleOptions.functionPlain ? 'select-link' : ''}" data-function="${moduleOptions.functionPlain ? moduleOptions.functionEscape : ''}" >
                       ${Joomla.Text._('COM_MODULES_SELECT')}
                     </a>
                   </div>
@@ -99,34 +131,10 @@
         timeout = setTimeout(() => {
           let newList = findMatches(value);
           modulesContainer.innerHTML = renderModules(newList);
+          initAddModule();
         }, 250);
         
       });
     }
-
-
-    const elems = document.querySelectorAll('#new-modules-list a.select-link');
-
-    elems.forEach((elem) => {
-      elem.addEventListener('click', (event) => {
-        let targetElem = event.currentTarget;
-
-        // There is some bug with events in iframe where currentTarget is "null"
-        // => prevent this here by bubble up
-        if (!targetElem) {
-          targetElem = event.target;
-
-          if (targetElem && !targetElem.classList.contains('select-link')) {
-            targetElem = targetElem.parentNode;
-          }
-        }
-
-        const functionName = targetElem.getAttribute('data-function');
-
-        if (functionName && typeof window.parent[functionName] === 'function') {
-          window.parent[functionName](targetElem);
-        }
-      });
-    });
   });
 })(document);
