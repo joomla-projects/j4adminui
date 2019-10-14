@@ -8,7 +8,10 @@
 @import "mixin";
 
 // Bootstrap other
-@import "vendor/bootstrap";
+@import "vendor/bootstrap/variables";
+@import "vendor/bootstrap/mixins";
+@import "vendor/bootstrap/print";
+@import "vendor/bootstrap/reboot";
 
 // Fonts
 @import "../../../../media/vendor/roboto-fontface/scss/roboto/sass/roboto-fontface";
@@ -62,7 +65,11 @@
 @import "blocks/editor";
 
 // Vendor add/overrides
-@import "vendor/bootstrap/mixins";
+@import "vendor/bootstrap/type";
+@import "vendor/bootstrap/images";
+@import "vendor/bootstrap/code";
+@import "vendor/bootstrap/grid";
+@import "vendor/bootstrap/transitions";
 @import "vendor/awesomplete";
 @import "vendor/bootstrap/list-group";
 @import "vendor/bootstrap/collapse";
