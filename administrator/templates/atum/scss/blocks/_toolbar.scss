@@ -60,14 +60,11 @@
         display: none;
       }
       .btn {
-        padding: 0;
         color: var(--secondary-text-color);
         &:hover,
         &:active,
         &:focus {
-          box-shadow: none;
           color: var(--primary-color);
-          background-color: transparent;
         }
       }
     }
@@ -101,17 +98,15 @@
   display: block;
   .input-group-append {
     position: absolute;
-    right: 1.1rem;
+    right: 0;
     top: 0;
-    height: 1.5rem;
     bottom: 0;
     margin: auto;
     z-index: 4;
     .btn{
-      background: transparent;
+      background: var(--input-border-color);
       border: 0;
-      padding: 0 0 0 10px;
-      color: var(--icon-color);
+      padding: 0px 12px;
       box-shadow: none;
       line-height: 1;
       &::before,
@@ -120,21 +115,16 @@
       }
       span{
         margin-right: 0;
-        color: var(--secondary-icon-color);
+        color: var(--secondary-text-color);
         @include transition(.3s);
       }
-      &.btn-primary {
-        &:not(:disabled):not(.disabled):active:focus,
-        &:hover,
-        &:active,
-        &:focus {
-          background-color: transparent;
-          box-shadow: none;
-        }
-      }
+      &:focus:active,
+      &:not(:disabled):not(.disabled):active:focus,
       &:hover,
       &:active,
       &:focus {
+        background: var(--input-border-color);
+        box-shadow: none;
         span {
           color: var(--primary-color);
         }
@@ -146,30 +136,6 @@
       &.input-password-toggle{
         padding: 0;
         border: 0;
-      }
-    }
-  }
-}
-.control-group {
-  .controls {
-    .input-group {
-      .input-group-append {
-        .btn{
-          &.btn-primary,
-          &.button-select,
-          &:not(:disabled),
-          &.btn-secondary{
-            &:hover,
-            &:focus,
-            &:active{
-              background-color: transparent;
-              border-color: transparent;
-              box-shadow: none;
-              outline: none;
-              color: var(--primary-color);
-            }
-          }
-        }
       }
     }
   }
