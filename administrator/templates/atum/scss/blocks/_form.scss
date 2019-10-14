@@ -191,10 +191,6 @@ select{
 	color: var(--secondary-text-color);
 	width: 170px;
 }
-// [class^="icon-"]:not(.input-group-text),
-// [class*=" icon-"]:not(.input-group-text) {
-// 	margin-right: 0.5em;
-// }
 
 //Form elements custom design
 textarea.form-control {
@@ -276,14 +272,17 @@ input {
 	position: relative;
 	min-width: 100%;
 	.input-group-text {
-		background: transparent;
+		background: var(--input-border-color);
+		cursor: pointer;
+		color: var(--secondary-text-color);
 		position: absolute;
 		right: 2px;
-		top: 4px;
+		top: 0px;
+		bottom: 0px;
 		border: 0;
-		color: var(--icon-color);
+		padding: 0 12px;
+		box-shadow: none;
 		line-height: 1;
-		cursor: pointer;
 		@include media-breakpoint-down(xs){
 			top: 38px;
 		}
