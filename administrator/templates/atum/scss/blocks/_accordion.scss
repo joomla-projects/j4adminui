@@ -15,13 +15,12 @@ joomla-accordion > .accordion-item {
 
 joomla-accordion {
   display: block;
-  margin-top: 1px;
   > h3 {
     font-size: 1rem;
     line-height: 1;
     font-weight: 400;
     color: var(--secondary-text-color);
-    margin: -1px 0 0;
+    margin: 0 0 0 1rem;
     padding: .95rem 1rem;
     border-radius: 3px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
@@ -30,7 +29,6 @@ joomla-accordion {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
     transition: .35s;
     &:hover{
       background-color: #f4f7fc;
