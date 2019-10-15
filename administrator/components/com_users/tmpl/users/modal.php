@@ -30,7 +30,7 @@ $onClick         = "window.parent.jSelectUser(this);window.parent.Joomla.Modal.g
 <div class="container-popup">
 	<form action="<?php echo Route::_('index.php?option=com_users&view=users&layout=modal&tmpl=component&groups=' . $input->get('groups', '', 'BASE64') . '&excluded=' . $input->get('excluded', '', 'BASE64')); ?>" method="post" name="adminForm" id="adminForm">
 		<?php if (!$userRequired) : ?>
-		<div class="float-left mx-2 mt-2">
+		<div class="float-left mr-2">
 			<button type="button" class="btn btn-primary button-select" data-user-value="0" data-user-name="<?php echo $this->escape(Text::_('JLIB_FORM_SELECT_USER')); ?>"
 				data-user-field="<?php echo $this->escape($field); ?>"><?php echo Text::_('JOPTION_NO_USER'); ?></button>&nbsp;
 		</div>
@@ -42,7 +42,7 @@ $onClick         = "window.parent.jSelectUser(this);window.parent.Joomla.Modal.g
 				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 			</div>
 		<?php else : ?>
-		<table class="table table-sm">
+		<table class="table j-striped-table">
 			<caption id="captionTable" class="sr-only">
 				<?php echo Text::_('COM_USERS_USERS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 			</caption>
