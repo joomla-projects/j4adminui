@@ -106,7 +106,7 @@ $context = $this->escape($this->state->get('filter.context'));
 										<?php elseif (!$saveOrder) : ?>
 											<?php $iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED'); ?>
 										<?php endif; ?>
-										<span class="sortable-handler<?php echo $iconClass; ?>">
+										<span class="sortable-handler icon-move-v<?php echo $iconClass; ?>">
 											<span class="icon-arrows-v" aria-hidden="true"></span>
 										</span>
 										<?php if ($canChange && $saveOrder) : ?>
