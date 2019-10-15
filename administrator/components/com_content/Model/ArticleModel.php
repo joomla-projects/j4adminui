@@ -780,10 +780,6 @@ class ArticleModel extends AdminModel
 			$data['images'] = (string) $registry;
 		}
 
-		// echo '<xmp>';
-		// print_r($data);
-		// echo '</xmp>';die();
-
 		// Cast catid to integer for comparison
 		$catid = (int) $data['catid'];
 

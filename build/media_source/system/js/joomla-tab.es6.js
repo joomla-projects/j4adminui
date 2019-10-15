@@ -233,11 +233,9 @@
       this.tablist.removeEventListener('touchend', this.toggleTabClass, true);
     }
 
-    toggleTabClass(event) {
-      if (event.target.tagName === 'UL') {
-        if (this.totalListWidth > this.tablist.offsetWidth) {
-          this.tablist.classList.toggle('tab-overflow');
-        }
+    toggleTabClass() {
+      if (this.totalListWidth > this.tablist.offsetWidth) {
+        this.tablist.classList.toggle('tab-overflow');
       }
     }
 
