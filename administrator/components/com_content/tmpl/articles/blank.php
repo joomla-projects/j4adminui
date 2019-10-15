@@ -241,7 +241,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
     </div>
     <br><hr>
     <h1> Joomla Accordion </h1>
-    <div style="width: 600px">
+    <div style="width: 800px; background-color:#edf0f5;padding: 50px;">
         <joomla-accordion toggle="true" animation="true">
             <section class="accordion-item" id="accordion-panel1" name="Accordion panel 1">
                 <h3>Tab panel 1</h3>

@@ -88,11 +88,6 @@
     }
   }
 }
-.js-stools .js-stools-container-bar{
-  .btn.js-stools-btn-filter, .btn.js-stools-btn-clear{
-    border-radius: 3px !important;
-  }
-}
 .input-group {
   position: relative;
   display: block;
@@ -104,30 +99,10 @@
     margin: auto;
     z-index: 4;
     .btn{
-      background: var(--input-border-color);
-      border: 0;
-      padding: 0px 12px;
-      box-shadow: none;
-      line-height: 1;
+      border-color: var(--input-border-color);
       &::before,
       &.hidden{
         display: none;
-      }
-      span{
-        margin-right: 0;
-        color: var(--secondary-text-color);
-        @include transition(.3s);
-      }
-      &:focus:active,
-      &:not(:disabled):not(.disabled):active:focus,
-      &:hover,
-      &:active,
-      &:focus {
-        background: var(--input-border-color);
-        box-shadow: none;
-        span {
-          color: var(--primary-color);
-        }
       }
     }
     .input-group-text{
@@ -139,20 +114,20 @@
       }
     }
   }
+  .focus-visible {
+    + span {
+      .btn {
+        border-color: var(--primary-color);
+      }
+    }
+  }
 }
 
 .btn-toolbar{
   margin-bottom: .8rem;
   .input-group-append {
-    height: 1rem;
-    line-height: 1;
-    margin: 0;
-    top: 1rem;
-    .btn-primary {
-      background: transparent;
-      color: var(--secondary-icon-color);
-      box-shadow: none;
-      line-height: 1;
+    .btn {
+      border-color: var(--input-border-color);
     }
   }
   
