@@ -44,9 +44,9 @@ $assoc = Associations::isEnabled();
 $hasAssoc = ($this->form->getValue('language', null, '*') !== '*');
 
 // In case of modal
-$isModal = $input->get('layout') === 'modal';
+$isModal = $input->get('layout') == 'modal';
 $layout  = $isModal ? 'modal' : 'edit';
-$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
+$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') == 'component' ? '&tmpl=component' : '';
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_content&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">

@@ -254,7 +254,7 @@ class HtmlView extends BaseHtmlView
 				echo '<input type="hidden" class="form-control" id="' . $modalId . '_name" value="">';
 				echo '<input type="hidden" id="' . $modalId . '_id" value="0">';
 
-				//$toolbar->divider();
+				$toolbar->divider();
 				$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
 				// cancel button

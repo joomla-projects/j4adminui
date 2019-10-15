@@ -31,8 +31,8 @@
 		/>
 
 		<menuitem
-			type="component"
 			title="MOD_MENU_CONTROL_PANEL"
+			type="component"
 			link="index.php"
 			icon="fa-fw fa fa-home"
 			element="com_cpanel"

@@ -150,7 +150,15 @@ class MenutypeField extends ListField
 		return implode("\n", $html);
 	}
 
-
+	/**
+	 * Get all menu types
+	 * 
+	 * @param 	int		$clientId	Current clientId
+	 * 
+	 * @return 	array
+	 * 
+	 * @since 	4.0.0
+	 */
 	private function getMenuTypes($clientId) 
 	{
 		$model = Factory::getApplication()->bootComponent('com_menus')
@@ -181,7 +189,17 @@ class MenutypeField extends ListField
 
 		return $sortedTypes;
 	}
-
+	
+	/**	
+	 * Method to add system link types to the link types array	
+	 *	
+	 * @param   array  $types  	The list of link types	
+	 * @param	object $state 	Load joomla current state	
+	 *
+	 * @return  void	
+	 *	
+	 * @since   4.0.0
+	 */
 	private function addCustomTypes(&$types, $state)
 	{
 		if (empty($types))
