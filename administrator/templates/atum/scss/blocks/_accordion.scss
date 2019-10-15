@@ -1,65 +1,69 @@
 /* Style the accordion panel. Note: hidden by default */
 joomla-accordion > .accordion-item {
-  padding: 1rem 1rem 10px;
-  background-color: #ffffff;
-  display: none;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  border-top: 1px solid #edf0f5;
-  color: #5e727c;
-  &.show {
-    margin-top: -1rem;
-    display: block;
-  }
+	padding: 1rem 1rem 10px;
+	background-color: var(--white);
+	display: none;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	border-top: 1px solid #edf0f5;
+	color: var(--secondary-text-color);
+	border-radius: 0 0 3px 3px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+	&.show {
+		margin-top: -1rem;
+		display: block;
+	}
 }
 
 joomla-accordion {
-  display: block;
-  margin-top: 1px;
-  > h3 {
-    font-size: 1rem;
-    line-height: 1;
-    font-weight: 400;
-    color: var(--secondary-text-color);
-    margin: -1px 0 0;
-    padding: .95rem 1rem;
-    border-radius: 3px;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-    background-color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    transition: .35s;
-    &:hover{
-      background-color: #f4f7fc;
-    }
-    &:focus {
-      outline: solid 2px var(--primary-color);
-    }
-    &.active{
-      background-color: #fff;
-      box-shadow: none;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      color: #1d2427;
-    }
-    > span{
-      height: 12px;
-      width: 12px;
-      background-size: contain;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.707 6.283a1 1 0 0 1-1.414 0L.7 1.69A.99.99 0 0 1 2.1.29L6 4.19 9.9.29a.99.99 0 0 1 1.4 1.4L6.707 6.283z' fill='%23C1C7D0' fill-rule='nonzero'/%3E%3C/svg%3E");
-      display: inline-block;
-      background-position: center center;
-      background-repeat: no-repeat;
-      transition: 300ms;
-    }
-    &.active > span{
-      transform: rotate(180deg);
-    }
-    &:focus{
-      outline: 1px solid var(--primary-color);
-    }
-  }
+	display: block;
+	margin-top: 1px;
+	> h3 {
+		font-size: 1rem;
+		line-height: 1;
+		font-weight: 400;
+		color: var(--secondary-text-color);
+		margin: -1px 0 1rem;
+		padding: .95rem 1rem;
+		border-radius: 3px;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+		background-color: var(--white);
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		transition: background-color .3s, color .3s;
+		&:hover{
+			background-color: var(--bg-light-color);
+		}
+		&:focus {
+			outline: solid 2px var(--primary-color);
+		}
+		&.active{
+			background-color: var(--white);
+			box-shadow: none;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			color: var(--primary-text-color);
+			&:hover{
+				background-color: var(--bg-light-color);
+			}
+		}
+		> span{
+			height: 12px;
+			width: 12px;
+			background-size: contain;
+			background-image: url("data:image/svg+xml,%3Csvg width='12' height='7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.707 6.283a1 1 0 0 1-1.414 0L.7 1.69A.99.99 0 0 1 2.1.29L6 4.19 9.9.29a.99.99 0 0 1 1.4 1.4L6.707 6.283z' fill='%23C1C7D0' fill-rule='nonzero'/%3E%3C/svg%3E");
+			display: inline-block;
+			background-position: center center;
+			background-repeat: no-repeat;
+			transition: 300ms;
+		}
+		&.active > span{
+			transform: rotate(180deg);
+		}
+		&:focus{
+			outline: 1px solid var(--primary-color);
+		}
+	}
 }
