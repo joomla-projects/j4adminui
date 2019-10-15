@@ -13,7 +13,7 @@ use Joomla\CMS\Language\Text;
 <div class="mod-accessibility module-<?php echo $module->id; ?>" id="mod-accessibility-<?php echo $module->id; ?>">
 
     <a class="header-item-link" id="accessibility-collapse-control" href="javascript;">
-        <span class="header-item-icon icon-accessible" aria-hidden="true"></span>
+        <span class="header-item-icon icon-accessibility" aria-hidden="true"></span>
         <span class="header-item-text">
             <?php echo Text::_('MOD_ACCESSIBILITY'); ?>
         </span>
