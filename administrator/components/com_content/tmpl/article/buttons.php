@@ -45,16 +45,6 @@ defined('_JEXEC') or die;
   </p>
 
   <p>
-    <a href="#"class="btn btn-lg btn-cancel">Cancel button</a>
-    <a href="#"class="btn btn-cancel">Cancel button</a>
-    <a href="#"class="btn btn-cancel">Cancel button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-cancel"><span class="icon fas fa-plus"></span>Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm">Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm active">Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm disabled">Cancel button</a>
-  </p>
-
-  <p>
     <a href="#"class="btn btn-lg btn-danger">Danger button</a>
     <a href="#"class="btn btn-danger">Danger button</a>
     <a href="#"class="btn btn-danger">Danger button<span class="icon right fas fa-plus"></span></a>

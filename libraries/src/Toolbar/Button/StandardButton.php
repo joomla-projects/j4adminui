@@ -112,9 +112,6 @@ class StandardButton extends BasicButton
 			case 'featured':
 				return ' btn btn-warning';
 
-			case 'cancel':
-				return ' btn btn-cancel';
-
 			case 'trash':
 			case 'delete':
 				return ' btn btn-danger';
