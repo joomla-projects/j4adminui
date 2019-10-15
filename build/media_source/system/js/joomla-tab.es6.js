@@ -44,6 +44,7 @@
       this.hasNested = false;
       this.isNested = false;
       this.tabs = [];
+      this.toggleTabClass = this.toggleTabClass.bind(this);
     }
 
     /* Lifecycle, element appended to the DOM */
@@ -139,9 +140,7 @@
       }
 
       // Create the navigation
-      if (this.view !== 'accordion') {
-        this.createNavigation(tabsEl);
-      }
+      this.createNavigation(tabsEl);
 
       // Add missing role
       tabsEl.forEach((tab) => {
@@ -187,8 +186,9 @@
           }
         }
       }
-      // Convert tabs to accordian
-      self.checkView(self);
+      this.tablist = this.querySelector('[role="tablist"]');
+      this.listItems = [...this.tablist.querySelectorAll('li')];
+
       window.addEventListener('resize', () => {
         self.checkView(self);
       });
@@ -197,28 +197,21 @@
 
     /* Check overflow for tabs */
     checkoverflow() {
-      const tablist = this.querySelector('[role="tablist"]');
-      const listItems = [...tablist.querySelectorAll('li:not(.-more)')];
-      const moreLi = tablist.querySelector('li.-more');
-      if (this.view === 'tabs') {
-        /* eslint-disable */
-        const totalListWidth = listItems.reduce((total, listItem) => total += listItem.offsetWidth, 0);
-        /* eslint-enable */
-        if (totalListWidth > tablist.offsetWidth) {
-          if (!moreLi) {
-            // overflow scroller
-            tablist.insertAdjacentHTML('beforeend', `
-              <li class="-more">
-                <span class="scroll-right">&gt;</span>
-              </li>
-            `);
-          }
-        } else if (moreLi) {
-          tablist.removeChild(moreLi);
-        }
-      } else if (moreLi) {
-        tablist.removeChild(moreLi);
+      /* eslint-disable */
+      this.totalListWidth = this.listItems.reduce((total, listItem) => total += listItem.offsetWidth, 0);
+      /* eslint-enable */
+
+      if (this.totalListWidth <= this.tablist.offsetWidth && this.tablist.classList.contains('tab-overflow')) {
+        this.tablist.classList.remove('tab-overflow');
       }
+
+      // For desktop
+      this.tablist.addEventListener('mouseenter', this.toggleTabClass, true);
+      this.tablist.addEventListener('mouseleave', this.toggleTabClass, true);
+
+      // For smaller devices
+      this.tablist.addEventListener('touchstart', this.toggleTabClass, true);
+      this.tablist.addEventListener('touchend', this.toggleTabClass, true);
     }
 
 
@@ -231,6 +224,19 @@
         link.removeEventListener('click', this);
       });
       ulEl.removeEventListener('keydown', this);
+
+      // For desktop
+      this.tablist.removeEventListener('mouseenter', this.toggleTabClass, true);
+      this.tablist.removeEventListener('mouseleave', this.toggleTabClass, true);
+      // For smaller devices
+      this.tablist.removeEventListener('touchstart', this.toggleTabClass, true);
+      this.tablist.removeEventListener('touchend', this.toggleTabClass, true);
+    }
+
+    toggleTabClass() {
+      if (this.totalListWidth > this.tablist.offsetWidth) {
+        this.tablist.classList.toggle('tab-overflow');
+      }
     }
 
     /* Method to create the tabs navigation */
@@ -390,57 +396,8 @@
     }
 
     /** Method to convert tabs to accordion and vice versa depending on screen size */
-    checkView(element) {
-      const el = element;
-      const nav = el.querySelector('ul');
-      const tabsEl = [];
+    checkView() {
       this.checkoverflow();
-
-      if (document.body.getBoundingClientRect().width > 920) {
-        if (this.view === 'tabs') {
-          return;
-        }
-        el.view = 'tabs';
-        // convert to tabs
-        const panels = [].slice.call(nav.querySelectorAll('section'));
-
-        // remove the cascaded tabs
-        for (let i = 0, l = panels.length; i < l; i += 1) {
-          if (panels[i].parentNode.parentNode.parentNode === el) {
-            tabsEl.push(panels[i]);
-          }
-        }
-
-        if (tabsEl.length) {
-          tabsEl.forEach((panel) => {
-            el.appendChild(panel);
-          });
-        }
-      } else {
-        if (this.view === 'accordion') {
-          return;
-        }
-        el.view = 'accordion';
-
-        // convert to accordion
-        const panels = [].slice.call(el.querySelectorAll('section'));
-
-        // remove the cascaded tabs
-        for (let i = 0, l = panels.length; i < l; i += 1) {
-          if (panels[i].parentNode === el) {
-            tabsEl.push(panels[i]);
-          }
-        }
-
-        if (tabsEl.length) {
-          tabsEl.forEach((panel) => {
-            const link = el.querySelector(`a[aria-controls="${panel.id}"]`);
-            if (link.parentNode.parentNode === el.firstElementChild) {
-              link.parentNode.appendChild(panel);
-            }
-          });
-        }
-      }
     }
 
     // eslint-disable-next-line class-methods-use-this

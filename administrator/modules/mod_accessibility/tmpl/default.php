@@ -12,7 +12,7 @@ use Joomla\CMS\Language\Text;
 ?>
 <div class="mod-accessibility module-<?php echo $module->id; ?>" id="mod-accessibility-<?php echo $module->id; ?>">
 
-    <a class="header-item-link" id="accessibility-collapse-control" href="javascript;">
+    <a class="header-item-link" id="accessibility-collapse-control" href="javascript:void(0);">
         <span class="header-item-icon icon-accessibility" aria-hidden="true"></span>
         <span class="header-item-text">
             <?php echo Text::_('MOD_ACCESSIBILITY'); ?>
@@ -35,13 +35,13 @@ use Joomla\CMS\Language\Text;
             </div>
             <div class="accessibility-items-wrap mb-4">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="grayscale" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="grayscale" href="javascript:void(0);">
                         <span class="icon-adjust mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="nomotion" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="nomotion" href="javascript:void(0);">
                         <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_DISABLE_MOTION'); ?>
                     </a>
@@ -50,13 +50,13 @@ use Joomla\CMS\Language\Text;
 
             <div class="accessibility-items-wrap mb-4">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bbcursor" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bbcursor" href="javascript:void(0);">
                         <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_BIG_BLACK_CURSOR'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bhcursor" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bhcursor" href="javascript:void(0);">
                         <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_BIG_WHITE_CURSOR'); ?>
                     </a>
@@ -65,13 +65,13 @@ use Joomla\CMS\Language\Text;
 
             <div class="accessibility-items-wrap mb-4">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="magnifier" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="magnifier" href="javascript:void(0);">
                         <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_MAGNIFIER'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="contrast" href="javascript;">
+                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="contrast" href="javascript:void(0);">
                         <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_CONTRAST'); ?>
                     </a>

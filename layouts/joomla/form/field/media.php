@@ -139,7 +139,7 @@ $url    = ($readonly ? ''
 				<?php echo ' ' . $previewImgEmpty; ?>
 				<?php echo ' ' . $previewImg; ?>
 			</div>
-			<button type="button" class="btn btn-cancel button-clear"><?php echo Text::_("JLIB_FORM_BUTTON_REMOVE_MEDIA"); ?></button>
+			<button type="button" class="btn btn-secondary button-clear"><?php echo Text::_("JLIB_FORM_BUTTON_REMOVE_MEDIA"); ?></button>
 		<?php endif; ?>
 
 		<?php if ($disabled != true) : ?>

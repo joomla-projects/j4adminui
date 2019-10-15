@@ -44,7 +44,7 @@
     connectedCallback() {
       // Set up elements
       this.modal = this.querySelector(this.modalClass);
-      this.modalBody = this.querySelector('.modal-body');
+      this.modalBody = this.querySelector('section');
       this.input = this.querySelector(this.inputId);
       this.inputName = this.querySelector(this.inputNameClass);
       this.buttonSelect = this.querySelector(this.buttonSelectClass);
@@ -98,14 +98,6 @@
     // Opens the modal
     modalOpen() {
       // Reconstruct the iframe
-      this.removeIframe();
-      const iframe = document.createElement('iframe');
-      iframe.setAttribute('name', 'field-user-modal');
-      iframe.src = this.url.replace('{field-user-id}', this.input.getAttribute('id'));
-      iframe.setAttribute('width', this.modalWidth);
-      iframe.setAttribute('height', this.modalHeight);
-
-      this.modalBody.appendChild(iframe);
 
       this.modal.open();
 

@@ -9,6 +9,8 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Language\Text;
+
 $data = $displayData;
 
 // Load the form list fields
@@ -36,7 +38,7 @@ if (isset($list['list_fullordering'])) {
 						</div>
 					</div>
 					<?php if($fieldName === 'list_fullordering') : ?>
-						<button type="button" class="btn js-stools-order-toggler"><i class="duotone <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></i></button>
+						<button type="button" class="btn js-stools-order-toggler hasTooltip" title="<?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?>"><i class="duotone <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></i></button>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

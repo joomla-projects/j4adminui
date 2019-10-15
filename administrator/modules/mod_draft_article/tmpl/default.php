@@ -77,7 +77,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
         </div>
         
         <div class="form-group text-right mt-4">
-            <button class="btn btn-cancel" type="button" role="button" id="mod-draftarticle-clear">
+            <button class="btn btn-secondary" type="button" role="button" id="mod-draftarticle-clear">
                 <?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
             </button>
             <button class="btn btn-primary" type="submit" role="button" id="mod-draftarticle-submit">

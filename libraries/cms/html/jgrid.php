@@ -80,7 +80,7 @@ abstract class JHtmlJGrid
 				$inactive_class = 'icon-' . $inactive_class;
 			}
 
-			$html[] = '<a class="tbody-icon' . ($active_class === 'publish' ? ' active' : '') . '"';
+			$html[] = '<a class="tbody-status-icon' . ($active_class === 'publish' ? ' active' : '') . '"';
 
 			if ($formId !== null)
 			{
@@ -196,10 +196,10 @@ abstract class JHtmlJGrid
 		}
 
 		$states = array(
-			1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'icon-toggle-on', 'publish'),
-			0 => array('publish', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'JUNPUBLISHED', true, 'icon-toggle-off', 'unpublish'),
-			2 => array('unpublish', 'JARCHIVED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JARCHIVED', true, 'icon-archive', 'archive'),
-			-2 => array('publish', 'JTRASHED', 'JLIB_HTML_PUBLISH_ITEM', 'JTRASHED', true, 'icon-trash', 'trash'),
+			1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'toggle-on duotone icon-2x text-primary', 'publish'),
+			0 => array('publish', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'JUNPUBLISHED', true, 'toggle-off duotone icon-2x text-muted', 'unpublish'),
+			2 => array('unpublish', 'JARCHIVED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JARCHIVED', true, 'archive', 'archive'),
+			-2 => array('publish', 'JTRASHED', 'JLIB_HTML_PUBLISH_ITEM', 'JTRASHED', true, 'trash', 'trash'),
 		);
 
 		// Special state for dates

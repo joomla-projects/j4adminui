@@ -59,7 +59,7 @@
     "@fortawesome/fontawesome-free": "^5.9.0",
     "@gfx/zopfli": "^1.0.14",
     "autoprefixer": "^9.6.1",
-    "babel-eslint": "^8.0.1",
+    "babel-eslint": "^8.2.6",
     "babel-plugin-add-header-comment": "^1.0.3",
     "babel-preset-minify": "^0.4.3",
     "babelify": "^10.0.0",

@@ -139,7 +139,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 								<?php endif; ?>
 							</tr>
 						</thead>
-						<tbody<?php if ($saveOrder) : ?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>"<?php endif; ?>>
+						<tbody <?php if ($saveOrder) : ?> class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>"<?php endif; ?>>
 						<?php $count = count($this->items); ?>
 						<?php foreach ($this->items as $i => $item) :
 							$item->max_ordering = 0;
@@ -200,7 +200,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 									}
 									?>
-									<span class="sortable-handler<?php echo $iconClass ?>">
+									<span class="sortable-handler icon-move-v<?php echo $iconClass ?>">
 										<span class="icon-arrows-v" aria-hidden="true"></span>
 									</span>
 									<?php if ($canChange && $saveOrder) : ?>
