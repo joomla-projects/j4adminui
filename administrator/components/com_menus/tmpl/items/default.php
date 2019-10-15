@@ -152,7 +152,7 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 											$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 										}
 										?>
-										<span class="sortable-handler<?php echo $iconClass ?>">
+										<span class="sortable-handler icon-move-v <?php echo $iconClass ?>">
 											<span class="icon-arrows-v" aria-hidden="true"></span>
 										</span>
 										<?php if ($canChange && $saveOrder) : ?>
@@ -190,12 +190,12 @@ $assoc   = Associations::isEnabled() && $this->state->get('filter.client_id') ==
 										<?php endif; ?>
 										</span>
 										<?php echo HTMLHelper::_('menus.visibility', $item->params); ?>
-										<!-- <div title="<?php echo $this->escape($item->path); ?>">
+										<div title="<?php echo $this->escape($item->path); ?>">
 											<?php echo $prefix; ?>
 											<span class="small"
 												  title="<?php echo isset($item->item_type_desc) ? htmlspecialchars($this->escape($item->item_type_desc), ENT_COMPAT, 'UTF-8') : ''; ?>">
 												<?php echo $this->escape($item->item_type); ?></span>
-										</div> -->
+										</div>
 										<?php if ($item->type === 'component' && !$item->enabled) : ?>
 											<div>
 												<span class="badge badge-secondary">

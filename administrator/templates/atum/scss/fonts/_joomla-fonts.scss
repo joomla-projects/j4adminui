@@ -8,8 +8,7 @@
 
 @font-face
 {
- 
-  font-family: "JoomlaFont";
+font-family: "JoomlaFont";
 font-weight: Normal;
 font-style: "Regular";
 src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") format("woff2"),
@@ -71,6 +70,26 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .duotone.icon-address:before
 {
   content: "\13ab9";
+}
+
+.duotone.icon-angle-double-left:after
+{
+  content: "\13ce5";
+}
+
+.duotone.icon-angle-double-left:before
+{
+  content: "\13ce6";
+}
+
+.duotone.icon-angle-double-right:after
+{
+  content: "\13ce7";
+}
+
+.duotone.icon-angle-double-right:before
+{
+  content: "\13ce8";
 }
 
 .duotone.icon-apply:after
@@ -753,12 +772,12 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13b41";
 }
 
-.duotone.icon-adjust:after
+.duotone.icon-increase:after
 {
   content: "\13b42";
 }
 
-.duotone.icon-adjust:before
+.duotone.icon-increase:before
 {
   content: "\13b43";
 }
@@ -871,6 +890,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .duotone.icon-lock:before
 {
   content: "\13b59";
+}
+
+.duotone.icon-logs:after
+{
+  content: "\13bd5";
+}
+
+.duotone.icon-logs:before
+{
+  content: "\13bd6";
 }
 
 .duotone.icon-loop:after
@@ -1015,12 +1044,12 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 
 .duotone.icon-notification:after
 {
-  content: "\13b76";
+  content: "\13cf5";
 }
 
 .duotone.icon-notification:before
 {
-  content: "\13b77";
+  content: "\13cf6";
 }
 
 .duotone.icon-paint-brush:after
@@ -1373,6 +1402,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13bbd";
 }
 
+.duotone.icon-sourcetree:after
+{
+  content: "\13bd0";
+}
+
+.duotone.icon-sourcetree:before
+{
+  content: "\13bd1";
+}
+
 .duotone.icon-step-forward:after
 {
   content: "\13bbe";
@@ -1463,14 +1502,24 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13bcf";
 }
 
-.duotone.icon-tree:after
+.duotone.icon-toggle-off:after
 {
-  content: "\13bd0";
+  content: "\13cf9";
 }
 
-.duotone.icon-tree:before
+.duotone.icon-toggle-off:before
 {
-  content: "\13bd1";
+  content: "\13cf8";
+}
+
+.duotone.icon-toggle-on:after
+{
+  content: "\13cfa";
+}
+
+.duotone.icon-toggle-on:before
+{
+  content: "\13cfb";
 }
 
 .duotone.icon-unlock:after
@@ -1486,16 +1535,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .duotone.icon-unpublish:after
 {
   content: "\13bd4";
-}
-
-.duotone.icon-user-activity-log:after
-{
-  content: "\13bd5";
-}
-
-.duotone.icon-user-activity-log:before
-{
-  content: "\13bd6";
 }
 
 .duotone.icon-user-notes:after
@@ -1548,6 +1587,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13be0";
 }
 
+.duotone.icon-warning-circle:after
+{
+  content: "\13ce9";
+}
+
+.duotone.icon-warning-circle:before
+{
+  content: "\13cea";
+}
+
 .duotone.icon-workflows:after
 {
   content: "\13be1";
@@ -1568,7 +1617,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13be4";
 }
 
-.icon-adjust:before
+.icon-Increase-contrast:before,.icon-adjust:before
 {
   content: "\13be5";
 }
@@ -1591,6 +1640,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-address:before
 {
   content: "\13be9";
+}
+
+.icon-angle-double-left:before
+{
+  content: "\13ceb";
+}
+
+.icon-angle-double-right:before
+{
+  content: "\13cec";
 }
 
 .icon-angle-down:before,.icon-arrow-down-3:before
@@ -1653,7 +1712,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13bf7";
 }
 
-.icon-articles:before
+.icon-articles:before,.icon-files:before
 {
   content: "\13bfa";
 }
@@ -1693,12 +1752,12 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c01";
 }
 
-.icon-big-black-cursor:before
+.icon-big-black-cursor:before,.icon-cursor-big:before
 {
   content: "\13c02";
 }
 
-.icon-big-white-cursor:before
+.icon-big-white-cursor:before,.icon-cursor-big-outline:before
 {
   content: "\13c03";
 }
@@ -1753,7 +1812,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c0d";
 }
 
-.icon-calendar-version:before
+.icon-calendar-alt:before
 {
   content: "\13c0e";
 }
@@ -1776,6 +1835,11 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-caret-down:before,.icon-arrow-down-4:before
 {
   content: "\13bee";
+}
+
+.icon-caret-h:before
+{
+  content: "\13ce2";
 }
 
 .icon-caret-left:before,.icon-arrow-left-4:before
@@ -1878,7 +1942,12 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c22";
 }
 
-.icon-cogs:before,.icon-os:before
+.icon-code-branch:before
+{
+  content: "\13ced";
+}
+
+.icon-cogs:before,.icon-os:before,.icon-options:before,.icon-cog:before
 {
   content: "\13c23";
 }
@@ -1898,7 +1967,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c26";
 }
 
-.icon-components:before
+.icon-components:before,.icon-layers:before
 {
   content: "\13c27";
 }
@@ -1988,6 +2057,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c36";
 }
 
+.icon-ellipsis-h:before,.icon-more:before,.icon-overflow-menu:before,.icon-menu-horizontal:before
+{
+  content: "\13ce3";
+}
+
+.icon-ellipsis-v:before,.icon-menu-vertical:before
+{
+  content: "\13ce4";
+}
+
 .icon-envelope-badge:before
 {
   content: "\13c37";
@@ -2026,6 +2105,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-expand:before
 {
   content: "\13c3e";
+}
+
+.icon-external-link-alt:before,.icon-new-tab-2:before,.icon-new-tab-alt:before
+{
+  content: "\13c7e";
+}
+
+.icon-external-link:before,.icon-launch:before,.icon-new-tab:before
+{
+  content: "\13c7f";
 }
 
 .icon-eye-close:before,.icon-eye-blocked:before,.icon-eye-2:before,.icon-hide:before
@@ -2123,7 +2212,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c51";
 }
 
-.icon-global:before
+.icon-global:before,.icon-language:before,.icon-globe:before
 {
   content: "\13c52";
 }
@@ -2198,7 +2287,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c5f";
 }
 
-.icon-lamp:before,.icon-light:before
+.icon-lamp:before,.icon-light:before,.icon-light-bulb:before
 {
   content: "\13c60";
 }
@@ -2248,6 +2337,11 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c69";
 }
 
+.icon-logs:before,.icon-activity-log:before,.icon-user-activity-log:before
+{
+  content: "\13cd1";
+}
+
 .icon-loop:before
 {
   content: "\13c6a";
@@ -2278,18 +2372,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c6f";
 }
 
-.icon-ellipsis-h:before,
-.icon-more:before,
-.icon-overflow-menu:before
-{
-  content: "\13c70";
-}
-
-.icon-ellipsis-v:before
-{
-  content: "\13c71";
-}
-
 .icon-menu:before
 {
   content: "\13c72";
@@ -2307,7 +2389,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 
 .icon-minus-sign:before,.icon-minus-2:before,.icon-minus:before
 {
-  content: "\13c75";
+  content: "\13cf7";
 }
 
 .icon-mobile:before,.icon-phone-2:before
@@ -2350,16 +2432,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c7d";
 }
 
-.icon-new-tab-alt:before,.icon-new-tab-2:before
-{
-  content: "\13c7e";
-}
-
-.icon-new-tab:before,.icon-launch:before
-{
-  content: "\13c7f";
-}
-
 .icon-next:before,.icon-forward:before
 {
   content: "\13c80";
@@ -2372,7 +2444,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 
 .icon-notification:before
 {
-  content: "\13c82";
+  content: "\13cf4";
 }
 
 .icon-options-cog:before
@@ -2510,7 +2582,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13c9c";
 }
 
-.icon-question-sign-circle:before
+.icon-question-circle:before,.icon-question-sign-circle:before,.icon-question-2:before
 {
   content: "\13c9d";
 }
@@ -2560,7 +2632,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13ca6";
 }
 
-.icon-save-new:before,.icon-plus-2:before,.icon-new:before,.icon-plus:before
+.icon-save-new:before,.icon-plus-2:before,.icon-new:before,.icon-plus:before,.icon-add:before
 {
   content: "\13ca7";
 }
@@ -2650,6 +2722,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13cb8";
 }
 
+.icon-sourcetree:before,.icon-tree:before
+{
+  content: "\13cc9";
+}
+
+.icon-square:before
+{
+  content: "\13cee";
+}
+
 .icon-star-full:before
 {
   content: "\13cb9";
@@ -2670,7 +2752,7 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13cbc";
 }
 
-.icon-success:before
+.icon-success:before,.icon-check-circle:before
 {
   content: "\13cbd";
 }
@@ -2683,11 +2765,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-table:before
 {
   content: "\13cbf";
-}
-
-.icon-tag-double:before,.icon-tags:before
-{
-  content: "\13cc0";
 }
 
 .icon-tag:before,.icon-offer:before
@@ -2705,6 +2782,11 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13cc3";
 }
 
+.icon-tags:before,.icon-tag-double:before
+{
+  content: "\13cc0";
+}
+
 .icon-thumbs-down:before
 {
   content: "\13cc4";
@@ -2720,6 +2802,16 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13cc6";
 }
 
+.icon-toggle-off:before
+{
+  content: "\13cfc";
+}
+
+.icon-toggle-on:before
+{
+  content: "\13cfd";
+}
+
 .icon-trash:before,.icon-delete:before,.icon-purge:before
 {
   content: "\13cc7";
@@ -2728,11 +2820,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-tree-hub:before
 {
   content: "\13cc8";
-}
-
-.icon-tree:before
-{
-  content: "\13cc9";
 }
 
 .icon-unblock:before,.icon-refresh:before,.icon-redo-2:before
@@ -2770,11 +2857,6 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
   content: "\13cd0";
 }
 
-.icon-user-activity-log:before,.icon-activity-log:before
-{
-  content: "\13cd1";
-}
-
 .icon-user-notes:before,.icon-notes:before
 {
   content: "\13cd2";
@@ -2803,6 +2885,11 @@ url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("wof
 .icon-wand:before
 {
   content: "\13cd7";
+}
+
+.icon-warning-circle:before
+{
+  content: "\13cef";
 }
 
 .icon-warning:before

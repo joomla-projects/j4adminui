@@ -143,7 +143,7 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('mouse-pointer-highlighter')
+				->icon('icon-select')
 				->buttonClass('btn btn-white')
 				->listCheck(true);
 
@@ -171,7 +171,7 @@ class HtmlView extends BaseHtmlView
 
 		// statistics button
 		ToolbarHelper::divider();
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
+		$toolbar->appendButton('Popup', 'bar', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 		ToolbarHelper::divider();
 
 		// new button

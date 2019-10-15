@@ -67,19 +67,6 @@
           width: 19.49rem;
         }
       }
-      .input-group-append{
-        .btn{
-          &.btn-primary {
-            &:focus,
-            &:active{
-              background-color: transparent;
-              box-shadow: none;
-              border: none;
-              color: var(--primary-color);
-            }
-          }
-        }
-      }
     }
 
     .js-stools-field-list{
@@ -138,6 +125,7 @@
       background-image: none;
       &.js-stools-btn-clear {
         margin-right: 5px;
+        margin-left: 10px;
       }
     }
   }

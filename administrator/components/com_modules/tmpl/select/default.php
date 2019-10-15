@@ -18,12 +18,33 @@ $app = Factory::getApplication();
 
 $function  = $app->input->getCmd('function');
 
+
 if ($function) :
+	Text::script('COM_MODULES_SELECT', true);
+	$moduleData = array(
+		'items' 			=> $this->items,
+		'clientId' 			=> $this->state->get('client_id', 0),
+		'modalLink' 		=> $this->modalLink,
+		'functionPlain' 	=> $function,
+		'functionEscape' 	=> $this->escape($function),
+		'routeUrl' 			=> Route::_('index.php?option=com_modules&task=module.add&client_id=')
+	);
+
+	Factory::getDocument()->addScriptOptions('modules', $moduleData);
 	HTMLHelper::_('script', 'com_modules/admin-select-modal.js', ['version' => 'auto', 'relative' => true]);
 endif;
 ?>
 
-<h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
+<?php if($function) : ?>
+	<div class="j-search-module-container mb-4">
+		<h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
+		<div class="input-group">
+			<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" placeholder="<?php echo Text::_('JSEARCH_MODULES'); ?>">
+			<span class="icon-search" aria-hidden="true" aria-label="Search"></span>
+		</div>
+	</div>
+<?php endif; ?>
+
 <div id="new-modules-list">
 	<div class="row">
 		<?php foreach ($this->items as &$item) : ?>

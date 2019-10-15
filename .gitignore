@@ -27,7 +27,9 @@
 /installation/template/css/template-rtl.css
 /installation/template/css/template.min.css
 /installation/template/css/template.css
-/templates/cassiopeia/css
+templates/*
+!templates/cassiopeia
+templates/cassiopeia/css
 
 # Test Related Files #
 /phpunit.xml

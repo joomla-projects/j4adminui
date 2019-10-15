@@ -93,24 +93,24 @@ $gray-700:                         #495057; //used for atum-text-dark, secondary
 $gray-800:                         #343a40; //used for badges-inverse
 $gray-900:                         #212529; //used for tree header, badge-inverse border
 $black:                            #000;    //used for shadows
-$focuscolor:                       #39f;   //used for focus color
+$focuscolor:                       #0052cc;   //used for focus color
 
-$dark-blue:                        #001B4C; //is the atum-special-color
-$light-blue:                       #1757A1; //is the atum-link-color
+$dark-blue:                        #0184ff; //is the atum-special-color
+$light-blue:                       #0184ff; //is the atum-link-color
 
 
 // BS Colours
-$blue:                             hsl(207, 61%, 26%); // base color for calculation, Primary-color
-$indigo:                           #0377be; //used in bootstrap
+$blue:                             #0052cc; // base color for calculation, Primary-color
+$indigo:                           #0184ff; //used in bootstrap
 $purple:                           #6f42c1; //used in bootstrap
 $pink:                             #e83e8c; //used in bootstrap
-$red:                              #c52827; //used in bootstrap
+$red:                              #de350b; //used in bootstrap
 $red-dark:                         #3b0d0c; //used for alerts error
-$yellow:                           #d43900; //used in bootstrap
-$green:                            #2f7d32; //used in bootstrap
+$yellow:                           #ffaa00; //used in bootstrap
+$green:                            #00875a; //used in bootstrap
 $green-dark:                       #0f2f21; //used for alert success
 $teal:                             #20c997; //used in bootstrap
-$cyan:                             #108193; //used in bootstrap
+$cyan:                             #0052cc; //used in bootstrap
 
 $base-color:                       $blue;
 
@@ -129,7 +129,7 @@ $theme-colors: map-merge((
 	atum-bg-dark:                    $base-color, //standard background color
 	action:                          $base-color,
 	error:                           $red-dark,
-	alert-success:                   $green-dark
+	alert-success:                   $base-color
 ), $theme-colors);
 
 $colors: (

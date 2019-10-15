@@ -60,14 +60,11 @@
         display: none;
       }
       .btn {
-        padding: 0;
         color: var(--secondary-text-color);
         &:hover,
         &:active,
         &:focus {
-          box-shadow: none;
           color: var(--primary-color);
-          background-color: transparent;
         }
       }
     }
@@ -91,53 +88,21 @@
     }
   }
 }
-.js-stools .js-stools-container-bar{
-  .btn.js-stools-btn-filter, .btn.js-stools-btn-clear{
-    border-radius: 3px !important;
-  }
-}
 .input-group {
   position: relative;
   display: block;
   .input-group-append {
     position: absolute;
-    right: 1.1rem;
+    right: 0;
     top: 0;
-    height: 1.5rem;
     bottom: 0;
     margin: auto;
     z-index: 4;
     .btn{
-      background: transparent;
-      border: 0;
-      padding: 0 0 0 10px;
-      color: var(--icon-color);
-      box-shadow: none;
-      line-height: 1;
+      border-color: var(--input-border-color);
       &::before,
       &.hidden{
         display: none;
-      }
-      span{
-        margin-right: 0;
-        color: var(--secondary-icon-color);
-        @include transition(.3s);
-      }
-      &.btn-primary {
-        &:not(:disabled):not(.disabled):active:focus,
-        &:hover,
-        &:active,
-        &:focus {
-          background-color: transparent;
-          box-shadow: none;
-        }
-      }
-      &:hover,
-      &:active,
-      &:focus {
-        span {
-          color: var(--primary-color);
-        }
       }
     }
     .input-group-text{
@@ -149,27 +114,10 @@
       }
     }
   }
-}
-.control-group {
-  .controls {
-    .input-group {
-      .input-group-append {
-        .btn{
-          &.btn-primary,
-          &.button-select,
-          &:not(:disabled),
-          &.btn-secondary{
-            &:hover,
-            &:focus,
-            &:active{
-              background-color: transparent;
-              border-color: transparent;
-              box-shadow: none;
-              outline: none;
-              color: var(--primary-color);
-            }
-          }
-        }
+  .focus-visible {
+    + span {
+      .btn {
+        border-color: var(--primary-color);
       }
     }
   }
@@ -178,15 +126,8 @@
 .btn-toolbar{
   margin-bottom: .8rem;
   .input-group-append {
-    height: 1rem;
-    line-height: 1;
-    margin: 0;
-    top: 1rem;
-    .btn-primary {
-      background: transparent;
-      color: var(--secondary-icon-color);
-      box-shadow: none;
-      line-height: 1;
+    .btn {
+      border-color: var(--input-border-color);
     }
   }
   
