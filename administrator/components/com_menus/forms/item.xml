@@ -131,7 +131,7 @@
 
 		<field
 			name="browserNav"
-			type="list"
+			type="radio"
 			label="COM_MENUS_ITEM_FIELD_BROWSERNAV_LABEL"
 			default="0"
 			filter="int"
