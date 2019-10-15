@@ -205,6 +205,11 @@
         this.tablist.classList.remove('tab-overflow');
       }
 
+      // For desktop
+      this.tablist.addEventListener('mouseenter', this.toggleTabClass, true);
+      this.tablist.addEventListener('mouseleave', this.toggleTabClass, true);
+
+      // For smaller devices
       this.tablist.addEventListener('touchstart', this.toggleTabClass, true);
       this.tablist.addEventListener('touchend', this.toggleTabClass, true);
     }
@@ -219,13 +224,20 @@
         link.removeEventListener('click', this);
       });
       ulEl.removeEventListener('keydown', this);
+
+      // For desktop
+      this.tablist.removeEventListener('mouseenter', this.toggleTabClass, true);
+      this.tablist.removeEventListener('mouseleave', this.toggleTabClass, true);
+      // For smaller devices
       this.tablist.removeEventListener('touchstart', this.toggleTabClass, true);
       this.tablist.removeEventListener('touchend', this.toggleTabClass, true);
     }
 
-    toggleTabClass() {
-      if (this.totalListWidth > this.tablist.offsetWidth) {
-        this.tablist.classList.toggle('tab-overflow');
+    toggleTabClass(event) {
+      if (event.target.tagName === 'UL') {
+        if (this.totalListWidth > this.tablist.offsetWidth) {
+          this.tablist.classList.toggle('tab-overflow');
+        }
       }
     }
 
