@@ -110,7 +110,7 @@ class HtmlView extends BaseHtmlView
 			$dropdown = $bar->dropdownButton('status-group')
 				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('icon-mouse-pointer-highlighter')
+				->icon('icon-select')
 				->buttonClass('btn btn-secondary')
 				->listCheck(true);
 

@@ -200,7 +200,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 										$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 									}
 									?>
-									<span class="sortable-handler<?php echo $iconClass ?>">
+									<span class="sortable-handler icon-move-v<?php echo $iconClass ?>">
 										<span class="icon-arrows-v" aria-hidden="true"></span>
 									</span>
 									<?php if ($canChange && $saveOrder) : ?>
