@@ -36,13 +36,29 @@ joomla-tab > ul[role="tablist"] {
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 	white-space: nowrap;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	position: relative;
+	&::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
+	&.tab-overflow {
+		li {
+			a{
+				&:hover {
+					cursor: ew-resize;
+				}
+			}
+		}
+	}
 }
 
 joomla-tab > ul[role="tablist"] li.-more {
 	position: absolute;
-    right: 0;
-    font-size: 32px;
-    color: #9a9a9a;
+	right: 0;
+	font-size: 32px;
+	color: #9a9a9a;
 }
 
 joomla-tab a[role=tab] {

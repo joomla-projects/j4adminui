@@ -42,7 +42,7 @@ Joomla = window.Joomla || {};
 			toolbarHelp = document.getElementById('toolbar-help');
 
 		if (toolbarHelp && !toolbarOptions) {
-			toolbarHelp.classList.add('ml-auto', 'd-none', 'd-lg-block');
+			toolbarHelp.classList.add('ml-auto', 'd-none', 'd-lg-flex');
 		}
 		if (toolbarOptions && !toolbarHelp) {
 			toolbarOptions.classList.add('ml-auto', 'd-none', 'd-lg-block');
