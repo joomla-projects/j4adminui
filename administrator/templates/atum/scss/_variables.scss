@@ -7,7 +7,7 @@
 	//rgb
 	--primary-text-rgb:             37, 39, 50;
 	--secondary-text-rgb:           94, 114, 124;
-	--secondary-text-rgb-alt:       90, 90, 92;
+	--secondary-text-rgb-alt:       88, 88, 88;
 	
 	--icon-rgb:                     165, 177, 197;
 	--secondary-icon-rgb:           189, 197, 200;
@@ -21,7 +21,7 @@
 	// color
 	--primary-text-color:           rgb(var(--primary-text-rgb));
 	--secondary-text-color:         rgb(var(--secondary-text-rgb));
-	--secondary-text-color-alt:     rgb(var(--secondary-text-rgb-alt));
+	--secondary-text-alt-color:     rgb(var(--secondary-text-rgb-alt));
 	
 	--icon-color:                   rgb(var(--icon-rgb));
 	--secondary-icon-color:         rgb(var(--secondary-icon-rgb));
@@ -50,11 +50,13 @@
 	
 	
 	//primary color
-	--primary-rgb:                  0, 82, 204;
-	--primary-light-rgb:            1, 132, 255;
+	--primary-rgb:                  1, 132, 255; //#0184ff
+	--primary-dark-rgb:             0, 82, 204; //#0052cc
+	--primary-dark-color:           rgb(var(--primary-dark-rgb));
+	--primary-light-rgb:            25, 141, 248;//#198df8
 	--primary-color:                rgb(var(--primary-rgb));
 	--primary-light-color:          rgb(var(--primary-light-rgb));
-	--primary-lighter-rgb:          229, 242, 255;
+	--primary-lighter-rgb:          229, 242, 255; //#e5f2ff
 	--primary-lighter-color:        rgb(var(--primary-lighter-rgb));
 	--atum-bg-dark: var(--primary-color);
 	
@@ -78,6 +80,14 @@
 	--danger-light-rgb:             255, 82, 43;
 	--danger-color:                 rgb(var(--danger-rgb));
 	--danger-light-color:           rgb(var(--danger-light-rgb));
+
+	// button color
+	--btn-gradient-1: #1d91ff;
+	--btn-gradient-2: #0687ff;
+	--btn-gradient-3: #f0f6ff;
+	--btn-gradient-4: var(--primary-lighter-color);
+	--btn-disabled-color: #7A8391;
+	--btn-secondary-border-color: #7c7e82;
 }
 
 

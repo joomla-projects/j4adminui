@@ -29,13 +29,15 @@ $onClick         = "window.parent.jSelectUser(this);window.parent.Joomla.Modal.g
 ?>
 <div class="container-popup">
 	<form action="<?php echo Route::_('index.php?option=com_users&view=users&layout=modal&tmpl=component&groups=' . $input->get('groups', '', 'BASE64') . '&excluded=' . $input->get('excluded', '', 'BASE64')); ?>" method="post" name="adminForm" id="adminForm">
-		<?php if (!$userRequired) : ?>
-		<div class="float-left mr-2">
-			<button type="button" class="btn btn-primary button-select" data-user-value="0" data-user-name="<?php echo $this->escape(Text::_('JLIB_FORM_SELECT_USER')); ?>"
-				data-user-field="<?php echo $this->escape($field); ?>"><?php echo Text::_('JOPTION_NO_USER'); ?></button>&nbsp;
+		<div class="d-flex flex-wrap">
+			<?php if (!$userRequired) : ?>
+			<div class="mr-2">
+				<button type="button" class="btn btn-primary button-select" data-user-value="0" data-user-name="<?php echo $this->escape(Text::_('JLIB_FORM_SELECT_USER')); ?>"
+					data-user-field="<?php echo $this->escape($field); ?>"><?php echo Text::_('JOPTION_NO_USER'); ?></button>&nbsp;
+			</div>
+			<?php endif; ?>
+			<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		</div>
-		<?php endif; ?>
-		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<?php if (empty($this->items)) : ?>
 			<div class="j-alert j-alert-info">
 				<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
