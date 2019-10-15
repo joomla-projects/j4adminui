@@ -51,12 +51,8 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 		<div class="col-lg-9">
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('JCATEGORY')); ?>
-			<div class="j-card">
-				<div class="j-card-body">
-					<?php echo $this->form->getLabel('description'); ?>
-					<?php echo $this->form->getInput('description'); ?>
-				</div>
-			</div>
+			<?php echo $this->form->getLabel('description'); ?>
+			<?php echo $this->form->getInput('description'); ?>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
 			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
