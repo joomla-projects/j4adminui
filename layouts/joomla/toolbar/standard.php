@@ -60,6 +60,12 @@ switch($class)
 	case 'icon-cancel':
 		$iconClass = false;
 	break;
+	case 'icon-featured':
+		$iconClass = 'icon-star-full';
+	break;
+	case 'icon-checkin':
+		$iconClass = 'icon-checkinmark';
+	break;
 	default:
 		$iconClass = $class;
 }
