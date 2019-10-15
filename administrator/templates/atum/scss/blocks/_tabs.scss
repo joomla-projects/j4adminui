@@ -33,7 +33,7 @@ joomla-tab > ul {
 }
 
 joomla-tab > ul[role="tablist"] {
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 
 joomla-tab > ul[role="tablist"] li.-more {

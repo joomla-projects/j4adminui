@@ -386,8 +386,8 @@
       // create toggle button
       this.srOnlyToggler = this.createDOMElement('span', { class: 'sr-only' }, this.translate('JSHOW'));
       this.toggler = this.createDOMElement('span', { class: `input-group-text ${type === 'password' ? 'icon-eye-open' : 'icon-eye-close'} input-password-toggle`, 'aria-hidden': true });
-      this.inputContainer.append(this.srOnlyToggler);
       this.inputContainer.append(this.toggler);
+      this.inputContainer.append(this.srOnlyToggler);
 
       // add toggle event listener
       this.toggler.addEventListener('click', this.handleToggleFieldType, false);
