@@ -160,36 +160,6 @@
             color: var(--secondary-icon-color);
         }
     }
-    &.btn-cancel{
-        line-height: 2.75rem;
-        color: var(--secondary-text-color);
-        background-color: var(--bg-color);
-        border: 1px solid var(--secondary-icon-color);
-        box-shadow: none;
-        &:hover{
-            box-shadow: none;
-            background-color: var(--secondary-icon-color);
-            color: var(--primary-text-color);
-        }
-        &:focus, &.active, &:active{
-            border-color: var(--danger-color);
-            background-color: var(--danger-color);
-            color: #fff;
-            box-shadow: none;
-        }
-        &[disabled], &.disabled, &:disabled{
-            pointer-events: none;
-            background-image: none;
-            background-color: var(--bg-color);
-            color: var(--secondary-icon-color);
-        }
-        &.btn-lg{
-            line-height: 3.29rem;
-        }
-        &.btn-sm{
-            line-height: 2.15rem;
-        }
-    }
     &.btn-danger{
         background-color: var(--danger-color);
         color: #fff;
