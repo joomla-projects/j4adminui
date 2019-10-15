@@ -20,7 +20,9 @@ label {
 		opacity: 1;
 	}
 }
-
+joomla-field-fancy-select {
+	min-width: 100%;
+}
 .form-control {
 	@include input-style();
 	padding: 0 0 0 1.2rem;
@@ -282,8 +284,13 @@ input {
 		padding: 0 12px;
 		box-shadow: none;
 		line-height: 1;
-		border: 2px solid var(--input-border-color);
+		border-color: var(--input-border-color);
+		border-width: 2px 2px 2px 1px;
+		border-style: solid;
 		border-radius: 3px;
+		&:hover {
+			color: var(--primary-color);
+		}
 		@include media-breakpoint-down(xs){
 			top: 38px;
 		}

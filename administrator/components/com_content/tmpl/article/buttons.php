@@ -5,10 +5,11 @@ defined('_JEXEC') or die;
 
 <div class="container">
   <p>
+    <a href="#"class="btn btn-xl btn-primary">Primary button</a>
     <a href="#"class="btn btn-lg btn-primary">Primary button</a>
     <a href="#"class="btn btn-primary">Primary button</a>
-    <a href="#"class="btn btn-primary">Primary button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-primary"><span class="icon fas fa-plus"></span>Primary button</a>
+    <a href="#"class="btn btn-primary">Primary button<span class="icon-plus right"></span></a>
+    <a href="#"class="btn btn-primary"><span class="icon-plus"></span>Primary button</a>
     <a href="#"class="btn btn-primary btn-sm">Primary button</a>
     <a href="#"class="btn btn-primary btn-sm active">Primary button</a>
     <a href="#"class="btn btn-primary btn-sm disabled">Primary button</a>
@@ -18,8 +19,8 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-lg btn-default">Default button</a>
     <a href="#"class="btn btn-lg btn-default">Default button</a>
     <a href="#"class="btn btn-default">Default button</a>
-    <a href="#"class="btn btn-default">Default button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-default"><span class="icon fas fa-plus"></span>Default button</a>
+    <a href="#"class="btn btn-default">Default button<span class="icon-plus right"></span></a>
+    <a href="#"class="btn btn-default"><span class="icon-plus"></span>Default button</a>
     <a href="#"class="btn btn-default btn-sm">Default button</a>
     <a href="#"class="btn btn-default btn-sm active">Default button</a>
     <a href="#"class="btn btn-default btn-sm disabled">Default button</a>

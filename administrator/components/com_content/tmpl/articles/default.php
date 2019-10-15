@@ -106,40 +106,40 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 						</caption>
 						<thead>
 							<tr>
-								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
+								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem">
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 								</th>
-								<td style="width:1%" class="text-center">
+								<td class="text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:3%" class="d-none d-lg-table-cell">
+								<th scope="col" class="d-none d-lg-table-cell text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="min-width:100px">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="min-width:60px" class="d-none d-sm-table-cell">
+								<th scope="col" style="width: 15%" class="d-none d-xl-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JCATEGORY', 'a.catid', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:1%" class="text-center">
+								<th scope="col" style="width: 10%">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 								</th>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width: 15%">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width: 10%">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTENT_HEADING_DATE_' . strtoupper($orderingColumn), 'a.' . $orderingColumn, $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:3%" class="d-none d-lg-table-cell text-center">
+								<th scope="col" class="d-none d-xl-table-cell" style="width: 3rem">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
 								</th>
 								<?php if ($this->vote) : ?>
-									<th scope="col" style="width:3%" class="d-none d-md-table-cell text-center">
+									<th scope="col" style="width: 3rem" class="d-none d-xl-table-cell">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_VOTES', 'rating_count', $listDirn, $listOrder); ?>
 									</th>
-									<th scope="col" style="width:3%" class="d-none d-md-table-cell text-center">
+									<th scope="col" style="width: 3rem" class="d-none d-xl-table-cell">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_RATINGS', 'rating', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
@@ -214,7 +214,8 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 								<td class="text-center">
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id, false, 'cid', 'cb', $item->title); ?>
 								</td>
-								<td class="d-none d-lg-table-cell j-article-id-number">
+								
+								<td class="d-none d-lg-table-cell text-center j-article-id-number">
 									<?php echo (int) $item->id; ?>
 								</td>
 
@@ -231,26 +232,26 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 										<?php else : ?>
 											<span title="<?php echo Text::sprintf('JFIELD_ALIAS_LABEL', $this->escape($item->alias)); ?>"><?php echo $this->escape($item->title); ?></span>
 										<?php endif; ?>
-											<span class="small break-word hasTooltip" title="<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>">
-												<?php if (empty($item->note)) : ?>
-													<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
-												<?php else : ?>
-													<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
-												<?php endif; ?>
-											</span>
+										<!-- <span class="small break-word hasTooltip d-none d-xl-inline-block" title="<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>">
+											<?php if (empty($item->note)) : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
+											<?php else : ?>
+												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
+											<?php endif; ?>
+										</span> -->
 									</div>
 								</th>
 
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-xl-table-cell">
 									<?php
 									$ParentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->parent_category_id . '&extension=com_content');
 									$CurrentCatUrl = Route::_('index.php?option=com_categories&task=category.edit&id=' . $item->catid . '&extension=com_content');
 									$EditCatTxt = Text::_('JACTION_EDIT') . ' ' . Text::_('JCATEGORY');
-									if ($item->category_level != '1') :
-										if ($item->parent_category_level != '1') :
-											echo ' &#187; ';
-										endif;
-									endif;
+									// if ($item->category_level != '1') :
+									// 	if ($item->parent_category_level != '1') :
+									// 		echo ' &#187; ';
+									// 	endif;
+									// endif;
 									if (Factory::getLanguage()->isRtl())
 									{
 										if ($canEditCat || $canEditOwnCat) :
@@ -321,28 +322,28 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 									</div>
 								</td>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<td class="d-none d-md-table-cell">
+									<td class="d-none d-xl-table-cell">
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 									</td>
 								<?php endif; ?>
-								<td class="d-none d-md-table-cell text-center">
+								<td class="d-none d-xl-table-cell">
 									<?php
 									$date = $item->{$orderingColumn};
 									echo $date > 0 ? HTMLHelper::_('date', $date, Text::_('DATE_FORMAT_LC4')) : '-';
 									?>
 								</td>
-								<td class="d-none d-lg-table-cell text-center">
+								<td class="d-none d-xl-table-cell">
 									<span class="badge badge-info">
 										<?php echo (int) $item->hits; ?>
 									</span>
 								</td>
 								<?php if ($this->vote) : ?>
-									<td class="d-none d-md-table-cell text-center">
+									<td class="d-none d-xl-table-cell">
 										<span class="badge badge-success">
 										<?php echo (int) $item->rating_count; ?>
 										</span>
 									</td>
-									<td class="d-none d-md-table-cell text-center">
+									<td class="d-none d-xl-table-cell">
 										<span class="badge badge-warning">
 										<?php echo (int) $item->rating; ?>
 										</span>

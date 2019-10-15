@@ -20,7 +20,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 
 // $json = array();
 
-// if (!empty($icons))  
+// if (!empty($icons))
 // {
 //     foreach($icons as $icon) {
 //         $split = array_map(function($sub){return trim($sub);}, explode("/", $icon));
@@ -776,6 +776,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 					<div class="j-card-body">
 						<div class="j-progress">
 							<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+						</div>
+						<br>
+						<div class="progress">
+							<div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 				</div>
