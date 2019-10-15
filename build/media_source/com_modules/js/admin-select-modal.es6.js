@@ -16,28 +16,29 @@
 
     const initAddModule = () => {
       const elems = document.querySelectorAll('#new-modules-list a.select-link');
-
-      elems.forEach((elem) => {
-        elem.addEventListener('click', (event) => {
-          let targetElem = event.currentTarget;
-  
-          // There is some bug with events in iframe where currentTarget is "null"
-          // => prevent this here by bubble up
-          if (!targetElem) {
-            targetElem = event.target;
-  
-            if (targetElem && !targetElem.classList.contains('select-link')) {
-              targetElem = targetElem.parentNode;
+      if (elems) {
+        elems.forEach((elem) => {
+          elem.addEventListener('click', (event) => {
+            let targetElem = event.currentTarget;
+    
+            // There is some bug with events in iframe where currentTarget is "null"
+            // => prevent this here by bubble up
+            if (!targetElem) {
+              targetElem = event.target;
+    
+              if (targetElem && !targetElem.classList.contains('select-link')) {
+                targetElem = targetElem.parentNode;
+              }
             }
-          }
-  
-          const functionName = targetElem.getAttribute('data-function');
-          
-          if (functionName && typeof window.parent[functionName] === 'function') {
-            window.parent[functionName](targetElem);
-          }
+    
+            const functionName = targetElem.getAttribute('data-function');
+            
+            if (functionName && typeof window.parent[functionName] === 'function') {
+              window.parent[functionName](targetElem);
+            }
+          });
         });
-      });
+      }
     };
 
     initAddModule();
@@ -131,6 +132,8 @@
         timeout = setTimeout(() => {
           let newList = findMatches(value);
           modulesContainer.innerHTML = renderModules(newList);
+
+          //Re-init module select activity after search happening
           initAddModule();
         }, 250);
         
