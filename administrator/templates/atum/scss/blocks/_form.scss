@@ -274,7 +274,7 @@ input {
 	position: relative;
 	min-width: 100%;
 	.input-group-text {
-		background: var(--input-border-color);
+		background: transparent;
 		cursor: pointer;
 		color: var(--secondary-text-color);
 		position: absolute;

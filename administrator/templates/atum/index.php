@@ -35,10 +35,10 @@ require_once __DIR__ . '/Service/HTML/Atum.php';
 // Template params
 $siteLogo  = $this->params->get('siteLogo')
 	? JUri::root() . $this->params->get('siteLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla-blue.svg';
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla.svg';
 $smallLogo = $this->params->get('smallLogo')
 	? JUri::root() . $this->params->get('smallLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo-blue.svg';
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
 $logoAlt = htmlspecialchars($this->params->get('altSiteLogo', ''), ENT_COMPAT, 'UTF-8');
 $logoSmallAlt = htmlspecialchars($this->params->get('altSmallLogo', ''), ENT_COMPAT, 'UTF-8');
 // Enable assets
@@ -98,20 +98,24 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 	<?php // Header ?>
 	<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
 		<div class="logo-header">
-			<div class="main-logo">
+			<div class="main-logo d-flex align-items-center">
 				<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
 				<?php if ($hiddenMenu || $cpanel) : ?>
 					<div class="logo">
-						<img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
+						<img class="logo-main" src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
 						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
 					</div>
 				<?php else : ?>
 					<a class="logo" href="<?php echo Route::_('index.php'); ?>"
 					   aria-label="<?php echo Text::_('TPL_BACK_TO_CONTROL_PANEL'); ?>">
-						<img src="<?php echo $siteLogo; ?>" alt="">
+						<img class="logo-main" src="<?php echo $siteLogo; ?>" alt="">
 						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="">
 					</a>
 				<?php endif; ?>
+				<div class="joomla-version mx-3 d-none d-sm-inline-flex" title="<?php echo JVERSION; ?>">
+					<span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
+					<span class="text-truncate" aria-hidden="true"><?php echo JVERSION; ?></span>
+				</div>
 			</div>
 			<?php if (!$hiddenMenu): ?>
 				<div class="sidebar-toggle d-none d-sm-block">
@@ -120,10 +124,6 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 					</a>
 				</div>
 			<?php endif; ?>
-			<div class="header-version d-none d-sm-block" title="<?php echo JVERSION; ?>">
-				<span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
-				<span aria-hidden="true"><?php echo JVERSION; ?></span>
-			</div>
 		</div>
 		<div class="header-title">
 			<jdoc:include type="modules" name="title" />
