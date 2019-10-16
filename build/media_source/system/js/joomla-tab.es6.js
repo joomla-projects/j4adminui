@@ -35,6 +35,10 @@
 
     set orientation(value) { this.setAttribute('orientation', value); }
 
+    get pills() { return this.getAttribute('pills'); }
+
+    set pills(value) { this.setAttribute('pills', value); }
+
     /* Lifecycle, element created */
     constructor() {
       super();
@@ -247,6 +251,10 @@
 
       const nav = document.createElement('ul');
       nav.setAttribute('role', 'tablist');
+
+      if(this.hasAttribute('pills') && this.getAttribute('pills') === 'true'){
+        nav.setAttribute('class', 'nav-pills');
+      }
 
       /** Activate Tab */
       const activateTabFromLink = (e) => {
