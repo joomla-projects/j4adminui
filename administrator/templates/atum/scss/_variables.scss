@@ -7,11 +7,10 @@
 	//rgb
 	--primary-text-rgb:             37, 39, 50;
 	--secondary-text-rgb:           94, 114, 124;
-	--secondary-text-rgb-alt:       88, 88, 88;
+	--secondary-text-rgb-alt:       88, 88, 88; //#585858
 	
 	--icon-rgb:                     165, 177, 197;
-	--secondary-icon-rgb:           189, 197, 200;
-	
+	--secondary-icon-rgb:           189, 197, 200; //#bdc5c8
 	
 	--bg-rgb:                       237, 240, 245;
 	--bg-light-rgb:                 250, 251, 252;
@@ -25,7 +24,6 @@
 	
 	--icon-color:                   rgb(var(--icon-rgb));
 	--secondary-icon-color:         rgb(var(--secondary-icon-rgb));
-	//--disable-color:                rgb(var(--disable-rgb));
 	
 	--border-color:                 rgb(var(--bg-rgb));
 	--bg-color:                     rgb(var(--bg-rgb));
@@ -53,7 +51,7 @@
 	--primary-rgb:                  1, 132, 255; //#0184ff
 	--primary-dark-rgb:             0, 82, 204; //#0052cc
 	--primary-dark-color:           rgb(var(--primary-dark-rgb));
-	--primary-light-rgb:            25, 141, 248;//#198df8
+	--primary-light-rgb:            25, 141, 248; //#198df8
 	--primary-color:                rgb(var(--primary-rgb));
 	--primary-light-color:          rgb(var(--primary-light-rgb));
 	--primary-lighter-rgb:          229, 242, 255; //#e5f2ff
@@ -62,8 +60,8 @@
 	
 	
 	//success color
-	--success-rgb:                  0, 135, 90;
-	--success-light-rgb:            0, 186, 124;
+	--success-rgb:                  95, 172, 35; //#5fac23
+	--success-light-rgb:            122, 193, 67; //#7ac143
 	--success-color:                rgb(var(--success-rgb));
 	--success-light-color:          rgb(var(--success-light-rgb));
 	
@@ -84,10 +82,10 @@
 	// button color
 	--btn-gradient-1: #1d91ff;
 	--btn-gradient-2: #0687ff;
-	--btn-gradient-3: #f0f6ff;
+	--btn-gradient-3: var(--lighter-btn-color);
 	--btn-gradient-4: var(--primary-lighter-color);
 	--btn-disabled-color: #7A8391;
-	--btn-secondary-border-color: #7c7e82;
+	--btn-secondary-border-color: var(--dark-border-color);
 }
 
 
