@@ -21,6 +21,8 @@
     // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
     width: 1%;
     margin-bottom: 0;
+    max-width: initial;
+    min-width: initial;
 
     + .form-control,
     + .custom-select,
