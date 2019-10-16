@@ -510,13 +510,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		@extend .d-inline-flex;
 		@extend .align-items-center;
 		@extend .justify-content-center;
-		vertical-align: top;
-		height: 1.286rem;
-		width: 1.286rem;
-		background: var(--success-color);
-		color: #fff;
+		color: var(--success-color);
 		line-height: 1.286rem;
-		font-size: 0.643rem;
+		font-size: 18px;
 		border-radius: 50%;
 		margin-right: 6px;
 	}
