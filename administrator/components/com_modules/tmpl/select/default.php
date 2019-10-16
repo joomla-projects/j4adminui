@@ -35,8 +35,8 @@ HTMLHelper::_('script', 'com_modules/admin-select-modal.js', ['version' => 'auto
 <div class="j-search-module-container mb-4">
 	<h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
 	<div class="input-group">
-		<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" placeholder="<?php echo Text::_('JSEARCH_MODULES'); ?>">
 		<span class="icon-search" aria-hidden="true" aria-label="Search"></span>
+		<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" placeholder="<?php echo Text::_('JSEARCH_MODULES'); ?>">
 	</div>
 </div>
 

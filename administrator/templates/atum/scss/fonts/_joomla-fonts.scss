@@ -8,11 +8,11 @@
 
 @font-face
 {
-font-family: "JoomlaFont";
-font-weight: Normal;
-font-style: "Regular";
-src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
-url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
+  font-family: "JoomlaFont";
+  font-weight: Normal;
+  font-style: "Regular";
+  src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
+  url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
 }
 
 [class^="icon-"], [class*=" icon-"]
@@ -1534,7 +1534,12 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
 
 .duotone.icon-unpublish:after
 {
-  content: "\13bd4";
+  content: "\13cfe";
+}
+
+.duotone.icon-unpublish:before
+{
+  content: "\13cff";
 }
 
 .duotone.icon-user-notes:after
@@ -1615,11 +1620,6 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
 .duotone.icon-wrench:before
 {
   content: "\13be4";
-}
-
-.icon-Increase-contrast:before,.icon-adjust:before
-{
-  content: "\13be5";
 }
 
 .icon-access-levels:before
@@ -1877,6 +1877,11 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
   content: "\13c14";
 }
 
+.icon-check:before
+{
+  content: "\13d01";
+}
+
 .icon-checkbox-checked:before
 {
   content: "\13c15";
@@ -2127,6 +2132,11 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
   content: "\13c40";
 }
 
+.icon-featured:before,.icon-default:before,.icon-star:before,.icon-star-full:before,.icon-grade:before
+{
+  content: "\13cb9";
+}
+
 .icon-feed:before,.icon-rss:before
 {
   content: "\13c41";
@@ -2265,6 +2275,11 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
 .icon-html:before
 {
   content: "\13ce0";
+}
+
+.icon-increase-contrast:before
+{
+  content: "\13be5";
 }
 
 .icon-info-bubble:before,.icon-help:before,.icon-help-2:before
@@ -2732,11 +2747,6 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
   content: "\13cee";
 }
 
-.icon-star-full:before
-{
-  content: "\13cb9";
-}
-
 .icon-star-half:before
 {
   content: "\13cba";
@@ -2849,7 +2859,7 @@ url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
 
 .icon-unpublish:before
 {
-  content: "\13ccf";
+  content: "\13d00";
 }
 
 .icon-upload:before
