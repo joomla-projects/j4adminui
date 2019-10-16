@@ -42,18 +42,13 @@ if ($module->content) :
 	$headerIcon = '';
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
-
-	if (!empty($params->get('header_icon')))
-	{
-		$headerIcon = '<span class="' . htmlspecialchars($params->get('header_icon')) .  $margin . '" aria-hidden="true"></span>';
-	}
 	?>
 	<div class="module-wrapper" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
-				<div class="j-card-header">
+				<div class="j-card-header handle">
 					<h3 class="j-card-title<?php echo $headerClass; ?>">
-						<span class="j-card-icon icon-move duotone handle" area-hidden="true"></span>
+						<span class="j-card-icon icon-move duotone" area-hidden="true"></span>
 						<?php if ($module->showtitle) :
 							echo $headerIcon . htmlspecialchars($module->title);
 						endif; ?>
