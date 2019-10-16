@@ -93,26 +93,28 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 // Load search tools
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
 ?>
-<div class="js-stools" role="search">
+<div class="js-stools d-flex flex-wrap align-items-center" role="search">
 	<?php if ($data['view'] instanceof \Joomla\Component\Menus\Administrator\View\Items\HtmlView) : ?>
 	
 	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
-	<?php $app = Factory::getApplication(); ?>
-		<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
-		<?php if(!empty($clientOptions)) : ?>
-			<div class="btn-group mr-3" role="group">
-				<?php foreach($clientOptions as $key => $option) : ?>
-					<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default btn-outline' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
-				<?php endforeach; ?>
-			</div>
-			<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
+	<?php if(empty(Factory::getApplication()->input->get('menutype', null, 'STRING'))) : ?>
+		<?php $app = Factory::getApplication(); ?>
+			<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
+			<?php if(!empty($clientOptions)) : ?>
+				<div class="btn-group mr-3" role="group">
+					<?php foreach($clientOptions as $key => $option) : ?>
+						<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default btn-outline' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+					<?php endforeach; ?>
+				</div>
+				<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
+			<?php endif; ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ($data['options']['showSelector']) : ?>
-	<div class="js-stools-container-selector">
-		<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
-	</div>
+		<div class="js-stools-container-selector">
+			<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
+		</div>
 	<?php endif; ?>
 	<div class="js-stools-container-bar ml-auto">
 		<div class="btn-toolbar">
