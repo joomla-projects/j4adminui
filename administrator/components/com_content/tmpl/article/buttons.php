@@ -27,6 +27,7 @@ defined('_JEXEC') or die;
   </p>
 
   <p>
+    <a href="#"class="btn btn-xl btn-secondary">Secondary button</a>
     <a href="#"class="btn btn-lg btn-secondary">Secondary button</a>
     <a href="#"class="btn btn-secondary">Secondary button</a>
     <a href="#"class="btn btn-secondary">Secondary button<span class="icon-arrow-plus"></span></a>

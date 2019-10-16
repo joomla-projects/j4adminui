@@ -15,14 +15,14 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     @include transition(.35s);
 }
 .btn{
-    padding: .93rem 1.5rem;
-    line-height: 1;
+    padding: .36rem 1.5rem;
+    line-height: 30px;
     font-size: 1rem;
     font-weight: 500;
     border: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     text-align: center;
-    vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -35,7 +35,9 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     border-radius: 3px;
     position: relative;
     z-index: 1;
-    
+    span, i {
+        line-height: 30px;
+    }
     &[disabled], &.disabled, &:disabled,
     &.btn-primary[disabled],&.btn-primary.disabled,&.btn-primary:disabled,
     &.btn-danger[disabled],&.btn-danger.disabled,&.btn-danger:disabled,
@@ -55,32 +57,26 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     @include media-breakpoint-down(xs){
         padding: .5rem 1rem;
     }
-    >[class*=" icon-"], [class^=icon-]{
-        margin-right: 8px;
-    }
-    >.icon-right{
-        margin-left: 8px;
-    }
     &:hover, &:focus, &:focus:active, &:active{
         text-decoration: none;
         box-shadow: $btn-boxshadow;
     }
     &.btn-xl{
-        padding: 1.5rem 3.1rem;
+        padding: .93rem 3.1rem;
         @include media-breakpoint-down(xs){
-            padding: 1.5rem;
+            padding: .93rem 1.5rem;
         }
     }
     &.btn-lg{
-        padding: 1.23rem 3.1rem;
+        padding: .646rem 3.1rem;
         @include media-breakpoint-down(xs){
-            padding: 1rem;
+            padding: .646rem 1rem;
         }
     }
     &.btn-sm{
-        padding: .6rem 1.5rem;
+        padding: 0 1.5rem;
         @include media-breakpoint-down(xs){
-            padding: .5rem .7rem;
+            padding: 0 .8rem;
         }
     }
     &.btn-primary {
@@ -153,8 +149,8 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         border: 1px solid var(--btn-secondary-border-color);
         color: var(--secondary-text-alt-color);
         box-shadow: none;
-        padding-top: calc(.93rem-1px);
-        padding-bottom: calc(.93rem-1px);
+        padding-top: calc(.36rem-1px);
+        padding-bottom: calc(.36rem-1px);
         &:hover, &.active, &:active{
             color: var(--primary-color);
             border-color: var(--primary-color);
@@ -180,27 +176,27 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             opacity: 0.8;
         }
         &.btn-xl{
-            padding-top: 1.44rem;
-            padding-bottom: 1.44rem;
+            padding-top: .86rem;
+            padding-bottom: .86rem;
             @include media-breakpoint-down(xs){
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
+                padding-top: .86rem;
+                padding-bottom: .86rem;
             }
         }
         &.btn-lg{
-            padding-top: 1.15rem;
-            padding-bottom: 1.15rem;
+            padding-top: .574rem;
+            padding-bottom: .574rem;
             @include media-breakpoint-down(xs){
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+                padding-top: .3rem;
+                padding-bottom: .3rem;
             }
         }
         &.btn-sm{
-            padding-top: .6rem;
-            padding-bottom: .6rem;
+            padding-top: 0;
+            padding-bottom: 0;
             @include media-breakpoint-down(xs){
-                padding-top: .5rem;
-                padding-bottom: .5rem;
+                padding-top: 0;
+                padding-bottom: 0;
             }
         }
     }
@@ -370,16 +366,11 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         border: 1px solid var(--dark-border-color);
     }
     &.dropdown-toggle {
-        padding: .859rem 1.1rem;
+        padding: 0 1.1rem;
+        min-height: 40px;
     }
     &.hidden {
         display: none;
-    }
-    &.j-has-dropdown,
-    &.dropdown-toggle {
-        >[class*=" icon-"], [class^=icon-]{ 
-            margin-right: 0;
-        }
     }
 }
 .btn-group, .toolbar-btn-group{
