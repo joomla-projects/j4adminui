@@ -61,7 +61,7 @@ echo LayoutHelper::render('joomla.menu.edit_modules', $this); ?>
 			<th class="text-center">
 				<?php echo Text::_('COM_MENUS_HEADING_LEVELS'); ?>
 			</th>
-			<th class="text-center">
+			<th class="text-center d-none d-lg-table-cell">
 				<?php echo Text::_('COM_MENUS_HEADING_POSITION'); ?>
 			</th>
 			<th class="text-center">
@@ -101,7 +101,7 @@ echo LayoutHelper::render('joomla.menu.edit_modules', $this); ?>
 			<td id="access-<?php echo $module->id; ?>" style="width:15%" class="text-center">
 				<?php echo $this->escape($module->access_title); ?>
 			</td>
-			<td id="position-<?php echo $module->id; ?>" style="width:15%" class="text-center">
+			<td id="position-<?php echo $module->id; ?>" style="width:15%" class="text-center d-none d-lg-table-cell">
 				<?php echo $this->escape($module->position); ?>
 			</td>
 			<td id="menus-<?php echo $module->id; ?>" style="width:15%" class="text-center">

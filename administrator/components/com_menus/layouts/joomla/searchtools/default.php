@@ -101,7 +101,7 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 		<?php $app = Factory::getApplication(); ?>
 			<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
 			<?php if(!empty($clientOptions)) : ?>
-				<div class="btn-group mr-3" role="group">
+				<div class="btn-group btn-justified mr-3" role="group">
 					<?php foreach($clientOptions as $key => $option) : ?>
 						<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default btn-outline' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
 					<?php endforeach; ?>
