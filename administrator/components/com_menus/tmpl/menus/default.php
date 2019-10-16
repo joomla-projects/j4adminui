@@ -55,33 +55,32 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center">
+								<td class="text-center" style="width: 3rem;">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:5%" class="d-none d-lg-table-cell text-center">
+								<th scope="col" class="text-center" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center  d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width:10%;">
 									<span class="icon-publish text-primary" aria-hidden="true"></span>
-									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?></span>
-									
+									<?php echo Text::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width:10%;">
 									<span class="icon-unpublish text-warning" aria-hidden="true"></span>
-									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_UNPUBLISHED_ITEMS'); ?></span>
+									<?php echo Text::_('COM_MENUS_HEADING_UNPUBLISHED_ITEMS'); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width:10%;">
 									<span class="icon-trash text-danger" aria-hidden="true"></span>
-									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_TRASHED_ITEMS'); ?></span>
+									<?php echo Text::_('COM_MENUS_HEADING_TRASHED_ITEMS'); ?>
 								</th>
-								<th scope="col" style="width:15%" class="text-center d-none d-lg-table-cell">
+								<th scope="col" class="d-none d-md-table-cell" style="width:10%;">
 									<span class="icon-modules" aria-hidden="true"></span>
-									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_LINKED_MODULES'); ?></span>
+									<?php echo Text::_('COM_MENUS_HEADING_LINKED_MODULES'); ?>
 								</th>
-								<th scope="col" style="width:5%" class="text-center">
+								<th scope="col" class="text-center" style="width:3rem;">
 									<?php echo Text::_('COM_MENUS_MENUS'); ?>
 								</th>
 							</tr>
@@ -95,7 +94,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 								<td class="text-center">
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 								</td>
-								<td class="d-none d-lg-table-cell text-center">
+								<td class="text-center">
 									<?php echo $item->id; ?>
 								</td>
 								<td>
@@ -108,46 +107,46 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 											<?php echo $this->escape($item->title); ?>
 										<?php endif; ?>
 										<?php if (!empty($item->description)) : ?>
-											<small class="small">
+											<small class="small d-none d-md-inline">
 												(<?php echo $this->escape($item->description); ?>)
 											</small>
 										<?php endif; ?>
 									</div>
 								</td>
 								
-								<td class="text-center btns d-none d-md-table-cell">
+								<td class="d-none d-xl-table-cell">
 									<?php if ($canManageItems) : ?>
-										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=1'); ?>">
-											<?php echo $item->count_published; ?></a>
+										<a href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=1'); ?>">
+											<u><?php echo $item->count_published; ?></u></a>
 									<?php else : ?>
 										<span class="">
 											<?php echo $item->count_published; ?></span>
 									<?php endif; ?>
 								</td>
-								<td class="text-center btns d-none d-md-table-cell">
+								<td class="d-none d-xl-table-cell">
 									<?php if ($canManageItems) : ?>
-										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=0'); ?>">
-											<?php echo $item->count_unpublished; ?></a>
+										<a href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=0'); ?>">
+											<u><?php echo $item->count_unpublished; ?></u></a>
 									<?php else : ?>
 										<span class="">
 											<?php echo $item->count_unpublished; ?></span>
 									<?php endif; ?>
 								</td>
-								<td class="text-center btns d-none d-md-table-cell">
+								<td class="d-none d-xl-table-cell">
 									<?php if ($canManageItems) : ?>
 										<a class="" href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=-2'); ?>">
-											<?php echo $item->count_trashed; ?></a>
+											<u><?php echo $item->count_trashed; ?></u></a>
 									<?php else : ?>
 										<span class="">
 											<?php echo $item->count_trashed; ?></span>
 									<?php endif; ?>
 								</td>
-								<td class="text-center d-none d-lg-table-cell">
+								<td class="d-none d-md-table-cell">
 									<?php if (isset($this->modules[$item->menutype])) : ?>
 										<div class="joomla-dropdown-container">
 											<a href="javascript:;" class="btn btn-secondary btn-sm j-has-dropdown" data-target="menuTypeModule<?php echo $item->id; ?>">
 												<?php echo Text::_('COM_MENUS_MODULES'); ?>
-												<span class="icon-arrow-down-4"></span>
+												<span class="icon-arrow-down-4" area-hidden="true"></span>
 											</a>
 											<joomla-dropdown for="menuTypeModule<?php echo $item->id; ?>">
 												<?php foreach ($this->modules[$item->menutype] as &$module) : ?>
