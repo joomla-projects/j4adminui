@@ -98,31 +98,17 @@
     }
 
   }
-
-  .card-header {
-    min-height: 2.5rem;
-    color: var(--atum-bg-dark);
-    font-weight: $font-weight-bold;
-    background: var(--card-bg);
-  }
-
-  .module-actions {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: $zindex-actions;
-
-    > a {
-      display: inline-block;
-      width: 2.6em;
-      height: 2.6em;
-      line-height: 2.6em;
-      color: var(--atum-special-color);
-    }
-  }
 }
 
 .cpanel-modules {
+  .module-wrapper {
+    .j-module-content {
+      &.collapse-in {
+        display: none;
+      }
+    }
+  }
+
   .list-group-item:hover {
     background:var(--toolbar-bg);
   }

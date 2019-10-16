@@ -16,26 +16,6 @@
     z-index: inherit;
 }
 
-.mod-accessibility .accessibility-sidebar .accessibility-items-wrap {
-    display: flex;
-    width: 100%;
-}
-
-.mod-accessibility .accessibility-sidebar .accessibility-items-wrap .accessibility--item {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}
-.mod-accessibility .accessibility-sidebar .accessibility-items-wrap a {
-    line-height: normal;
-    height: 100%;
-}
-
-.mod-accessibility .accessibility-sidebar .accessibility-items-wrap a.active {
-    background: #7b7b7b;
-    color: #fff;
-}
 
 .mod-accessibility .accessibility-sidebar .accessibility-items-wrap a span{
     display: block;
