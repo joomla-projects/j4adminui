@@ -8,7 +8,10 @@
 @import "mixin";
 
 // Bootstrap other
-@import "vendor/bootstrap";
+@import "vendor/bootstrap/variables";
+@import "vendor/bootstrap/mixins";
+@import "vendor/bootstrap/print";
+@import "vendor/bootstrap/reboot";
 
 // Fonts
 @import "../../../../media/vendor/roboto-fontface/scss/roboto/sass/roboto-fontface";
@@ -22,6 +25,42 @@
 
 // jQuery Minicolors
 @import "../../../../build/media_source/system/scss/jquery-minicolors";
+
+
+// Vendor add/overrides
+@import "vendor/bootstrap/type";
+@import "vendor/bootstrap/images";
+//@import "vendor/bootstrap/code";
+@import "vendor/bootstrap/grid";
+@import "vendor/bootstrap/transitions";
+@import "vendor/awesomplete";
+@import "vendor/bootstrap/list-group";
+@import "vendor/bootstrap/collapse"; // color checked
+@import "vendor/bootstrap/lists";
+@import "vendor/bootstrap/modal"; // color checked
+@import "vendor/bootstrap/nav"; // color checked
+@import "vendor/bootstrap/navbar"; // color checked
+@import "vendor/bootstrap/card"; // color checked
+@import "vendor/bootstrap/breadcrumb"; // color checked
+@import "vendor/bootstrap/pagination"; // color checked
+@import "vendor/bootstrap/jumbotron"; // color checked
+//@import "vendor/bootstrap/alert";
+@import "vendor/bootstrap/progress"; // color checked
+@import "vendor/bootstrap/media"; // color checked
+@import "vendor/bootstrap/close"; // color checked
+@import "vendor/bootstrap/tooltip"; // color checked
+@import "vendor/bootstrap/popover"; // color checked
+@import "vendor/bootstrap/carousel"; // color checked
+@import "vendor/bootstrap/table"; // color checked
+@import "vendor/bootstrap/input-group"; // color checked
+@import "vendor/bootstrap/button-group"; // color checked
+@import "vendor/bootstrap/utilities";
+@import "vendor/codemirror";
+@import "vendor/chosen";
+@import "vendor/choicesjs";
+@import "vendor/dragula";
+@import "vendor/minicolors";
+@import "vendor/tinymce";
 
 // Blocks
 @import "blocks/global"; // Leave this first
@@ -61,24 +100,6 @@
 @import "blocks/alert";
 @import "blocks/editor";
 
-// Vendor overrides
-@import "vendor/awesomplete";
-@import "vendor/bootstrap/list-group";
-@import "vendor/bootstrap/collapse";
-@import "vendor/bootstrap/lists";
-@import "vendor/bootstrap/modal";
-@import "vendor/bootstrap/nav";
-@import "vendor/bootstrap/pagination";
-@import "vendor/bootstrap/table";
-@import "vendor/bootstrap/input-group";
-@import "vendor/bootstrap/button-group";
-@import "vendor/codemirror";
-@import "vendor/chosen";
-@import "vendor/choicesjs";
-@import "vendor/dragula";
-@import "vendor/minicolors";
-@import "vendor/tinymce";
-
 // Page specifics
 @import "pages/com_admin";
 @import "pages/com_config";
@@ -93,3 +114,4 @@
 @import "pages/com_finder";
 @import "pages/com_installer";
 @import "pages/com_redirect";
+@import "pages/com_messages";
