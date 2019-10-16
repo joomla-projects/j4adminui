@@ -24,7 +24,17 @@ joomla-tab > ul {
 	list-style: none;
 	position: relative;
 	z-index: 1;
-	border-bottom: 1px solid var(--secondary-icon-color);
+	background: var(--white);
+	&::after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		z-index: 2;
+		bottom: 0;
+		left: 0;
+		background: var(--border-color);
+	}
 	li {
 		@include media-breakpoint-down(xs) {
 			width: 100%;
@@ -34,6 +44,7 @@ joomla-tab > ul {
 
 joomla-tab > ul[role="tablist"] {
 	overflow-x: auto;
+	overflow-y: visible;
 	-webkit-overflow-scrolling: touch;
 	white-space: nowrap;
 	scrollbar-width: none;
@@ -75,7 +86,7 @@ joomla-tab a[role=tab][active] {
 }
 joomla-tab a[role=tab]:after {
 	background-color: var(--primary-color);
-	bottom: 0px;
+	bottom: 0;
 	content: "";
 	height: 2px;
 	left: 0;
@@ -86,6 +97,7 @@ joomla-tab a[role=tab]:after {
 	transition: .35s;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
+	z-index: 3;
 }
 
 joomla-tab a[role=tab][active]{
@@ -97,13 +109,13 @@ joomla-tab a[role=tab][active]{
 }
 joomla-tab a[role=tab]:not([active]):hover{
 	&::after {
-		background-color: var(--secondary-text-color);
 		opacity: 1;
 		visibility: visible;
 	}
 }
 joomla-tab ul li a[role=tab]:focus {
-	outline: var(--primary-color) solid 2px;
+	outline: var(--primary-color) solid 1px;
+	outline-offset: -1px;
 	&::after{
 		background-color: var(--primary-color);
 		opacity: 1;

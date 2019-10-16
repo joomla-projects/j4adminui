@@ -15,14 +15,14 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     @include transition(.35s);
 }
 .btn{
-    padding: .95rem 1.5rem;
-    line-height: 1;
+    padding: .36rem 1.5rem;
+    line-height: 30px;
     font-size: 1rem;
     font-weight: 500;
     border: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     text-align: center;
-    vertical-align: middle;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -35,7 +35,9 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     border-radius: 3px;
     position: relative;
     z-index: 1;
-    
+    span, i {
+        line-height: 30px;
+    }
     &[disabled], &.disabled, &:disabled,
     &.btn-primary[disabled],&.btn-primary.disabled,&.btn-primary:disabled,
     &.btn-danger[disabled],&.btn-danger.disabled,&.btn-danger:disabled,
@@ -55,42 +57,34 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     @include media-breakpoint-down(xs){
         padding: .5rem 1rem;
     }
-    >.icon{
-        margin-right: 7px;
-        &.right{
-            margin-right: 0;
-            margin-left: 7px;
-        }
-    }
     &:hover, &:focus, &:focus:active, &:active{
         text-decoration: none;
         box-shadow: $btn-boxshadow;
     }
     &.btn-xl{
-        padding: 1.5rem 3.1rem;
+        padding: .93rem 3.1rem;
         @include media-breakpoint-down(xs){
-            padding: 1.5rem;
+            padding: .93rem 1.5rem;
         }
     }
     &.btn-lg{
-        padding: 1.23rem 3.1rem;
+        padding: .646rem 3.1rem;
         @include media-breakpoint-down(xs){
-            padding: 1rem;
+            padding: .646rem 1rem;
         }
     }
     &.btn-sm{
-        padding: 0 1.7rem;
-        line-height: 2.286rem;
+        padding: 1px 1.5rem;
         @include media-breakpoint-down(xs){
-            padding: 0 1rem;
+            padding: 0 .8rem;
         }
     }
     &.btn-primary {
-        background: -webkit-gradient(linear, left top, left bottom, from(var(--primary-color)), to(var(--primary-light-color)));
-        background: -o-linear-gradient(top, var(--primary-color), var(--primary-light-color));
-        background: linear-gradient(to bottom, var(--primary-color), var(--primary-light-color));
+        background: -webkit-gradient(linear, left top, left bottom, from(var(--primary-light-color)), to(var(--primary-color)));
+        background: -o-linear-gradient(top, var(--primary-light-color), var(--primary-color));
+        background: linear-gradient(to bottom, var(--primary-light-color), var(--primary-color));
         box-shadow: $btn-boxshadow-2;
-        color: #fff;
+        color: var(--white);
         &::before {
             @include btn-pseudo-content;
             background: -webkit-gradient(linear, left top, left bottom, from(var(--btn-gradient-1)), to(var(--btn-gradient-2)));
@@ -111,7 +105,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--primary-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-default {
@@ -155,6 +149,8 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         border: 1px solid var(--btn-secondary-border-color);
         color: var(--secondary-text-alt-color);
         box-shadow: none;
+        padding-top: calc(.36rem-1px);
+        padding-bottom: calc(.36rem-1px);
         &:hover, &.active, &:active{
             color: var(--primary-color);
             border-color: var(--primary-color);
@@ -164,7 +160,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             box-shadow: 0 1px 1px 0 rgba(37, 39, 50, 0.15);
         }
         &.active, &:active{
-            background-color: #fff;
+            background-color: var(--white);
             box-shadow: 0 1px 1px 0 rgba(37, 39, 50, 0.15);
         }
         &:focus, &:not(:disabled):active:focus{
@@ -179,22 +175,48 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             border-color: var(--secondary-icon-color);
             opacity: 0.8;
         }
+        &.btn-xl{
+            padding-top: .86rem;
+            padding-bottom: .86rem;
+            @include media-breakpoint-down(xs){
+                padding-top: .86rem;
+                padding-bottom: .86rem;
+            }
+        }
+        &.btn-lg{
+            padding-top: .574rem;
+            padding-bottom: .574rem;
+            @include media-breakpoint-down(xs){
+                padding-top: .3rem;
+                padding-bottom: .3rem;
+            }
+        }
+        &.btn-sm{
+            padding-top: 0;
+            padding-bottom: 0;
+            @include media-breakpoint-down(xs){
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
     }
     &.btn-link{
         background-color: transparent;
         border: none;
         box-shadow: none;
-        color: var(--primary-text-color);
+        color: var(--secondary-text-alt-color);
         padding: 0;
-        &:hover, &:active, &.active{
+        &:hover {
             color: var(--primary-color);
             text-decoration: underline;
         }
         &:active, &.active{
-            color: var(--primary-color);
+            color: var(--primary-dark-color);
+            text-decoration: none;
         }
         &:focus, &:focus:active, &:not(:disabled):active:focus{
             color: var(--primary-color);
+            text-decoration: none;
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;
@@ -202,49 +224,91 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             color: var(--secondary-icon-color);
         }
     }
-    &.btn-danger{
-        background-color: var(--danger-color);
-        color: #fff;
-        &:hover, &:focus, &:active, &.active{
-            background-color: var(--danger-light-color);
+    &.btn-danger {
+        &:not(.btn-secondary){
+            background-color: var(--danger-color);
+            color: var(--white);
+            &:hover, &:focus, &:active, &.active{
+                background-color: var(--danger-light-color);
+            }
+            span, i{
+                color: var(--white);
+            }
         }
-        span, i{
-            color: #fff;
+        &.btn-secondary {
+            border-color: var(--danger-color);
+            color: var(--danger-color);
+            &:hover, &:focus, &:active, &.active{
+                color: var(--white);
+                background-color: var(--danger-light-color);
+                border-color: var(--danger-light-color);
+                span, i{
+                    color: var(--white);
+                }
+            }
         }
     }
     &.btn-success{
-        background-color: var(--success-color);
-        color: #fff;
-        &:hover, &:focus, &:active, &.active{
-            background-color: var(--success-light-color);
+        &:not(.btn-secondary){
+            background-color: var(--success-color);
+            color: var(--white);
+            &:hover, &:focus, &:active, &.active{
+                background-color: var(--success-light-color);
+            }
+            span, i{
+                color: var(--white);
+            }
         }
-        span, i{
-            color: #fff;
+        &.btn-secondary {
+            border-color: var(--success-color);
+            color: var(--success-color);
+            &:hover, &:focus, &:active, &.active{
+                background-color: var(--success-light-color);
+                border-color: var(--success-light-color);
+                color: var(--white);
+                span, i{
+                    color: var(--white);
+                }
+            }
         }
     }
     &.btn-warning{
-        background-color: var(--warning-color);
-        color: var(--primary-text-color);
-        &:hover, &:focus, &:active, &.active{
-            background-color: var(--warning-light-color);
+        &:not(.btn-secondary){
+            background-color: var(--warning-color);
+            color: var(--primary-text-color);
+            &:hover, &:focus, &:active, &.active{
+                background-color: var(--warning-light-color);
+            }
+            span, i{
+                color: var(--white);
+            }
         }
-        span, i{
-            color: #fff;
+        &.btn-secondary {
+            border-color: var(--warning-color);
+            color: var(--warning-color);
+            &:hover, &:focus, &:active, &.active{
+                color: var(--white);
+                background-color: var(--warning-light-color);
+                border-color: var(--warning-light-color);
+                span, i{
+                    color: var(--white);
+                }
+            }
         }
     }
     &.btn-solid-primary{
         background-color: var(--primary-color);
-        color: #fff;
+        color: var(--white);
         &:hover, &:focus{
             background-color: var(--primary-light-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-info{
         background: none;
-        color: var(--secondary-text-color);
+        color: var(--secondary-text-alt-color);
         box-shadow: none;
         &:hover, &:focus, &:focus:active, &:active{
             background-color: var(--primary-lighter-color);
@@ -257,17 +321,17 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     }
     &.btn-dark{
         background-color: var(--primary-text-color);
-        color: #fff;
+        color: var(--white);
         &:hover, &:focus{
-            background-color: var(--primary-text-color);
+            background-color: var(--secondary-text-alt-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-light{
-        background-color: #fff;
-        color: var(--primary-color);
+        background-color: var(--white);
+        color: var(--primary-dark-color);
         &:hover, &:focus{
             color: var(--primary-color);
         }
@@ -275,10 +339,9 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-white{
         box-shadow: 0 1px 1px 0 rgba(59, 72, 79, 0.03);
         border: solid 1px #e8ebf4;
-        background-color: #ffffff;
+        background-color: var(--white);
         color: var(--secondary-text-color);
         font-weight: normal;
-        line-height: 2.75rem;
         &:hover, &:focus{
             box-shadow: $btn-boxshadow;
         }
@@ -286,16 +349,17 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             border-color: var(--primary-color);
             color: var(--primary-color);
         }
-        &.btn-lg{
-            line-height: 3.29rem;
-        }
-        &.btn-sm{
-            line-height: 2.15rem;
-        }
     }
     &.btn-block{
         display: block;
         width: 100%;
+        border: 1px dashed var(--primary-color);
+        color: var(--primary-color);
+        &:hover,
+        &:active,
+        &:focus {
+            background: var(--white);
+        }
     }
     &.btn-outline-primary{
         border: 1px solid var(--primary-color);
@@ -310,9 +374,15 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     }
     &.dropdown-toggle {
         padding: 0 1.1rem;
+        min-height: 40px;
     }
     &.hidden {
         display: none;
+    }
+    &.btn-filter {
+        color: var(--secondary-text-alt-color);
+        background: var(--bg-dark-color);
+        border-radius: 30px;
     }
 }
 .btn-group, .toolbar-btn-group{
@@ -324,7 +394,6 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         position: relative;
         flex: 1 1 auto;
         border-radius: 3px;
-        max-height: 2.9rem;
         &:hover{
             z-index: 1;
         }

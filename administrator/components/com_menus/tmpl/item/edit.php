@@ -28,6 +28,8 @@ Text::script('JGLOBAL_VALIDATION_FORM_FAILED');
 
 Factory::getDocument()->addScriptOptions('menu-item', ['itemId' => (int) $this->item->id]);
 HTMLHelper::_('script', 'com_menus/admin-item-edit.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
 // Ajax for parent items
 $script = "
@@ -144,7 +146,7 @@ if ($clientId === 1)
 
 			<?php
 			$this->fieldsets = array();
-			$this->ignore_fieldsets = array('aliasoptions', 'request', 'item_associations');
+			$this->ignore_fieldsets = array('aliasoptions', 'request', 'menu-options', 'page-options', 'metadata', 'item_associations');
 			echo LayoutHelper::render('joomla.edit.params', $this);
 			?>
 
@@ -182,9 +184,9 @@ if ($clientId === 1)
 		</div>
 
 		<div class="col-lg-3">
-			<div class="j-card">
-				<div class="j-card-body">
-				<?php
+			<joomla-accordion toggle="true" animation="true">
+				<section class="accordion-item show" id="menu-editor-basic" name="<?php echo Text::_('COM_MENUS_BASIC_LABEL'); ?>" icon="icon-info-circle">
+					<?php
 					// Set main fields.
 					$this->fields = array(
 						'id',
@@ -208,9 +210,35 @@ if ($clientId === 1)
 						$this->form->setFieldAttribute('publish_down', 'showon', '');
 					}
 
-					echo LayoutHelper::render('joomla.edit.global', $this); ?>
-				</div>
-			</div>
+					echo LayoutHelper::render('joomla.edit.global', $this);
+					
+					?>
+				</section>
+				
+				<?php if($this->form->getFieldset('metadata')) : ?>
+				<section class="accordion-item" id="menu-editor-metadata" name="<?php echo Text::_('JGLOBAL_FIELDSET_SEO_OPTIONS'); ?>" icon="icon-search">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('metadata'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+
+				<?php if($this->form->getFieldset('menu-options')) : ?>
+				<section class="accordion-item" id="menu-editor-linktype" name="<?php echo Text::_('COM_MENUS_LINKTYPE_OPTIONS_LABEL'); ?>" icon="icon-external-link">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('menu-options'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+
+				<?php if($this->form->getFieldset('page-options')) : ?>
+				<section class="accordion-item" id="menu-editor-page-options" name="<?php echo Text::_('COM_MENUS_PAGE_OPTIONS_LABEL'); ?>" icon="icon-info-circle">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('page-options'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+			</joomla-accordion>
 		</div>
 	</div>
 

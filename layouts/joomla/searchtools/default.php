@@ -85,15 +85,17 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
 ?>
 <div class="js-stools" role="search">
-	<?php if ($data['options']['showSelector']) : ?>
-	<div class="js-stools-container-selector">
-		<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
-	</div>
-	<?php endif; ?>
-	<div class="js-stools-container-bar">
-		<div class="btn-toolbar">
-			<?php echo $this->sublayout('list', $data); ?>
-			<?php echo $this->sublayout('bar', $data); ?>
+	<div class="d-flex align-items-center">
+		<?php if ($data['options']['showSelector']) : ?>
+		<div class="js-stools-container-selector">
+			<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
+		</div>
+		<?php endif; ?>
+		<div class="js-stools-container-bar">
+			<div class="d-flex">
+				<?php echo $this->sublayout('list', $data); ?>
+				<?php echo $this->sublayout('bar', $data); ?>
+			</div>
 		</div>
 	</div>
 	<!-- Filters div -->

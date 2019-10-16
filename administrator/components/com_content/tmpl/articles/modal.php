@@ -53,7 +53,7 @@ if (!empty($editor))
 				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-			<table class="table table-sm">
+			<table class="table j-striped-table my-4">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_CONTENT_ARTICLES_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>

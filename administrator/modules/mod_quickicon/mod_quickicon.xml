@@ -32,13 +32,6 @@
 					default="mod_quickicon"
 				/>
 				<field
-					name="header_icon"
-					type="text"
-					label="MOD_QUICKICON_HEADER_ICON_LABEL"
-					hint="fa fa-crosshairs"
-					default=""
-				/>
-				<field
 					name="show_users"
 					type="radio"
 					label="MOD_QUICKICON_SHOW_USERS_LABEL"

@@ -9,6 +9,7 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\Utilities\ArrayHelper;
 
@@ -43,7 +44,7 @@ $listAttr = !empty($listCheck) ? ' list-selection' : '';
 	<?php echo $htmlAttributes; ?>
 	<?php echo ArrayHelper::toString($modalAttrs); ?>
 >
-	<span class="<?php echo $class; ?>" aria-hidden="true"></span>
+	<span class="<?php echo $class; ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </<?php echo $tagName; ?>>
 </joomla-toolbar-button>

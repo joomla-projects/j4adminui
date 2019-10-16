@@ -25,54 +25,57 @@ use Joomla\CMS\Language\Text;
         <div class="j-card-body">
             <div class="accessibility-scaling">
                 <div class="card-content font-unresizable">
-                    <div class="font-size font-unresizable">
-                        <h3 class="font-unresizable"><?php echo Text::_('MOD_ACCESSIBILITY_CONTENT_SCALING'); ?></h3>
-                        <button class="btn btn-secondary font-unresizable" id="decrement">-</button>
+					<div class="accessibility-scaling-header">
+						<span class="icon-content-scalling"></span>
+						<h3 class="font-unresizable"><?php echo Text::_('MOD_ACCESSIBILITY_CONTENT_SCALING'); ?></h3>
+					</div>
+                    <div class="font-size font-unresizable accessibility-scaling-btn-group">
+                        <button class="font-unresizable icon-minus-sign" id="decrement"></button>
                         <span class="font-percent-value font-unresizable">0%</span>
-                        <button class="btn btn-secondary font-unresizable" id="increment">+</button>
+                        <button class="font-unresizable icon-save-new" id="increment"></button>
                     </div>
                 </div>
             </div>
-            <div class="accessibility-items-wrap mb-4">
+            <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="grayscale" href="javascript:void(0);">
-                        <span class="icon-adjust mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="grayscale" href="javascript:void(0);">
+                        <span class="duotone icon-grayscale" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="nomotion" href="javascript:void(0);">
-                        <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="nomotion" href="javascript:void(0);">
+                        <span class="duotone icon-disable-motion" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_DISABLE_MOTION'); ?>
                     </a>
                 </div>
             </div>
 
-            <div class="accessibility-items-wrap mb-4">
+            <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bbcursor" href="javascript:void(0);">
-                        <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="bbcursor" href="javascript:void(0);">
+                        <span class="icon-big-black-cursor" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_BIG_BLACK_CURSOR'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="bhcursor" href="javascript:void(0);">
-                        <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="bhcursor" href="javascript:void(0);">
+                        <span class="icon-big-white-cursor" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_BIG_WHITE_CURSOR'); ?>
                     </a>
                 </div>
             </div>
 
-            <div class="accessibility-items-wrap mb-4">
+            <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="magnifier" href="javascript:void(0);">
-                        <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="magnifier" href="javascript:void(0);">
+                        <span class="icon-magnifier" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_MAGNIFIER'); ?>
                     </a>
                 </div>
                 <div class="accessibility--item">
-                    <a class="btn btn-secondary accessible-action-btn p-5" data-type="contrast" href="javascript:void(0);">
-                        <span class="icon-radiation-alt mb-2" aria-hidden="true"></span>
+                    <a class="accessible-action-btn" data-type="contrast" href="javascript:void(0);">
+                        <span class="icon-Increase-contrast" aria-hidden="true"></span>
                         <?php echo Text::_('MOD_ACCESSIBILITY_CONTRAST'); ?>
                     </a>
                 </div>

@@ -128,9 +128,5 @@ class HtmlView extends BaseHtmlView
 		{
 			ToolbarHelper::preferences('com_templates');
 		}
-
-
-	
-
 	}
 }

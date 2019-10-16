@@ -237,7 +237,7 @@ table {
                     background-color: $white;
                 }
                 &:nth-child(even){
-                    background-color: var(--primary-lighter-color);
+                    background-color: var(--table-striped-row-color);
                 }
             }
             td {
