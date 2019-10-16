@@ -195,7 +195,7 @@
     }
 
     // *** Mouse highligter *** //
-    if (a11yScalingWrap !== null) {
+    if (mouseHighlighter !== null) {
         // mouse highlighter default options
         let options = {
             movementSmoothness: 2,
@@ -291,6 +291,7 @@
         const increment = document.querySelector('#increment');
         const decrement = document.querySelector('#decrement');
         const fontPercent = document.querySelector('.font-percent-value');
+        let scalingEnabled = 0;
         window.fontPercent = 0;
 
         let validTags = ['p', 'div', 'span', 'i', 'b', 'strong', 'section', 'article', 'h1', 'h2', 'h3', 'h4',
@@ -300,37 +301,96 @@
 
         const elements = [...document.querySelectorAll(validTags.join(', '))];
 
-        elements.forEach(el => {
-            let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-            if (typeof fontSize != 'undefined' && fontSize != '') {
-                el.setAttribute('data-original-font-size', fontSize);
-            }
-        });
+        // set original font size on elements
+        function setOriginFontSizeAttr() {
+            elements.forEach(el => {
+                let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                if (typeof fontSize != 'undefined' && fontSize != '') {
+                    el.setAttribute('data-original-font-size', fontSize);
+                }
+            });
+        }
 
-        increment.addEventListener('click', function (event) {
-            window.fontPercent += 1;
-            fontPercent.innerHTML = (window.fontPercent * 10) + '%';
+        // reset font size
+        function toggleFontSize(toggleType = 'increase') {
+
             elements.forEach(el => {
                 let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
                 if (typeof fontSize != 'undefined' && fontSize != '') {
                     fontSize = parseFloat(fontSize);
-                    fontSize += 1;
-                    el.style.fontSize = `${fontSize}px`;
+
+                    if (toggleType == 'reset') {
+                        el.style.fontSize = null;
+                        el.removeAttribute('data-original-font-size');
+                        scalingEnabled = 0;
+                        // if style attribs doens't have value then remove it
+                        if (el.getAttribute('style') == '') {
+                            el.removeAttribute('style');
+                        }
+                    } else if (toggleType == 'decrease') {
+                        fontSize -= 1;
+                        el.style.fontSize = `${fontSize}px`;
+                    } else {
+                        fontSize += 1;
+                        el.style.fontSize = `${fontSize}px`;
+                    }
                 }
             });
+
+        }
+
+        increment.addEventListener('click', function (event) {
+            // if scaling first click then set properties
+            if (scalingEnabled == 0) {
+                setOriginFontSizeAttr();
+                scalingEnabled = 1;
+            }
+            // if font percentage is "100%" then return false
+            if (window.fontPercent >= 10) {
+                return false;
+            }
+
+            window.fontPercent += 1;
+            fontPercent.innerHTML = (window.fontPercent * 10) + '%';
+
+            if (window.fontPercent == 0) {
+                toggleFontSize('reset');
+                return false;
+            } else {
+                toggleFontSize('increase');   
+            }
+            
         });
 
         decrement.addEventListener('click', function (event) {
+            // if scaling first click then set properties
+            if (scalingEnabled == 0) {
+                setOriginFontSizeAttr();
+                scalingEnabled = 1;
+            }
+            // if font percentage is "-100%" then return false
+            if (window.fontPercent <= -10) {
+                return false;
+            }
+
             window.fontPercent -= 1;
             fontPercent.innerHTML = (window.fontPercent * 10) + '%';
-            elements.map(el => {
-                let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                if (typeof fontSize != 'undefined' && fontSize != '') {
-                    fontSize = parseFloat(fontSize);
-                    fontSize -= 1;
-                    el.style.fontSize = `${fontSize}px`;
-                }
-            });
+
+            if (window.fontPercent == 0) {
+                toggleFontSize('reset');
+                return false;
+            } else {
+                toggleFontSize('decrease');
+            }
+
+            // elements.map(el => {
+            //     let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+            //     if (typeof fontSize != 'undefined' && fontSize != '') {
+            //         fontSize = parseFloat(fontSize);
+            //         fontSize -= 1;
+            //         el.style.fontSize = `${fontSize}px`;
+            //     }
+            // });
         });
     }
 
