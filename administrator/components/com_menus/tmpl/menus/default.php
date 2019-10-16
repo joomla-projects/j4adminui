@@ -225,7 +225,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 								<td class="text-center">
 									<?php if ($canManageItems) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype); ?>">
-											<span class="duotone icon-eye-open icon-2x" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('COM_MENUS_MENUS'); ?></span>
+											<span class="duotone icon-eye-open icon-lg" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('COM_MENUS_MENUS'); ?></span>
 										</a>
 									<?php endif; ?>
 								</td>
