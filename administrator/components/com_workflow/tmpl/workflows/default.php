@@ -150,12 +150,12 @@ $userId = $user->id;
 								<td class="text-center  hidden-sm-down">
 									<?php echo HTMLHelper::_('jgrid.isdefault', $item->default, $i, 'workflows.', $canChange); ?>
 								</td>
-								<td class="text-center btns  d-none d-md-table-cell">
-									<a class="badge <?php echo ($item->count_states > 0) ? 'badge-warning' : 'badge-secondary'; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_STAGES', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=stages&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
+								<td class="text-center d-none d-md-table-cell">
+									<a class="<?php echo ($item->count_states > 0) ? 'btn btn-secondary btn-sm' : ''; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_STAGES', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=stages&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
 										<?php echo $item->count_states; ?></a>
 								</td>
 								<td class="text-center btns  d-none d-md-table-cell">
-									<a class="badge <?php echo ($item->count_transitions > 0) ? 'badge-info' : 'badge-secondary'; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_TRANSITIONS', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=transitions&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
+									<a class="<?php echo ($item->count_transitions > 0) ? 'btn btn-secondary btn-sm' : ''; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_TRANSITIONS', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=transitions&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
 										<?php echo $item->count_transitions; ?></a>
 								</td>
 								<td class="text-right d-none d-md-table-cell">

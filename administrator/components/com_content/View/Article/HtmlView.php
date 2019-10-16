@@ -137,20 +137,6 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance();
 
-		// if is not new
-		if (!$isNew)
-		{
-		$url = Route::link(
-			'site',
-			\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
-			true
-		);
-		
-		$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
-					->bodyHeight(80)	
-					->modalWidth(90);
-		}
-
 		ToolbarHelper::title(
 			Text::_('COM_CONTENT_PAGE_' . ($checkedOut ? 'VIEW_ARTICLE' : ($isNew ? 'ADD_ARTICLE' : 'EDIT_ARTICLE'))),
 			'edit article-add'
@@ -191,11 +177,6 @@ class HtmlView extends BaseHtmlView
 		{
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
-
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
-			{
-				$toolbar->versions('com_content.article', $this->item->id);
-			}
 
 			if (!$isNew)
 			{
@@ -259,6 +240,23 @@ class HtmlView extends BaseHtmlView
 
 				// cancel button
 				$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+
+				// Preview button
+				$url = Route::link(
+					'site',
+					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
+					true
+				);
+				
+				$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
+							->bodyHeight(80)	
+							->modalWidth(90);
+
+				// Version
+				if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
+				{
+					$toolbar->versions('com_content.article', $this->item->id);
+				}
 
 				// Save item group 
 				$saveGroup = $toolbar->dropdownButton('save-group');

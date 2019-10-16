@@ -93,8 +93,9 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 // Load search tools
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
 ?>
-<div class="js-stools d-flex flex-wrap align-items-center" role="search">
+<div class="js-stools" role="search">
 	<?php if ($data['view'] instanceof \Joomla\Component\Menus\Administrator\View\Items\HtmlView) : ?>
+	
 	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
 	<?php $app = Factory::getApplication(); ?>
 		<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
@@ -107,6 +108,7 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 			<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
 		<?php endif; ?>
 	<?php endif; ?>
+
 	<?php if ($data['options']['showSelector']) : ?>
 	<div class="js-stools-container-selector">
 		<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
