@@ -57,22 +57,20 @@ $filters = $data['view']->filterForm->getGroup('filter');
 				</span>
 			</div>
 		</div>
-		<div class="btn-group">
-			<?php if($filterButton) : ?>
-				<button type="button" class="hasTooltip js-stools-btn-filter btn-filter ml-3">
-					<span class="icon-filter" aria-hidden="true"></span>
-					<span class="js-stools-filter-btn-text" data-status="<?php echo $clearButton ? '1' : '0'; ?>"><?php echo $clearButton ? Text::_('JFILTER_SHOW_FILTER') : Text::_('JFILTER_HIDE_FILTER'); ?></span>
-					<?php if ($clearButton) : ?>
-						<span class="icon-plus-circle js-stools-right" aria-hidden="true"></span>
-					<?php else : ?>
-						<span class="icon-minus-circle js-stools-right" aria-hidden="true"></span>
-					<?php endif; ?>
-				</button>
-			<?php endif; ?>
+		<?php if($filterButton) : ?>
+			<button type="button" class="hasTooltip js-stools-btn-filter btn btn-secondary ml-3">
+				<span class="icon-filter" aria-hidden="true"></span>
+				<span class="js-stools-filter-btn-text" data-status="<?php echo $clearButton ? '1' : '0'; ?>"><?php echo $clearButton ? Text::_('JFILTER_SHOW_FILTER') : Text::_('JFILTER_HIDE_FILTER'); ?></span>
+				<?php if ($clearButton) : ?>
+					<span class="icon-plus-circle js-stools-right" aria-hidden="true"></span>
+				<?php else : ?>
+					<span class="icon-minus-circle js-stools-right" aria-hidden="true"></span>
+				<?php endif; ?>
+			</button>
 			<button type="button" class="btn btn-link js-stools-btn-clear <?php echo $clearButton ? 'd-none' : ''; ?>">
 				<span class="icon-cancel" aria-hidden="true"></span>
 				<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
 			</button>
-		</div>
+		<?php endif; ?>
 	<?php endif; ?>
 <?php endif;

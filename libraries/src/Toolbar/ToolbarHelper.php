@@ -705,7 +705,7 @@ abstract class ToolbarHelper
 	{
 		$title = Text::_($alt);
 		// if no button type get then set button type as primary
-		$btnType = ($btnType) ? $btnType : 'primary';
+		$btnType = ($btnType) ? $btnType : 'secondary';
 		$dhtml = '<joomla-toolbar-button><button data-href="#' . $targetModalId . '" class="btn btn-'. $btnType .'">
 			<span class="' . $icon . '" title="' . $title . '"></span> ' . $title . '</button></joomla-toolbar-button>';
 

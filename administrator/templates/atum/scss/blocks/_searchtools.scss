@@ -98,18 +98,6 @@
     .input-append {
       margin-bottom: 0;
     }
-    .ordering-select{
-      .btn{
-        padding: 0;
-        color: var(--secondary-icon-color);
-        background: transparent;
-        box-shadow: none;
-        font-size: 20px;
-        &:hover {
-          color: var(--primary-color);
-        }
-      }
-    }
     .js-stools-input {
       margin-left: auto;
       @include media-breakpoint-down(lg) {
@@ -117,14 +105,6 @@
       }
       @include media-breakpoint-down(xs) {
         margin-bottom: 1rem;
-      }
-    }
-    .btn {
-      color: var(--primary-text-color-alt);
-      background-image: none;
-      &.js-stools-btn-clear {
-        margin-right: 5px;
-        margin-left: 10px;
       }
     }
   }
