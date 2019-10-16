@@ -74,7 +74,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         }
     }
     &.btn-sm{
-        padding: 0 1.5rem;
+        padding: 1px 1.5rem;
         @include media-breakpoint-down(xs){
             padding: 0 .8rem;
         }
@@ -84,7 +84,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         background: -o-linear-gradient(top, var(--primary-light-color), var(--primary-color));
         background: linear-gradient(to bottom, var(--primary-light-color), var(--primary-color));
         box-shadow: $btn-boxshadow-2;
-        color: #fff;
+        color: var(--white);
         &::before {
             @include btn-pseudo-content;
             background: -webkit-gradient(linear, left top, left bottom, from(var(--btn-gradient-1)), to(var(--btn-gradient-2)));
@@ -105,7 +105,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             box-shadow: 0 0px 0px 1px #fff, 0 0px 0px 2px var(--primary-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-default {
@@ -160,7 +160,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             box-shadow: 0 1px 1px 0 rgba(37, 39, 50, 0.15);
         }
         &.active, &:active{
-            background-color: #fff;
+            background-color: var(--white);
             box-shadow: 0 1px 1px 0 rgba(37, 39, 50, 0.15);
         }
         &:focus, &:not(:disabled):active:focus{
@@ -227,23 +227,23 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-danger {
         &:not(.btn-secondary){
             background-color: var(--danger-color);
-            color: #fff;
+            color: var(--white);
             &:hover, &:focus, &:active, &.active{
                 background-color: var(--danger-light-color);
             }
             span, i{
-                color: #fff;
+                color: var(--white);
             }
         }
         &.btn-secondary {
             border-color: var(--danger-color);
             color: var(--danger-color);
             &:hover, &:focus, &:active, &.active{
-                color: #fff;
+                color: var(--white);
                 background-color: var(--danger-light-color);
                 border-color: var(--danger-light-color);
                 span, i{
-                    color: #fff;
+                    color: var(--white);
                 }
             }
         }
@@ -251,12 +251,12 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-success{
         &:not(.btn-secondary){
             background-color: var(--success-color);
-            color: #fff;
+            color: var(--white);
             &:hover, &:focus, &:active, &.active{
                 background-color: var(--success-light-color);
             }
             span, i{
-                color: #fff;
+                color: var(--white);
             }
         }
         &.btn-secondary {
@@ -265,9 +265,9 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             &:hover, &:focus, &:active, &.active{
                 background-color: var(--success-light-color);
                 border-color: var(--success-light-color);
-                color: #fff;
+                color: var(--white);
                 span, i{
-                    color: #fff;
+                    color: var(--white);
                 }
             }
         }
@@ -280,30 +280,30 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
                 background-color: var(--warning-light-color);
             }
             span, i{
-                color: #fff;
+                color: var(--white);
             }
         }
         &.btn-secondary {
             border-color: var(--warning-color);
             color: var(--warning-color);
             &:hover, &:focus, &:active, &.active{
-                color: #fff;
+                color: var(--white);
                 background-color: var(--warning-light-color);
                 border-color: var(--warning-light-color);
                 span, i{
-                    color: #fff;
+                    color: var(--white);
                 }
             }
         }
     }
     &.btn-solid-primary{
         background-color: var(--primary-color);
-        color: #fff;
+        color: var(--white);
         &:hover, &:focus{
             background-color: var(--primary-light-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-info{
@@ -321,16 +321,16 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     }
     &.btn-dark{
         background-color: var(--primary-text-color);
-        color: #fff;
+        color: var(--white);
         &:hover, &:focus{
             background-color: var(--secondary-text-alt-color);
         }
         span, i{
-            color: #fff;
+            color: var(--white);
         }
     }
     &.btn-light{
-        background-color: #fff;
+        background-color: var(--white);
         color: var(--primary-dark-color);
         &:hover, &:focus{
             color: var(--primary-color);
@@ -339,7 +339,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-white{
         box-shadow: 0 1px 1px 0 rgba(59, 72, 79, 0.03);
         border: solid 1px #e8ebf4;
-        background-color: #ffffff;
+        background-color: var(--white);
         color: var(--secondary-text-color);
         font-weight: normal;
         &:hover, &:focus{
@@ -353,6 +353,13 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-block{
         display: block;
         width: 100%;
+        border: 1px dashed var(--primary-color);
+        color: var(--primary-color);
+        &:hover,
+        &:active,
+        &:focus {
+            background: var(--white);
+        }
     }
     &.btn-outline-primary{
         border: 1px solid var(--primary-color);
@@ -371,6 +378,11 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     }
     &.hidden {
         display: none;
+    }
+    &.btn-filter {
+        color: var(--secondary-text-alt-color);
+        background: var(--bg-dark-color);
+        border-radius: 30px;
     }
 }
 .btn-group, .toolbar-btn-group{

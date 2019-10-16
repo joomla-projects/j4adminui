@@ -92,7 +92,7 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 		</div>
 		<?php endif; ?>
 		<div class="js-stools-container-bar">
-			<div class="d-inline-flex">
+			<div class="d-flex">
 				<?php echo $this->sublayout('list', $data); ?>
 				<?php echo $this->sublayout('bar', $data); ?>
 			</div>
