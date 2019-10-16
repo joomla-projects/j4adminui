@@ -114,7 +114,8 @@ joomla-tab a[role=tab]:not([active]):hover{
 	}
 }
 joomla-tab ul li a[role=tab]:focus {
-	outline: var(--primary-color) solid 2px;
+	outline: var(--primary-color) solid 1px;
+	outline-offset: -1px;
 	&::after{
 		background-color: var(--primary-color);
 		opacity: 1;
