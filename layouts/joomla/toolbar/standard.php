@@ -9,6 +9,7 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
 HTMLHelper::_('behavior.core');
@@ -75,7 +76,7 @@ switch($class)
 <?php if (!empty($group)) : ?>
 <a href="#" class="dropdown-item">
 	<?php if(!empty($iconClass)) : ?>
-		<span class="<?php echo trim($iconClass ?? ''); ?>"></span>
+		<span class="<?php echo trim($iconClass ?? ''); ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>"></span>
 	<?php endif; ?>
 	<?php echo $text ?? ''; ?>
 </a>
@@ -85,7 +86,7 @@ switch($class)
 	<?php echo $htmlAttributes ?? ''; ?>
 	>
 	<?php if(!empty($iconClass)) : ?>
-    	<span class="<?php echo trim($iconClass ?? ''); ?>" aria-hidden="true"></span>
+    	<span class="<?php echo trim($iconClass ?? ''); ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
 	<?php endif; ?>
     <?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
