@@ -89,7 +89,6 @@ table {
                         color: var(--primary-text-color);
                         font-weight: $normal-weight;
                         text-decoration: none;
-                        color: var(--primary-text-color);
                         &.j-has-dropdown,
                         &.j-has-dropdown:hover,
                         &.j-has-dropdown:focus,
@@ -189,23 +188,6 @@ table {
                     margin: 0;
                     padding: 0;
                     font-size: 1rem;
-                }
-                .itemnumber {
-                    a.btn {
-                        line-height: 1;
-                        border-radius: 0;
-                        border: 0;
-                        font-size: 1rem;
-                        padding: 2px 5px;
-                        box-shadow: none;
-                        background: transparent;
-                        color: var(--primary-color);
-                        text-decoration: underline;
-                        &:active,
-                        &:focus {
-                            box-shadow: none;
-                        }
-                    }
                 }
             }
         }

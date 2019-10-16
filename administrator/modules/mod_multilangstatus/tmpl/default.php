@@ -19,10 +19,10 @@ HTMLHelper::_('script', 'mod_multilangstatus/admin-multilangstatus.min.js', arra
 
 <div class="multilanguage">
 	<a class="d-flex align-items-stretch header-item-link" data-href="#multiLangModal" href="#" title="<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>" data-toggle="modal" role="button">
-		<div>
+		<div class="d-none d-xl-block mr-2">
 			<?php echo Text::_('MOD_MULTILANGSTATUS'); ?>
 		</div>
-		<div class="ml-2">
+		<div>
 			<span class="icon-multilingual" aria-hidden="true"></span>
 		</div>
 	</a>
