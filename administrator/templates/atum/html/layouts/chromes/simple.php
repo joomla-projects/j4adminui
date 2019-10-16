@@ -42,11 +42,6 @@ if ($module->content) :
 	$headerIcon = '';
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
-
-	if (!empty($params->get('header_icon', 'icon-move duotone')))
-	{
-		$headerIcon = '<span class="j-simple-icon handle ' . htmlspecialchars($params->get('header_icon', 'icon-move duotone')) .  $margin . '" aria-hidden="true"></span>';
-	}
 	?>
 	<div class="module-wrapper">
 		<<?php echo $moduleTag; ?> class="<?php echo $moduleClassSfx; ?>">
