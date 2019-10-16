@@ -107,7 +107,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 						<thead>
 							<tr>
 								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<td class="text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>

@@ -66,7 +66,7 @@ if ($saveOrder)
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" style="width:1%" class="text-center hidden-sm-down">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 's.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 's.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center hidden-sm-down">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 's.condition', $listDirn, $listOrder); ?>

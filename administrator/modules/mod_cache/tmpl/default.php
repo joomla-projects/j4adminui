@@ -34,12 +34,12 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 					<div class="j-card-vertical-btn-group">
 						<?php if($cacheInfo['raw']): ?>
 							<button id="jclear-cache-btn" class="btn btn-primary" data-size="<?php echo $cacheInfo['size']; ?>" type="button">
-								<span class="icon-trash" aria-hidden="true"></span>
+								<span class="icon-trash icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" area-hidden="true"></span>
 								<?php echo Text::_('MOD_CACHE_QUICKICON_CLEAR_CACHE'); ?>
 							</button>
 						<?php else: ?>
 							<button class="btn btn-primary disabled">
-								<span class="icon-info-circle" aria-hidden="true"></span>
+								<span class="icon-info-circle icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" area-hidden="true"></span>
 								<?php echo Text::_('MOD_CACHE_QUICKICON_SRONLY_NOCACHE'); ?>
 							</button>
 						<?php endif;?>

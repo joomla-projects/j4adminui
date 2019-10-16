@@ -95,7 +95,7 @@ HTMLHelper::_('script', 'com_content/admin-articles-workflow-buttons.js', ['rela
 						<thead>
 							<tr>
 								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'fp.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'fp.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<td class="text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
