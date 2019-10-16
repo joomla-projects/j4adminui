@@ -67,11 +67,15 @@
 			@extend .d-flex;
 			@extend .justify-content-center;
 			@extend .align-items-center;
-			span{
-				display: block;
+			span:not(.d-block){
+				display: inline-flex;
 				font-size: 30px;
 				line-height: 30px;
-				flex-basis: 100%;
+				color: var(--icon-color);
+			}
+			span.d-block{
+				margin-top: 15px;
+				color: var(--primary-text-color);
 			}
 		}
 		&:first-child{
