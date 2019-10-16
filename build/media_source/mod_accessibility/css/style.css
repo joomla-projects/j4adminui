@@ -11,7 +11,7 @@
     z-index: -9999;
 }
 
-.mod-accessibility .accessibility-sidebar.active {
+.mod-accessibility .accessibility-sidebar.a11y-active {
     right: 0;
     z-index: inherit;
 }

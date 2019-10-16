@@ -28,7 +28,7 @@ if (isset($list['list_fullordering'])) {
 		<?php foreach ($list as $fieldName => $field) : ?>
 			<?php if($fieldName !== 'list_limit') : ?>
 				<div class="js-stools-field-list">
-					<div class="js-stools-field-list-content">
+					<div class="js-stools-field-list-content j-card">
 						<?php if($fieldName === 'list_fullordering') : ?>
 							<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_ORDER_BY'); ?></span>
 						<?php endif; ?>
@@ -38,7 +38,7 @@ if (isset($list['list_fullordering'])) {
 						</div>
 					</div>
 					<?php if($fieldName === 'list_fullordering') : ?>
-						<button type="button" class="btn btn-link js-stools-order-toggler hasTooltip" title="<?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?>"><i class="duotone <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></i></button>
+						<button type="button" class="btn btn-link js-stools-order-toggler hasTooltip" title="<?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?>"><i class="duotone icon-lg <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></i></button>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>

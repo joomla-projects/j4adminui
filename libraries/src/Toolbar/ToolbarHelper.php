@@ -706,8 +706,9 @@ abstract class ToolbarHelper
 		$title = Text::_($alt);
 		// if no button type get then set button type as primary
 		$btnType = ($btnType) ? $btnType : 'secondary';
+		$iconMargin = Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2';
 		$dhtml = '<joomla-toolbar-button><button data-href="#' . $targetModalId . '" class="btn btn-'. $btnType .'">
-			<span class="' . $icon . '" title="' . $title . '"></span> ' . $title . '</button></joomla-toolbar-button>';
+			<span class="' . $icon . ' icon-md ' . $iconMargin . '" title="' . $title . '"></span> ' . $title . '</button></joomla-toolbar-button>';
 
 		$bar = Toolbar::getInstance('toolbar');
 		$bar->appendButton('Custom', $dhtml, $alt);

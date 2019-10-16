@@ -55,7 +55,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         }
     }
     @include media-breakpoint-down(xs){
-        padding: .5rem 1rem;
+        padding: .35rem 1rem;
     }
     &:hover, &:focus, &:focus:active, &:active{
         text-decoration: none;
@@ -74,7 +74,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         }
     }
     &.btn-sm{
-        padding: 1px 1.5rem;
+        padding: 1px 1rem;
         @include media-breakpoint-down(xs){
             padding: 0 .8rem;
         }
@@ -353,13 +353,6 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     &.btn-block{
         display: block;
         width: 100%;
-        border: 1px dashed var(--primary-color);
-        color: var(--primary-color);
-        &:hover,
-        &:active,
-        &:focus {
-            background: var(--white);
-        }
     }
     &.btn-outline-primary{
         border: 1px solid var(--primary-color);
@@ -383,6 +376,15 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         color: var(--secondary-text-alt-color);
         background: var(--bg-dark-color);
         border-radius: 30px;
+    }
+    &.add-module-btn {
+        border: 1px dashed var(--primary-color);
+        color: var(--primary-color);
+        &:hover,
+        &:active,
+        &:focus {
+            background: var(--white);
+        }
     }
 }
 .btn-group, .toolbar-btn-group{
@@ -428,6 +430,18 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
                     border-radius: 0 3px 3px 0;
                 }
             }
+        }
+    }
+    &.btn-justified {
+        display: flex;
+        flex-wrap: wrap;
+        .btn {
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            min-width: 130px;
+            display: inline-block;
         }
     }
 }
