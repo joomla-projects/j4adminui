@@ -101,75 +101,6 @@
 	}
 }
 
-.logo-header{
-  padding: 0.536rem 2.071rem 0.321rem 1.643rem;
-  position: relative;
-  color: var(--secondary-text-color);
-  font-size: 0.857rem;
-  height: $header-height;
-  transition: 300ms;
-  min-width: $sidebar-width + 0.050;
-  @include media-breakpoint-down(xs) {
-    padding: 0;
-    min-width: 1rem;
-    width: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .main-logo{
-    svg{
-      width: 102px;
-      margin-left: 0;
-    }
-    .logo-small{
-      display: none;
-      width: auto;
-      height: auto;
-      padding-left: 6px;
-      transition: 300ms;
-    }
-    
-  }
-  .sidebar-toggle{
-    position: absolute;
-    width: 2.071rem;
-    height: 100%;
-    right: 0;
-    top: 0;
-    border-left: 1px solid var(--bg-color);
-    border-right: 1px solid var(--bg-color);
-    background: $white;
-    transition: 300ms;
-    a{
-      height: 100%;
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 1.143rem;
-      transition: 300ms;
-    }
-  }
-  .header-version{
-    margin-bottom: 0;
-    margin-top: 0.386rem;
-    line-height: 1.643rem;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    color: var(--secondary-text-color);
-  }
-}
-
-.menu-toggle-icon {
-	width: $header-height;
-	font-size: 1.7rem;
-}
-
 // Sidebar navigation
 .main-nav {
 	opacity: 1;
@@ -295,7 +226,6 @@
 		padding-bottom: 0.393rem;
 		transition: 300ms;
 		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 	li > a.active,
 	li.active > a{
@@ -306,7 +236,6 @@
 			color: var(--primary-color);
 		}
 	}
-	
 	
 	a:hover{
 		color: var(--primary-color);
@@ -321,7 +250,8 @@
 		max-width: 100%;
 		width: 100%;
 		> a {
-			display: block;
+			display: flex;
+			align-items: center;
 			padding: 0.857rem 1.643rem 0.857rem 1.500rem;
 			line-height: 1.857rem;
 			font-size: 1.143rem;
@@ -334,8 +264,8 @@
 				text-align: center;
 				vertical-align: top;
 				transition: 300ms;
-				font-size: 1.429rem;
-				line-height: 1.857rem;
+				font-size: 2rem;
+				line-height: 2.2rem;
 				color: var(--icon-color);
 			}
 		}
@@ -433,49 +363,18 @@
 	}
 }
 
-// Sidebar Closed
+// Sidebar closed
 .closed {
-	.sidebar-wrapper .logo-header .main-logo{
-		margin-bottom: 0;
-	}
-	
-	.sidebar-wrapper .logo-header .sidebar-toggle{
-		border-right: 1px solid var(--bg-color);
-	}
-	
-	.logo-header{
-		padding-left: 15px;
-		padding-right: 15px;
-		.header-version{
-			text-align: center;
-			transition-delay: 300ms;
-		}
-	}
 	.sidebar-wrapper{
 		width: $sidebar-width-closed;
 		flex: 1 0 $sidebar-width-closed;
 		max-width: $sidebar-width-closed;
 	}
-	.sidebar-toggle{
-		transform: translateX(100%);
+
+	.main-nav-container {
+		width: $sidebar-width-closed;
 	}
-	.main-nav span.fa {
-		transition: 300ms;
-	}
-	.main-logo .logo svg.logo-small{
-		display: block;
-	}
-	.sidebar-update-status{
-		display: none;
-	}
-	.menu-badge,
-	.main-nav .collapse.in,
-	.main-nav li .menu-quicktask,
-	.main-logo .header-version,
-	.main-logo .logo svg:not(.logo-small),
-	.has-arrow::after {
-		display: none;
-	}
+
 	.sidebar-item-title{
 		opacity: 0;
 		width: 0;
@@ -490,7 +389,71 @@
 			visibility: hidden;
 		}
 	}
+
+	.menu-badge,
+	.has-arrow:after {
+		display: none;
+	}
 }
+
+// Sidebar Closed
+// .closed {
+// 	.sidebar-wrapper .logo-header .main-logo{
+// 		margin-bottom: 0;
+// 	}
+	
+// 	.sidebar-wrapper .logo-header .sidebar-toggle{
+// 		border-right: 1px solid var(--bg-color);
+// 	}
+	
+// 	.logo-header{
+// 		padding-left: 15px;
+// 		padding-right: 15px;
+// 		.header-version{
+// 			text-align: center;
+// 			transition-delay: 300ms;
+// 		}
+// 	}
+// 	.sidebar-wrapper{
+// 		width: $sidebar-width-closed;
+// 		flex: 1 0 $sidebar-width-closed;
+// 		max-width: $sidebar-width-closed;
+// 	}
+// 	.sidebar-toggle{
+// 		transform: translateX(100%);
+// 	}
+// 	.main-nav span.fa {
+// 		transition: 300ms;
+// 	}
+// 	.main-logo .logo svg.logo-small{
+// 		display: block;
+// 	}
+// 	.sidebar-update-status{
+// 		display: none;
+// 	}
+// 	.menu-badge,
+// 	.main-nav .collapse.in,
+// 	.main-nav li .menu-quicktask,
+// 	.main-logo .header-version,
+// 	.main-logo .logo svg:not(.logo-small),
+// 	.has-arrow::after {
+// 		display: none;
+// 	}
+// 	.sidebar-item-title{
+// 		opacity: 0;
+// 		width: 0;
+// 		margin: 0;
+// 		overflow: hidden;
+// 		display: none;
+// 	}
+// 	.main-nav {
+// 		> li > ul {
+// 			height: 0;
+// 			padding: 0;
+// 			visibility: hidden;
+// 		}
+// 	}
+// }
 
 @include media-breakpoint-up(sm) {
 	button.toggler-burger {
