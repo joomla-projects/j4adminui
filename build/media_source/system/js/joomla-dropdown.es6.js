@@ -86,7 +86,7 @@
       // toggle dropdown onhover
       const lists = this.querySelectorAll('li.has-submenu');
       lists.forEach((list) => {
-        if (list.getAttribute('data-action') !== 'click') {
+        if (list.getAttribute('data-action') !== 'click' && window.innerWidth > 960) {
           list.addEventListener('mouseenter', this.showSubmenu, true);
           list.addEventListener('mouseleave', this.hideSubmenu, true);
         }
@@ -136,7 +136,7 @@
       // check for drop-down items
       const hasSubmenu = event.target.parentElement.classList.contains('has-submenu');
       const clickable = event.target.parentElement.getAttribute('data-action') === 'click';
-      if (hasSubmenu && clickable) {
+      if (hasSubmenu && (clickable || window.innerWidth <= 960)) {
         const allDropdowns = this.querySelectorAll('.has-submenu');
         allDropdowns.forEach((dropdown) => {
           if (dropdown.hasAttribute('open') && dropdown !== event.target.parentElement) {
