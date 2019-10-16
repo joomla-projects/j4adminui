@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1" client="administrator" method="upgrade">
-	<name>MOD_DRAFT_ARTICLE</name>
+	<name>mod_draft_article</name>
 	<author>Joomla! Project</author>
 	<creationDate>October 2019</creationDate>
 	<copyright>Copyright (C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
