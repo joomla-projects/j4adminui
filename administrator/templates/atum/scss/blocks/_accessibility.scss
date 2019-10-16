@@ -48,9 +48,6 @@
 	}
 }
 
-
-
-
 .accessibility-items-wrap{
 	display: flex;
 	.accessibility--item{
@@ -58,12 +55,15 @@
 		padding: 0;
 		flex-grow: 1;
 		max-width: calc(50% - 7.5px);
+		border: none;
 		.accessible-action-btn{
 			padding: 0 15px;
 			height: 140px;
 			flex-wrap: wrap;
 			line-height: 1.571rem;
 			text-align: center;
+			border: 1px solid var(--bg-dark-color);
+			border-radius: 3px;
 			@extend .d-flex;
 			@extend .justify-content-center;
 			@extend .align-items-center;
@@ -76,6 +76,18 @@
 			span.d-block{
 				margin-top: 15px;
 				color: var(--primary-text-color);
+			}
+			&.a11y-active{
+				border-color: var(--primary-color);
+				background: var(--primary-color);
+				color: var(--white);
+				span{
+					color: #fff !important;
+				}
+				&:active,
+				&:focus{
+					outline: none;
+				}
 			}
 		}
 		&:first-child{

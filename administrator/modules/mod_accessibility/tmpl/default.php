@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Text;
     </a>
 
     <!-- /.offcanvas -->
-    <div class="accessibility-sidebar j-card pr-2 font-unresizable">
+    <div class="accessibility-sidebar j-card font-unresizable">
         <!-- <div class=" pr-2"> -->
         <div class="j-card-body">
             <div class="accessibility-scaling">
