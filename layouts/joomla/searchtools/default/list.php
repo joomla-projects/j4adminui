@@ -28,7 +28,7 @@ if (isset($list['list_fullordering'])) {
 		<?php foreach ($list as $fieldName => $field) : ?>
 			<?php if($fieldName !== 'list_limit') : ?>
 				<div class="js-stools-field-list">
-					<div class="js-stools-field-list-content">
+					<div class="js-stools-field-list-content j-card">
 						<?php if($fieldName === 'list_fullordering') : ?>
 							<span class="js-stools-sort-by-label"><?php echo JText::_('JGLOBAL_ORDER_BY'); ?></span>
 						<?php endif; ?>
