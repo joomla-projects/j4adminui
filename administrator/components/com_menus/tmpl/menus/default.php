@@ -65,7 +65,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="text-center  d-none d-md-table-cell">
-									<span class="icon-publish text-primary" aria-hidden="true"></span>
+									<span class="icon-publish text-success" aria-hidden="true"></span>
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_PUBLISHED_ITEMS'); ?></span>
 									
 								</th>
@@ -78,7 +78,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_TRASHED_ITEMS'); ?></span>
 								</th>
 								<th scope="col" style="width:15%" class="text-center d-none d-lg-table-cell">
-									<span class="icon-modules" aria-hidden="true"></span>
+									<span class="icon-modules text-primary" aria-hidden="true"></span>
 									<span class="d-none d-md-inline"><?php echo Text::_('COM_MENUS_HEADING_LINKED_MODULES'); ?></span>
 								</th>
 								<th scope="col" style="width:5%" class="text-center">
