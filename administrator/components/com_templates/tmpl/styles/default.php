@@ -221,7 +221,7 @@ echo HTMLHelper::_(
 	'webcomponent.renderModal',
 	'ModalInstallTemplate',
 	array(
-		'title'       => "Install Template",
+		'title'       => Text::_('PLG_INSTALLER_PACKAGEINSTALLER_UPLOAD_INSTALL_JOOMLA_EXTENSION'),
 		'height'      => '75vh',
 		'width'       => '85vw',
 		'bodyHeight'  => 70,
