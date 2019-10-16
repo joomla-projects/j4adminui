@@ -137,20 +137,6 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance();
 
-		// if is not new
-		if (!$isNew)
-		{
-		$url = Route::link(
-			'site',
-			\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
-			true
-		);
-		
-		$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
-					->bodyHeight(80)	
-					->modalWidth(90);
-		}
-
 		ToolbarHelper::title(
 			Text::_('COM_CONTENT_PAGE_' . ($checkedOut ? 'VIEW_ARTICLE' : ($isNew ? 'ADD_ARTICLE' : 'EDIT_ARTICLE'))),
 			'edit article-add'
@@ -192,11 +178,6 @@ class HtmlView extends BaseHtmlView
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
-			{
-				$toolbar->versions('com_content.article', $this->item->id);
-			}
-
 			if (!$isNew)
 			{
 
@@ -216,7 +197,7 @@ class HtmlView extends BaseHtmlView
 				$modalId = 'jform_request_id';
 
 				// Add button to open the modal
-				ToolbarHelper::modal('ModalNewItem_' . $modalId, 'icon-new', 'COM_CONTENT_ADD_NEW_MENU_ITEM');
+				ToolbarHelper::modal('ModalNewItem_' . $modalId, 'icon-plus', 'COM_CONTENT_ADD_NEW_MENU_ITEM');
 
 				// Add the modal field script to the document head.
 				HTMLHelper::_('script', 'system/fields/modal-fields.min.js', array('version' => 'auto', 'relative' => true));
@@ -254,11 +235,28 @@ class HtmlView extends BaseHtmlView
 				echo '<input type="hidden" class="form-control" id="' . $modalId . '_name" value="">';
 				echo '<input type="hidden" id="' . $modalId . '_id" value="0">';
 
-				//$toolbar->divider();
+				$toolbar->divider();
 				$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
 				// cancel button
 				$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+
+				// Preview button
+				$url = Route::link(
+					'site',
+					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
+					true
+				);
+				
+				$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
+							->bodyHeight(80)	
+							->modalWidth(90);
+
+				// Version
+				if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
+				{
+					$toolbar->versions('com_content.article', $this->item->id);
+				}
 
 				// Save item group 
 				$saveGroup = $toolbar->dropdownButton('save-group');

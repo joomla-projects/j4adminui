@@ -9,7 +9,7 @@
 					flex: 0 0 50%;
 					max-width: 50%;
 					box-shadow: none;
-
+					
 					&:nth-child(1),
 					&:nth-child(19) {
 						flex: 0 0 100%;
@@ -65,7 +65,7 @@
 			}
 			fieldset .control-group{
 				&:not(:last-child){
-					border-bottom: 1px solid #edf0f5;
+					border-bottom: 1px solid var(--border-color);
 					padding-bottom: 15px;
 				}
 				&:last-child{

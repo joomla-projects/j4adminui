@@ -9,6 +9,7 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
@@ -33,7 +34,7 @@ $text     = isset($displayData['text']) ? $displayData['text'] : '';
 
 <!-- Render the button -->
 <joomla-toolbar-button <?php echo $id; ?> onclick="document.getElementById('modal_<?php echo $selector; ?>').open()" class="<?php echo $class; ?>" data-toggle="modal">
-	<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
+	<span class="<?php echo $icon; ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </joomla-toolbar-button>
 

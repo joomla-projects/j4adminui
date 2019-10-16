@@ -33,8 +33,10 @@
     
     > joomla-toolbar-button,
     > div,
+    > button,
     > .btn-group {
       margin-left: 1.4rem;
+
       @include media-breakpoint-down(md){
         margin-left: 0;
         margin-right: .75rem;
@@ -56,16 +58,9 @@
     }
     #toolbar-help {
       margin-left: auto;
+      display: flex;
       @include media-breakpoint-down(md){
         display: none;
-      }
-      .btn {
-        color: var(--secondary-text-color);
-        &:hover,
-        &:active,
-        &:focus {
-          color: var(--primary-color);
-        }
       }
     }
     #toolbar-status-group {
@@ -90,17 +85,16 @@
 }
 .input-group {
   position: relative;
-  display: block;
+  flex-wrap: wrap;
   .input-group-append {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 4;
     .btn{
-      border-color: var(--input-border-color);
-      &::before,
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      box-shadow: none;
+      &:not(:last-child){
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
       &.hidden{
         display: none;
       }

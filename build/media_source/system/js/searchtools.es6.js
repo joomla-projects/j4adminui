@@ -176,8 +176,10 @@ Joomla = window.Joomla || {};
       if (this.filterButton) {
         this.filterButton.addEventListener('click', (e) => {
           self.toggleFilters();
+          self.toggleFilterButtonText();
+          self.toggleClass(document.querySelector('.js-stools-right'), 'icon-plus-circle', 'icon-minus-circle');
           e.stopPropagation();
-          e.preventDefault();
+          e.preventDefault(); 
         });
       }
 
@@ -311,7 +313,13 @@ Joomla = window.Joomla || {};
 
       // Disable clear button when no filter is active and search is empty
       if (this.clearButton) {
-        this.clearButton.disabled = (activeFilterCount === 0) && !this.searchString.length;
+        if (activeFilterCount === 0 && !this.searchString.length) {
+          if (!this.clearButton.classList.contains('d-none')) {
+            this.clearButton.classList.add('d-none');
+          }
+        } else {
+          this.clearButton.classList.remove('d-none');
+        }
       }
     }
 
@@ -408,6 +416,40 @@ Joomla = window.Joomla || {};
       self.activeOrder = `${self.activeColumn} ${newDirection}`;
 
       self.updateFieldValue(self.orderField, self.activeOrder);
+    }
+
+    /**
+     * Toggle classes of an element
+     * 
+     * @param HTMLElement elem  The element in which the toggle will be performed
+     * @param string  cls1 The first class
+     * @param string cls2 The second class
+     * 
+     * @return void
+     * 
+     * @since 4.0.0
+     */
+    toggleClass(elem, cls1, cls2) {
+      if (elem.classList.contains(cls1)) {
+        elem.classList.remove(cls1);
+        elem.classList.add(cls2);
+      } else if (elem.classList.contains(cls2)) {
+        elem.classList.remove(cls2);
+        elem.classList.add(cls1);
+      }
+    }
+
+    toggleFilterButtonText() {
+      const filterBtnText = document.querySelector('.js-stools-filter-btn-text');
+      if (filterBtnText) {
+        if (filterBtnText.dataset.status == '1') {
+          filterBtnText.innerHTML = Joomla.Text._('JFILTER_HIDE_FILTER');
+          filterBtnText.dataset.status = '0';
+        } else {
+          filterBtnText.innerHTML = Joomla.Text._('JFILTER_SHOW_FILTER');
+          filterBtnText.dataset.status = '1';
+        }
+      }
     }
 
     createOrderField() {

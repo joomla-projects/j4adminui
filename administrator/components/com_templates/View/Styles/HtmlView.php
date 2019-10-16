@@ -13,9 +13,11 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Layout\FileLayout;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
@@ -108,7 +110,8 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		$canDo = ContentHelper::getActions('com_templates');
-
+		// Instantiate a new FileLayout instance and render the layout
+		ToolbarHelper::modal('ModalInstallTemplate', 'intall-template', 'JTOOLBAR_INSTALL');
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
 		{
@@ -125,6 +128,5 @@ class HtmlView extends BaseHtmlView
 		{
 			ToolbarHelper::preferences('com_templates');
 		}
-
 	}
 }

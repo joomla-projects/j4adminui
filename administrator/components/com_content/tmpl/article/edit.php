@@ -44,15 +44,20 @@ $assoc = Associations::isEnabled();
 $hasAssoc = ($this->form->getValue('language', null, '*') !== '*');
 
 // In case of modal
-$isModal = $input->get('layout') === 'modal';
+$isModal = $input->get('layout') == 'modal';
 $layout  = $isModal ? 'modal' : 'edit';
-$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
+$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') == 'component' ? '&tmpl=component' : '';
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_content&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 	<div class="row">
 		<div class="col-lg-9">
 			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-9">
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
@@ -105,7 +110,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 		<div class="col-lg-3">
 			<joomla-accordion toggle="true" animation="true">
-				<section class="accordion-item show" id="article-basic" name="<?php echo Text::_('COM_CONTENT_FIELDSET_BASIC'); ?>" icon="icon-media">
+				<section class="accordion-item show" id="article-basic" name="<?php echo Text::_('COM_CONTENT_FIELDSET_BASIC'); ?>" icon="icon-info-circle">
 					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
 				</section>
 
@@ -124,7 +129,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 					</section>
 				<?php endif; ?>
 				
-				<section class="accordion-item" id="article-seo" name="<?php echo Text::_('JGLOBAL_FIELDSET_SEO_OPTIONS'); ?>" icon="icon-tags">
+				<section class="accordion-item" id="article-seo" name="<?php echo Text::_('JGLOBAL_FIELDSET_SEO_OPTIONS'); ?>" icon="icon-search">
 					<div class="form-vertical form-no-margin">
 						<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
 					</div>
@@ -132,7 +137,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 				<?php // Do not show the links options if the edit form is configured not to. ?>
 				<?php if ($params->get('show_urls_images_backend') == 1) : ?>
-					<section class="accordion-item" id="article-links" name="<?php echo Text::_('COM_CONTENT_FIELDSET_URLS'); ?>" icon="icon-links">
+					<section class="accordion-item" id="article-links" name="<?php echo Text::_('COM_CONTENT_FIELDSET_URLS'); ?>" icon="icon-external-link">
 						<div class="form-vertical form-no-margin">
 						<?php foreach ($fieldsetsInLinks as $fieldset) : ?>
 							<?php echo $this->form->renderFieldset($fieldset); ?>
@@ -143,7 +148,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 				<?php // Do not show the publishing options if the edit form is configured not to. ?>
 				<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
-					<section class="accordion-item" id="article-publishingdata" name="<?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?>" icon="icon-joomla">
+					<section class="accordion-item" id="article-publishingdata" name="<?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?>" icon="icon-calendar">
 						<div class="form-vertical form-no-margin">
 							<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
 						</div>

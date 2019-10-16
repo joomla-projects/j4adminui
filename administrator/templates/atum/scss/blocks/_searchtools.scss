@@ -2,13 +2,12 @@
 
 .js-stools {
   position: relative;
-
+  
   .js-stools-container-filters {
     display: none;
     @extend .flex-row;
     @extend .flex-wrap;
     margin: 0 -0.5rem;
-
     joomla-field-fancy-select .choices,
     .custom-select {
       min-width: 15rem;
@@ -16,29 +15,29 @@
         min-width: 100%;
       }
     }
-
+    
     &.js-filters-show {
       @extend .d-flex;
     }
-
+    
     .chzn-container-single {
       display: block;
-
+      
       .chzn-single {
         display: block;
         font-size: 1rem;
       }
     }
   }
-
+  
   .js-stools-field-filter {
-      margin: 0.5rem;
-      @include media-breakpoint-down(sm)
-      {
-          width: 100%;
-      }
+    margin: 0.5rem;
+    @include media-breakpoint-down(sm)
+    {
+      width: 100%;
+    }
   }
-
+  
   .js-stools-container-selector,
   .js-stools-container-selector-first {
     @include media-breakpoint-down(xs) {
@@ -48,18 +47,18 @@
     }
     .js-stools-field-selector{
       margin-right: 15px;
-        @include media-breakpoint-down(sm) {
-            max-width:100%;
-            margin-right:0.5rem;
-        }
-        @include media-breakpoint-down(xs) {
-            margin-right: 0;
-        }
+      @include media-breakpoint-down(sm) {
+        max-width:100%;
+        margin-right:0.5rem;
+      }
+      @include media-breakpoint-down(xs) {
+        margin-right: 0;
+      }
     }
   }
-
+  
   .js-stools-container-bar {
-
+    width: 100%;
     .btn-toolbar {
       .form-control{
         width: 21.49rem;
@@ -68,7 +67,7 @@
         }
       }
     }
-
+    
     .js-stools-field-list{
       @extend .d-flex;
       .js-stools-sort-by-label{
@@ -90,26 +89,12 @@
     .js-stools-field-list-content {
       @extend .d-flex;
       @extend .align-items-center;
-      border: 1px solid #e8ebf4;
-      background: var(--white);
       padding: 0px 0px 0px 15px;
       margin-right: 10px;
     }
-
+    
     .input-append {
       margin-bottom: 0;
-    }
-    .ordering-select{
-      .btn{
-        padding: 0;
-        color: var(--secondary-icon-color);
-        background: transparent;
-        box-shadow: none;
-        font-size: 20px;
-        &:hover {
-          color: var(--primary-color);
-        }
-      }
     }
     .js-stools-input {
       margin-left: auto;
@@ -118,14 +103,6 @@
       }
       @include media-breakpoint-down(xs) {
         margin-bottom: 1rem;
-      }
-    }
-    .btn {
-      color: var(--primary-text-color-alt);
-      background-image: none;
-      &.js-stools-btn-clear {
-        margin-right: 5px;
-        margin-left: 10px;
       }
     }
   }
@@ -139,5 +116,12 @@
   span.icon-chevron-down {
     font-size: .8rem;
     color: var(--primary-text-color-alt);
+  }
+}
+
+.container-popup {
+  .js-stools {
+    max-width: 90%;
+    flex: 0 0 90%;
   }
 }

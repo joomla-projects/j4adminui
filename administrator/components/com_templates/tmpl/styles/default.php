@@ -45,6 +45,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									<div class="template-style<?php echo ($item->home == '1') ? ' active' : ''; ?> j-card j-card-has-hover mb-4">
 										<div class="j-card-header">
 											<h4 class="j-card-title">
+												<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 												<span class="template-name">
 													<?php if ($canEdit) : ?>
 														<a href="<?php echo Route::_('index.php?option=com_templates&task=style.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::_('JACTION_EDIT'); ?> <?php echo $this->escape(addslashes($item->title)); ?>">
@@ -204,9 +205,8 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
 						<?php echo $this->pagination->getListFooter(); ?>
 					</div>
-
 				<?php endif; ?>
-
+				
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>
@@ -214,3 +214,21 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		</div>
 	</div>
 </form>
+
+<!-- Load template install modal  -->
+<?php 
+echo HTMLHelper::_(
+	'webcomponent.renderModal',
+	'ModalInstallTemplate',
+	array(
+		'title'       => "Install Template",
+		'height'      => '75vh',
+		'width'       => '85vw',
+		'bodyHeight'  => 70,
+		'modalWidth'  => 80,
+		'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'
+							. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>',
+	),
+	$this->loadTemplate('modal_install')
+);
+?>

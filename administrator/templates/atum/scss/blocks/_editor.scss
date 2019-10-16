@@ -87,4 +87,8 @@ div {
             }
         }
     }
+    .joomla-editor-tinymce {
+        border-color: var(--input-border-color);
+        border-top: 0;
+    }
 }

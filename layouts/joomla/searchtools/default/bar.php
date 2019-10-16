@@ -14,6 +14,9 @@ use Joomla\Registry\Registry;
 
 $data = $displayData;
 
+Text::script('JFILTER_SHOW_FILTER', true);
+Text::script('JFILTER_HIDE_FILTER', true);
+
 // Receive overridable options
 $data['options'] = !empty($data['options']) ? $data['options'] : array();
 
@@ -23,8 +26,9 @@ if (is_array($data['options']))
 }
 
 // Options
-$filterButton = $data['options']->get('filterButton', true);
-$searchButton = $data['options']->get('searchButton', true);
+$filterButton 	= $data['options']->get('filterButton', true);
+$searchButton 	= $data['options']->get('searchButton', true);
+$clearButton 	= $data['options']->get('filtersHidden', false);
 
 $filters = $data['view']->filterForm->getGroup('filter');
 ?>
@@ -54,16 +58,19 @@ $filters = $data['view']->filterForm->getGroup('filter');
 			</div>
 		</div>
 		<?php if($filterButton) : ?>
-			<div class="btn-group">
-				<button type="button" class="btn btn-link hasTooltip js-stools-btn-filter ml-3">
-					<span class="icon-new" aria-hidden="true"></span>
-					<?php echo Text::_('JFILTER_ADD_FILTER'); ?>
-				</button>
-				<button type="button" class="btn btn-link js-stools-btn-clear">
-					<span class="icon-cancel" aria-hidden="true"></span>
-					<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
-				</button>
-			</div>
+			<button type="button" class="hasTooltip js-stools-btn-filter btn btn-filter ml-3">
+				<span class="icon-filter mr-2" aria-hidden="true"></span>
+				<span class="js-stools-filter-btn-text" data-status="<?php echo $clearButton ? '1' : '0'; ?>"><?php echo $clearButton ? Text::_('JFILTER_SHOW_FILTER') : Text::_('JFILTER_HIDE_FILTER'); ?></span>
+				<?php if ($clearButton) : ?>
+					<span class="icon-plus-circle js-stools-right ml-2" aria-hidden="true"></span>
+				<?php else : ?>
+					<span class="icon-minus-circle js-stools-right ml-2" aria-hidden="true"></span>
+				<?php endif; ?>
+			</button>
+			<button type="button" class="btn btn-link js-stools-btn-clear ml-3 <?php echo $clearButton ? 'd-none' : ''; ?>">
+				<span class="icon-cancel" aria-hidden="true"></span>
+				<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>
+			</button>
 		<?php endif; ?>
 	<?php endif; ?>
 <?php endif;

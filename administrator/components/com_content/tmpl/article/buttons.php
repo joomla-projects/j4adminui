@@ -5,10 +5,11 @@ defined('_JEXEC') or die;
 
 <div class="container">
   <p>
+    <a href="#"class="btn btn-xl btn-primary">Primary button</a>
     <a href="#"class="btn btn-lg btn-primary">Primary button</a>
     <a href="#"class="btn btn-primary">Primary button</a>
-    <a href="#"class="btn btn-primary">Primary button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-primary"><span class="icon fas fa-plus"></span>Primary button</a>
+    <a href="#"class="btn btn-primary">Primary button<span class="icon-plus-plus icon-right"></span></a>
+    <a href="#"class="btn btn-primary"><span class="icon-plus icon-left"></span>Primary button</a>
     <a href="#"class="btn btn-primary btn-sm">Primary button</a>
     <a href="#"class="btn btn-primary btn-sm active">Primary button</a>
     <a href="#"class="btn btn-primary btn-sm disabled">Primary button</a>
@@ -18,17 +19,18 @@ defined('_JEXEC') or die;
     <a href="#"class="btn btn-lg btn-default">Default button</a>
     <a href="#"class="btn btn-lg btn-default">Default button</a>
     <a href="#"class="btn btn-default">Default button</a>
-    <a href="#"class="btn btn-default">Default button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-default"><span class="icon fas fa-plus"></span>Default button</a>
+    <a href="#"class="btn btn-default">Default button<span class="icon-plus-plus icon-right"></span></a>
+    <a href="#"class="btn btn-default"><span class="icon-plus icon-left"></span>Default button</a>
     <a href="#"class="btn btn-default btn-sm">Default button</a>
     <a href="#"class="btn btn-default btn-sm active">Default button</a>
     <a href="#"class="btn btn-default btn-sm disabled">Default button</a>
   </p>
 
   <p>
+    <a href="#"class="btn btn-xl btn-secondary">Secondary button</a>
     <a href="#"class="btn btn-lg btn-secondary">Secondary button</a>
     <a href="#"class="btn btn-secondary">Secondary button</a>
-    <a href="#"class="btn btn-secondary">Secondary button<span class="fas fa-arrow-plus"></span></a>
+    <a href="#"class="btn btn-secondary">Secondary button<span class="icon-arrow-plus"></span></a>
     <a href="#"class="btn btn-secondary btn-sm">Secondary button</a>
     <a href="#"class="btn btn-secondary btn-sm active">Secondary button</a>
     <a href="#"class="btn btn-secondary btn-sm" disabled="disabled">Secondary button</a>
@@ -37,28 +39,18 @@ defined('_JEXEC') or die;
   <p>
     <a href="#"class="btn btn-lg btn-link">Link button</a>
     <a href="#"class="btn btn-link">Link button</a>
-    <a href="#"class="btn btn-link">Link button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-link"><span class="icon fas fa-plus"></span>Link button</a>
+    <a href="#"class="btn btn-link">Link button<span class="icon-plus icon-right"></span></a>
+    <a href="#"class="btn btn-link"><span class="icon-plus icon-left"></span>Link button</a>
     <a href="#"class="btn btn-sm btn-link">Link button</a>
     <a href="#"class="btn btn-sm btn-link active">Link button</a>
     <a href="#"class="btn btn-sm btn-link" disabled="disabled">Link button</a>
   </p>
 
   <p>
-    <a href="#"class="btn btn-lg btn-cancel">Cancel button</a>
-    <a href="#"class="btn btn-cancel">Cancel button</a>
-    <a href="#"class="btn btn-cancel">Cancel button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-cancel"><span class="icon fas fa-plus"></span>Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm">Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm active">Cancel button</a>
-    <a href="#"class="btn btn-cancel btn-sm disabled">Cancel button</a>
-  </p>
-
-  <p>
     <a href="#"class="btn btn-lg btn-danger">Danger button</a>
     <a href="#"class="btn btn-danger">Danger button</a>
-    <a href="#"class="btn btn-danger">Danger button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-danger"><span class="icon fas fa-plus"></span>Danger button</a>
+    <a href="#"class="btn btn-danger">Danger button<span class="icon-plus icon-right"></span></a>
+    <a href="#"class="btn btn-danger"><span class="icon-plus icon-left"></span>Danger button</a>
     <a href="#"class="btn btn-danger btn-sm">Danger button</a>
     <a href="#"class="btn btn-danger btn-sm disabled">Danger button</a>
   </p>
@@ -66,8 +58,8 @@ defined('_JEXEC') or die;
   <p>
     <a href="#"class="btn btn-lg btn-success">Success button</a>
     <a href="#"class="btn btn-success">Success button</a>
-    <a href="#"class="btn btn-success">Success button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-success"><span class="icon fas fa-plus"></span>Success button</a>
+    <a href="#"class="btn btn-success">Success button<span class="icon-plus icon-right"></span></a>
+    <a href="#"class="btn btn-success"><span class="icon-plus icon-left"></span>Success button</a>
     <a href="#"class="btn btn-success btn-sm">Success button</a>
     <a href="#"class="btn btn-success btn-sm disabled">Success button</a>
   </p>
@@ -75,8 +67,8 @@ defined('_JEXEC') or die;
   <p>
     <a href="#"class="btn btn-lg btn-warning">Warning button</a>
     <a href="#"class="btn btn-warning">Warning button</a>
-    <a href="#"class="btn btn-warning">Warning button<span class="icon right fas fa-plus"></span></a>
-    <a href="#"class="btn btn-warning"><span class="icon fas fa-plus"></span>Warning button</a>
+    <a href="#"class="btn btn-warning">Warning button<span class="icon-plus icon-right"></span></a>
+    <a href="#"class="btn btn-warning"><span class="icon-plus icon-left"></span>Warning button</a>
     <a href="#"class="btn btn-warning btn-sm">Warning button</a>
     <a href="#"class="btn btn-warning btn-sm disabled">Warning button</a>
   </p>

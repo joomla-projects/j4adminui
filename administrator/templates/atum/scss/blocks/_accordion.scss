@@ -1,16 +1,18 @@
 /* Style the accordion panel. Note: hidden by default */
 joomla-accordion > .accordion-item {
-  padding: 1rem 1rem 10px;
-  background-color: #ffffff;
-  display: none;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  border-top: 1px solid #edf0f5;
-  color: #5e727c;
-  &.show {
-    margin-top: -1rem;
-    display: block;
-  }
+	padding: 1rem 1rem 10px;
+	background-color: var(--white);
+	display: none;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	border-top: 1px solid #edf0f5;
+	color: var(--secondary-text-color);
+	border-radius: 0 0 3px 3px;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+	&.show {
+		margin-top: -1rem;
+		display: block;
+	}
 }
 
 joomla-accordion {
@@ -29,7 +31,7 @@ joomla-accordion {
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 1rem;
     transition: .35s;
     &:hover{
@@ -45,7 +47,7 @@ joomla-accordion {
       border-bottom-right-radius: 0;
       color: #1d2427;
     }
-    > span{
+    > span.joomla-accordion-icon{
       height: 12px;
       width: 12px;
       background-size: contain;
@@ -54,8 +56,12 @@ joomla-accordion {
       background-position: center center;
       background-repeat: no-repeat;
       transition: 300ms;
+	    margin-left: auto;
     }
-    &.active > span{
+	> span:first-child{
+		margin-right: 8px;
+	}
+    &.active > span.joomla-accordion-icon{
       transform: rotate(180deg);
     }
     &:focus{

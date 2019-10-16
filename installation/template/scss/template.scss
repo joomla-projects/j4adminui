@@ -50,7 +50,7 @@ body .container-main{
 	padding: 4.286rem 0 8.571rem;
 	position: relative;
 	h1 {
-		color: $dark-blue;
+		color: var(--primary-color);
 		text-align: center;
 	}
 }

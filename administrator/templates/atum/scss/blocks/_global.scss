@@ -130,7 +130,7 @@ body .container-main {
 }
 
 .row-selected {
-  background-color: var(--primary-lighter-color);
+  background-color: var(--table-row-selected-color);
 }
 
 // Chosen (TEMPORARY)
@@ -340,18 +340,32 @@ body .container-main {
   animation-name: fadeInUp;
 }
 
+.text-success,
 .j-text-success{
 	color: var(--success-color) !important;
 }
-
+.text-warning,
 .j-text-warning{
 	color: var(--warning-color) !important;
 }
-
+.text-danger,
 .j-text-danger{
 	color: var(--danger-color) !important;
 }
-
+.text-primary,
 .j-text-primary{
 	color: var(--primary-color) !important;
+}
+
+.bg-success{
+	background-color: var(--success-color) !important;
+}
+.bg-warning{
+	background-color: var(--warning-color) !important;
+}
+.bg-danger{
+	background-color: var(--danger-color) !important;
+}
+.bg-primary{
+	background-color: var(--primary-color) !important;
 }

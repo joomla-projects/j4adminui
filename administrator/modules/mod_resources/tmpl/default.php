@@ -66,7 +66,7 @@ $resourceStatus = $params->get('show_resources', 'both');
     <?php endif; ?>
 
     <?php if($resourceStatus === 'jrd') : ?>
-        <div class="resources-card-container mt-4">
+        <div class="resources-card-container">
             <div class="j-card">
                 <div class="j-card-body">
                     <div class="row align-items-center justify-content-center justify-content-xl-start">
