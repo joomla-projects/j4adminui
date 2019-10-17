@@ -222,6 +222,7 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
         &:focus, &:focus:active, &:not(:disabled):active:focus{
             color: var(--primary-color);
             text-decoration: none;
+            box-shadow: none;
         }
         &[disabled], &.disabled, &:disabled{
             pointer-events: none;
