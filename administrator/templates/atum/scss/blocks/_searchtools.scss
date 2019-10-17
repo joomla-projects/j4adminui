@@ -110,7 +110,6 @@
   @include media-breakpoint-down(lg) {
     justify-content:flex-start;
     .js-stools-container-bar{
-      width: 100%;
       margin-top: 1rem;
       .btn-toolbar{
         justify-content:flex-start;
@@ -118,6 +117,12 @@
           width: 100%;
         }
       }
+    }
+    .ordering-select + .ml-auto {
+      margin-right: auto;
+    }
+    .js-stools-container-filters {
+      justify-content: center;
     }
   }
   @include media-breakpoint-down(md) {
@@ -134,15 +139,22 @@
   @include media-breakpoint-down(xs) {
     > .d-flex {
       flex-wrap: wrap;
-      .ml-3,
+      justify-content: center;
+      div.ml-3,
       .ml-auto,
       .ml-4 {
         margin-left: 0 !important;
         width: 100%;
       }
     }
-    .d-flex.align-items-center {
-      justify-content: center;
+    .ordering-select + .ml-auto {
+      margin-left: 0 !important;
+      width: 100%;
+      .js-stools-btn-clear,
+      .btn-filter {
+        margin: 0 auto !important;
+        display: block;
+      }
     }
     .joomla-toolbar-button,
     .btn-group,

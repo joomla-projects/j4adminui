@@ -1,5 +1,8 @@
 .toggle-toolbar.btn {
   display: block;
+  span,i{
+    margin-right: 0;
+  }
 }
 .subhead {
   position: sticky;
@@ -59,7 +62,7 @@
     #toolbar-help {
       margin-left: auto;
       display: flex;
-      @include media-breakpoint-down(md){
+      @include media-breakpoint-down(sm){
         margin-left: 0;
       }
     }
@@ -97,6 +100,9 @@
       }
       &.hidden{
         display: none;
+      }
+      span, i {
+        margin-right: 0;
       }
     }
     .input-group-text{
