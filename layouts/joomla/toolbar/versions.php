@@ -9,7 +9,6 @@
 
 defined('JPATH_BASE') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
@@ -58,7 +57,7 @@ echo HTMLHelper::_(
 		type="button"
 		onclick="document.getElementById('versionsModal').open()"
 		data-toggle="modal">
-		<span class="icon-code-branch icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
+		<span class="icon-code-branch icon-md" aria-hidden="true"></span>
 		<?php echo $title; ?>
 	</button>
 </joomla-toolbar-button>
