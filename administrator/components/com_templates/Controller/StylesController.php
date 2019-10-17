@@ -11,7 +11,9 @@ namespace Joomla\Component\Templates\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
+use Exception;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -196,5 +198,37 @@ class StylesController extends AdminController
 		$this->setRedirect($redirect_url);
 
 		return $result;
+	}
+
+	/**
+	 * Install an extension from drag & drop ajax upload.
+	 *
+	 * @return  void
+	 *
+	 * @since   4.0.0
+	 */
+	public function ajax_upload()
+	{
+		try{
+			$message = $this->app->getUserState('com_templates.message');
+
+			// Do install
+			$result = $this->install();
+	
+			// Get redirect URL
+			$redirect = Route::_('index.php?option=com_templates&view=styles', false);
+	
+			// // Push message queue to session because we will redirect page by \Javascript, not $app->redirect().
+			// // The "application.queue" is only set in redirect() method, so we must manually store it.
+			$this->app->getSession()->set('application.queue', $this->app->getMessageQueue());
+	
+			header('Content-Type: application/json');
+	
+			echo new JsonResponse(array('redirect' => $redirect), $message, !$result);
+			$this->app->close();
+		} catch (Exception $e) {
+			echo new JsonResponse(array('message' => $e->getMessage(),'success'=>false));
+		}
+		
 	}
 }

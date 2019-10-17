@@ -27,10 +27,6 @@ $return  = Factory::getApplication()->input->getBase64('return');
 $maxSize = FilesystemHelper::fileUploadMaxSize();
 ?>
 <form enctype="multipart/form-data" action="<?php echo Route::_('index.php?option=com_templates&view=styles'); ?>" method="post" name="templateForm" id="templateForm">
-    <legend><?php echo Text::_('PLG_INSTALLER_PACKAGEINSTALLER_UPLOAD_INSTALL_JOOMLA_EXTENSION'); ?></legend>
-
-    <hr>
-
     <div id="uploader-wrapper">
         <div id="dragarea" data-state="pending">
             <div id="dragarea-content" class="text-center">

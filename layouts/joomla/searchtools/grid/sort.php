@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 use Joomla\CMS\Language\Text;
 
 $data = $displayData;
-$icon = "icon-chevron-down";
+$icon = "icon-caret-v";
 $sort = '';
 $caption = '';
 $selected = '';

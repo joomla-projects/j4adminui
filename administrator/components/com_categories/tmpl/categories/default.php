@@ -69,56 +69,56 @@ if ($saveOrder && !empty($this->items))
 						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center">
+								<td scope="col" class="text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								<th scope="col" class="d-none d-md-table-cell" style="width:  3rem">
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
-								<th scope="col" style="width:1%" class="text-center">
+								<th scope="col" class="text-center" style="width:  3rem">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 								</th>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_published')) : ?>
-									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  3rem">
 										<span class="icon-publish text-success" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_unpublished')) : ?>
-									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  3rem">
 										<span class="icon-unpublish text-mute" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_archived')) : ?>
-									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  3rem">
 										<span class="icon-briefcase text-warning" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
 								<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_trashed')) : ?>
-									<th scope="col" style="width:3%" class="text-center d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  3rem">
 										<span class="icon-trash text-danger" aria-hidden="true" title="<?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?>"></span>
 										<span class="sr-only"><?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?></span>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width: 10%">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
 								</th>
 								<?php if ($this->assoc) : ?>
-									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width: 10%">
 										<?php echo HTMLHelper::_('searchtools.sort', 'COM_CATEGORY_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width: 10%">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language_title', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<th scope="col" class="d-none d-xl-table-cell" style="width: 3rem">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
@@ -173,9 +173,7 @@ if ($saveOrder && !empty($this->items))
 											$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 										}
 										?>
-										<span class="sortable-handler icon-move-v<?php echo $iconClass ?>">
-											<span class="icon-arrows-v"></span>
-										</span>
+										<span class="sortable-handler icon-move-v<?php echo $iconClass ?>" area-hidden="true"></span>
 										<?php if ($canChange && $saveOrder) : ?>
 											<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->lft; ?>">
 										<?php endif; ?>
@@ -194,55 +192,48 @@ if ($saveOrder && !empty($this->items))
 										<?php else : ?>
 											<?php echo $this->escape($item->title); ?>
 										<?php endif; ?>
-										<span class="small" title="<?php echo $this->escape($item->path); ?>">
-											<?php if (empty($item->note)) : ?>
-												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
-											<?php else : ?>
-												<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS_NOTE', $this->escape($item->alias), $this->escape($item->note)); ?>
-											<?php endif; ?>
-										</span>
 									</th>
 									<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_published')) : ?>
-										<td class="text-center btns d-none d-md-table-cell itemnumber">
-											<a class="btn <?php echo ($item->count_published > 0) ? 'btn-success' : 'btn-secondary'; ?>" title="<?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=1' . '&filter[level]=1'); ?>">
-												<?php echo $item->count_published; ?></a>
+										<td class="d-none d-xl-table-cell">
+											<a title="<?php echo Text::_('COM_CATEGORY_COUNT_PUBLISHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=1' . '&filter[level]=1'); ?>">
+												<u><?php echo $item->count_published; ?></u></a>
 										</td>
 									<?php endif; ?>
 									<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_unpublished')) : ?>
-										<td class="text-center btns d-none d-md-table-cell itemnumber">
-											<a class="btn <?php echo ($item->count_unpublished > 0) ? 'btn-danger' : 'btn-secondary'; ?>" title="<?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=0' . '&filter[level]=1'); ?>">
-												<?php echo $item->count_unpublished; ?></a>
+										<td class="d-none d-xl-table-cell">
+											<a title="<?php echo Text::_('COM_CATEGORY_COUNT_UNPUBLISHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=0' . '&filter[level]=1'); ?>">
+												<u><?php echo $item->count_unpublished; ?></u></a>
 										</td>
 									<?php endif; ?>
 									<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_archived')) : ?>
-										<td class="text-center btns d-none d-md-table-cell itemnumber">
-											<a class="btn <?php echo ($item->count_archived > 0) ? 'btn-info' : 'btn-secondary'; ?>" title="<?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=2' . '&filter[level]=1'); ?>">
-												<?php echo $item->count_archived; ?></a>
+										<td class="d-none d-xl-table-cell">
+											<a title="<?php echo Text::_('COM_CATEGORY_COUNT_ARCHIVED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=2' . '&filter[level]=1'); ?>">
+												<u><?php echo $item->count_archived; ?></u></a>
 										</td>
 									<?php endif; ?>
 									<?php if (isset($this->items[0]) && property_exists($this->items[0], 'count_trashed')) : ?>
-										<td class="text-center btns d-none d-md-table-cell itemnumber">
-											<a class="btn <?php echo ($item->count_trashed > 0) ? 'btn-inverse' : 'btn-secondary'; ?>" title="<?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=-2' . '&filter[level]=1'); ?>">
-												<?php echo $item->count_trashed; ?></a>
+										<td class="d-none d-xl-table-cell">
+											<a title="<?php echo Text::_('COM_CATEGORY_COUNT_TRASHED_ITEMS'); ?>" href="<?php echo Route::_('index.php?option=' . $component . ($section ? '&view=' . $section : '') . '&filter[category_id]=' . (int) $item->id . '&filter[published]=-2' . '&filter[level]=1'); ?>">
+												<u><?php echo $item->count_trashed; ?></u></a>
 										</td>
 									<?php endif; ?>
 
-									<td class="small d-none d-md-table-cell">
+									<td class="d-none d-xl-table-cell">
 										<?php echo $this->escape($item->access_level); ?>
 									</td>
 									<?php if ($this->assoc) : ?>
-										<td class="d-none d-md-table-cell">
+										<td class="d-none d-xl-table-cell">
 											<?php if ($item->association) : ?>
 												<?php echo HTMLHelper::_('categoriesadministrator.association', $item->id, $extension); ?>
 											<?php endif; ?>
 										</td>
 									<?php endif; ?>
 									<?php if (Multilanguage::isEnabled()) : ?>
-										<td class="small d-none d-md-table-cell">
+										<td class="d-none d-xl-table-cell">
 											<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 										</td>
 									<?php endif; ?>
-									<td class="d-none d-md-table-cell">
+									<td class="d-none d-xl-table-cell">
 										<?php echo (int) $item->id; ?>
 									</td>
 								</tr>

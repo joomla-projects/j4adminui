@@ -269,6 +269,16 @@
 				color: var(--icon-color);
 			}
 		}
+		&.active > a,
+		> a.active{
+			> span.duotone{
+				color: var(--success-light-color);
+				&::after{
+					color: var(--primary-color);
+					opacity: 1;
+				}
+			}
+		}
 		
 		&.active > a,
 		> a.active{
@@ -401,11 +411,11 @@
 // 	.sidebar-wrapper .logo-header .main-logo{
 // 		margin-bottom: 0;
 // 	}
-	
+
 // 	.sidebar-wrapper .logo-header .sidebar-toggle{
 // 		border-right: 1px solid var(--bg-color);
 // 	}
-	
+
 // 	.logo-header{
 // 		padding-left: 15px;
 // 		padding-right: 15px;

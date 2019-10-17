@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Text;
     </a>
 
     <!-- /.offcanvas -->
-    <div class="accessibility-sidebar j-card pr-2 font-unresizable">
+    <div class="accessibility-sidebar j-card font-unresizable">
         <!-- <div class=" pr-2"> -->
         <div class="j-card-body">
             <div class="accessibility-scaling">
@@ -39,14 +39,22 @@ use Joomla\CMS\Language\Text;
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="grayscale" href="javascript:void(0);">
-                        <span class="duotone icon-grayscale" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
+                        <div>
+							<span class="duotone icon-grayscale" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_GRAYSCALE'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="nomotion" href="javascript:void(0);">
-                        <span class="duotone icon-disable-motion" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_DISABLE_MOTION'); ?>
+                        <div>
+							<span class="duotone icon-disable-motion" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_DISABLE_MOTION'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
             </div>
@@ -54,14 +62,22 @@ use Joomla\CMS\Language\Text;
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="bbcursor" href="javascript:void(0);">
-                        <span class="icon-big-black-cursor" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_BIG_BLACK_CURSOR'); ?>
+                        <div>
+							<span class="icon-big-black-cursor" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_BIG_BLACK_CURSOR'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="bhcursor" href="javascript:void(0);">
-                        <span class="icon-big-white-cursor" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_BIG_WHITE_CURSOR'); ?>
+                        <div>
+							<span class="icon-big-white-cursor" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_BIG_WHITE_CURSOR'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
             </div>
@@ -69,14 +85,22 @@ use Joomla\CMS\Language\Text;
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="magnifier" href="javascript:void(0);">
-                        <span class="icon-magnifier" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_MAGNIFIER'); ?>
+                        <div>
+							<span class="icon-magnifier" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_MAGNIFIER'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="contrast" href="javascript:void(0);">
-                        <span class="icon-Increase-contrast" aria-hidden="true"></span>
-                        <?php echo Text::_('MOD_ACCESSIBILITY_CONTRAST'); ?>
+                        <div>
+							<span class="icon-increase-contrast" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_CONTRAST'); ?>
+							</span>
+						</div>
                     </a>
                 </div>
             </div>

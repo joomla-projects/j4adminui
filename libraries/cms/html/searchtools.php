@@ -102,7 +102,6 @@ abstract class JHtmlSearchtools
 	)
 	{
 		$direction = strtolower($direction);
-		$orderIcons = array('icon-chevron-up', 'icon-chevron-down');
 		$index = (int) ($direction === 'desc');
 
 		if ($order !== $selected)
@@ -122,7 +121,7 @@ abstract class JHtmlSearchtools
 		$data->task      = $task;
 		$data->tip       = $tip;
 		$data->title     = $title;
-		$data->orderIcon = $orderIcons[$index];
+		$data->orderIcon = 'icon-caret-v';
 		$data->icon      = $icon;
 		$data->formName  = $formName;
 

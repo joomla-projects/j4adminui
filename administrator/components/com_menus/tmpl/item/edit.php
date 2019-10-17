@@ -80,11 +80,6 @@ if ($clientId === 1)
 	<div class="row">
 		<div class="col-lg-9">
 			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-		</div>
-	</div>
-			
-	<div class="row">
-		<div class="col-lg-9">
 			<?php // Add the translation of the menu item title when client is administrator ?>
 			<?php if ($clientId === 1 && $this->item->id != 0) : ?>
 				<div class="form-inline form-inline-header">

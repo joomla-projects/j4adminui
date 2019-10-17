@@ -39,6 +39,10 @@
 
     set pills(value) { this.setAttribute('pills', value); }
 
+    get justified() { return this.getAttribute('justified'); }
+
+    set justified(value) { this.setAttribute('justified', value); }
+
     /* Lifecycle, element created */
     constructor() {
       super();
@@ -259,6 +263,9 @@
 
       if (this.hasAttribute('pills') && this.getAttribute('pills') === 'true') {
         nav.setAttribute('class', 'nav-pills');
+      }
+      if(this.hasAttribute('pills') && this.hasAttribute('justified') && this.getAttribute('justified') === 'true'){
+        nav.classList.add('nav-justified');
       }
 
       /** Activate Tab */

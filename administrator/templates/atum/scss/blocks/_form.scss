@@ -98,6 +98,9 @@ joomla-field-fancy-select {
 	}
 	label {
 		width: 440px;
+		@include media-breakpoint-down(sm) {
+			width: auto;
+		}
 	}
 }
 
@@ -165,6 +168,9 @@ select{
 /* make the containers relative */
 .control-group > .controls {
 	position: relative;
+	fieldset {
+		min-width: 100%;
+	}
 }
 
 /* set up hidden tooltip */

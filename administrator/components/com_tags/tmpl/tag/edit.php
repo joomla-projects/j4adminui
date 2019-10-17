@@ -28,22 +28,16 @@ $this->useCoreUI = true;
 
 <form action="<?php echo Route::_('index.php?option=com_tags&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
 	<div>
+		<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+
 		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_TAGS_FIELDSET_DETAILS')); ?>
 		<div class="row">
 			<div class="col-lg-9">
-				<div class="form-vertical">
-					<div class="j-card">
-						<div class="j-card-body">
-						<?php echo $this->form->getLabel('description'); ?>
-						<?php echo $this->form->getInput('description'); ?>
-						</div>
-					</div>
-				</div>
+				<?php echo $this->form->getLabel('description'); ?>
+				<?php echo $this->form->getInput('description'); ?>
 			</div>
 			<div class="col-lg-3">
 				<div class="j-card">

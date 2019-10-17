@@ -85,7 +85,7 @@ if (!empty($extensionContents['updatableInfo']['package']))
 						if($update_condition){
 							?>
 							<a href="<?php echo Route::_('index.php?option=com_installer&view=update'); ?>" class="btn btn-primary">
-								<span class="icon-rebuild"></span>
+								<span class="icon-rebuild icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" area-hidden="true"></span>
 								<?php echo JText::_('MOD_EXTENSION_UPDATES_UPDATE_ALL'); ?>
 							</a>
 							<?php
