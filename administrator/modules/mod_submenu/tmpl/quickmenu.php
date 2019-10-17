@@ -35,6 +35,10 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 		<?php if ($child->hasChildren()) : ?>
 			<ul class="mobile-quickmenu-items">
 				<?php foreach ($child->getChildren() as $item) : ?>
+
+				<?php 
+					$menuClass = (!$item->hasChildren()) ? 'class="no-dropdown"' : '';
+				?>
 					<li class="mobile-quickmenu-item">
 						<?php $params = $item->getParams(); ?>
 						<?php if($item->type == 'viewsite') :
@@ -45,7 +49,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 								<?php echo Text::_('MOD_MENU_VIEWSITE'); ?>
 							</a>
 						<?php else : ?>
-							<a href="<?php echo $item->link; ?>" target="<?php echo $item->target; ?>">
+							<a href="<?php echo $item->link; ?>" target="<?php echo $item->target; ?>" <?php echo $menuClass; ?> >
 								<?php if ($item->icon) : ?>
 									<span class="<?php echo $item->icon;?>" aria-hidden="true"></span>
 								<?php elseif (!empty($params->get('menu_image'))) : ?>
@@ -73,7 +77,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 										<?php if (!$permission || $user->authorise($permission, $scope)) : ?>
 											<a href="<?php echo $link; ?>">
 												<span class="icon-<?php echo $icon; ?> icon-xs" title="<?php echo htmlentities($title); ?>" aria-hidden="true"></span>
-												<span class="sr-only"><?php echo  htmlentities($sronly); ?></span>
+												<span class="sr-only"><?php echo htmlentities($sronly); ?></span>
 											</a>
 										<?php endif; ?>
 									</span>
@@ -84,7 +88,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) &
 							</a>
 							<?php if ($item->dashboard) : ?>
 								<span class="menu-dashboard">
-									<a href="<?php echo JRoute::_('index.php?option=com_cpanel&view=cpanel&dashboard=' . $item->dashboard); ?>">
+									<a href="<?php echo JRoute::_('index.php?option=com_cpanel&view=cpanel&dashboard=' . $item->dashboard); ?>" class="no-dropdown">
 										<span class="icon-menu" title="<?php echo htmlentities(Text::_('MOD_MENU_DASHBOARD_LINK')); ?>"></span>
 									</a>
 								</span>
