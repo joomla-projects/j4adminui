@@ -53,11 +53,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') == 'component' ? '&tmpl=co
 	<div class="row">
 		<div class="col-lg-9">
 			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-lg-9">
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
 
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('COM_CONTENT_ARTICLE_CONTENT')); ?>
