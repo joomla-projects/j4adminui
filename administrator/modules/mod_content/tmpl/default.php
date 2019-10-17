@@ -53,9 +53,9 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 				<?php endforeach; ?>
 				<?php else : ?>
 				<tr>
-					<td colspan="3">
+					<th colspan="3">
 						<?php echo Text::_('MOD_CONTENT_NO_MATCHING_RESULTS'); ?>
-					</td>
+					</th>
 				</tr>
 				<?php endif; ?>
 			</tbody>
@@ -99,9 +99,9 @@ HTMLHelper::_('webcomponent', 'system/joomla-tab.min.js', array('version'=> 'aut
 				<?php endforeach; ?>
 				<?php else : ?>
 				<tr>
-					<td colspan="3">
+					<th colspan="3">
 						<?php echo Text::_('MOD_CONTENT_NO_MATCHING_RESULTS'); ?>
-					</td>
+					</th>
 				</tr>
 				<?php endif; ?>
 			</tbody>
