@@ -212,8 +212,24 @@ joomla-modal {
 }
 
 .contentpane {
-  padding: 2rem 6rem 0;
-  @include media-breakpoint-down(xs) {
-	padding: 2rem 2rem 0;
-  }
+	padding: 2rem 6rem 0;
+	@include media-breakpoint-down(xs) {
+		padding: 2rem 2rem 0;
+	}
+}
+
+//Add module modal
+.j-search-module-container {
+	.icon-search {
+		position: absolute;
+		left: 15px;
+		top: 13px;
+		width: 18px;
+		height: 18px;
+		z-index: 5;
+		color: var(--secondary-text-color);
+	}
+	.form-control {
+		padding-left: 35px;
+	}
 }
