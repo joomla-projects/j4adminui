@@ -13,7 +13,7 @@ use Joomla\CMS\Language\Text;
 
 $data = $displayData;
 ?>
-<div class="j-alert j-alert-info">
-	<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-	<?php echo $data['options']['noResultsText']; ?>
+<div class="j-alert j-alert-info d-flex mt-4">
+	<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+	<div class="j-alert-info-wrap"><?php echo $data['options']['noResultsText']; ?></div>
 </div>

@@ -87,8 +87,8 @@
       menuToggle.addEventListener('click', () => {
         wrapper.classList.toggle('closed');
         header.classList.toggle('closed');
-        menuToggleIcon.classList.toggle('fa-angle-double-left');
-        menuToggleIcon.classList.toggle('fa-angle-double-right');
+        menuToggleIcon.classList.toggle('icon-angle-double-left');
+        menuToggleIcon.classList.toggle('icon-angle-double-right');
         if (documentContainer) {
           documentContainer.classList.toggle('menu-collapsed');
         }
@@ -162,9 +162,9 @@
         if (typeof Joomla.Cookies !== 'undefined') {
           Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/');
         }
-        if (menuToggleIcon.classList.contains('fa-angle-double-right')) {
-          menuToggleIcon.classList.toggle('fa-angle-double-right');
-          menuToggleIcon.classList.toggle('fa-angle-double-left');
+        if (menuToggleIcon.classList.contains('icon-angle-double-right')) {
+          menuToggleIcon.classList.toggle('icon-angle-double-right');
+          menuToggleIcon.classList.toggle('icon-angle-double-left');
         }
         mainNav.classList.add('child-open');
 
