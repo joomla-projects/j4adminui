@@ -519,108 +519,59 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 }
 
 //.j-card-skeleton
-.j-card-skeleton{
-	.skeleton-bg{
-		background: var(--skeleton-bg) !important;
-	}
-	.j-card-header{
-		> h4,
-		.j-card-title{
-			@extend .skeleton-bg;
-			flex-grow: 1;
-			color: transparent;
-			height: 1.286rem;
-		}
-		
-		.j-card-header-right{
-			opacity: .5;
-			pointer-events: none;
-		}
-	}
-	.j-card-body > span{
+
+.skeleton-bg{
+	background: var(--skeleton-bg) !important;
+}
+
+.j-quickicon-skeleton{
+	&::before{
 		@extend .skeleton-bg;
-		height: 1.286rem;
-		display: block;
-		margin-bottom: 6px;
-		&.half{
-			width: 50%;
-		}
+		content: '';
+		position: absolute;
+		left: 1.428571rem;
+		top: 1.714286rem;
+		height: 50px;
+		width: 50px;
 	}
-	
-	.j-card-media{
+	&::after{
 		@extend .skeleton-bg;
-		height: 150px;
+		content: '';
+		position: absolute;
+		left: 6.286rem;
+		top: 1.714286rem;
+		height: 20px;
+		width: calc(100% - 7.643rem);
 	}
-	
-	.j-card-footer{
-		padding: 1rem .857143rem;
-		@extend .d-flex;
-		span{
-			flex-grow: 1;
-			height: 1.143rem;
-			@extend .d-block;
-			@extend .skeleton-bg;
-			&:not(:last-child){
-				margin-right: 1.071rem;
-			}
-			&.half{
-				width: 50%;
-				flex-grow: 0;
-			}
-			&.center{
-				margin: 0 auto;
-			}
-		}
-	}
-	
 	.j-card-overview-box{
-		.j-card-overview-icon{
-			font-size: 0;
+		&::before{
 			@extend .skeleton-bg;
+			content: '';
+			position: absolute;
+			left: 6.286rem;
+			top: 54px;
+			height: 20px;
+			width: calc(100% - 15.643rem);
 		}
-		
-		.j-card-overview-content sub{
-			color: transparent;
-			@extend .skeleton-bg;
-			width: 45px;
-			display: inline-block;
-			line-height: 16px;
-		}
-		
-		.j-counter-animation{
-			display: inline-block;
-			@extend .skeleton-bg;
-			line-height: 50px;
-			color: transparent;
-			width: 55px;
+		> * {
+			opacity: 0;
 		}
 	}
-	
-	.j-card-event-item{
-		time span{
-			&:first-child{
-				font-size: 50px;
-				line-height: 60px;
-				margin-bottom: 2px;
-			}
-			color: transparent;
+	.j-card-footer{
+		position: relative;
+		&::before{
 			@extend .skeleton-bg;
+			content: '';
+			position: absolute;
+			height: 20px;
+			width: calc(100% - 7.643rem);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
-		.j-card-event-content{
-			padding-top: 0;
-		}
-		
-		.j-card-event-content{
-			span{
-				color: transparent;
-				@extend .skeleton-bg;
-				display: block;
-				height: 16px;
-				margin-bottom: 4px;
-				&.half{
-					width: 50%;
-				}
-			}
+		> *{
+			opacity: 0;
 		}
 	}
 }
+
