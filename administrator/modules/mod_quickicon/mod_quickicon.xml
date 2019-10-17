@@ -35,7 +35,7 @@
 					name="show_users"
 					type="radio"
 					label="MOD_QUICKICON_SHOW_USERS_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -45,7 +45,7 @@
 					name="show_articles"
 					type="radio"
 					label="MOD_QUICKICON_SHOW_ARTICLES_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -55,7 +55,7 @@
 					name="show_modules"
 					type="radio"
 					label="MOD_QUICKICON_SHOW_MODULES_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -85,7 +85,7 @@
 					name="show_menuitems"
 					type="radio"
 					label="MOD_QUICKICON_SHOW_MENUITEMS_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
