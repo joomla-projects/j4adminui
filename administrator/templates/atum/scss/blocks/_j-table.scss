@@ -7,7 +7,7 @@ table {
                 border: 0;
             }
         }
-        @include media-breakpoint-down(sm){
+        @include media-breakpoint-down(xs){
             display: block;
             width: 100%;
             overflow-x: auto;
