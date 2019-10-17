@@ -9,7 +9,7 @@
 			title="MOD_MENU_ACCESS_SETTINGS"
 			type="component"
 			element="com_config"
-			link="index.php?option=com_config#page-permissions"
+			link="index.php?option=com_config"
 			permission="core.manage"
 			icon="fas fa-sliders-h"
 		/>

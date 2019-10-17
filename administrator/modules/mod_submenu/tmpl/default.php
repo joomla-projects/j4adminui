@@ -18,18 +18,18 @@ use Joomla\CMS\Uri\Uri;
 HTMLHelper::_('script', 'com_cpanel/admin-system-loader.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version'=> 'auto', 'relative' => true));
 
-$bootstrapSize = (int) $params->get('bootstrap_size', 6);
-$columns = (int) ($bootstrapSize ? $bootstrapSize : 3) / 3;
-$columnSize = 12 / $columns;
-$columnsSmall = (int) ($bootstrapSize ? $bootstrapSize : 4) / 4;
-$columnSizeSmall = 12 / $columnsSmall;
-$app = JFactory::getApplication();
-$user = $app->getIdentity();
+$bootstrapSize 		= (int) $params->get('bootstrap_size', 6);
+$columns 			= (int) ($bootstrapSize ? $bootstrapSize : 3) / 3;
+$columnSize 		= 12 / $columns;
+$columnsSmall 		= (int) ($bootstrapSize ? $bootstrapSize : 4) / 4;
+$columnSizeSmall 	= 12 / $columnsSmall;
+$app 				= JFactory::getApplication();
+$user 				= $app->getIdentity();
 
-$id = $module->id;
+$id 				= $module->id;
 
-$canEdit = $user->authorise('core.edit', 'com_modules.module.' . $id) && $user->authorise('core.manage', 'com_modules');
-$canChange  = $user->authorise('core.edit.state', 'com_modules.module.' . $id) && $user->authorise('core.manage', 'com_modules');
+$canEdit 			= $user->authorise('core.edit', 'com_modules.module.' . $id) && $user->authorise('core.manage', 'com_modules');
+$canChange 			= $user->authorise('core.edit.state', 'com_modules.module.' . $id) && $user->authorise('core.manage', 'com_modules');
 
 /** @var  \Joomla\CMS\Menu\MenuItem  $root */
 ?>

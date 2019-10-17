@@ -530,8 +530,14 @@
 					color: var(--secondary-text-color);
 					cursor: pointer;
 					position: relative;
+					&:hover {
+						color: var(--primary-color);
+						span {
+							color: var(--primary-color);
+						}
+					}
 					&:focus{
-						outline: 1px solid red;
+						outline: 0;
 					}
 					span{
 						display: block;
