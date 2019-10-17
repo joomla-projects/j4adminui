@@ -110,8 +110,9 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		$canDo = ContentHelper::getActions('com_templates');
-		// Instantiate a new FileLayout instance and render the layout
-		ToolbarHelper::modal('ModalInstallTemplate', 'icon-arrow-down-2', 'JTOOLBAR_INSTALL_TEMPLATE');
+
+		// Get the toolbar object instance
+		$toolbar = Toolbar::getInstance('toolbar');
 		
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
@@ -123,30 +124,48 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_SITE'), 'brush thememanager');
 		}
 
+		// batch actions
+		if ($canDo->get('core.create') || $canDo->get('core.delete') || $canDo->get('core.edit.state'))
+		{
+			$dropdown = $toolbar->dropdownButton('status-group')
+				->text('JTOOLBAR_SELECT_ACTION')
+				->toggleSplit(false)
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
+				->listCheck(true);
+
+			$childBar = $dropdown->getChildToolbar();
+
+			if ($canDo->get('core.edit.state'))
+			{
+				$childBar->standardButton('star')
+					->text('COM_TEMPLATES_TOOLBAR_SET_HOME')
+					->task('styles.setDefault')
+					->listCheck(true);
+			}
+
+			if ($canDo->get('core.create'))
+			{
+				$childBar->standardButton('copy')
+					->text('JTOOLBAR_DUPLICATE')
+					->task('styles.duplicate')
+					->listCheck(true);
+			}
+
+			if ($canDo->get('core.delete'))
+			{
+				$childBar->delete('styles.delete')->message('JGLOBAL_CONFIRM_DELETE')->listCheck(true);
+			}
+		}
+
+		// Install new template
+		ToolbarHelper::modal('ModalInstallTemplate', 'icon-arrow-down-2', 'JTOOLBAR_INSTALL_TEMPLATE');
+
 		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_templates');
-			ToolbarHelper::divider();
-		}
-
-		if ($canDo->get('core.delete'))
-		{
-			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
-			ToolbarHelper::divider();
-		}
-
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::custom('styles.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-			ToolbarHelper::divider();
-		}
-
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
-			ToolbarHelper::divider();
 		}
 	}
 }
