@@ -243,14 +243,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 									if (Factory::getLanguage()->isRtl())
 									{
 										if ($canEditCat || $canEditOwnCat) :
-											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '" class="text-muted">';
 										endif;
 										echo $this->escape($item->category_title);
 										if ($canEditCat || $canEditOwnCat) :
 											echo '</a>';
 										endif;
 										if ($item->category_level != '1') :
-											echo ' &#171; ';
+											echo '<span class="icon-chevron-right"></span>';
 											if ($canEditParCat || $canEditOwnParCat) :
 												echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
 											endif;
@@ -270,10 +270,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 											if ($canEditParCat || $canEditOwnParCat) :
 												echo '</a>';
 											endif;
-											echo ' &#187; ';
+											echo '<span class="icon-chevron-right"></span>';
 										endif;
 										if ($canEditCat || $canEditOwnCat) :
-											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '" class="text-muted">';
 										endif;
 										echo $this->escape($item->category_title);
 										if ($canEditCat || $canEditOwnCat) :
