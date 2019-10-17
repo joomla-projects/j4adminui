@@ -164,7 +164,8 @@
       }
     }
     @include media-breakpoint-down(lg) {
-      &:nth-child(2) {
+      &.header-mod-messages,
+      &.header-mod-multilangstatus {
         display: none !important;
       }
     }
