@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  mod_draft_article
+ * @subpackage  mod_quick_article
  *
  * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -17,19 +17,19 @@ use Joomla\CMS\Response\JsonResponse;
 use Joomla\String\StringHelper;
 
 /**
- * mod_draft_article_helper helper class for the module
+ * mod_quick_article_helper helper class for the module
  * 
  */
-class ModDraftArticleHelper
+class ModQuickArticleHelper
 {
     /**
-     * Save draft article by http request
+     * Save quick article by http request
      * 
-     * @return {json} response message
+     * @return {json}   response message
      * 
-     * @since 1.0.0
+     * @since   1.0.0
      */
-    public static function saveDraftArticleAjax()
+    public static function saveQuickArticleAjax()
     {
         $app = Factory::getApplication();
         $table = $app->bootComponent('com_content')->getMVCFactory()->createTable('Article', 'Administrator', ['ignore_request' => true]);
@@ -40,7 +40,7 @@ class ModDraftArticleHelper
         {
             $app->setHeader('status', 401, true);
             $app->sendHeaders();
-            echo Text::_('MOD_DRAFTARTICLE_NOT_AUTHORISED');
+            echo Text::_('MOD_QUICK_ARTICLE_NOT_AUTHORISED');
             $app->close();
             
         }
@@ -80,7 +80,7 @@ class ModDraftArticleHelper
                 {
                     $app->setHeader('status', 500, true);
                     $app->sendHeaders();
-                    echo Text::_("MOD_DRAFT_ARTICLE_CANNOT_SAVE_WORKFLOW");
+                    echo Text::_("MOD_QUICK_ARTICLE_CANNOT_SAVE_WORKFLOW");
                     $app->close();
                 }
             }
@@ -88,7 +88,7 @@ class ModDraftArticleHelper
             {
                 $app->setHeader('status', 500, true);
                 $app->sendHeaders();
-                echo Text::_('MOD_DRAFT_ARTICLE_CANNOT_SAVE_INTO_DB');
+                echo Text::_('MOD_QUICK_ARTICLE_CANNOT_SAVE_INTO_DB');
                 $app->close();
             }
         }
