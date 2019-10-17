@@ -77,15 +77,9 @@ if ($clientId === 1)
 ?>
 <form action="<?php echo Route::_('index.php?option=com_menus&view=item&client_id=' . $clientId . '&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-	<!-- <div class="row">
-		<div class="col-lg-9">
-			
-		</div>
-	</div> -->
-			
 	<div class="row">
 		<div class="col-lg-9">
-		<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 			<?php // Add the translation of the menu item title when client is administrator ?>
 			<?php if ($clientId === 1 && $this->item->id != 0) : ?>
 				<div class="form-inline form-inline-header">
