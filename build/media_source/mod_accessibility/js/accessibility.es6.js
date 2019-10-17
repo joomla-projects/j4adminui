@@ -14,22 +14,23 @@
         a11yScalingWrap     : '.accessibility-scaling',
         a11yActionBtn       : '.accessible-action-btn',
         a11yMagnifierBtn    : '[data-type="magnifier"]',
-        a11yMouseHighlighter: '#a11y-mouse-highlighter',
+        a11yMouseHighlighter: '[data-type="mouse-highlighter"]',
+        a11yResetBtn        : '#accessible-reset-btn',
         bodyRoot            : 'body',
         htmlRoot            : 'html',
     };
-    //document.querySelector('[data-type="magnifier"]')
 
     const a11yCollapseBtn       = document.querySelector(selectors.a11yCollapseBtn);
     const a11ySidebar           = document.querySelector(selectors.a11ySidebar);
     const a11yScalingWrap       = document.querySelector(selectors.a11yScalingWrap);
     const a11yActionBtn         = [...document.querySelectorAll(selectors.a11yActionBtn)];
     const a11yMagnifierBtn      = document.querySelector(selectors.a11yMagnifierBtn);
-    let   actionStatus          = false;
+    const mouseHighlighter      = document.querySelector(selectors.a11yMouseHighlighter);
+    const a11yResetBtn          = document.querySelector(selectors.a11yResetBtn);
     const bodyRoot              = document.querySelector(selectors.bodyRoot);
     const htmlRoot              = document.querySelector(selectors.htmlRoot);
-
-    const mouseHighlighter      = document.querySelector(selectors.a11yMouseHighlighter);
+    
+    let   actionStatus          = false;
     const cursorPointer         = document.querySelector('.a11y-cursor-pointer');
     const cursorPointerInner    = document.querySelector('.a11y-cursor-pointer-inner');
     const supportsCssVariables  = window.CSS && window.CSS.supports && window.CSS.supports('--fake-var', 0);
@@ -66,7 +67,7 @@
                 // apply/remove grayscale
                 htmlRoot.classList.toggle('a11y-grayscale');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
             }
 
             // if accessiblity action type big white cursor
@@ -79,7 +80,7 @@
                 // apply/remove black cursor
                 bodyRoot.classList.toggle('a11y-big-black-cursor');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
             }
 
             // if accessiblity action type big white cursor
@@ -92,14 +93,14 @@
                 // apply/remove white cursor
                 bodyRoot.classList.toggle('a11y-big-white-cursor');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
             }
 
             // if accessiblity action type no motion
             if (actionType == 'nomotion') {
                 bodyRoot.classList.toggle('a11y-no-motion');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
             }
 
             // if accessiblity action type contrast
@@ -112,7 +113,7 @@
                 // apply/remove contast
                 htmlRoot.classList.toggle('a11y-enable-contrast');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
             }
 
             // if accessiblity type magnifier
@@ -121,7 +122,22 @@
                 // apply/remove magnifier
                 bodyRoot.classList.toggle('a11y-magnifier');
                 actionStatus = true;
-                changeAcitonStatus(actionBtn);
+                changeAcitonStatus(actionBtn, actionType);
+            }
+
+            // if accessiblity type mouse highlighter
+            if (actionType == 'mouse-highlighter') {
+
+                // apply/remove magnifier
+                if (!actionBtn.classList.contains('a11y-active')) {
+                    pointerAppear();
+                } else {
+                    pointerDisapear();
+                }
+                // add class to body
+                bodyRoot.classList.toggle('a11y-mouse-highlighter');
+                actionStatus = true;
+                changeAcitonStatus(actionBtn, actionType);
             }
         });
     });
@@ -138,7 +154,7 @@
         return false;
     }
 
-    // *** text magnifier *** //
+    // *** START:: Text magnifier *** //
     function magnifierInit() {
         activateMagnifier();
     }
@@ -193,218 +209,264 @@
             document.body.removeChild(magnifier);
         });
     }
+    // *** END:: Text magnifier *** //
 
-    // *** Mouse highligter *** //
-    if (mouseHighlighter !== null) {
-        // mouse highlighter default options
-        let options = {
-            movementSmoothness: 2,
-            currentX: 0,
-            currentY: 0,
-            currentScale: 1,
-            clientX: 0,
-            clientY: 0,
-            clientScale: 1,
-            target: null
-        };
+    // *** START:: Mouse highligter *** //
+    // mouse highlighter default options
+    let options = {
+        movementSmoothness: 2,
+        currentX: 0,
+        currentY: 0,
+        currentScale: 1,
+        clientX: 0,
+        clientY: 0,
+        clientScale: 1,
+        target: null
+    };
 
-        function pointerMove(e) {
-            // if mouse highlighter isn't enabled then return false
-            if (checkActionStatus(mouseHighlighter, 'checkbox') == false) {
-                return false;
-            }
-            if (e.clientX) {
-                // position of the mouse based on the window
-                let mouseX = e.clientX;
-                let mouseY = e.clientY;
-
-                // get the target position, usualy the mouse position if not snapping
-                options.clientX = options.target ? options.target.x : mouseX; // mouse X position or snap target
-                options.clientY = options.target ? options.target.y : mouseY; // mouse Y position or snap target
-            }
-        }
-
-        function repeatOften() {
-            // set positions on option
-            options.currentX = +(options.currentX + (options.clientX - options.currentX) / options.movementSmoothness).toFixed(2);
-            options.currentY = +(options.currentY + (options.clientY - options.currentY) / options.movementSmoothness).toFixed(2);
-            if (supportsCssVariables) {
-                // set the css variables
-                cursorPointer.style.setProperty('--x', options.currentX + 'px');
-                cursorPointer.style.setProperty('--y', options.currentY + 'px');
-            } else {
-                cursorPointer.style.transform = 'translate3d(' + options.currentX + 'px,' + options.currentY + 'px,0)';
-                cursorPointerInner.style.transform = 'scale(' + options.currentScale.toFixed(2) + ')';
-            }
-
-            requestAnimationFrame(repeatOften);
-        }
-
-        // pointer init
-        function pointerInit() {
-            // if mouse highlighter isn't enabled then return false
-            if (checkActionStatus(mouseHighlighter, 'checkbox') == false) {
-                return false;
-            }
-            requestAnimationFrame(repeatOften);
-            cursorPointer.style.display = 'block';
-            cursorPointerInner.style.display = 'block';
-            cursorPointerInner.style.setProperty('--scale', 1);
-        }
-
-        function pointerAppear() {
-            bodyRoot.addEventListener('mousemove', pointerInit);
-            bodyRoot.addEventListener('mousemove', pointerMove);
-            // mouse enter and leave on the screen
-            bodyRoot.addEventListener('mouseenter', pointerInit);
-            bodyRoot.addEventListener('mouseleave', pointerDisapear);
-        }
-
-        // pointer dispear
-        function pointerDisapear() {
-            if (supportsCssVariables) {
-                cursorPointerInner.style.setProperty('--scale', 0);
-            } else {
-                cursorPointerInner.style.transform = 'scale(0)';
-            }
-
-            bodyRoot.removeEventListener('mousemove', pointerInit);
-        }
-
-        // check to appear/disapear highlighter
-        mouseHighlighter.addEventListener('click', (e) => {
-            if (e.target.checked) {
-                pointerAppear();
-            } else {
-                pointerDisapear();
-            }
-
-            // change action status
-            actionStatus = true;
-            changeAcitonStatus('', 'checkbox')
-        });
+    function pointerAppear() {
+        bodyRoot.addEventListener('mousemove', pointerInit);
+        bodyRoot.addEventListener('mousemove', pointerMove);
+        // mouse enter and leave on the screen
+        bodyRoot.addEventListener('mouseenter', pointerInit);
+        bodyRoot.addEventListener('mouseleave', pointerDisapear);
     }
 
-    // if content scaling class has exist
-    if (a11yScalingWrap !== null) {
-        // *** Content Scalling *** //
-        const increment = document.querySelector('#increment');
-        const decrement = document.querySelector('#decrement');
-        const fontPercent = document.querySelector('.font-percent-value');
-        let scalingEnabled = 0;
-        window.fontPercent = 0;
-
-        let validTags = ['p', 'div', 'span', 'i', 'b', 'strong', 'section', 'article', 'h1', 'h2', 'h3', 'h4',
-            'h5', 'h6', 'table', 'tr', 'th', 'td', 'a', 'ul', 'ol', 'li', 'input', 'button'];
-
-        validTags = validTags.map(element => `${element}:not(.font-unresizable)`);
-
-        const elements = [...document.querySelectorAll(validTags.join(', '))];
-
-        // set original font size on elements
-        function setOriginFontSizeAttr() {
-            elements.forEach(el => {
-                let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                if (typeof fontSize != 'undefined' && fontSize != '') {
-                    el.setAttribute('data-original-font-size', fontSize);
-                }
-            });
+    function pointerMove(e) {
+        // if mouse highlighter isn't enabled then return false
+        if (checkActionStatus(document.querySelector('[data-type="mouse-highlighter"]')) == false) {
+            return false;
         }
 
-        // reset font size
-        function toggleFontSize(toggleType = 'increase') {
+        if (e.clientX) {
+            // position of the mouse based on the window
+            let mouseX = e.clientX;
+            let mouseY = e.clientY;
 
-            elements.forEach(el => {
-                let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                if (typeof fontSize != 'undefined' && fontSize != '') {
-                    fontSize = parseFloat(fontSize);
+            // get the target position, usualy the mouse position if not snapping
+            options.clientX = options.target ? options.target.x : mouseX; // mouse X position or snap target
+            options.clientY = options.target ? options.target.y : mouseY; // mouse Y position or snap target
+        }
+    }
 
-                    if (toggleType == 'reset') {
-                        el.style.fontSize = null;
-                        el.removeAttribute('data-original-font-size');
-                        scalingEnabled = 0;
-                        // if style attribs doens't have value then remove it
-                        if (el.getAttribute('style') == '') {
-                            el.removeAttribute('style');
-                        }
-                    } else if (toggleType == 'decrease') {
-                        fontSize -= 1;
-                        el.style.fontSize = `${fontSize}px`;
-                    } else {
-                        fontSize += 1;
-                        el.style.fontSize = `${fontSize}px`;
-                    }
-                }
-            });
-
+    function repeatOften() {
+        // set positions on option
+        options.currentX = +(options.currentX + (options.clientX - options.currentX) / options.movementSmoothness).toFixed(2);
+        options.currentY = +(options.currentY + (options.clientY - options.currentY) / options.movementSmoothness).toFixed(2);
+        if (supportsCssVariables) {
+            // set the css variables
+            cursorPointer.style.setProperty('--x', options.currentX + 'px');
+            cursorPointer.style.setProperty('--y', options.currentY + 'px');
+        } else {
+            cursorPointer.style.transform = 'translate3d(' + options.currentX + 'px,' + options.currentY + 'px,0)';
+            cursorPointerInner.style.transform = 'scale(' + options.currentScale.toFixed(2) + ')';
         }
 
-        increment.addEventListener('click', function (event) {
-            // if scaling first click then set properties
-            if (scalingEnabled == 0) {
-                setOriginFontSizeAttr();
-                scalingEnabled = 1;
-            }
-            // if font percentage is "100%" then return false
-            if (window.fontPercent >= 10) {
-                return false;
-            }
+        requestAnimationFrame(repeatOften);
+    }
 
-            window.fontPercent += 1;
-            fontPercent.innerHTML = (window.fontPercent * 10) + '%';
+    // pointer init
+    function pointerInit() {
+        if (mouseHighlighter === null) {
+            return false;
+        }
+        // if mouse highlighter isn't enabled then return false
+        if (checkActionStatus(document.querySelector('[data-type="mouse-highlighter"]')) == false) {
+            return false;
+        }
+        requestAnimationFrame(repeatOften);
+        cursorPointer.style.display = 'block';
+        cursorPointerInner.style.display = 'block';
+        cursorPointerInner.style.setProperty('--scale', 1);
+    }
 
-            if (window.fontPercent == 0) {
-                toggleFontSize('reset');
-                return false;
-            } else {
-                toggleFontSize('increase');   
-            }
+    // pointer dispear
+    function pointerDisapear() {
+        if (supportsCssVariables) {
+            cursorPointerInner.style.setProperty('--scale', 0);
+        } else {
+            cursorPointerInner.style.transform = 'scale(0)';
+        }
+
+        bodyRoot.removeEventListener('mousemove', pointerInit);
+    }
+
+    // check to appear/disapear highlighter
+    // mouseHighlighter.addEventListener('click', (e) => {
+    //     //a11y-cursor-pointer
+    //     if (e.target.checked) {
             
-        });
+    //         // const ctext = 'joomla'
+    //         // const mouseWrap = document.createElement('span');
+    //         // mouseWrap.classList.add('a11y-magnified-text');
+    //         // mouseWrap.appendChild(document.createTextNode(ctext));
 
-        decrement.addEventListener('click', function (event) {
-            // if scaling first click then set properties
-            if (scalingEnabled == 0) {
-                setOriginFontSizeAttr();
-                scalingEnabled = 1;
+    //         pointerAppear();
+    //     } else {
+    //         pointerDisapear();
+    //     }
+
+    //     // change action status
+    //     actionStatus = true;
+    //     changeAcitonStatus('', 'checkbox')
+    // });
+
+    // **** END:: Mouse highligter  **** //
+
+    // **** START:: Content Scalling **** //
+    const increment = document.querySelector('#increment');
+    const decrement = document.querySelector('#decrement');
+    const fontPercent = document.querySelector('.font-percent-value');
+    let scalingEnabled = 0;
+    window.fontPercent = 0;
+
+    let validTags = ['p', 'div', 'span', 'i', 'b', 'strong', 'section', 'article', 'h1', 'h2', 'h3', 'h4',
+        'h5', 'h6', 'table', 'tr', 'th', 'td', 'a', 'ul', 'ol', 'li', 'input', 'button'];
+
+    validTags = validTags.map(element => `${element}:not(.font-unresizable)`);
+
+    const elements = [...document.querySelectorAll(validTags.join(', '))];
+
+    // set original font size on elements
+    function setOriginFontSizeAttr() {
+        elements.forEach(el => {
+            let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+            if (typeof fontSize != 'undefined' && fontSize != '') {
+                el.setAttribute('data-original-font-size', fontSize);
             }
-            // if font percentage is "-100%" then return false
-            if (window.fontPercent <= -10) {
-                return false;
-            }
-
-            window.fontPercent -= 1;
-            fontPercent.innerHTML = (window.fontPercent * 10) + '%';
-
-            if (window.fontPercent == 0) {
-                toggleFontSize('reset');
-                return false;
-            } else {
-                toggleFontSize('decrease');
-            }
-
-            // elements.map(el => {
-            //     let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-            //     if (typeof fontSize != 'undefined' && fontSize != '') {
-            //         fontSize = parseFloat(fontSize);
-            //         fontSize -= 1;
-            //         el.style.fontSize = `${fontSize}px`;
-            //     }
-            // });
         });
     }
+
+    // reset font size
+    function toggleFontSize(toggleType = 'increase') {
+        elements.forEach(el => {
+            let fontSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+            if (typeof fontSize != 'undefined' && fontSize != '') {
+                fontSize = parseFloat(fontSize);
+
+                if (toggleType == 'reset') {
+                    el.style.fontSize = null;
+                    el.removeAttribute('data-original-font-size');
+                    fontPercent.innerHTML = '0%';
+                    scalingEnabled = 0;
+                    // if style attribs doens't have value then remove it
+                    if (el.getAttribute('style') == '') {
+                        el.removeAttribute('style');
+                    }
+                } else if (toggleType == 'decrease') {
+                    fontSize -= 1;
+                    el.style.fontSize = `${fontSize}px`;
+                } else {
+                    fontSize += 1;
+                    el.style.fontSize = `${fontSize}px`;
+                }
+            }
+        });
+    }
+
+    increment.addEventListener('click', function (event) {
+        // if content scaling class hasn't exist
+        if (a11yScalingWrap == null) {
+            return false;
+        }
+        // if scaling first click then set properties
+        if (scalingEnabled == 0) {
+            setOriginFontSizeAttr();
+            scalingEnabled = 1;
+        }
+        // if font percentage is "100%" then return false
+        if (window.fontPercent >= 10) {
+            return false;
+        }
+
+        window.fontPercent += 1;
+        fontPercent.innerHTML = (window.fontPercent * 10) + '%';
+
+        if (window.fontPercent == 0) {
+            toggleFontSize('reset');
+            return false;
+        } else {
+            toggleFontSize('increase');   
+        }
+        
+    });
+
+    decrement.addEventListener('click', function (event) {
+        // if content scaling class hasn't exist
+        if (a11yScalingWrap == null) {
+            return false;
+        }
+
+        // if scaling first click then set properties
+        if (scalingEnabled == 0) {
+            setOriginFontSizeAttr();
+            scalingEnabled = 1;
+        }
+        // if font percentage is "-100%" then return false
+        if (window.fontPercent <= -10) {
+            return false;
+        }
+
+        window.fontPercent -= 1;
+        fontPercent.innerHTML = (window.fontPercent * 10) + '%';
+
+        if (window.fontPercent == 0) {
+            toggleFontSize('reset');
+            return false;
+        } else {
+            toggleFontSize('decrease');
+        }
+    });
+
+    // **** END:: Content scalling **** //
 
     // change action status
-    function changeAcitonStatus(actionBtn, actionType = '') {
-        if(actionType != 'checkbox') {
+    function changeAcitonStatus(actionBtn = '', actionType = '') {
+        if (actionType == 'reset') {
+            //all action button
+            a11yActionBtn.forEach(actionBtn => {
+                if (actionBtn.classList.contains('a11y-active')) {
+                    actionBtn.classList.remove('a11y-active');
+                }
+            });
+            Joomla.renderMessages({ message: ['Successfully reset.'] });
+            return true;
+        } else if (actionStatus == true) {
+            Joomla.renderMessages({ message: ['Successfully applied.'] });
             actionBtn.classList.toggle('a11y-active');
-        }
-        // show action message
-        if (actionStatus == true) {
-            Joomla.renderMessages({ message: ['Successfully applied '] });
+            return true;
         } else {
-            Joomla.renderMessages({ warning: ['Something went wrong'] });
+            Joomla.renderMessages({ warning: ['Something went wrong!'] });
+            return true;
         }
     }
+
+    // Reset Accessibility
+    a11yResetBtn.addEventListener('click', (e)=> {
+        e.preventDefault();
+        // all accessibility classes
+        const bodyA11yClasses = ['a11y-grayscale', 'a11y-enable-contrast', 'a11y-big-black-cursor', 'a11y-big-white-cursor', 'a11y-no-motion', 'a11y-magnifier', 'a11y-mouse-highlighter'];
+        // remove accessiblity classes from body and html
+        bodyA11yClasses.forEach(bodyA11yClass => {
+            if(bodyRoot.classList.contains(bodyA11yClass)){
+                bodyRoot.classList.remove(bodyA11yClass);
+            } else if(htmlRoot.classList.contains(bodyA11yClass)) {
+                htmlRoot.classList.remove(bodyA11yClass);
+            }
+        });
+
+        // reset all actions except content scalling and cursor magnifier
+        changeAcitonStatus('', 'reset');
+        removeMagnifier();
+        // reset conent scalling
+        if (a11yScalingWrap !== null) {
+            toggleFontSize('reset');
+        }
+        // reset mouse highlighter
+        if (mouseHighlighter !== null) {
+            pointerDisapear();
+        }
+
+    });
 
 })(window.Joomla, document);
