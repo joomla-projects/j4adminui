@@ -112,15 +112,6 @@ $resourceStatus = $params->get('show_resources', 'both');
                                     <a href="https://resources.joomla.org/en/category/project-management" target="_blank"><?php echo Text::_('MOD_RESOURCES_PROJECT_MANAGEMENT'); ?></a>
                                 </div>
                             </div>
-                            <!-- <div class="row mt-3">
-
-                            </div>
-                            <div class="row mt-3">
-
-                            </div>
-                            <div class="row mt-3">
-
-                            </div> -->
                         </div>
                     </div>
                 </div>
