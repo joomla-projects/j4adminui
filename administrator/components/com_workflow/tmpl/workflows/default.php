@@ -69,28 +69,28 @@ $userId = $user->id;
 						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center hidden-sm-down">
+								<td scope="col" class="text-center" style="width: 3rem;">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" style="width:1%" class="text-center hidden-sm-down">
+								<th scope="col" class="text-center d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'w.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 								</th>
-								<th scope="col"  style="width:1%" class="text-center hidden-sm-down">
+								<th scope="col"  class="text-center d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'w.published', $listDirn, $listOrder); ?>
 								</th>
-								<th class="hidden-sm-down">
+								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_WORKFLOW_NAME', 'w.title', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center hidden-sm-down">
+								<th scope="col" class="text-center" style="width: 3rem;">
 									<?php echo Text::_('COM_WORKFLOW_DEFAULT'); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center  d-none d-md-table-cell">
+								<th scope="col" class="d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo Text::_('COM_WORKFLOW_COUNT_STAGES'); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-center  d-none d-md-table-cell">
+								<th scope="col" class="d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo Text::_('COM_WORKFLOW_COUNT_TRANSITIONS'); ?>
 								</th>
-								<th scope="col" style="width:10%" class="text-right  d-none d-md-table-cell">
+								<th scope="col" class="d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_WORKFLOW_ID', 'w.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
@@ -109,10 +109,10 @@ $userId = $user->id;
 							$canChange  = $user->authorise('core.edit.state', $extension . '.workflow.' . $item->id) && $canCheckin;
 							?>
 							<tr class="row<?php echo $i % 2; ?>" data-dragable-group="0">
-								<td class="order text-center hidden-sm-down">
+								<td class="order text-center">
 									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 								</td>
-								<td class="order text-center hidden-sm-down">
+								<td class="order text-center d-none d-md-table-cell">
 									<?php
 									$iconClass = '';
 									if (!$canChange)
@@ -131,10 +131,8 @@ $userId = $user->id;
 										<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
 									<?php endif; ?>
 								</td>
-								<td class="text-center">
-									<div class="btn-group">
-										<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'workflows.', $canChange && !$isCore); ?>
-									</div>
+								<td class="text-center d-none d-md-table-cell">
+									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'workflows.', $canChange && !$isCore); ?>
 								</td>
 								<th scope="row">
 									<?php if (!$isCore && ($canEdit || $canEditOwn)) : ?>
@@ -147,18 +145,18 @@ $userId = $user->id;
 										<div class="small"><?php echo $item->description; ?></div>
 									<?php endif; ?>
 								</th>
-								<td class="text-center  hidden-sm-down">
+								<td class="text-center">
 									<?php echo HTMLHelper::_('jgrid.isdefault', $item->default, $i, 'workflows.', $canChange); ?>
 								</td>
-								<td class="text-center d-none d-md-table-cell">
-									<a class="<?php echo ($item->count_states > 0) ? 'btn btn-secondary btn-sm' : ''; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_STAGES', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=stages&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
-										<?php echo $item->count_states; ?></a>
+								<td class="d-none d-md-table-cell">
+									<a title="<?php echo Text::_('COM_WORKFLOW_COUNT_STAGES', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=stages&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
+										<u><?php echo $item->count_states; ?></u></a>
 								</td>
-								<td class="text-center btns  d-none d-md-table-cell">
-									<a class="<?php echo ($item->count_transitions > 0) ? 'btn btn-secondary btn-sm' : ''; ?>" title="<?php echo Text::_('COM_WORKFLOW_COUNT_TRANSITIONS', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=transitions&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
-										<?php echo $item->count_transitions; ?></a>
+								<td class="d-none d-md-table-cell">
+									<a title="<?php echo Text::_('COM_WORKFLOW_COUNT_TRANSITIONS', true); ?>" href="<?php echo Route::_('index.php?option=com_workflow&view=transitions&workflow_id=' . (int) $item->id . '&extension=' . $extension); ?>">
+										<u><?php echo $item->count_transitions; ?></u></a>
 								</td>
-								<td class="text-right d-none d-md-table-cell">
+								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>
 								</td>
 							</tr>

@@ -33,8 +33,10 @@
     
     > joomla-toolbar-button,
     > div,
+    > button,
     > .btn-group {
       margin-left: 1.4rem;
+
       @include media-breakpoint-down(md){
         margin-left: 0;
         margin-right: .75rem;

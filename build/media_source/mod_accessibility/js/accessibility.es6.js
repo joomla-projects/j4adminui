@@ -28,7 +28,7 @@
     let   actionStatus          = false;
     const bodyRoot              = document.querySelector(selectors.bodyRoot);
     const htmlRoot              = document.querySelector(selectors.htmlRoot);
-    
+
     const mouseHighlighter      = document.querySelector(selectors.a11yMouseHighlighter);
     const cursorPointer         = document.querySelector('.a11y-cursor-pointer');
     const cursorPointerInner    = document.querySelector('.a11y-cursor-pointer-inner');
@@ -37,13 +37,13 @@
     // Accessibility sidebar controller
     a11yCollapseBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        a11ySidebar.classList.toggle('active');
+        a11ySidebar.classList.toggle('a11y-active');
     });
 
     // Disapear sidebar if click outside of the siderbar
     document.addEventListener('click', (e) => {
-        if ( !e.target.classList.contains('header-item-link') && (!event.target.closest(".mod-accessibility") && a11ySidebar.classList.contains('active')) ) {
-            a11ySidebar.classList.remove('active');
+        if ( !e.target.classList.contains('header-item-link') && (!event.target.closest(".mod-accessibility") && a11ySidebar.classList.contains('a11y-active')) ) {
+            a11ySidebar.classList.remove('a11y-active');
         }
     });
 
@@ -60,9 +60,9 @@
                 // reset contrast
                 if (htmlRoot.classList.contains('a11y-enable-contrast')) {
                     htmlRoot.classList.remove('a11y-enable-contrast');
-                    document.querySelector('[data-type="contrast"]').classList.remove('active');
+                    document.querySelector('[data-type="contrast"]').classList.remove('a11y-active');
                 }
-                
+
                 // apply/remove grayscale
                 htmlRoot.classList.toggle('a11y-grayscale');
                 actionStatus = true;
@@ -74,7 +74,7 @@
                 // reset white cursor
                 if (bodyRoot.classList.contains('a11y-big-white-cursor')) {
                     bodyRoot.classList.remove('a11y-big-white-cursor');
-                    document.querySelector('[data-type="bhcursor"]').classList.remove('active');
+                    document.querySelector('[data-type="bhcursor"]').classList.remove('a11y-active');
                 }
                 // apply/remove black cursor
                 bodyRoot.classList.toggle('a11y-big-black-cursor');
@@ -87,7 +87,7 @@
                 // reset black cursor
                 if (bodyRoot.classList.contains('a11y-big-black-cursor')) {
                     bodyRoot.classList.remove('a11y-big-black-cursor');
-                    document.querySelector('[data-type="bbcursor"]').classList.remove('active');
+                    document.querySelector('[data-type="bbcursor"]').classList.remove('a11y-active');
                 }
                 // apply/remove white cursor
                 bodyRoot.classList.toggle('a11y-big-white-cursor');
@@ -107,14 +107,14 @@
                 // reset grayscale
                 if (htmlRoot.classList.contains('a11y-grayscale')) {
                     htmlRoot.classList.remove('a11y-grayscale');
-                    document.querySelector('[data-type="grayscale"]').classList.remove('active');
+                    document.querySelector('[data-type="grayscale"]').classList.remove('a11y-active');
                 }
                 // apply/remove contast
                 htmlRoot.classList.toggle('a11y-enable-contrast');
                 actionStatus = true;
                 changeAcitonStatus(actionBtn);
             }
-            
+
             // if accessiblity type magnifier
             if (actionType == 'magnifier') {
                 magnifierInit();
@@ -131,13 +131,13 @@
         if(actionType == 'checkbox') {
             return action.checked;
         } else {
-            if (action.classList.contains('active')) {
+            if (action.classList.contains('a11y-active')) {
                 return true;
             }
         }
         return false;
     }
-    
+
     // *** text magnifier *** //
     function magnifierInit() {
         activateMagnifier();
@@ -270,7 +270,7 @@
 
             bodyRoot.removeEventListener('mousemove', pointerInit);
         }
-        
+
         // check to appear/disapear highlighter
         mouseHighlighter.addEventListener('click', (e) => {
             if (e.target.checked) {
@@ -337,7 +337,7 @@
     // change action status
     function changeAcitonStatus(actionBtn, actionType = '') {
         if(actionType != 'checkbox') {
-            actionBtn.classList.toggle('active');
+            actionBtn.classList.toggle('a11y-active');
         }
         // show action message
         if (actionStatus == true) {
