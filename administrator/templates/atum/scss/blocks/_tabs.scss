@@ -18,12 +18,11 @@ joomla-tab {
 
 joomla-tab > ul {
 	display: flex;
-	margin: 0 0 20px;
+	margin: 0;
 	padding: 0;
 	list-style: none;
 	position: relative;
 	z-index: 1;
-	background: var(--white);
 	&::after{
 		content: '';
 		position: absolute;
