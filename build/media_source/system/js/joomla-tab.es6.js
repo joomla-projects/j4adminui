@@ -144,7 +144,9 @@
       }
 
       // Create the navigation
-      this.createNavigation(tabsEl);
+      if (this.view !== 'accordion') {
+        this.createNavigation(tabsEl);
+      }
 
       // Add missing role
       tabsEl.forEach((tab) => {
@@ -193,6 +195,9 @@
       this.tablist = this.querySelector('[role="tablist"]');
       this.listItems = [...this.tablist.querySelectorAll('li')];
 
+      // Convert tabs to accordian
+      self.checkView(self);
+
       window.addEventListener('resize', () => {
         self.checkView(self);
       });
@@ -238,7 +243,7 @@
     }
 
     toggleTabClass() {
-      if (this.totalListWidth > this.tablist.offsetWidth) {
+      if (this.totalListWidth > this.tablist.offsetWidth && this.orientation !== 'vertical') {
         this.tablist.classList.toggle('tab-overflow');
       }
     }
@@ -252,7 +257,7 @@
       const nav = document.createElement('ul');
       nav.setAttribute('role', 'tablist');
 
-      if(this.hasAttribute('pills') && this.getAttribute('pills') === 'true'){
+      if (this.hasAttribute('pills') && this.getAttribute('pills') === 'true') {
         nav.setAttribute('class', 'nav-pills');
       }
 
@@ -404,8 +409,57 @@
     }
 
     /** Method to convert tabs to accordion and vice versa depending on screen size */
-    checkView() {
-      this.checkoverflow();
+    checkView(element) {
+      const el = element;
+      const nav = el.querySelector('ul');
+      const tabsEl = [];
+
+      if (this.orientation === 'vertical' && document.body.getBoundingClientRect().width < 920) {
+        if (this.view === 'accordion') {
+          return;
+        }
+        el.view = 'accordion';
+
+        // convert to accordion
+        const panels = [].slice.call(el.querySelectorAll('section'));
+
+        // remove the cascaded tabs
+        for (let i = 0, l = panels.length; i < l; i += 1) {
+          if (panels[i].parentNode === el) {
+            tabsEl.push(panels[i]);
+          }
+        }
+
+        if (tabsEl.length) {
+          tabsEl.forEach((panel) => {
+            const link = el.querySelector(`a[aria-controls="${panel.id}"]`);
+            if (link.parentNode.parentNode === el.firstElementChild) {
+              link.parentNode.appendChild(panel);
+            }
+          });
+        }
+      } else {
+        if (this.view === 'tabs') {
+          return;
+        }
+        el.view = 'tabs';
+        // convert to tabs
+        const panels = [].slice.call(nav.querySelectorAll('section'));
+
+        // remove the cascaded tabs
+        for (let i = 0, l = panels.length; i < l; i += 1) {
+          if (panels[i].parentNode.parentNode.parentNode === el) {
+            tabsEl.push(panels[i]);
+          }
+        }
+
+        if (tabsEl.length) {
+          tabsEl.forEach((panel) => {
+            el.appendChild(panel);
+          });
+        }
+        this.checkoverflow();
+      }
     }
 
     // eslint-disable-next-line class-methods-use-this
