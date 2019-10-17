@@ -278,19 +278,19 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 			min-width: 3.571429rem;
 			border-radius: 50%;
 			margin-right: 1.428571rem;
-			background: rgba(var(--primary-rgb), .2);
+			background: rgba(var(--primary-rgb), .1);
 			color: var(--primary-color);
 			&.j-warning{
-				background: rgba(var(--warning-rgb), .2);
+				background: rgba(var(--warning-rgb), .1);
 				color: var(--warning-color);
 			}
 			&.j-danger{
-				background: rgba(var(--danger-rgb), .2);
-				color: var(--danger-color);
+				background: rgba(var(--danger-light-rgb), .1);
+				color: var(--danger-light-color);
 			}
 			&.j-success{
-				background: rgba(var(--success-rgb), .2);
-				color: var(--success-color);
+				background: rgba(var(--success-light-rgb), .1);
+				color: var(--success-light-color);
 			}
 		}
 		.j-card-overview-content{

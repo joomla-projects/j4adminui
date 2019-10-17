@@ -827,7 +827,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-progress.min.js', array('version'=>
 
 				<div class="j-card j-card-skeleton">
 					<div class="j-card-overview-box pt-3">
-						<div class="j-card-overview-icon j-warning">
+						<div class="j-card-overview-icon j-danger">
 							<span class="fab fa-invision"></span>
 						</div>
 						<div class="j-card-overview-content">

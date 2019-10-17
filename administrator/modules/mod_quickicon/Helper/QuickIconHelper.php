@@ -55,7 +55,7 @@ abstract class QuickIconHelper
 
 		$key     = (string) $params;
 		$context = (string) $params->get('context', 'mod_quickicon');
-		
+
 		if (!isset(self::$buttons[$key]))
 		{
 			// Load mod_quickicon language file in case this method is called before rendering the module
@@ -158,7 +158,7 @@ abstract class QuickIconHelper
 			{
 				$tmp = [
 					'image'   => 'icon-modules duotone',
-					'icon_class'   => 'warning',
+					'icon_class'   => 'danger',
 					'link'    => Route::_('index.php?option=com_modules&client_id=0'),
 					'linkadd' => Route::_('index.php?option=com_modules&view=select&client_id=0'),
 					'name'    => 'MOD_QUICKICON_MODULE_MANAGER',
@@ -249,26 +249,26 @@ abstract class QuickIconHelper
 
 	/**
 	 * Re-order button list based on order values
-	 * 
+	 *
 	 * @method 	Aajax
 	 * @param	Array	List of buttons
 	 * @param	Array 	Module params for get the order values
-	 * 
+	 *
 	 * @since   4.0.0
 	 */
-	private static function getOrderedModuleList($buttons, $params ) 
+	private static function getOrderedModuleList($buttons, $params )
 	{
 		$orders = $params->get('module_ordering');
 		$orders = json_decode($orders);
-		if (count($orders)) 
+		if (count($orders))
 		{
 			$collector = [];
 			foreach ($orders as $order)
 			{
-				foreach ($buttons as $key=>$button) 
+				foreach ($buttons as $key=>$button)
 				{
 					if ($order == Text::_($button['name']))
-					{ 
+					{
 						array_push($collector, $button);
 						unset($buttons[$key]);
 					}
