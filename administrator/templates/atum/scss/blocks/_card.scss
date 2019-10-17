@@ -243,8 +243,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 		a,
 		button{
 			flex-grow: 1;
-			padding-left: .357143rem;
-			padding-right: .357143rem;
+			justify-content: center;
 			&:not(:last-child){
 				margin-right: 1.071429rem;
 			}

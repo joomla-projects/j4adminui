@@ -31,7 +31,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		<div class="col-md-12">
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'client_id'))); ?>
-				<div class="clearfix mt-4 mb-4"></div>
+				<div class="clearfix mt-5 mb-4"></div>
 				<?php if ($this->total > 0) : ?>
 					<div id="styleList">
 						<div class="row">
@@ -201,7 +201,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 					</div>
 	
 					<!-- load the pagination. -->
-					<div class="j-pagination-footer">
+					<div class="j-pagination-footer mt-4">
 						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
 						<?php echo $this->pagination->getListFooter(); ?>
 					</div>

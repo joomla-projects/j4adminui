@@ -111,7 +111,8 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_templates');
 		// Instantiate a new FileLayout instance and render the layout
-		ToolbarHelper::modal('ModalInstallTemplate', 'intall-template', 'JTOOLBAR_INSTALL');
+		ToolbarHelper::modal('ModalInstallTemplate', 'icon-upload', 'JTOOLBAR_INSTALL');
+		
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
 		{
@@ -127,6 +128,25 @@ class HtmlView extends BaseHtmlView
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_templates');
+			ToolbarHelper::divider();
+		}
+
+		if ($canDo->get('core.delete'))
+		{
+			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
+			ToolbarHelper::divider();
+		}
+
+		if ($canDo->get('core.create'))
+		{
+			ToolbarHelper::custom('styles.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
+			ToolbarHelper::divider();
+		}
+
+		if ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
+			ToolbarHelper::divider();
 		}
 	}
 }
