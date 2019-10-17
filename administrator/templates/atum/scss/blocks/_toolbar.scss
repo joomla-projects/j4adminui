@@ -11,7 +11,7 @@
   left: 0;
   z-index: $zindex-toolbar;
   width: auto;
-  min-height: 43px;
+  min-height: 65px;
   padding: 13px 15px;
   color: var(--atum-text-dark);
   background: var(--bg-dark-color);
@@ -21,6 +21,7 @@
   @include media-breakpoint-down(xs){
     padding-left: 0;
     padding-right: 0;
+    min-height: auto;
   }
   @include media-breakpoint-down(md){
     padding-bottom: 3px;
