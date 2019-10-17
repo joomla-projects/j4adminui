@@ -61,7 +61,7 @@ final class Version
 	 * @var    string
 	 * @since  3.8.0
 	 */
-	const EXTRA_VERSION = 'alpha11-dev';
+	const EXTRA_VERSION = 'alpha12-dev';
 
 	/**
 	 * Development status.
