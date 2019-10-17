@@ -13,11 +13,11 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ModuleHelper;
 
-HTMLHelper::_('script', 'mod_draft_article/draftarticle.min.js', ['version' => 'auto', 'relative' => true]);
+HTMLHelper::_('script', 'mod_quick_article/quickarticle.min.js', ['version' => 'auto', 'relative' => true]);
 
 require_once __DIR__ . '/helper.php';
 
-$categoryField = ModDraftArticleHelper::getCategories();
+$categoryField = ModQuickArticleHelper::getCategories();
 
 // Render the module
-require ModuleHelper::getLayoutPath('mod_draft_article', $params->get('layout', 'default'));
+require ModuleHelper::getLayoutPath('mod_quick_article', $params->get('layout', 'default'));

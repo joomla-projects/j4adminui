@@ -717,7 +717,6 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (0, 'mod_cache', 'module', 'mod_cache', '', 1, 1, 1, 0, '', '{"size_unit":"mb","module_group":"system","cache":"1","cache_time":"900"}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_checkins', 'module', 'mod_checkins', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_content', 'module', 'mod_content', '', 1, 1, 1, 0, '', '{"count":"5","ordering":"c_dsc","catid":"","user_id":"0"}', 0, '0000-00-00 00:00:00', 0, 0),
-(0, 'mod_draft_article', 'module', 'mod_draft_article', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_extension_updates', 'module', 'mod_extension_updates', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_resources', 'module', 'mod_resources', '', 1, 1, 1, 0, '', '{"show_resources":"both","automatic_title":"0"}', 0, '0000-00-00 00:00:00', 0, 0);
 
