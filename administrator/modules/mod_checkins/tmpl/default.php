@@ -29,7 +29,7 @@ use Joomla\CMS\Router\Route;
 					<div class="j-card-counter-msg">
 						<?php echo Text::plural('MOD_CHECKINS_GLOBAL_CHECKIN_MSG', $checkins); ?>
 					</div>
-					<p>Selecting this menu option allows Joomla! administrators to perform a global check-in of all currently pending or locked items.</p>
+					<p><?php echo Text::_('MOD_CHECKINS_DESC'); ?></p>
 					<div class="j-card-vertical-btn-group">
 						<a href="<?php echo Route::_('index.php?option=com_checkin'); ?>" class=""><?php echo Text::_('MOD_CHECKINS_GO_TO_CHECKINS'); ?></a>
 					</div>

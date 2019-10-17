@@ -38,35 +38,15 @@
     }
   }
   .main-wrap{
-    display: -ms-flexbox;
     display: flex;
     border-radius: 3px;
-    box-shadow: 20px 30px 60px -10px rgba(0, 28, 73, 0.3);
-    max-width: 860px;
+    box-shadow: 20px 30px 60px -10px rgba(0,28,73,.3);
+    max-width: 500px;
     width: 100%;
     @include media-breakpoint-down(sm) {
       flex-direction: column;
     }
-    .main-sidebar{
-      background: var(--primary-text-color);
-      flex: 0 0 43%;
-      max-width: 43%;
-      padding: 4.2rem 2rem 2rem 2rem;
-      color: var(--white);
-      border-radius: 3px 0px 0px 3px;
-      @include media-breakpoint-down(sm) {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding: 1.2rem;
-        margin-top: 30px;
-        border-radius: 3px 3px 0 0;
-      }
-      .main-brand{
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-      }
-    }
+    
     .main-greetings{
       margin-top: 1.7rem;
       margin-bottom: 3.5rem;
@@ -108,61 +88,11 @@
     .main-brand-logo{
       min-width: 50px;
     }
-    .loginsupport{
-      font-weight: 500;
-      a{
-        color: var(--primary-color);
-        transition: .3s;
-        &:hover, &:focus{
-          color: #fff;
-          &:after{
-            background-color: #fff;
-          }
-        }
-      }
-      >ul{
-        display: flex;
-        flex-direction: row;
-        flex-direction: row;
-        margin: 0;
-        font-size: 12px;
-        >li{
-          display: flex;
-          align-items: center;
-          border: none;
-          padding: 0;
-          >a{
-            display: flex;
-            align-items: center;
-            flex-direction: row-reverse;
-            &:after {
-              content: "";
-              width: 7px;
-              height: 7px;
-              background-color: var(--primary-color);
-              border-radius: 10px;
-              margin-right: 5px;
-              opacity: 0.5;
-              transition: .3s;
-            }
-          }
-          &:not(:last-child){
-            margin-right: 15px;
-          }
-        }
-      }
-    }
     .login{
-      flex: 0 0 57%;
-      max-width: 57%;
-      padding: 3.2rem 6.4rem;
-      border-radius: 0px 3px 3px 0px;
-      @include media-breakpoint-down(sm) {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding: 1.2rem;
-        border-radius: 0 0 3px 3px;
-      }
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 3rem 4rem;
+      border-radius: 0 0 3px 3px;
       .main-brand>h3{
         font-size: 1.72rem;
         text-align: center;
@@ -187,27 +117,6 @@
         background: transparent;
         box-shadow: initial;
       }
-    }
-  }
-  .sidebar-modules{
-    margin-top: auto;
-    .module-wrapper>.j-card{
-      background: transparent;
-      box-shadow: none;
-    }
-  }
-
-  .login-initial {
-    display: none;
-  }
-
-  .login-logo {
-    width: 200px;
-    margin: 0 auto 2rem;
-    text-align: center;
-
-    @include media-breakpoint-down(sm) {
-      margin: 1rem 0;
     }
   }
 
