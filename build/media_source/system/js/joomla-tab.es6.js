@@ -414,7 +414,7 @@
       const nav = el.querySelector('ul');
       const tabsEl = [];
 
-      if (this.orientation === 'vertical' && document.body.getBoundingClientRect().width < 920) {
+      if (this.orientation === 'vertical' && document.body.getBoundingClientRect().width < 768) {
         if (this.view === 'accordion') {
           return;
         }
