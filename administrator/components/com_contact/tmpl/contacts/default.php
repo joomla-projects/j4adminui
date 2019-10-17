@@ -52,38 +52,35 @@ if ($saveOrder && !empty($this->items))
 						</caption>
 						<thead>
 							<tr>
-								<td style="width:1%" class="text-center">
-									<?php echo HTMLHelper::_('grid.checkall'); ?>
-								</td>
-								<th scope="col" style="width:1%" class="text-center d-none d-lg-table-cell">
+								<th scope="col" class="text-center d-none d-lg-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
-								<th scope="col" style="width:1%" class="text-center">
+								<td scope="col" class="text-center" style="width: 3rem">
+									<?php echo HTMLHelper::_('grid.checkall'); ?>
+								</td>
+								<th scope="col" class="text-center d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JFEATURED', 'a.featured', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:1%; min-width:85px" class="text-center">
+								<th scope="col" class="text-center d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col">
+								<th scope="col" style="width: 100%;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%">
+								<th scope="col" class="d-none d-xl-table-cell" style="width:  10%;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTACT_FIELD_LINKED_USER_LABEL', 'ul.name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
-								</th>
 								<?php if ($assoc) : ?>
-									<th scope="col" style="width:10%">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  10%;">
 										<?php echo HTMLHelper::_('searchtools.sort', 'COM_CONTACT_HEADING_ASSOCIATION', 'association', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+									<th scope="col" class="d-none d-xl-table-cell" style="width:  10%;">
 										<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language_title', $listDirn, $listOrder); ?>
 									</th>
 								<?php endif; ?>
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<th scope="col" class="text-center" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 							</tr>
@@ -101,9 +98,6 @@ if ($saveOrder && !empty($this->items))
 							$item->cat_link = Route::_('index.php?option=com_categories&extension=com_contact&task=edit&type=other&id=' . $item->catid);
 							?>
 							<tr class="row<?php echo $i % 2; ?>" data-dragable-group="<?php echo $item->catid; ?>">
-								<td class="text-center">
-									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-								</td>
 								<td class="order text-center d-none d-lg-table-cell">
 									<?php
 									$iconClass = '';
@@ -125,9 +119,12 @@ if ($saveOrder && !empty($this->items))
 									<?php endif; ?>
 								</td>
 								<td class="text-center">
+									<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
+								</td>
+								<td class="text-center d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('contactadministrator.featured', $item->featured, $i, $canChange); ?>
 								</td>
-								<td class="text-center">
+								<td class="text-center d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('jgrid.published', $item->published, $i, 'contacts.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
 								</td>
 
@@ -142,36 +139,33 @@ if ($saveOrder && !empty($this->items))
 										<?php else : ?>
 											<?php echo $this->escape($item->name); ?>
 										<?php endif; ?>
-										<span class="small">
+										<span class="small d-none d-md-inline">
 											<?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias)); ?>
 										</span>
-										<div class="small">
+										<div class="small d-none d-md-block">
 											<?php echo Text::_('JCATEGORY') . ': ' . $this->escape($item->category_title); ?>
 										</div>
 									</div>
 								</th>
-								<td class="small">
+								<td class="d-none d-xl-table-cell">
 									<?php if (!empty($item->linked_user)) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_users&task=user.edit&id=' . $item->user_id); ?>"><?php echo $item->linked_user; ?></a>
 										<div class="small"><?php echo $item->email; ?></div>
 									<?php endif; ?>
 								</td>
-								<td class="small d-none d-md-table-cell">
-									<?php echo $item->access_level; ?>
-								</td>
 								<?php if ($assoc) : ?>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-xl-table-cell">
 									<?php if ($item->association) : ?>
 										<?php echo HTMLHelper::_('contactadministrator.association', $item->id); ?>
 									<?php endif; ?>
 								</td>
 								<?php endif; ?>
 								<?php if (Multilanguage::isEnabled()) : ?>
-									<td class="small d-none d-md-table-cell">
+									<td class="d-none d-xl-table-cell">
 										<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
 									</td>
 								<?php endif; ?>
-								<td class="d-none d-md-table-cell">
+								<td class="text-center">
 									<?php echo $item->id; ?>
 								</td>
 							</tr>
