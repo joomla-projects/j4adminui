@@ -109,7 +109,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
-								<td  scope="col"class="text-center" style="width:  3rem;">
+								<td  scope="col" class="text-center" style="width:  3rem;">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" class="d-none d-lg-table-cell text-center" style="width:  3rem;">
