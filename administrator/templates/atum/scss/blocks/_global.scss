@@ -369,3 +369,7 @@ body .container-main {
 .bg-primary{
 	background-color: var(--primary-color) !important;
 }
+
+.js-pstats-btn-allow-always{
+	color: var(--btn-disabled-color);
+}
