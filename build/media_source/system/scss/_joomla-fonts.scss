@@ -1,9 +1,9 @@
-/*! 
-* @package JoomlaFont 
-* @version 4.0.0 
-* @author Joomla https://joomla.org 
-* @copyright Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved. 
-* @license https://tm.joomla.org/trademark-license.html 
+/*!
+* @package JoomlaFont
+* @version 4.0.0
+* @author Joomla https://joomla.org
+* @copyright Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+* @license https://tm.joomla.org/trademark-license.html
 */
 
 @font-face
@@ -2825,7 +2825,7 @@ src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") forma
 [class^="icon-"].duotone:after,
 	[class*=" icon-"].duotone:after
 {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .icon-xs
@@ -3051,4 +3051,3 @@ src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") forma
 {
   color: #fff;
 }
-	

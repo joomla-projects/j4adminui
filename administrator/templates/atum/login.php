@@ -11,11 +11,13 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+
 /** @var JDocumentHtml $this */
 $app   = Factory::getApplication();
 $lang  = $app->getLanguage();
 $input = $app->input;
 $wa    = $this->getWebAssetManager();
+
 // Detecting Active Variables
 $option     = $input->get('option', '');
 $view       = $input->get('view', '');
@@ -26,6 +28,7 @@ $cpanel     = $option === 'com_cpanel';
 $hiddenMenu = $app->input->get('hidemainmenu');
 $joomlaLogo = $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
 require_once __DIR__ . '/Service/HTML/Atum.php';
+
 // Template params
 $siteLogo  = $this->params->get('siteLogo')
 	? JUri::root() . $this->params->get('siteLogo')
@@ -38,20 +41,27 @@ $smallLogo = $this->params->get('smallLogo')
 	: $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
 $logoAlt = htmlspecialchars($this->params->get('altSiteLogo', ''), ENT_COMPAT, 'UTF-8');
 $logoSmallAlt = htmlspecialchars($this->params->get('altSmallLogo', ''), ENT_COMPAT, 'UTF-8');
+
 // Enable assets
 $wa->enableAsset('template.atum.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr'));
+
 // Load specific language related CSS
 HTMLHelper::_('stylesheet', 'administrator/language/' . $lang->getTag() . '/' . $lang->getTag() . '.css', ['version' => 'auto']);
+
 // Load customer stylesheet if available
 HTMLHelper::_('stylesheet', 'custom.css', array('version' => 'auto', 'relative' => true));
+
 // Load specific template related JS
 // TODO: Adapt refactored build tools pt.2 @see https://issues.joomla.org/tracker/joomla-cms/23786
 HTMLHelper::_('script', 'media/templates/' . $this->template . '/js/template.min.js', ['version' => 'auto']);
+
 // Set some meta data
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
+
 // @TODO sync with _variables.scss
 $this->setMetaData('theme-color', '#1c3d5c');
 $this->addScriptDeclaration('cssVars();');
+
 // Opacity must be set before displaying the DOM, so don't move to a CSS file
 $css = '
 	.container-main > * {
@@ -61,6 +71,7 @@ $css = '
 		opacity: 0;
 	}
 ';
+
 // $this->addStyleDeclaration($css);
 $monochrome = (bool) $this->params->get('monochrome');
 HTMLHelper::getServiceRegistry()->register('atum', 'JHtmlAtum');
@@ -82,35 +93,15 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 </noscript>
 
 <div id="wrapper" class="d-flex wrapper">
-
 	<div class="container-fluid container-main order-1">
 		<section id="content" class="content h-100">
 			<main class="d-flex justify-content-center align-items-center h-100">
 				<div class="main-wrap">
-					<div class="main-sidebar">
-						<div class="main-brand text-center">
-							<div id="main-brand-logo" class="main-brand-logo">
-								<img src="<?php echo $loginLogo; ?>"
-								alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>" width="50" height="50">
-								<p><span class="small mx-1 form-text"><?php echo JVERSION; ?></span></p>
-							</div> <!-- /.main-brand-logo -->
-							<div class="main-greetings">
-								<h3><?php echo JText::_('TPL_ATUM_WELCOME_BEGINNERS_TITLE'); ?></h3>
-							</div>
-							<div class="main-informations">
-								<ul>
-									<li><?php echo JText::_('TPL_ATUM_INFO_OPENSOURCE_INFRASTRUCTURE'); ?></li>
-									<li><?php echo JText::_('TPL_ATUM_INFO_CONTENT_MANAGEMENT'); ?></li>
-									<li><?php echo JText::_('TPL_ATUM_INFO_EXTENSIONS'); ?></li>
-								</ul>
-							</div>
-							<div class="sidebar-modules">
-								<jdoc:include type="modules" name="sidebar" style="body" />
-							</div>
-						</div>
-					</div> <!-- /.main-sidebar -->
-				
 					<div class="login">
+						<div class="d-flex justify-content-center">
+							<img src="<?php echo $loginLogo; ?>"
+							alt="<?php echo htmlspecialchars($this->params->get('altLoginLogo', ''), ENT_COMPAT, 'UTF-8'); ?>" width="150" height="150">
+						</div>
 						<div id="main-brand" class="main-brand">
 							<h3><?php echo Text::_('TPL_ATUM_BACKEND_LOGIN'); ?></h3>
 						</div>

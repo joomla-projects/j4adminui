@@ -1,5 +1,8 @@
 .toggle-toolbar.btn {
   display: block;
+  span,i{
+    margin-right: 0;
+  }
 }
 .subhead {
   position: sticky;
@@ -59,8 +62,8 @@
     #toolbar-help {
       margin-left: auto;
       display: flex;
-      @include media-breakpoint-down(md){
-        display: none;
+      @include media-breakpoint-down(sm){
+        margin-left: 0;
       }
     }
     #toolbar-status-group {
@@ -98,6 +101,9 @@
       &.hidden{
         display: none;
       }
+      span, i {
+        margin-right: 0;
+      }
     }
     .input-group-text{
       background: transparent;
@@ -127,60 +133,6 @@
   
 }
 
-.js-stools{
-  @include media-breakpoint-down(lg) {
-    justify-content:flex-start;
-    .js-stools-container-bar{
-      width: 100%;
-      margin-top: 1rem;
-      .btn-toolbar{
-        justify-content:flex-start;
-        @include media-breakpoint-down(xs) {
-          width: 100%;
-        }
-      }
-    }
-  }
-  @include media-breakpoint-down(md) {
-    .js-stools-container-bar{
-      .ordering-select {
-        width: 100%;
-        margin-bottom: 1rem;
-      }
-      .js-stools-input {
-        margin-left: 0;
-      }
-    }
-  }
-  @include media-breakpoint-down(xs) {
-    .joomla-toolbar-button,
-    .btn-group,
-    .input-group,
-    .ordering-select,
-    .js-stools-field-list,
-    .js-stools-container-selector {
-      @include media-breakpoint-down(sm) {
-        width:100%;
-      }
-    }
-    .ordering-select,
-    .js-stools-container-selector{
-      margin-bottom: 1rem;
-    }
-    .btn-group{
-      @include media-breakpoint-down(sm) {
-        margin-right: 0 !important;
-      }
-    }
-    .js-stools-container-bar{
-      .js-stools-field-list{
-        @include media-breakpoint-down(sm) {
-          margin-bottom: .75rem;
-        }
-      }
-    }
-  }
-}
 .js-calendar{
   .calendar-container{
     .btn{

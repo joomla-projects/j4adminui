@@ -95,7 +95,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 				echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 				?>
 				<?php if (empty($this->items)) : ?>
-					<div class="j-alert j-alert-info d-flex">
+					<div class="j-alert j-alert-info d-flex mt-4">
 						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
 						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
@@ -106,13 +106,13 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 						</caption>
 						<thead>
 							<tr>
-								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								<th scope="col" class="text-center d-none d-md-table-cell" style="width:  3rem;">
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
-								<td class="text-center" style="width:  3rem">
+								<td  scope="col"class="text-center" style="width:  3rem;">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
-								<th scope="col" class="d-none d-lg-table-cell text-center" style="width:  3rem">
+								<th scope="col" class="d-none d-lg-table-cell text-center" style="width:  3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col">
@@ -243,14 +243,14 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 									if (Factory::getLanguage()->isRtl())
 									{
 										if ($canEditCat || $canEditOwnCat) :
-											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '" class="text-muted">';
 										endif;
 										echo $this->escape($item->category_title);
 										if ($canEditCat || $canEditOwnCat) :
 											echo '</a>';
 										endif;
 										if ($item->category_level != '1') :
-											echo ' &#171; ';
+											echo '<span class="icon-chevron-right"></span>';
 											if ($canEditParCat || $canEditOwnParCat) :
 												echo '<a href="' . $ParentCatUrl . '" title="' . $EditCatTxt . '">';
 											endif;
@@ -270,10 +270,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 
 											if ($canEditParCat || $canEditOwnParCat) :
 												echo '</a>';
 											endif;
-											echo ' &#187; ';
+											echo '<span class="icon-chevron-right"></span>';
 										endif;
 										if ($canEditCat || $canEditOwnCat) :
-											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '">';
+											echo '<a href="' . $CurrentCatUrl . '" title="' . $EditCatTxt . '" class="text-muted">';
 										endif;
 										echo $this->escape($item->category_title);
 										if ($canEditCat || $canEditOwnCat) :

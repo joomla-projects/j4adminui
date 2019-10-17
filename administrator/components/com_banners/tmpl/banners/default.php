@@ -43,7 +43,7 @@ if ($saveOrder && !empty($this->items))
 				echo LayoutHelper::render('joomla.searchtools.default', ['view' => $this]);
 				?>
 				<?php if (empty($this->items)) : ?>
-					<div class="j-alert j-alert-info d-flex">
+					<div class="j-alert j-alert-info d-flex mt-4">
 						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
 						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
@@ -58,7 +58,7 @@ if ($saveOrder && !empty($this->items))
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" style="width:1%" class="text-center d-none d-lg-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>

@@ -48,7 +48,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'permissions', Text::_('COM_WORKFLOW_RULES_TAB')); ?>
 					<fieldset id="fieldset-rules" class="options-grid-form options-grid-form-full">
-						<legend><?php echo Text::_('COM_WORKFLOW_RULES_TAB'); ?></legend>
+						<legend class="sr-only"><?php echo Text::_('COM_WORKFLOW_RULES_TAB'); ?></legend>
 						<?php echo $this->form->getInput('rules'); ?>
 					</fieldset>
 				<?php echo HTMLHelper::_('uitab.endTab'); ?>

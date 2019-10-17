@@ -112,7 +112,8 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 -- extra data
 (84, 18, 118, 119, 2, 'com_modules.module.109', 'Cache', '{}'),
 (85, 18, 120, 121, 2, 'com_modules.module.110', 'Global Checkins', '{}'),
-(86, 18, 122, 123, 2, 'com_modules.module.111', 'Quickicons', '{}');
+(86, 18, 122, 123, 2, 'com_modules.module.111', 'Quickicons', '{}'),
+(87, 18, 118, 119, 2, 'com_modules.module.112', 'Extension Updates', '{}');
 
 -- --------------------------------------------------------
 
@@ -716,7 +717,6 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (0, 'mod_cache', 'module', 'mod_cache', '', 1, 1, 1, 0, '', '{"size_unit":"mb","module_group":"system","cache":"1","cache_time":"900"}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_checkins', 'module', 'mod_checkins', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_content', 'module', 'mod_content', '', 1, 1, 1, 0, '', '{"count":"5","ordering":"c_dsc","catid":"","user_id":"0"}', 0, '0000-00-00 00:00:00', 0, 0),
-(0, 'mod_draft_article', 'module', 'mod_draft_article', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_extension_updates', 'module', 'mod_extension_updates', '', 1, 1, 1, 0, '', '{}', 0, '0000-00-00 00:00:00', 0, 0),
 (0, 'mod_resources', 'module', 'mod_resources', '', 1, 1, 1, 0, '', '{"show_resources":"both","automatic_title":"0"}', 0, '0000-00-00 00:00:00', 0, 0);
 
@@ -1491,7 +1491,9 @@ INSERT INTO `#__modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 -- extra data
 (109, 84, 'Cache', '', '', 4, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_cache', 1, 1, '{"size_unit":"MB","layout":"_:default","module_group":"system","moduleclass_sfx":"","cache":1,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (110, 85, 'Global Checkins', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_checkins', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
-(111, 86, 'Quickicons', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_quickicon', 1, 1, '{"context":"mod_quickicon","header_icon":"","show_users":"0","show_articles":"2","show_modules":"2","show_categories":"2","show_media":"0","show_menuitems":"0","show_plugins":"2","show_templates":"0","module_ordering":"","layout":"_:default","moduleclass_sfx":"","cache":0,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*');
+(111, 86, 'Quickicons', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_quickicon', 1, 1, '{"context":"mod_quickicon","header_icon":"","show_users":"0","show_articles":"2","show_modules":"2","show_categories":"2","show_media":"0","show_menuitems":"0","show_plugins":"2","show_templates":"0","module_ordering":"","layout":"_:default","moduleclass_sfx":"","cache":0,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(112, 87, 'Extension Updates', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_extension_updates', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*');
+
 
 
 --
@@ -1551,7 +1553,8 @@ INSERT INTO `#__modules_menu` (`moduleid`, `menuid`) VALUES
 -- extra data
 (109, 0),
 (110, 0),
-(111, 0);
+(111, 0),
+(112, 0);
 
 -- --------------------------------------------------------
 

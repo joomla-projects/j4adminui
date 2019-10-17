@@ -40,16 +40,12 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_categories&extension=' . $input->getCmd('extension', 'com_content') . '&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
-
 	<div class="row">
 		<div class="col-lg-9">
 			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-9">
+			
 			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'general')); ?>
+			
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'general', Text::_('JCATEGORY')); ?>
 			<?php echo $this->form->getLabel('description'); ?>
 			<?php echo $this->form->getInput('description'); ?>

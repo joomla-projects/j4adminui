@@ -5,8 +5,11 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 // Bootstrap
 @import "../../../media/vendor/bootstrap/scss/bootstrap";
 
+// Joomla font
+@import "./fonts/joomla-fonts";
+
 // "Font Awesome 5 Free"
-@import "../../../media/vendor/fontawesome-free/scss/fontawesome";
+// @import "../../../media/vendor/fontawesome-free/scss/fontawesome";
 @import "../../../media/vendor/fontawesome-free/scss/solid";
 @import "../../../media/vendor/fontawesome-free/scss/brands";
 
@@ -14,7 +17,6 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../administrator/templates/atum/scss/mixin";
 @import "../../../administrator/templates/atum/scss/blocks/global";
 @import "../../../administrator/templates/atum/scss/blocks/header";
-@import "../../../administrator/templates/atum/scss/vendor/bootstrap/custom-forms";
 @import "../../../administrator/templates/atum/scss/blocks/form";
 @import "../../../administrator/templates/atum/scss/blocks/buttons";
 @import "../../../administrator/templates/atum/scss/blocks/alerts";

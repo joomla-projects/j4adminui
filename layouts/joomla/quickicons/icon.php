@@ -81,7 +81,7 @@ $class = !empty($tmp) ? implode(' ', array_unique($tmp)) : '';
 		<div class="j-card-footer j-card-footer-lg">
 			<div class="j-card-footer-item">
 				<a href="<?php echo $displayData['link']; ?>">
-					<span class="icon-eye-open j-card-icon j-icon-lg duotone text-<?php echo $displayData['icon_class']; ?>" aria-hidden="true"></span>
+					<span class="icon-eye-open j-card-icon j-icon-lg duotone" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
 					<span aria-hidden="true"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span>
 				</a>

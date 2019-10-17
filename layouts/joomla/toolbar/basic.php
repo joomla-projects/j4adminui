@@ -9,7 +9,6 @@
 
 defined('JPATH_BASE') or die;
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
@@ -62,7 +61,7 @@ elseif (!empty($onclick))
 	<?php echo $htmlAttributes ?? ''; ?>
 	<?php echo $title; ?>
 	>
-	<span class="<?php echo trim($class ?? ''); ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
+	<span class="<?php echo trim($class ?? ''); ?> icon-md" aria-hidden="true"></span>
 	<?php echo $text ?? ''; ?>
 	<?php if(isset($hasButtons) && !empty($dropdownItems)) : ?>
 		<span class="icon-chevron-down" aria-hidden="true"></span>

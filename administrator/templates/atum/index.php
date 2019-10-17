@@ -92,9 +92,6 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 
 <?php // Wrapper ?>
 <div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
-	<button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 	<?php // Header ?>
 	<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
 		<div class="logo-header">
@@ -120,7 +117,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 			<?php if (!$hiddenMenu): ?>
 				<div class="sidebar-toggle d-none d-sm-block">
 					<a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_ATUM_TOGGLE_SIDEBAR'); ?>">
-						<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'chevron-right' : 'chevron-left' ?>" aria-hidden="true"></span>
+						<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'angle-double-left' : 'angle-double-right' ?> duotone" aria-hidden="true"></span>
 					</a>
 				</div>
 			<?php endif; ?>

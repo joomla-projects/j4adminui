@@ -85,19 +85,33 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
 ?>
 <div class="js-stools" role="search">
-	<div class="d-flex align-items-center">
-		<?php if ($data['options']['showSelector']) : ?>
-		<div class="js-stools-container-selector">
-			<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
+	<?php if ($data['options']['showSelector']) : ?>
+		<div class="d-flex">
+			<div class="js-stools-container-selector">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
+			</div>
+			<div class="ml-auto">
+				<div class="js-stools-container-bar">
+					<div class="d-flex">
+						<?php echo $this->sublayout('list', $data); ?>
+						<div class="ml-4">
+							<?php echo $this->sublayout('bar', $data); ?>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<?php endif; ?>
+	<?php else: ?>
 		<div class="js-stools-container-bar">
 			<div class="d-flex">
 				<?php echo $this->sublayout('list', $data); ?>
-				<?php echo $this->sublayout('bar', $data); ?>
+				<div class="ml-auto">
+					<?php echo $this->sublayout('bar', $data); ?>
+				</div>
 			</div>
 		</div>
-	</div>
+	<?php endif; ?>
+	
 	<!-- Filters div -->
 	<div class="js-stools-container-filters clearfix<?php echo $filtersActiveClass; ?>">
 		<?php if ($data['options']['filterButton']) : ?>

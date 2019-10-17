@@ -11,11 +11,11 @@
   }
 
   const selectors = {
-    form: '#form-draftarticle',
-    submitBtn: '#mod-draftarticle-submit',
-    clearBtn: '#mod-draftarticle-clear',
-    descriptionField: '#mod-draftarticle-description',
-    titleField: '#mod-draftarticle-title',
+    form: '#form-quick-article',
+    submitBtn: '#mod-quick-article-submit',
+    clearBtn: '#mod-quick-article-clear',
+    descriptionField: '#mod-quick-article-description',
+    titleField: '#mod-quick-article-title',
   };
 
 
@@ -50,7 +50,7 @@
     const saveurl = Joomla.getOptions('saveurl');
     const editurl = Joomla.getOptions('editurl');
     const data = serialiseForm(theForm);
-
+    
     Joomla.request({
       url: saveurl,
       method: 'POST',

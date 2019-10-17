@@ -9,8 +9,6 @@
 
 defined('JPATH_BASE') or die;
 
-use Joomla\CMS\Factory;
-
 /**
  * @var  int     $id
  * @var  string  $name
@@ -34,7 +32,7 @@ $target = empty($target) ? '' : 'target="' . $target . '"';
 		href="<?php echo $url; ?>"
 		<?php echo $target; ?>
 		<?php echo $htmlAttributes; ?>>
-		<span class="<?php echo $class; ?> icon-md <?php echo Factory::getLanguage()->isRtl() ? 'ml-2' : 'mr-2'; ?>" aria-hidden="true"></span>
+		<span class="<?php echo $class; ?> icon-md" aria-hidden="true"></span>
 		<?php echo $text ?: ''; ?>
 	</a>
 </joomla-toolbar-button>

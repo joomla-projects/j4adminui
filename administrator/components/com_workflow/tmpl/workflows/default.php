@@ -58,9 +58,9 @@ $userId = $user->id;
 					echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 				?>
 				<?php if (empty($this->workflows)) : ?>
-					<div class="j-alert j-alert-info">
-						<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex mt-4">
+						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else: ?>
 					<table class="table j-list-table">
@@ -73,7 +73,7 @@ $userId = $user->id;
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" class="text-center d-none d-md-table-cell" style="width: 3rem;">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'w.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'w.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<th scope="col"  class="text-center d-none d-md-table-cell" style="width: 3rem;">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'w.published', $listDirn, $listOrder); ?>

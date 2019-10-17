@@ -283,7 +283,7 @@
 	</menuitem>
 
 	<menuitem
-		title="MOD_MENU_EXTEND"
+		title="MOD_MENU_EXTENSIONS_EXTENSIONS"
 		type="heading"
 		element="com_cpanel"
 		icon="icon-modules duotone"
@@ -337,6 +337,30 @@
 				ajax-badge="index.php?option=com_installer&amp;task=discover.getMenuBadgeData&amp;format=json"
 			/>
 		</menuitem>
+		<menuitem
+			title="MOD_MENU_MANAGE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=manage"
+			permission="core.manage;com_installer"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=update"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=update.getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_SOURCES"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=updatesites"
+			permission="core.manage;com_installer"
+		/>
 	</menuitem>
 
 	<menuitem
@@ -395,13 +419,6 @@
 			type="heading"
 			icon="tasks"
 		>
-		<menuitem
-			title="MOD_MENU_MANAGE_EXTENSIONS"
-			type="component"
-			element="com_installer"
-			link="index.php?option=com_installer&amp;view=manage"
-			permission="core.manage;com_installer"
-		/>
 
 		<menuitem
 			title="MOD_MENU_MANAGE_LANGUAGES"
@@ -442,6 +459,7 @@
 			link="index.php?option=com_redirect"
 			permission="core.manage;com_redirect"
 		/>
+		
 	</menuitem>
 
 	<menuitem
@@ -449,36 +467,13 @@
 	/>
 
 	<menuitem
-		title="MOD_MENU_UPDATE"
-		type="heading"
-		icon="sync"
-		>
-		<menuitem
-			title="MOD_MENU_UPDATE_JOOMLA"
-			type="component"
-			element="com_joomlaupdate"
-			link="index.php?option=com_joomlaupdate"
-			permission="core.manage;com_joomlaupdate"
-			ajax-badge="index.php?option=com_joomlaupdate&amp;task=getMenuBadgeData&amp;format=json"
-		/>
-
-		<menuitem
-			title="MOD_MENU_UPDATE_EXTENSIONS"
-			type="component"
-			element="com_installer"
-			link="index.php?option=com_installer&amp;view=update"
-			permission="core.manage;com_installer"
-			ajax-badge="index.php?option=com_installer&amp;task=update.getMenuBadgeData&amp;format=json"
-		/>
-
-		<menuitem
-			title="MOD_MENU_UPDATE_SOURCES"
-			type="component"
-			element="com_installer"
-			link="index.php?option=com_installer&amp;view=updatesites"
-			permission="core.manage;com_installer"
-		/>
-	</menuitem>
+		title="MOD_MENU_UPDATE_JOOMLA"
+		type="component"
+		element="com_joomlaupdate"
+		link="index.php?option=com_joomlaupdate"
+		permission="core.manage;com_joomlaupdate"
+		ajax-badge="index.php?option=com_joomlaupdate&amp;task=getMenuBadgeData&amp;format=json"
+	/>
 
 	<menuitem
 		title="MOD_MENU_INFORMATION"

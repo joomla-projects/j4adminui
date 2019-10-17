@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1" client="administrator" method="upgrade">
-	<name>mod_draft_article</name>
+	<name>mod_quick_article</name>
 	<author>Joomla! Project</author>
 	<creationDate>October 2019</creationDate>
 	<copyright>Copyright (C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
@@ -8,16 +8,16 @@
 	<authorEmail>admin@joomla.org</authorEmail>
 	<authorUrl>www.joomla.org</authorUrl>
 	<version>1.0.0</version>
-	<description>MOD_DRAFT_ARTICLE_XML_DESCRIPTION</description>
-	<namespace>Joomla\Module\DraftArticle</namespace>
+	<description>MOD_QUICK_ARTICLE_XML_DESCRIPTION</description>
+	<namespace>Joomla\Module\QuickArticle</namespace>
 	<files>
-		<filename module="mod_draft_article">mod_draft_article.php</filename>
+		<filename module="mod_quick_article">mod_quick_article.php</filename>
 		<filename>helper.php</filename>
 		<folder>tmpl</folder>
 	</files>
 	<languages>
-		<language tag="en-GB">en-GB.mod_draft_article.ini</language>
-		<language tag="en-GB">en-GB.mod_draft_article.sys.ini</language>
+		<language tag="en-GB">en-GB.mod_quick_article.ini</language>
+		<language tag="en-GB">en-GB.mod_quick_article.sys.ini</language>
 	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_LATEST" />
 	<config>

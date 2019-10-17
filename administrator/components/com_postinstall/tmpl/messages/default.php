@@ -44,13 +44,17 @@ $params = array('params' => json_encode($param));
 	<div class="col-md-8">
 <?php endif; ?>
 <?php if (empty($this->items)) : ?>
-	<div class="jumbotron">
-		<h2><?php echo Text::_('COM_POSTINSTALL_LBL_NOMESSAGES_TITLE'); ?></h2>
-		<p><?php echo Text::_('COM_POSTINSTALL_LBL_NOMESSAGES_DESC'); ?></p>
-		<a href="<?php echo Route::_('index.php?option=com_postinstall&view=messages&task=message.reset&eid=' . $this->eid . '&' . $this->token . '=1'); ?>" class="btn btn-warning btn-lg">
-			<span class="icon icon-eye-open" aria-hidden="true"></span>
-			<?php echo Text::_('COM_POSTINSTALL_BTN_RESET'); ?>
-		</a>
+	<div class="j-card">
+		<div class="j-card-header">
+			<?php echo Text::_('COM_POSTINSTALL_LBL_NOMESSAGES_TITLE'); ?>	
+		</div>
+		<div class="j-card-body">
+			<p><?php echo Text::_('COM_POSTINSTALL_LBL_NOMESSAGES_DESC'); ?></p>
+			<a href="<?php echo Route::_('index.php?option=com_postinstall&view=messages&task=message.reset&eid=' . $this->eid . '&' . $this->token . '=1'); ?>" class="btn btn-default">
+				<span class="icon-eye-open icon-md" aria-hidden="true"></span>
+				<?php echo Text::_('COM_POSTINSTALL_BTN_RESET'); ?>
+			</a>
+		</div>
 	</div>
 <?php else : ?>
 	<?php foreach ($this->items as $item) : ?>
@@ -80,8 +84,16 @@ $params = array('params' => json_encode($param));
 <?php if ($this->eid == $this->joomlaFilesExtensionId) : ?>
 	</div>
 	<div class="col-md-4">
-		<h2><?php echo Text::_('COM_POSTINSTALL_LBL_RELEASENEWS'); ?></h2>
-		<?php echo $renderer->render($mod, $params, $options); ?>
+		<div class="j-card">
+			<div class="j-card-header">
+				<h4 class="j-card-title">
+					<?php echo Text::_('COM_POSTINSTALL_LBL_RELEASENEWS'); ?>
+				</h4>
+			</div>
+			<div class="j-card-body">
+				<?php echo $renderer->render($mod, $params, $options); ?>
+			</div>
+		</div>
 	</div>
 </div>
 <?php endif; ?>
