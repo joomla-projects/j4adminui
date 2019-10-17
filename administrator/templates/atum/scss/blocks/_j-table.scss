@@ -7,6 +7,12 @@ table {
                 border: 0;
             }
         }
+        @include media-breakpoint-down(sm){
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
     }
     &.j-list-table {
         border-collapse:separate;

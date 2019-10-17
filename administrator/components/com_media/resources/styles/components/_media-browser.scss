@@ -925,30 +925,3 @@ table {
   }
 }
 
-@media (max-width: 767.98px) {
-  .media-toolbar {
-    input {
-      height: 2.8rem;
-      width: 17.45rem;
-    }
-  }
-}
-@media (max-width: 575.98px) {
-  .media-browser-table {
-    .size {
-      width: 25%;
-    }
-    .name {
-      padding-left: .5rem;
-    }
-  }
-  .media-toolbar-icon {
-    width: 50px;
-  }
-  .media-toolbar {
-    input {
-      width: 8.45rem;
-      padding-left: 3rem;
-    }
-  }
-}
