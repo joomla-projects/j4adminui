@@ -80,7 +80,7 @@ HTMLHelper::_('webcomponent', 'system/fields/joomla-field-fancy-select.min.js', 
             <button class="btn btn-secondary" type="button" role="button" id="mod-quick-article-clear">
                 <?php echo Text::_('MOD_QUICK_ARTICLE_CLEAR'); ?>
             </button>
-            <button class="btn btn-primary" type="submit" role="button" id="mod-quick-article-submit">
+            <button class="btn btn-primary ml-3" type="submit" role="button" id="mod-quick-article-submit">
                 <?php echo Text::_('MOD_QUICK_ARTICLE_SAVE_ARTICLE'); ?>
             </button>
         </div>

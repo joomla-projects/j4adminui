@@ -368,7 +368,7 @@
 		type="component"
 		element="com_cpanel"
 		icon="icon-equalizer duotone"
-		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=system"
+		link="#"
 		dashboard="system"
 	>
 		<menuitem
