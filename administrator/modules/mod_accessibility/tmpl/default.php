@@ -21,7 +21,6 @@ use Joomla\CMS\Language\Text;
 
     <!-- /.offcanvas -->
     <div class="accessibility-sidebar j-card font-unresizable">
-        <!-- <div class=" pr-2"> -->
         <div class="j-card-body">
             <div class="accessibility-scaling">
                 <div class="card-content font-unresizable">
@@ -35,7 +34,7 @@ use Joomla\CMS\Language\Text;
                         <button class="font-unresizable icon-save-new" id="increment"></button>
                     </div>
                 </div>
-            </div>
+            </div> <!-- .accessibility-scaling -->
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
                     <a class="accessible-action-btn" data-type="grayscale" href="javascript:void(0);">
@@ -57,7 +56,7 @@ use Joomla\CMS\Language\Text;
 						</div>
                     </a>
                 </div>
-            </div>
+            </div> <!-- /.accessibility-items-wrap -->
 
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
@@ -80,7 +79,7 @@ use Joomla\CMS\Language\Text;
 						</div>
                     </a>
                 </div>
-            </div>
+            </div> <!-- /.accessibility-items-wrap -->
 
             <div class="accessibility-items-wrap">
                 <div class="accessibility--item">
@@ -103,16 +102,25 @@ use Joomla\CMS\Language\Text;
 						</div>
                     </a>
                 </div>
-            </div>
-        </div>
+            </div> <!-- /.accessibility-items-wrap -->
 
-        <div class="j-card-footer j-card-footer-sm accessibility-mouse-highligther">
-            <div class="j-checkbox-group">
-                <label>
-                    <input type="checkbox" name="mouse-highlighter" id="a11y-mouse-highlighter" data-type="mouse-highlighter"> <?php echo Text::_('MOD_ACCESSIBILITY_MOUSE_HIGHLIGHTER'); ?>
-                </label>
-            </div>
-        </div>
+            <div class="accessibility-items-wrap">
+                <div class="accessibility--item">
+                    <a class="accessible-action-btn" data-type="mouse-highlighter" href="javascript:void(0);">
+                        <div>
+							<span class="icon-click" aria-hidden="true"></span>
+							<span class="d-block">
+								<?php echo Text::_('MOD_ACCESSIBILITY_MOUSE_HIGHLIGHTER'); ?>
+							</span>
+						</div>
+                    </a>
+                </div>
+            </div> <!-- /.accessibility-items-wrap -->
+        </div> <!-- /.j-card-body -->
+
+        <div class="j-card-footer j-card-footer-sm accessibility-mouse-highligther pt-4">
+            <a href="javascript:void(0);" class="btn btn-secondary" id="accessible-reset-btn"><?php echo Text::_('MOD_ACCESSIBILITY_RESET'); ?></a>
+        </div> <!-- /.j-card-footer -->
     </div>
 
     <div class="a11y-cursor-pointer"><div class="a11y-cursor-pointer-inner"></div></div>
