@@ -37,6 +37,11 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
     z-index: 1;
     span, i {
         line-height: 30px;
+        margin-right: .5rem;
+        &.icon-right{
+            margin-right: 0;
+            margin-left: .5rem;
+        }
     }
     &[disabled], &.disabled, &:disabled,
     &.btn-primary[disabled],&.btn-primary.disabled,&.btn-primary:disabled,
@@ -247,6 +252,15 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
                 }
             }
         }
+        &[disabled], &.disabled, &:disabled{
+            pointer-events: none;
+            background-image: none;
+            background-color: var(--secondary-icon-color);
+            color: var(--btn-disabled-color);
+            span, i{
+                color: var(--btn-disabled-color);
+            }
+        }
     }
     &.btn-success{
         &:not(.btn-secondary){
@@ -271,6 +285,15 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
                 }
             }
         }
+        &[disabled], &.disabled, &:disabled{
+            pointer-events: none;
+            background-image: none;
+            background-color: var(--secondary-icon-color);
+            color: var(--btn-disabled-color);
+            span, i{
+                color: var(--btn-disabled-color);
+            }
+        }
     }
     &.btn-warning{
         &:not(.btn-secondary){
@@ -278,9 +301,6 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
             color: var(--primary-text-color);
             &:hover, &:focus, &:active, &.active{
                 background-color: var(--warning-light-color);
-            }
-            span, i{
-                color: var(--white);
             }
         }
         &.btn-secondary {
@@ -293,6 +313,15 @@ $btn-boxshadow-2: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.03);
                 span, i{
                     color: var(--white);
                 }
+            }
+        }
+        &[disabled], &.disabled, &:disabled{
+            pointer-events: none;
+            background-image: none;
+            background-color: var(--secondary-icon-color);
+            color: var(--btn-disabled-color);
+            span, i{
+                color: var(--btn-disabled-color);
             }
         }
     }
