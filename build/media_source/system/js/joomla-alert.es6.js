@@ -47,7 +47,7 @@
       this.classList.add('joomla-alert--show');
 
       // Default to info
-      if (!this.type || ['info', 'warning', 'danger', 'success'].indexOf(this.type) === -1) {
+      if (!this.type || ['info', 'warning', 'danger', 'success', 'default'].indexOf(this.type) === -1) {
         this.setAttribute('type', 'info');
       }
       // Default to alert
@@ -84,7 +84,7 @@
     attributeChangedCallback(attr, oldValue, newValue) {
       switch (attr) {
         case 'type':
-          if (!newValue || (newValue && ['info', 'warning', 'danger', 'success'].indexOf(newValue) === -1)) {
+          if (!newValue || (newValue && ['info', 'warning', 'danger', 'success', 'default'].indexOf(newValue) === -1)) {
             this.type = 'info';
           }
           break;
@@ -150,7 +150,7 @@
 
       if (this.hasAttribute('dismiss')) {
         closeButton.classList.add('joomla-alert--close');
-        closeButton.innerHTML = '<span aria-hidden="true">&times;</span>';
+        closeButton.innerHTML = '<span class="icon-times" aria-hidden="true"></span>';
         closeButton.setAttribute('aria-label', this.getText('JCLOSE', 'Close'));
       } else {
         closeButton.classList.add('joomla-alert-button--close');
