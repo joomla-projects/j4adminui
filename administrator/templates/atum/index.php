@@ -92,9 +92,6 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 
 <?php // Wrapper ?>
 <div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
-	<button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
 	<?php // Header ?>
 	<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
 		<div class="logo-header">

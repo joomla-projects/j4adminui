@@ -185,6 +185,7 @@
       toggleArrowIcon();
       if (menu) {
         wrapper.classList.remove('closed');
+        header.classList.remove('closed');
       }
       if (toggleBtn && menu) {
         if (menu.classList.contains('show')) {
@@ -198,6 +199,7 @@
     }
     if (tablet.matches && menu) {
       wrapper.classList.add('closed');
+      header.classList.add('closed');
     }
 
     if (smallLandscape.matches) {
