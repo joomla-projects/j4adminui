@@ -106,8 +106,73 @@
       }
     }
   }
+  
+  @include media-breakpoint-down(lg) {
+    justify-content:flex-start;
+    .js-stools-container-bar{
+      width: 100%;
+      margin-top: 1rem;
+      .btn-toolbar{
+        justify-content:flex-start;
+        @include media-breakpoint-down(xs) {
+          width: 100%;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .js-stools-container-bar{
+      .ordering-select {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .js-stools-input {
+        margin-left: 0;
+      }
+    }
+  }
+  @include media-breakpoint-down(xs) {
+    > .d-flex {
+      flex-wrap: wrap;
+      .ml-3,
+      .ml-auto,
+      .ml-4 {
+        margin-left: 0 !important;
+        width: 100%;
+      }
+    }
+    .d-flex.align-items-center {
+      justify-content: center;
+    }
+    .joomla-toolbar-button,
+    .btn-group,
+    .input-group,
+    .ordering-select,
+    .js-stools-field-list,
+    .js-stools-container-selector {
+      @include media-breakpoint-down(sm) {
+        width:100%;
+      }
+    }
+    .ordering-select,
+    .js-stools-container-selector{
+      margin-bottom: 1rem;
+    }
+    .btn-group{
+      @include media-breakpoint-down(sm) {
+        margin-right: 0 !important;
+      }
+    }
+    .js-stools-container-bar{
+      .js-stools-field-list{
+        @include media-breakpoint-down(sm) {
+          margin-bottom: .75rem;
+        }
+      }
+    }
+  }
+  
 }
-
 .js-stools-button-sort {
   cursor: pointer;
   background: none;

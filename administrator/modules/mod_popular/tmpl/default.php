@@ -52,9 +52,9 @@ HTMLHelper::_('bootstrap.framework');
 		<?php endforeach; ?>
 	<?php else : ?>
 		<tr>
-			<td colspan="3">
+			<th colspan="3">
 				<?php echo Text::_('MOD_POPULAR_NO_MATCHING_RESULTS'); ?>
-			</td>
+			</th>
 		</tr>
 	<?php endif; ?>
 	</tbody>
