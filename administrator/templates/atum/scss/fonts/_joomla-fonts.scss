@@ -2358,7 +2358,8 @@ src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
   content: "\13cd1";
 }
 
-.icon-loop:before
+.icon-loop:before,
+.icon-spinner:before
 {
   content: "\13c6a";
 }
