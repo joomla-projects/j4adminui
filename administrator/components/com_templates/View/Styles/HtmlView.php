@@ -111,7 +111,7 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_templates');
 		// Instantiate a new FileLayout instance and render the layout
-		ToolbarHelper::modal('ModalInstallTemplate', 'icon-upload', 'JTOOLBAR_INSTALL');
+		ToolbarHelper::modal('ModalInstallTemplate', 'icon-arrow-down-2', 'JTOOLBAR_INSTALL_TEMPLATE');
 		
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
