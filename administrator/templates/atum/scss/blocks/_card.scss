@@ -9,6 +9,7 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	@include media-breakpoint-down(sm) {
 		column-count: 1;
 	}
+	> div,
 	.module-wrapper{
 		display: inline-block;
 		width: 100%;
