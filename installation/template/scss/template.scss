@@ -5,8 +5,11 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 // Bootstrap
 @import "../../../media/vendor/bootstrap/scss/bootstrap";
 
+// Joomla font
+@import "./fonts/joomla-fonts";
+
 // "Font Awesome 5 Free"
-@import "../../../media/vendor/fontawesome-free/scss/fontawesome";
+// @import "../../../media/vendor/fontawesome-free/scss/fontawesome";
 @import "../../../media/vendor/fontawesome-free/scss/solid";
 @import "../../../media/vendor/fontawesome-free/scss/brands";
 
