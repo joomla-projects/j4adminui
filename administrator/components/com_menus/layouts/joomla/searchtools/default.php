@@ -57,8 +57,8 @@ if (isset($data['view']->filterForm) && !empty($data['view']->filterForm))
 	$showFilterButton = isset($filters['filter_search']) && count($filters) === 1 ? false : true;
 
 	// Checks if it should show the be hidden.
-	$hideActiveFilters = empty($data['view']->activeFilters);
-
+	$hideActiveFilters = empty($data['view']->activeFilters) || (count((array)$data['view']->activeFilters) === 1 && !empty($data['view']->activeFilters['menutype']));
+	
 	// Check if the no results message should appear.
 	if (isset($data['view']->total) && (int) $data['view']->total === 0)
 	{
