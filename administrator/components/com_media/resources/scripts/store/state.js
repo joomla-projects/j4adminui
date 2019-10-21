@@ -35,6 +35,8 @@ if (options.currentPath) {
 export default {
     // The general loading state
     isLoading: false,
+    // Last file uploaded
+    lastUploadedFile: [],
     // Will hold the activated filesystem disks
     disks: loadedDisks,
     // The loaded directories
@@ -56,6 +58,8 @@ export default {
     selectedItems: [],
     // The state of the infobar
     showInfoBar: false,
+    // Item for the infobar
+    infobarItem: null,
     // List view
     listView: 'grid',
     // The size of the grid items
@@ -74,4 +78,6 @@ export default {
     previewItem: null,
     // The Search Query
     search: '',
+    // Upload media modal 
+    showUploadMediaPanel: false,
 }

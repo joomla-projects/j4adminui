@@ -18,6 +18,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\String\Inflector;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $app       = Factory::getApplication();
@@ -63,12 +64,12 @@ if ($saveOrder && !empty($this->items))
 		echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 		?>
 		<?php if (empty($this->items)) : ?>
-			<div class="alert alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+			<div class="j-alert j-alert-info d-flex mt-4">
+				<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-			<table class="table" id="categoryList">
+			<table class="table j-list-table" id="categoryList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_TAGS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -78,7 +79,7 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('grid.checkall'); ?>
 						</td>
 						<th scope="col" style="width:1%" class="d-none d-md-table-cell center">
-							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 						</th>
 						<th scope="col" style="width:1%" class="text-center">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
@@ -172,8 +173,8 @@ if ($saveOrder && !empty($this->items))
 									$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 								}
 								?>
-								<span class="sortable-handler<?php echo $iconClass ?>">
-									<span class="fa fa-ellipsis-v"></span>
+								<span class="sortable-handler icon-move-v<?php echo $iconClass ?>">
+									<span class="icon-arrows-v"></span>
 								</span>
 								<?php if ($canChange && $saveOrder) : ?>
 									<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $orderkey + 1; ?>">
@@ -242,22 +243,24 @@ if ($saveOrder && !empty($this->items))
 				</tbody>
 			</table>
 
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 			<?php // Load the batch processing form if user is allowed ?>
 			<?php if ($user->authorise('core.create', 'com_tags')
 				&& $user->authorise('core.edit', 'com_tags')
 				&& $user->authorise('core.edit.state', 'com_tags')) : ?>
-				<?php echo HTMLHelper::_(
-					'bootstrap.renderModal',
-					'collapseModal',
-					array(
-						'title'  => Text::_('COM_TAGS_BATCH_OPTIONS'),
-						'footer' => $this->loadTemplate('batch_footer'),
-					),
-					$this->loadTemplate('batch_body')
-				); ?>
+					<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_TAGS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('batch_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('batch_footer'); ?>
+						</footer>
+					</joomla-modal>
 			<?php endif; ?>
 		<?php endif; ?>
 

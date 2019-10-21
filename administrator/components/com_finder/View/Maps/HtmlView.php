@@ -139,18 +139,20 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_finder');
 
+		// set title
 		ToolbarHelper::title(Text::_('COM_FINDER_MAPS_TOOLBAR_TITLE'), 'zoom-in finder');
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
+		// action button
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -158,22 +160,33 @@ class HtmlView extends BaseHtmlView
 			$childBar->publish('maps.publish')->listCheck(true);
 			$childBar->unpublish('maps.unpublish')->listCheck(true);
 		}
-
+		
+		// delete button
 		ToolbarHelper::divider();
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350, '', '', '', 'COM_FINDER_STATISTICS_TITLE');
-		ToolbarHelper::divider();
-
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('', 'maps.delete');
 			ToolbarHelper::divider();
 		}
 
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_CONTENT_MAPS');
+
+		// option button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_CONTENT_MAPS');
+		// statistics button
+		ToolbarHelper::divider();
+		Toolbar::getInstance('toolbar')->appendButton(
+			'Popup',
+			'bars',
+			'COM_FINDER_STATISTICS',
+			'index.php?option=com_finder&view=statistics&tmpl=component',
+			550,
+			350
+		);
 	}
 }

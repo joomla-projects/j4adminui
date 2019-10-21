@@ -125,15 +125,20 @@ class HtmlView extends BaseHtmlView
 		{
 			ToolbarHelper::title(Text::_('COM_PRIVACY_VIEW_REQUEST_ADD_REQUEST'), 'lock');
 
-			ToolbarHelper::save('request.save');
-			ToolbarHelper::cancel('request.cancel');
 			ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUEST_EDIT');
+			ToolbarHelper::cancel('request.cancel');
+			ToolbarHelper::save('request.save');
 		}
 		else
 		{
 			ToolbarHelper::title(Text::_('COM_PRIVACY_VIEW_REQUEST_SHOW_REQUEST'), 'lock');
 
 			$bar = Toolbar::getInstance('toolbar');
+
+			// help button
+			ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUEST');
+			// cancel button
+			ToolbarHelper::cancel('request.cancel', 'JTOOLBAR_CLOSE');
 
 			// Add transition and action buttons based on item status
 			switch ($this->item->status)
@@ -178,9 +183,6 @@ class HtmlView extends BaseHtmlView
 				default:
 					break;
 			}
-
-			ToolbarHelper::cancel('request.cancel', 'JTOOLBAR_CLOSE');
-			ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUEST');
 		}
 	}
 }

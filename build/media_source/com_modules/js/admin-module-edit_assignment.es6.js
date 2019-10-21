@@ -7,9 +7,13 @@
 
   const onChange = (value) => {
     if (value === '-' || parseInt(value, 10) === 0) {
-      document.getElementById('menuselect-group').style.display = 'none';
+      // hide
+      document.querySelector('.menuselect-hierarchy').style.display = 'none';
+      document.querySelector('#jform_treeselectfilter').style.display = 'none';
     } else {
-      document.getElementById('menuselect-group').style.display = 'block';
+      // show
+      document.querySelector('.menuselect-hierarchy').style.display = 'block';
+      document.querySelector('#jform_treeselectfilter').style.display = 'block';
     }
   };
 

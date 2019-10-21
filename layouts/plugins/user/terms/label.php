@@ -82,6 +82,10 @@ if (Factory::getLanguage()->isRtl())
 	$label .= ' data-placement="left"';
 }
 
+$attribs                = [];
+$attribs['data-toggle'] = 'modal';
+$attribs['data-href'] = '#tosModal';
+
 if ($article)
 {
 	$attribs = [
@@ -110,6 +114,21 @@ else
 {
 	$link = $text;
 }
+
+echo HTMLHelper::_(
+	'webcomponent.renderModal',
+	'tosModal',
+	array(
+		'url'    => Route::_($article->link . '&tmpl=component'),
+		'title'  => $text,
+		'height' => '75vh',
+		'width'  => '85vw',
+		'modalWidth'  => '800',
+		'bodyHeight'  => '500',
+		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
+			. Text::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>'
+	)
+);
 
 // Add the label text and closing tag.
 $label .= '>' . $link . '<span class="star">&#160;*</span></label>';

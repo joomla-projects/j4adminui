@@ -10,6 +10,6 @@
 defined('_JEXEC') or die;
 ?>
 
-<div class="mod-custom custom">
+<div class="j-card-body">
 	<?php echo $module->content; ?>
 </div>

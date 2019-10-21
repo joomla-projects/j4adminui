@@ -87,13 +87,27 @@ class HtmlView extends BaseHtmlView
 		$isNew = ($this->item->id == 0);
 		$canDo = ContentHelper::getActions('com_users');
 
-		ToolbarHelper::title(Text::_($isNew ? 'COM_USERS_VIEW_NEW_LEVEL_TITLE' : 'COM_USERS_VIEW_EDIT_LEVEL_TITLE'), 'user-lock levels-add');
+		ToolbarHelper::title(Text::_($isNew ? 'COM_USERS_VIEW_NEW_LEVEL_TITLE' : 'COM_USERS_VIEW_EDIT_LEVEL_TITLE'), 'lock levels-add');
 
+		ToolbarHelper::divider();
+		// help button
+		ToolbarHelper::help('JHELP_USERS_ACCESS_LEVELS_EDIT');
+
+		// close/cancel button
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('level.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('level.cancel', 'JTOOLBAR_CLOSE');
+		}
+
+		// save, save and close button
 		$toolbarButtons = [];
-
 		if ($canDo->get('core.edit') || $canDo->get('core.create'))
 		{
-			ToolbarHelper::apply('level.apply');
+			$toolbarButtons[] = ['apply', 'level.apply'];
 			$toolbarButtons[] = ['save', 'level.save'];
 		}
 
@@ -112,17 +126,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('level.cancel');
-		}
-		else
-		{
-			ToolbarHelper::cancel('level.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_USERS_ACCESS_LEVELS_EDIT');
 	}
 }

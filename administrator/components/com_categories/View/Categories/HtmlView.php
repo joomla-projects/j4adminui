@@ -180,18 +180,13 @@ class HtmlView extends BaseHtmlView
 		// Prepare the toolbar.
 		ToolbarHelper::title($title, 'folder categories ' . substr($component, 4) . ($section ? "-$section" : '') . '-categories');
 
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories($component, 'core.create')) > 0)
-		{
-			$toolbar->addNew('category.add');
-		}
-
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -227,24 +222,12 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
-		if ($canDo->get('core.admin'))
-		{
-			$toolbar->standardButton('refresh')
-				->text('JTOOLBAR_REBUILD')
-				->task('categories.rebuild');
-		}
-
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete', $component))
 		{
 			$toolbar->delete('categories.delete')
 				->text('JTOOLBAR_EMPTY_TRASH')
 				->message('JGLOBAL_CONFIRM_DELETE')
 				->listCheck(true);
-		}
-
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			$toolbar->preferences($component);
 		}
 
 		// Compute the ref_key if it does exist in the component
@@ -270,7 +253,27 @@ class HtmlView extends BaseHtmlView
 			$url = null;
 		}
 
+		// Help button
 		$toolbar->help($ref_key, ComponentHelper::getParams($component)->exists('helpURL'), $url);
+
+		// category global settings (option) button
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			$toolbar->preferences($component);
+		}
+
+		if ($canDo->get('core.admin'))
+		{
+			$toolbar->standardButton('refresh')
+				->text('JTOOLBAR_REBUILD')
+				->task('categories.rebuild');
+		}
+
+		// create new category button
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories($component, 'core.create')) > 0)
+		{
+			$toolbar->addNew('category.add');
+		}
 	}
 
 	/**

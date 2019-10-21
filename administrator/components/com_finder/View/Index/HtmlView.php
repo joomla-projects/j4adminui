@@ -180,18 +180,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_FINDER_INDEX_TOOLBAR_TITLE'), 'zoom-in finder');
 
-		$toolbar->appendButton(
-			'Popup', 'archive', 'COM_FINDER_INDEX', 'index.php?option=com_finder&view=indexer&tmpl=component', 500, 210, 0, 0,
-			'window.parent.location.reload()', 'COM_FINDER_HEADING_INDEXER'
-		);
-
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -200,24 +195,35 @@ class HtmlView extends BaseHtmlView
 			$childBar->unpublish('index.unpublish')->listCheck(true);
 		}
 
-		$toolbar->appendButton('Popup', 'bars', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350, '', '', '', 'COM_FINDER_STATISTICS_TITLE');
-
+		// delete button
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('', 'index.delete');
 			ToolbarHelper::divider();
 		}
 
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::trash('index.purge', 'COM_FINDER_INDEX_TOOLBAR_PURGE', false);
-		}
-
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_INDEXED_CONTENT');
+		
+		// option button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_INDEXED_CONTENT');
+		// statistics button
+		$toolbar->appendButton('Popup', 'bar', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
+
+		// clear index button
+		if ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::trash('index.purge', 'COM_FINDER_INDEX_TOOLBAR_PURGE', false);
+		}
+
+		// index button
+		$toolbar->appendButton(
+			'Popup', 'briefcase', 'COM_FINDER_INDEX', 'index.php?option=com_finder&view=indexer&tmpl=component', 500, 210, 0, 0,
+			'window.parent.location.reload()', 'COM_FINDER_HEADING_INDEXER'
+		);
 	}
 }

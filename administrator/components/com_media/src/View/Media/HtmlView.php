@@ -91,23 +91,7 @@ class HtmlView extends BaseHtmlView
 		$user = Factory::getUser();
 
 		// Set the title
-		ToolbarHelper::title(Text::_('COM_MEDIA'), 'images mediamanager');
-
-		// Add the upload and create folder buttons
-		if ($user->authorise('core.create', 'com_media'))
-		{
-			// Add the upload button
-			$layout = new FileLayout('toolbar.upload', JPATH_COMPONENT_ADMINISTRATOR . '/layouts');
-
-			$bar->appendButton('Custom', $layout->render([]), 'upload');
-			ToolbarHelper::divider();
-
-			// Add the create folder button
-			$layout = new FileLayout('toolbar.create-folder', JPATH_COMPONENT_ADMINISTRATOR . '/layouts');
-
-			$bar->appendButton('Custom', $layout->render([]), 'new');
-			ToolbarHelper::divider();
-		}
+		ToolbarHelper::title(Text::_('COM_MEDIA'), 'media mediamanager');
 
 		// Add a delete button
 		if ($user->authorise('core.delete', 'com_media'))
@@ -119,6 +103,12 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
+		// help button
+		if ($tmpl !== 'component')
+		{
+			ToolbarHelper::help('JHELP_CONTENT_MEDIA_MANAGER');
+		}
+
 		// Add the preferences button
 		if (($user->authorise('core.admin', 'com_media') || $user->authorise('core.options', 'com_media')) && $tmpl !== 'component')
 		{
@@ -126,9 +116,21 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		if ($tmpl !== 'component')
+		// Add the upload and create folder buttons
+		if ($user->authorise('core.create', 'com_media'))
 		{
-			ToolbarHelper::help('JHELP_CONTENT_MEDIA_MANAGER');
+			// Add the create folder button
+			$layout = new FileLayout('toolbar.create-folder', JPATH_COMPONENT_ADMINISTRATOR . '/layouts');
+
+			$bar->appendButton('Custom', $layout->render([]), 'new');
+			ToolbarHelper::divider();
+
+			// Add the upload button
+			$layout = new FileLayout('toolbar.upload', JPATH_COMPONENT_ADMINISTRATOR . '/layouts');
+
+			$bar->appendButton('Custom', $layout->render([]), 'upload');
+			ToolbarHelper::divider();
 		}
+
 	}
 }

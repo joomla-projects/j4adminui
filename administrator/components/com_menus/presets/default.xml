@@ -8,35 +8,30 @@
 		type="component"
 		title="MOD_MENU_CONTROL_PANEL"
 		link="index.php"
-		class="class:home"
+		icon="icon-dashboard duotone"
 		element="com_cpanel"
 	/>
 
 	<menuitem
 		title="MOD_MENU_COM_CONTENT"
 		type="heading"
-		icon="file-alt"
-		class="class:file-alt"
+		icon="icon-content duotone"
 		dashboard="content"
 		>
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_ARTICLE_MANAGER"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
 			type="component"
 			element="com_content"
 			link="index.php?option=com_content&amp;view=articles"
-			quicktask="index.php?option=com_content&amp;task=article.add"
 		/>
-
+		
 		<menuitem
-			title="MOD_MENU_COM_CONTENT_CATEGORY_MANAGER"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_CATEGORY"
+			title="MOD_MENU_COM_CONTENT_NEW_ARTICLE"
 			type="component"
-			element="com_categories"
-			link="index.php?option=com_categories&amp;view=categories&amp;extension=com_content"
-			quicktask="index.php?option=com_categories&amp;extension=com_content&amp;task=category.add"
+			element="com_content"
+			icon="icon-new"
+			link="index.php?option=com_content&amp;task=article.add"
 		/>
-
 		<menuitem
 			title="MOD_MENU_COM_CONTENT_FEATURED"
 			type="component"
@@ -46,9 +41,17 @@
 		/>
 
 		<menuitem
+			title="MOD_MENU_COM_CONTENT_CATEGORY_MANAGER"
+			type="component"
+			element="com_categories"
+			link="index.php?option=com_categories&amp;view=categories&amp;extension=com_content"
+		/>
+
+		<menuitem
 			title="MOD_MENU_COM_CONTENT_WORKFLOW"
 			type="component"
 			element="com_workflow"
+			badge="new"
 			link="index.php?option=com_workflow&amp;view=workflows&amp;extension=com_content"
 		/>
 
@@ -81,29 +84,12 @@
 			link="index.php?option=com_media"
 			class="class:image"
 		/>
-
-		<menuitem
-			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_SITE"
-			quicktask-title="MOD_MENU_COM_CONTENT_NEW_MODULE"
-			type="component"
-			element="com_modules"
-			link="index.php?option=com_modules&amp;view=modules&amp;client_id=0"
-			quicktask="index.php?option=com_modules&amp;view=select&amp;client_id=0"
-		/>
-
-		<menuitem
-			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_ADMINISTRATOR"
-			type="component"
-			element="com_modules"
-			link="index.php?option=com_modules&amp;view=modules&amp;client_id=1"
-		/>
 	</menuitem>
 
 	<menuitem
 		title="MOD_MENU_MENUS"
 		type="heading"
-		icon="list"
-		class="class:list"
+		icon="icon-menu duotone"
 		dashboard="menus"
 		>
 		<menuitem
@@ -143,13 +129,11 @@
 			>
 			<menuitem
 				title="{sql:title} "
-				quicktask-title="MOD_MENU_MENU_MANAGER_NEW_MENU_ITEM"
 				type="component"
 				element="com_menus"
 				link="index.php?option=com_menus&amp;view=items&amp;menutype={sql:menutype}"
 				icon="{sql:icon}"
 				class="class:menu"
-				quicktask="index.php?option=com_menus&amp;task=item.add&amp;menutype={sql:menutype}"
 			/>
 		</menuitem>
 
@@ -164,7 +148,6 @@
 			>
 			<menuitem
 				title="{sql:title}"
-				quicktask-title="MOD_MENU_MENU_MANAGER_NEW_MENU_ITEM"
 				type="component"
 				element="com_menus"
 				link="index.php?option=com_menus&amp;view=items&amp;menutype={sql:menutype}"
@@ -177,25 +160,22 @@
 	<menuitem
 		title="MOD_MENU_COMPONENTS"
 		type="container"
-		class="class:puzzle-piece"
+		icon="icon-components duotone"
 		dashboard="components"
 	/>
 
 	<menuitem
 		title="MOD_MENU_COM_USERS_USERS"
 		type="heading"
-		icon="users"
-		class="class:users"
+		icon="icon-users duotone"
 		alias="users"
 		dashboard="users"
 		>
 		<menuitem
 			title="MOD_MENU_COM_USERS_USER_MANAGER"
-			quicktask-title="MOD_MENU_COM_USERS_ADD_USER"
 			type="component"
 			element="com_users"
 			link="index.php?option=com_users&amp;view=users"
-			quicktask="index.php?option=com_users&amp;task=user.add"
 		/>
 
 		<menuitem
@@ -303,18 +283,256 @@
 	</menuitem>
 
 	<menuitem
+		title="MOD_MENU_EXTENSIONS_EXTENSIONS"
+		type="heading"
+		element="com_cpanel"
+		icon="icon-modules duotone"
+	>
+		<menuitem
+			title="MOD_MENU_TEMPLATE_SITE_TEMPLATES"
+			type="component"
+			element="com_templates"
+			link="index.php?option=com_templates&amp;view=styles"
+		/>
+		<menuitem
+			title="MOD_MENU_EXTENSIONS_MODULE_MANAGER_MODULES"
+			type="component"
+			element="com_modules"
+			link="index.php?option=com_modules&amp;view=modules"
+		/>
+		<menuitem
+			title="MOD_MENU_MANAGE_PLUGINS"
+			type="component"
+			element="com_plugins"
+			link="index.php?option=com_plugins"
+			permission="core.manage;com_plugins"
+		/>
+
+		<menuitem
+			title="MOD_MENU_INSTALL"
+			type="heading"
+			element="com_cpanel"
+			class="class:cog"
+		>
+			<menuitem
+				title="MOD_MENU_INSTALL_EXTENSIONS"
+				desc="MOD_MENU_INSTALL_LANGUAGES"
+				type="component"
+				element="com_installer"
+				link="index.php?option=com_installer&amp;view=install"
+			/>
+
+			<menuitem
+				title="MOD_MENU_INSTALL_LANGUAGES"
+				type="component"
+				element="com_installer"
+				link="index.php?option=com_installer&amp;view=languages"
+			/>
+
+			<menuitem
+				title="MOD_MENU_INSTALL_DISCOVER"
+				type="component"
+				element="com_installer"
+				link="index.php?option=com_installer&amp;view=discover"
+				ajax-badge="index.php?option=com_installer&amp;task=discover.getMenuBadgeData&amp;format=json"
+			/>
+		</menuitem>
+		<menuitem
+			title="MOD_MENU_MANAGE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=manage"
+			permission="core.manage;com_installer"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_EXTENSIONS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=update"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=update.getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_UPDATE_SOURCES"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=updatesites"
+			permission="core.manage;com_installer"
+		/>
+	</menuitem>
+
+	<menuitem
 		title="MOD_MENU_SYSTEM"
 		type="component"
 		element="com_cpanel"
-		class="class:wrench"
-		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=system"
+		icon="icon-equalizer duotone"
+		link="#"
+		dashboard="system"
+	>
+		<menuitem
+			title="MOD_MENU_CONFIGURATION"
+			type="component"
+			element="com_config"
+			icon="wrench"
+			link="index.php?option=com_config"
+		/>
+		
+		<menuitem
+			title="MOD_MENU_MAINTAIN"
+			type="heading"
+			icon="tools"
+		>
+			<menuitem
+				title="MOD_MENU_CLEAR_CACHE"
+				type="component"
+				element="com_cache"
+				link="index.php?option=com_cache"
+				permission="core.manage;com_cache"
+			/>
+
+			<menuitem
+				title="MOD_MENU_PURGE_EXPIRED_CACHE"
+				type="component"
+				element="com_cache"
+				link="index.php?option=com_cache&amp;view=purge"
+				permission="core.manage;com_cache"
+			/>
+
+			<menuitem
+				title="MOD_MENU_GLOBAL_CHECKIN"
+				type="component"
+				element="com_checkin"
+				link="index.php?option=com_checkin"
+				permission="core.manage;com_checkin"
+				ajax-badge="index.php?option=com_checkin&amp;task=getMenuBadgeData&amp;format=json"
+			/>
+		</menuitem>		
+
+		<menuitem
+			type="separator"
+		/>
+
+		<menuitem
+			title="MOD_MENU_MANAGE"
+			type="heading"
+			icon="tasks"
+		>
+
+		<menuitem
+			title="MOD_MENU_MANAGE_LANGUAGES"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=installed"
+			permission="core.manage;com_language"
+		/>
+
+		<menuitem
+			title="MOD_MENU_MANAGE_LANGUAGES_CONTENT"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=languages"
+			permission="core.manage;com_language"
+		/>
+
+		<menuitem
+			title="MOD_MENU_MANAGE_LANGUAGES_OVERRIDES"
+			type="component"
+			element="com_language"
+			link="index.php?option=com_languages&amp;view=overrides"
+			permission="core.manage;com_language"
+		/>
+
+		<menuitem
+			title="MOD_MENU_MANAGE_CSP"
+			type="component"
+			element="com_csp"
+			link="index.php?option=com_csp"
+			permission="core.manage;com_csp"
+		/>
+
+		<menuitem
+			title="MOD_MENU_MANAGE_REDIRECTS"
+			type="component"
+			element="com_redirect"
+			link="index.php?option=com_redirect"
+			permission="core.manage;com_redirect"
+		/>
+		
+	</menuitem>
+
+	<menuitem
+		type="separator"
 	/>
+
+	<menuitem
+		title="MOD_MENU_UPDATE_JOOMLA"
+		type="component"
+		element="com_joomlaupdate"
+		link="index.php?option=com_joomlaupdate"
+		permission="core.manage;com_joomlaupdate"
+		ajax-badge="index.php?option=com_joomlaupdate&amp;task=getMenuBadgeData&amp;format=json"
+	/>
+
+	<menuitem
+		title="MOD_MENU_INFORMATION"
+		type="heading"
+		icon="info-circle"
+		>
+		<menuitem
+			title="MOD_MENU_INFORMATION_WARNINGS"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=warnings"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=getMenuBadgeData&amp;format=json"
+		/>
+
+		<menuitem
+			title="MOD_MENU_SYSTEM_INFORMATION_SYSINFO"
+			type="component"
+			element="com_admin"
+			link="index.php?option=com_admin&amp;view=sysinfo"
+			permission="core.admin"
+		/>
+
+		<menuitem
+			title="MOD_MENU_SYSTEM_INFORMATION_DATABASE"
+			type="component"
+			element="com_installer"
+			link="index.php?option=com_installer&amp;view=database"
+			permission="core.manage;com_installer"
+			ajax-badge="index.php?option=com_installer&amp;task=database.getMenuBadgeData&amp;format=json"
+		/>
+	</menuitem>
+	</menuitem>
 
 	<menuitem
 		title="MOD_MENU_HELP"
 		type="component"
 		element="com_cpanel"
-		class="class:info-circle"
+		icon="icon-question-sign-circle duotone"
 		link="index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=help"
 	/>
+
+	<menuitem
+		title="MOD_MENU_INFORMATION_NOTIFICATIONS"
+		type="component"
+		element="com_postinstall"
+		icon="icon-notification duotone"
+		link="index.php?option=com_postinstall"
+		permission="core.manage;com_postinstall"
+		ajax-badge="index.php?option=com_postinstall&amp;task=getMenuBadgeData&amp;format=json"
+	/>
+
+	<menuitem
+		title="MOD_MESSAGES_PRIVATE_MESSAGES"
+		type="component"
+		element="com_messages"
+		icon="icon-messaging duotone"
+		link="index.php?option=com_messages&amp;view=messages"
+		ajax-badge="index.php?option=com_messages&amp;task=getMenuBadgeData&amp;format=json"
+	/>
+
 </menu>

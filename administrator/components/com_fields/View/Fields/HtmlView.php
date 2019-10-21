@@ -146,18 +146,13 @@ class HtmlView extends BaseHtmlView
 		// Prepare the toolbar.
 		ToolbarHelper::title($title, 'puzzle fields ' . substr($component, 4) . ($section ? "-$section" : '') . '-fields');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('field.add');
-		}
-
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -196,12 +191,17 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::deleteList('', 'fields.delete', 'JTOOLBAR_EMPTY_TRASH');
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_FIELDS_FIELDS');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($component);
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_FIELDS_FIELDS');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('field.add');
+		}
 	}
 
 	/**

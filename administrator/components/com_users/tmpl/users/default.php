@@ -18,6 +18,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\String\PunycodeHelper;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('behavior.tabstate');
 
@@ -36,12 +37,12 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 				echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 				?>
 				<?php if (empty($this->items)) : ?>
-					<div class="alert alert-info">
-						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex mt-4">
+						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else : ?>
-					<table class="table" id="userList">
+					<table class="table j-list-table" id="userList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_USERS_USERS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -53,13 +54,13 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_USERS_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" class="text-center d-none d-md-table-cell">
+								<th scope="col" class="text-center">
 									<?php echo Text::_('COM_USERS_DEBUG_PERMISSIONS'); ?>
 								</th>
 								<th scope="col" style="width:10%; " class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_USERNAME', 'a.username', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:5%;" class="text-center d-md-table-cell">
+								<th scope="col" style="width:5%;" class="text-center d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_USERS_HEADING_ENABLED', 'a.block', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:5%;" class="text-center d-md-table-cell">
@@ -131,9 +132,9 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 										<span class="badge badge-warning"><?php echo Text::_('COM_USERS_PASSWORD_RESET_REQUIRED'); ?></span>
 									<?php endif; ?>
 								</th>
-								<td class="text-center btns d-none d-md-table-cell">
-									<a href="<?php echo Route::_('index.php?option=com_users&view=debuguser&user_id=' . (int) $item->id); ?>">
-										<span class="fa fa-list" aria-hidden="true"></span>
+								<td class="text-center d-none d-lg-table-cell">
+									<a href="<?php echo Route::_('index.php?option=com_users&view=debuguser&user_id=' . (int) $item->id); ?>" class="btn btn-secondary btn-sm">
+										<span class="icon-list-thin" aria-hidden="true"></span>
 										<span class="sr-only"><?php echo Text::_('COM_USERS_DEBUG_PERMISSIONS'); ?></span>
 									</a>
 								</td>
@@ -197,22 +198,24 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 						</tbody>
 					</table>
 
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 
 					<?php // Load the batch processing form if user is allowed ?>
 					<?php if ($loggeduser->authorise('core.create', 'com_users')
 						&& $loggeduser->authorise('core.edit', 'com_users')
 						&& $loggeduser->authorise('core.edit.state', 'com_users')) : ?>
-						<?php echo HTMLHelper::_(
-							'bootstrap.renderModal',
-							'collapseModal',
-							array(
-								'title'  => Text::_('COM_USERS_BATCH_OPTIONS'),
-								'footer' => $this->loadTemplate('batch_footer'),
-							),
-							$this->loadTemplate('batch_body')
-						); ?>
+							<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_USERS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+								<section>
+									<?php echo $this->loadTemplate('batch_body'); ?>
+								</section>
+								<footer>
+									<?php echo $this->loadTemplate('batch_footer'); ?>
+								</footer>
+							</joomla-modal>
 					<?php endif; ?>
 				<?php endif; ?>
 

@@ -30,8 +30,7 @@ extract($displayData, EXTR_OVERWRITE);
 
 $tagName = $tagName ?? 'button';
 
-$modalAttrs['data-toggle'] = 'modal';
-$modalAttrs['data-target'] = '#' . $selector;
+$modalAttrs['data-href'] = '#' . $selector;
 
 $idAttr   = !empty($id)        ? ' id="' . $id . '"' : '';
 $listAttr = !empty($listCheck) ? ' list-selection' : '';
@@ -44,7 +43,7 @@ $listAttr = !empty($listCheck) ? ' list-selection' : '';
 	<?php echo $htmlAttributes; ?>
 	<?php echo ArrayHelper::toString($modalAttrs); ?>
 >
-	<span class="<?php echo $class; ?>" aria-hidden="true"></span>
+	<span class="<?php echo $class; ?> icon-md" aria-hidden="true"></span>
 	<?php echo $text; ?>
 </<?php echo $tagName; ?>>
 </joomla-toolbar-button>

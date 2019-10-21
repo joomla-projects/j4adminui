@@ -99,16 +99,17 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_plugins');
 
-		ToolbarHelper::title(Text::_('COM_PLUGINS_MANAGER_PLUGINS'), 'power-cord plugin');
+		ToolbarHelper::title(Text::_('COM_PLUGINS_MANAGER_PLUGINS'), 'plugins plugin');
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
+		// action button
 		$dropdown = $toolbar->dropdownButton('status-group')
-			->text('JTOOLBAR_CHANGE_STATUS')
+			->text('JTOOLBAR_SELECT_ACTION')
 			->toggleSplit(false)
-			->icon('fa fa-ellipsis-h')
-			->buttonClass('btn btn-action')
+			->icon('icon-select')
+			->buttonClass('btn btn-white')
 			->listCheck(true);
 
 		$childBar = $dropdown->getChildToolbar();
@@ -120,12 +121,14 @@ class HtmlView extends BaseHtmlView
 			$childBar->checkin('plugins.checkin');
 		}
 
+		// help button
+		$toolbar->help('JHELP_EXTENSIONS_PLUGIN_MANAGER');
+
+		// option button
 		if ($canDo->get('core.admin'))
 		{
 			$toolbar->preferences('com_plugins');
 		}
-
-		$toolbar->help('JHELP_EXTENSIONS_PLUGIN_MANAGER');
 
 	}
 

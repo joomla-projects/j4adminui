@@ -86,7 +86,7 @@ class PlgSampledataTesting extends CMSPlugin
 		$data->name        = $this->_name;
 		$data->title       = Text::_('PLG_SAMPLEDATA_TESTING_OVERVIEW_TITLE');
 		$data->description = Text::_('PLG_SAMPLEDATA_TESTING_OVERVIEW_DESC');
-		$data->icon        = 'bolt';
+		$data->icon        = 'lighting';
 		$data->steps       = 9;
 
 		return $data;

@@ -10,16 +10,20 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Session\Session;
 use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('script', 'mod_quickicon/quickicon.min.js', ['version' => 'auto', 'relative' => true]);
+
+$saveOrderingUrl = 'index.php?option=com_modules&task=Module.saveParamsOrderAjax&format=json&' . Session::getFormToken() . '=1';
 
 $html = HTMLHelper::_('icons.buttons', $buttons);
 ?>
 <?php if (!empty($html)) : ?>
 	<nav class="quick-icons" aria-label="<?php echo Text::_('MOD_QUICKICON_NAV_LABEL') . ' ' . $module->title; ?>">
-		<ul class="nav flex-wrap">
+		<div class="row js-draggable-container" data-fields="sub_module_name[],module_id" data-url="<?php echo $saveOrderingUrl; ?>">
 			<?php echo $html; ?>
-		</ul>
+			<input type="hidden" value="<?php echo $module->id ?>" name="module_id">
+		</div>
 	</nav>
 <?php endif; ?>

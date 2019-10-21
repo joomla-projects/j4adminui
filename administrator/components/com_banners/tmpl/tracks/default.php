@@ -25,12 +25,12 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', ['view' => $this]); ?>
 				<?php if (empty($this->items)) : ?>
-					<div class="alert alert-info">
-						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex mt-4">
+						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else : ?>
-					<table class="table">
+					<table class="table j-list-table">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_BANNERS_TRACKS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -78,20 +78,24 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-
-					<?php // Load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+				
+
 				<?php // Load the export form ?>
 				<?php echo HTMLHelper::_(
-					'bootstrap.renderModal',
+					'webcomponent.renderModal',
 					'downloadModal',
 					[
 						'title'       => Text::_('COM_BANNERS_TRACKS_DOWNLOAD'),
 						'url'         => Route::_('index.php?option=com_banners&amp;view=download&amp;tmpl=component'),
-						'height'      => '370px',
-						'width'       => '300px',
+						'height'      => '75vh',
+						'width'       => '85vw',
 						'modalWidth'  => '40',
 						'footer'      => '<button type="button" class="btn" data-dismiss="modal"'
 								. ' onclick="Joomla.iframeButtonClick({iframeSelector: \'#downloadModal\', buttonSelector: \'#closeBtn\'})">'

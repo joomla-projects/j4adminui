@@ -16,6 +16,7 @@ use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Templates\Administrator\Helper\TemplatesHelper;
 use Joomla\Database\ParameterType;
 
@@ -75,6 +76,28 @@ class TemplatesModel extends ListModel
 			if ($num)
 			{
 				$item->updated = $num;
+			}
+
+			// Thumbnail & Preview
+			$template = $item->name;
+			$client = ApplicationHelper::getClientInfo($item->client_id);
+			$basePath = $client->path . '/templates/' . $template;
+			$baseUrl = ($item->client_id == 0) ? Uri::root(true) : Uri::root(true) . '/administrator';
+			$thumb = $basePath . '/template_thumbnail.png';
+			$preview = $basePath . '/template_preview.png';
+			
+			if (file_exists($thumb) || file_exists($preview))
+			{
+
+				if (file_exists($thumb))
+				{
+					$item->thumbnail = $baseUrl . '/templates/' . $template . '/template_thumbnail.png';
+				}
+
+				if (file_exists($preview))
+				{
+					$item->preview = $baseUrl . '/templates/' . $template . '/template_preview.png';
+				}
 			}
 		}
 

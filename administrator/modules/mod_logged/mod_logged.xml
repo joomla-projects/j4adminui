@@ -32,7 +32,7 @@
 
 				<field
 					name="name"
-					type="list"
+					type="radio"
 					label="MOD_LOGGED_NAME"
 					default="1"
 					filter="integer"

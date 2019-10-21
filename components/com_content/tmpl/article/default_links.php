@@ -61,16 +61,16 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 								htmlspecialchars($label, ENT_COMPAT, 'UTF-8') . '</a>';
 							break;
 						case 3:
-							echo '<a href="' . htmlspecialchars($link, ENT_COMPAT, 'UTF-8') . '" rel="noopener noreferrer" data-toggle="modal" data-target="#linkModal">' .
+							echo '<a href="' . htmlspecialchars($link, ENT_COMPAT, 'UTF-8') . '" rel="noopener noreferrer" data-toggle="modal" data-href="#linkModal">' .
 								htmlspecialchars($label, ENT_COMPAT, 'UTF-8') . ' </a>';
 							echo HTMLHelper::_(
-								'bootstrap.renderModal',
+								'webcomponent.renderModal',
 								'linkModal',
 								array(
 									'url'    => $link,
 									'title'  => $label,
-									'height' => '100%',
-									'width'  => '100%',
+									'height' => '75vh',
+									'width'  => '85vw',
 									'modalWidth'  => '500',
 									'bodyHeight'  => '500',
 									'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'

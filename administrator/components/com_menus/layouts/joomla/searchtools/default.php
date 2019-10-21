@@ -16,6 +16,11 @@ use Joomla\CMS\Layout\LayoutHelper;
 
 $data = $displayData;
 
+// client_id filed options
+$clientOptions = $data['view']->filterForm->getField('client_id')->options ?? array();
+$state = $data['view']->get('State');
+$defaultValue =  !empty($clientOptions) ? $state->get('filter.client_id', 0) : 0;
+
 // Receive overridable options
 $data['options'] = !empty($data['options']) ? $data['options'] : array();
 
@@ -53,7 +58,7 @@ if (isset($data['view']->filterForm) && !empty($data['view']->filterForm))
 
 	// Checks if it should show the be hidden.
 	$hideActiveFilters = empty($data['view']->activeFilters);
-
+	
 	// Check if the no results message should appear.
 	if (isset($data['view']->total) && (int) $data['view']->total === 0)
 	{
@@ -87,31 +92,48 @@ $filtersActiveClass = $hideActiveFilters ? '' : ' js-stools-container-filters-vi
 
 // Load search tools
 HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['options']);
+
+$app = Factory::getApplication();
+$clientIdField = $data['view']->filterForm->getField('client_id');
 ?>
-<div class="js-stools d-flex flex-wrap" role="search">
-	<?php if ($data['view'] instanceof \Joomla\Component\Menus\Administrator\View\Items\HtmlView) : ?>
-	<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
-	<?php $app = Factory::getApplication(); ?>
-		<?php $clientIdField = $data['view']->filterForm->getField('client_id'); ?>
-		<?php if ($clientIdField) : ?>
-		<div class="js-stools-container-selector-first">
-			<div class="js-stools-field-selector js-stools-client_id">
-				<?php echo $clientIdField->input; ?>
+<div class="js-stools" role="search">
+	<div class="d-flex align-items-center">
+		<?php if ($data['view'] instanceof \Joomla\Component\Menus\Administrator\View\Items\HtmlView) : ?>
+			<?php // Add the itemtype and language selectors before the form filters. Do not display in modal. ?>
+			<?php if(empty($app->input->get('menutype', null, 'STRING')) && !empty($clientOptions)) : ?>
+				<div>
+					<div class="btn-group btn-justified" role="group">
+						<?php foreach($clientOptions as $key => $option) : ?>
+							<button type="button" class="js-stools-selector-btn btn <?php echo $defaultValue == $option->value ? 'btn-default btn-outline' : 'btn-secondary'; ?>" value="<?php echo $option->value; ?>"><?php echo $option->text; ?></button>
+						<?php endforeach; ?>
+					</div>
+					<input type="hidden" value="<?php echo $defaultValue; ?>" class="js-stools-selector-client-id-field" name="client_id" />
+				</div>
+			<?php endif; ?>
+		<?php endif; ?>
+
+		<?php if ($data['options']['showSelector']) : ?>
+			<div>
+				<div class="js-stools-container-selector">
+					<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); // manage view ?>
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<div class="ml-auto">
+			<div class="js-stools-container-bar">
+				<div class="d-flex">
+					<div>
+						<?php echo $this->sublayout('list', $data); ?>
+					</div>
+					<div class="ml-3">
+						<?php echo $this->sublayout('bar', $data); ?>
+					</div>
+				</div>
 			</div>
 		</div>
-		<?php endif; ?>
-	<?php endif; ?>
-	<?php if ($data['options']['showSelector']) : ?>
-	<div class="js-stools-container-selector">
-		<?php echo LayoutHelper::render('joomla.searchtools.default.selector', $data); ?>
 	</div>
-	<?php endif; ?>
-	<div class="js-stools-container-bar ml-auto">
-		<div class="btn-toolbar">
-			<?php echo $this->sublayout('bar', $data); ?>
-			<?php echo $this->sublayout('list', $data); ?>
-		</div>
-	</div>
+
 	<!-- Filters div -->
 	<div class="js-stools-container-filters clearfix<?php echo $filtersActiveClass; ?>">
 		<?php if ($data['options']['filterButton']) : ?>
@@ -119,6 +141,7 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 		<?php endif; ?>
 	</div>
 </div>
+
 <?php if ($data['options']['showNoResults']) : ?>
 	<?php echo $this->sublayout('noitems', $data); ?>
 <?php endif; ?>

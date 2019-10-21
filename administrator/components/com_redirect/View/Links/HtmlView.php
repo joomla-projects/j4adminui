@@ -146,18 +146,13 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_REDIRECT_MANAGER_LINKS'), 'map-signs redirect');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('link.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $canDo->get('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-ellipsis-h')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -194,6 +189,13 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_REDIRECT_MANAGER');
+
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			$toolbar->preferences('com_redirect');
+		}
+
 		if (!$state->get('filter.state') == -2 && $canDo->get('core.delete'))
 		{
 			$toolbar->confirmButton('delete')
@@ -210,11 +212,9 @@ class HtmlView extends BaseHtmlView
 				->listCheck(false);
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		if ($canDo->get('core.create'))
 		{
-			$toolbar->preferences('com_redirect');
+			$toolbar->addNew('link.add');
 		}
-
-		$toolbar->help('JHELP_COMPONENTS_REDIRECT_MANAGER');
 	}
 }

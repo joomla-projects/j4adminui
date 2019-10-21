@@ -65,7 +65,7 @@ class PopupButton extends ToolbarButton
 	 */
 	protected function prepareOptions(array &$options)
 	{
-		$options['icon'] = $options['icon'] ?? 'fa fa-square';
+		$options['icon'] = $options['icon'] ?? 'icon-square';
 
 		parent::prepareOptions($options);
 
@@ -134,8 +134,8 @@ class PopupButton extends ToolbarButton
 			$params = array();
 			$params['title']      = Text::_($options['title'] ?? $options['text']);
 			$params['url']        = $this->getUrl();
-			$params['height']     = $options['iframeHeight'] ?? 480;
-			$params['width']      = $options['iframeWidth'] ?? 640;
+			$params['height']     = $options['iframeHeight'] ?? '75vh';
+			$params['width']      = $options['iframeWidth'] ?? '85vw';
 			$params['bodyHeight'] = $options['bodyHeight'] ?? null;
 			$params['modalWidth'] = $options['modalWidth'] ?? null;
 
@@ -151,7 +151,7 @@ class PopupButton extends ToolbarButton
 				$params['footer'] = $footer;
 			}
 
-			$html[] = HTMLHelper::_('bootstrap.renderModal', $selector, $params);
+			$html[] = HTMLHelper::_('webcomponent.renderModal', $selector, $params);
 
 			$html[] = '</div>';
 
@@ -172,9 +172,9 @@ JS
 			Factory::getDocument()->addScriptDeclaration(
 				<<<JS
 window.addEventListener('DOMContentLoaded', function() {
-	jQuery('#{$options['selector']}').on('hide.bs.modal', function () {
-	    {$options['onclose']}
-	});
+	document.getElementById('{$options['selector']}').addEventListener('joomla.modal.close', function(){
+		{$options['onclose']}
+	})
 });
 JS
 			);

@@ -51,22 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
       let i;
       let l;
       const result = [];
-      const rows = wrapper.querySelectorAll('[name="order[]"]');
-      const inputRows = wrapper.querySelectorAll('[name="cid[]"]');
+      let rows = wrapper.querySelectorAll('[name="order[]"]');
+      let inputRows = wrapper.querySelectorAll('[name="cid[]"]');
 
       if (dir === 'desc') {
         // Reverse the array
-        rows.reverse();
-        inputRows.reverse();
+        rows = [].slice.call(rows).reverse();
+        inputRows = [].slice.call(inputRows).reverse();
       }
 
       // Get the order array
       for (i = 0, l = rows.length; l > i; i += 1) {
         rows[i].value = i + 1;
-        result.push(`order[]=${encodeURIComponent(i)}`);
+        result.push(`order[]=${encodeURIComponent(i + 1)}`);
         result.push(`cid[]=${encodeURIComponent(inputRows[i].value)}`);
       }
-
       return result;
     };
 
@@ -82,7 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
       revertOnSpill: true,
       // spilling will `.remove` the element, if this is true
       // removeOnSpill: false,
-
+      // eslint-disable-next-line no-unused-vars
+      moves(el, source, handle, sibling) {
+        const handleClass = container.getAttribute('data-drag_handler');
+        if (handleClass) {
+          return handle.classList.contains(handleClass);
+        }
+        return true; // elements are always draggable by default
+      },
       accepts(el, target, source, sibling) {
         if (isNested) {
           if (sibling !== null) {

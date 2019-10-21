@@ -34,12 +34,12 @@ if ($saveOrder)
 	<div id="j-main-container" class="j-main-container">
 		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<?php if (empty($this->items)) : ?>
-			<div class="alert alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+			<div class="j-alert j-alert-info d-flex mt-4">
+				<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-			<table class="table" id="pluginList">
+			<table class="table j-list-table" id="pluginList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_PLUGINS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -48,8 +48,8 @@ if ($saveOrder)
 						<td style="width:1%" class="text-center">
 							<?php echo HTMLHelper::_('grid.checkall'); ?>
 						</td>
-						<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', '', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+						<th scope="col" style="width:1%" class="text-center d-none d-lg-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', '', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 						</th>
 						<th scope="col" style="width:1%" class="text-center">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'enabled', $listDirn, $listOrder); ?>
@@ -82,7 +82,7 @@ if ($saveOrder)
 						<td class="text-center">
 							<?php echo HTMLHelper::_('grid.id', $i, $item->extension_id); ?>
 						</td>
-						<td class="text-center d-none d-md-table-cell">
+						<td class="order text-center d-none d-lg-table-cell">
 							<?php
 							$iconClass = '';
 							if (!$canChange)
@@ -94,8 +94,8 @@ if ($saveOrder)
 								$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 							}
 							?>
-							<span class="sortable-handler<?php echo $iconClass; ?>">
-								<span class="fa fa-ellipsis-v" aria-hidden="true"></span>
+							<span class="sortable-handler icon-move-v<?php echo $iconClass; ?>">
+								<span class="icon-arrows-v" aria-hidden="true"></span>
 							</span>
 							<?php if ($canChange && $saveOrder) : ?>
 								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
@@ -137,8 +137,11 @@ if ($saveOrder)
 				</tbody>
 			</table>
 
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 		<?php endif; ?>
 

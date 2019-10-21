@@ -44,10 +44,10 @@ class Redirect
 
 		// Array of image, task, title, action
 		$states = array(
-			1  => array('publish', 'links.unpublish', 'JENABLED', 'COM_REDIRECT_DISABLE_LINK'),
-			0  => array('unpublish', 'links.publish', 'JDISABLED', 'COM_REDIRECT_ENABLE_LINK'),
-			2  => array('archive', 'links.unpublish', 'JARCHIVED', 'JUNARCHIVE'),
-			-2 => array('trash', 'links.publish', 'JTRASHED', 'COM_REDIRECT_ENABLE_LINK'),
+			1  => array('icon-toggle-on', 'links.unpublish', 'JENABLED', 'COM_REDIRECT_DISABLE_LINK'),
+			0  => array('icon-toggle-off', 'links.publish', 'JDISABLED', 'COM_REDIRECT_ENABLE_LINK'),
+			2  => array('icon-archive', 'links.unpublish', 'JARCHIVED', 'JUNARCHIVE'),
+			-2 => array('icon-trash', 'links.publish', 'JTRASHED', 'COM_REDIRECT_ENABLE_LINK'),
 		);
 
 		$state = ArrayHelper::getValue($states, (int) $value, $states[0]);
@@ -57,7 +57,7 @@ class Redirect
 		{
 			$html = '<a href="#" onclick="return Joomla.listItemTask(\'cb' . $i . '\',\'' . $state[1] . '\')" class="tbody-icon'
 				. ($value == 1 ? ' active' : '') . '" title="' . Text::_($state[3])
-				. '"><span class="icon-' . $icon . '" aria-hidden="true"></span></a>';
+				. '"><span class="' . $icon . '" aria-hidden="true"></span></a>';
 		}
 
 		return $html;

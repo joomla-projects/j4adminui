@@ -48,13 +48,13 @@ use Joomla\CMS\Language\Text;
 extract($displayData);
 
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'versionsModal',
 	array(
 		'url'    => $link,
 		'title'  => $label,
-		'height' => '100%',
-		'width'  => '100%',
+		'height' => '75vh',
+		'width'  => '85vw',
 		'modalWidth'  => '80',
 		'bodyHeight'  => '60',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
@@ -64,6 +64,6 @@ echo HTMLHelper::_(
 
 ?>
 <button type="button" onclick="document.getElementById('versionsModal').open()" class="btn btn-secondary" data-toggle="modal">
-	<span class="fa fa-code-branch" aria-hidden="true"></span>
+	<span class="icon-code-branch" aria-hidden="true"></span>
 	<?php echo $label; ?>
 </button>

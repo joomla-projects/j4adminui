@@ -163,7 +163,7 @@ abstract class JHtmlAccess
 				$html[] = '	<div class="control-group">';
 				$html[] = '		<div class="controls">';
 				$html[] = '			<label class="checkbox" for="' . $eid . '">';
-				$html[] = '			<input type="checkbox" name="' . $name . '[]" value="' . $item->id . '" id="' . $eid . '"';
+				$html[] = '			<input type="checkbox" name="' . $name . '[]" value="' . $item->id . '" id="' . $eid . '" class="j-checkbox"';
 				$html[] = '					' . $checked . $rel . '>';
 				$html[] = '			' . LayoutHelper::render('joomla.html.treeprefix', array('level' => $item->level + 1)) . $item->title;
 				$html[] = '			</label>';
@@ -212,7 +212,7 @@ abstract class JHtmlAccess
 
 			// Build the HTML for the item.
 			$html[] = '	<li>';
-			$html[] = '		<input type="checkbox" name="' . $name . '[]" value="' . $item->id . '" id="' . $eid . '"';
+			$html[] = '		<input type="checkbox" name="' . $name . '[]" value="' . $item->id . '" id="' . $eid . '" class="j-checkbox"';
 			$html[] = '			' . $checked . '>';
 			$html[] = '		<label for="' . $eid . '">';
 			$html[] = '			' . Text::_($item->title);

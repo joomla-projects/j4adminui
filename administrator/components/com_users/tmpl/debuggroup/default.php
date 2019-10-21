@@ -21,7 +21,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 	<div id="j-main-container" class="j-main-container">
 		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<div class="table-responsive">
-			<table class="table">
+			<table class="table j-list-table">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_USERS_DEBUG_GROUP_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -99,8 +99,11 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 				<span class="icon-remove" aria-hidden="true"></span>&nbsp;<?php echo Text::_('COM_USERS_DEBUG_EXPLICIT_DENY'); ?>
 			</div>
 
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 		</div>
 		<input type="hidden" name="task" value="">

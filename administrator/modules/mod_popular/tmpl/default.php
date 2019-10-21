@@ -14,13 +14,13 @@ use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('bootstrap.framework');
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>" class="table j-striped-table">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:60%"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JGLOBAL_HITS'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
+			<th scope="col" class="text-center" width="20%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col" class="text-center" width="20%"><?php echo Text::_('JGLOBAL_HITS'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -42,19 +42,19 @@ HTMLHelper::_('bootstrap.framework');
 						<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>
 					<?php endif; ?>
 				</th>
-				<td>
-					<span class="badge badge-<?php echo $hits_class; ?>"><?php echo $item->hits; ?></span>
-				</td>
-				<td>
+				<td class="text-center text-nowrap">
 					<?php echo HTMLHelper::_('date', $item->publish_up, Text::_('DATE_FORMAT_LC4')); ?>
+				</td>
+				<td class="text-center">
+					<span class="badge badge-<?php echo $hits_class; ?>"><?php echo $item->hits; ?></span>
 				</td>
 			</tr>
 		<?php endforeach; ?>
 	<?php else : ?>
 		<tr>
-			<td colspan="3">
+			<th colspan="3">
 				<?php echo Text::_('MOD_POPULAR_NO_MATCHING_RESULTS'); ?>
-			</td>
+			</th>
 		</tr>
 	<?php endif; ?>
 	</tbody>

@@ -18,6 +18,7 @@ use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
@@ -133,61 +134,17 @@ class HtmlView extends BaseHtmlView
 		$canDo      = $this->canDo;
 		$clientId   = $this->state->get('item.client_id', 0);
 
-		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_ITEM_TITLE' : 'COM_MENUS_VIEW_EDIT_ITEM_TITLE'), 'list menu-add');
+		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_ITEM_TITLE' : 'COM_MENUS_VIEW_EDIT_ITEM_TITLE'), 'menu menu-add');
 
-		$toolbarButtons = [];
+		$toolbar = Toolbar::getInstance();
 
-		// If a new item, can save the item.  Allow users with edit permissions to apply changes to prevent returning to grid.
-		if ($isNew && $canDo->get('core.create'))
-		{
-			if ($canDo->get('core.edit'))
-			{
-				ToolbarHelper::apply('item.apply');
-			}
-
-			$toolbarButtons[] = ['save', 'item.save'];
-		}
-
-		// If not checked out, can save the item.
-		if (!$isNew && !$checkedOut && $canDo->get('core.edit'))
-		{
-			ToolbarHelper::apply('item.apply');
-
-			$toolbarButtons[] = ['save', 'item.save'];
-		}
-
-		// If the user can create new items, allow them to see Save & New
-		if ($canDo->get('core.create'))
-		{
-			$toolbarButtons[] = ['save2new', 'item.save2new'];
-		}
-
-		// If an existing item, can save to a copy only if we have create rights.
-		if (!$isNew && $canDo->get('core.create'))
-		{
-			$toolbarButtons[] = ['save2copy', 'item.save2copy'];
-		}
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
-
+		// language association
 		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations') && $clientId != 1)
 		{
-			ToolbarHelper::custom('item.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
+			$toolbar->standardButton('multilingual')
+				->text('JTOOLBAR_ASSOCIATIONS')
+				->task('item.editAssociations');
 		}
-
-		if ($isNew)
-		{
-			ToolbarHelper::cancel('item.cancel');
-		}
-		else
-		{
-			ToolbarHelper::cancel('item.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
 
 		// Get the help information for the menu item.
 		$lang = Factory::getLanguage();
@@ -205,6 +162,63 @@ class HtmlView extends BaseHtmlView
 			$url = $help->url;
 		}
 
-		ToolbarHelper::help($help->key, $help->local, $url);
+		$toolbar->help($help->key, $help->local, $url);
+
+		// If a new item, can save the item.  Allow users with edit permissions to apply changes to prevent returning to grid.
+		if ($isNew && $canDo->get('core.create'))
+		{
+			// Cancel button
+			$toolbar->cancel('item.cancel');
+			
+			// Save item group
+			$saveGroup = $toolbar->dropdownButton('save-group');
+			$saveGroup->configure(
+				function (Toolbar $childBar)
+				{
+					$childBar->apply('item.apply');
+					$childBar->save('item.save');
+					$childBar->save2new('item.save2new');
+				}
+			);
+		}
+		else
+		{
+
+			// Cancel button
+			$toolbar->cancel('item.cancel', 'JTOOLBAR_CLOSE');
+
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $user->get('id'));
+			
+			// Save item group 
+			$saveGroup = $toolbar->dropdownButton('save-group');
+			$saveGroup->configure(
+				function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
+				{
+					if (!$checkedOut && $itemEditable)
+					{
+						$childBar->apply('item.apply');
+					}
+
+					// Can't save the record if it's checked out and editable
+					if (!$checkedOut && $itemEditable)
+					{
+						$childBar->save('item.save');
+
+						// We can save this record, but check the create permission to see if we can return to make a new one.
+						if ($canDo->get('core.create'))
+						{
+							$childBar->save2new('item.save2new');
+						}
+					}
+
+					// If checked out, we can still save
+					if ($canDo->get('core.create'))
+					{
+						$childBar->save2copy('item.save2copy');
+					}
+				}
+			);
+		}
 	}
 }

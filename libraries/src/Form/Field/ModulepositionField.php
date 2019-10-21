@@ -155,17 +155,17 @@ class ModulepositionField extends TextField
 		$html[] = '<div class="input-append">';
 		$html[] = parent::getInput()
 			. '<a class="btn" title="' . Text::_('COM_MODULES_CHANGE_POSITION_TITLE') . '"  href="' . $link
-			. '"  data-toggle="modal" data-target="#modulePositionModal">'
+			. '"  data-toggle="modal" data-href="#modulePositionModal">'
 			. Text::_('COM_MODULES_CHANGE_POSITION_BUTTON') . '</a>';
 
 		$html[] = HTMLHelper::_(
-			'bootstrap.renderModal',
+			'webcomponent.renderModal',
 			'modulePositionModal',
 			array(
 				'url'    => $link,
 				'title'  => Text::_('COM_MODULES_CHANGE_POSITION_BUTTON'),
-				'height' => '100%',
-				'width'  => '100%',
+				'height' => '75vh',
+				'width'  => '85vw',
 				'modalWidth'  => '800',
 				'bodyHeight'  => '450',
 				'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'

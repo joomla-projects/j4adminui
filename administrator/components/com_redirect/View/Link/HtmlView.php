@@ -16,6 +16,7 @@ use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
@@ -87,39 +88,43 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title($isNew ? Text::_('COM_REDIRECT_MANAGER_LINK_NEW') : Text::_('COM_REDIRECT_MANAGER_LINK_EDIT'), 'map-signs redirect');
 
-		$toolbarButtons = [];
+		ToolbarHelper::help('JHELP_COMPONENTS_REDIRECT_MANAGER_EDIT');
 
-		// If not checked out, can save the item.
-		if ($canDo->get('core.edit'))
+		$toolbar = Toolbar::getInstance();
+
+		// Cancel Button
+		if($isNew)
 		{
-			ToolbarHelper::apply('link.apply');
-			$toolbarButtons[] = ['save', 'link.save'];
-		}
-
-		/**
-		 * This component does not support Save as Copy due to uniqueness checks.
-		 * While it can be done, it causes too much confusion if the user does
-		 * not change the Old URL.
-		 */
-		if ($canDo->get('core.edit') && $canDo->get('core.create'))
-		{
-			$toolbarButtons[] = ['save2new', 'link.save2new'];
-		}
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
-
-		if (empty($this->item->id))
-		{
-			ToolbarHelper::cancel('link.cancel');
+			$toolbar->cancel('link.cancel', 'JTOOLBAR_CLOSE');
 		}
 		else
 		{
-			ToolbarHelper::cancel('link.cancel', 'JTOOLBAR_CLOSE');
+			$toolbar->cancel('link.cancel');
 		}
 
-		ToolbarHelper::help('JHELP_COMPONENTS_REDIRECT_MANAGER_EDIT');
+		// Save button group
+		$saveGroup = $toolbar->dropdownButton('save-group');
+		$saveGroup->configure(
+			function (Toolbar $childBar) use ($canDo)
+			{
+
+				// If not checked out, can save the item.
+				if ($canDo->get('core.edit'))
+				{
+					$childBar->apply('link.apply');
+					$childBar->save('link.save');
+				}
+
+				/**
+				 * This component does not support Save as Copy due to uniqueness checks.
+				 * While it can be done, it causes too much confusion if the user does
+				 * not change the Old URL.
+				 */
+				if ($canDo->get('core.edit') && $canDo->get('core.create'))
+				{
+					$childBar->save2new('link.save2new');
+				}
+			}
+		);
 	}
 }

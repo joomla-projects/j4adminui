@@ -187,7 +187,7 @@ abstract class ModuleHelper
 		$module->module = preg_replace('/[^A-Z0-9_\.-]/i', '', $module->module);
 
 		$dispatcher = $app->bootModule($module->module, $app->getName())->getDispatcher($module, $app);
-
+	
 		// Check if we have a dispatcher
 		if ($dispatcher)
 		{
@@ -195,7 +195,7 @@ abstract class ModuleHelper
 			$dispatcher->dispatch();
 			$module->content = ob_get_clean();
 		}
-
+		
 		// Check if the current module has a style param to override template module style
 		$paramsChromeStyle = $params->get('style');
 		$basePath          = '';
@@ -226,21 +226,21 @@ abstract class ModuleHelper
 		}
 
 		$module->style = $attribs['style'];
-
+	
 		// If the $module is nulled it will return an empty content, otherwise it will render the module normally.
 		$app->triggerEvent('onRenderModule', array(&$module, &$attribs));
-
+		
 		if ($module === null || !isset($module->content))
 		{
 			return '';
 		}
-
+		
 		$displayData = array(
 			'module'  => $module,
 			'params'  => $params,
 			'attribs' => $attribs,
 		);
-
+	
 		foreach (explode(' ', $attribs['style']) as $style)
 		{
 			if ($moduleContent = LayoutHelper::render('chromes.' . $style, $displayData, $basePath))
@@ -356,6 +356,16 @@ abstract class ModuleHelper
 
 		// Build a cache ID for the resulting data object
 		$cacheId = implode(',', $groups) . '.' . $clientId . '.' . $itemId;
+
+		$db = Factory::getDbo();
+
+		$query = $db->getQuery(true)
+			->select('m.id, m.title, m.module, m.position, m.ordering, m.content, m.showtitle, m.params, mm.menuid')
+			->from('#__modules AS m')
+			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = m.id')
+			->where('m.published = 1')
+			->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id')
+			->where('e.enabled = 1');
 
 		$db      = Factory::getDbo();
 		$query   = $db->getQuery(true);

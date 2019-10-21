@@ -10,82 +10,51 @@
 defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\Registry\Registry;
+use Joomla\CMS\HTML\HTMLHelper;
 
 $list  = $displayData['list'];
 $pages = $list['pages'];
 
+HTMLHelper::_('webcomponent', 'system/joomla-pagination.es6.min.js', array('version'=> 'auto', 'relative' => true));
+
 $options = new Registry($displayData['options']);
+
 
 $showLimitBox   = $options->get('showLimitBox', false);
 $showPagesLinks = $options->get('showPagesLinks', true);
 $showLimitStart = $options->get('showLimitStart', true);
+$totalPages = ceil($list['total'] / $list['limit']);
+$limitStart = $list['limitstart'];
 
-// Calculate to display range of pages
-$currentPage = 1;
-$range       = 1;
-$step        = 5;
-
-if (!empty($pages['pages']))
-{
-	foreach ($pages['pages'] as $k => $page)
-	{
-		if (!$page['active'])
-		{
-			$currentPage = $k;
-		}
-	}
+$showResultFrom = (($limitStart / $list['limit'])) * $list['limit'] + 1;
+$showResultTo = (($limitStart / $list['limit']) + 1) * $list['limit'];
+if ($showResultTo > $list['total']) {
+    $showResultTo = $list['total'];
 }
+$resultMsg = Text::sprintf('JGLOBAL_SHOW_PAGINATION_MSG', $showResultFrom, $showResultTo, $list['total']);
 
-if ($currentPage >= $step)
-{
-	if ($currentPage % $step === 0)
-	{
-		$range = ceil($currentPage / $step) + 1;
-	}
-	else
-	{
-		$range = ceil($currentPage / $step);
-	}
-}
 ?>
-
-
-<?php if (!empty($pages)) : ?>
-	<nav role="navigation" aria-label="<?php echo Text::_('JLIB_HTML_PAGINATION'); ?>">
-		<div class="pagination pagination-toolbar text-center">
-
-			<?php if ($showLimitBox) : ?>
-				<div class="limit float-right">
-					<?php echo Text::_('JGLOBAL_DISPLAY_NUM') . $list['limitfield']; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ($showPagesLinks) : ?>
-				<ul class="pagination ml-auto mb-4 mr-0">
-					<?php echo LayoutHelper::render('joomla.pagination.link', $pages['start']); ?>
-					<?php echo LayoutHelper::render('joomla.pagination.link', $pages['previous']); ?>
-					<?php foreach ($pages['pages'] as $k => $page) : ?>
-
-						<?php $output = LayoutHelper::render('joomla.pagination.link', $page); ?>
-						<?php if (in_array($k, range($range * $step - ($step + 1), $range * $step), true)) : ?>
-							<?php if (($k % $step === 0 || $k === $range * $step - ($step + 1)) && $k !== $currentPage && $k !== $range * $step - $step) : ?>
-								<?php $output = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $output); ?>
-							<?php endif; ?>
-						<?php endif; ?>
-
-						<?php echo $output; ?>
-					<?php endforeach; ?>
-					<?php echo LayoutHelper::render('joomla.pagination.link', $pages['next']); ?>
-					<?php echo LayoutHelper::render('joomla.pagination.link', $pages['end']); ?>
-				</ul>
-			<?php endif; ?>
-
-			<?php if ($showLimitStart) : ?>
-				<input type="hidden" name="<?php echo $list['prefix']; ?>limitstart" value="<?php echo $list['limitstart']; ?>">
-			<?php endif; ?>
-
-		</div>
-	</nav>
+<?php if($totalPages > 1) : ?>
+    <joomla-pagination 
+        class="j-pagination"
+        total-visible="7"
+        next-icon="icon-chevron-right"
+        prev-icon="icon-chevron-left"
+        first-icon="icon-first"
+        last-icon="icon-last"
+        navbtns-state="icon"
+        disable-btns=""
+        input-selector="#<?php echo $list['prefix']; ?>limitstart"
+        pagination="true"
+        limit="<?php echo $list['limit']; ?>"
+        result-msg="<?php echo $resultMsg; ?>"
+    >
+        <?php for($i = 1; $i <= $totalPages; $i++) : ?>
+            <li class="pagination-item <?php echo $i === (($limitStart / $list['limit']) + 1) ? 'active': ''; ?>" value="<?php echo $i; ?>" style="display: none;" ><?php echo $i; ?></li>
+        <?php endfor; ?>
+    </joomla-pagination>
+    <?php if ($showLimitStart) : ?>
+        <input type="hidden" name="<?php echo $list['prefix']; ?>limitstart" id="<?php echo $list['prefix']; ?>limitstart" value="<?php echo $list['limitstart']; ?>">
+    <?php endif; ?>
 <?php endif; ?>

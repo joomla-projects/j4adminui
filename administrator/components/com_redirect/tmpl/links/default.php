@@ -16,6 +16,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $user      = Factory::getUser();
@@ -28,13 +29,13 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		<?php if ($this->redirectPluginId) : ?>
 			<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->redirectPluginId . '&tmpl=component&layout=modal'); ?>
 			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'plugin' . $this->redirectPluginId . 'Modal',
 				array(
 					'url'         => $link,
 					'title'       => Text::_('COM_REDIRECT_EDIT_PLUGIN_SETTINGS'),
-					'height'      => '400px',
-					'width'       => '800px',
+					'height'      => '75vh',
+					'width'       => '85vw',
 					'bodyHeight'  => '70',
 					'modalWidth'  => '80',
 					'closeButton' => false,
@@ -52,12 +53,12 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		<?php endif; ?>
 
 		<?php if (empty($this->items)) : ?>
-			<div class="alert alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+			<div class="j-alert j-alert-info d-flex mt-4">
+				<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-			<table class="table">
+			<table class="table j-list-table">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_REDIRECTS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -138,27 +139,30 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 				</tbody>
 			</table>
 
-			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<div class="mb-4">
+				<?php echo $this->loadTemplate('addform'); ?>
+			</div>
+
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 		<?php endif; ?>
 
-		<?php if (!empty($this->items)) : ?>
-			<?php echo $this->loadTemplate('addform'); ?>
-		<?php endif; ?>
 		<?php // Load the batch processing form if user is allowed ?>
 			<?php if ($user->authorise('core.create', 'com_redirect')
 				&& $user->authorise('core.edit', 'com_redirect')
 				&& $user->authorise('core.edit.state', 'com_redirect')) : ?>
-				<?php echo HTMLHelper::_(
-					'bootstrap.renderModal',
-					'collapseModal',
-					array(
-						'title'  => Text::_('COM_REDIRECT_BATCH_OPTIONS'),
-						'footer' => $this->loadTemplate('batch_footer'),
-					),
-					$this->loadTemplate('batch_body')
-				); ?>
+					<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_REDIRECT_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+						<section>
+							<?php echo $this->loadTemplate('batch_body'); ?>
+						</section>
+						<footer>
+							<?php echo $this->loadTemplate('batch_footer'); ?>
+						</footer>
+					</joomla-modal>
 			<?php endif; ?>
 
 		<input type="hidden" name="task" value="">

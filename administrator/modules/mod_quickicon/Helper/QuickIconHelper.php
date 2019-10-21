@@ -17,7 +17,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\Module\Quickicon\Administrator\Event\QuickIconsEvent;
 use Joomla\Registry\Registry;
-
+use Joomla\CMS\Language\Text;
 /**
  * Helper for mod_quickicon
  *
@@ -66,8 +66,9 @@ abstract class QuickIconHelper
 			if ($params->get('show_users'))
 			{
 				$tmp = [
-					'image'   => 'fa fa-users',
 					'link'    => Route::_('index.php?option=com_users&view=users'),
+					'image'   => 'icon-users duotone',
+					'icon_class'   => 'warning',
 					'linkadd' => Route::_('index.php?option=com_users&task=users.add'),
 					'name'    => 'MOD_QUICKICON_USER_MANAGER',
 					'access'  => array('core.manage', 'com_users', 'core.create', 'com_users'),
@@ -85,8 +86,9 @@ abstract class QuickIconHelper
 			if ($params->get('show_menuitems'))
 			{
 				$tmp = [
-					'image'   => 'fa fa-list',
 					'link'    => Route::_('index.php?option=com_menus&view=items&menutype='),
+					'image'   => 'icon-menu duotone',
+					'icon_class'   => 'danger',
 					'linkadd' => Route::_('index.php?option=com_menus&task=item.add'),
 					'name'    => 'MOD_QUICKICON_MENUITEMS_MANAGER',
 					'access'  => array('core.manage', 'com_menus', 'core.create', 'com_menus'),
@@ -104,8 +106,9 @@ abstract class QuickIconHelper
 			if ($params->get('show_articles'))
 			{
 				$tmp = [
-					'image'   => 'fa fa-file-alt',
 					'link'    => Route::_('index.php?option=com_content&view=articles'),
+					'image'   => 'icon-content duotone',
+					'icon_class'   => 'success',
 					'linkadd' => Route::_('index.php?option=com_content&task=article.add'),
 					'name'    => 'MOD_QUICKICON_ARTICLE_MANAGER',
 					'access'  => array('core.manage', 'com_content', 'core.create', 'com_content'),
@@ -123,8 +126,8 @@ abstract class QuickIconHelper
 			if ($params->get('show_categories'))
 			{
 				$tmp = [
-					'image'   => 'fa fa-folder-open',
 					'link'    => Route::_('index.php?option=com_categories&view=categories&extension=com_content'),
+					'image'   => 'icon-folder-open duotone',
 					'linkadd' => Route::_('index.php?option=com_categories&task=category.add'),
 					'name'    => 'MOD_QUICKICON_CATEGORY_MANAGER',
 					'access'  => array('core.manage', 'com_categories', 'core.create', 'com_categories'),
@@ -142,7 +145,8 @@ abstract class QuickIconHelper
 			if ($params->get('show_media'))
 			{
 				self::$buttons[$key][] = [
-					'image'  => 'fa fa-images',
+					'image'  => 'icon-media duotone',
+					'icon_class'   => 'danger',
 					'link'   => Route::_('index.php?option=com_media'),
 					'name'   => 'MOD_QUICKICON_MEDIA_MANAGER',
 					'access' => array('core.manage', 'com_media'),
@@ -153,8 +157,9 @@ abstract class QuickIconHelper
 			if ($params->get('show_modules'))
 			{
 				$tmp = [
-					'image'   => 'fa fa-cube',
 					'link'    => Route::_('index.php?option=com_modules&view=modules&client_id=0'),
+					'image'   => 'icon-modules duotone',
+					'icon_class'   => 'danger',
 					'linkadd' => Route::_('index.php?option=com_modules&view=select&client_id=0'),
 					'name'    => 'MOD_QUICKICON_MODULE_MANAGER',
 					'access'  => array('core.manage', 'com_modules'),
@@ -172,7 +177,8 @@ abstract class QuickIconHelper
 			if ($params->get('show_plugins'))
 			{
 				$tmp = [
-					'image'  => 'fa fa-plug',
+					'image'  => 'icon-plugins duotone',
+					'icon_class'   => 'success',
 					'link'   => Route::_('index.php?option=com_plugins'),
 					'name'   => 'MOD_QUICKICON_PLUGIN_MANAGER',
 					'access' => array('core.manage', 'com_plugins'),
@@ -190,59 +196,17 @@ abstract class QuickIconHelper
 			if ($params->get('show_templates'))
 			{
 				self::$buttons[$key][] = [
-					'image'  => 'fa fa-paint-brush',
 					'link'   => Route::_('index.php?option=com_templates&view=styles&client_id=0'),
+					'image'  => 'icon-brush duotone',
+					'icon_class'   => 'danger',
 					'name'   => 'MOD_QUICKICON_TEMPLATES',
 					'access' => array('core.admin', 'com_templates'),
 					'group'  => 'MOD_QUICKICON_SITE'
 				];
 			}
 
-			if ($params->get('show_checkin'))
-			{
-				$tmp = [
-					'image'   => 'fa fa-unlock-alt',
-					'link'    => Route::_('index.php?option=com_checkin'),
-					'name'    => 'MOD_QUICKICON_CHECKINS',
-					'access'  => array('core.admin', 'com_checkin'),
-					'group'   => 'MOD_QUICKICON_SYSTEM'
-				];
-
-				if ($params->get('show_checkin') == 2)
-				{
-					$tmp['ajaxurl'] = 'index.php?option=com_checkin&amp;task=getQuickiconContent&amp;format=json';
-				}
-
-				self::$buttons[$key][] = $tmp;
-			}
-
-			if ($params->get('show_cache'))
-			{
-				$tmp = [
-					'image'   => 'fa fa-cloud',
-					'link'    => Route::_('index.php?option=com_cache'),
-					'name'    => 'MOD_QUICKICON_CACHE',
-					'access'  => array('core.admin', 'com_cache'),
-					'group'   => 'MOD_QUICKICON_SYTEM'
-				];
-
-				if ($params->get('show_cache') == 2)
-				{
-					$tmp['ajaxurl'] = 'index.php?option=com_cache&amp;task=display.getQuickiconContent&amp;format=json';
-				}
-
-				self::$buttons[$key][] = $tmp;
-			}
-
-			if ($params->get('show_global'))
-			{
-				self::$buttons[$key][] = [
-					'image'  => 'fa fa-cog',
-					'link'   => Route::_('index.php?option=com_config'),
-					'name'   => 'MOD_QUICKICON_GLOBAL_CONFIGURATION',
-					'access' => array('core.manage', 'com_config', 'core.admin', 'com_config'),
-					'group'  => 'MOD_QUICKICON_SYSTEM',
-				];
+			if (!empty($params->get('module_ordering'))) {
+				self::$buttons[$key] = self::getOrderedModuleList(self::$buttons[$key], $params);
 			}
 
 			PluginHelper::importPlugin('quickicon');
@@ -251,7 +215,6 @@ abstract class QuickIconHelper
 				'onGetIcons',
 				new QuickIconsEvent('onGetIcons', ['context' => $context])
 			);
-
 			foreach ($arrays as $response)
 			{
 				if (!\is_array($response))
@@ -281,7 +244,38 @@ abstract class QuickIconHelper
 				}
 			}
 		}
-
 		return self::$buttons[$key];
+	}
+
+	/**
+	 * Re-order button list based on order values
+	 *
+	 * @method 	Aajax
+	 * @param	Array	List of buttons
+	 * @param	Array 	Module params for get the order values
+	 *
+	 * @since   4.0.0
+	 */
+	private static function getOrderedModuleList($buttons, $params )
+	{
+		$orders = $params->get('module_ordering');
+		$orders = json_decode($orders);
+		if (count($orders))
+		{
+			$collector = [];
+			foreach ($orders as $order)
+			{
+				foreach ($buttons as $key=>$button)
+				{
+					if ($order == Text::_($button['name']))
+					{
+						array_push($collector, $button);
+						unset($buttons[$key]);
+					}
+				}
+			}
+			return array_merge($collector, $buttons);
+		}
+		return $buttons;
 	}
 }

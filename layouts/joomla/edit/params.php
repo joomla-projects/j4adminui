@@ -116,9 +116,10 @@ foreach ($fieldSets as $name => $fieldSet)
 
 	if (!$isGrandchild && $hasParent)
 	{
-		echo '<fieldset id="fieldset-' . $name . '" class="form-no-margin options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
-		echo '<legend>' . $label . '</legend>';
-		echo '<div>';
+		echo '<fieldset id="fieldset-' . $name . '" class="options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
+		echo '<div class="j-card mb-4">';
+		echo '<div class="j-card-header">' . $label . '</div>';
+		echo '<div class="j-card-body">';
 	}
 	// Tabs
 	elseif (!$hasParent)
@@ -143,8 +144,9 @@ foreach ($fieldSets as $name => $fieldSet)
 		if (!$hasChildren)
 		{
 			echo '<fieldset id="fieldset-' . $name . '" class="form-no-margin options-grid-form ' . (!empty($fieldSet->class) ? $fieldSet->class : '') . '">';
-			echo '<legend>' . $label . '</legend>';
-			echo '<div>';
+			echo '<div class="j-card">';
+			echo '<div class="j-card-header">' . $label . '</div>';
+			echo '<div class="j-card-body">';
 
 			$opentab = 2;
 		}
@@ -153,7 +155,7 @@ foreach ($fieldSets as $name => $fieldSet)
 	// Include the description when available
 	if (isset($fieldSet->description) && trim($fieldSet->description))
 	{
-		echo '<div class="alert alert-info">' . $this->escape(Text::_($fieldSet->description)) . '</div>';
+		echo '<div class="j-alert j-alert-info">' . $this->escape(Text::_($fieldSet->description)) . '</div>';
 	}
 
 	// We're on the deepest level => output fields
@@ -173,6 +175,7 @@ foreach ($fieldSets as $name => $fieldSet)
 	if (!$isGrandchild && $hasParent)
 	{
 		echo '</div>';
+		echo '</div>';
 		echo '</fieldset>';
 	}
 }
@@ -181,6 +184,7 @@ if ($opentab)
 {
 	if ($opentab > 1)
 	{
+		echo '</div>';
 		echo '</div>';
 		echo '</fieldset>';
 	}

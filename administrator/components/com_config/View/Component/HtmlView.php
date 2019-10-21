@@ -103,12 +103,9 @@ class HtmlView extends BaseHtmlView
 	protected function addToolbar()
 	{
 		ToolbarHelper::title(Text::_($this->component->option . '_configuration'), 'equalizer config');
-		ToolbarHelper::apply('component.apply');
-		ToolbarHelper::divider();
-		ToolbarHelper::save('component.save');
-		ToolbarHelper::divider();
-		ToolbarHelper::cancel('component.cancel', 'JTOOLBAR_CLOSE');
-		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_COMPONENTS_' . $this->currentComponent . '_OPTIONS');
+		ToolbarHelper::cancel('component.cancel', 'JTOOLBAR_CLOSE');
+		ToolbarHelper::save('component.save');
+		ToolbarHelper::apply('component.apply');	
 	}
 }

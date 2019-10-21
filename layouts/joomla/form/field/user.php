@@ -101,7 +101,7 @@ if (!$readonly)
 <?php // Create a dummy text field with the user name. ?>
 <joomla-field-user class="field-user-wrapper"
 		url="<?php echo (string) $uri; ?>"
-		modal=".modal"
+		modal=".userModal"
 		modal-width="100%"
 		modal-height="400px"
 		input=".field-user-input"
@@ -112,19 +112,20 @@ if (!$readonly)
 		<?php if (!$readonly) : ?>
 			<span class="input-group-append">
 				<button type="button" class="btn btn-primary button-select" title="<?php echo Text::_('JLIB_FORM_CHANGE_USER'); ?>">
-					<span class="fa fa-user icon-white" aria-hidden="true"></span>
+					<span class="icon-user" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_('JLIB_FORM_CHANGE_USER'); ?></span>
 				</button>
 			</span>
 			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
+				'webcomponent.renderModal',
 				'userModal_' . $id,
 				array(
 					'url'         => $uri,
 					'title'       => Text::_('JLIB_FORM_CHANGE_USER'),
 					'closeButton' => true,
-					'height'      => '100%',
-					'width'       => '100%',
+					'height'      => '75vh',
+					'width'       => '85vw',
+					'class'		  => 'userModal',
 					'modalWidth'  => 80,
 					'bodyHeight'  => 60,
 					'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal">' . Text::_('JCANCEL') . '</button>'

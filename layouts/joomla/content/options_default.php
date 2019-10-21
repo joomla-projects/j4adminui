@@ -14,13 +14,15 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 ?>
 
-<fieldset class="<?php echo !empty($displayData->formclass) ? $displayData->formclass : ''; ?>">
-	<legend><?php echo $displayData->name; ?></legend>
-	<?php if (!empty($displayData->description)) : ?>
-		<p><?php echo $displayData->description; ?></p>
-	<?php endif; ?>
+<fieldset class="j-card <?php echo !empty($displayData->formclass) ? $displayData->formclass : ''; ?>">
+	<div class="j-card-header">
+		<?php echo $displayData->name; ?>
+	</div>
 	<?php $fieldsnames = explode(',', $displayData->fieldsname); ?>
-		<div>
+	<div class="j-card-body">
+		<?php if (!empty($displayData->description)) : ?>
+			<p class="text-muted"><?php echo $displayData->description; ?></p>
+		<?php endif; ?>
 		<?php foreach ($fieldsnames as $fieldname) : ?>
 			<?php foreach ($displayData->form->getFieldset($fieldname) as $field) : ?>
 				<?php $datashowon = ''; ?>
@@ -39,5 +41,5 @@ use Joomla\CMS\HTML\HTMLHelper;
 					<?php endif; ?>
 			<?php endforeach; ?>
 		<?php endforeach; ?>
-		</div>
+	</div>
 </fieldset>

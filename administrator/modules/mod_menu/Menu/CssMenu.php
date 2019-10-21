@@ -147,7 +147,6 @@ class CssMenu
 				return $this->root;
 			}
 		}
-
 		$this->preprocess($this->root);
 
 		return $this->root;
@@ -505,32 +504,40 @@ class CssMenu
 	 */
 	public function getIconClass($node)
 	{
-		$identifier = $node->class;
-
-		// Top level is special
-		if (trim($identifier) == '')
+		// Check for direct icon
+		if(isset($node->icon) && $node->icon)
 		{
-			return null;
+			return $node->icon;
 		}
-
-		// We were passed a class name
-		if (substr($identifier, 0, 6) == 'class:')
-		{
-			$class = substr($identifier, 6);
-		}
-		// We were passed background icon url. Build the CSS class for the icon
 		else
 		{
-			if ($identifier == null)
+			$identifier = $node->class;
+
+			// Top level is special
+			if (trim($identifier) == '')
 			{
 				return null;
 			}
 
-			$class = preg_replace('#\.[^.]*$#', '', basename($identifier));
-			$class = preg_replace('#\.\.[^A-Za-z0-9\.\_\- ]#', '', $class);
-		}
+			// We were passed a class name
+			if (substr($identifier, 0, 6) == 'class:')
+			{
+				$class = substr($identifier, 6);
+			}
+			// We were passed background icon url. Build the CSS class for the icon
+			else
+			{
+				if ($identifier == null)
+				{
+					return null;
+				}
 
-		$html = 'fa fa-' . $class . ' fa-fw';
+				$class = preg_replace('#\.[^.]*$#', '', basename($identifier));
+				$class = preg_replace('#\.\.[^A-Za-z0-9\.\_\- ]#', '', $class);
+			}
+
+			$html = $class;
+		}
 
 		return $html;
 	}

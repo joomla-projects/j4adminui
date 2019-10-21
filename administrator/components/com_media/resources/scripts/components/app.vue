@@ -1,15 +1,15 @@
 <template>
     <div class="media-container row">
-        <div class="media-sidebar col-md-2 d-none d-md-block">
-            <media-disk v-for="(disk, index) in disks" :uid="index" :key="index" :disk="disk"></media-disk>
-        </div>
-        <div class="col-md-10">
+       
+        <div class="col-md-12">
             <div class="media-main">
                 <media-toolbar></media-toolbar>
                 <media-browser></media-browser>
             </div>
         </div>
+        
         <media-upload></media-upload>
+        <media-upload-panel></media-upload-panel>
         <media-create-folder-modal></media-create-folder-modal>
         <media-preview-modal></media-preview-modal>
         <media-rename-modal></media-rename-modal>

@@ -115,33 +115,39 @@ class HtmlView extends BaseHtmlView
 			($isNew ? 'add' : 'edit')
 		);
 
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_FIELDS_FIELDS_EDIT');
+
 		// For new records, check the create permission.
 		if ($isNew)
 		{
-			ToolbarHelper::apply('field.apply');
+			// cancel button
+			ToolbarHelper::cancel('field.cancel');
 
+			// save button's group
 			ToolbarHelper::saveGroup(
 				[
+					['apply', 'field.apply'],
 					['save', 'field.save'],
 					['save2new', 'field.save2new']
 				],
 				'btn-success'
 			);
-
-			ToolbarHelper::cancel('field.cancel');
 		}
 		else
 		{
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			$toolbarButtons = [];
+			// cancel button
+			ToolbarHelper::cancel('field.cancel', 'JTOOLBAR_CLOSE');
 
+			// save button's group
+			$toolbarButtons = [];
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{
-				ToolbarHelper::apply('field.apply');
-
+				$toolbarButtons[] = ['apply', 'field.apply'];
 				$toolbarButtons[] = ['save', 'field.save'];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.
@@ -161,10 +167,6 @@ class HtmlView extends BaseHtmlView
 				$toolbarButtons,
 				'btn-success'
 			);
-
-			ToolbarHelper::cancel('field.cancel', 'JTOOLBAR_CLOSE');
 		}
-
-		ToolbarHelper::help('JHELP_COMPONENTS_FIELDS_FIELDS_EDIT');
 	}
 }

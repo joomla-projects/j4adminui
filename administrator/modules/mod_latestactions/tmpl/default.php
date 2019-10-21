@@ -12,35 +12,28 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
-HTMLHelper::_('bootstrap.framework');
-
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
-	<caption class="sr-only"><?php echo $module->title; ?></caption>
-	<thead>
-		<tr>
-			<th scope="col" style="width:80%"><?php echo Text::_('MOD_LATESTACTIONS_ACTION'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php if (count($list)) : ?>
+<div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+	<?php if (count($list)) : ?>
+		<ul class="list-group list-group-flush">
 		<?php foreach ($list as $i => $item) : ?>
-		<tr>
-			<td>
+			<li class="list-group-item py-4">
+				<h5 class="text-muted">
+					<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
+				</h5>
 				<?php echo $item->message; ?>
-			</td>
-			<td>
-				<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC5')); ?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-		<?php else : ?>
-		<tr>
-			<td colspan="2">
-				<?php echo Text::_('MOD_LATEST_ACTIONS_NO_MATCHING_RESULTS'); ?>
-			</td>
-		</tr>
-		<?php endif; ?>
-	</tbody>
-</table>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php else : ?>
+		<div class="col">
+			<div class="j-card">
+				<div class="j-card-body">
+					<p class="text-warning m-0">
+						<?php echo Text::_('MOD_LATEST_ACTIONS_NO_MATCHING_RESULTS'); ?>
+					</p>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+</div>

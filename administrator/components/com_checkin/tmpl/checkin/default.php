@@ -25,7 +25,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 				<?php if ($this->total > 0) : ?>
-					<table id="global-checkin" class="table">
+					<table id="global-checkin" class="table j-list-table">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_CHECKIN_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -62,11 +62,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+
+
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>

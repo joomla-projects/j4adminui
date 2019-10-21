@@ -13,15 +13,11 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 ?>
-<div class="header-item-content">
-	<a class="d-flex" href="<?php echo Uri::root(); ?>"
-		title="<?php echo Text::sprintf('MOD_FRONTEND_PREVIEW', $sitename); ?>"
-		target="_blank">
-		<div class="d-flex align-items-end mx-auto">
-			<span class="fa fa-external-link-alt" aria-hidden="true"></span>
-		</div>
-		<div class="align-items-center tiny">
-			<?php echo HTMLHelper::_('string.truncate', $sitename, 28, false, false); ?>
-		</div>
-	</a>
-</div>
+<a class="header-item-link" href="<?php echo Uri::root(); ?>"
+    title="<?php echo Text::sprintf('MOD_FRONTEND_PREVIEW', $sitename); ?>"
+    target="_blank">
+    <span class="header-item-text">
+        <?php echo Text::_('MOD_FRONTEND_VIEW_SITE'); ?>
+    </span>
+    <span class="header-item-icon icon-new-tab" aria-hidden="true"></span>
+</a>

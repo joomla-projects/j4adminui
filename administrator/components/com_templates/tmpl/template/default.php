@@ -20,6 +20,8 @@ HTMLHelper::_('script', 'vendor/diff/diff.min.js', array('version' => 'auto', 'r
 HTMLHelper::_('script', 'com_templates/admin-template-compare.min.js', array('version' => 'auto', 'relative' => true));
 HTMLHelper::_('script', 'com_templates/admin-template-toggle-switch.min.js', array('version' => 'auto', 'relative' => true));
 
+HTMLHelper::_('webcomponent.assets','joomla-modal');
+
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.tabstate');
@@ -82,14 +84,14 @@ if ($this->type == 'font')
 	<?php endif; ?>
 </div>
 <div class="row mt-2">
-	<div id="treeholder" class="col-md-3 tree-holder">
-		<div class="card">
-			<div class="card-body">
+	<div id="treeholder" class="col-md-5 tree-holder">
+		<div class="j-card">
+			<div class="j-card-body">
 				<?php echo $this->loadTemplate('tree'); ?>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<fieldset class="options-grid-form options-grid-form-full">
 		<?php if ($this->type == 'home') : ?>
 			<legend><?php echo Text::_('COM_TEMPLATES_HOME_HEADING'); ?></legend>
@@ -146,10 +148,10 @@ if ($this->type == 'font')
 					<?php foreach ($this->archive as $file) : ?>
 						<li>
 							<?php if (substr($file, -1) === DIRECTORY_SEPARATOR) : ?>
-								<span class="fa fa-folder fa-fw" aria-hidden="true"></span>&nbsp;<?php echo $file; ?>
+								<span class="icon-folder-2" aria-hidden="true"></span>&nbsp;<?php echo $file; ?>
 							<?php endif; ?>
 							<?php if (substr($file, -1) != DIRECTORY_SEPARATOR) : ?>
-								<span class="fa fa-file fa-fw" aria-hidden="true"></span>&nbsp;<?php echo $file; ?>
+								<span class="icon-file" aria-hidden="true"></span>&nbsp;<?php echo $file; ?>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
@@ -233,9 +235,9 @@ if ($this->type == 'font')
 <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'overrides', Text::_('COM_TEMPLATES_TAB_OVERRIDES')); ?>
 <div class="row mt-2">
 	<div class="col-md-12">
-		<div class="card-body">
+		<div class="j-card-body">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_MODULES'); ?></legend>
 					<ul class="list-unstyled">
@@ -247,14 +249,14 @@ if ($this->type == 'font')
 										. '&id=' . $input->getInt('id') . '&file=' . $this->file . '&' . $token;
 								?>
 								<a href="<?php echo Route::_($overrideLinkUrl); ?>">
-									<span class="fa fa-copy" aria-hidden="true"></span>&nbsp;<?php echo $module->name; ?>
+									<span class="icon-copy" aria-hidden="true"></span>&nbsp;<?php echo $module->name; ?>
 								</a>
 							</li>
 						<?php endforeach; ?>
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_COMPONENTS'); ?></legend>
 					<ul class="list-unstyled">
@@ -262,7 +264,7 @@ if ($this->type == 'font')
 						<?php foreach ($this->overridesList['components'] as $key => $value) : ?>
 							<li class="component-folder">
 								<a href="#" class="component-folder-url">
-									<span class="fa fa-folder" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
+									<span class="icon-folder-2" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
 								</a>
 								<ul class="list-unstyled">
 									<?php foreach ($value as $view) : ?>
@@ -272,7 +274,7 @@ if ($this->type == 'font')
 													. '&id=' . $input->getInt('id') . '&file=' . $this->file . '&' . $token;
 											?>
 											<a class="component-file-url" href="<?php echo Route::_($overrideLinkUrl); ?>">
-												<span class="fa fa-copy" aria-hidden="true"></span>&nbsp;<?php echo $view->name; ?>
+												<span class="icon-copy" aria-hidden="true"></span>&nbsp;<?php echo $view->name; ?>
 											</a>
 										</li>
 									<?php endforeach; ?>
@@ -282,7 +284,7 @@ if ($this->type == 'font')
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_PLUGINS'); ?></legend>
 					<ul class="list-unstyled">
@@ -290,7 +292,7 @@ if ($this->type == 'font')
 						<?php foreach ($this->overridesList['plugins'] as $key => $group) : ?>
 							<li class="plugin-folder">
 								<a href="#" class="plugin-folder-url">
-									<span class="fa fa-folder" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
+									<span class="icon-folder-2" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
 								</a>
 								<ul class="list-unstyled">
 									<?php foreach ($group as $plugin) : ?>
@@ -300,7 +302,7 @@ if ($this->type == 'font')
 												. '&id=' . $input->getInt('id') . '&file=' . $this->file . '&' . $token;
 											?>
 											<a class="plugin-file-url" href="<?php echo Route::_($overrideLinkUrl); ?>">
-												<span class="fa fa-copy" aria-hidden="true"></span> <?php echo $plugin->name; ?>
+												<span class="icon-copy" aria-hidden="true"></span> <?php echo $plugin->name; ?>
 											</a>
 										</li>
 									<?php endforeach; ?>
@@ -310,7 +312,7 @@ if ($this->type == 'font')
 					</ul>
 					</fieldset>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6 col-lg-3">
 					<fieldset class="options-grid-form options-grid-form-full">
 					<legend><?php echo Text::_('COM_TEMPLATES_OVERRIDES_LAYOUTS'); ?></legend>
 					<ul class="list-unstyled">
@@ -318,7 +320,7 @@ if ($this->type == 'font')
 						<?php foreach ($this->overridesList['layouts'] as $key => $value) : ?>
 						<li class="layout-folder">
 							<a href="#" class="layout-folder-url">
-								<span class="fa fa-folder" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
+								<span class="icon-folder" aria-hidden="true"></span>&nbsp;<?php echo $key; ?>
 							</a>
 							<ul class="list-unstyled">
 								<?php foreach ($value as $layout) : ?>
@@ -328,7 +330,7 @@ if ($this->type == 'font')
 												. '&id=' . $input->getInt('id') . '&file=' . $this->file . '&' . $token;
 										?>
 										<a href="<?php echo Route::_($overrideLinkUrl); ?>">
-											<span class="fa fa-copy" aria-hidden="true"></span>&nbsp;<?php echo $layout->name; ?>
+											<span class="icon-copy" aria-hidden="true"></span>&nbsp;<?php echo $layout->name; ?>
 										</a>
 									</li>
 								<?php endforeach; ?>
@@ -347,8 +349,8 @@ if ($this->type == 'font')
 <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'description', Text::_('COM_TEMPLATES_TAB_DESCRIPTION')); ?>
 <div class="row mt-3">
 	<div class="col-12">
-		<div class="card">
-			<div class="card-body">
+		<div class="j-card">
+			<div class="j-card-body">
 				<?php echo $this->loadTemplate('description'); ?>
 			</div>
 		</div>
@@ -375,7 +377,7 @@ $copyModalData = array(
 );
 ?>
 <form action="<?php echo Route::_('index.php?option=com_templates&task=template.copy&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post" name="adminForm" id="adminForm">
-	<?php echo LayoutHelper::render('joomla.modal.main', $copyModalData); ?>
+	<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $copyModalData); ?>
 	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
 <?php if ($this->type != 'home') : ?>
@@ -390,7 +392,7 @@ $copyModalData = array(
 	);
 	?>
 	<form action="<?php echo Route::_('index.php?option=com_templates&task=template.renameFile&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post">
-		<?php echo LayoutHelper::render('joomla.modal.main', $renameModalData); ?>
+		<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $renameModalData); ?>
 		<?php echo HTMLHelper::_('form.token'); ?>
 	</form>
 <?php endif; ?>
@@ -405,7 +407,7 @@ $copyModalData = array(
 		'body' => $this->loadTemplate('modal_delete_body')
 	);
 	?>
-	<?php echo LayoutHelper::render('joomla.modal.main', $deleteModalData); ?>
+	<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $deleteModalData); ?>
 <?php endif; ?>
 <?php // File Modal
 $fileModalData = array(
@@ -421,7 +423,7 @@ $fileModalData = array(
 	'body' => $this->loadTemplate('modal_file_body')
 );
 ?>
-<?php echo LayoutHelper::render('joomla.modal.main', $fileModalData); ?>
+<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $fileModalData); ?>
 <?php // Folder Modal
 $folderModalData = array(
 	'selector' => 'folderModal',
@@ -436,7 +438,7 @@ $folderModalData = array(
 	'body' => $this->loadTemplate('modal_folder_body')
 );
 ?>
-<?php echo LayoutHelper::render('joomla.modal.main', $folderModalData); ?>
+<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $folderModalData); ?>
 <?php if ($this->type != 'home') : ?>
 	<?php // Resize Modal
 	$resizeModalData = array(
@@ -449,7 +451,7 @@ $folderModalData = array(
 	);
 	?>
 	<form action="<?php echo Route::_('index.php?option=com_templates&task=template.resizeImage&id=' . $input->getInt('id') . '&file=' . $this->file); ?>" method="post">
-		<?php echo LayoutHelper::render('joomla.modal.main', $resizeModalData); ?>
+		<?php echo LayoutHelper::render('joomla.webcomponent.modal.main', $resizeModalData); ?>
 		<?php echo HTMLHelper::_('form.token'); ?>
 	</form>
 <?php endif; ?>

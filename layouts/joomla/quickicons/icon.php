@@ -17,10 +17,12 @@ $onclick = empty($displayData['onclick']) ? '' : (' onclick="' . $displayData['o
 
 if (isset($displayData['ajaxurl'])) {
 	$size = 'small';
-	$dataUrl = 'data-url="' . $displayData['ajaxurl'] . '"';
+	$dataAttributes = 'data-url="' . $displayData['ajaxurl'] . '"';
+	$dataAttributes .= ' data-status="loading"';
 } else {
 	$size = 'big';
-	$dataUrl = '';
+	$dataAttributes = 'data-status="none"';
+	$dataLoading = '';
 }
 
 // The title for the link (a11y)
@@ -47,52 +49,51 @@ if (!empty($displayData['class']))
 	$tmp[] = $this->escape($displayData['class']);
 }
 
+if (!isset($displayData['icon_class'])) {
+	$displayData['icon_class'] = 'primary';
+}
+
 // Make the class string
 $class = !empty($tmp) ? ' class="' . implode(' ', array_unique($tmp)) . '"' : '';
-
 ?>
-<?php // If it is a button with two links: make it a list
-	if (isset($displayData['linkadd'])): ?>
-		<li class="quickicon-group col mb-3 d-flex">
-		<ul class="list-unstyled d-flex w-100">
-			<li class="quickicon flex-grow-1">
-	<?php else: ?>		
-		<li class="quickicon quickicon-single col mb-3">
-	<?php endif; ?>	
-
-		<a <?php echo $id . $class; ?> href="<?php echo $displayData['link']; ?>"<?php echo $target . $onclick . $title; ?>>
-			<?php if (isset($displayData['image'])): ?>
-				<div class="quickicon-icon d-flex align-items-end <?php echo $size ?>">
-					<div class="<?php echo $displayData['image']; ?>" aria-hidden="true"></div>
-				</div>
-			<?php endif; ?>
-			<?php if (isset($displayData['ajaxurl'])) : ?>
-				<div class="quickicon-amount" <?php echo $dataUrl ?> aria-hidden="true">
-					<span class="fa fa-spinner" aria-hidden="true"></span>
-				</div>
+<div class="col-md-6 col-lg-4 col-xl-3 j-quickicon j-quickicon-skeleton" data-dragable-group="none" <?php echo $dataAttributes; ?>>
+	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
+		<div class="j-card-overview-box pt-3">
+			<div class="j-card-overview-icon j-<?php echo $displayData['icon_class']; ?>">
+				<i class="<?php echo $displayData['image']; ?>"></i>
+			</div>
+			<div class="j-card-overview-content" area-hidden="true">
+				<?php if (isset($displayData['ajaxurl'])): ?>
+					<span class="j-counter-animation">
+						<i class="icon-spinner" aria-hidden="true"></i>
+					</span>
+				<?php endif; ?>
+				<?php // Name indicates the component
+				if (isset($displayData['name'])): ?>
+					<sub <?php echo isset($displayData['ajaxurl']) ? ' aria-hidden="true"' : ''; ?>>
+						<?php echo Text::_($displayData['name']); ?>
+					</sub>
+				<?php endif; ?>
 				<div class="quickicon-sr-desc sr-only"></div>
-			<?php endif; ?>
-			<?php // Name indicates the component
-			if (isset($displayData['name'])): ?>
-				<div class="quickicon-name d-flex align-items-end" <?php echo isset($displayData['ajaxurl']) ? ' aria-hidden="true"' : ''; ?>>
-					<?php echo Text::_($displayData['name']); ?>
+			</div>
+		</div>
+
+		<div class="j-card-footer j-card-footer-lg">
+			<div class="j-card-footer-item">
+				<a href="<?php echo $displayData['link']; ?>">
+					<span class="icon-eye-open j-card-icon j-icon-lg duotone" aria-hidden="true"></span>
+					<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
+					<span aria-hidden="true"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span>
+				</a>
+			</div>
+			<?php // Add the link to the edit-form
+			if (isset($displayData['linkadd'])): ?>
+				<div class="j-card-footer-item j-card-footer-icon">
+					<a href="<?php echo $displayData['linkadd']; ?>" title="<?php echo Text::sprintf('MOD_QUICKICON_ADD_NEW', Text::_($displayData['name'])); ?>"><span class="icon-plus" area-hidden="true"></span><span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span></a>
 				</div>
 			<?php endif; ?>
-			<?php // Information or action from plugins
-			if (isset($displayData['text'])): ?>
-				<div class="quickicon-text d-flex align-items-center">
-					<?php echo $text; ?>
-				</div>
-			<?php endif; ?>
-		</a>
-	</li>
-	<?php // Add the link to the edit-form
-	if (isset($displayData['linkadd'])): ?>
-		<li class="btn-block quickicon-linkadd j-links-link d-flex">
-			<a class="d-flex align-items-center" href="<?php echo $displayData['linkadd']; ?>" title="<?php echo Text::_($displayData['name'] . '_ADD'); ?>">
-				<span class="fa fa-plus" aria-hidden="true"></span>
-			</a>
-		</li>
-	</ul>
-	</li>
-	<?php endif; ?>
+		</div>
+
+		<input type="hidden" name="sub_module_name[]" value="<?php echo Text::_($displayData['name']); ?>" class="width-20 text-area-order">
+	</div>
+</div>

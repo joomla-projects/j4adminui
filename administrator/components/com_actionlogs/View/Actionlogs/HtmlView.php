@@ -123,14 +123,14 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		ToolbarHelper::title(Text::_('COM_ACTIONLOGS_MANAGER_USERLOGS'), 'list-2');
+		ToolbarHelper::title(Text::_('COM_ACTIONLOGS_MANAGER_USERLOGS'), 'user-activity-log');
 
 		ToolbarHelper::custom('actionlogs.exportSelectedLogs', 'download', '', 'COM_ACTIONLOGS_EXPORT_CSV', true);
 		ToolbarHelper::custom('actionlogs.exportLogs', 'download', '', 'COM_ACTIONLOGS_EXPORT_ALL_CSV', false);
 		ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'actionlogs.delete');
+		ToolbarHelper::help('JHELP_COMPONENTS_ACTIONLOGS');
+		ToolbarHelper::preferences('com_actionlogs');
 		$bar = Toolbar::getInstance('toolbar');
 		$bar->appendButton('Confirm', 'COM_ACTIONLOGS_PURGE_CONFIRM', 'delete', 'COM_ACTIONLOGS_TOOLBAR_PURGE', 'actionlogs.purge', false);
-		ToolbarHelper::preferences('com_actionlogs');
-		ToolbarHelper::help('JHELP_COMPONENTS_ACTIONLOGS');
 	}
 }

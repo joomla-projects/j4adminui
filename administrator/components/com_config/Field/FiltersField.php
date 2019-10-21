@@ -92,6 +92,7 @@ class FiltersField extends FormField
 		$html = array();
 
 		// Open the table.
+		$html[] = '<div class="j-table-responsive">';
 		$html[] = '<table id="filter-config" class="table">';
 
 		// The table heading.
@@ -180,6 +181,7 @@ class FiltersField extends FormField
 
 		// Close the table.
 		$html[] = '</table>';
+		$html[] = '</div>';
 
 		return implode("\n", $html);
 	}

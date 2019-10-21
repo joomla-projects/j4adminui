@@ -61,7 +61,10 @@ elseif (!empty($onclick))
 	<?php echo $htmlAttributes ?? ''; ?>
 	<?php echo $title; ?>
 	>
-	<span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
+	<span class="<?php echo trim($class ?? ''); ?> icon-md" aria-hidden="true"></span>
 	<?php echo $text ?? ''; ?>
+	<?php if(isset($hasButtons) && !empty($dropdownItems)) : ?>
+		<span class="icon-chevron-down" aria-hidden="true"></span>
+	<?php endif; ?>
 </<?php echo $tagName; ?>>
 </joomla-toolbar-button>

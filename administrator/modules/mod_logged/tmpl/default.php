@@ -11,54 +11,56 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-
-HTMLHelper::_('bootstrap.framework');
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
-	<caption class="sr-only"><?php echo $module->title; ?></caption>
-	<thead>
-		<tr>
-			<th scope="col" style="width:50%">
-				<?php if ($params->get('name', 1) == 0) : ?>
-					<?php echo Text::_('JGLOBAL_USERNAME'); ?>
-				<?php else : ?>
-					<?php echo Text::_('MOD_LOGGED_NAME'); ?>
-				<?php endif; ?>
-			</th>
-			<th scope="col" style="width:30%"><?php echo Text::_('JCLIENT'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
-		</tr>
-	</thead>
-	<tbody>
+<div id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+	<div class="list-group list-group-flush">
 		<?php foreach ($users as $user) : ?>
-			<tr>
-				<th scope="row">
-					<?php if (isset($user->editLink)) : ?>
-						<a href="<?php echo $user->editLink; ?>">
-							<?php echo htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8'); ?>
-						</a>
-					<?php else : ?>
-						<?php echo htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8'); ?>
-					<?php endif; ?>
-				</th>
-				<td>
-					<?php if ($user->client_id === null) : ?>
-						<?php // Don't display a client ?>
-					<?php elseif ($user->client_id) : ?>
-						<?php echo Text::_('JADMINISTRATION'); ?>
-					<?php else : ?>
-						<form action="<?php echo $user->logoutLink; ?>" method="post" name="adminForm">
+			<div class="list-group-item py-4">
+				<div class="row align-items-center">
+					<div class="col-auto">
+						<div class="j-user-avatar">
+							<span class="icon-user" area-hidden="true"></span>
+						</div>
+					</div>
+
+					<div class="col-6 col-lg-3">
+						<?php if (isset($user->editLink)) : ?>
+							<a href="<?php echo $user->editLink; ?>">
+								<strong><?php echo htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8'); ?></strong>
+							</a>
+						<?php else : ?>
+							<strong><?php echo htmlspecialchars($user->name, ENT_QUOTES, 'UTF-8'); ?></strong>
+						<?php endif; ?>
+
+						<div class="text-muted">
+							<?php echo htmlspecialchars($user->email, ENT_QUOTES, 'UTF-8'); ?>
+						</div>
+					</div>
+
+					<div class="d-none d-lg-block col-lg-3">
+						<?php if ($user->client_id === null) : ?>
+							<?php // Don't display a client ?>
+						<?php elseif ($user->client_id) : ?>
+							<?php echo Text::_('JADMINISTRATION'); ?>
+						<?php else: ?>
 							<?php echo Text::_('JSITE'); ?>
-							<button type="submit" class="mr-2 btn btn-danger btn-sm">
-								<?php echo Text::_('JLOGOUT'); ?>
+						<?php endif; ?>
+
+						<div class="text-muted">
+							<?php echo HTMLHelper::_('date', $user->time, Text::_('DATE_FORMAT_LC5')); ?>
+						</div>
+					</div>
+
+					<div class="col-auto ml-auto">
+						<form action="<?php echo $user->logoutLink; ?>" method="post" name="adminForm">
+							<button type="submit" class="btn btn-link btn-sm m-n2">
+								<span class="j-card-icon icon-exit"></span> <?php echo Text::_('JLOGOUT'); ?>
 							</button>
 						</form>
-					<?php endif; ?>
-				</td>
-				<td>
-					<?php echo HTMLHelper::_('date', $user->time, Text::_('DATE_FORMAT_LC5')); ?>
-				</td>
-			</tr>
+					</div>
+
+				</div>
+			</div>
 		<?php endforeach; ?>
-	</tbody>
-</table>
+	</div>
+</div>

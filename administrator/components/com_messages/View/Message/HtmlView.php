@@ -83,14 +83,17 @@ class HtmlView extends BaseHtmlView
 		if ($this->getLayout() == 'edit')
 		{
 			Factory::getApplication()->input->set('hidemainmenu', true);
-			ToolbarHelper::title(Text::_('COM_MESSAGES_WRITE_PRIVATE_MESSAGE'), 'envelope-open-text new-privatemessage');
-			ToolbarHelper::save('message.save', 'COM_MESSAGES_TOOLBAR_SEND');
-			ToolbarHelper::cancel('message.cancel', 'JTOOLBAR_CLOSE');
+			ToolbarHelper::title(Text::_('COM_MESSAGES_WRITE_PRIVATE_MESSAGE'), 'envelope-open new-privatemessage');
 			ToolbarHelper::help('JHELP_COMPONENTS_MESSAGING_WRITE');
+			ToolbarHelper::cancel('message.cancel', 'JTOOLBAR_CLOSE');
+			ToolbarHelper::save('message.save', 'COM_MESSAGES_TOOLBAR_SEND');
 		}
 		else
 		{
 			ToolbarHelper::title(Text::_('COM_MESSAGES_VIEW_PRIVATE_MESSAGE'), 'envelope inbox');
+			
+			ToolbarHelper::help('JHELP_COMPONENTS_MESSAGING_READ');
+
 			$sender = User::getInstance($this->item->user_id_from);
 
 			if ($sender->authorise('core.admin') || $sender->authorise('core.manage', 'com_messages') && $sender->authorise('core.login.admin'))
@@ -99,7 +102,6 @@ class HtmlView extends BaseHtmlView
 			}
 
 			ToolbarHelper::cancel('message.cancel');
-			ToolbarHelper::help('JHELP_COMPONENTS_MESSAGING_READ');
 		}
 	}
 }

@@ -12,7 +12,7 @@ defined('JPATH_BASE') or die;
 use Joomla\CMS\Language\Text;
 
 $data = $displayData;
-$icon = "icon-menu-2";
+$icon = "icon-caret-v";
 $sort = '';
 $caption = '';
 $selected = '';
@@ -40,7 +40,11 @@ endif;
 			<?php echo Text::_($data->title); ?>
 		</span>
 	<?php endif; ?>
-	<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
+	<?php if($data->order === 'a.ordering') : ?>
+		<span class="<?php echo $data->icon; ?>" aria-hidden="true"></span>
+	<?php else : ?>
+		<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
+	<?php endif; ?>
 	<span class="sr-only">
 		<?php echo Text::_('JGLOBAL_SORT_BY'); ?>
 		<?php echo (!empty($data->title)) ? Text::_($data->title) : Text::_('JGRID_HEADING_ORDERING'); ?>

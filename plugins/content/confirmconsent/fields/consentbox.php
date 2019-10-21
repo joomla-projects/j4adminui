@@ -139,10 +139,11 @@ class JFormFieldConsentBox extends CheckboxesField
 		if ($data['articleid'])
 		{
 			$attribs['data-toggle'] = 'modal';
+			$attribs['data-href'] = '#modal-' . $this->id;
 
 			$data['label'] = HTMLHelper::_(
 				'link',
-				'#modal-' . $this->id,
+				'#',
 				$data['label'],
 				$attribs
 			);
@@ -177,9 +178,9 @@ class JFormFieldConsentBox extends CheckboxesField
 		{
 			$modalParams['title']  = $layoutData['label'];
 			$modalParams['url']    = $this->getAssignedArticleUrl();
-			$modalParams['height'] = 800;
-			$modalParams['width']  = '100%';
-			$modalHtml = HTMLHelper::_('bootstrap.renderModal', 'modal-' . $this->id, $modalParams);
+			$modalParams['height'] = '75vh';
+			$modalParams['width']  = '80vw';
+			$modalHtml = HTMLHelper::_('webcomponent.renderModal', 'modal-' . $this->id, $modalParams);
 		}
 
 		return $modalHtml . parent::renderField($options);

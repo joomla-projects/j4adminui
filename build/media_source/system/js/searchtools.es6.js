@@ -55,6 +55,10 @@ Joomla = window.Joomla || {};
         // Global container
         mainContainerSelector: '.js-stools',
 
+        // Client Filter field
+        clientIdSelector: '.js-stools-selector-btn',
+        clientIdFieldSelector: '.js-stools-selector-client-id-field',
+
         // Filter fields
         searchBtnSelector: '.js-stools-btn-search',
         filterBtnSelector: '.js-stools-btn-filter',
@@ -70,9 +74,13 @@ Joomla = window.Joomla || {};
         orderColumnSelector: '.js-stools-column-order',
         orderBtnSelector: '.js-stools-btn-order',
         orderFieldSelector: '.js-stools-field-order',
+        orderTogglerBtn: '.js-stools-order-toggler',
         orderFieldName: 'list[fullordering]',
-        limitFieldSelector: '.js-stools-field-limit',
+        limitFieldSelector: '.js-stools-field-limit-link',
         defaultLimit: 20,
+
+        // List limit
+        listLimitFieldName: 'list[limit]',
 
         activeOrder: null,
         activeDirection: 'ASC',
@@ -92,6 +100,10 @@ Joomla = window.Joomla || {};
       this.filterContainer = document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) ? document.querySelector(`${this.options.formSelector} ${this.options.filterContainerSelector}`) : '';
       this.filtersHidden = this.options.filtersHidden;
 
+      // Client filter
+      this.clientFieldBtns = Array.prototype.slice.call(document.querySelectorAll(`${this.options.mainContainerSelector} ${this.options.clientIdSelector}`));
+      this.clientFieldInput = document.querySelector(`${this.options.mainContainerSelector} ${this.options.clientIdFieldSelector}`);
+
       // List fields
       this.listButton = document.querySelector(this.options.listBtnSelector);
       this.listContainer = document.querySelector(`${this.options.formSelector} ${this.options.listContainerSelector}`);
@@ -109,9 +121,13 @@ Joomla = window.Joomla || {};
       // Ordering
       this.orderCols = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.orderColumnSelector}`));
       this.orderField = document.querySelector(`${this.options.formSelector} ${this.options.orderFieldSelector}`);
+      this.orderToggler = document.querySelector(`${this.options.mainContainerSelector} ${this.options.orderTogglerBtn}`);
+      this.fullOrdering = document.querySelector(`${this.options.mainContainerSelector} [name="${this.options.orderFieldName}"]`);
+
 
       // Limit
-      this.limitField = document.querySelector(`${this.options.formSelector} ${this.options.limitFieldSelector}`);
+      this.limitField = Array.prototype.slice.call(document.querySelectorAll(`${this.options.formSelector} ${this.options.limitFieldSelector}`));
+      this.listLimitFieldName = document.querySelector(`input[name="${this.options.listLimitFieldName}"]`);
 
       // Init trackers
       this.activeColumn = null;
@@ -160,8 +176,10 @@ Joomla = window.Joomla || {};
       if (this.filterButton) {
         this.filterButton.addEventListener('click', (e) => {
           self.toggleFilters();
+          self.toggleFilterButtonText();
+          self.toggleClass(document.querySelector('.js-stools-right'), 'icon-plus-circle', 'icon-minus-circle');
           e.stopPropagation();
-          e.preventDefault();
+          e.preventDefault(); 
         });
       }
 
@@ -219,6 +237,9 @@ Joomla = window.Joomla || {};
       });
 
       this.checkActiveStatus(this);
+      this.listLimitFilter();
+      this.handleToggleClick();
+      this.handleOnChangeRadio();
     }
 
     checkFilter(element) {
@@ -287,14 +308,18 @@ Joomla = window.Joomla || {};
       els.forEach((item) => {
         if (item.classList.contains('active')) {
           activeFilterCount += 1;
-          cont.filterButton.classList.remove('btn-secondary');
-          cont.filterButton.classList.add('btn-primary');
         }
       });
 
       // Disable clear button when no filter is active and search is empty
       if (this.clearButton) {
-        this.clearButton.disabled = (activeFilterCount === 0) && !this.searchString.length;
+        if (activeFilterCount === 0 && !this.searchString.length) {
+          if (!this.clearButton.classList.contains('d-none')) {
+            this.clearButton.classList.add('d-none');
+          }
+        } else {
+          this.clearButton.classList.remove('d-none');
+        }
       }
     }
 
@@ -391,6 +416,40 @@ Joomla = window.Joomla || {};
       self.activeOrder = `${self.activeColumn} ${newDirection}`;
 
       self.updateFieldValue(self.orderField, self.activeOrder);
+    }
+
+    /**
+     * Toggle classes of an element
+     * 
+     * @param HTMLElement elem  The element in which the toggle will be performed
+     * @param string  cls1 The first class
+     * @param string cls2 The second class
+     * 
+     * @return void
+     * 
+     * @since 4.0.0
+     */
+    toggleClass(elem, cls1, cls2) {
+      if (elem.classList.contains(cls1)) {
+        elem.classList.remove(cls1);
+        elem.classList.add(cls2);
+      } else if (elem.classList.contains(cls2)) {
+        elem.classList.remove(cls2);
+        elem.classList.add(cls1);
+      }
+    }
+
+    toggleFilterButtonText() {
+      const filterBtnText = document.querySelector('.js-stools-filter-btn-text');
+      if (filterBtnText) {
+        if (filterBtnText.dataset.status == '1') {
+          filterBtnText.innerHTML = Joomla.Text._('JFILTER_HIDE_FILTER');
+          filterBtnText.dataset.status = '0';
+        } else {
+          filterBtnText.innerHTML = Joomla.Text._('JFILTER_SHOW_FILTER');
+          filterBtnText.dataset.status = '1';
+        }
+      }
     }
 
     createOrderField() {
@@ -491,7 +550,61 @@ Joomla = window.Joomla || {};
         }
       }
     }
+
+    // eslint-disable-next-line class-methods-use-this
+    listLimitFilter() {
+      const self = this;
+      if (this.limitField) {
+        this.limitField.forEach((elem) => {
+          elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const limit = event.target.getAttribute('value');
+            self.listLimitFieldName.value = limit;
+            self.theForm.submit();
+          }, false);
+        });
+      }
+    }
+
+    handleToggleClick() {
+      if (this.orderToggler) {
+        this.orderToggler.addEventListener('click', (event) => {
+          event.preventDefault();
+          const selectValue = this.fullOrdering.value;
+
+          let orderValue = [];
+
+          if (selectValue) {
+            orderValue = selectValue.split(' ');
+
+            if (!!orderValue[1] && orderValue[1].toUpperCase() === 'ASC') {
+              orderValue[1] = 'DESC';
+            } else if (!!orderValue[1] && orderValue[1].toUpperCase() === 'DESC') {
+              orderValue[1] = 'ASC';
+            }
+          }
+
+          this.fullOrdering.value = orderValue.join(' ');
+          this.theForm.submit();
+        }, false);
+      }
+    }
+
+    handleOnChangeRadio() {
+      const self = this;
+      if (this.clientFieldBtns) {
+        this.clientFieldBtns.forEach((elem) => {
+          elem.addEventListener('click', (event) => {
+            event.preventDefault();
+            const value = event.target.getAttribute('value');
+            self.clientFieldInput.value = value;
+            self.theForm.submit();
+          });
+        });
+      }
+    }
   }
+
 
   const onBoot = () => {
     if (Joomla.getOptions('searchtools')) {

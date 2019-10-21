@@ -124,17 +124,12 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_TAGS_MANAGER_TAGS'), 'tags');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('tag.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
 				->text('JTOOLBAR_CHANGE_STATUS')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
+				->icon('icon-ellipsis-h')
 				->buttonClass('btn btn-action')
 				->listCheck(true);
 
@@ -175,12 +170,17 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_TAGS_MANAGER');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_tags');
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_TAGS_MANAGER');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('tag.add');
+		}
 	}
 
 	/**

@@ -50,25 +50,25 @@ class StatsAdminHelper
 		{
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_PHP');
-			$rows[$i]->icon  = 'cogs';
+			$rows[$i]->icon  = 'php';
 			$rows[$i]->data  = PHP_VERSION;
 			$i++;
 
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_($db->name);
-			$rows[$i]->icon  = 'database';
+			$rows[$i]->icon  = 'database duotone';
 			$rows[$i]->data  = $db->getVersion();
 			$i++;
 
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_CACHING');
-			$rows[$i]->icon  = 'tachometer-alt';
+			$rows[$i]->icon  = 'lighting';
 			$rows[$i]->data  = $app->get('caching') ? Text::_('JENABLED') : Text::_('JDISABLED');
 			$i++;
 
 			$rows[$i]        = new \stdClass;
 			$rows[$i]->title = Text::_('MOD_STATS_GZIP');
-			$rows[$i]->icon  = 'bolt';
+			$rows[$i]->icon  = 'archive duotone';
 			$rows[$i]->data  = $app->get('gzip') ? Text::_('JENABLED') : Text::_('JDISABLED');
 			$i++;
 		}
@@ -107,7 +107,7 @@ class StatsAdminHelper
 			{
 				$rows[$i]        = new \stdClass;
 				$rows[$i]->title = Text::_('MOD_STATS_USERS');
-				$rows[$i]->icon  = 'users';
+				$rows[$i]->icon  = 'users duotone';
 				$rows[$i]->data  = $users;
 				$rows[$i]->link  = Route::_('index.php?option=com_users');
 				$i++;
@@ -117,7 +117,7 @@ class StatsAdminHelper
 			{
 				$rows[$i]        = new \stdClass;
 				$rows[$i]->title = Text::_('MOD_STATS_ARTICLES');
-				$rows[$i]->icon  = 'file';
+				$rows[$i]->icon  = 'content duotone';
 				$rows[$i]->data  = $items;
 				$rows[$i]->link  = Route::_('index.php?option=com_content&view=articles&filter[published]=1');
 				$i++;

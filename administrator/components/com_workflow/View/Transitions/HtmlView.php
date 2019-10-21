@@ -150,7 +150,7 @@ class HtmlView extends BaseHtmlView
 
 		$workflow = !empty($this->state->get('active_workflow', '')) ? Text::_($this->state->get('active_workflow', '')) . ': ' : '';
 
-		ToolbarHelper::title(Text::sprintf('COM_WORKFLOW_TRANSITIONS_LIST', $this->escape($workflow)), 'address contact');
+		ToolbarHelper::title(Text::sprintf('COM_WORKFLOW_TRANSITIONS_LIST', $this->escape($workflow)), 'workflows contact');
 
 		$isCore = $this->workflow->core;
 		$arrow  = Factory::getLanguage()->isRtl() ? 'arrow-right' : 'arrow-left';
@@ -173,8 +173,8 @@ class HtmlView extends BaseHtmlView
 				$dropdown = $toolbar->dropdownButton('status-group')
 					->text('JTOOLBAR_CHANGE_STATUS')
 					->toggleSplit(false)
-					->icon('fa fa-ellipsis-h')
-					->buttonClass('btn btn-action')
+					->icon('icon-globe')
+					->buttonClass('btn btn-info')
 					->listCheck(true);
 
 				$childBar = $dropdown->getChildToolbar();

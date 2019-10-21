@@ -245,7 +245,7 @@ class AdministratorApplication extends CMSApplication
 		{
 			$this->enqueueMessage(Text::_('JERROR_ALERTNOTEMPLATE'), 'error');
 			$template->params = new Registry;
-			$template->template = 'atum';
+			$template->template = 'spring';
 		}
 
 		// Cache the result

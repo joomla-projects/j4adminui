@@ -66,3 +66,31 @@ if (document.getElementById('installLanguagesButton')) {
 		}
 	})
 }
+
+if (document.getElementById('installSampleDataButton')) {
+	document.getElementById('installSampleDataButton').addEventListener('click', function(e) {
+		e.preventDefault();
+		var form = document.getElementById('sampleDataForm');
+		if (form) {
+			// Install the extra languages
+			Joomla.install(['sample'], form);
+
+			document.getElementById('installSampleData').classList.toggle('active');
+			document.getElementById('installSampleData').style.display = 'none';
+			document.getElementById('installFinal').classList.add('active');
+		}
+	})
+}
+
+if (document.getElementById('j-install-check-all-lang')) {
+	document.getElementById('j-install-check-all-lang').addEventListener('change', function(e){
+		const checkboxes = [...document.querySelectorAll('#j-lang-checkboxes input[type="checkbox"]')];
+		checkboxes.forEach(box => {
+			if (e.target.checked) {
+				box.checked = true;
+			} else {
+				box.checked = false;
+			}
+		});
+	});
+}

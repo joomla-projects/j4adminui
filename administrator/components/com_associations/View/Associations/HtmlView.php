@@ -210,6 +210,9 @@ class HtmlView extends BaseHtmlView
 	{
 		$user = Factory::getUser();
 
+		// help button
+		ToolbarHelper::help('JHELP_COMPONENTS_ASSOCIATIONS');
+		
 		if (isset($this->typeName) && isset($this->extensionName))
 		{
 			$helper = AssociationsHelper::getExtensionHelper($this->extensionName);
@@ -221,7 +224,7 @@ class HtmlView extends BaseHtmlView
 			{
 				$languageKey = strtoupper($this->extensionName) . '_CATEGORIES';
 			}
-
+			// toolbar title
 			ToolbarHelper::title(
 				Text::sprintf(
 					'COM_ASSOCIATIONS_TITLE_LIST', Text::_($this->extensionName), Text::_($languageKey)
@@ -230,7 +233,7 @@ class HtmlView extends BaseHtmlView
 		}
 		else
 		{
-			ToolbarHelper::title(Text::_('COM_ASSOCIATIONS_TITLE_LIST_SELECT'), 'language assoc');
+			ToolbarHelper::title(Text::_('COM_ASSOCIATIONS_TITLE_LIST_SELECT'), 'multilingual assoc');
 		}
 
 		if ($user->authorise('core.admin', 'com_associations') || $user->authorise('core.options', 'com_associations'))
@@ -243,7 +246,5 @@ class HtmlView extends BaseHtmlView
 
 			ToolbarHelper::preferences('com_associations');
 		}
-
-		ToolbarHelper::help('JHELP_COMPONENTS_ASSOCIATIONS');
 	}
 }

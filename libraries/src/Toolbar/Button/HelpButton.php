@@ -41,8 +41,8 @@ class HelpButton extends BasicButton
 	protected function prepareOptions(array &$options)
 	{
 		$options['text'] = $options['text'] ?: 'JTOOLBAR_HELP';
-		$options['icon'] = $options['icon'] ?? 'fa fa-question';
-		$options['button_class'] = $options['button_class'] ?? 'btn btn-info';
+		$options['icon'] = $options['icon'] ?? 'icon-info-circle';
+		$options['button_class'] = $options['button_class'] ?? 'btn btn-link';
 		$options['onclick'] = $options['onclick'] ?? $this->_getCommand();
 
 		parent::prepareOptions($options);

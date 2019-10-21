@@ -10,6 +10,9 @@
 defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
+
+HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
 $form = $displayData->getForm();
 
@@ -19,8 +22,8 @@ $fieldSets = $form->getFieldsets('metadata');
 
 <?php foreach ($fieldSets as $name => $fieldSet) : ?>
 	<?php if (isset($fieldSet->description) && trim($fieldSet->description)) : ?>
-		<div class="alert alert-info">
-			<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+		<div class="j-alert j-alert-info mt-0 mb-4">
+			<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 			<?php echo $this->escape(Text::_($fieldSet->description)); ?>
 		</div>
 	<?php endif; ?>
@@ -32,12 +35,19 @@ $fieldSets = $form->getFieldsets('metadata');
 		echo $form->renderField('metadesc');
 		echo $form->renderField('metakey');
 	}
+	?>
 
-	foreach ($form->getFieldset($name) as $field)
-	{
-		if ($field->name !== 'jform[metadata][tags][]')
+	<a href="javascript:;" id="jmetadata-callout" class="btn btn-secondary btn-block"><span class="icon-options-cog" area-hidden="true"></span> <?php echo Text::_('JGLOBAL_FIELDSET_SEO_ADVANCED_OPTIONS'); ?></a>
+	<joomla-callout for="#jmetadata-callout" dismiss="true" position="bottom">
+		<div class="callout-content">
+		<?php
+		foreach ($form->getFieldset($name) as $field)
 		{
-			echo $field->renderField();
-		}
-	} ?>
+			if ($field->name !== 'jform[metadata][tags][]')
+			{
+				echo $field->renderField();
+			}
+		} ?>
+		</div>
+	</joomla-callout>
 <?php endforeach; ?>

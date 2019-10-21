@@ -99,6 +99,8 @@ class HtmlView extends BaseHtmlView
 			throw new GenericDataException(implode("\n", $errors), 500);
 		}
 
+		
+
 		$this->addToolbar();
 
 		parent::display($tpl);
@@ -115,12 +117,9 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_menus');
 
-		ToolbarHelper::title(Text::_('COM_MENUS_VIEW_MENUS_TITLE'), 'list menumgr');
+		ToolbarHelper::title(Text::_('COM_MENUS_VIEW_MENUS_TITLE'), 'menu menumgr');
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::addNew('menu.add');
-		}
+		ToolbarHelper::custom('menus.rebuild', 'refresh', 'refresh', 'JTOOLBAR_REBUILD', false);
 
 		if ($canDo->get('core.delete'))
 		{
@@ -128,12 +127,13 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::deleteList('COM_MENUS_MENU_CONFIRM_DELETE', 'menus.delete', 'JTOOLBAR_DELETE');
 		}
 
-		ToolbarHelper::custom('menus.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
-
 		if ($canDo->get('core.admin') && $this->state->get('client_id') == 1)
 		{
 			ToolbarHelper::custom('menu.exportXml', 'download', 'download', 'COM_MENUS_MENU_EXPORT_BUTTON', true);
 		}
+
+		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER');
+		ToolbarHelper::divider();
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
@@ -141,7 +141,10 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::preferences('com_menus');
 		}
 
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER');
+		if ($canDo->get('core.create'))
+		{
+			ToolbarHelper::addNew('menu.add');
+		}
+
 	}
 }

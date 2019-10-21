@@ -137,19 +137,35 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(
 			Text::_('COM_CONTENT_PAGE_' . ($checkedOut ? 'VIEW_ARTICLE' : ($isNew ? 'ADD_ARTICLE' : 'EDIT_ARTICLE'))),
-			'pencil-2 article-add'
+			'edit article-add'
 		);
+
+		// language association
+		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+		{
+			$toolbar->standardButton('multilingual')
+				->text('JTOOLBAR_ASSOCIATIONS')
+				->task('article.editAssociations');
+		}
+
+		// if new
+		if ($isNew)
+		{
+			// help button
+			$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
+
+			// cancel button
+			$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+		}
 
 		// For new records, check the create permission.
 		if ($isNew && (count($user->getAuthorisedCategories('com_content', 'core.create')) > 0))
 		{
-			$apply = $toolbar->apply('article.apply');
-
 			$saveGroup = $toolbar->dropdownButton('save-group');
-
 			$saveGroup->configure(
 				function (Toolbar $childBar)
 				{
+					$childBar->apply('article.apply');
 					$childBar->save('article.save');
 					$childBar->save2new('article.save2new');
 				}
@@ -160,53 +176,8 @@ class HtmlView extends BaseHtmlView
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			if (!$checkedOut && $itemEditable)
-			{
-				$toolbar->apply('article.apply');
-			}
-
-			$saveGroup = $toolbar->dropdownButton('save-group');
-
-			$saveGroup->configure(
-				function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
-				{
-					// Can't save the record if it's checked out and editable
-					if (!$checkedOut && $itemEditable)
-					{
-						$childBar->save('article.save');
-
-						// We can save this record, but check the create permission to see if we can return to make a new one.
-						if ($canDo->get('core.create'))
-						{
-							$childBar->save2new('article.save2new');
-						}
-					}
-
-					// If checked out, we can still save
-					if ($canDo->get('core.create'))
-					{
-						$childBar->save2copy('article.save2copy');
-					}
-				}
-			);
-
-			if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
-			{
-				$toolbar->versions('com_content.article', $this->item->id);
-			}
-
 			if (!$isNew)
 			{
-				$url = Route::link(
-					'site',
-					\ContentHelperRoute::getArticleRoute($this->item->id . ':' . $this->item->alias, $this->item->catid, $this->item->language),
-					true
-				);
-
-				$toolbar->preview($url, 'JGLOBAL_PREVIEW')
-					->bodyHeight(80)
-					->modalWidth(90);
-
 				// Add necessary code for a new menu item modal
 
 				// Setup variables for display
@@ -223,7 +194,7 @@ class HtmlView extends BaseHtmlView
 				$modalId = 'jform_request_id';
 
 				// Add button to open the modal
-				ToolbarHelper::modal('ModalNewItem_' . $modalId, 'icon-new', 'COM_CONTENT_ADD_NEW_MENU_ITEM');
+				ToolbarHelper::modal('ModalNewItem_' . $modalId, 'icon-plus', 'COM_CONTENT_ADD_NEW_MENU_ITEM');
 
 				// Add the modal field script to the document head.
 				HTMLHelper::_('script', 'system/fields/modal-fields.min.js', array('version' => 'auto', 'relative' => true));
@@ -234,7 +205,7 @@ class HtmlView extends BaseHtmlView
 
 				// Add the modal html to the document
 				echo HTMLHelper::_(
-					'bootstrap.renderModal',
+					'webcomponent.renderModal',
 					'ModalNewItem_' . $modalId,
 					array(
 						'title' => Text::_('COM_MENUS_NEW_MENUITEM'),
@@ -242,8 +213,8 @@ class HtmlView extends BaseHtmlView
 						'keyboard' => false,
 						'closeButton' => false,
 						'url' => $urlNew,
-						'height' => '400px',
-						'width' => '800px',
+						'height' => '75vh',
+						'width' => '85vw',
 						'bodyHeight' => 70,
 						'modalWidth' => 80,
 						'footer' => '<button type="button" class="btn btn-secondary" aria-hidden="true"'
@@ -260,19 +231,62 @@ class HtmlView extends BaseHtmlView
 
 				echo '<input type="hidden" class="form-control" id="' . $modalId . '_name" value="">';
 				echo '<input type="hidden" id="' . $modalId . '_id" value="0">';
+
+				$toolbar->divider();
+				$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
+
+				// cancel button
+				$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
+
+				// Preview button
+				$url = Route::link(
+					'site',
+					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
+					true
+				);
+				
+				$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
+							->bodyHeight(80)	
+							->modalWidth(90);
+
+				// Version
+				if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
+				{
+					$toolbar->versions('com_content.article', $this->item->id);
+				}
+
+				// Save item group 
+				$saveGroup = $toolbar->dropdownButton('save-group');
+				$saveGroup->configure(
+					function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
+					{
+						if (!$checkedOut && $itemEditable)
+						{
+							$childBar->apply('article.apply');
+						}
+
+						// Can't save the record if it's checked out and editable
+						if (!$checkedOut && $itemEditable)
+						{
+							$childBar->save('article.save');
+
+							// We can save this record, but check the create permission to see if we can return to make a new one.
+							if ($canDo->get('core.create'))
+							{
+								$childBar->save2new('article.save2new');
+							}
+						}
+
+						// If checked out, we can still save
+						if ($canDo->get('core.create'))
+						{
+							$childBar->save2copy('article.save2copy');
+						}
+					}
+				);
+
 			}
 		}
 
-		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-		{
-			$toolbar->standardButton('contract')
-				->text('JTOOLBAR_ASSOCIATIONS')
-				->task('article.editAssociations');
-		}
-
-		$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
-
-		$toolbar->divider();
-		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 	}
 }

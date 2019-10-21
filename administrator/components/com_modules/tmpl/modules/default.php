@@ -18,6 +18,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $clientId  = (int) $this->state->get('client_id', 0);
@@ -36,7 +37,7 @@ if ($saveOrder && !empty($this->items))
 	<div id="j-main-container" class="j-main-container">
 		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<?php if ($this->total > 0) : ?>
-			<table class="table" id="moduleList">
+			<table class="table j-list-table" id="moduleList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_MODULES_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -46,7 +47,10 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('grid.checkall'); ?>
 						</td>
 						<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+							<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
+						</th>
+						<th scope="col" style="width:2%" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:1%; min-width:85px" class="text-center">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
@@ -54,19 +58,11 @@ if ($saveOrder && !empty($this->items))
 						<th scope="col" class="title">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_POSITION', 'a.position', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_MODULE', 'name', $listDirn, $listOrder); ?>
-						</th>
-						<?php if ($clientId === 0) : ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'COM_MODULES_HEADING_PAGES', 'pages', $listDirn, $listOrder); ?>
-						</th>
-						<?php endif; ?>
-						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
 						</th>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<th scope="col" style="width:10%" class="d-none d-md-table-cell text-center">
@@ -77,8 +73,8 @@ if ($saveOrder && !empty($this->items))
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'a.language', $listDirn, $listOrder); ?>
 						</th>
 						<?php endif; ?>
-						<th scope="col" style="width:5%" class="d-none d-md-table-cell">
-							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+						<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'ag.title', $listDirn, $listOrder); ?>
 						</th>
 					</tr>
 				</thead>
@@ -108,12 +104,15 @@ if ($saveOrder && !empty($this->items))
 								$iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED');
 							}
 							?>
-							<span class="sortable-handler<?php echo $iconClass; ?>">
-								<span class="fa fa-ellipsis-v"></span>
+							<span class="sortable-handler icon-move-v<?php echo $iconClass; ?>">
+								<span class="icon-arrows-v"></span>
 							</span>
 							<?php if ($canChange && $saveOrder) : ?>
 								<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order">
 							<?php endif; ?>
+						</td>
+						<td class="d-none d-md-table-cell">
+							<?php echo (int) $item->id; ?>
 						</td>
 						<td class="text-center">
 							<?php // Check if extension is enabled ?>
@@ -159,14 +158,6 @@ if ($saveOrder && !empty($this->items))
 						<td class="small d-none d-md-table-cell">
 							<?php echo $item->name; ?>
 						</td>
-						<?php if ($clientId === 0) : ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $item->pages; ?>
-						</td>
-						<?php endif; ?>
-						<td class="small d-none d-md-table-cell">
-							<?php echo $this->escape($item->access_level); ?>
-						</td>
 						<?php if (($clientId === 0) && (Multilanguage::isEnabled())) : ?>
 						<td class="small d-none d-md-table-cell text-center">
 							<?php echo LayoutHelper::render('joomla.content.language', $item); ?>
@@ -182,8 +173,8 @@ if ($saveOrder && !empty($this->items))
 								<?php endif; ?>
 							</td>
 						<?php endif; ?>
-						<td class="d-none d-md-table-cell">
-							<?php echo (int) $item->id; ?>
+						<td class="small d-none d-md-table-cell">
+							<?php echo $this->escape($item->access_level); ?>
 						</td>
 					</tr>
 					<?php endforeach; ?>
@@ -191,7 +182,10 @@ if ($saveOrder && !empty($this->items))
 			</table>
 
 			<?php // load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 
 		<?php endif; ?>
 
@@ -199,15 +193,14 @@ if ($saveOrder && !empty($this->items))
 		<?php if ($user->authorise('core.create', 'com_modules')
 			&& $user->authorise('core.edit', 'com_modules')
 			&& $user->authorise('core.edit.state', 'com_modules')) : ?>
-			<?php echo HTMLHelper::_(
-				'bootstrap.renderModal',
-				'collapseModal',
-				array(
-					'title'  => Text::_('COM_MODULES_BATCH_OPTIONS'),
-					'footer' => $this->loadTemplate('batch_footer'),
-				),
-				$this->loadTemplate('batch_body')
-			); ?>
+				<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_MODULES_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+					<section>
+						<?php echo $this->loadTemplate('batch_body'); ?>
+					</section>
+					<footer>
+						<?php echo $this->loadTemplate('batch_footer'); ?>
+					</footer>
+				</joomla-modal>
 		<?php endif; ?>
 		<input type="hidden" name="task" value="">
 		<input type="hidden" name="boxchecked" value="0">

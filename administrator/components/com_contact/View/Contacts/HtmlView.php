@@ -139,20 +139,15 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_CONTACT_MANAGER_CONTACTS'), 'address-book contact');
-
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_contact', 'core.create')) > 0)
-		{
-			$toolbar->addNew('contact.add');
-		}
+		ToolbarHelper::title(Text::_('COM_CONTACT_MANAGER_CONTACTS'), 'contacts contact');
 
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -202,12 +197,17 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
+		$toolbar->help('JHELP_COMPONENTS_CONTACTS_CONTACTS');
+
 		if ($user->authorise('core.admin', 'com_contact') || $user->authorise('core.options', 'com_contact'))
 		{
 			$toolbar->preferences('com_contact');
 		}
 
-		$toolbar->help('JHELP_COMPONENTS_CONTACTS_CONTACTS');
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_contact', 'core.create')) > 0)
+		{
+			$toolbar->addNew('contact.add');
+		}
 	}
 
 	/**

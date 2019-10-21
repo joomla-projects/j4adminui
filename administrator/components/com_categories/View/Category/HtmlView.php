@@ -184,70 +184,6 @@ class HtmlView extends BaseHtmlView
 			'folder category-' . ($isNew ? 'add' : 'edit')
 				. ' ' . substr($component, 4) . ($section ? "-$section" : '') . '-category-' . ($isNew ? 'add' : 'edit')
 		);
-
-		// For new records, check the create permission.
-		if ($isNew && (count($user->getAuthorisedCategories($component, 'core.create')) > 0))
-		{
-			ToolbarHelper::apply('category.apply');
-			ToolbarHelper::saveGroup(
-				[
-					['save', 'category.save'],
-					['save2new', 'category.save2new']
-				],
-				'btn-success'
-			);
-
-			ToolbarHelper::cancel('category.cancel');
-		}
-
-		// If not checked out, can save the item.
-		else
-		{
-			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
-			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_user_id == $userId);
-
-			$toolbarButtons = [];
-
-			// Can't save the record if it's checked out and editable
-			if (!$checkedOut && $itemEditable)
-			{
-				ToolbarHelper::apply('category.apply');
-
-				$toolbarButtons[] = ['save', 'category.save'];
-
-				if ($canDo->get('core.create'))
-				{
-					$toolbarButtons[] = ['save2new', 'category.save2new'];
-				}
-			}
-
-			// If an existing item, can save to a copy.
-			if ($canDo->get('core.create'))
-			{
-				$toolbarButtons[] = ['save2copy', 'category.save2copy'];
-			}
-
-			ToolbarHelper::saveGroup(
-				$toolbarButtons,
-				'btn-success'
-			);
-
-			if (ComponentHelper::isEnabled('com_contenthistory') && $componentParams->get('save_history', 0) && $itemEditable)
-			{
-				$typeAlias = $extension . '.category';
-				ToolbarHelper::versions($typeAlias, $this->item->id);
-			}
-
-			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
-			{
-				ToolbarHelper::custom('category.editAssociations', 'contract', 'contract', 'JTOOLBAR_ASSOCIATIONS', false, false);
-			}
-
-			ToolbarHelper::cancel('category.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-
 		// Compute the ref_key
 		$ref_key = strtoupper($component . ($section ? "_$section" : '')) . '_CATEGORY_' . ($isNew ? 'ADD' : 'EDIT') . '_HELP_KEY';
 
@@ -276,6 +212,68 @@ class HtmlView extends BaseHtmlView
 			$url = null;
 		}
 
-		ToolbarHelper::help($ref_key, $componentParams->exists('helpURL'), $url, $component);
+		// For new records, check the create permission.
+		if ($isNew && (count($user->getAuthorisedCategories($component, 'core.create')) > 0))
+		{
+			// help button
+			ToolbarHelper::divider();
+			ToolbarHelper::help($ref_key, $componentParams->exists('helpURL'), $url, $component);
+			// cancel button
+			ToolbarHelper::cancel('category.cancel');
+			// save buttons
+			ToolbarHelper::saveGroup(
+				[
+					['apply', 'category.apply'],
+					['save', 'category.save'],
+					['save2new', 'category.save2new']
+				],
+				'btn-success'
+			);
+		}
+
+		// If not checked out, can save the item.
+		else
+		{
+			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_user_id == $userId);
+
+			// save button
+			if (ComponentHelper::isEnabled('com_contenthistory') && $componentParams->get('save_history', 0) && $itemEditable)
+			{
+				$typeAlias = $extension . '.category';
+				ToolbarHelper::versions($typeAlias, $this->item->id);
+			}
+			// language associations
+			if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
+			{
+				ToolbarHelper::custom('category.editAssociations', 'multilingual', 'multilingual', 'JTOOLBAR_ASSOCIATIONS', false, false);
+			}
+			// help button
+			ToolbarHelper::divider();
+			ToolbarHelper::help($ref_key, $componentParams->exists('helpURL'), $url, $component);
+			// cancel button
+			ToolbarHelper::cancel('category.cancel', 'JTOOLBAR_CLOSE');
+			// save toolbar buttons
+			$toolbarButtons = [];
+			// Can't save the record if it's checked out and editable
+			if (!$checkedOut && $itemEditable)
+			{
+				$toolbarButtons[] = ['apply', 'category.apply'];
+				$toolbarButtons[] = ['save', 'category.save'];
+				if ($canDo->get('core.create'))
+				{
+					$toolbarButtons[] = ['save2new', 'category.save2new'];
+				}
+			}
+			// If an existing item, can save to a copy.
+			if ($canDo->get('core.create'))
+			{
+				$toolbarButtons[] = ['save2copy', 'category.save2copy'];
+			}
+			ToolbarHelper::saveGroup(
+				$toolbarButtons,
+				'btn-success'
+			);
+		}
 	}
 }

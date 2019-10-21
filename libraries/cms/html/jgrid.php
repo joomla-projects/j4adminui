@@ -68,7 +68,19 @@ abstract class JHtmlJGrid
 
 		if ($enabled)
 		{
-			$html[] = '<a class="tbody-icon' . ($active_class === 'publish' ? ' active' : '') . '"';
+			$active_class = (strpos($active_class, 'fas') === false) ? 'icon-' . $active_class : $active_class;
+			// if active class has not font awesome
+			if( strpos($active_class, 'fas') && strpos($active_class, 'fa') ) 
+			{
+				$active_class = 'icon-' . $active_class;
+			}
+			// if inactive class has not font awesome
+			if( strpos($inactive_class, 'fas') && strpos($inactive_class, 'fa') ) 
+			{
+				$inactive_class = 'icon-' . $inactive_class;
+			}
+
+			$html[] = '<a class="tbody-status-icon' . ($active_class === 'publish' ? ' active' : '') . '"';
 
 			if ($formId !== null)
 			{
@@ -82,7 +94,7 @@ abstract class JHtmlJGrid
 
 			$html[] = $tip ? ' aria-labelledby="' . $ariaid . '"' : '';
 			$html[] = '>';
-			$html[] = '<span class="icon-' . $active_class . '" aria-hidden="true"></span>';
+			$html[] = '<span class="' . $active_class . '" aria-hidden="true"></span>';
 			$html[] = '</a>';
 			$html[] = $tip ? '<div role="tooltip" id="' . $ariaid . '">' . $title . '</div>' : '';
 		}
@@ -185,8 +197,8 @@ abstract class JHtmlJGrid
 		}
 
 		$states = array(
-			1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'publish', 'publish'),
-			0 => array('publish', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'JUNPUBLISHED', true, 'unpublish', 'unpublish'),
+			1 => array('unpublish', 'JPUBLISHED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JPUBLISHED', true, 'toggle-on duotone icon-2x text-primary', 'publish'),
+			0 => array('publish', 'JUNPUBLISHED', 'JLIB_HTML_PUBLISH_ITEM', 'JUNPUBLISHED', true, 'toggle-off duotone icon-2x text-muted', 'unpublish'),
 			2 => array('unpublish', 'JARCHIVED', 'JLIB_HTML_UNPUBLISH_ITEM', 'JARCHIVED', true, 'archive', 'archive'),
 			-2 => array('publish', 'JTRASHED', 'JLIB_HTML_PUBLISH_ITEM', 'JTRASHED', true, 'trash', 'trash'),
 		);
@@ -220,6 +232,7 @@ abstract class JHtmlJGrid
 			// Add tips and special titles
 			foreach ($states as $key => $state)
 			{
+
 				// Create special titles for published items
 				if ($key == 1)
 				{

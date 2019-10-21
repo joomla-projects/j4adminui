@@ -49,12 +49,34 @@ elseif (!empty($onclick))
 	$htmlAttributes .= ' onclick="' . $onclick . '"';
 }
 
+$iconClass = '';
+
+switch($class)
+{
+	case 'icon-apply':
+	case 'icon-save':
+	case 'icon-save-new':
+	case 'icon-save-copy':
+	case 'icon-cancel':
+		$iconClass = false;
+	break;
+	case 'icon-featured':
+		$iconClass = 'icon-star-full';
+	break;
+	case 'icon-checkin':
+		$iconClass = 'icon-checkinmark';
+	break;
+	default:
+		$iconClass = $class;
+}
 ?>
 
 <joomla-toolbar-button <?php echo $idAttr.$taskAttr.$listAttr.$formAttr.$validate.$msgAttr; ?>>
 <?php if (!empty($group)) : ?>
 <a href="#" class="dropdown-item">
-	<span class="<?php echo trim($class ?? ''); ?>"></span>
+	<?php if(!empty($iconClass)) : ?>
+		<span class="<?php echo trim($iconClass ?? ''); ?> icon-md"></span>
+	<?php endif; ?>
 	<?php echo $text ?? ''; ?>
 </a>
 <?php else : ?>
@@ -62,8 +84,10 @@ elseif (!empty($onclick))
 	class="<?php echo $btnClass ?? ''; ?>"
 	<?php echo $htmlAttributes ?? ''; ?>
 	>
-	<span class="<?php echo trim($class ?? ''); ?>" aria-hidden="true"></span>
-	<?php echo $text ?? ''; ?>
+	<?php if(!empty($iconClass)) : ?>
+    	<span class="<?php echo trim($iconClass ?? ''); ?> icon-md" aria-hidden="true"></span>
+	<?php endif; ?>
+    <?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
 <?php endif; ?>
 </joomla-toolbar-button>

@@ -12,6 +12,7 @@ namespace Joomla\Component\Banners\Administrator\View\Tracks;
 defined('_JEXEC') or die;
 
 use Exception;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
@@ -116,10 +117,22 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_BANNERS_MANAGER_TRACKS'), 'bookmark banners-tracks');
 
+		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_TRACKS');
+
 		$bar = Toolbar::getInstance('toolbar');
 
 		// Instantiate a new FileLayout instance and render the export button
 		$layout = new FileLayout('joomla.toolbar.modal');
+
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		{
+			ToolbarHelper::preferences('com_banners');
+		}
+
+		if ($canDo->get('core.delete'))
+		{
+			$bar->appendButton('Confirm', 'COM_BANNERS_DELETE_MSG', 'delete', 'COM_BANNERS_TRACKS_DELETE', 'tracks.delete', false);
+		}
 
 		$dHtml = $layout->render(
 			[
@@ -130,19 +143,18 @@ class HtmlView extends BaseHtmlView
 			]
 		);
 
+		// We have to move the modal, otherwise we get problems with the backdrop
+			// TODO: There should be a better workaround than this
+			Factory::getDocument()->addScriptDeclaration(
+				<<<JS
+window.addEventListener('DOMContentLoaded', function() {
+	document.body.appendChild(document.getElementById('modal_downloadModal'));
+});
+JS
+			);
+
 		$bar->appendButton('Custom', $dHtml, 'download');
 
-		if ($canDo->get('core.delete'))
-		{
-			$bar->appendButton('Confirm', 'COM_BANNERS_DELETE_MSG', 'delete', 'COM_BANNERS_TRACKS_DELETE', 'tracks.delete', false);
-		}
-
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
-		{
-			ToolbarHelper::preferences('com_banners');
-		}
-
-		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_TRACKS');
 	}
 
 	/**

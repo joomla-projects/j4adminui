@@ -47,12 +47,13 @@ class PasswordRule extends FormRule
 	{
 		$meter            = isset($element['strengthmeter']) ? ' meter="0"' : '1';
 		$threshold        = isset($element['threshold']) ? (int) $element['threshold'] : 66;
-		$minimumLength    = isset($element['minimum_length']) ? (int) $element['minimum_length'] : 4;
-		$minimumIntegers  = isset($element['minimum_integers']) ? (int) $element['minimum_integers'] : 0;
-		$minimumSymbols   = isset($element['minimum_symbols']) ? (int) $element['minimum_symbols'] : 0;
-		$minimumUppercase = isset($element['minimum_uppercase']) ? (int) $element['minimum_uppercase'] : 0;
-		$minimumLowercase = isset($element['minimum_lowercase']) ? (int) $element['minimum_lowercase'] : 0;
-
+		
+		$minimumLength    = isset($element['minLength']) ? (int) $element['minLength'] : 8;
+		$minimumIntegers  = isset($element['minIntegers']) ? (int) $element['minIntegers'] : 0;
+		$minimumSymbols   = isset($element['minSymbols']) ? (int) $element['minSymbols'] : 0;
+		$minimumUppercase = isset($element['minUppercase']) ? (int) $element['minUppercase'] : 0;
+		$minimumLowercase = isset($element['minLowercase']) ? (int) $element['minLowercase'] : 0;
+		
 		// If we have parameters from com_users, use those instead.
 		// Some of these may be empty for legacy reasons.
 		$params = ComponentHelper::getParams('com_users');
@@ -78,7 +79,7 @@ class PasswordRule extends FormRule
 
 		// If the field is empty and not required, the field is valid.
 		$required = ((string) $element['required'] === 'true' || (string) $element['required'] === 'required');
-
+		
 		if (!$required && empty($value))
 		{
 			return true;

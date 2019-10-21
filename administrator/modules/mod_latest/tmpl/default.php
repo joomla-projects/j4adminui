@@ -14,13 +14,13 @@ use Joomla\CMS\Language\Text;
 
 HTMLHelper::_('bootstrap.framework');
 ?>
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>" class="table j-striped-table">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:60%"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JAUTHOR'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('JDATE'); ?></th>
+			<th scope="col"><?php echo Text::_('JGLOBAL_TITLE'); ?></th>
+			<th scope="col"><?php echo Text::_('JAUTHOR'); ?></th>
+			<th scope="col"><?php echo Text::_('JDATE'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -49,9 +49,9 @@ HTMLHelper::_('bootstrap.framework');
 		<?php endforeach; ?>
 		<?php else : ?>
 		<tr>
-			<td colspan="3">
+			<th colspan="3">
 				<?php echo Text::_('MOD_LATEST_NO_MATCHING_RESULTS'); ?>
-			</td>
+			</th>
 		</tr>
 		<?php endif; ?>
 	</tbody>

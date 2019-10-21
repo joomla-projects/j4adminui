@@ -51,7 +51,6 @@ Text::script('MESSAGE');
 				<?php echo Text::_('JGLOBAL_PASSWORD'); ?>
 			</label>
 			<div class="input-group">
-
 				<input
 						name="passwd"
 						id="mod-login-password"
@@ -59,7 +58,7 @@ Text::script('MESSAGE');
 						class="form-control input-full"
 						required="required"
 				>
-				<span class="input-group-append ml-2">
+				<span class="input-group-append login-password-toggle-icon">
 					<button type="button" class="input-group-text icon-eye input-password-toggle">
 						<span class="sr-only"><?php echo Text::_('JSHOW'); ?></span>
 					</button>
@@ -97,7 +96,7 @@ Text::script('MESSAGE');
 			</div>
 		<?php endif; ?>
 		<div class="form-group">
-			<button class="btn btn-primary btn-block btn-lg mt-4"
+			<button class="btn btn-solid-primary btn-block btn-md"
 				id="btn-login-submit"><?php echo Text::_('JLOGIN'); ?></button>
 		</div>
 		<input type="hidden" name="option" value="com_login">

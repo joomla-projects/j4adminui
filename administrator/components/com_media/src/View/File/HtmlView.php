@@ -66,7 +66,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
-		ToolbarHelper::title(Text::_('COM_MEDIA_EDIT'), 'images mediamanager');
+		ToolbarHelper::title(Text::_('COM_MEDIA_EDIT'), 'media mediamanager');
 
 		ToolbarHelper::apply('apply');
 		ToolbarHelper::save('save');

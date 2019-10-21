@@ -1,9 +1,6 @@
 import Vue from "vue";
 import Event from './app/Event';
 import App from "./components/app.vue";
-import Disk from "./components/tree/disk.vue";
-import Drive from "./components/tree/drive.vue";
-import Tree from "./components/tree/tree.vue";
 import TreeItem from "./components/tree/item.vue";
 import Toolbar from "./components/toolbar/toolbar.vue";
 import Breadcrumb from "./components/breadcrumb/breadcrumb.vue";
@@ -17,7 +14,9 @@ import RenameModal from "./components/modals/rename-modal.vue";
 import ShareModal from "./components/modals/share-modal.vue";
 import ConfirmDeleteModal from "./components/modals/confirm-delete-modal.vue";
 import Infobar from "./components/infobar/infobar.vue";
+import InfobarPopup from "./components/infobar/infobar-popup.vue";
 import Upload from "./components/upload/upload.vue";
+import UploadPanel from "./components/upload/upload-panel.vue";
 import Translate from "./plugins/translate";
 import store from './store/store';
 import Lock from 'vue-focus-lock';
@@ -26,9 +25,6 @@ import Lock from 'vue-focus-lock';
 Vue.use(Translate);
 
 // Register the vue components
-Vue.component('media-drive', Drive);
-Vue.component('media-disk', Disk);
-Vue.component('media-tree', Tree);
 Vue.component('media-tree-item', TreeItem);
 Vue.component('media-toolbar', Toolbar);
 Vue.component('media-breadcrumb', Breadcrumb);
@@ -42,6 +38,8 @@ Vue.component('media-rename-modal', RenameModal);
 Vue.component('media-share-modal', ShareModal);
 Vue.component('media-confirm-delete-modal', ConfirmDeleteModal);
 Vue.component('media-infobar', Infobar);
+Vue.component('media-infobar-popup', InfobarPopup);
+Vue.component('media-upload-panel', UploadPanel);
 Vue.component('media-upload', Upload);
 Vue.component('tab-lock', Lock);
 
@@ -49,6 +47,24 @@ Vue.component('tab-lock', Lock);
 window.MediaManager = window.MediaManager || {};
 // Register the media manager event bus
 window.MediaManager.Event = new Event();
+
+
+Vue.directive('click-outside', {
+    bind(el, binding, vnode) {
+        var vm = vnode.context;
+        var callback = binding.value;
+
+        el.clickOutsideEvent = function (event) {
+            if (!(el == event.target || el.contains(event.target))) {
+                return callback.call(vm, event);
+            }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent);
+    },
+    unbind(el) {
+        document.body.removeEventListener('click', el.clickOutsideEvent);
+    }
+});
 
 // Create the root Vue instance
 document.addEventListener("DOMContentLoaded",

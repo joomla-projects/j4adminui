@@ -128,10 +128,11 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::title(Text::_('COM_CSP_REPORTS'), 'shield-alt');
 
-		if ($canDo->get('core.edit.state'))
+		ToolbarHelper::help('JHELP_COMPONENTS_CSP_REPORTS');
+
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
-			ToolbarHelper::publish('reports.publish', 'JTOOLBAR_PUBLISH', true);
-			ToolbarHelper::unpublish('reports.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			ToolbarHelper::preferences('com_csp');
 		}
 
 		if ($this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
@@ -143,12 +144,11 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::trash('reports.trash');
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		if ($canDo->get('core.edit.state'))
 		{
-			ToolbarHelper::preferences('com_csp');
+			ToolbarHelper::unpublish('reports.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			ToolbarHelper::publish('reports.publish', 'JTOOLBAR_PUBLISH', true);
 		}
-
-		ToolbarHelper::help('JHELP_COMPONENTS_CSP_REPORTS');
 	}
 
 	/**

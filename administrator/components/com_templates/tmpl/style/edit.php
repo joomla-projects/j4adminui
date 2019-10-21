@@ -35,11 +35,11 @@ $user = Factory::getUser();
 
 		<div class="row">
 			<div class="col-lg-9">
-				<div class="card">
-					<h2 class="card-header">
+				<div class="j-card">
+					<h2 class="j-card-header">
 						<?php echo Text::_($this->item->template); ?>
 					</h2>
-					<div class="card-body">
+					<div class="j-card-body">
 						<div class="info-labels">
 							<span class="badge badge-secondary">
 								<?php echo $this->item->client_id == 0 ? Text::_('JSITE') : Text::_('JADMINISTRATOR'); ?>
@@ -68,8 +68,8 @@ $user = Factory::getUser();
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php
 						// Set main fields.
 						$this->fields = array(

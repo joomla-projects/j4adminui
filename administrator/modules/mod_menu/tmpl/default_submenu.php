@@ -26,30 +26,34 @@ $class   = '';
 // Build the CSS class suffix
 if (!$this->enabled)
 {
-	$class = ' class="disabled"';
+	$class = "disabled";
 }
 elseif ($current->type == 'separator')
 {
-	$class = $current->title ? ' class="menuitem-group"' : ' class="divider"';
+	$class = $current->title ? "menuitem-group" : "divider";
 }
 elseif ($current->hasChildren())
 {
-	$class = ' class="dropdown-submenu"';
+	$class = "dropdown-submenu";
 
 	if ($current->level == 1)
 	{
-		$class = ' class="parent"';
+		$class = "parent";
 	}
 	elseif ($current->get('class') === 'scrollable-menu')
 	{
-		$class = ' class="dropdown scrollable-menu"';
+		$class = "dropdown scrollable-menu";
 	}
 }
+
+// if the menu is help then set class to li
+$class = ($current->title == 'MOD_MENU_HELP' && $current->element == 'com_cpanel') ? "j-help-menu" : $class;
+$class = $class == '' ? '' : 'class="'.$class.'"';
 
 // Set the correct aria role and print the item
 if ($current->type == 'separator')
 {
-	echo '<li' . $class . ' role="presentation">';
+	echo '<li ' .$class. ' role="presentation">';
 }
 else
 {
@@ -92,7 +96,7 @@ $itemImage = $current->get('params')['menu_image'];
 // Get the menu icon
 $icon      = $this->getIconClass($current);
 $iconClass = ($icon != '' && $current->level == 1) ? '<span class="' . $icon . '" aria-hidden="true"></span>' : '';
-$ajax      = $current->ajaxbadge ? '<span class="menu-badge"><span class="fa fa-spin fa-spinner mt-1 system-counter" data-url="' . $current->ajaxbadge . '"></span></span>' : '';
+$ajax      = $current->ajaxbadge ? '<span class="menu-badge"><span class="icon-spin icon-spinner mt-1 system-counter" data-url="' . $current->ajaxbadge . '"></span></span>' : '';
 $iconImage = $current->get('icon');
 $homeImage = '';
 
@@ -159,7 +163,7 @@ if ($current->getParams()->get('menu-quicktask', false))
 	if (!$permission || $user->authorise($permission, $scope))
 	{
 		echo '<span class="menu-quicktask"><a href="' . $link . '">';
-		echo '<span class="fa fa-' . $icon . '" title="' . htmlentities(Text::_($title)) . '" aria-hidden="true"></span>';
+		echo '<span class="icon-' . $icon . '" title="' . htmlentities(Text::_($title)) . '" aria-hidden="true"></span>';
 		echo '<span class="sr-only">' . Text::_($title) . '</span>';
 		echo '</a></span>';
 	}

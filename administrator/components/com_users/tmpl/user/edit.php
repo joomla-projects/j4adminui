@@ -36,8 +36,8 @@ $this->useCoreUI = true;
 	<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
 		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_USERS_USER_ACCOUNT_DETAILS')); ?>
-			<div class="card">
-				<div class="card-body">
+			<div class="j-card">
+				<div class="j-card-body">
 					<div class="row">
 						<div class="col-lg-8 col-xl-6">
 						<?php echo $this->form->renderFieldset('user_details'); ?>
@@ -48,12 +48,14 @@ $this->useCoreUI = true;
 		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php if ($this->grouplist) : ?>
 			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'groups', Text::_('COM_USERS_ASSIGNED_GROUPS')); ?>
-				<fieldset id="fieldset-groups" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('COM_USERS_ASSIGNED_GROUPS'); ?></legend>
-					<div>
-					<?php echo $this->loadTemplate('groups'); ?>
+				<div id="fieldset-groups" class="j-card options-grid-form options-grid-form-full">
+					<div class="j-card-header">
+						<?php echo Text::_('COM_USERS_ASSIGNED_GROUPS'); ?>
 					</div>
-				</fieldset>
+					<div class="j-card-body">
+						<?php echo $this->loadTemplate('groups'); ?>
+					</div>
+				</div>
 			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 		<?php endif; ?>
 
@@ -87,13 +89,13 @@ $this->useCoreUI = true;
 		<legend>
 			<?php echo Text::_('COM_USERS_USER_OTEPS'); ?>
 		</legend>
-		<div class="alert alert-info">
-			<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+		<div class="j-alert j-alert-info">
+			<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 			<?php echo Text::_('COM_USERS_USER_OTEPS_DESC'); ?>
 		</div>
 		<?php if (empty($this->otpConfig->otep)) : ?>
-			<div class="alert alert-warning">
-				<span class="fa fa-exclamation-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
+			<div class="j-alert j-alert-warning">
+				<span class="icon-warning" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('WARNING'); ?></span>
 				<?php echo Text::_('COM_USERS_USER_OTEPS_WAIT_DESC'); ?>
 			</div>
 		<?php else : ?>

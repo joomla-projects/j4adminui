@@ -14,11 +14,11 @@ $form  = $displayData->getForm();
 $title = $form->getField('title') ? 'title' : ($form->getField('name') ? 'name' : '');
 
 ?>
-<div class="row title-alias form-vertical form-no-margin mb-3">
-	<div class="col-12 col-md-6">
+<div class="row title-alias form-no-margin mb-3">
+	<div class="col-lg-7">
 		<?php echo $title ? $form->renderField($title) : ''; ?>
 	</div>
-	<div class="col-12 col-md-6">
+	<div class="col-lg-5">
 		<?php echo $form->renderField('alias'); ?>
 	</div>
 </div>

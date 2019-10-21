@@ -5,22 +5,30 @@
             @drop="onDrop"
             @dragover="onDragOver"
             @dragleave="onDragLeave"
-            :style="mediaBrowserStyles"
             ref="browserItems">
             <div class="media-dragoutline">
-                <span class="fa fa-cloud-upload upload-icon" aria-hidden="true"></span>
+                <div class="joomla-drop-media-image"></div>
                 <p>{{ translate('COM_MEDIA_DROP_FILE') }}</p>
             </div>
             <table v-if="listView === 'table'" class="table media-browser-table">
                 <caption class="sr-only">{{ sprintf('COM_MEDIA_BROWSER_TABLE_CAPTION', currentDirectory) }}</caption>
                 <thead class="media-browser-table-head">
                     <tr>
-                        <th class="type" scope="col"></th>
+                        <th class="checkmark" scope="col">
+                            <div class="media-view-icons">
+                                <a href="#" class="media-toolbar-icon media-toolbar-select-all"
+                                @click.stop.prevent="toggleSelectAll()"
+                                :aria-label="translate('COM_MEDIA_SELECT_ALL')">
+                                    <span :class="toggleSelectAllBtnIcon" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </th>
+                        <th class="type d-none d-sm-table-cell" scope="col"></th>
                         <th class="name" scope="col">{{ translate('COM_MEDIA_MEDIA_NAME') }}</th>
-                        <th class="size" scope="col">{{ translate('COM_MEDIA_MEDIA_SIZE') }}</th>
+                        <th class="size" scope="col">{{ translate('COM_MEDIA_MEDIA_SIZE') }} {{translate('COM_MEDIA_MEDIA_BYTES')}}</th>
                         <th class="dimension" scope="col">{{ translate('COM_MEDIA_MEDIA_DIMENSION') }}</th>
-                        <th class="created" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_CREATED') }}</th>
-                        <th class="modified" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_MODIFIED') }}</th>
+                        <th class="created d-none d-sm-table-cell" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_CREATED') }}</th>
+                        <th class="modified d-none d-sm-table-cell" scope="col">{{ translate('COM_MEDIA_MEDIA_DATE_MODIFIED') }}</th>
                     </tr>
                 </thead>
                 <media-browser-item-row v-for="item in items" :key="item.path" :item="item"></media-browser-item-row>
@@ -55,14 +63,7 @@
                 }).filter( file => {
                     return file.name.toLowerCase().includes(this.$store.state.search.toLowerCase())
                 });
-
                 return [...directories, ...files];
-            },
-            /* The styles for the media-browser element */
-            mediaBrowserStyles() {
-                return {
-                    width: this.$store.state.showInfoBar ? '75%' : '100%'
-                }
             },
             /* The styles for the media-browser element */
             listView() {
@@ -96,7 +97,14 @@
 				});
 
 				return diskName;
-			}
+            },
+            
+            toggleSelectAllBtnIcon() {
+                return (this.allItemsSelected) ? 'media-checkbox active' : 'media-checkbox'
+            },
+            allItemsSelected() {
+                return (this.$store.getters.getSelectedDirectoryContents.length === this.$store.state.selectedItems.length);
+            }
         },
         methods: {
             /* Unselect all browser items */
@@ -130,21 +138,50 @@
                 // Create a new file reader instance
                 let reader = new FileReader();
 
-                // Add the on load callback
+                 // Add the on load callback
                 reader.onload = (progressEvent) => {
                     const result = progressEvent.target.result,
+                        extension = file.name.split('.').pop().toLowerCase(),
+                        mediaClass = this.getMediaClass(extension),
                         splitIndex = result.indexOf('base64') + 7,
-                        content = result.slice(splitIndex, result.length);
-
-                    // Upload the file
+                        content = result.slice(splitIndex, result.length),
+                        payload = {src:result, name:file.name, success: false, progress: 0, xhrRequest: null, extension, mediaClass };
+                        payload.name = payload.name.replace(/[\])}[{(]/g, '');
+                        
+                    // Add file to the upload queue
+                    this.$store.commit(types.SET_LAST_UPLOADED_FILES, payload )
+                    // Dispatch file for Upload process
                     this.$store.dispatch('uploadFile', {
                         name: file.name,
                         parent: this.$store.state.selectedDirectory,
                         content: content,
                     });
-                };
-
+                }
                 reader.readAsDataURL(file);
+            },
+
+            isExtensionMatched( extensionList, extension ){
+                let founded = false;
+                for (const ext of extensionList) {
+                    if (ext.toLowerCase() === extension.toLowerCase()) {founded = true; break; }
+                }
+                return founded;
+            },
+
+            getMediaClass(extension){
+                const imageExtension = ['jpg', 'jpeg', 'png', 'gif', 'mp4'];
+                const mediaExtension = ['mp4','mp3'];
+                const docExtension = ['pdf','docs','zip'];
+                if (this.isExtensionMatched(imageExtension, extension)) { 
+                    return 'joomla-image-item';
+                }
+                if (this.isExtensionMatched(mediaExtension, extension)) { 
+                    return 'joomla-media-item';
+                }
+                if (this.isExtensionMatched(docExtension, extension)) { 
+                    return 'joomla-docs-item';
+                }
+                return 'joomla-file-item';
             },
 
             // Logic for the dropped file
@@ -156,6 +193,7 @@
                     for (let i = 0, f; f = e.dataTransfer.files[i]; i++) {
                         document.querySelector('.media-dragoutline').classList.remove('active');
                         this.upload(f);
+                        this.$store.commit(types.SHOW_UPLOAD_MEDIA_MODAL)
                     }
                 }
                 document.querySelector('.media-dragoutline').classList.remove('active');
@@ -168,6 +206,15 @@
                 document.querySelector('.media-dragoutline').classList.remove('active');
                 return false;
             },
+            //Select all items
+            toggleSelectAll() {
+                if (this.allItemsSelected) {
+                    this.$store.commit(types.UNSELECT_ALL_BROWSER_ITEMS);
+                } else {
+                    this.$store.commit(types.SELECT_BROWSER_ITEMS, this.$store.getters.getSelectedDirectoryContents);
+                }
+            },
+
         },
         created() {
             document.body.addEventListener('click', this.unselectAllBrowserItems, false);

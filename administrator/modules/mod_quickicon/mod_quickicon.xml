@@ -26,52 +26,16 @@
 				<field
 					name="context"
 					type="text"
+					position="1"
 					label="MOD_QUICKICON_GROUP_LABEL"
 					description="MOD_QUICKICON_GROUP_DESC"
 					default="mod_quickicon"
 				/>
 				<field
-					name="header_icon"
-					type="text"
-					label="MOD_QUICKICON_HEADER_ICON_LABEL"
-					hint="fa fa-crosshairs"
-					default=""
-				/>
-				<field
-					name="show_global"
-					type="radio"
-					label="MOD_QUICKICON_SHOW_GLOBAL_LABEL"
-					class="switcher"
-					default="0"
-					>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
-				<field
-					name="show_checkin"
-					type="list"
-					label="MOD_QUICKICON_SHOW_CHECKIN_LABEL"
-					default="0"
-					>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-					<option value="2">MOD_QUICKICON_WITH_COUNT</option>
-				</field>
-				<field
-					name="show_cache"
-					type="list"
-					label="MOD_QUICKICON_SHOW_CACHE_LABEL"
-					default="0"
-					>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-					<option value="2">MOD_QUICKICON_WITH_COUNT</option>
-				</field>
-				<field
 					name="show_users"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_USERS_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -79,9 +43,9 @@
 				</field>
 				<field
 					name="show_articles"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_ARTICLES_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -89,9 +53,9 @@
 				</field>
 				<field
 					name="show_modules"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_MODULES_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -99,7 +63,7 @@
 				</field>
 				<field
 					name="show_categories"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_CATEGORIES_LABEL"
 					default="0"
 					>
@@ -119,9 +83,9 @@
 				</field>
 				<field
 					name="show_menuitems"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_MENUITEMS_LABEL"
-					default="0"
+					default="2"
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
@@ -129,7 +93,7 @@
 				</field>
 				<field
 					name="show_plugins"
-					type="list"
+					type="radio"
 					label="MOD_QUICKICON_SHOW_PLUGINS_LABEL"
 					default="0"
 					>
@@ -146,6 +110,12 @@
 					>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
+				</field>
+				<field
+					name="module_ordering"
+					type="hidden"
+					filter="raw"
+					>
 				</field>
 			</fieldset>
 			<fieldset name="advanced">

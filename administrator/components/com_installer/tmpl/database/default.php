@@ -28,12 +28,12 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 					<div class="control-group">
 						<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 						<?php if (empty($this->changeSet)) : ?>
-							<div class="alert alert-info">
-								<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+							<div class="j-alert j-alert-info">
+								<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 								<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
 							</div>
 						<?php else : ?>
-							<table class="table">
+							<table class="table j-list-table">
 								<caption id="captionTable" class="sr-only">
 									<?php echo Text::_('COM_INSTALLER_DATABASE_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 								</caption>
@@ -45,7 +45,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 										<th scope="col">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_NAME', 'name', $listDirection, $listOrder); ?>
 										</th>
-										<th scope="col" style="width:10%">
+										<th scope="col" style="width:10%" class="d-none d-lg-table-cell">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_LOCATION', 'client_translated', $listDirection, $listOrder); ?>
 										</th>
 										<th scope="col" style="width:10%">
@@ -60,7 +60,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 										<th scope="col" class="d-none d-md-table-cell" style="width:10%">
 											<?php echo Text::_('COM_INSTALLER_HEADING_UPDATE_VERSION'); ?>
 										</th>
-										<th scope="col" class="d-none d-md-table-cell" style="width:10%">
+										<th scope="col" class="d-none d-lg-table-cell" style="width:10%">
 											<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder_translated', $listDirection, $listOrder); ?>
 										</th>
 										<th scope="col" class="d-none d-md-table-cell" style="width:1%">
@@ -85,7 +85,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 													<?php echo Text::_($manifest->description); ?>
 												</div>
 											</th>
-											<td>
+											<td class="d-none d-lg-table-cell">
 												<?php echo $extension->client_translated; ?>
 											</td>
 											<td>
@@ -106,7 +106,7 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 											<td class="d-none d-md-table-cell">
 												<?php echo '&#x200E;' . $extension->version; ?>
 											</td>
-											<td class="d-none d-md-table-cell">
+											<td class="d-none d-lg-table-cell">
 												<?php echo $extension->folder_translated; ?>
 											</td>
 											<td class="d-none d-md-table-cell">
@@ -116,10 +116,12 @@ $listDirection = $this->escape($this->state->get('list.direction'));
 									<?php endforeach; ?>
 								</tbody>
 							</table>
-
-							<?php // load the pagination. ?>
-							<?php echo $this->pagination->getListFooter(); ?>
-
+							
+							<!-- load the pagination. -->
+							<div class="j-pagination-footer">
+								<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+								<?php echo $this->pagination->getListFooter(); ?>
+							</div>
 						<?php endif; ?>
 					</div>
 					<input type="hidden" name="task" value="">

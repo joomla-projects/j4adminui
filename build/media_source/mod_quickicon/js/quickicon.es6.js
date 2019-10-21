@@ -13,37 +13,44 @@
    * The class pulse gets 'warning', 'success' or 'error', depending on the retrieved data.
    */
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.quickicon').forEach((quickicon) => {
+    document.querySelectorAll('.joomla-collapse-card-body').forEach((card) => {
+      card.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetBody = document.getElementById(card.getAttribute('data-target'));
+        if (targetBody) {
+          if (targetBody.classList.contains('collapse-in')) {
+            targetBody.classList.remove('collapse-in');
+          } else {
+            targetBody.classList.add('collapse-in');
+          }
+        }
+      });
+    });
+    document.querySelectorAll('.j-quickicon').forEach((quickicon) => {
       const pulse = quickicon.querySelector('.pulse');
-      const counter = quickicon.querySelector('.quickicon-amount');
-      if (!counter) {
-        return;
-      }
-
-      if (counter.dataset.url) {
+      // quickicon.classList.add('j-quickicon-skeleton');
+      const counterAnimate = quickicon.querySelector('.j-counter-animation');
+      if (quickicon.dataset.url) {
         Joomla.request({
-          url: counter.dataset.url,
+          url: quickicon.dataset.url,
           method: 'GET',
           onSuccess: ((resp) => {
             const response = JSON.parse(resp);
+            quickicon.removeAttribute('data-loading');
+            quickicon.classList.remove('j-quickicon-skeleton');
 
-            if (Object.prototype.hasOwnProperty.call(response, 'data')) {
-              const name = quickicon.querySelector('.quickicon-name');
-              const nameSpan = document.createElement('span');
-
+            if (typeof response.data !== 'undefined') {
               if (pulse) {
                 const className = response.data > 0 ? 'warning' : 'success';
                 pulse.classList.add(className);
               }
-
-              // Set name in singular or plural
-              if (response.data.name && name) {
-                nameSpan.textContent = response.data.name;
-                name.replaceChild(nameSpan, name.firstChild);
+              if (response.data > 0) {
+                quickicon.setAttribute('data-status', 'warning');
+              } else {
+                quickicon.setAttribute('data-status', 'success');
               }
-
               // Set amount of number into counter span
-              counter.textContent = `\u200E${response.data.amount}`;
+              counterAnimate.textContent = `\u200E${response.data.amount}`;
 
               // Insert screenreader text
               const sronly = quickicon.querySelector('.quickicon-sr-desc');
@@ -51,14 +58,12 @@
               if (response.data.sronly && sronly) {
                 sronly.textContent = response.data.sronly;
               }
-            } else if (pulse) {
-              pulse.classList.add('error');
+            } else {
+              quickicon.setAttribute('data-status', 'danger');
             }
           }),
           onError: (() => {
-            if (pulse) {
-              pulse.classList.add('error');
-            }
+            quickicon.setAttribute('data-status', 'danger');
           }),
         });
       }

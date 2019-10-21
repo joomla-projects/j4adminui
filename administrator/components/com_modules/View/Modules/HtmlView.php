@@ -20,6 +20,7 @@ use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * View class for a list of modules.
@@ -144,26 +145,20 @@ class HtmlView extends BaseHtmlView
 
 		if ($state->get('client_id') == 1)
 		{
-			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_ADMIN'), 'cube module');
+			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_ADMIN'), 'modules module');
 		}
 		else
 		{
-			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_SITE'), 'cube module');
-		}
-
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->standardButton('new', 'JTOOLBAR_NEW')
-				->onclick("location.href='index.php?option=com_modules&amp;view=select&amp;client_id=" . $this->state->get('client_id', 0) . "'");
+			ToolbarHelper::title(Text::_('COM_MODULES_MANAGER_MODULES_SITE'), 'modules module');
 		}
 
 		if ($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -212,12 +207,27 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		// add new module
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->linkButton('link', 'JTOOLBAR_INSTALL_MODULE')
+				->url('index.php?option=com_installer&amp;view=install')
+				->icon('icon-arrow-down-2');
+		}
+
+		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
+
 		if ($canDo->get('core.admin'))
 		{
 			$toolbar->preferences('com_modules');
 		}
 
-		$toolbar->help('JHELP_EXTENSIONS_MODULE_MANAGER');
+		// create new module
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->standardButton('new', 'JTOOLBAR_NEW')
+				->onclick("location.href='index.php?option=com_modules&amp;view=select&amp;client_id=" . $this->state->get('client_id', 0) . "'");
+		}
 	}
 
 	/**

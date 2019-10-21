@@ -10,13 +10,15 @@ namespace Joomla\Component\Workflow\Administrator\View\Workflows;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Toolbar\Toolbar;
-use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\Component\Workflow\Administrator\Helper\WorkflowHelper;
+
 
 /**
  * Workflows view class for the Workflow package.
@@ -123,25 +125,25 @@ class HtmlView extends BaseHtmlView
 	 */
 	protected function addToolbar()
 	{
+		// Get user
+		$user = Factory::getUser();
+
+		// Get extension permission actions
 		$canDo = ContentHelper::getActions($this->extension);
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
-
-		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'address contact');
-
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('workflow.add');
-		}
+		
+		// set title
+		ToolbarHelper::title(Text::_('COM_WORKFLOW_WORKFLOWS_LIST'), 'workflows');
 
 		if ($canDo->get('core.edit.state') || $user->authorise('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -170,12 +172,17 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_WORKFLOWS_LIST');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($this->extension);
 		}
 
-		$toolbar->help('JHELP_WORKFLOWS_LIST');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('workflow.add');
+		}
 	}
 
 	/**

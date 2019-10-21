@@ -122,23 +122,18 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_users', 'category', $this->state->get('filter.category_id'));
 
-		ToolbarHelper::title(Text::_('COM_USERS_VIEW_NOTES_TITLE'), 'users user');
+		ToolbarHelper::title(Text::_('COM_USERS_VIEW_NOTES_TITLE'), 'user-notes user');
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		if ($canDo->get('core.create'))
-		{
-			$toolbar->addNew('note.add');
-		}
-
 		if ($canDo->get('core.edit.state') || $canDo->get('core.admin'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -165,12 +160,17 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		$toolbar->help('JHELP_USERS_USER_NOTES');
+
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_users');
 		}
 
-		$toolbar->help('JHELP_USERS_USER_NOTES');
+		if ($canDo->get('core.create'))
+		{
+			$toolbar->addNew('note.add');
+		}
 	}
 
 	/**

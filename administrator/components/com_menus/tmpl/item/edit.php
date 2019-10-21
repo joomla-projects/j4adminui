@@ -28,6 +28,8 @@ Text::script('JGLOBAL_VALIDATION_FORM_FAILED');
 
 $this->document->addScriptOptions('menu-item', ['itemId' => (int) $this->item->id]);
 HTMLHelper::_('script', 'com_menus/admin-item-edit.min.js', ['version' => 'auto', 'relative' => true], ['defer' => 'defer']);
+HTMLHelper::_('webcomponent', 'system/joomla-accordion.min.js', array('version'=> 'auto', 'relative' => true));
+HTMLHelper::_('webcomponent', 'system/joomla-callout.min.js', array('version'=> 'auto', 'relative' => true));
 
 $assoc = Associations::isEnabled();
 $hasAssoc = ($this->form->getValue('language', null, '*') !== '*');
@@ -48,31 +50,28 @@ if ($clientId === 1)
 ?>
 <form action="<?php echo Route::_('index.php?option=com_menus&view=item&client_id=' . $clientId . '&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
-	<?php // Add the translation of the menu item title when client is administrator ?>
-	<?php if ($clientId === 1 && $this->item->id != 0) : ?>
-		<div class="form-inline form-inline-header">
-			<div class="control-group">
-				<div class="control-label">
-					<label for="menus_title_translation"><?php echo Text::sprintf('COM_MENUS_TITLE_TRANSLATION', $lang); ?></label>
+	<div class="row">
+		<div class="col-lg-9">
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+			<?php // Add the translation of the menu item title when client is administrator ?>
+			<?php if ($clientId === 1 && $this->item->id != 0) : ?>
+				<div class="form-inline form-inline-header">
+					<div class="control-group">
+						<div class="control-label">
+							<label for="menus_title_translation"><?php echo Text::sprintf('COM_MENUS_TITLE_TRANSLATION', $lang); ?></label>
+						</div>
+						<div class="controls">
+							<input id="menus_title_translation" class="form-control" value="<?php echo Text::_($this->item->title); ?>" readonly="readonly" type="text">
+						</div>
+					</div>
 				</div>
-				<div class="controls">
-					<input id="menus_title_translation" class="form-control" value="<?php echo Text::_($this->item->title); ?>" readonly="readonly" type="text">
-				</div>
-			</div>
-		</div>
-	<?php endif; ?>
+			<?php endif; ?>
 
-	<div>
+			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_MENUS_ITEM_DETAILS')); ?>
-		<div class="row">
-			<div class="col-lg-9">
-				<div class="card">
-					<div class="card-body">
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_MENUS_ITEM_DETAILS')); ?>
+				<div class="j-card">
+					<div class="j-card-body">
 					<?php
 					echo $this->form->renderField('type');
 
@@ -111,74 +110,104 @@ if ($clientId === 1)
 					?>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
-					<?php
-						// Set main fields.
-						$this->fields = array(
-							'id',
-							'client_id',
-							'menutype',
-							'parent_id',
-							'menuordering',
-							'published',
-							'publish_up',
-							'publish_down',
-							'home',
-							'access',
-							'language',
-							'note',
-						);
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-						if ($this->item->type != 'component')
-						{
-							$this->fields = array_diff($this->fields, array('home'));
-							$this->form->setFieldAttribute('publish_up', 'showon', '');
-							$this->form->setFieldAttribute('publish_down', 'showon', '');
-						}
+			<?php
+			$this->fieldsets = array();
+			$this->ignore_fieldsets = array('aliasoptions', 'request', 'menu-options', 'page-options', 'metadata', 'item_associations');
+			echo LayoutHelper::render('joomla.edit.params', $this);
+			?>
 
-						echo LayoutHelper::render('joomla.edit.global', $this); ?>
+			<?php if (!$isModal && $assoc && $this->state->get('item.client_id') != 1) : ?>
+				<?php if ($hasAssoc) : ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+					<div id="fieldset-associations" class="j-card options-grid-form options-grid-form-full">
+						<div class="j-card-header">
+							<?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?>
+						</div>
+						<div class="j-card-body">
+							<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
+						</div>
+					</div>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
+				<?php endif; ?>
+			<?php elseif ($isModal && $assoc) : ?>
+				<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
+			<?php endif; ?>
+
+			<?php if (!empty($this->modules)) : ?>
+				<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'modules', Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
+				<div id="fieldset-modules" class="j-card options-grid-form options-grid-form-full">
+					<div class="j-card-header">
+						<?php echo Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT'); ?>
+					</div>
+					<div class="j-card-body">
+						<?php echo $this->loadTemplate('modules'); ?>
 					</div>
 				</div>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php
-		$this->fieldsets = array();
-		$this->ignore_fieldsets = array('aliasoptions', 'request', 'item_associations');
-		echo LayoutHelper::render('joomla.edit.params', $this);
-		?>
-
-		<?php if (!$isModal && $assoc && $this->state->get('item.client_id') != 1) : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
-			<?php if ($hasAssoc) : ?>
-				<fieldset id="fieldset-associations" class="options-grid-form options-grid-form-full">
-				<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
-				<div>
-				<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
-				</div>
-				</fieldset>
+				<?php echo HTMLHelper::_('uitab.endTab'); ?>
 			<?php endif; ?>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
-			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
-		<?php endif; ?>
 
-		<?php if (!empty($this->modules)) : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'modules', Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT')); ?>
-			<fieldset id="fieldset-modules" class="options-grid-form options-grid-form-full">
-				<legend><?php echo Text::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT'); ?></legend>
-				<div>
-				<?php echo $this->loadTemplate('modules'); ?>
-				</div>
-			</fieldset>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php endif; ?>
+			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		</div>
 
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		<div class="col-lg-3">
+			<joomla-accordion toggle="true" animation="true">
+				<section class="accordion-item show" id="menu-editor-basic" name="<?php echo Text::_('COM_MENUS_BASIC_LABEL'); ?>" icon="icon-info-circle">
+					<?php
+					// Set main fields.
+					$this->fields = array(
+						'id',
+						'client_id',
+						'menutype',
+						'parent_id',
+						'menuordering',
+						'published',
+						'publish_up',
+						'publish_down',
+						'home',
+						'access',
+						'language',
+						'note',
+					);
+
+					if ($this->item->type != 'component')
+					{
+						$this->fields = array_diff($this->fields, array('home'));
+						$this->form->setFieldAttribute('publish_up', 'showon', '');
+						$this->form->setFieldAttribute('publish_down', 'showon', '');
+					}
+
+					echo LayoutHelper::render('joomla.edit.global', $this);
+					
+					?>
+				</section>
+				
+				<?php if($this->form->getFieldset('metadata')) : ?>
+				<section class="accordion-item" id="menu-editor-metadata" name="<?php echo Text::_('JGLOBAL_FIELDSET_SEO_OPTIONS'); ?>" icon="icon-search">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('metadata'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+
+				<?php if($this->form->getFieldset('menu-options')) : ?>
+				<section class="accordion-item" id="menu-editor-linktype" name="<?php echo Text::_('COM_MENUS_LINKTYPE_OPTIONS_LABEL'); ?>" icon="icon-external-link">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('menu-options'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+
+				<?php if($this->form->getFieldset('page-options')) : ?>
+				<section class="accordion-item" id="menu-editor-page-options" name="<?php echo Text::_('COM_MENUS_PAGE_OPTIONS_LABEL'); ?>" icon="icon-info-circle">
+					<div class="form-vertical form-no-margin">
+						<?php echo $this->form->renderFieldSet('page-options'); ?>
+					</div>
+				</section>
+				<?php endif; ?>
+			</joomla-accordion>
+		</div>
 	</div>
 
 	<input type="hidden" name="task" value="">

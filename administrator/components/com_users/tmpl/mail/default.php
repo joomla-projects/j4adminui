@@ -27,9 +27,9 @@ $comUserParams = ComponentHelper::getParams('com_users');
 
 <form action="<?php echo Route::_('index.php?option=com_users&view=mail'); ?>" name="adminForm" method="post" id="adminForm">
 	<div class="row mt-2">
-		<div class="col-md-9">
-			<div class="card">
-				<div class="card-body">
+		<div class="col-md-8 col-lg-9">
+			<div class="j-card">
+				<div class="j-card-body">
 					<fieldset class="adminform">
 						<div class="form-group">
 							<?php echo $this->form->getLabel('subject'); ?>
@@ -44,8 +44,8 @@ $comUserParams = ComponentHelper::getParams('com_users');
 							<?php echo $this->form->getLabel('message'); ?>
 							<?php echo $this->form->getInput('message'); ?>
 							<?php if (!empty($comUserParams->get('mailBodySuffix'))) : ?>
-								<div class="mt-1 card">
-									<div class="card-body">
+								<div class="mt-1 j-card">
+									<div class="j-card-body">
 										<?php echo $comUserParams->get('mailBodySuffix'); ?>
 									</div>
 								</div>
@@ -57,9 +57,9 @@ $comUserParams = ComponentHelper::getParams('com_users');
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<div class="card-body">
+		<div class="col-md-4 col-lg-3">
+			<div class="j-card">
+				<div class="j-card-body">
 					<div class="form-group">
 						<?php echo $this->form->getInput('recurse'); ?>
 						<?php echo $this->form->getLabel('recurse'); ?>

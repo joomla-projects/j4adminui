@@ -26,7 +26,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-toolbar-button.min.js', ['version' 
 extract($displayData, EXTR_OVERWRITE);
 
 echo HTMLHelper::_(
-	'bootstrap.renderModal',
+	'webcomponent.renderModal',
 	'versionsModal',
 	array(
 		'url'    => 'index.php?' . http_build_query(
@@ -42,22 +42,22 @@ echo HTMLHelper::_(
 			]
 		),
 		'title'  => $title,
-		'height' => '100%',
-		'width'  => '100%',
-		'modalWidth'  => '80',
-		'bodyHeight'  => '60',
+		'height' => '75vh',
+		'width'  => '85vw',
+		'modalWidth'  => '85',
+		'bodyHeight'  => '75',
 		'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">'
 			. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>'
 	)
 );
 ?>
-<joomla-toolbar-button id="toolbar-versions">
+<joomla-toolbar-button id="toolbar-versions" class="d-none d-lg-block">
 	<button
-		class="btn btn-sm btn-primary"
+		class="btn btn-secondary"
 		type="button"
 		onclick="document.getElementById('versionsModal').open()"
 		data-toggle="modal">
-		<span class="fa fa-code-branch" aria-hidden="true"></span>
+		<span class="icon-code-branch icon-md" aria-hidden="true"></span>
 		<?php echo $title; ?>
 	</button>
 </joomla-toolbar-button>

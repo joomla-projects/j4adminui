@@ -33,12 +33,12 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 					<?php endif; ?>
 					<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 					<?php if (empty($this->items)) : ?>
-						<div class="alert alert-info">
-							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-							<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+						<div class="j-alert j-alert-info d-flex mt-4">
+							<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+							<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 						</div>
 					<?php else : ?>
-					<table class="table" id="manageList">
+					<table class="table j-list-table" id="manageList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_INSTALLER_MANAGE_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -59,7 +59,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<th scope="col" style="width:10%">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_TYPE', 'type_translated', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
+								<th scope="col" style="width:10%" class="d-none d-lg-table-cell">
 									<?php echo Text::_('JVERSION'); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
@@ -68,10 +68,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
 									<?php echo Text::_('JAUTHOR'); ?>
 								</th>
-								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+								<th scope="col" style="width:5%" class="d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_FOLDER', 'folder_translated', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col" class="d-none d-md-table-cell">
+								<th scope="col" class="d-none d-lg-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_INSTALLER_HEADING_PACKAGE_ID', 'package_id', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:1%" class="d-none d-md-table-cell">
@@ -104,15 +104,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<td>
 									<?php echo $item->type_translated; ?>
 								</td>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-lg-table-cell">
 									<?php if ($item->version !== '') : ?>
 										<?php if (!empty($item->changelogurl)) : ?>
-											<a href="#changelogModal<?php echo $item->extension_id; ?>" class="changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="manage" data-toggle="modal">
+											<a data-href="#changelogModal<?php echo $item->extension_id; ?>" href="#" class="changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="manage">
 												<?php echo $item->version?>
 											</a>
 											<?php
 											echo HTMLHelper::_(
-												'bootstrap.renderModal',
+												'webcomponent.renderModal',
 												'changelogModal' . $item->extension_id,
 												array(
 													'title' => Text::sprintf('COM_INSTALLER_CHANGELOG_TITLE', $item->name, $item->version),
@@ -133,10 +133,10 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 								<td class="d-none d-md-table-cell">
 									<?php echo !empty($item->author) ? $item->author : '&#160;'; ?>
 								</td>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-lg-table-cell">
 									<?php echo $item->folder_translated; ?>
 								</td>
-								<td class="d-none d-md-table-cell">
+								<td class="d-none d-lg-table-cell">
 									<?php echo $item->package_id ?: '&#160;'; ?>
 								</td>
 								<td class="d-none d-md-table-cell">
@@ -146,11 +146,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 						<?php endforeach; ?>
 						</tbody>
 					</table>
-
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 					<?php endif; ?>
+
+
 					<input type="hidden" name="task" value="">
 					<input type="hidden" name="boxchecked" value="0">
 					<?php echo HTMLHelper::_('form.token'); ?>

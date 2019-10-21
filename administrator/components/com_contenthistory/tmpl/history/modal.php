@@ -67,11 +67,11 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-modal.min.js', array('
 	</div>
 
 	<form action="<?php echo Route::_($formUrl); ?>" method="post" name="adminForm" id="adminForm">
-		<table class="table table-sm">
+		<table class="table j-striped-table">
 			<thead>
 				<tr>
 					<td style="width:1%" class="text-center">
-						<input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)">
+						<input type="checkbox" name="checkall-toggle" class="j-checkbox" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)">
 					</td>
 					<th scope="col" style="width:15%">
 						<?php echo Text::_('JDATE'); ?>

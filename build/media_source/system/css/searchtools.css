@@ -36,9 +36,6 @@ html[dir=rtl] .js-stools .js-stools-container-selector-first {
 	margin-left: 8px;
 	margin-right: 0;
 }
-.js-stools .js-stools-container-bar .btn-toolbar{
-	justify-content: flex-end;
-}
 .js-stools .js-stools-container-list {
 	float: right;
 	text-align: right;
@@ -59,10 +56,13 @@ html[dir=rtl] .js-stools .chosen-container {
 .js-stools .chzn-container-single .chzn-single span {
 	overflow: visible;
 }
+.js-stools .ordering-select .custom-select{
+	height: 2.7rem;
+}
 .js-stools .js-stools-field-list,
 .js-stools .js-stools-field-filter {
 	display: inline-block;
-	margin: 0 5px 5px 0;
+	margin: 0 5px 0 0;
 }
 .js-stools .js-stools-container-list .js-stools-field-list:last-child {
 	margin-right: 0;
@@ -81,13 +81,5 @@ html[dir=rtl] .js-stools .chosen-container {
 	}
 	.js-stools-container-bar {
 		margin-top: 20px;
-	}
-}
-@media (min-width: 768px) and (max-width: 979px) {
-	.js-stools .js-stools-container-selector,
-	.js-stools .js-stools-container-bar,
-	.js-stools .js-stools-container-list {
-		float: none;
-		display: block;
 	}
 }

@@ -1,0 +1,100 @@
+.com_content {
+	&.layout-edit {
+		joomla-tab {
+			#attrib-basic[active],
+			#editor[active] {
+				@extend .d-flex;
+				@extend .flex-wrap;
+				.form-group {
+					flex: 0 0 50%;
+					max-width: 50%;
+					box-shadow: none;
+					
+					&:nth-child(1),
+					&:nth-child(19) {
+						flex: 0 0 100%;
+						max-width: 100%;
+					}
+				}
+				.field-spacer {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+			}
+		}
+	}
+	&.view-article{
+		.article-title-info-wrapper{
+			margin-bottom: 10px;
+		}
+		.artilce-preview-link{
+			justify-content: center !important;
+			position: relative;
+			color: var(--primary-text-color);
+			.link-info{
+				display: flex;
+				i{
+					font-size: 22px;
+					margin-right: 15px;
+					opacity: .5;
+				}
+			}
+			>a{
+				position: absolute;
+				right: 0;
+				color: var(--primary-text-color);
+				font-size: 16px;
+				border-left: solid 1px #f4f7fc;
+				width: 50px;
+				text-align: center;
+				height: 44px;
+				line-height: 44px;
+				transition: .3s;
+				&:hover, &:focus{
+					color: var(--primary-color);
+				}
+			}
+		}
+		.form-group-wrapper{
+			padding-top: .8rem;
+			padding-bottom: 1.4rem;
+			fieldset .control-group,
+			.alias-wrap{
+				padding-left: 1.5rem;
+				padding-right: 1.5rem;
+			}
+			fieldset .control-group{
+				&:not(:last-child){
+					border-bottom: 1px solid var(--border-color);
+					padding-bottom: 15px;
+				}
+				&:last-child{
+					margin-bottom: 0;
+				}
+				@extend .d-flex;
+				@extend .align-items-center;
+				.control-label{
+					position: inherit;
+					height: auto;
+					min-width: 90px;
+				}
+				.controls{
+					flex: 1;
+					select,
+					input{
+						width: 100%;
+					}
+					.switcher__legend{
+						display: none;
+					}
+					.switcher{
+						padding-top: 5px;
+						label{
+							color: var(--primary-text-color);
+						}
+					}
+				}
+			}
+		}
+	}
+}

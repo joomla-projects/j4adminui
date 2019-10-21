@@ -33,13 +33,13 @@ $saveOrder = $listOrder == 'a.id';
 				<?php if ($this->httpHeadersId) : ?>
 					<?php $link = Route::_('index.php?option=com_plugins&client_id=0&task=plugin.edit&extension_id=' . $this->httpHeadersId . '&tmpl=component&layout=modal'); ?>
 					<?php echo HTMLHelper::_(
-						'bootstrap.renderModal',
+						'webcomponent.renderModal',
 						'plugin' . $this->httpHeadersId . 'Modal',
 						array(
 							'url'         => $link,
 							'title'       => Text::_('COM_CSP_EDIT_PLUGIN_SETTINGS'),
-							'height'      => '400px',
-							'width'       => '800px',
+							'height'      => '75vh',
+							'width'       => '85vw',
 							'bodyHeight'  => '70',
 							'modalWidth'  => '80',
 							'closeButton' => false,
@@ -59,12 +59,12 @@ $saveOrder = $listOrder == 'a.id';
 					<?php Factory::getApplication()->enqueueMessage($this->trashWarningMessage, 'warning'); ?>
 				<?php endif; ?>
 				<?php if (empty($this->items)) : ?>
-					<div class="alert alert-info">
-						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex mt-4">
+						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else : ?>
-					<table class="table" id="articleList">
+					<table class="table j-list-table" id="articleList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_CSP_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -128,11 +128,15 @@ $saveOrder = $listOrder == 'a.id';
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+
+
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>

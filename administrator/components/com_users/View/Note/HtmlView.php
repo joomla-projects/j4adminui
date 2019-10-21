@@ -18,6 +18,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Object\CMSObject;
+use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
@@ -98,32 +99,12 @@ class HtmlView extends BaseHtmlView
 		// Since we don't track these assets at the item level, use the category id.
 		$canDo = ContentHelper::getActions('com_users', 'category', $this->item->catid);
 
-		ToolbarHelper::title(Text::_('COM_USERS_NOTES'), 'users user');
+		$toolbar = Toolbar::getInstance();
 
-		$toolbarButtons = [];
+		ToolbarHelper::title(Text::_('COM_USERS_NOTES'), 'user-notes user');
 
-		// If not checked out, can save the item.
-		if (!$checkedOut && ($canDo->get('core.edit') || count($user->getAuthorisedCategories('com_users', 'core.create'))))
-		{
-			ToolbarHelper::apply('note.apply');
-			$toolbarButtons[] = ['save', 'note.save'];
-		}
-
-		if (!$checkedOut && count($user->getAuthorisedCategories('com_users', 'core.create')))
-		{
-			$toolbarButtons[] = ['save2new', 'note.save2new'];
-		}
-
-		// If an existing item, can save to a copy.
-		if (!$isNew && (count($user->getAuthorisedCategories('com_users', 'core.create')) > 0))
-		{
-			$toolbarButtons[] = ['save2copy', 'note.save2copy'];
-		}
-
-		ToolbarHelper::saveGroup(
-			$toolbarButtons,
-			'btn-success'
-		);
+		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_USERS_USER_NOTES_EDIT');
 
 		if (empty($this->item->id))
 		{
@@ -139,7 +120,31 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::cancel('note.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_USERS_USER_NOTES_EDIT');
+		// Save item group 
+		$saveGroup = $toolbar->dropdownButton('save-group');
+
+		$saveGroup->configure(
+			function (Toolbar $childBar) use ($checkedOut, $canDo, $user, $isNew)
+			{
+				// If not checked out, can save the item.
+				if (!$checkedOut && ($canDo->get('core.edit') || count($user->getAuthorisedCategories('com_users', 'core.create'))))
+				{
+					$childBar->apply('note.apply');
+					$childBar->save('note.save');
+				}
+
+				if (!$checkedOut && count($user->getAuthorisedCategories('com_users', 'core.create')))
+				{
+					$childBar->save2new('note.save2new');
+				}
+
+				// If an existing item, can save to a copy.
+				if (!$isNew && (count($user->getAuthorisedCategories('com_users', 'core.create')) > 0))
+				{
+					$childBar->save2copy('note.save2copy');
+				}
+
+			}
+		);
 	}
 }

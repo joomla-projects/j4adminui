@@ -18,6 +18,7 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 
+HTMLHelper::_('webcomponent', 'system/joomla-modal.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('behavior.multiselect');
 
 $app       = Factory::getApplication();
@@ -53,12 +54,12 @@ if ($saveOrder && !empty($this->items))
 			<div id="j-main-container" class="j-main-container">
 				<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this, 'options' => array('selectorFieldName' => 'context'))); ?>
 				<?php if (empty($this->items)) : ?>
-					<div class="alert alert-info">
-						<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-						<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+					<div class="j-alert j-alert-info d-flex mt-4">
+						<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+						<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 					</div>
 				<?php else : ?>
-					<table class="table" id="fieldList">
+					<table class="table j-list-table" id="fieldList">
 						<caption id="captionTable" class="sr-only">
 							<?php echo Text::_('COM_FIELDS_FIELDS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
@@ -68,7 +69,7 @@ if ($saveOrder && !empty($this->items))
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
 								<th scope="col" style="width:1%" class="text-center d-none d-md-table-cell">
-									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+									<?php echo HTMLHelper::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-caret-v'); ?>
 								</th>
 								<th scope="col" style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
@@ -79,7 +80,7 @@ if ($saveOrder && !empty($this->items))
 								<th scope="col">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FIELDS_FIELD_TYPE_LABEL', 'a.type', $listDirn, $listOrder); ?>
 								</th>
-								<th scope="col">
+								<th scope="col" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'COM_FIELDS_FIELD_GROUP_LABEL', 'g.title', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:10%" class="d-none d-md-table-cell">
@@ -113,8 +114,8 @@ if ($saveOrder && !empty($this->items))
 										<?php elseif (!$saveOrder) : ?>
 											<?php $iconClass = ' inactive" title="' . Text::_('JORDERINGDISABLED'); ?>
 										<?php endif; ?>
-										<span class="sortable-handler<?php echo $iconClass; ?>">
-											<span class="fa fa-ellipsis-v" aria-hidden="true"></span>
+										<span class="sortable-handler icon-move-v<?php echo $iconClass; ?>">
+											<span class="icon-arrows-v" aria-hidden="true"></span>
 										</span>
 										<?php if ($canChange && $saveOrder) : ?>
 											<input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>">
@@ -158,7 +159,7 @@ if ($saveOrder && !empty($this->items))
 									<td class="small">
 										<?php echo $this->escape($item->type); ?>
 									</td>
-									<td>
+									<td class="d-none d-md-table-cell">
 										<?php echo $this->escape($item->group_title); ?>
 									</td>
 									<td class="small d-none d-md-table-cell">
@@ -177,24 +178,28 @@ if ($saveOrder && !empty($this->items))
 						</tbody>
 					</table>
 
-					<?php // load the pagination. ?>
-					<?php echo $this->pagination->getListFooter(); ?>
-
 					<?php //Load the batch processing form. ?>
 					<?php if ($user->authorise('core.create', $component)
 						&& $user->authorise('core.edit', $component)
 						&& $user->authorise('core.edit.state', $component)) : ?>
-						<?php echo HTMLHelper::_(
-								'bootstrap.renderModal',
-								'collapseModal',
-								array(
-									'title' => Text::_('COM_FIELDS_VIEW_FIELDS_BATCH_OPTIONS'),
-									'footer' => $this->loadTemplate('batch_footer')
-								),
-								$this->loadTemplate('batch_body')
-							); ?>
+							<joomla-modal role="dialog" id="collapseModal" title="<?php echo Text::_('COM_FIELDS_VIEW_FIELDS_BATCH_OPTIONS'); ?>" width="80vw" height="100%">
+								<section>
+									<?php echo $this->loadTemplate('batch_body'); ?>
+								</section>
+								<footer>
+									<?php echo $this->loadTemplate('batch_footer'); ?>
+								</footer>
+							</joomla-modal>
 					<?php endif; ?>
+					
+					<!-- load the pagination. -->
+					<div class="j-pagination-footer">
+						<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+						<?php echo $this->pagination->getListFooter(); ?>
+					</div>
 				<?php endif; ?>
+
+
 				<input type="hidden" name="task" value="">
 				<input type="hidden" name="boxchecked" value="0">
 				<?php echo HTMLHelper::_('form.token'); ?>

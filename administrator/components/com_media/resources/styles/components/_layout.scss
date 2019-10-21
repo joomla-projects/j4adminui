@@ -33,12 +33,8 @@
 
 .media-main {
   position: relative;
-  height: calc(100vh - 160px);
+  height: 100vh;
   overflow: hidden;
-  background-color: #fff;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
-  box-shadow: $col-box-shadow;
 }
 
 .media-sidebar {

@@ -18,13 +18,13 @@ $activeRequests = 0;
 
 ?>
 
-<table class="table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
+<table class="j-card-table" id="<?php echo str_replace(' ', '', $module->title) . $module->id; ?>">
 	<caption class="sr-only"><?php echo $module->title; ?></caption>
 	<thead>
 		<tr>
-			<th scope="col" style="width:40%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_TYPE'); ?></th>
-			<th scope="col" style="width:40%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_STATUS'); ?></th>
-			<th scope="col" style="width:20%"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_COUNT'); ?></th>
+			<th scope="col"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_TYPE'); ?></th>
+			<th scope="col" style="width: 150px; white-space: nowrap"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_STATUS'); ?></th>
+			<th scope="col" style="width: 150px; white-space: nowrap"><?php echo Text::_('COM_PRIVACY_DASHBOARD_HEADING_REQUEST_COUNT'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -36,10 +36,10 @@ $activeRequests = 0;
 						<?php echo Text::_('COM_PRIVACY_HEADING_REQUEST_TYPE_TYPE_' . $item->request_type); ?>
 					</a>
 				</td>
-				<td>
+				<td style="white-space: nowrap">
 					<?php echo HTMLHelper::_('privacy.statusLabel', $item->status); ?>
 				</td>
-				<td>
+				<td style="white-space: nowrap">
 					<span class="badge badge-info"><?php echo $item->count; ?></span>
 				</td>
 			</tr>

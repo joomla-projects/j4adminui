@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * @copyright  Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
@@ -20,12 +21,6 @@
       return false;
     }
   };
-
-  const allMenus = document.querySelectorAll('ul.main-nav');
-  allMenus.forEach((menu) => {
-    // eslint-disable-next-line no-new, no-undef
-    new MetisMenu(menu);
-  });
 
   const closest = (element, selector) => {
     let matchesFn;
@@ -53,34 +48,22 @@
     return null;
   };
 
+  const header = document.getElementById('header');
   const wrapper = document.getElementById('wrapper');
   const sidebar = document.getElementById('sidebar-wrapper');
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
-
-  // Set the initial state of the sidebar based on the localStorage value
-  if (Joomla.localStorageEnabled()) {
-    const sidebarState = localStorage.getItem('atum-sidebar');
-    if (sidebarState === 'open' || sidebarState === null) {
-      wrapper.classList.remove('closed');
-      menuToggleIcon.classList.remove('fa-toggle-off');
-      menuToggleIcon.classList.add('fa-toggle-on');
-      localStorage.setItem('atum-sidebar', 'open');
-      Joomla.Event.dispatch('joomla:menu-toggle', 'open');
-    } else {
-      wrapper.classList.add('closed');
-      menuToggleIcon.classList.remove('fa-toggle-on');
-      menuToggleIcon.classList.add('fa-toggle-off');
-      localStorage.setItem('atum-sidebar', 'closed');
-      Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
-    }
-  }
-
+  const documentContainer = document.querySelector('.container-main');
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
     wrapper.classList.remove('closed');
+    header.classList.remove('closed');
   }
-
-  if (sidebar && !sidebar.getAttribute('data-hidden')) {
+  if (wrapper) {
+    if (documentContainer && !wrapper.classList.contains('closed')) {
+      documentContainer.classList.add('menu-collapsed');
+    }
+  }
+  if (sidebar) {
     // Sidebar
     const menuToggle = document.getElementById('menu-collapse');
     const firsts = [].slice.call(sidebar.querySelectorAll('.collapse-level-1'));
@@ -99,37 +82,39 @@
     const menuClose = () => {
       sidebar.querySelector('.mm-collapse').classList.remove('mm-collapsed');
     };
-
+    if (typeof menuToggle !== 'undefined' && menuToggle !== null) {
     // Toggle menu
-    menuToggle.addEventListener('click', () => {
-      wrapper.classList.toggle('closed');
-      menuToggleIcon.classList.toggle('fa-toggle-on');
-      menuToggleIcon.classList.toggle('fa-toggle-off');
+      menuToggle.addEventListener('click', () => {
+        wrapper.classList.toggle('closed');
+        header.classList.toggle('closed');
+        menuToggleIcon.classList.toggle('icon-angle-double-left');
+        menuToggleIcon.classList.toggle('icon-angle-double-right');
+        if (documentContainer) {
+          documentContainer.classList.toggle('menu-collapsed');
+        }
+        const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
+        listItems.forEach((item) => {
+          item.classList.remove('open');
+        });
+        const elem = document.querySelector('.child-open');
+        if (elem) {
+          elem.classList.remove('child-open');
+        }
 
-      const listItems = [].slice.call(document.querySelectorAll('.main-nav > li'));
-      listItems.forEach((item) => {
-        item.classList.remove('open');
+        // Save the sidebar state and dispatch event
+        if (wrapper.classList.contains('closed')) {
+          if (typeof Joomla.Cookies !== 'undefined') {
+            Joomla.Cookies.set('spring-sidebar', 'closed', 31536000, '/', '');
+          }
+          Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
+        } else {
+          if (typeof Joomla.Cookies !== 'undefined') {
+            Joomla.Cookies.set('spring-sidebar', 'open', 31536000, '/', '');
+          }
+          Joomla.Event.dispatch('joomla:menu-toggle', 'open');
+        }
       });
-
-      const elem = document.querySelector('.child-open');
-      if (elem) {
-        elem.classList.remove('child-open');
-      }
-
-      // Save the sidebar state and dispatch event
-      const storageEnabled = Joomla.localStorageEnabled();
-      if (wrapper.classList.contains('closed')) {
-        if (storageEnabled) {
-          localStorage.setItem('atum-sidebar', 'closed');
-        }
-        Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
-      } else {
-        if (storageEnabled) {
-          localStorage.setItem('atum-sidebar', 'open');
-        }
-        Joomla.Event.dispatch('joomla:menu-toggle', 'open');
-      }
-    });
+    }
 
 
     /**
@@ -151,10 +136,8 @@
         if (!link.parentNode.classList.contains('parent')) {
           const firstLevel = closest(link, '.collapse-level-1');
           const secondLevel = closest(link, '.collapse-level-2');
-          if (firstLevel) firstLevel.parentNode.classList.add('mm-active');
-          if (firstLevel) firstLevel.classList.add('mm-show');
-          if (secondLevel) secondLevel.parentNode.classList.add('mm-active');
-          if (secondLevel) secondLevel.classList.add('mm-show');
+          if (firstLevel) firstLevel.parentNode.classList.add('active');
+          if (secondLevel) secondLevel.parentNode.classList.add('active');
         }
       }
     });
@@ -177,10 +160,13 @@
         });
 
         wrapper.classList.remove('closed');
-        localStorage.setItem('atum-sidebar', 'open');
-        if (menuToggleIcon.classList.contains('fa-toggle-off')) {
-          menuToggleIcon.classList.toggle('fa-toggle-off');
-          menuToggleIcon.classList.toggle('fa-toggle-on');
+        header.classList.remove('closed');
+        if (typeof Joomla.Cookies !== 'undefined') {
+          Joomla.Cookies.set('spring-sidebar', 'open', 31536000, '/');
+        }
+        if (menuToggleIcon.classList.contains('icon-angle-double-right')) {
+          menuToggleIcon.classList.toggle('icon-angle-double-right');
+          menuToggleIcon.classList.toggle('icon-angle-double-left');
         }
         mainNav.classList.add('child-open');
 
@@ -188,7 +174,6 @@
           menuItem.classList.add('open');
         }
       }
-
       Joomla.Event.dispatch('joomla:menu-toggle', 'open');
     };
 
@@ -227,4 +212,6 @@
       }
     }
   }
+  // eslint-disable-next-line no-new
+  new JoomlaMenu('#menu');
 })(window.Joomla, document);

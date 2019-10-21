@@ -1,0 +1,353 @@
+// Form
+label {
+	margin-bottom: .3rem;
+	font-size: $display1-size;
+}
+
+//Input style mixin
+@mixin input-style () {
+	border: 2px solid var(--input-border-color);
+	border-radius: 3px;
+	background-color: var(--bg-light-color);
+	display: block;
+	height: 2.86rem;
+	min-width: 100%;
+	font-size: 1rem;
+	max-width: 100%;
+	color: var(--primary-text-color);
+	&::placeholder{
+		color: var(--secondary-text-color);
+		opacity: 1;
+	}
+}
+joomla-field-fancy-select {
+	min-width: 100%;
+}
+.form-control {
+	@include input-style();
+	padding: 0 0 0 1.2rem;
+	&.focus-visible {
+		outline: 0;
+		border-color: var(--primary-color);
+	}
+}
+
+.form-group {
+	margin-bottom: 1rem;
+}
+
+.control-group {
+	margin-bottom: 1rem;
+	#helpsite-refresh {
+		margin-top: 1rem;
+	}
+	
+	> .form-check {
+		display: inline-block;
+	}
+	
+	&::after {
+		display: table;
+		clear: both;
+		content: "";
+	}
+	
+	.control-label {
+		float: left;
+		width: 170px;
+		padding-top: 5px;
+		padding-right: 5px;
+		text-align: left;
+		@include media-breakpoint-down(xs) {
+			width: 100%;
+		}
+	}
+	
+	.controls {
+		margin-left: 170px;
+		@include media-breakpoint-down(xs) {
+			margin-left: 0;
+		}
+	}
+	
+}
+
+.form-no-margin {
+	
+	.control-group {
+		
+		.controls {
+			margin-left: 0;
+			.switcher__legend {
+				float:none;
+				margin-left: 0;
+				width: auto;
+			}
+		}
+		
+		.control-label {
+			float: none;
+			width: auto;
+		}
+	}
+}
+
+.spacer {
+	hr {
+		width: 380px;
+	}
+	label {
+		width: 440px;
+		@include media-breakpoint-down(sm) {
+			width: auto;
+		}
+	}
+}
+
+td .form-control {
+	display: inline-block;
+	width: auto;
+}
+
+legend {
+	margin-bottom: 1.1rem;
+}
+
+.checkboxes {
+	padding-top: 5px;
+	
+	.checkbox input {
+		position: static;
+		margin-left: 0;
+	}
+}
+
+.form-check {
+	padding-top: 5px;
+	margin-bottom: 0;
+}
+
+.modal label {
+	width: 100%;
+}
+
+// Validation
+.invalid, .form-title-wrap label.invalid {
+	color: var(--danger-color);
+	border-color: var(--danger-color);
+}
+
+.valid {
+	border-color: var(--primary-color);
+}
+input,
+textarea,
+select{
+	&.valid {
+		border-color: var(--input-border-color);
+	}
+	&:active,
+	&:focus {
+		border-color: var(--primary-color);
+	}
+}
+
+.form-control-feedback {
+	display: table;
+}
+
+[aria-grabbed='true'] {
+	box-shadow: 0 0 2px 1px theme-color("primary");
+}
+
+.sortable-handler.inactive {
+	opacity: 0.3;
+}
+
+// Search Input Tooltip
+/* make the containers relative */
+.control-group > .controls {
+	position: relative;
+	fieldset {
+		min-width: 100%;
+	}
+}
+
+/* set up hidden tooltip */
+[role="tooltip"]:not(.show) {
+	display: none;
+	padding: 0.25em;
+	margin: 0.25em;
+	color: $white;
+	background: $black;
+	max-width: 100%;
+	z-index: $zindex-tooltip;
+}
+
+/* reveal associated tooltip on focus */
+:focus + [role="tooltip"],
+:hover + [role="tooltip"] {
+	display: block;
+	position: absolute;
+}
+
+[id="filter[search]-desc"] {
+	bottom: 100%;
+}
+
+.switcher__legend {
+	color: var(--secondary-text-color);
+	width: 170px;
+}
+
+//Form elements custom design
+textarea.form-control {
+	height: 6.9rem;
+	padding-top: $font-size-sm;
+}
+.custom-select {
+	@include input-style();
+	background: $custom-select-indicator no-repeat 100%/100rem;
+	background-color: var(--bg-light-color);
+	padding: 0 1.2rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-right: 4rem;
+	vertical-align: middle;
+	&[multiple]{
+		height: auto;
+		padding-right: $display1-size;
+		background-image: none;
+		option {
+			padding: .3rem $display1-size;
+		}
+	}
+}
+input {
+	&.invalid{
+		border: 1px solid var(--danger-color);
+		background: #fdece8;
+	}
+}
+
+.custom-select {
+	&.custom-select-color-state {
+		
+		&.custom-select-success {
+			color: var(--icon-color);
+			border-color: var(--primary-color);
+		}
+	}
+}
+
+.col-md-9 .switcher__legend,
+.col-md-12 .switcher__legend {
+	margin-left: -170px;
+	@include media-breakpoint-down(xs){
+		margin-left: 0;
+		width: 100%;
+		margin-bottom: 0;
+	}
+}
+
+.form-inline {
+	@extend .d-flex;
+	@extend .align-items-center;
+	flex-flow: row wrap;
+	.custom-select,
+	.input-group {
+		min-width: auto;
+	}
+}
+.form-check-inline {
+	@extend .d-inline-flex;
+	align-items: center;
+	padding-left: 0;
+	margin-right: .75rem;
+	.form-check-input {
+		position: static;
+		margin-top: 0;
+		margin-right: .3125rem;
+		margin-left: 0;
+	}
+	label {
+		margin-bottom: 0;
+	}
+}
+//User profile edit
+.input-container {
+	position: relative;
+	min-width: 100%;
+	.input-group-text {
+		background: transparent;
+		cursor: pointer;
+		color: var(--secondary-text-color);
+		position: absolute;
+		right: 0;
+		top: 0px;
+		bottom: 0px;
+		padding: 0 12px;
+		box-shadow: none;
+		line-height: 1;
+		border-color: var(--input-border-color);
+		border-width: 2px 2px 2px 1px;
+		border-style: solid;
+		border-radius: 3px;
+		&:hover {
+			color: var(--primary-color);
+		}
+		@include media-breakpoint-down(xs){
+			top: 38px;
+		}
+	}
+	.focus-visible {
+		+ .input-group-text {
+			border-color: var(--primary-color);
+		}
+	}
+}
+//When container background not white this CSS will apply for form fields
+.j-main-container {
+	.form-control {
+		background-color: var(--white);
+	}
+}
+
+//Password Indecator
+.strength-indicator-container {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	margin-top: 0.714rem;
+	min-width: 100%;
+}
+.indicator-text {
+	flex: 0 0 100%;
+	color: var(--icon-color);
+	font-size: .895rem;
+	margin-top: 5px;
+}
+.strength-indicator {
+	height: 2px;
+	flex-grow: 1;
+	border-radius: 3px;
+	background-color: #ccd3d7;
+	&:not(:last-child){
+		margin-right: 5px;
+	}
+	&.very-weak {
+		background-color: var(--danger-color);
+	}
+	&.weak {
+		background-color: var(--danger-light-color);
+	}
+	&.good {
+		background-color: var(--warning-color);
+	}
+	&.great {
+		background-color: var(--success-color);
+	}
+	&.strong {
+		background-color: var(--success-light-color);
+	}
+}

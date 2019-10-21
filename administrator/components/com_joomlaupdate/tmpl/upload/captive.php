@@ -21,7 +21,7 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 
 ?>
 
-<div class="alert alert-warning">
+<div class="j-alert j-alert-warning">
 	<h4 class="alert-heading">
 		<?php echo Text::_('COM_JOOMLAUPDATE_VIEW_UPLOAD_CAPTIVE_INTRO_HEAD'); ?>
 	</h4>
@@ -41,7 +41,7 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 					<input name="username" tabindex="1" id="mod-login-username" type="text" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_USERNAME'); ?>" size="15" autofocus="true">
 					<span class="input-group-append">
 						<span class="input-group-text">
-							<span class="fa fa-user" aria-hidden="true"></span>
+							<span class="icon-user" aria-hidden="true"></span>
 							<label for="mod-login-username" class="sr-only">
 								<?php echo Text::_('JGLOBAL_USERNAME'); ?>
 							</label>
@@ -56,7 +56,7 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 					<input name="passwd" tabindex="2" id="mod-login-password" type="password" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_PASSWORD'); ?>" size="15">
 					<span class="input-group-append">
 						<span class="input-group-text">
-							<span class="fa fa-lock" aria-hidden="true"></span>
+							<span class="icon-lock" aria-hidden="true"></span>
 							<label for="mod-login-password" class="sr-only">
 								<?php echo Text::_('JGLOBAL_PASSWORD'); ?>
 							</label>
@@ -72,7 +72,7 @@ $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 						<input name="secretkey" autocomplete="off" tabindex="3" id="mod-login-secretkey" type="text" class="form-control" placeholder="<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>" size="15">
 						<span class="input-group-append">
 							<span class="input-group-text" title="<?php echo Text::_('JGLOBAL_SECRETKEY_HELP'); ?>">
-								<span class="fa fa-star" aria-hidden="true"></span>
+								<span class="icon-star" aria-hidden="true"></span>
 								<label for="mod-login-secretkey" class="sr-only">
 									<?php echo Text::_('JGLOBAL_SECRETKEY'); ?>
 								</label>

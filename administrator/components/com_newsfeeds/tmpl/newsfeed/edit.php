@@ -38,91 +38,87 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 
 <form action="<?php echo Route::_('index.php?option=com_newsfeeds&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="newsfeed-form" class="form-validate">
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+	<div class="row">
+		<div class="col-lg-9">
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
-	<div>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
+			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', empty($this->item->id) ? Text::_('COM_NEWSFEEDS_NEW_NEWSFEED') : Text::_('COM_NEWSFEEDS_EDIT_NEWSFEED')); ?>
-		<div class="row">
-			<div class="col-lg-9">
-				<div class="card">
-					<div class="card-body">
-						<div class="form-vertical">
-							<?php echo $this->form->renderField('link'); ?>
-							<?php echo $this->form->renderField('description'); ?>
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', empty($this->item->id) ? Text::_('COM_NEWSFEEDS_NEW_NEWSFEED') : Text::_('COM_NEWSFEEDS_EDIT_NEWSFEED')); ?>
+			<div class="j-card">
+				<div class="j-card-body">
+					<div class="form-vertical">
+						<?php echo $this->form->renderField('link'); ?>
+						<?php echo $this->form->renderField('description'); ?>
+					</div>
+				</div>
+			</div>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'images', Text::_('JGLOBAL_FIELDSET_OPTIONS')); ?>
+				<div id="fieldset-image" class="j-card options-grid-form options-grid-form-full mb-4">
+					<div class="j-card-header">
+						<?php echo Text::_('JGLOBAL_FIELDSET_IMAGE_OPTIONS'); ?>
+					</div>
+					<div class="j-card-body">
+						<?php foreach ($this->form->getGroup('images') as $field) : ?>
+							<?php echo $field->renderField(); ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<?php echo $this->loadTemplate('display'); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
+
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
+				<div id="fieldset-publishingdata" class="j-card options-grid-form options-grid-form-full mb-4">
+					<div class="j-card-header">
+						<?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?>
+					</div>
+					<div class="j-card-body">
+						<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
+					</div>
+				</div>
+				<div id="fieldset-metadata" class="j-card options-grid-form options-grid-form-full">
+					<div class="j-card-header">
+						<?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?>
+					</div>
+					<div class="j-card-body">
+						<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
+					</div>
+				</div>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php if (!$isModal && $assoc) : ?>
+				<?php if ($hasAssoc) : ?>
+					<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
+					<div id="fieldset-associations" class="j-card options-grid-form options-grid-form-full">
+						<div class="j-card-header">
+							<?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?>
+						</div>
+						<div class="j-card-body">
+							<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
-						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'images', Text::_('JGLOBAL_FIELDSET_OPTIONS')); ?>
-		<div class="row">
-			<div class="col-md-6">
-				<fieldset id="fieldset-image" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_IMAGE_OPTIONS'); ?></legend>
-					<div>
-					<?php foreach ($this->form->getGroup('images') as $field) : ?>
-						<?php echo $field->renderField(); ?>
-					<?php endforeach; ?>
-					</div>
-				</fieldset>
-			</div>
-			<div class="col-md-6">
-					<?php echo $this->loadTemplate('display'); ?>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php echo LayoutHelper::render('joomla.edit.params', $this); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
-		<div class="row">
-			<div class="col-md-6">
-				<fieldset id="fieldset-publishingdata" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
-					<div>
-					<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
-					</div>
-				</fieldset>
-			</div>
-			<div class="col-md-6">
-				<fieldset id="fieldset-metadata" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?></legend>
-					<div>
-					<?php echo LayoutHelper::render('joomla.edit.metadata', $this); ?>
-					</div>
-				</fieldset>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php if (!$isModal && $assoc) : ?>
-			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'associations', Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS')); ?>
-			<?php if ($hasAssoc) : ?>
-				<fieldset id="fieldset-associations" class="options-grid-form options-grid-form-full">
-				<legend><?php echo Text::_('JGLOBAL_FIELDSET_ASSOCIATIONS'); ?></legend>
-				<div>
-				<?php echo LayoutHelper::render('joomla.edit.associations', $this); ?>
-				</div>
-				</fieldset>
+					<?php echo HTMLHelper::_('uitab.endTab'); ?>
+				<?php endif; ?>
+			<?php elseif ($isModal && $assoc) : ?>
+				<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
 			<?php endif; ?>
-			<?php echo HTMLHelper::_('uitab.endTab'); ?>
-		<?php elseif ($isModal && $assoc) : ?>
-			<div class="hidden"><?php echo LayoutHelper::render('joomla.edit.associations', $this); ?></div>
-		<?php endif; ?>
 
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="j-card">
+				<div class="j-card-body">
+					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<input type="hidden" name="task" value="">
 	<input type="hidden" name="forcedLanguage" value="<?php echo $input->get('forcedLanguage', '', 'cmd'); ?>">
 	<?php echo HTMLHelper::_('form.token'); ?>

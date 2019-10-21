@@ -97,7 +97,7 @@ abstract class JHtmlGrid
 	{
 		HTMLHelper::_('behavior.core');
 
-		return '<input type="checkbox" name="' . $name . '" value="" title="' . Text::_('JGLOBAL_CHECK_ALL') . '" onclick="' . $action . '">';
+		return '<input type="checkbox" name="' . $name . '" class="j-checkbox" value="" title="' . Text::_('JGLOBAL_CHECK_ALL') . '" onclick="' . $action . '">';
 	}
 
 	/**
@@ -121,13 +121,13 @@ abstract class JHtmlGrid
 		{
 			return $checkedOut ? '' : '<label for="' . $stub . $rowNum . '"><span class="sr-only">' . Text::_('JSELECT')
 				. ' ' . htmlspecialchars($title, ENT_COMPAT, 'UTF-8') . '</span></label>'
-				. '<input type="checkbox" id="' . $stub . $rowNum . '" name="' . $name . '[]" value="' . $recId
+				. '<input type="checkbox" id="' . $stub . $rowNum . '" name="' . $name . '[]" class="j-checkbox" value="' . $recId
 				. '" onclick="Joomla.isChecked(this.checked, \'' . $formId . '\');">';
 		}
 
 		return $checkedOut ? '' : '<label for="' . $stub . $rowNum . '"><span class="sr-only">' . Text::_('JSELECT')
 			. ' ' . htmlspecialchars($title, ENT_COMPAT, 'UTF-8') . '</span></label>'
-			. '<input type="checkbox" id="' . $stub . $rowNum . '" name="' . $name . '[]" value="' . $recId
+			. '<input type="checkbox" id="' . $stub . $rowNum . '" name="' . $name . '[]" class="j-checkbox" value="' . $recId
 			. '" onclick="Joomla.isChecked(this.checked);">';
 	}
 
@@ -257,7 +257,7 @@ abstract class JHtmlGrid
 	{
 		return '<a href="javascript:saveorder('
 			. (count($rows) - 1) . ', \'' . $task . '\')" rel="tooltip" class="saveorder btn btn-sm btn-secondary float-right" title="'
-			. Text::_('JLIB_HTML_SAVE_ORDER') . '"><span class="icon-menu-2"></span></a>';
+			. Text::_('JLIB_HTML_SAVE_ORDER') . '"><span class="icon-caret-v" area-hidden="true"></span></a>';
 	}
 
 	/**

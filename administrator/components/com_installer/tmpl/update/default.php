@@ -33,12 +33,12 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 					<?php endif; ?>
 					<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 					<?php if (empty($this->items)) : ?>
-						<div class="alert alert-info">
-							<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
+						<div class="j-alert j-alert-info">
+							<span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
 							<?php echo Text::_('COM_INSTALLER_MSG_UPDATE_NOUPDATES'); ?>
 						</div>
 					<?php else : ?>
-						<table class="table">
+						<table class="table j-list-table">
 							<caption id="captionTable" class="sr-only">
 								<?php echo Text::_('COM_INSTALLER_UPDATE_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 							</caption>
@@ -102,12 +102,12 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 									</td>
 									<td class="hidden-sm-down text-center">
 										<?php if (!empty($item->changelogurl)) : ?>
-										<a href="#changelogModal<?php echo $item->extension_id; ?>" class="btn btn-info btn-xs changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="update" data-toggle="modal">
+										<a data-href="#changelogModal<?php echo $item->extension_id; ?>" href="#" class="btn btn-info btn-xs changelogModal" data-js-extensionid="<?php echo $item->extension_id; ?>" data-js-view="update">
 											<?php echo Text::_('COM_INSTALLER_CHANGELOG'); ?>
 										</a>
 										<?php
 										echo HTMLHelper::_(
-											'bootstrap.renderModal',
+											'webcomponent.renderModal',
 											'changelogModal' . $item->extension_id,
 											array(
 												'title' => Text::sprintf('COM_INSTALLER_CHANGELOG_TITLE', $item->name, $item->version),
@@ -141,11 +141,15 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 							<?php endforeach; ?>
 							</tbody>
 						</table>
-
-						<?php // load the pagination. ?>
-						<?php echo $this->pagination->getListFooter(); ?>
-
+						
+						<!-- load the pagination. -->
+						<div class="j-pagination-footer">
+							<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+							<?php echo $this->pagination->getListFooter(); ?>
+						</div>
 					<?php endif; ?>
+					
+					
 					<input type="hidden" name="task" value="">
 					<input type="hidden" name="boxchecked" value="0">
 					<?php echo HTMLHelper::_('form.token'); ?>

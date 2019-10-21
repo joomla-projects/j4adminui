@@ -24,17 +24,14 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-versions.js', ['versio
 ?>
 
 <form action="<?php echo Route::_('index.php?option=com_banners&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="banner-form" class="form-validate">
+	<div class="row">
+		<div class="col-lg-9">
+			<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
+			<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-	<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
-
-	<div>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', array('active' => 'details')); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_BANNERS_BANNER_DETAILS')); ?>
-		<div class="row">
-			<div class="col-lg-9">
-				<div class="card">
-					<div class="card-body">
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'details', Text::_('COM_BANNERS_BANNER_DETAILS')); ?>
+				<div class="j-card">
+					<div class="j-card-body">
 						<?php echo $this->form->renderField('type'); ?>
 						<div id="image">
 							<?php echo $this->form->renderFieldset('image'); ?>
@@ -48,48 +45,46 @@ HTMLHelper::_('script', 'com_contenthistory/admin-history-versions.js', ['versio
 						?>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-3">
-				<div class="card">
-					<div class="card-body">
-						<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'otherparams', Text::_('COM_BANNERS_GROUP_LABEL_BANNER_DETAILS')); ?>
+				<div id="fieldset-otherparams" class="j-card form-no-margin options-grid-form">
+					<!-- <div class="j-card-header">
+						<?php echo Text::_('COM_BANNERS_GROUP_LABEL_BANNER_DETAILS'); ?>
+					</div> -->
+					<div class="j-card-body">
+						<?php echo $this->form->renderFieldset('otherparams'); ?>
 					</div>
 				</div>
-			</div>
-		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'otherparams', Text::_('COM_BANNERS_GROUP_LABEL_BANNER_DETAILS')); ?>
-			<fieldset id="fieldset-otherparams" class="form-no-margin options-grid-form">
-				<legend><?php echo Text::_('COM_BANNERS_GROUP_LABEL_BANNER_DETAILS'); ?></legend>
-				<div>
-					<?php echo $this->form->renderFieldset('otherparams'); ?>
-				</div>
-			</fieldset>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
-
-		<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
-		<div class="row">
-			<div class="col-md-6">
-				<fieldset id="fieldset-publishingdata" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></legend>
-					<div>
+			<?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
+				<div id="fieldset-publishingdata" class="j-card mb-4">
+					<div class="j-card-body">
 						<?php echo LayoutHelper::render('joomla.edit.publishingdata', $this); ?>
 					</div>
-				</fieldset>
-			</div>
-			<div class="col-md-6">
-				<fieldset id="fieldset-metadata" class="options-grid-form options-grid-form-full">
-					<legend><?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?></legend>
-					<div>
-					<?php echo $this->form->renderFieldset('metadata'); ?>
+				</div>
+				<div id="fieldset-metadata" class="j-card">
+					<div class="j-card-header">
+						<?php echo Text::_('JGLOBAL_FIELDSET_METADATA_OPTIONS'); ?>
 					</div>
-				</fieldset>
+					<div class="j-card-body">
+						<?php echo $this->form->renderFieldset('metadata'); ?>
+					</div>
+				</div>
+			<?php echo HTMLHelper::_('uitab.endTab'); ?>
+
+			<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="j-card">
+				<div class="j-card-body">
+					<?php echo LayoutHelper::render('joomla.edit.global', $this); ?>
+				</div>
 			</div>
 		</div>
-		<?php echo HTMLHelper::_('uitab.endTab'); ?>
 
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
 	</div>
 
 	<input type="hidden" name="task" value="">

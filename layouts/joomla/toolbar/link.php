@@ -20,17 +20,19 @@ defined('JPATH_BASE') or die;
  */
 extract($displayData, EXTR_OVERWRITE);
 
-$margin = (strpos($url ?? '', 'index.php?option=com_config') === false) ? '' : ' ml-auto';
+
+$id = isset($id) ? 'id="' . $id . '"' : '';
+
+$margin = (strpos($url ?? '', 'index.php?option=com_config') === false) ? '' : '';
 $target = empty($target) ? '' : 'target="' . $target . '"';
 ?>
-<joomla-toolbar-button class="<?php echo $margin; ?>">
+<joomla-toolbar-button class="<?php echo $margin; ?>" <?php echo $id; ?>>
 	<a
-		id="<?php echo $id; ?>"
 		class="<?php echo $btnClass; ?>"
 		href="<?php echo $url; ?>"
 		<?php echo $target; ?>
 		<?php echo $htmlAttributes; ?>>
-		<span class="<?php echo $class; ?>" aria-hidden="true"></span>
+		<span class="<?php echo $class; ?> icon-md" aria-hidden="true"></span>
 		<?php echo $text ?: ''; ?>
 	</a>
 </joomla-toolbar-button>

@@ -12,15 +12,16 @@ namespace Joomla\Component\Content\Administrator\View\Articles;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\MVC\View\GenericDataException;
-use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
-use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\Component\Content\Administrator\Extension\ContentComponent;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\MVC\View\GenericDataException;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\Component\Content\Administrator\Helper\ContentHelper;
+use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 
 /**
  * View class for a list of articles.
@@ -80,7 +81,7 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->transitions   = $this->get('Transitions');
 		$this->vote          = PluginHelper::isEnabled('content', 'vote');
-
+		
 		// Check for errors.
 		if ((count($errors = $this->get('Errors'))) || $this->transitions === false)
 		{
@@ -180,20 +181,15 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		ToolbarHelper::title(Text::_('COM_CONTENT_ARTICLES_TITLE'), 'stack article');
-
-		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
-		{
-			$toolbar->addNew('article.add');
-		}
+		ToolbarHelper::title(Text::_('COM_CONTENT_ARTICLES_TITLE'), 'content');
 
 		if ($canDo->get('core.edit.state') || $canDo->get('core.execute.transition'))
 		{
 			$dropdown = $toolbar->dropdownButton('status-group')
-				->text('JTOOLBAR_CHANGE_STATUS')
+				->text('JTOOLBAR_SELECT_ACTION')
 				->toggleSplit(false)
-				->icon('fa fa-ellipsis-h')
-				->buttonClass('btn btn-action')
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
 				->listCheck(true);
 
 			$childBar = $dropdown->getChildToolbar();
@@ -253,12 +249,18 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
+		
+		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER');
+		
 		if ($user->authorise('core.admin', 'com_content') || $user->authorise('core.options', 'com_content'))
 		{
 			$toolbar->preferences('com_content');
 		}
-
-		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER');
+		
+		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
+		{
+			$toolbar->addNew('article.add');
+		}
 	}
 
 	/**

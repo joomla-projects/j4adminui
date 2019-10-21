@@ -49,7 +49,7 @@ $btnClass    = $isBtnGroup ? 'btn btn-outline-secondary' : 'form-check';
 
 // Add the attributes of the fieldset in an array
 $attribs = ['class="' . trim(
-		$class . ' radio' . ($readonly || $disabled ? ' disabled' : '') . ($readonly ? ' readonly' : '')
+		$class . ' j-radio-group' . ($readonly || $disabled ? ' disabled' : '') . ($readonly ? ' readonly' : '')
 	) . $classToggle . '"',];
 
 if (!empty($disabled))

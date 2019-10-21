@@ -13,9 +13,11 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Layout\FileLayout;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 /**
@@ -109,40 +111,61 @@ class HtmlView extends BaseHtmlView
 	{
 		$canDo = ContentHelper::getActions('com_templates');
 
+		// Get the toolbar object instance
+		$toolbar = Toolbar::getInstance('toolbar');
+		
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
 		{
-			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_ADMIN'), 'paint-brush thememanager');
+			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_ADMIN'), 'brush thememanager');
 		}
 		else
 		{
-			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_SITE'), 'paint-brush thememanager');
+			ToolbarHelper::title(Text::_('COM_TEMPLATES_MANAGER_STYLES_SITE'), 'brush thememanager');
 		}
 
-		if ($canDo->get('core.edit.state'))
+		// batch actions
+		if ($canDo->get('core.create') || $canDo->get('core.delete') || $canDo->get('core.edit.state'))
 		{
-			ToolbarHelper::makeDefault('styles.setDefault', 'COM_TEMPLATES_TOOLBAR_SET_HOME');
-			ToolbarHelper::divider();
+			$dropdown = $toolbar->dropdownButton('status-group')
+				->text('JTOOLBAR_SELECT_ACTION')
+				->toggleSplit(false)
+				->icon('icon-select')
+				->buttonClass('btn btn-white')
+				->listCheck(true);
+
+			$childBar = $dropdown->getChildToolbar();
+
+			if ($canDo->get('core.edit.state'))
+			{
+				$childBar->standardButton('star')
+					->text('COM_TEMPLATES_TOOLBAR_SET_HOME')
+					->task('styles.setDefault')
+					->listCheck(true);
+			}
+
+			if ($canDo->get('core.create'))
+			{
+				$childBar->standardButton('copy')
+					->text('JTOOLBAR_DUPLICATE')
+					->task('styles.duplicate')
+					->listCheck(true);
+			}
+
+			if ($canDo->get('core.delete'))
+			{
+				$childBar->delete('styles.delete')->message('JGLOBAL_CONFIRM_DELETE')->listCheck(true);
+			}
 		}
 
-		if ($canDo->get('core.create'))
-		{
-			ToolbarHelper::custom('styles.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-			ToolbarHelper::divider();
-		}
+		// Install new template
+		ToolbarHelper::modal('ModalInstallTemplate', 'icon-arrow-down-2', 'JTOOLBAR_INSTALL_TEMPLATE');
 
-		if ($canDo->get('core.delete'))
-		{
-			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'styles.delete', 'JTOOLBAR_DELETE');
-			ToolbarHelper::divider();
-		}
+		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
 
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_templates');
-			ToolbarHelper::divider();
 		}
-
-		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_STYLES');
 	}
 }

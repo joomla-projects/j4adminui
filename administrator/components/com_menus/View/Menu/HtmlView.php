@@ -94,7 +94,19 @@ class HtmlView extends BaseHtmlView
 
 		$isNew = ($this->item->id == 0);
 
-		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_MENU_TITLE' : 'COM_MENUS_VIEW_EDIT_MENU_TITLE'), 'list menu');
+		ToolbarHelper::title(Text::_($isNew ? 'COM_MENUS_VIEW_NEW_MENU_TITLE' : 'COM_MENUS_VIEW_EDIT_MENU_TITLE'), 'menu	 menu');
+
+		ToolbarHelper::divider();
+		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER_EDIT');
+
+		if ($isNew)
+		{
+			ToolbarHelper::cancel('menu.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('menu.cancel', 'JTOOLBAR_CLOSE');
+		}
 
 		$toolbarButtons = [];
 
@@ -103,7 +115,7 @@ class HtmlView extends BaseHtmlView
 		{
 			if ($this->canDo->get('core.edit'))
 			{
-				ToolbarHelper::apply('menu.apply');
+				$toolbarButtons[] = ['apply', 'menu.apply'];
 			}
 
 			$toolbarButtons[] = ['save', 'menu.save'];
@@ -112,8 +124,7 @@ class HtmlView extends BaseHtmlView
 		// If user can edit, can save the item.
 		if (!$isNew && $this->canDo->get('core.edit'))
 		{
-			ToolbarHelper::apply('menu.apply');
-
+			$toolbarButtons[] = ['apply', 'menu.apply'];
 			$toolbarButtons[] = ['save', 'menu.save'];
 		}
 
@@ -127,17 +138,5 @@ class HtmlView extends BaseHtmlView
 			$toolbarButtons,
 			'btn-success'
 		);
-
-		if ($isNew)
-		{
-			ToolbarHelper::cancel('menu.cancel');
-		}
-		else
-		{
-			ToolbarHelper::cancel('menu.cancel', 'JTOOLBAR_CLOSE');
-		}
-
-		ToolbarHelper::divider();
-		ToolbarHelper::help('JHELP_MENUS_MENU_MANAGER_EDIT');
 	}
 }

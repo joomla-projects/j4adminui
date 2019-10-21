@@ -29,12 +29,12 @@ HTMLHelper::_('script', 'com_actiologs/admin-actionlogs-default.js', ['relative'
 		<?php // Search tools bar ?>
 		<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		<?php if (empty($this->items)) : ?>
-			<div class="alert alert-info">
-				<span class="fa fa-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span>
-				<?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+			<div class="j-alert j-alert-info d-flex mt-4">
+				<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-			<table class="table table-striped" id="logsList">
+			<table class="table j-list-table" id="logsList">
 				<caption id="captionTable" class="sr-only">
 					<?php echo Text::_('COM_ACTIONLOGS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 				</caption>
@@ -49,7 +49,7 @@ HTMLHelper::_('script', 'com_actiologs/admin-actionlogs-default.js', ['relative'
 						<th scope="col" width="15%" class="d-none d-md-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_EXTENSION', 'a.extension', $listDirn, $listOrder); ?>
 						</th>
-						<th scope="col" width="15%" class="d-none d-md-table-cell">
+						<th scope="col" width="15%" class="nowrap d-none d-sm-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_DATE', 'a.log_date', $listDirn, $listOrder); ?>
 						</th>
 						<th scope="col" width="10%" class="d-md-table-cell">
@@ -60,7 +60,7 @@ HTMLHelper::_('script', 'com_actiologs/admin-actionlogs-default.js', ['relative'
 								<?php echo HTMLHelper::_('searchtools.sort', 'COM_ACTIONLOGS_IP_ADDRESS', 'a.ip_address', $listDirn, $listOrder); ?>
 							</th>
 						<?php endif; ?>
-						<th scope="col" width="1%" class="d-none d-md-table-cell">
+						<th scope="col" width="1%" class="nowrap d-none d-sm-table-cell">
 							<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 					</tr>
@@ -79,7 +79,7 @@ HTMLHelper::_('script', 'com_actiologs/admin-actionlogs-default.js', ['relative'
 							<td class="d-none d-md-table-cell">
 								<?php echo $this->escape(Text::_($extension)); ?>
 							</td>
-							<td class="d-none d-md-table-cell">
+							<td class="d-none d-sm-table-cell">
 								<?php echo HTMLHelper::_('date.relative', $item->log_date); ?>
 								<div class="small">
 									<?php echo HTMLHelper::_('date', $item->log_date, Text::_('DATE_FORMAT_LC6')); ?>
@@ -93,18 +93,22 @@ HTMLHelper::_('script', 'com_actiologs/admin-actionlogs-default.js', ['relative'
 									<?php echo Text::_($this->escape($item->ip_address)); ?>
 								</td>
 							<?php endif;?>
-							<td class="d-none d-md-table-cell">
+							<td class="d-none d-sm-table-cell">
 								<?php echo (int) $item->id; ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-
-			<?php // Load the pagination. ?>
-			<?php echo $this->pagination->getListFooter(); ?>
-
+			
+			<!-- load the pagination. -->
+			<div class="j-pagination-footer">
+				<?php echo LayoutHelper::render('joomla.searchtools.default.listlimit', array('view' => $this)); ?>
+				<?php echo $this->pagination->getListFooter(); ?>
+			</div>
 		<?php endif;?>
+
+
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
 		<?php echo HTMLHelper::_('form.token'); ?>
