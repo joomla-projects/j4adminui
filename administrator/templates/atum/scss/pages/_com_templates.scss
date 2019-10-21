@@ -37,22 +37,6 @@
         column-break-inside: avoid;
       }
     }
-
-    .menu-links-block {
-      padding: 15px;
-      background-color: var(--card-bg);
-      box-shadow:$atum-box-shadow;
-      border-radius: 3px;
-    }
-
-    label {
-      display: block;
-
-      input {
-        position: relative;
-        top: 2px;
-      }
-    }
   }
 
   .js-stools {

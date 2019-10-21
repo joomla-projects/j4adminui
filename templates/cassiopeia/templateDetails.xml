@@ -46,7 +46,7 @@
 	</languages>
 	<config>
 		<fields name="params">
-			<fieldset name="advanced">
+			<fieldset name="basic">
 				<field
 					name="logoFile" 
 					type="media" 
@@ -73,7 +73,6 @@
 				<field
 					name="fluidContainer"
 					type="radio"
-					class="switcher switcher-primary"
 					default="0"
 					label="TPL_CASSIOPEIA_FLUID_LABEL"
 				>

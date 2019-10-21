@@ -1,7 +1,6 @@
 
 $card-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
-$card-box-shadow-hover: 20px 30px 60px -10px rgba(0, 28, 73, 0.15);
-$card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
+$card-box-shadow-hover: 0 20px 40px -10px rgba(0, 28, 73, 0.15);
 
 .j-card-columns{
 	column-count: 2;
@@ -23,14 +22,9 @@ $card-box-shadow-active: 0 20px 40px -10px rgba(0,0,0,0.17);
 	transition: 300ms;
 	box-shadow: $card-box-shadow;
 	position: relative;
+	&.active,
 	&.j-card-has-hover:hover{
 		box-shadow: $card-box-shadow-hover;
-	}
-	&.active{
-		box-shadow: $card-box-shadow-active, 0 0 0 3px var(--primary-color);
-		&:hover{
-			box-shadow: $card-box-shadow-hover, 0 0 0 3px var(--primary-color);
-		}
 	}
 	.j-card-header{
 		padding: .714286rem 0 .714286rem 1.429rem;
