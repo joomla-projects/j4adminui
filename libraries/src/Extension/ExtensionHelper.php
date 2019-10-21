@@ -296,7 +296,7 @@ class ExtensionHelper
 		array('plugin', 'content', 'webservices', 0),
 
 		// Core template extensions - administrator
-		array('template', 'atum', '', 1),
+		array('template', 'spring', '', 1),
 
 		// Core template extensions - site
 		array('template', 'cassiopeia', '', 0),

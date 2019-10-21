@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "spring",
+  "version": "4.0.0",
+  "description": "Spring is the Joomla 4 administrator template",
+  "license": "GPL-2.0+",
+  "assets": [
+    {
+      "name": "template.spring.base",
+      "dependencies": [
+        "core",
+		"bootstrap.js.bundle",
+        "css-vars-ponyfill",
+		"focus-visible"
+      ]
+    },
+    {
+      "name": "template.spring.ltr",
+      "dependencies": ["template.spring.base"],
+      "css": [
+        "template.css",
+        "user.css"
+      ]
+    },
+    {
+      "name": "template.spring.rtl",
+      "dependencies": ["template.spring.base"],
+      "css": [
+        "template-rtl.min.css",
+        "user.css"
+      ]
+    },
+    {
+      "name": "bootstrap.css",
+      "css": [
+        "bootstrap.min.css"
+      ]
+    },
+    {
+      "name": "fontawesome",
+      "css": [
+        "fontawesome.min.css"
+      ]
+    }
+  ]
+}

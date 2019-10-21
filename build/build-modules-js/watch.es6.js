@@ -41,14 +41,14 @@ const runScss = () => {
   watch.createMonitor(RootPath, (monitor) => {
     monitor.on('created', (file) => {
       if (file.match(/\.scss/)) {
-        const templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        const templatesSccs = Path.join(RootPath, 'administrator/templates/spring/scss/template.scss');
         debounce(CompileScss.compile(templatesSccs), 300);
       }
       // @todo css and scss
     });
     monitor.on('changed', (file) => {
       if (file.match(/\.scss/)) {
-        let templatesSccs = Path.join(RootPath, 'administrator/templates/atum/scss/template.scss');
+        let templatesSccs = Path.join(RootPath, 'administrator/templates/spring/scss/template.scss');
         if (file.match(/installation/)) {
           templatesSccs = Path.join(RootPath, 'installation/template/scss/template.scss');
         }

@@ -1,5 +1,5 @@
 // Variables
-@import "../../../administrator/templates/atum/scss/variables";
+@import "../../../administrator/templates/spring/scss/variables";
 $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 
 // Bootstrap
@@ -14,15 +14,15 @@ $fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
 @import "../../../media/vendor/fontawesome-free/scss/brands";
 
 // Backend Template stuff
-@import "../../../administrator/templates/atum/scss/mixin";
-@import "../../../administrator/templates/atum/scss/blocks/global";
-@import "../../../administrator/templates/atum/scss/blocks/header";
-@import "../../../administrator/templates/atum/scss/blocks/form";
-@import "../../../administrator/templates/atum/scss/blocks/buttons";
-@import "../../../administrator/templates/atum/scss/blocks/alerts";
-@import "../../../administrator/templates/atum/scss/blocks/progress";
-@import "../../../administrator/templates/atum/scss/blocks/j-table";
-@import "../../../administrator/templates/atum/scss/blocks/checkbox";
+@import "../../../administrator/templates/spring/scss/mixin";
+@import "../../../administrator/templates/spring/scss/blocks/global";
+@import "../../../administrator/templates/spring/scss/blocks/header";
+@import "../../../administrator/templates/spring/scss/blocks/form";
+@import "../../../administrator/templates/spring/scss/blocks/buttons";
+@import "../../../administrator/templates/spring/scss/blocks/alerts";
+@import "../../../administrator/templates/spring/scss/blocks/progress";
+@import "../../../administrator/templates/spring/scss/blocks/j-table";
+@import "../../../administrator/templates/spring/scss/blocks/checkbox";
 
 body {
 	background: var(--bg-color);
