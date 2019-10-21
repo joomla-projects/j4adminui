@@ -758,18 +758,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-framework/database.git",
-                "reference": "493ee1d08f28ff1f6a39369ce1099a504c0f5900"
+                "reference": "abbfe675d9102c0ae1ec63d746783d3ac9f06dfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-framework/database/zipball/493ee1d08f28ff1f6a39369ce1099a504c0f5900",
-                "reference": "493ee1d08f28ff1f6a39369ce1099a504c0f5900",
+                "url": "https://api.github.com/repos/joomla-framework/database/zipball/abbfe675d9102c0ae1ec63d746783d3ac9f06dfc",
+                "reference": "abbfe675d9102c0ae1ec63d746783d3ac9f06dfc",
                 "shasum": ""
             },
             "require": {
                 "joomla/event": "~2.0",
-                "php": "~7.2",
-                "psr/log": "~1.0"
+                "php": "~7.2"
             },
             "require-dev": {
                 "joomla/archive": "~2.0",
@@ -778,9 +777,11 @@
                 "joomla/di": "~1.0|~2.0",
                 "joomla/filesystem": "~1.3|~2.0",
                 "joomla/registry": "^1.4.5|~2.0",
-                "joomla/test": "~1.2",
-                "phpunit/dbunit": "~3.0",
-                "phpunit/phpunit": "~6.3"
+                "joomla/test": "^1.3.1",
+                "phpunit/dbunit": "~4.0",
+                "phpunit/phpunit": "~7.5",
+                "psr/log": "~1.1",
+                "symfony/phpunit-bridge": "~4.3"
             },
             "suggest": {
                 "ext-mysqli": "To connect to a MySQL database via MySQLi",
@@ -791,7 +792,8 @@
                 "joomla/console": "To use the ExportCommand and ImportCommand classes, install joomla/console",
                 "joomla/di": "To use the Database ServiceProviderInterface objects, install joomla/di.",
                 "joomla/filesystem": "To use the ExportCommand and ImportCommand classes, install joomla/filesystem",
-                "joomla/registry": "To use the Database ServiceProviderInterface objects, install joomla/registry."
+                "joomla/registry": "To use the Database ServiceProviderInterface objects, install joomla/registry.",
+                "psr/log": "To use the LoggingMonitor, install psr/log."
             },
             "type": "joomla-package",
             "extra": {
@@ -815,7 +817,7 @@
                 "framework",
                 "joomla"
             ],
-            "time": "2019-08-21T16:21:26+00:00"
+            "time": "2019-10-20T20:06:45+00:00"
         },
         {
             "name": "joomla/di",

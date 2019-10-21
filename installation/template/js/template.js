@@ -190,7 +190,7 @@
 		});
 
 		// Create and append the loading layer.
-		Joomla.loadingLayer("load");
+		// Joomla.loadingLayer("load");
 
 		// Check for FTP credentials
 		Joomla.installation = Joomla.installation || {};
