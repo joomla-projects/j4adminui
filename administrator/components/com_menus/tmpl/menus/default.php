@@ -112,8 +112,7 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 											</small>
 										<?php endif; ?>
 									</div>
-								</td>
-								
+								</td>								
 								<td class="d-none d-xl-table-cell">
 									<?php if ($canManageItems) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_menus&view=items&menutype=' . $item->menutype . '&filter[published]=1'); ?>">
@@ -179,10 +178,10 @@ HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' =
 															'width'       => '85vw',
 															'bodyHeight'  => 70,
 															'modalWidth'  => 80,
-															'footer'      => '<button type="button" class="btn btn-secondary" data-dismiss="modal"'
+															'footer'      => '<button type="button" class="btn btn-danger" data-dismiss="modal"'
 																	. ' onclick="Joomla.iframeButtonClick({iframeSelector: \'#moduleEdit' . $module->id . 'Modal\', buttonSelector: \'#closeBtn\'})">'
 																	. Text::_('JLIB_HTML_BEHAVIOR_CLOSE') . '</button>'
-																	. '<button type="button" class="btn btn-primary"'
+																	. '<button type="button" class="btn btn-success"'
 																	. ' onclick="Joomla.iframeButtonClick({iframeSelector: \'#moduleEdit' . $module->id . 'Modal\', buttonSelector: \'#saveBtn\'})">'
 																	. Text::_('JSAVE') . '</button>'
 																	. '<button type="button" class="btn btn-success"'

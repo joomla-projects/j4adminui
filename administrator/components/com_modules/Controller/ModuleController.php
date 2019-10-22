@@ -21,6 +21,8 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 use Joomla\Registry\Registry;
 use Joomla\Component\Modules\Administrator\Model\ModuleModel;
+use Joomla\Database\ParameterType;
+
 /**
  * Module controller class.
  *
@@ -270,11 +272,15 @@ class ModuleController extends FormController
 		$position = $this->input->getValue('position');
 
 		$db    = Factory::getDbo();
+		$clientId = (int) $clientId;
 		$query = $db->getQuery(true)
-			->select('position, ordering, title')
-			->from('#__modules')
-			->where('client_id = ' . (int) $clientId . ' AND position = ' . $db->quote($position))
-			->order('ordering');
+			->select($db->quoteName(['position', 'ordering', 'title']))
+			->from($db->quoteName('#__modules'))
+			->where($db->quoteName('client_id') . ' = :clientid')
+			->where($db->quoteName('position') . ' = :position')
+			->order($db->quoteName('ordering'))
+			->bind(':clientid', $clientId, ParameterType::INTEGER)
+			->bind(':position', $position);
 
 		$db->setQuery($query);
 

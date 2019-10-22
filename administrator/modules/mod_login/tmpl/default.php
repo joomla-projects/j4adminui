@@ -37,12 +37,13 @@ Text::script('MESSAGE');
 			<div class="input-group">
 
 				<input
-						name="username"
-						id="mod-login-username"
-						type="text"
-						class="form-control"
-						required="required"
-						autofocus
+					name="username"
+					id="mod-login-username"
+					type="text"
+					class="form-control"
+					required="required"
+					autofocus
+					autocomplete="username"
 				>
 			</div>
 		</div>
@@ -52,11 +53,12 @@ Text::script('MESSAGE');
 			</label>
 			<div class="input-group">
 				<input
-						name="passwd"
-						id="mod-login-password"
-						type="password"
-						class="form-control input-full"
-						required="required"
+					name="passwd"
+					id="mod-login-password"
+					type="password"
+					class="form-control input-full"
+					required="required"
+					autocomplete="current-password"
 				>
 				<span class="input-group-append login-password-toggle-icon">
 					<button type="button" class="input-group-text icon-eye input-password-toggle">
@@ -78,11 +80,11 @@ Text::script('MESSAGE');
 				<div class="input-group">
 
 					<input
-							name="secretkey"
-							autocomplete="off"
-							id="mod-login-secretkey"
-							type="text"
-							class="form-control"
+						name="secretkey"
+						autocomplete="off"
+						id="mod-login-secretkey"
+						type="text"
+						class="form-control"
 					>
 				</div>
 			</div>

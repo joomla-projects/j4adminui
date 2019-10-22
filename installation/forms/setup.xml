@@ -48,6 +48,7 @@
 			validate="username"
 			class="form-control"
 			size="30"
+			autocomplete="username"
 		/>
 
 		<field
@@ -58,7 +59,7 @@
 			id="admin_password"
 			class="form-control"
 			required="true"
-			autocomplete="off"
+			autocomplete="new-password"
 			strengthmeter="true"
 			minLength="8"
 			minIntegers="1"
