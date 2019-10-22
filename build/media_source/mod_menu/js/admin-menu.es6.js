@@ -80,7 +80,7 @@
     });
 
     const menuClose = () => {
-      sidebar.querySelector('.mm-collapse').classList.remove('mm-collapsed');
+      sidebar.querySelector('.collapse').classList.remove('in');
     };
     if (typeof menuToggle !== 'undefined' && menuToggle !== null) {
     // Toggle menu
@@ -104,12 +104,12 @@
         // Save the sidebar state and dispatch event
         if (wrapper.classList.contains('closed')) {
           if (typeof Joomla.Cookies !== 'undefined') {
-            Joomla.Cookies.set('spring-sidebar', 'closed', 31536000, '/', '');
+            Joomla.Cookies.set('atum-sidebar', 'closed', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
         } else {
           if (typeof Joomla.Cookies !== 'undefined') {
-            Joomla.Cookies.set('spring-sidebar', 'open', 31536000, '/', '');
+            Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'open');
         }
@@ -122,16 +122,14 @@
      */
     const allLinks = wrapper.querySelectorAll('a.no-dropdown, a.collapse-arrow, .menu-dashboard > a');
     const currentUrl = window.location.href.toLowerCase();
-    const mainNav = document.querySelector('ul.main-nav');
+    const mainNav = document.getElementById('menu');
     const menuParents = [].slice.call(mainNav.querySelectorAll('li.parent > a'));
     const subMenusClose = [].slice.call(mainNav.querySelectorAll('li.parent .close'));
 
     // Set active class
     allLinks.forEach((link) => {
       if (currentUrl === link.href) {
-        link.setAttribute('aria-current', 'page');
-        link.classList.add('mm-active');
-
+        link.classList.add('active');
         // Auto Expand Levels
         if (!link.parentNode.classList.contains('parent')) {
           const firstLevel = closest(link, '.collapse-level-1');
@@ -162,7 +160,7 @@
         wrapper.classList.remove('closed');
         header.classList.remove('closed');
         if (typeof Joomla.Cookies !== 'undefined') {
-          Joomla.Cookies.set('spring-sidebar', 'open', 31536000, '/');
+          Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/');
         }
         if (menuToggleIcon.classList.contains('icon-angle-double-right')) {
           menuToggleIcon.classList.toggle('icon-angle-double-right');

@@ -13,7 +13,7 @@
 
 		<field
 			name="template"
-			type="text"
+			type="hidden"
 			label="COM_TEMPLATES_FIELD_TEMPLATE_LABEL"
 			class="readonly"
 			size="30"

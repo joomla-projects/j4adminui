@@ -21,33 +21,37 @@ $user      = Factory::getUser();
 
 HTMLHelper::_('script', 'com_templates/admin-template-toggle-assignment.js', ['version' => 'auto', 'relative' => true]);
 ?>
-<label id="jform_menuselect-lbl" for="jform_menuselect"><?php echo Text::_('JGLOBAL_MENU_SELECTION'); ?></label>
-<div class="btn-toolbar">
+<div class="d-flex align-items-center">
+	<div class="mr-auto">
+		<label id="jform_menuselect-lbl" for="jform_menuselect"><?php echo Text::_('JGLOBAL_MENU_SELECTION'); ?></label>
+	</div>
 	<button class="btn btn-sm btn-secondary jform-rightbtn" type="button" onclick="Joomla.toggleAll()">
 		<span class="icon-checkbox-partial" aria-hidden="true"></span> <?php echo Text::_('JGLOBAL_SELECTION_INVERT_ALL'); ?>
 	</button>
 </div>
 <div id="menu-assignment" class="menu-assignment">
 	<ul class="menu-links">
-
 		<?php foreach ($menuTypes as &$type) : ?>
 			<li>
-				<div class="menu-links-block">
-					<button class="btn btn-sm btn-secondary jform-rightbtn mb-2" type="button" onclick='Joomla.toggleMenutype("<?php echo $type->menutype; ?>")'>
-						<span class="icon-checkbox-partial" aria-hidden="true"></span> <?php echo Text::_('JGLOBAL_SELECTION_INVERT'); ?>
-					</button>
-					<h5><?php echo $type->title ?: $type->menutype; ?></h5>
+				<div class="j-card">
+					<div class="j-card-header d-flex align-items-center">
+						<h4 class="j-card-title"><?php echo $type->title ?: $type->menutype; ?></h4>
+						<div class="j-card-header-right">
+							<button class="j-card-header-icon jform-rightbtn" type="button" onclick='Joomla.toggleMenutype("<?php echo $type->menutype; ?>")'>
+								<span class="icon-checkbox-partial" aria-hidden="true"></span></span> <?php echo Text::_('JGLOBAL_SELECTION_INVERT'); ?>
+							</button>
+						</div>
+					</div>
 
-					<?php foreach ($type->links as $link) : ?>
-						<label class="checkbox small" for="link<?php echo (int) $link->value; ?>" >
-						<input type="checkbox" name="jform[assigned][]" value="<?php echo (int) $link->value; ?>" id="link<?php echo (int) $link->value; ?>"<?php if ($link->template_style_id == $this->item->id) : ?> checked="checked"<?php endif; ?><?php if ($link->checked_out && $link->checked_out != $user->id) : ?> disabled="disabled"<?php else : ?> class="chk-menulink menutype-<?php echo $type->menutype; ?>"<?php endif; ?> />
-						<?php echo LayoutHelper::render('joomla.html.treeprefix', array('level' => $link->level)) . $link->text; ?>
-						</label>
-					<?php endforeach; ?>
-
+					<div class="j-card-body">
+						<?php foreach ($type->links as $link) : ?>
+							<div class="j-checkbox-group">
+								<label><input type="checkbox" name="jform[assigned][]" value="<?php echo (int) $link->value; ?>" id="link<?php echo (int) $link->value; ?>"<?php if ($link->template_style_id == $this->item->id) : ?> checked="checked"<?php endif; ?><?php if ($link->checked_out && $link->checked_out != $user->id) : ?> disabled="disabled"<?php else : ?> class="chk-menulink <?php echo $type->menutype; ?>"<?php endif; ?> /> <?php echo LayoutHelper::render('joomla.html.treeprefix', array('level' => $link->level)) . $link->text; ?></label>
+							</div>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			</li>
 		<?php endforeach; ?>
-
 	</ul>
 </div>

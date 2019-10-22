@@ -258,7 +258,7 @@ class StylesModel extends ListModel
 
 				if (file_exists($preview))
 				{
-					$item->preview = $baseUrl . '/templates/' . $template . '/template_preview.png';
+					$item->preview = $item->thumbnail = $baseUrl . '/templates/' . $template . '/template_thumbnail.png';
 				}
 			}
 

@@ -1,70 +1,129 @@
 // Header
-
 .header {
-  position: relative;
   background: $white;
-  box-shadow: $atum-box-shadow;
   z-index: $zindex-header;
-  border-top: 3px solid var(--atum-bg-dark);
   color: var(--atum-special-color);
-
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  height: $header-height;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 4px 0 rgba(209,213,223,.5);
+  @include media-breakpoint-down(xs){
+    padding-left: 0;
+    max-width: 100%;
+  }
   .header-title {
-    width: 50%;
-
-    .d-flex:last-child {
-      max-width: calc(100% - #{$sidebar-width});
-
-      @include media-breakpoint-down(md) {
-        max-width: calc(100% - #{$sidebar-width-closed});
+    flex-grow: 1;
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+    }
+    .d-flex {
+      padding-left: 30px;
+      padding-right: 30px;
+      @include media-breakpoint-down(xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
     }
-
     .container-title {
       width: 100%;
     }
-
     @include media-breakpoint-down(xs) {
+      padding-left: 0;
+    }
+  }
+
+  // Sidebar toggle
+  .logo-header{
+    padding: 0.536rem 2.071rem 0.321rem 1.643rem;
+    position: relative;
+    color: var(--secondary-text-color);
+    font-size: 0.857rem;
+    height: $header-height;
+    transition: 300ms;
+    width: $sidebar-width + 0.050;
+    @include media-breakpoint-down(xs) {
+      padding: 0;
+      min-width: 1rem;
+      width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .menu-toggle-icon {
+    width: $header-height;
+    font-size: 1.7rem;
+  }
+
+  .sidebar-toggle{
+    position: absolute;
+    width: 2.071rem;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-left: 1px solid var(--bg-color);
+    border-right: 1px solid var(--bg-color);
+    background: $white;
+    a{
+      height: 100%;
       width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.143rem;
+      transition: 300ms;
+    }
+  }
+  .joomla-version{
+    color: var(--secondary-text-color);
+    max-width: 60px;
+  }
+
+  // Logo
+  .main-logo {
+    height: 100%;
+  }
+
+  .logo-main {
+    display: block;
+    @include media-breakpoint-down(xs) {
+      display: none;
+    }
+  }
+  .logo-small {
+    display: none;
+    @include media-breakpoint-down(xs) {
+      display: block;
     }
   }
 
-  .logo {
-    display: inline-block;
-    line-height: $header-height;
-    width: $sidebar-width;
-    transition: width .3s ease;
-
-    &.small {
-      width: $sidebar-width-closed;
-      transition: width .3s ease;
-
-      svg, img {
-
-        &:not(.logo-small) {
-          display: none;
-        }
-
-        &.logo-small {
-          display: inline-block;
-        }
-      }
+  &.closed {
+    .logo-header {
+      min-width: 73px;
+      max-width: 73px;
+      box-shadow: 0 10px 30px 0 rgba(209,213,223,.5);
     }
-
-    svg, img {
-      margin-left: 0.8rem;
-      max-height: 1.3rem;
-      max-width: calc(18rem - 0.8rem);
-
-      &.logo-small {
-        display: none;
-        max-width: 1.3rem;
-      }
+    .sidebar-toggle {
+      right: -2.071rem;
     }
-    svg {
-      height: 1.3rem;
+  
+    .logo-main,
+    .joomla-version {
+      display: none !important;
+    }
+    .logo-small {
+      display: block;
     }
   }
-
+  
   .page-title {
     width: 100%;
     white-space: nowrap;
@@ -74,260 +133,135 @@
     font-size: 1.2rem;
     line-height: $header-height;
     color: var(--atum-special-color);
-
-    [class^='icon-'] {
+    @include media-breakpoint-down(xs) {
+      white-space: normal;
+      line-height: 1.2;
+    }
+    
+    [class*=" icon-"],
+    [class^=icon-] {
       margin-right: 0.625rem;
-      font-size: 1rem;
+      font-size: 1.6rem;
+      color: var(--icon-color);
     }
   }
-
+  
   .header-items {
-    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
-
+  
   .header-item {
     position: relative;
-    max-width: 6.6rem;
-
-    &:first-child {
-      margin-left: auto;
-    }
-    .header-item-content {
-      > *:first-child {
-        flex-direction: column;
-        height: 100%;
-        padding: 0 0.6rem;
-        color: var(--atum-special-color);
-      }
-      a, button {
-        &:hover, &[aria-expanded="true"] {
-          background-color: var(--atum-bg-dark);
-          color: var(--atum-text-light);
-          text-decoration: none;
-          box-shadow: $atum-box-shadow;
-        }
-        &.disabled,
-        &.disabled:hover,
-        &.disabled[aria-expanded="true"] {
-          background-color: transparent;
-          color: var(--atum-special-color);
-          box-shadow: none;
-          opacity: 0.3;
-          pointer-events: none;
-        }
-      }
-      .dropdown-toggle {
-        // Overwrite default button styling
-        background-color: transparent;
-        border: 0;
-
-        &::after {
-          display: none;
-        }
-      }
-      .joomlaversion {
-        min-width: 6.6rem;
+    min-height: 60px;
+    @extend .d-flex;
+    @extend .align-items-center;
+    &:not(:last-child){
+      border-right: 1px solid var(--bg-color);
+      @include media-breakpoint-down(xs) {
+        display: none !important;
       }
     }
-
-    .tiny {
-      text-align: center;
-      line-height: 0.8rem;
-      margin-top: 0.3rem;
-      white-space: nowrap;
-      max-width: 5rem;
-      min-width: 4rem;
-	  display: block;
-	  text-overflow: ellipsis;
-	  overflow: hidden;
+    @include media-breakpoint-down(lg) {
+      &.header-mod-messages,
+      &.header-mod-multilangstatus {
+        display: none !important;
+      }
     }
   }
-
+  
+  .header-item-content{
+    line-height: $header-height;
+    joomla-dropdown,
+    joomla-callout {
+      line-height: 1;
+    }
+    .joomlaversion {
+      line-height: 1;
+      .align-items-end {
+        margin-right: .5rem;
+      }
+      margin-right: 1rem;
+    }
+    .btn {
+      &.btn-link {
+        &:focus,
+        &:focus:active,
+        &:not(:disabled):not(.disabled):active:focus{
+          box-shadow: none;
+        }
+      }
+    }
+    .header-item-link,
+    .header-dropdown-button{
+      display: flex;
+      border: none;
+      padding: 0 2.107rem;
+      align-items: center;
+      line-height: 1;
+      background-color: $white;
+      @include media-breakpoint-down(lg) {
+        padding: 0 1.4rem;
+      }
+      @include media-breakpoint-down(xs) {
+        padding: 0 1.107rem;
+      }
+      img{
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        margin-right: 0.714rem;
+        display: inline-block;
+      }
+      span.header-user-name{
+        display: inline-block;
+        margin-right: 0.871rem;
+      }
+      
+      span.header-user-icon{
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 6px;
+      }
+    }
+    
+    .header-item-link{
+      font-size: 1.143rem;
+      color: var(--primary-text-color);
+      transition: .2s ease-in;
+      span.header-item-icon{
+        color: var(--primary-color);
+        display: inline-block;
+      }
+      
+      span + span{
+        padding-left: 0.714rem;
+      }
+      
+      &:hover{
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+    }
+    
+  }
+  
   .fa, .fab {
-    font-size: 1.2rem;
     vertical-align: middle;
     transition: all .2s ease-in-out;
   }
-
-  .dropdown-menu {
-    min-width: 17.5rem;
-    padding: 0;
-    z-index: 1041;
-  }
-
-  .badge {
-    position: absolute;
-    left: 50%;
-    top: 0.4rem;
-    margin-left: 0.8rem;
-  }
-
-  .fa-angle-down {
-    position: absolute;
-    left: 50%;
-    top: 0.9rem;
-    margin-left: -1.6rem;
-  }
-
-  .align-items-end {
-    min-height: 2rem;
-  }
-
-  a[target="_blank"]::before {
-    display: none;
-  }
-
-  .dropdown-menu {
+  
+  joomla-dropdown[expanded] {
     z-index: $zindex-popover;
-    min-width: 18rem;
-    background-color: var(--atum-bg-dark-70);
-
-    &.icons-left .dropdown-item {
-      a {
-        padding-left: 0;
-      }
-    }
-
-    .dropdown-header {
-      color: $white;
-      background-color: var(--atum-bg-dark);
-      box-shadow: $atum-box-shadow;
-      font-size: inherit;
-      padding: 1rem 0.75rem;
-      [dir=rtl] & {
-        text-align: right;
-      }
-    }
   }
-
-  .dropdown-item {
-    color: $white;
-    background-color: var(--atum-bg-dark-70);
-    padding: 0;
-
-    a {
-      display: inline-block;
-      width: 100%;
-      color: var(--atum-text-light);
-      padding-left: 0.75rem;
-      line-height: 3;
-
-      &:hover {
-        text-decoration: none;
-        background: var(--atum-bg-dark);
-      }
-
-      [dir=rtl] & {
-        text-align: right;
-        padding-right: .75rem;
-        padding-left: 0;
-	  }
-    }
-
-    .fa {
-      padding: 1rem;
-      width: 3rem;
-    }
-  }
-
-  #header-more-items {
-    .header-more-menu {
-      position: absolute;
-      top: 100%;
-      left: -100000rem;
-      right: 0;
-      width: calc(13.2rem + 2px);
-      margin-top: 0.1rem;
-      background-color: var(--white-offset);
-      border: 1px solid $gray-500;
-      border-top: 0;
-      box-shadow: $atum-box-shadow;
-      justify-content: flex-end;
-    }
-    &.active .header-more-menu {
-      left: auto;
-    }
-    .header-item {
-      height: 3.7rem;
-      width: 6.6rem;
-    }
-    .header-item-content {
-      width: 100%;
-      height: 100%;
-    }
-    .dropdown-toggle {
-      width: 100%;
-      height: 100%;
-    }
-    .header-more-btn {
-      color: var(--white-offset);
-      background-color: var(--atum-bg-dark);
-      width: 3.8rem;
-      height: 100%;
-      border: 0;
-      .fa {
-        margin: auto;
-      }
-      &:hover {
-        background-color: var(--atum-bg-dark-80);
-      }
-    }
-  }
-
-  @include media-breakpoint-down(xs) {
-    position: static;
-    top: 0;
-    width: 100%;
-    z-index: $zindex-header;
-
-    .header-items{
-      background:var(--atum-bg-dark);
-      display:block;
-      position:fixed;
-      bottom:0;
-      width: 100%;
-      max-width: 18rem;
-      z-index:$zindex-mobile-bottom;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      &::after {
-        content:"";
-        width: 1000%;
-        height: 100%;
-        background:var(--atum-bg-dark);
-        position:absolute;
-        z-index: -1;
-      }
-    }
-    #header-more-items {
-      .header-more-menu {
-        top: auto;
-        bottom: 100%;
-        border: 1px solid $gray-500;
-        border-bottom: 0;
-      }
-      &.active .header-more-menu {
-        left: 0;
-      }
-      & .header-item .header-item-content > :first-child {
-        color: var(--atum-special-color);
-
-        &[aria-expanded=true] {
-          color: var(--atum-text-light);
-        }
-      }
-    }
-    .header-items > .header-item {
-      .header-item-content > :first-child {
-        color: var(--atum-text-light);
-        padding-bottom: 0.4rem;
-      }
-    }
-    .header-item:first-child {
-      margin-left: 0;
-    }
-    .fa-angle-down {
-      transform: rotate(180deg);
+  @include media-breakpoint-down(lg){
+    .header-user-name,
+    .joomlaversion,
+    .header-user-name,
+    .fa-angle-right,
+    .header-item-text {
+      display: none !important;
     }
   }
 }
