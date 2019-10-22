@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 
 /** @var JDocumentHtml $this */
 
@@ -35,11 +35,11 @@ require_once __DIR__ . '/Service/HTML/Atum.php';
 
 // Template params
 $siteLogo  = $this->params->get('siteLogo')
-	? JUri::root() . $this->params->get('siteLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla.svg';
+	? Uri::root() . $this->params->get('siteLogo')
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla-blue.svg';
 $smallLogo = $this->params->get('smallLogo')
-	? JUri::root() . $this->params->get('smallLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
+	? Uri::root() . $this->params->get('smallLogo')
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-blue.svg';
 
 $logoAlt = htmlspecialchars($this->params->get('altSiteLogo', ''), ENT_COMPAT, 'UTF-8');
 $logoSmallAlt = htmlspecialchars($this->params->get('altSmallLogo', ''), ENT_COMPAT, 'UTF-8');
@@ -73,7 +73,7 @@ $css = '
 	}
 ';
 
-// $this->addStyleDeclaration($css);
+$this->addStyleDeclaration($css);
 
 $monochrome = (bool) $this->params->get('monochrome');
 
@@ -90,7 +90,7 @@ HTMLHelper::_('atum.rootcolors', $this->params);
 <body class="admin <?php echo $option . ' view-' . $view . ' layout-' . $layout . ($monochrome ? ' monochrome' : ''); ?>">
 
 <noscript>
-	<div class="j-alert j-alert-danger" role="alert">
+	<div class="alert alert-danger" role="alert">
 		<?php echo Text::_('JGLOBAL_WARNJAVASCRIPT'); ?>
 	</div>
 </noscript>

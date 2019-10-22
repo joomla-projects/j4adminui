@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 
 $module  = $displayData['module'];
 $params  = $displayData['params'];
@@ -35,13 +36,13 @@ if ($module->content) :
 	$headerClass = ($headerClass) ? ' ' . htmlspecialchars($headerClass) : '';
 	?>
 	<div class="<?php echo $moduleClass; ?> module-wrapper">
-		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
+		<<?php echo $moduleTag; ?> class="card mb-3<?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange) : ?>
 				<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 				<div class="module-actions dropdown">
 					<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-link" id="dropdownMenuButton-<?php echo $id; ?>">
-						<span class="icon-options" aria-hidden="true"></span>
-						<span class="sr-only"><?php echo Text::_('JACTION_EDIT') . ' ' . $module->title; ?></span>
+						<span class="fa fa-cog" aria-hidden="true"></span>
+						<span class="sr-only"><?php echo Text::sprintf('JACTION_EDIT_MODULE', $module->title); ?></span>
 					</button>
 					<div class="dropdown-menu dropdown-menu-<?php echo $dropdownPosition; ?>" aria-labelledby="dropdownMenuButton-<?php echo $id; ?>">
 						<?php if ($canEdit) : ?>
@@ -56,7 +57,7 @@ if ($module->content) :
 				</div>
 			<?php endif; ?>
 			<?php if ($module->showtitle) : ?>
-				<<?php echo $headerTag; ?> class="j-card-header<?php echo $headerClass; ?>"><?php echo $module->title; ?></<?php echo $headerTag; ?>>
+				<<?php echo $headerTag; ?> class="card-header<?php echo $headerClass; ?>"><?php echo $module->title; ?></<?php echo $headerTag; ?>>
 			<?php endif; ?>
 			<div class="module-body">
 				<?php echo $module->content; ?>

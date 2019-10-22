@@ -14,9 +14,7 @@ defined('_JEXEC') or die;
 $module  = $displayData['module'];
 
 if ($module->content) : ?>
-	<div class="header-item header-<?php echo str_replace('_', '-', $module->module); ?>">
-		<div class="header-item-content">
-			<?php echo $module->content; ?>
-		</div>
+	<div class="header-item d-flex">
+		<?php echo $module->content; ?>
 	</div>
 <?php endif; ?>

@@ -2,202 +2,135 @@
 
 .js-stools {
   position: relative;
-  
+  padding: 0.25rem 0 0;
+  margin-bottom: 0.5rem;
+
+  > div {
+      margin-bottom: 0.5rem;
+  }
+
   .js-stools-container-filters {
     display: none;
-    @extend .flex-row;
-    @extend .flex-wrap;
-    margin: 0 -0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem .5rem .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: $white;
+    border: solid var(--border);
+    border-width: 1px 0;
+    border-radius: 0 0 0 $border-radius;
+    box-shadow: $atum-box-shadow;
+    width: 100%;
+
     joomla-field-fancy-select .choices,
     .custom-select {
       min-width: 15rem;
-      @include media-breakpoint-down(xs) {
-        min-width: 100%;
-      }
     }
-    
+
     &.js-filters-show {
-      @extend .d-flex;
+      display: flex;
     }
-    
+
     .chzn-container-single {
       display: block;
-      
+
       .chzn-single {
         display: block;
         font-size: 1rem;
       }
     }
   }
-  
+
   .js-stools-field-filter {
-    margin: 0.5rem;
-    @include media-breakpoint-down(sm)
-    {
-      width: 100%;
+
+      margin: 0 .5rem .5rem;
+
+      @include media-breakpoint-down(sm)
+      {
+          width: 100%;
+      }
+
+    .custom-select {
+
+      &.active {
+        color: var(--white);
+        background: $custom-select-bg $custom-select-indicator-active no-repeat right center;
+        background-size: $custom-select-bg-size;
+      }
+
+      option {
+        color: var(--atum-text-dark);
+        background-color: var(--white);
+      }
     }
   }
-  
+
   .js-stools-container-selector,
-  .js-stools-container-selector-first {
-    @include media-breakpoint-down(xs) {
-      margin-right: 0;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    .js-stools-field-selector{
-      margin-right: 15px;
-      @include media-breakpoint-down(sm) {
-        max-width:100%;
+  .js-stools-container-selector-first  {
+     @include media-breakpoint-down(md){
+        float:none;
+        width:100%;
         margin-right:0.5rem;
-      }
-      @include media-breakpoint-down(xs) {
-        margin-right: 0;
-      }
+    }
+
+    .js-stools-field-selector{
+        @include media-breakpoint-down(sm) {
+            max-width:100%;
+            margin-right:0.5rem;
+        }
     }
   }
-  
+
   .js-stools-container-bar {
-    width: 100%;
+
     .btn-toolbar {
-      .form-control{
-        width: 21.49rem;
-        @include media-breakpoint-down(md) {
-          width: 19.49rem;
+
+      .js-stools-btn-filter{
+        border:1px solid var(--border);
+      }
+      .js-stools-btn-clear {
+        background-color: var(--atum-bg-dark);
+        color: var(--atum-text-light);
+        border:1px solid var(--border);
+        border-left: 1px solid var(--atum-text-light);
+
+        &.disabled,
+        &:disabled{
+            background-color: rgba($gray-300, 0.8);
+            border-color: rgba($gray-500, 0.8);
+            opacity:1;
+            color:var(--atum-text-dark);
+            cursor: not-allowed;
         }
       }
-    }
-    
-    .js-stools-field-list{
-      @extend .d-flex;
-      .js-stools-sort-by-label{
-        font-size: 1rem;
-        color: var(--secondary-text-color);
-        border-right: 1px solid var(--bg-color);
-        padding-right: 10px;
-        margin-right: 10px;
+      .js-stools-btn-filter{
+        border-right:1px solid var(--border);
+        .fa {
+          margin-left: 0.25rem;
+        }
       }
+
+      .form-control{
+        height:auto;
+      }
+    }
+
+    .js-stools-field-list{
+      margin-bottom:0;
       .custom-select{
         box-shadow: none;
-        border: none;
-        padding-right: 0;
-        font-size: 1rem;
-        color: var(--primary-text-color);
-        padding: 0 1.5rem 0 0;
       }
     }
-    .js-stools-field-list-content {
-      @extend .d-flex;
-      @extend .align-items-center;
-      padding: 0px 0px 0px 15px;
-      margin-right: 10px;
-    }
-    
+
     .input-append {
       margin-bottom: 0;
     }
-    .js-stools-input {
-      margin-left: auto;
-      @include media-breakpoint-down(lg) {
-        margin-left: 0;
-      }
-      @include media-breakpoint-down(xs) {
-        margin-bottom: 1rem;
-      }
-    }
   }
-  
-  @include media-breakpoint-down(lg) {
-    justify-content:flex-start;
-    .js-stools-container-bar{
-      margin-top: 1rem;
-      .btn-toolbar{
-        justify-content:flex-start;
-        @include media-breakpoint-down(xs) {
-          width: 100%;
-        }
-      }
-    }
-    .ordering-select + .ml-auto {
-      margin-right: auto;
-    }
-    .js-stools-container-filters {
-      justify-content: center;
-    }
-  }
-  @include media-breakpoint-down(md) {
-    .js-stools-container-bar{
-      .ordering-select {
-        width: 100%;
-        margin-bottom: 1rem;
-      }
-      .js-stools-input {
-        margin-left: 0;
-      }
-    }
-  }
-  @include media-breakpoint-down(xs) {
-    > .d-flex {
-      flex-wrap: wrap;
-      justify-content: center;
-      div.ml-3,
-      .ml-auto,
-      .ml-4 {
-        margin-left: 0 !important;
-        width: 100%;
-      }
-    }
-    .ordering-select + .ml-auto {
-      margin-left: 0 !important;
-      width: 100%;
-      .js-stools-btn-clear,
-      .btn-filter {
-        margin: 0 auto !important;
-        display: block;
-      }
-    }
-    .joomla-toolbar-button,
-    .btn-group,
-    .input-group,
-    .ordering-select,
-    .js-stools-field-list,
-    .js-stools-container-selector {
-      @include media-breakpoint-down(sm) {
-        width:100%;
-      }
-    }
-    .ordering-select,
-    .js-stools-container-selector{
-      margin-bottom: 1rem;
-    }
-    .btn-group{
-      @include media-breakpoint-down(sm) {
-        margin-right: 0 !important;
-      }
-    }
-    .js-stools-container-bar{
-      .js-stools-field-list{
-        @include media-breakpoint-down(sm) {
-          margin-bottom: .75rem;
-        }
-      }
-    }
-  }
-  
 }
+
 .js-stools-button-sort {
   cursor: pointer;
   background: none;
   border: 0;
-  span.icon-chevron-up,
-  span.icon-chevron-down {
-    color: var(--primary-text-color-alt);
-  }
-}
-
-.container-popup {
-  .js-stools {
-    max-width: 90%;
-    flex: 0 0 90%;
-  }
 }

@@ -1,26 +1,31 @@
 // Global
 
 html {
-  height: 100%;
-  font-size: 14px;
+   height: 100%;
+   &.a11y_font {
+     font-size: 18px;
+   }
 }
 
 body {
    min-height: 100%;
-   font-family: "Helvetica Neue", "Segoe UI", "SF Pro Text", "SF Pro Display", "SF UI Text", "SF UI Display", "Roboto", "Noto Sans", "Droid Sans", "Ubuntu","Oxygen", "Fira Sans", -apple-system, BlinkMacSystemFont, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-   text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--primary-text-color);
-  text-align: left;
-  background-color: var(--bg-color);
+}
+
+body {
   padding: 0;
   margin: 0;
   &.monochrome {
     filter: grayscale(1);
+  }
+  &.a11y_contrast {
+    filter: invert(100%);
+  }
+  &.a11y_highlight {
+    a {
+      padding: 3px;
+      text-decoration: underline !important;
+      border: red dotted 1px;
+    }
   }
 }
 
@@ -37,14 +42,10 @@ h1 {
   font-weight: $font-weight-normal;
 }
 
-img {
-  max-width: 100%;
+small,
+.small {
+  font-size: $font-size-sm;
 }
-
-// small,
-// .small {
-//   font-size: $font-size-sm;
-// }
 
 legend {
   font-size: 1.2rem;
@@ -63,16 +64,7 @@ input,
 textarea {
 
   &.focus-visible {
-  outline: solid 2px var(--primary-color);
-  }
-}
-
-a {
-  text-decoration: none;
-  &:hover,
-  &:focus,
-  &:active {
-    text-decoration: none;
+  outline: auto 2px var(--focus);
   }
 }
 
@@ -83,11 +75,12 @@ a {
 }
 
 .content {
-  font-size: $display1-size;
+  font-size: $content-font-size;
 }
 
+label,
 caption {
-	font-size: 12px;
+  font-size: $label-font-size;
 }
 
 .logo {
@@ -100,18 +93,29 @@ caption {
 .container-main,
 .system-debug {
   padding-bottom: 50px;
-  @include media-breakpoint-down(xs){
-    padding-bottom: 110px;
-  }
 }
 
 body .container-main {
   position: relative;
   min-height: calc(100vh - #{$header-height} - 3px);
-  padding-top: 60px;
-  max-width: calc(100% - #{$sidebar-width});
-  @include media-breakpoint-down(xs){
-    max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+
+  &::before, &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    // Note IDE's will consider this file import to fail in SCSS but this is correct for the final compiled CSS file
+    background: var(--atum-bg-light) url("../images/joomla-pattern.svg");
+    background-size: 15rem;
+  }
+
+  &::after {
+    background: linear-gradient(135deg, var(--atum-bg-light) 0%, var(--atum-bg-light) 20%, rgba(225, 229, 231, 0) 100%);
   }
 }
 
@@ -130,7 +134,7 @@ body .container-main {
 }
 
 .row-selected {
-  background-color: var(--table-row-selected-color);
+  background-color: var(--toolbar-bg);
 }
 
 // Chosen (TEMPORARY)
@@ -178,6 +182,12 @@ body .container-main {
   min-width: 1rem;
 }
 
+// extern links with icons
+a[target="_blank"]::before {
+  font: normal normal normal 14px/1 'Font Awesome 5 Free';
+  content: "\f35d  ";
+}
+
 #wrapper{
   &.d-flex{
     @include media-breakpoint-down(xs){
@@ -187,6 +197,13 @@ body .container-main {
 }
 .text-muted{
   color: var(--atum-text-dark);
+}
+
+// dashboard items
+.menu-quicktask,
+.menu-badge {
+  float: right;
+  min-width: 1rem;
 }
 
 .cpanel-help .card-columns,
@@ -200,176 +217,8 @@ body .container-main {
     column-count: 2;
   }
 }
-.form-title-wrap{
-  label{
-    color: var(--primary-text-color);
-    font-size: 1rem;
-  }
-  input{
-    color: var(--primary-text-color);
-    background: var(--white);
-    font-size: 1.15rem;
-    height: 3.4rem;
-    padding-left: 1.7rem;
-    padding-right: 1.7rem;
-  }
-}
-.j-table-responsive{
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.no-boxshadow{
-  box-shadow: none !important;
-}
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
 
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-@-webkit-keyframes modalDown {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -150px, 0);
-    transform: translate3d(0, -150px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes modalDown {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -150px, 0);
-    transform: translate3d(0, -150px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.modalDown {
-  -webkit-animation-name: modalDown;
-  animation-name: modalDown;
-}
-@-webkit-keyframes fadeOutUp {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100px, 0);
-    transform: translate3d(0, -100px, 0);
-  }
-}
-
-@keyframes fadeOutUp {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100px, 0);
-    transform: translate3d(0, -100px, 0);
-  }
-}
-
-.fadeOutUp {
-  -webkit-animation-name: fadeOutUp;
-  animation-name: fadeOutUp;
-}
-@-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100px, 0);
-    transform: translate3d(0, 100px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100px, 0);
-    transform: translate3d(0, 100px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
-}
-
-.text-success,
-.j-text-success{
-	color: var(--success-color) !important;
-}
-.text-warning,
-.j-text-warning{
-	color: var(--warning-color) !important;
-}
-.text-danger,
-.j-text-danger{
-	color: var(--danger-color) !important;
-}
-.text-primary,
-.j-text-primary{
-	color: var(--primary-color) !important;
-}
-
-.bg-success{
-	background-color: var(--success-color) !important;
-}
-.bg-warning{
-	background-color: var(--warning-color) !important;
-}
-.bg-danger{
-	background-color: var(--danger-color) !important;
-}
-.bg-primary{
-	background-color: var(--primary-color) !important;
-}
-
-.js-pstats-btn-allow-always{
-	color: var(--btn-disabled-color);
+.tiny {
+  font-size: $font-size-vsm;
+  line-height: 1.4rem;
 }

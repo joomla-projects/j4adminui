@@ -13,12 +13,16 @@
 }
 
 .icon-publish {
+  color: theme-color("success");
+
   .dropdown-status-group & {
     color: inherit;
   }
 }
 
 .icon-unpublish {
+  color: theme-color("danger");
+
   .dropdown-status-group & {
     color: inherit;
   }
@@ -41,23 +45,9 @@
     border-radius: 50%;
   }
 
-  .fa,
-  .fas,
-  .far {
-    margin-top: 3px;
-    font-size: 1.75rem;
-    color: var(--secondary-icon-color);
-    &.fa-toggle-off {
-      color: var(--secondary-icon-color);
-    }
-    &.fa-toggle-on {
-      color: var(--primary-color);
-    }
-  }
-
   .icon-publish {
-    color: var(--success-color);
-    border-color: var(--success-color);
+    color: var(--success);
+    border-color: var(--success);
   }
 
   .icon-featured {

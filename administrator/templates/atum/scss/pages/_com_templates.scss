@@ -1,16 +1,5 @@
 // com_templates
 .com_templates {
-  .template-style {
-    .template-name {
-      font-size: $h3-font-size;
-      a {
-        color: var(--primary-text-color);
-        &:hover {
-          color: var(--primary-color);
-        }
-      }
-    }
-  }
 
   .menu-assignment {
     position: relative;
@@ -51,15 +40,6 @@
       input {
         position: relative;
         top: 2px;
-      }
-    }
-  }
-
-  .js-stools {
-    .js-stools-container-bar {
-      .btn-toolbar {
-        width: 100%;
-        padding-top: 1rem;
       }
     }
   }

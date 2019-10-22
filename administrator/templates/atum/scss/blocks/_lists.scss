@@ -7,12 +7,3 @@
     }
   }
 }
-
-.j-list-limit {
-  @extend .d-flex;
-  @extend .align-items-center;
-}
-.j-list-limit-label {
-  margin-right: 1rem;
-  color: var(--secondary-text-color);
-}
