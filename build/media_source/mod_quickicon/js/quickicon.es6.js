@@ -13,7 +13,6 @@
    * The class pulse gets 'warning', 'success' or 'error', depending on the retrieved data.
    */
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('hello');
     document.querySelectorAll('.joomla-collapse-card-body').forEach((card) => {
       card.addEventListener('click', (event) => {
         event.preventDefault();
