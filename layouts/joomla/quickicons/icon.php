@@ -56,7 +56,7 @@ if (!isset($displayData['icon_class'])) {
 // Make the class string
 $class = !empty($tmp) ? ' class="' . implode(' ', array_unique($tmp)) . '"' : '';
 ?>
-<div class="col-md-6 col-lg-4 col-xl-3 j-quickicon j-quickicon-skeleton" data-dragable-group="none" <?php echo $dataAttributes; ?>>
+<div class="col-md-6 col-lg-4 col-xl-3 j-quickicon<?php echo isset($displayData['ajaxurl']) ? ' j-quickicon-skeleton' : ''; ?>" data-dragable-group="none" <?php echo $dataAttributes; ?>>
 	<div <?php echo $id; ?> class="j-card j-card-has-hover mb-4 <?php echo $class; ?>">
 		<div class="j-card-overview-box pt-3">
 			<div class="j-card-overview-icon j-<?php echo $displayData['icon_class']; ?>">

@@ -95,21 +95,48 @@ HTMLHelper::_('spring.rootcolors', $this->params);
 	</div>
 </noscript>
 
-<header id="header" class="header">
-	<div class="d-flex">
-		<div class="header-title d-flex mr-auto">
-			<div class="d-flex">
-				<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
+<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
+	<div class="logo-header">
+		<div class="main-logo d-flex align-items-center">
+			<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
+			<?php if ($hiddenMenu || $cpanel) : ?>
 				<div class="logo">
-					<img src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
+					<img class="logo-main" src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
 					<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
 				</div>
+			<?php else : ?>
+				<a class="logo" href="<?php echo Route::_('index.php'); ?>"
+					aria-label="<?php echo Text::_('TPL_BACK_TO_CONTROL_PANEL'); ?>">
+					<img class="logo-main" src="<?php echo $siteLogo; ?>" alt="">
+					<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="">
+				</a>
+			<?php endif; ?>
+			<div class="joomla-version mx-3 d-none d-sm-inline-flex" title="<?php echo JVERSION; ?>">
+				<span class="sr-only"><?php echo Text::sprintf('MOD_VERSION_CURRENT_VERSION_TEXT', JVERSION); ?></span>
+				<span class="text-truncate" aria-hidden="true"><?php echo JVERSION; ?></span>
 			</div>
-			<jdoc:include type="modules" name="title"/>
 		</div>
-		<div class="header-items d-flex ml-auto">
-			<jdoc:include type="modules" name="status" style="header-element"/>
+		<?php if (!$hiddenMenu): ?>
+			<div class="sidebar-toggle d-none d-sm-block">
+				<a id="menu-collapse" href="#" title="<?php echo Text::_('TPL_SPRING_TOGGLE_SIDEBAR'); ?>">
+					<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'angle-double-left' : 'angle-double-right' ?> duotone" aria-hidden="true"></span>
+				</a>
+			</div>
+		<?php endif; ?>
+	</div>
+	<div class="header-title">
+		<jdoc:include type="modules" name="title" />
+	</div>
+	<div class="header-items">
+		<jdoc:include type="modules" name="status" style="header-item" />
+	</div>
+	<div class="navbar-wrap">
+		<div class="navbar-mobile-quick-wrap">
+			<jdoc:include type="modules" name="quickmenu" style="none" />
 		</div>
+		<button class="navbar-toggler toggler-burger collapsed" type="button" data-toggle="collapse" data-target="#sidebar-wrapper" aria-controls="sidebar-wrapper" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 	</div>
 </header>
 

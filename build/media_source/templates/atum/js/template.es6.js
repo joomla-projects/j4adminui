@@ -28,7 +28,7 @@
       return;
     }
 
-    const state = change || Joomla.Cookies.get('spring-sidebar');
+    const state = change || Joomla.Cookies.get('main-sidebar');
 
     if (state === 'closed') {
       logo.classList.add('small');
@@ -61,7 +61,7 @@
       if (transitAction) {
         // Transition class depends on the width of the sidebar
         if (storageEnabled
-          && localStorage.getItem('spring-sidebar') === 'closed') {
+          && localStorage.getItem('main-sidebar') === 'closed') {
           sidebar.classList.add(`transit-${transitAction}-closed`);
           changeLogo('small');
         } else {
@@ -238,7 +238,7 @@
         sidebarWrapper.classList.remove('show');
       }
     }
-    const state = Joomla.Cookies.get('spring-sidebar');
+    const state = Joomla.Cookies.get('main-sidebar');
     if (state === 'closed' || menu.classList.contains('disabled')) {
       wrapper.classList.add('closed');
     } else {

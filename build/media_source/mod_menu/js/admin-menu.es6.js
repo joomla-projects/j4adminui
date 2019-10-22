@@ -104,12 +104,12 @@
         // Save the sidebar state and dispatch event
         if (wrapper.classList.contains('closed')) {
           if (typeof Joomla.Cookies !== 'undefined') {
-            Joomla.Cookies.set('atum-sidebar', 'closed', 31536000, '/', '');
+            Joomla.Cookies.set('main-sidebar', 'closed', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'closed');
         } else {
           if (typeof Joomla.Cookies !== 'undefined') {
-            Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/', '');
+            Joomla.Cookies.set('main-sidebar', 'open', 31536000, '/', '');
           }
           Joomla.Event.dispatch('joomla:menu-toggle', 'open');
         }
@@ -160,7 +160,7 @@
         wrapper.classList.remove('closed');
         header.classList.remove('closed');
         if (typeof Joomla.Cookies !== 'undefined') {
-          Joomla.Cookies.set('atum-sidebar', 'open', 31536000, '/');
+          Joomla.Cookies.set('main-sidebar', 'open', 31536000, '/');
         }
         if (menuToggleIcon.classList.contains('icon-angle-double-right')) {
           menuToggleIcon.classList.toggle('icon-angle-double-right');

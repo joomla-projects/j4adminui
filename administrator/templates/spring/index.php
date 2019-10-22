@@ -26,7 +26,7 @@ $task       = $input->get('task', 'display');
 $itemid     = $input->get('Itemid', '');
 $cpanel     = $option === 'com_cpanel';
 $hiddenMenu = $app->input->get('hidemainmenu');
-$menuSettings = $app->input->cookie->get('spring-sidebar');
+$menuSettings = $app->input->cookie->get('main-sidebar');
 
 $hiddenMenuClass = $hiddenMenu || $menuSettings == 'closed' ? 'closed' : '';
 
