@@ -59,7 +59,7 @@ class HtmlView extends BaseHtmlView
 		$this->extension = ApplicationHelper::stringURLSafe($app->input->getCmd('dashboard'));
 
 		$title = Text::_('COM_CPANEL_DASHBOARD_BASE_TITLE');
-		$icon  = 'fa fa-home';
+		$icon  = 'dashboard';
 
 		$position = ApplicationHelper::stringURLSafe($this->extension);
 
