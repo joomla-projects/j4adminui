@@ -1838,6 +1838,7 @@ CREATE TABLE IF NOT EXISTS `#__template_styles` (
 --
 
 INSERT INTO `#__template_styles` (`id`, `template`, `client_id`, `home`, `title`, `params`) VALUES
+(9, 'atum', 1, '0', 'atum', ''),
 (10, 'spring', 1, '1', 'spring - Default', ''),
 (11, 'cassiopeia', 0, '1', 'cassiopeia - Default', '{"logoFile":"","fluidContainer":"0","sidebarLeftWidth":"3","sidebarRightWidth":"3"}');
 
