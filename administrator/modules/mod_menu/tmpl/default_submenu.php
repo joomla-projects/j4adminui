@@ -61,10 +61,12 @@ else
 $linkClass  = [];
 $dataToggle = '';
 $iconClass  = '';
+$toggleIcon = '';
 
 if ($current->hasChildren())
 {
 	$linkClass[] = 'has-arrow';
+	$toggleIcon = '<spam class="icon-angle-down icon-toggler" area-hidden="true"></span>';
 
 	if ($current->level > 2)
 	{
@@ -91,19 +93,19 @@ if ($link != '' && $current->target != '')
 {
 	echo "<a" . $linkClass . $dataToggle . " href=\"" . $link . "\" target=\"" . $current->target . "\">"
 		. $iconClass
-		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . '</a>';
+		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . $toggleIcon . '</a>';
 }
 elseif ($link != '')
 {
 	echo "<a" . $linkClass . $dataToggle . " href=\"" . $link . "\">"
 		. $iconClass
-		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . '</a>';
+		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . $toggleIcon . '</a>';
 }
 elseif ($current->title != '' && $current->get('class') !== 'separator')
 {
 	echo "<a" . $linkClass . $dataToggle . ">"
 		. $iconClass
-		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . '</a>';
+		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . $toggleIcon . '</a>';
 }
 else
 {

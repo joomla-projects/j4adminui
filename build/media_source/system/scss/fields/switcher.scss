@@ -125,8 +125,6 @@ $switcher-height: 22px;
 
 .col-md-9 .control-group .switcher__legend,
 .col-md-12 .control-group .switcher__legend {
-  margin-left: -220px;
-
   [dir=rtl] & {
     margin-left: 0;
     float: right;

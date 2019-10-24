@@ -9,6 +9,7 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
@@ -22,7 +23,7 @@ $columns 			= (int) ($bootstrapSize ? $bootstrapSize : 3) / 3;
 $columnSize 		= 12 / $columns;
 $columnsSmall 		= (int) ($bootstrapSize ? $bootstrapSize : 4) / 4;
 $columnSizeSmall 	= 12 / $columnsSmall;
-$app 				= JFactory::getApplication();
+$app 				= Factory::getApplication();
 $user 				= $app->getIdentity();
 
 $id 				= $module->id;
