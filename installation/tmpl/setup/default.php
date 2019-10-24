@@ -68,7 +68,7 @@ use Joomla\CMS\Factory;
 			</form>
 
 			<form action="index.php" method="post" id="adminForm" class="form-validate j-install-form d-none">
-				<fieldset id="installStep1" class="j-install-step" title="Site Configuration">
+				<fieldset id="installStep1" class="j-install-step" title="<?php echo Text::_('INSTL_SITE_CONFIG'); ?>">
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -96,7 +96,7 @@ use Joomla\CMS\Factory;
 					</div>
 				</fieldset><!-- /#installStep1 -->
 
-				<fieldset id="installStep2" class="j-install-step" title="Login Data">
+				<fieldset id="installStep2" class="j-install-step" title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -145,7 +145,7 @@ use Joomla\CMS\Factory;
 					</div>
 				</fieldset> <!-- /#installStep2 -->
 
-				<fieldset id="installStep3" class="j-install-step" title="Database Configuration" >
+				<fieldset id="installStep3" class="j-install-step" title="<?php echo Text::_('INSTL_DATABASE_CONFIG'); ?>" >
 					<div class="form-no-margin">
 						<div class="control-group">
 							<div class="control-label">
@@ -227,7 +227,7 @@ use Joomla\CMS\Factory;
 					</div>
 				</fieldset><!-- /#installStep3 -->
 
-				<fieldset id="installStep4" class="j-install-step" title="Installing Site" >
+				<fieldset id="installStep4" class="j-install-step" title="<?php echo Text::_('INSTL_INSTALLING_SITE'); ?>" >
 					<p class="installation-message"><?php echo Text::_('Please wait while your site is installing…'); ?></p>
 					<div class="j-progress j-has-percent">
 						<div class="progress-bar progress-bar-striped progress-bar-animated" id="installation-progress" role="progressbar" style="width: 0%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
