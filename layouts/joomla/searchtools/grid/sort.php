@@ -1,0 +1,52 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  Layout
+ *
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+defined('JPATH_BASE') or die;
+
+use Joomla\CMS\Language\Text;
+
+$data = $displayData;
+$icon = "icon-caret-v";
+$sort = '';
+$caption = '';
+$selected = '';
+$id = '';
+
+if ($data->order === $data->selected) :
+	$icon = $data->orderIcon;
+	$sort = $data->direction === 'asc' ? 'ascending' : 'descending';
+	$caption = !empty($data->title) ? Text::_($data->title) . ' - ' . $sort : Text::_('JGRID_HEADING_ID');
+	$selected = ' selected';
+	$id = 'id="sorted"';
+endif;
+?>
+
+<a href="" onclick="return false;" class="js-stools-column-order<?php echo $selected; ?> js-stools-button-sort"
+	<?php echo $id; ?>
+	data-order="<?php echo $data->order; ?>"
+	data-direction="<?php echo strtoupper($data->direction); ?>"
+	data-caption="<?php echo $caption; ?>"
+	<?php if (!empty($sort)) : ?>
+		data-sort="<?php echo $sort; ?>"
+	<?php endif; ?>>
+	<?php if (!empty($data->title)) : ?>
+		<span>
+			<?php echo Text::_($data->title); ?>
+		</span>
+	<?php endif; ?>
+	<?php if($data->order === 'a.ordering') : ?>
+		<span class="<?php echo $data->icon; ?>" aria-hidden="true"></span>
+	<?php else : ?>
+		<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
+	<?php endif; ?>
+	<span class="sr-only">
+		<?php echo Text::_('JGLOBAL_SORT_BY'); ?>
+		<?php echo (!empty($data->title)) ? Text::_($data->title) : Text::_('JGRID_HEADING_ORDERING'); ?>
+	</span>
+</a>

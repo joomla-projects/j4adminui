@@ -1,0 +1,240 @@
+/**
+ * @copyright	Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+.calendar-container {
+	float: left;
+	min-width: 160px;
+	padding: 0;
+	list-style: none;
+	border-radius: 3px;
+	background-color: #ffffff !important;
+	z-index: 1100 !important;
+	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+}
+.calendar-container table {
+	table-layout: fixed;
+	max-width: 300px;
+	border-radius: 3px;
+	background-color: #ffffff !important;
+	z-index: 1100 !important;
+}
+/* The main calendar widget.  DIV containing a table. */
+div.calendar-container table th, .calendar-container table td {
+	padding: .75rem 0;
+	line-height: 1.1rem;
+	text-align: center;
+	border: none;
+}
+.calendar-container .table tbody tr:active,
+.calendar-container .table tbody tr:focus,
+.calendar-container .table tbody tr:hover {
+	background-color: transparent;
+}
+.calendar-container table thead td, .calendar-container table thead th{
+	border: none;
+}
+div.calendar-container table body td {
+	line-height: 2em;
+}
+.calendar-container .daynames .day-name{
+	background-color: #f4f5f9;
+}
+.calendar-container table {
+	border-collapse: separate;
+}
+
+div.calendar-container table td.title { /* This holds the current "month, year" */
+	vertical-align: middle;
+	text-align: center;
+}
+
+.calendar-container table thead td.headrow { /* Row <TR> containing navigation buttons */
+	background: #fff;
+	color: #000;
+}
+
+.calendar-container table thead td.name { /* Cells <TD> containing the day names */
+	border-bottom: 1px solid #fff;
+	text-align: center;
+	color: #000;
+}
+
+.calendar-container table thead td.weekend { /* How a weekend day name shows in header */
+	color: #999;
+}
+
+/* The body part -- contains all the days in month. */
+
+.calendar-container table tbody td.day { /* Cells <TD> containing month days dates */
+	text-align: right;
+}
+
+.calendar-container table tbody td.wn {
+	background: #fff;
+}
+
+.calendar-container table tbody td.weekend { /* Cells showing weekend days */
+	color: #999;
+}
+
+.calendar-container table tbody td.hilite { /* Hovered cells <TD> */
+	background: #999999;
+	color: #ffffff;
+}
+
+.calendar-container table tbody td.day {
+	border: 0;
+	cursor : pointer;
+	font-size: .85rem;
+}
+
+.calendar-container table tbody td.day.wn {
+	text-align: center;
+	background-color: #f4f5f9;
+}
+
+.calendar-container table tbody td.day.selected { /* Cell showing today date */
+	background: var(--link-color);
+	color: var(--inverse-color);
+}
+
+.calendar-container table tbody td.today {
+	position: relative;
+	height: 100%;
+	width: auto;
+	color: var(--link-color);
+
+}
+.calendar-container table tbody td.today:after {
+	position: absolute;
+	bottom: 3px;
+	content: "";
+	height: 4px;
+	background-color: var(--link-color);
+	width: 4px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.calendar-container table tbody td.day:hover {
+	cursor: pointer;
+	background: #f4f5f9;
+	color: var(--color);
+}
+.calendar-container table tbody td.day:hover:after {
+	background-color: #fff;
+}
+
+.calendar-container table tbody .disabled {
+	color: #999;
+	background-color: #fafafa;
+}
+
+.calendar-container table tbody .emptycell { /* Empty cells (the best is to hide them) */
+	visibility: hidden;
+}
+
+.calendar-container table tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
+	display: none;
+}
+.calendar-container .buttons-wrapper {
+	width: 100%;
+	border: 1px solid #bdc5c8;
+}
+.calendar-container .buttons-wrapper .btn{
+	border-radius: 0;
+	font-size: .85rem;
+}
+.calendar-container .buttons-wrapper .btn:not(:last-child){
+	border-right: 1px solid #bdc5c8;
+}
+a.js-btn.btn.btn-exit, a.js-btn.btn.btn-today, a.js-btn.btn.btn-clear {
+	cursor: pointer;
+	text-decoration: none;
+	min-width: 60px;
+}
+.calendar-container .years-wrapper{
+	vertical-align: inherit;
+}
+.calendar-container .years-wrapper .nav{
+	padding: 0;
+}
+.calendar-container .years-wrapper .js-btn{
+	font-size: 8px;
+	transition: .3s;
+	margin-right: 5px;
+	margin-left: 5px;
+	cursor: pointer;
+	color: #808f94;
+}
+.calendar-container .years-wrapper .js-btn.btn-prev-year{
+	position: relative;
+	top: -3px;
+}
+.calendar-container .years-wrapper .js-btn.btn-next-year{
+	position: relative;
+	top: 3px;
+}
+.calendar-container .years-wrapper .js-btn:hover,
+.calendar-container .years-wrapper .js-btn:focus{	
+	color: var(--link-color);
+}
+.calendar-container .js-btn.btn-prev-month,
+.calendar-container .js-btn.btn-next-month{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 10px;
+	background-color: #f4f5f9;
+	cursor: pointer;
+	transition: .3s;
+}
+.calendar-container .js-btn.btn-prev-month{
+	margin-left: 5px;
+}
+.calendar-container .js-btn.btn-next-month{
+	margin-right: 5px;
+}
+.calendar-container .js-btn.btn-prev-month:hover,
+.calendar-container .js-btn.btn-next-month:hover{
+	background-color: var(--link-color);
+	color: var(--inverse-color) !important;
+}
+.calendar-container .calendar-head-row .years-wrapper{
+	padding-left: 10px;
+}
+.calendar-container .calendar-head-row td {
+	padding: 4px 0;
+	border: none;
+}
+.calendar-container .calendar-head-row .js-btn i.fas{
+	pointer-events: none;
+}
+.calendar-container .day-name {
+	font-size: 1rem;
+}
+.calendar-container .time td {
+	padding: 1rem 0;
+}
+.calendar-container .time .time-title {
+	color: #565656;
+	font-size: .85rem;
+}
+.calendar-container .time .custom-select{
+	padding: 5px 10px;
+	width: 50px !important;
+	min-width: 50px;
+	height: 2.3rem;
+	border-radius: 3px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-color: #bdc5c8;
+	background-color: #f3f3f3;
+	background-image: none;
+	-webkit-appearance: menulist;
+	-moz-appearance: menulist;
+	appearance: menulist;
+}

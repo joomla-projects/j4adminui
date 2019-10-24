@@ -1,0 +1,119 @@
+// Icons
+
+.icon-back::before {
+  content: "\e008";
+}
+
+.icon-crop::before {
+  content: "\f125";
+}
+
+.icon-white {
+  color: $white;
+}
+
+.icon-publish {
+  .dropdown-status-group & {
+    color: inherit;
+  }
+}
+
+.icon-unpublish {
+  .dropdown-status-group & {
+    color: inherit;
+  }
+}
+
+.tbody-icon {
+  padding: 0 3px;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+
+  [class^='icon-'],
+  [class*=' icon-'] {
+    width: 26px;
+    height: 26px;
+    font-size: 1rem;
+    line-height: 22px;
+    color: $gray-400;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+  }
+
+  .fa,
+  .fas,
+  .far {
+    margin-top: 3px;
+    font-size: 1.75rem;
+    color: var(--secondary-icon-color);
+    &.fa-toggle-off {
+      color: var(--secondary-icon-color);
+    }
+    &.fa-toggle-on {
+      color: var(--primary-color);
+    }
+  }
+
+  .icon-publish {
+    color: var(--success-color);
+    border-color: var(--success-color);
+  }
+
+  .icon-featured {
+    color: var(--spring-special-color);
+    border-color: var(--spring-special-color);
+  }
+
+  .icon-archive {
+    color: var(--spring-text-dark);
+    border-color: $gray-700;
+  }
+
+  .icon-checkedout {
+    width: auto;
+    height: auto;
+    font-size: 1.2rem;
+    line-height: 1rem;
+    color: var(--spring-text-dark);
+    border: 0;
+  }
+}
+.icon-joomla::before {
+	content:"\f1aa";
+	font-family: "Font Awesome 5 Brands"
+}
+.icon-shield-alt::before {
+	content:"\f3ed";
+}
+.icon-address-book::before {
+	content:"\f2b9";
+}
+.icon-images::before {
+	content:"\f302";
+}
+.info-circle::before {
+	content:"\f05a";
+}
+.icon-paint-brush::before {
+	content:"\f1fc";
+}
+.icon-language::before {
+	content:"\f1ab";
+}
+.icon-rss::before {
+	content:"\f09e";
+}
+.icon-map-signs::before {
+	content:"\f277";
+}
+.icon-envelope-open-text::before {
+	content:"\f658";
+}
+.icon-users-cog::before {
+	content:"\f509";
+}
+.icon-user-lock::before {
+	content:"\f502";
+}
+

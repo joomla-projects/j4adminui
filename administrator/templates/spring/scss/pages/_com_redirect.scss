@@ -1,0 +1,13 @@
+//com_redirect
+.com_redirect {
+    .subhead {
+        .btn-toolbar {
+            #toolbar-batch,
+            #toolbar-options {
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

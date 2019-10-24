@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="administrator" method="upgrade">
+	<name>mod_quick_article</name>
+	<author>Joomla! Project</author>
+	<creationDate>October 2019</creationDate>
+	<copyright>Copyright (C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_QUICK_ARTICLE_XML_DESCRIPTION</description>
+	<namespace>Joomla\Module\QuickArticle</namespace>
+	<files>
+		<filename module="mod_quick_article">mod_quick_article.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_quick_article.ini</language>
+		<language tag="en-GB">en-GB.mod_quick_article.sys.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_LATEST" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="custom-select"
+ 				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+				/>
+
+				<field
+					name="automatic_title"
+					type="radio"
+					label="COM_MODULES_FIELD_AUTOMATIC_TITLE_LABEL"
+					class="switcher"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

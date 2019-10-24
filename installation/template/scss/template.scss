@@ -1,0 +1,468 @@
+// Variables
+@import "../../../administrator/templates/spring/scss/variables";
+$fa-font-path: "../../../media/vendor/fontawesome-free/webfonts";
+
+// Bootstrap
+@import "../../../media/vendor/bootstrap/scss/bootstrap";
+
+// Joomla font
+@import "./fonts/joomla-fonts";
+
+// "Font Awesome 5 Free"
+// @import "../../../media/vendor/fontawesome-free/scss/fontawesome";
+@import "../../../media/vendor/fontawesome-free/scss/solid";
+@import "../../../media/vendor/fontawesome-free/scss/brands";
+
+// Backend Template stuff
+@import "../../../administrator/templates/spring/scss/mixin";
+@import "../../../administrator/templates/spring/scss/blocks/global";
+@import "../../../administrator/templates/spring/scss/blocks/header";
+@import "../../../administrator/templates/spring/scss/blocks/form";
+@import "../../../administrator/templates/spring/scss/blocks/buttons";
+@import "../../../administrator/templates/spring/scss/blocks/alerts";
+@import "../../../administrator/templates/spring/scss/blocks/progress";
+@import "../../../administrator/templates/spring/scss/blocks/j-table";
+@import "../../../administrator/templates/spring/scss/blocks/checkbox";
+
+body {
+	background: var(--bg-color);
+}
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+.j-install {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	.logo {
+		width: auto;
+	}
+}
+
+body .container-main{
+	min-height: 100vh;
+}
+
+.j-container {
+	width: 100%;
+	max-width: 660px;
+	margin: 0 auto;
+	padding: 4.286rem 0 8.571rem;
+	position: relative;
+	h1 {
+		color: var(--primary-color);
+		text-align: center;
+	}
+}
+
+.j-install-menu{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+	background-color: #ffffff;
+	list-style: none;
+	button{
+		display: block;
+		width: 100%;
+		padding: 0.857rem 1.143rem 0.857rem 2.857rem;
+		text-align: left;
+		background: transparent;
+		border: none;
+		position: relative;
+		border-left: 3px solid transparent;
+		color: var(--secondary-text-color);
+		font-size: 1.143rem;
+		&::before{
+			content: '';
+			position: absolute;
+			height: 1.143rem;
+			line-height: 1rem;
+			width: 1.143rem;
+			border: 1px solid var(--icon-color);
+			border-radius: 50%;
+			left: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&:active,
+		&:focus{
+			outline: 1px dotted rgba(var(--primary-rgb), .5);
+			outline-offset: -1px;
+		}
+		&.active{
+			border-left-color: var(--primary-color);
+			background: rgba(var(--primary-rgb), .1);
+			color: var(--primary-text-color);
+			&::before{
+				background: var(--primary-color);
+				border-color: var(--primary-color);
+			}
+		}
+		&.completed{
+			&::before{
+				background: var(--primary-color);
+				border-color: var(--primary-color);
+				content: "\f00c";
+				font-family: Font Awesome\ 5 Free;
+				color: #fff;
+				font-size: 8px;
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+
+	li{
+		&.j-insallation-has-error{
+			button {
+				border-left-color: var(--danger-color);
+				background: rgba(var(--danger-rgb),.1);
+				color: var(--primary-text-color);
+				&::before {
+					content: '\f12a';
+					font-family: Font Awesome\ 5 Free;
+					background: var(--danger-color);
+					border-color: var(--danger-color);
+					color: #fff;
+					font-size: 10px;
+					display: inline-flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
+	}
+}
+.j-install-form.active{
+	min-height: 100%;
+	width: 100%;
+	border-radius: 3px;
+	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
+	border: solid 1px #eaeef5;
+	background: #fff;
+	position: relative;
+	&:not(.no-padding){
+		padding: 2.143rem 2.143rem 7.5rem;
+	}
+	&.no-padding{
+		padding-bottom: 3.571rem;
+	}
+	&.only-pb{
+		padding: 0 0 7.5rem;
+	}
+}
+
+.j-install-step-footer{
+	position: absolute;
+	width: 100%;
+	bottom: 2.143rem;
+	text-align: right;
+	padding: 0 2.143rem;
+	box-sizing: border-box;
+	right: 0;
+	&.no-padding{
+		bottom: 0;
+		padding: 0;
+	}
+}
+
+
+.j-install-step {
+	display: none;
+	min-height: 100%;
+	&.active {
+		display: block;
+	}
+	select {
+		width: 100%;
+		margin-left: 0 !important;
+	}
+	.btn-block {
+		margin-top: 40px;
+	}
+	.btn-wrapper .btn + .btn{
+		margin-left: 0.429rem;
+	}
+}
+
+.languageForm {
+	padding: 0 0 30px;
+	.custom-select {
+		width: 100%;
+	}
+}
+
+.system-message .alert {
+	margin: 25px 50px;
+}
+
+.alert {
+	position: relative;
+	display: flex;
+	margin: 0 0 20px;
+	background: #fafafa;
+	border: 1px solid rgba(0,0,0,.1);
+	box-shadow: 0 0 10px rgba(0,0,0,.05);
+	p {
+		margin-bottom: 0;
+	}
+}
+.alert-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25%;
+	margin-bottom: 0;
+	font-size: 3rem;
+	opacity: .6;
+	.fa {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.hidden, [hidden="hidden"] {
+	display: none;
+}
+
+// Language Table
+caption {
+	caption-side: top;
+}
+.badge-warning {
+	color: #292b2c;
+}
+
+.fa-eye:before, .icon-eye-open:before, .icon-eye:before {
+	font-family:"Font Awesome 5 Free";
+	cursor: pointer;
+	content: "\f06e";
+}
+
+.fa-eye-slash:before, .icon-eye-close:before, .icon-eye-blocked:before, .icon-eye-2:before {
+	font-family:"Font Awesome 5 Free";
+	cursor: pointer;
+	content: "\f070";
+}
+
+// footer
+.footer {
+	font-size: 0.857rem;
+	position: absolute;
+	bottom: 1.857rem;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: var(--icon-color);
+}
+
+.form-control-feedback{
+	font-size: 0.786rem;
+}
+
+.j-install-step .input-group{
+	display: block;
+}
+
+.j-install-from-pass-info{
+	padding-left: 20px;
+	margin: 5px 0 0;
+}
+
+
+/* css spinner */
+@-webkit-keyframes spinner-circle-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.j-spinner{
+	--spinner-size: 16px;
+	display: inline-block;
+	animation: spinner-circle-rotate .6s linear infinite;
+	width: var(--spinner-size);
+	height: var(--spinner-size);
+	transform-origin: center;
+	margin: 0;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color: transparent;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='22 22 44 44'%3E%3Ccircle class='background' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23dddddd'%3E%3C/circle%3E%3Ccircle class='spinner-circle-dash' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23288feb' stroke-dasharray='119.38052083641213' stroke-dashoffset='-80'%3E%3C/circle%3E%3C/svg%3E");
+	vertical-align: top;
+}
+
+
+.j-spinner.inactive{
+	animation: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='22 22 44 44'%3E%3Ccircle class='background' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23dddddd'%3E%3C/circle%3E%3Ccircle class='spinner-circle-dash' cx='44' cy='44' r='19' fill='none' stroke-width='6' stroke='%23288feb' stroke-dasharray='119.38052083641213' stroke-dashoffset='-119.38052083641213'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+.j-spinner.done{
+	animation: none;
+	background: #288feb;
+	background-size: 55%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='9'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M4.571 8.8L0 4.569l1.28-1.184 3.291 3.046L11.52 0l1.28 1.185z'/%3E%3C/svg%3E");
+}
+
+.j-install-completing-list {
+	margin-top: 30px;
+	ul{
+		list-style: none;
+		padding: 0;
+		li{
+			display: flex;
+			align-items: center;
+			padding: 10px 0;
+			&:not(:first-child){
+				border-top: 1px solid #eaeef5;
+			}
+			&:not(.active){
+				opacity: .4;
+			}
+			span.j-spinner {
+				margin: 0 10px 0 0;
+			}
+		}
+	}
+}
+.j-install-step small.form-text{
+	overflow: hidden;
+	margin-top: 0.714rem;
+	&.info::before{
+		content: "\f129";
+		font-family: Font Awesome\ 5 Free;
+		font-weight: 900;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		line-height: .929rem;
+		width: 1rem;
+		height: 1rem;
+		border: 1px solid var(--secondary-icon-color);
+		color: var(--secondary-icon-color);
+		border-radius: 50%;
+		text-align: center;
+		font-size: .571rem;
+		float: left;
+		margin-top: 1px;
+		margin-right: 0.357rem;
+	}
+}
+
+.form-text{
+	color: var(--icon-color);
+}
+
+.j-install-step-iconic-header{
+	padding: 23px 30px;
+	border-bottom: 1px solid var(--bg-color);
+	overflow: hidden;
+	span{
+		line-height: 23px;
+		color: var(--success-color)
+	}
+	.icon{
+		height: 23px;
+		width: 23px;
+		text-align: center;
+		background: var(--success-color);
+		color: #fff;
+		border-radius: 50%;
+		font-size: 10px;
+		float: left;
+		margin-right: 15px;
+	}
+}
+
+.j-install-step-body{
+	padding: 0 30px;
+	color: var(--secondary-text-color)
+}
+
+.j-install-step-body h4{
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.571rem;
+	margin-bottom: 0.571rem;
+	color: var(--primary-text-color)
+}
+
+.j-install-step-btn-group{
+	width: 100%;
+}
+
+.j-install-step-table{
+	margin-bottom: 3.071rem;
+	margin-top: 0.714rem;
+}
+
+.j-install-scrollable-table table,
+.j-install-step-table{
+	width: 100%;
+	thead{
+		td,
+		th{
+			border-bottom: 1px solid var(--bg-color);
+			font-weight: 400;
+			color: var(--secondary-text-color);
+		}
+	}
+	th,
+	td{
+		padding: 11px 30px;
+		&:not(:first-child){
+			text-align: center;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		&:first-child{
+			padding-right: 15px;
+		}
+		&:last-child{
+			padding-left: 15px;
+		}
+		.success{
+			color: var(--success-color);
+		}
+		.danger{
+			color: var(--danger-color);
+		}
+	}
+	tr:nth-child(even){
+		th,
+		td{
+			background: var(--bg-color);
+		}
+	}
+}
+
+.j-install-scrollable-table{
+	max-height: 450px;
+	overflow-y: auto;
+}
+
+@media only screen and (min-width: 768px) {
+	.j-install-righ-col{
+		max-width: 425px;
+	}
+}
+
+.j-install-remove-check{
+	position: absolute;
+	bottom: -46px;
+	text-align: center;
+	width: 100%;
+	z-index: 9;
+}
