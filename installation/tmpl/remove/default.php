@@ -25,16 +25,16 @@ use Joomla\CMS\Uri\Uri;
 					<button type="button" role="button" data-step="step1" class="completed" title="<?php echo Text::_('INSTL_SETUP_SITE_NAME'); ?>">Site Configuration</button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_LOGIN_DATA'); ?>">
-					<button type="button" role="button" data-step="step2" class="completed">Login Data</button>
+					<button type="button" role="button" data-step="step2" class="completed"><?php echo Text::_('INSTL_LOGIN_DATA'); ?></button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_DATABASE'); ?>">
-					<button type="button" role="button" data-step="step3" class="completed">Database Configuration</button>
+					<button type="button" role="button" data-step="step3" class="completed"><?php echo Text::_('INSTL_DATABASE_CONFIG'); ?></button>
 				</li>
 				<li title="<?php echo Text::_('INSTL_INSTALL_JOOMLA'); ?>">
-					<button type="button" role="button" data-step="step3" class="completed">Installing Site</button>
+					<button type="button" role="button" data-step="step3" class="completed"><?php echo Text::_('INSTL_INSTALLING_SITE'); ?></button>
 				</li>
 				<li>
-					<button type="button" role="button" data-step="step4" class="active">Finalizion Installation</button>
+					<button type="button" role="button" data-step="step4" class="active"><?php echo Text::_('INSTL_FINALIZE_INSTALLATION'); ?></button>
 				</li>
 
 			</ul>

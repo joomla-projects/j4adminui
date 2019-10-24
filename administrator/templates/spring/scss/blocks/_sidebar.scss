@@ -4,7 +4,7 @@
 		padding-left: 0;
 	}
 	
-	&.closed {
+	&.main-sidebar-collapsed {
 		a.btn-dashboard {
 			display: none
 		}
@@ -373,8 +373,8 @@
 	}
 }
 
-// Sidebar closed
-.closed {
+// Sidebar collapsed
+.main-sidebar-collapsed {
 	.sidebar-wrapper{
 		width: $sidebar-width-closed;
 		flex: 1 0 $sidebar-width-closed;
