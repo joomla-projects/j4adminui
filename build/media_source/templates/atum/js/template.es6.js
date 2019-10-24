@@ -184,8 +184,7 @@
     if (small.matches) {
       toggleArrowIcon();
       if (menu) {
-        wrapper.classList.remove('closed');
-        header.classList.remove('closed');
+        wrapper.classList.remove('main-sidebar-collapsed');
       }
       if (toggleBtn && menu) {
         if (menu.classList.contains('show')) {
@@ -198,8 +197,7 @@
       toggleArrowIcon('top');
     }
     if (tablet.matches && menu) {
-      wrapper.classList.add('closed');
-      header.classList.add('closed');
+      wrapper.classList.add('main-sidebar-collapsed');
     }
 
     if (smallLandscape.matches) {
@@ -240,9 +238,9 @@
     }
     const state = Joomla.Cookies.get('main-sidebar');
     if (state === 'closed' || menu.classList.contains('disabled')) {
-      wrapper.classList.add('closed');
+      wrapper.classList.add('main-sidebar-collapsed');
     } else {
-      wrapper.classList.remove('closed');
+      wrapper.classList.remove('main-sidebar-collapsed');
     }
     toggleArrowIcon('top');
   }
