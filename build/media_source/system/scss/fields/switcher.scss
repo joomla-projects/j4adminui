@@ -1,0 +1,153 @@
+$switcher-width:  62px;
+$switcher-height: 22px;
+
+.switcher {
+  position: relative;
+  width: 18rem;
+  height: 28px;
+  float: left;
+  margin-top: 10px;
+}
+
+.switcher input {
+  position: absolute;
+  top: -4px;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+  height: $switcher-height;
+  width: $switcher-width;
+  margin: 0;
+  left: 0;
+
+  [dir=rtl] & {
+    left: auto;
+    right: 0;
+  }
+}
+
+.switcher input:checked {
+  z-index: 1;
+}
+
+.switcher input:checked + label {
+  opacity: 1;
+}
+
+.switcher input:not(:checked) + label {
+  opacity: 0;
+}
+
+.switcher input:focus ~ .toggle-outside {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 .2rem rgba(26,70,107,.25);
+}
+
+.switcher label {
+  display: inline-block;
+  width: auto;
+  min-width: 6rem;
+  height: 100%;
+  text-align: left;
+  position: absolute;
+  transition: opacity 0.25s ease;
+  margin-bottom: 0;
+  left: 0;
+
+  [dir=rtl] & {
+    left: auto;
+    right: 0;
+    margin-left: 0;
+    margin-right: 70px;
+    text-align: right;
+  }
+  line-height: 1.2;
+  margin-left: 45px;
+}
+
+.switcher .toggle-outside {
+  transition: all .2s ease;
+  background: rgba(189, 197, 200, .5);
+  position: absolute;
+  width: 58px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.18);
+  left: 0;
+
+  [dir=rtl] & {
+    left: auto;
+    right: 0;
+  }
+  width: 36px;
+  border: 0;
+  border-radius: 10px;
+  height: 15px;
+  overflow: visible;
+}
+
+.switcher input ~ input:checked ~ .toggle-outside{
+  background: rgba(1, 132, 255, .5);
+}
+
+.switcher .toggle-inside {
+  height: 20px;
+  width: 20px;
+  background: var(--bg-color);
+  position: absolute;
+  transition: all .4s ease;
+  border-radius: 50%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+  top: -3px;
+}
+
+.switcher input ~ input:checked ~ .toggle-outside .toggle-inside {
+  left: 16px;
+  background: var(--primary-color);
+}
+
+.switcher__legend {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  float: left;
+  width: 220px;
+  padding-top: 5px;
+  padding-right: 5px;
+  text-align: left;
+
+  [dir=rtl] & {
+    padding-left: 5px;
+    padding-right: 0;
+    float: right;
+    text-align: right;
+  }
+}
+
+.col-md-9 .control-group .switcher__legend,
+.col-md-12 .control-group .switcher__legend {
+  margin-left: -220px;
+
+  [dir=rtl] & {
+    margin-left: 0;
+    float: right;
+    text-align: right;
+  }
+}
+
+.col-md-3 .switcher__legend {
+  margin-left: 0;
+}
+
+@media (max-width: 1199px){
+  .switcher {
+    width: auto;
+    label {
+      min-width: auto;
+    }
+  }
+}
+@media (max-width: 575.98px){
+  .switcher {
+    width: 100%;
+  }
+}

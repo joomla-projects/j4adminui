@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="administrator" method="upgrade">
+	<name>mod_cache</name>
+	<author>Joomla! Project</author>
+	<creationDate>September 2019</creationDate>
+	<copyright>Copyright (C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_CACHE_XML_DESCRIPTION</description>
+
+	<files>
+		<filename module="mod_cache">mod_cache.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.mod_cache.ini</language>
+		<language tag="en-GB">en-GB.mod_cache.sys.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ADMIN_CACJE" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="size_unit"
+					type="list"
+					label="MOD_CACHE_FIELD_SIZEUNIT_LABEL"
+					description="MOD_CACHE_FIELD_SIZEUNIT_LABEL_DESC"
+					default="mb"
+					>
+					<option value="MB">MOD_CACHE_FIELD_VALUE_SIZEUNIT_MB</option>
+					<option value="kB">MOD_CACHE_FIELD_VALUE_SIZEUNIT_KB</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="custom-select"
+ 				/>
+
+				 <field
+					name="module_group"
+					type="hidden"
+					default="system"
+ 				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="900"
+					filter="integer"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

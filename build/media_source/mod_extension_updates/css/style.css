@@ -1,0 +1,13 @@
+.j-card-module-update .progress-inner-text{
+	padding: 1.214rem 1rem 0px;
+}
+.j-card-module-update .progress-inner-text h2{
+	font-size: 3.857rem;
+	font-weight: 700;
+	margin-bottom: 0;
+}
+.j-card-module-update .progress-inner-text h2 + span{
+	font-size: 1.143rem;
+	color: var(--secondary-color);
+	line-height: 1.857rem;
+}

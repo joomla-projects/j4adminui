@@ -1,0 +1,31 @@
+// Icons
+
+.icon-back::before {
+  content: "\e008";
+}
+
+.icon-crop::before {
+  content: "\f125";
+}
+
+.icon-white {
+  color: $white-offset;
+}
+
+.icon-publish {
+  .dropdown-status-group & {
+    color: inherit;
+  }
+}
+
+.icon-unpublish {
+  .dropdown-status-group & {
+    color: inherit;
+  }
+}
+
+.input-group-text {
+  &::before {
+    min-width: 16px;
+  }
+}

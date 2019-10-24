@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_CATEGORIES_CATEGORIES_VIEW_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_CATEGORIES_CATEGORIES_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fieldset name="request">
+		<fields name="request">
+			<field
+				name="extension"
+				type="ComponentsCategory"
+				label="COM_CATEGORIES_CHOOSE_COMPONENT_LABEL"
+				required="true"
+			>
+				<option value="">COM_MENUS_OPTION_SELECT_COMPONENT</option>
+			</field>
+		</fields>
+	</fieldset>
+	<field name="params">
+		<field
+			name="menu-quicktask"
+			type="hidden"
+			value="index.php?option=com_categories&amp;extension=com_content&amp;task=category.add"
+		/>
+	</field>
+</metadata>

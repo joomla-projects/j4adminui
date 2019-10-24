@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="4.0" method="upgrade">
+	<name>com_banners</name>
+	<author>Joomla! Project</author>
+	<creationDate>April 2006</creationDate>
+	<copyright>(C) 2005 - 2019 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<version>4.0.0</version>
+	<description>COM_BANNERS_XML_DESCRIPTION</description>
+	<namespace>Joomla\Component\Banners</namespace>
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<files folder="site">
+		<filename>router.php</filename>
+		<folder>Controller</folder>
+		<folder>Helper</folder>
+		<folder>helpers</folder>
+		<folder>Model</folder>
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB.com_banners.ini</language>
+	</languages>
+	<media destination="com_banners" folder="media">
+		<folder>js</folder>
+	</media>
+	<administration>
+		<menu img="class:banners">com_banners</menu>
+		<submenu>
+			<!--
+				Note that all & must be escaped to &amp; for the file to be valid
+				XML and be parsed by the installer
+			-->
+			<menu
+				link="option=com_banners"
+				view="banners"
+				img="class:banners"
+				alt="Banners/Banners"
+				>
+				com_banners_banners
+			</menu>
+			<menu
+				link="option=com_categories&amp;extension=com_banners"
+				view="categories"
+				img="class:banners-cat"
+				alt="Banners/Categories"
+				>
+				com_banners_categories
+			</menu>
+			<menu
+				link="option=com_banners&amp;view=clients"
+				view="clients"
+				img="class:banners-clients"
+				alt="Banners/Clients"
+				>
+				com_banners_clients
+			</menu>
+			<menu
+				link="option=com_banners&amp;view=tracks"
+				view="tracks"
+				img="class:banners-tracks"
+				alt="Banners/Tracks"
+				>
+				com_banners_tracks
+			</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>banners.xml</filename>
+			<filename>config.xml</filename>
+			<folder>Controller</folder>
+			<folder>Extension</folder>
+			<folder>Field</folder>
+			<folder>forms</folder>
+			<folder>Helper</folder>
+			<folder>helpers</folder>
+			<folder>Model</folder>
+			<folder>Service</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>Table</folder>
+			<folder>tmpl</folder>
+			<folder>View</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_banners.ini</language>
+			<language tag="en-GB">language/en-GB.com_banners.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
