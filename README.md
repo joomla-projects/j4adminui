@@ -9,22 +9,9 @@ Build Status
 
 What is this?
 ---------------------
-* This is the source of Joomla! 4.x.
-* Joomla's [Official website](https://www.joomla.org).
-* Joomla! 4.0 [version history](https://docs.joomla.org/Special:MyLanguage/Joomla_4.0_version_history).
-* Detailed changes are in the [changelog](https://github.com/joomla/joomla-cms/commits/4.0-dev).
-
-What is Joomla?
----------------------
-* [Joomla!](https://www.joomla.org/about-joomla.html) is a **Content Management System** (CMS) which enables you to build websites and powerful online applications.
-* It is a simple and powerful web server application which requires a server with PHP and either MySQL or PostgreSQL to run. You can find [full technical requirements here](https://downloads.joomla.org/technical-requirements).
-* Joomla! is **free and Open Source software** distributed under the GNU General Public License version 2 or later.
-
-Looking for an installable package?
----------------------
-Joomla is not installable out of the box from this repository, please use:
-- For the latest stable package: https://downloads.joomla.org
-- For a nightly package: https://developer.joomla.org/nightly-builds.html
+* This is the source of Joomla! 4.x. "spring" alternate template development
+* Styleguide(https://delowar.gitbook.io/joomla-elements/)
+* Detailed changes are in the [changelog](https://github.com/joomla-projects/j4adminui/commits).
 
 How to get a working installation from the source
 ---------------------
@@ -39,15 +26,11 @@ You will need:
 **Steps to setup the local environment:**
 - Clone the repository:
 ```bash
-git clone git@github.com:joomla/joomla-cms.git
+git clone git@github.com:joomla-projects/j4adminui.git
 ```
 - Go to the joomla-cms folder:
 ```bash
 cd joomla-cms
-```
-- Go to the 4.0-dev branch:
-```bash
-git checkout 4.0-dev
 ```
 - Install all the needed composer packages:
 ```bash
@@ -55,16 +38,52 @@ composer install
 ```
 - Install all the needed npm packages:
 ```bash
-npm install
+npm ci install
 ```
 
-Do you want to improve Joomla?
---------------------
-* Where to [request a feature](https://issues.joomla.org)?
-* How do you [report a bug](https://docs.joomla.org/Special:MyLanguage/Filing_bugs_and_issues) on the [Issue Tracker](https://issues.joomla.org)?
-* Get Involved: Joomla! is community developed software. [Join the community](https://volunteers.joomla.org).
-* Documentation for [Developers](https://docs.joomla.org/Special:MyLanguage/Portal:Developers).
-* Documentation for [Web designers](https://docs.joomla.org/Special:MyLanguage/Web_designers).
+Backstory
+=========================
+This repository represents a much apreciated cummunity initiative for an alternate backend template for Joomla4! Endorsing it in now way disqualifies or degrades the existing "atum" template and the team that created it. ["In matters of taste, there can be no disputes"](https://en.wikipedia.org/wiki/De_gustibus_non_est_disputandum). 
+
+History
+----------------------
+This project started as an initiative by [Kawshar Ahmed](https://www.facebook.com/jkawshar) on facebook as a community initiative that got endorsed by the Joomla production department.
+The inititiation post of august can be found [here](https://www.facebook.com/groups/joomlanospam/permalink/10156182532445997/). Production department thought it important to communicate from the very start that this initiative was subject to the same rules and requirements as all code before accepting into core distribution. The exection being that the initiators are also responsible for support.
+The following sections is a verbatum copy of the initial response to the initiave as can be found in the above FB message thread.
+
+Formalities / requirements
+--------------------------
+Thank you for your design proposals!, We, the Production Team welcome every initiative of Joomlers, our user base, to contribute. In this case in the form of an alternative Back End (BE) template. Any alternative will be held to the same standards and requirements as the current template, no more, no less.
+
+initial top level requirements. The template shall:
+* be responsive, meaning it has to work on all screen sizes and supported browsers
+* ensure AA, WCAG 2.1 compliant accessibility ( color schemes, keyboard navigation)
+* ensure b/c for 3party extensions
+* support all of functionality as current BE template does ( to name a few: new mediamanager, workflow, dashboards ...)
+* have menus that must be "editable"/"manageable" via the menu manager
+* not include no jquery or other JS-frameworks (all native ES6)
+* not introduce any Backward Compatibility (BC) breaking functionality to the backend after the release of Beta J4
+* provide full layout and template overrides support
+* comply with coding standards
+* have a maintenance plan
+
+Staffing the project ( during both creation and maintenance) is the responsibility of the team taking the initiative. Unfortunately Production Department is short on staff for completing J4 as is. Production Department will liaise to ensure best possible communication between teams.
+
+Production will come up with a full list that the current admin template is required to adhere to. The above is an initial list, the final list will encompass this list but not necessarily be limited to that list.
+The above mentioned list might be amended as the development of Joomla 4 continues.
+
+A new/alternative template must comply with all of the set out requirements and have undergone thorough testing on all aspects.
+If all of the requirements are met Production intends to include it as part of the core distribution.
+
+The moment of inclusion will be dependant on the speed of development. The release of J4 will not be postponed/delayed. In case the time-frame can not be met, inclusion could take place in a subsequent minor release (J4.1?)
+
+Thank you for all your commitment to make Joomla 4 great!
+
+
+
+Joomla! CMS v4.0 in general
+=========================
+visit  https://github.com/joomla/joomla-cms and switch to the https://launch.joomla.org/
 
 Copyright
 ---------------------
