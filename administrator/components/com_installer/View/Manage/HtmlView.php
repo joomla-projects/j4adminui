@@ -86,14 +86,14 @@ class HtmlView extends InstallerViewDefault
 
 		ToolbarHelper::custom('manage.refresh', 'refresh', 'refresh', 'JTOOLBAR_REFRESH_CACHE', true);
 
+		ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_MANAGE');
+
+		parent::addToolbar();
+
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('COM_INSTALLER_CONFIRM_UNINSTALL', 'manage.remove', 'JTOOLBAR_UNINSTALL');
 		}
-
-		ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_MANAGE');
-
-		parent::addToolbar();
 
 		if ($canDo->get('core.edit.state'))
 		{

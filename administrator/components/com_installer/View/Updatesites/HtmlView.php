@@ -99,36 +99,34 @@ class HtmlView extends InstallerViewDefault
 	{
 		$canDo = ContentHelper::getActions('com_installer');
 
-		if ($canDo->get('core.edit'))
+		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
-			ToolbarHelper::editList('updatesite.edit');
+			ToolbarHelper::custom('updatesites.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
 		}
 
-		if ($canDo->get('core.edit.state'))
-		{
-			ToolbarHelper::publish('updatesites.publish', 'JTOOLBAR_ENABLE', true);
-			ToolbarHelper::unpublish('updatesites.unpublish', 'JTOOLBAR_DISABLE', true);
-			ToolbarHelper::divider();
-		}
+		ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_UPDATESITES');
 
-		if ($canDo->get('core.delete'))
-		{
-			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'updatesites.delete');
-			ToolbarHelper::divider();
-		}
+		parent::addToolbar();
 
 		if ($canDo->get('core.edit.state'))
 		{
 			ToolbarHelper::checkin('updatesites.checkin');
 		}
 
-		if ($canDo->get('core.admin') || $canDo->get('core.options'))
+		if ($canDo->get('core.delete'))
 		{
-			ToolbarHelper::custom('updatesites.rebuild', 'refresh.png', 'refresh_f2.png', 'JTOOLBAR_REBUILD', false);
+			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'updatesites.delete');
 		}
 
-		parent::addToolbar();
+		if ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::unpublish('updatesites.unpublish', 'JTOOLBAR_DISABLE', true);
+			ToolbarHelper::publish('updatesites.publish', 'JTOOLBAR_ENABLE', true);
+		}
 
-		ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_UPDATESITES');
+		if ($canDo->get('core.edit'))
+		{
+			ToolbarHelper::editList('updatesite.edit');
+		}
 	}
 }

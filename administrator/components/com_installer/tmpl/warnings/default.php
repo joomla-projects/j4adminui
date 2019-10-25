@@ -21,19 +21,19 @@ use Joomla\CMS\Router\Route;
 				<div id="j-main-container" class="j-main-container">
 					<?php if (count($this->messages)) : ?>
 						<?php foreach ($this->messages as $message) : ?>
-							<div class="j-alert j-alert-warning">
-								<h4 class="alert-heading"><?php echo $message['message']; ?></h4>
-								<p class="mb-0"><?php echo $message['description']; ?></p>
+							<div class="j-alert j-alert-warning d-flex mt-4">
+								<div class="j-alert-icon-wrap"><span class="icon-warning" aria-hidden="true"></span><span class="sr-only"><?php echo $message['message']; ?></span></div>
+								<div class="j-alert-info-wrap"><?php echo $message['description']; ?></div>
 							</div>
 						<?php endforeach; ?>
-						<div class="j-alert j-alert-info">
-							<h4 class="alert-heading"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFO'); ?></h4>
-							<p class="mb-0"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFODESC'); ?></p>
+						<div class="j-alert j-alert-info d-flex mt-4">
+							<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFO'); ?></span></div>
+							<div class="j-alert-info-wrap"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGFURTHERINFODESC'); ?></div>
 						</div>
 					<?php else: ?>
-						<div class="j-alert j-alert-info">
-							<h4 class="alert-heading"><?php echo Text::_('INFO'); ?></h4>
-							<p class="mb-0"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGS_NONE'); ?></p>
+						<div class="j-alert j-alert-info d-flex mt-4">
+							<div class="j-alert-icon-wrap"><span class="icon-info-circle" aria-hidden="true"></span><span class="sr-only"><?php echo Text::_('INFO'); ?></span></div>
+							<div class="j-alert-info-wrap"><?php echo Text::_('COM_INSTALLER_MSG_WARNINGS_NONE'); ?></div>
 						</div>
 					<?php endif; ?>
 					<div>
