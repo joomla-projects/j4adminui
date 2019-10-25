@@ -72,9 +72,8 @@ class HtmlView extends InstallerViewDefault
 
 		if ($canDo->get('core.admin'))
 		{
-			parent::addToolbar();
-
 			ToolbarHelper::help('JHELP_EXTENSIONS_EXTENSION_MANAGER_LANGUAGES');
+			parent::addToolbar();
 		}
 	}
 }
