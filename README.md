@@ -28,9 +28,9 @@ You will need:
 ```bash
 git clone git@github.com:joomla-projects/j4adminui.git
 ```
-- Go to the joomla-cms folder:
+- Go to the j4adminui folder:
 ```bash
-cd joomla-cms
+cd j4adminui
 ```
 - Install all the needed composer packages:
 ```bash
