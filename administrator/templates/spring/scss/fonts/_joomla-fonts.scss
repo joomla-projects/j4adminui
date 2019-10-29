@@ -3,17 +3,16 @@
 * @version 4.0.0 
 * @author Joomla https://joomla.org 
 * @copyright Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved. 
-* @license https://tm.joomla.org/trademark-license.html 
+* @license GPL-2.0-or-later 
 */
 
 @font-face
 {
- 
   font-family: "JoomlaFont";
-font-weight: Normal;
-font-style: "Regular";
-src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
-  url("../../../../media/system/fonts/joomla-fonts.woff") format("woff");
+  font-weight: Normal;
+  font-style: "Regular";
+  src: url("../../../../build/media_source/system/fonts/joomla-fonts.woff2") format("woff2"),
+  url("../../../../build/media_source/system/fonts/joomla-fonts.woff") format("woff");
 }
 
 [class^="icon-"], [class*=" icon-"]
@@ -1070,7 +1069,7 @@ src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 
 .duotone.icon-notification:before
 {
-  content: "\13cf6";
+  content: "\13d14";
 }
 
 .duotone.icon-paint-brush:after
@@ -3216,3 +3215,4 @@ src: url("../../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 {
   color: #fff;
 }
+	
