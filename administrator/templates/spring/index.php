@@ -28,7 +28,8 @@ $cpanel     = $option === 'com_cpanel';
 $hiddenMenu = $app->input->get('hidemainmenu');
 $menuSettings = $app->input->cookie->get('main-sidebar');
 
-$hiddenMenuClass = $hiddenMenu || $menuSettings == 'closed' ? 'closed' : '';
+$hiddenMenuClass = $hiddenMenu || $menuSettings == 'closed' ? 'main-sidebar-collapsed' : '';
+$hiddenMenuClass .= $hiddenMenu ? ' hide-sidebar-toggler' : '';
 
 $joomlaLogo = $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
 require_once __DIR__ . '/Service/HTML/Spring.php';
@@ -93,7 +94,7 @@ HTMLHelper::_('spring.rootcolors', $this->params);
 <?php // Wrapper ?>
 <div id="wrapper" class="d-flex wrapper <?php echo $hiddenMenuClass; ?>">
 	<?php // Header ?>
-	<header id="header" class="header <?php echo $hiddenMenuClass; ?>">
+	<header id="header" class="header">
 		<div class="logo-header">
 			<div class="main-logo d-flex align-items-center">
 				<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>

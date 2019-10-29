@@ -106,10 +106,10 @@ class HtmlView extends InstallerViewDefault
 			$toolbarButtons[] = ['save', 'updatesite.save'];
 		}
 
-		ToolbarHelper::saveGroup($toolbarButtons);
+		ToolbarHelper::help('JHELP_COMPONENTS_INSTALLER_UPDATESITE_EDIT');
 
 		ToolbarHelper::cancel('updatesite.cancel', 'JTOOLBAR_CLOSE');
 
-		ToolbarHelper::help('JHELP_COMPONENTS_INSTALLER_UPDATESITE_EDIT');
+		ToolbarHelper::saveGroup($toolbarButtons);
 	}
 }

@@ -75,22 +75,22 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 
 .duotone.icon-angle-double-left:after
 {
-  content: "\13ce5";
+  content: "\13d02";
 }
 
 .duotone.icon-angle-double-left:before
 {
-  content: "\13ce6";
+  content: "\13d03";
 }
 
 .duotone.icon-angle-double-right:after
 {
-  content: "\13ce7";
+  content: "\13d0b";
 }
 
 .duotone.icon-angle-double-right:before
 {
-  content: "\13ce8";
+  content: "\13d0c";
 }
 
 .duotone.icon-apply:after
@@ -491,6 +491,26 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 .duotone.icon-download:before
 {
   content: "\13b09";
+}
+
+.duotone.icon-duplicate-alt:after
+{
+  content: "\13d0d";
+}
+
+.duotone.icon-duplicate-alt:before
+{
+  content: "\13d0e";
+}
+
+.duotone.icon-duplicate:after
+{
+  content: "\13d0f";
+}
+
+.duotone.icon-duplicate:before
+{
+  content: "\13d10";
 }
 
 .duotone.icon-envelope-badge:after
@@ -1553,6 +1573,16 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
   content: "\13bd8";
 }
 
+.duotone.icon-user:after
+{
+  content: "\13d13";
+}
+
+.duotone.icon-user:before
+{
+  content: "\13d06";
+}
+
 .duotone.icon-users:after
 {
   content: "\13bd9";
@@ -1645,12 +1675,12 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 
 .icon-angle-double-left:before
 {
-  content: "\13ceb";
+  content: "\13d07";
 }
 
 .icon-angle-double-right:before
 {
-  content: "\13cec";
+  content: "\13d08";
 }
 
 .icon-angle-down:before,.icon-arrow-down-3:before
@@ -1953,7 +1983,12 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
   content: "\13ced";
 }
 
-.icon-cogs:before,.icon-os:before,.icon-options:before,.icon-cog:before
+.icon-cog:before,.icon-options-cog:before
+{
+  content: "\13c83";
+}
+
+.icon-cogs:before,.icon-os:before,.icon-options:before
 {
   content: "\13c23";
 }
@@ -2061,6 +2096,16 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 .icon-download:before
 {
   content: "\13c36";
+}
+
+.icon-duplicate-alt:before
+{
+  content: "\13d11";
+}
+
+.icon-duplicate:before
+{
+  content: "\13d12";
 }
 
 .icon-ellipsis-h:before,.icon-more:before,.icon-overflow-menu:before,.icon-menu-horizontal:before
@@ -2463,11 +2508,6 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
   content: "\13cf4";
 }
 
-.icon-options-cog:before
-{
-  content: "\13c83";
-}
-
 .icon-paint-brush:before
 {
   content: "\13c84";
@@ -2743,6 +2783,11 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
   content: "\13cc9";
 }
 
+.icon-spinner:before
+{
+  content: "\13d09";
+}
+
 .icon-square:before
 {
   content: "\13cee";
@@ -2875,7 +2920,7 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 
 .icon-user:before
 {
-  content: "\13cd3";
+  content: "\13d0a";
 }
 
 .icon-users:before
@@ -3171,4 +3216,3 @@ src: url("../../../media/system/fonts/joomla-fonts.woff2") format("woff2"),
 {
   color: #fff;
 }
-	

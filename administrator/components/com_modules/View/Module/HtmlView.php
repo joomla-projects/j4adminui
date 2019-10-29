@@ -117,21 +117,22 @@ class HtmlView extends BaseHtmlView
 		// For new records, check the create permission.
 		if ($isNew && $canDo->get('core.create'))
 		{	
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('module.cancel');
-			// save
-			ToolbarHelper::apply('module.apply');
+			
+			// Save group
 			ToolbarHelper::saveGroup(
 				[
+					['apply', 'module.apply'],
 					['save', 'module.save'],
 					['save2new', 'module.save2new']
-				],
-				'btn-success'
+				]
 			);
 		}
 		else
 		{
-			ToolbarHelper::cancel('module.cancel', 'JTOOLBAR_CANCEL');
+			// Close button
+			ToolbarHelper::cancel('module.cancel', 'JTOOLBAR_CLOSE');
 
 			$toolbarButtons = [];
 
@@ -159,8 +160,7 @@ class HtmlView extends BaseHtmlView
 			}
 
 			ToolbarHelper::saveGroup(
-				$toolbarButtons,
-				'btn-success'
+				$toolbarButtons
 			);
 		}
 

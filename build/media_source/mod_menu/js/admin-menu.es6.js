@@ -48,18 +48,16 @@
     return null;
   };
 
-  const header = document.getElementById('header');
   const wrapper = document.getElementById('wrapper');
   const sidebar = document.getElementById('sidebar-wrapper');
   const menuToggleIcon = document.getElementById('menu-collapse-icon');
   const documentContainer = document.querySelector('.container-main');
   // If the sidebar doesn't exist, for example, on edit views, then remove the "closed" class
   if (!sidebar) {
-    wrapper.classList.remove('closed');
-    header.classList.remove('closed');
+    wrapper.classList.remove('main-sidebar-collapsed');
   }
   if (wrapper) {
-    if (documentContainer && !wrapper.classList.contains('closed')) {
+    if (documentContainer && !wrapper.classList.contains('main-sidebar-collapsed')) {
       documentContainer.classList.add('menu-collapsed');
     }
   }
@@ -85,8 +83,7 @@
     if (typeof menuToggle !== 'undefined' && menuToggle !== null) {
     // Toggle menu
       menuToggle.addEventListener('click', () => {
-        wrapper.classList.toggle('closed');
-        header.classList.toggle('closed');
+        wrapper.classList.toggle('main-sidebar-collapsed');
         menuToggleIcon.classList.toggle('icon-angle-double-left');
         menuToggleIcon.classList.toggle('icon-angle-double-right');
         if (documentContainer) {
@@ -102,7 +99,7 @@
         }
 
         // Save the sidebar state and dispatch event
-        if (wrapper.classList.contains('closed')) {
+        if (wrapper.classList.contains('main-sidebar-collapsed')) {
           if (typeof Joomla.Cookies !== 'undefined') {
             Joomla.Cookies.set('main-sidebar', 'closed', 31536000, '/', '');
           }
@@ -157,8 +154,7 @@
           sibling.classList.remove('open');
         });
 
-        wrapper.classList.remove('closed');
-        header.classList.remove('closed');
+        wrapper.classList.remove('main-sidebar-collapsed');
         if (typeof Joomla.Cookies !== 'undefined') {
           Joomla.Cookies.set('main-sidebar', 'open', 31536000, '/');
         }

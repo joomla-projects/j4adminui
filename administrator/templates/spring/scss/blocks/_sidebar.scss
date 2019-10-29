@@ -4,7 +4,7 @@
 		padding-left: 0;
 	}
 	
-	&.closed {
+	&.main-sidebar-collapsed {
 		a.btn-dashboard {
 			display: none
 		}
@@ -88,8 +88,6 @@
 	left: 0;
 	top: $header-height;
 	bottom: 0;
-	overflow-y: scroll;
-	overflow-x: hidden;
 	width: $sidebar-width;
 	background-color: $white;
 	@include media-breakpoint-down(xs) {
@@ -309,7 +307,6 @@
 		&:first-child a{
 			border-top: none;
 		}
-		
 	}
 	
 	// 2nd level items
@@ -348,122 +345,108 @@
 	}
 	
 	// Dropdown indicator
-	.has-arrow::after {
-		position: absolute;
-		color: var(--secondary-icon-color);
-		content: "\f054";
-		font-weight: 900;
-		font-family: "Font Awesome 5 Free";
-		transition: 300ms;
-		font-size: 0.714rem;
-		right: .786rem;
-		top: 50%;
-		transform: translateY(-50%);
-		height: 0.714rem;
-		width: 0.714rem;
-		line-height: 1em;
-		text-align: center;
+	.has-arrow {
+		.icon-toggler {
+			color: var(--secondary-icon-color);
+			position: absolute;
+			transition: 300ms;
+			font-size: 1rem;
+			right: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 1rem;
+			width: 1rem;
+			line-height: 1em;
+			text-align: center;
+		}
 	}
 	
 	.active {
-		> .has-arrow::after {
-			-webkit-transform: translateY(-50%) rotate(90deg);
-			transform: translateY(-50%) rotate(90deg);
+		> .has-arrow {
+			.icon-toggler {
+				-webkit-transform: translateY(-50%) rotate(180deg);
+				transform: translateY(-50%) rotate(180deg);
+			}
 		}
 	}
 }
 
-// Sidebar closed
-.closed {
+// Sidebar collapsed
+.main-sidebar-collapsed {
 	.sidebar-wrapper{
+		position: relative;
 		width: $sidebar-width-closed;
 		flex: 1 0 $sidebar-width-closed;
 		max-width: $sidebar-width-closed;
+		z-index: $zindex-sidebar;
 	}
 
 	.main-nav-container {
 		width: $sidebar-width-closed;
 	}
 
-	.sidebar-item-title{
-		opacity: 0;
-		width: 0;
-		margin: 0;
-		overflow: hidden;
-		display: none;
-	}
+	// Fly out Menu
 	.main-nav {
-		> li > ul {
-			height: 0;
-			padding: 0;
-			visibility: hidden;
+		position: relative;
+		> li {
+			&.parent {
+				position: initial;
+				> ul {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 100%;
+					background: var(--white);
+					border-left: 1px solid var(--bg-color);
+					border-right: 1px solid var(--bg-color);
+					width: $sidebar-width;
+					display: none;
+
+					&.collapsing,
+					&.collapsed {
+						height: auto !important;
+					}
+					>li {
+						>a {
+							padding: 10px 20px;
+							&.has-arrow {
+								.icon-toggler  {
+									display: block;
+								}
+							}
+						}
+
+						// 3rd level item
+						ul {
+							>li {
+								>a {
+									padding-left: 2rem;
+								}
+							}
+						}
+					}
+				}
+
+				&:hover {
+					>ul {
+						display: block;
+					}
+				}
+			}
+
+			> a {
+				>.sidebar-item-title{
+					display: none;
+				}
+			}
 		}
 	}
 
 	.menu-badge,
-	.has-arrow:after {
+	.has-arrow .icon-toggler {
 		display: none;
 	}
 }
-
-// Sidebar Closed
-// .closed {
-// 	.sidebar-wrapper .logo-header .main-logo{
-// 		margin-bottom: 0;
-// 	}
-
-// 	.sidebar-wrapper .logo-header .sidebar-toggle{
-// 		border-right: 1px solid var(--bg-color);
-// 	}
-
-// 	.logo-header{
-// 		padding-left: 15px;
-// 		padding-right: 15px;
-// 		.header-version{
-// 			text-align: center;
-// 			transition-delay: 300ms;
-// 		}
-// 	}
-// 	.sidebar-wrapper{
-// 		width: $sidebar-width-closed;
-// 		flex: 1 0 $sidebar-width-closed;
-// 		max-width: $sidebar-width-closed;
-// 	}
-// 	.sidebar-toggle{
-// 		transform: translateX(100%);
-// 	}
-// 	.main-nav span.fa {
-// 		transition: 300ms;
-// 	}
-// 	.main-logo .logo svg.logo-small{
-// 		display: block;
-// 	}
-// 	.sidebar-update-status{
-// 		display: none;
-// 	}
-// 	.menu-badge,
-// 	.main-nav .collapse.in,
-// 	.main-nav li .menu-quicktask,
-// 	.main-logo .header-version,
-// 	.main-logo .logo svg:not(.logo-small),
-// 	.has-arrow::after {
-// 		display: none;
-// 	}
-// 	.sidebar-item-title{
-// 		opacity: 0;
-// 		width: 0;
-// 		margin: 0;
-// 		overflow: hidden;
-// 		display: none;
-// 	}
-// 	.main-nav {
-// 		> li > ul {
-// 			height: 0;
-// 			padding: 0;
-// 			visibility: hidden;
-// 		}
-// 	}
-// }
 
 @include media-breakpoint-up(sm) {
 	button.toggler-burger {
@@ -638,8 +621,7 @@
 		left: 0;
 		width: 100%;
 		height: auto;
-		overflow-x: hidden;
-		overflow-y: scroll;
+		overflow-y: auto;
 		transition: 300ms;
 		padding-bottom: 0;
 		z-index: $zindex-mobile-nav;
