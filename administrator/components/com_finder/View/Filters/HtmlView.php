@@ -160,21 +160,21 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::divider();
 		}
 
-		// help button
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_SEARCH_FILTERS');
 
-		// options button
+		// Options button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		// statistics button
+		// Statistics button
 		ToolbarHelper::divider();
 		$toolbar->appendButton('Popup', 'bar', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 		ToolbarHelper::divider();
 
-		// new button
+		// New button
 		if ($canDo->get('core.create'))
 		{
 			ToolbarHelper::addNew('filter.add');

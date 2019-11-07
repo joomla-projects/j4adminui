@@ -80,7 +80,7 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title(Text::_('COM_PRIVACY_VIEW_CAPABILITIES'), 'lock');
 
 		ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_CAPABILITIES');
-		
+
 		ToolbarHelper::preferences('com_privacy');
 	}
 }

@@ -332,7 +332,7 @@ class HtmlView extends BaseHtmlView
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
 
-		// toolbar title
+		// Toolbar title
 		if ($menuTypeTitle)
 		{
 			ToolbarHelper::title(Text::sprintf('COM_MENUS_VIEW_ITEMS_MENU_TITLE', $menuTypeTitle), 'menu menumgr');
@@ -342,10 +342,10 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::title(Text::_('COM_MENUS_VIEW_ITEMS_ALL_TITLE'), 'menu menumgr');
 		}
 
-		// menutype filter
+		// Menutype filter
 		$protected = $this->state->get('filter.menutype') == 'main';
 
-		// action group toolbar dropdown
+		// Action group toolbar dropdown
 		if (($canDo->get('core.edit.state') || Factory::getUser()->authorise('core.admin')) && !$protected
 			|| $canDo->get('core.edit.state') && $this->state->get('filter.client_id') == 0)
 		{
@@ -395,7 +395,7 @@ class HtmlView extends BaseHtmlView
 			}
 		}
 
-		// toolbar rebuild menuItem tree button
+		// Toolbar rebuild menuItem tree button
 		if (Factory::getUser()->authorise('core.admin'))
 		{
 			$toolbar->standardButton('refresh')
@@ -403,7 +403,7 @@ class HtmlView extends BaseHtmlView
 				->task('items.rebuild');
 		}
 
-		// toolbar delete menuItem button
+		// Toolbar delete menuItem button
 		if (!$protected && $this->state->get('filter.published') == -2 && $canDo->get('core.delete'))
 		{
 			$toolbar->delete('items.delete')
@@ -412,16 +412,16 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		// toolbar help button
+		// Toolbar help button
 		$toolbar->help('JHELP_MENUS_MENU_ITEM_MANAGER');
-		
-		// option toolbar button
+
+		// Option toolbar button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences('com_menus');
 		}
 
-		// toolbar addNew button
+		// Toolbar addNew button
 		if ($canDo->get('core.create'))
 		{
 			$toolbar->addNew('item.add');

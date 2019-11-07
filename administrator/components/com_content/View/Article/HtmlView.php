@@ -140,7 +140,7 @@ class HtmlView extends BaseHtmlView
 			'edit article-add'
 		);
 
-		// language association
+		// Language association
 		if (Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
 		{
 			$toolbar->standardButton('multilingual')
@@ -148,13 +148,13 @@ class HtmlView extends BaseHtmlView
 				->task('article.editAssociations');
 		}
 
-		// if new
+		// If new
 		if ($isNew)
 		{
-			// help button
+			// Help button
 			$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
-			// cancel button
+			// Cancel button
 			$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
 		}
 
@@ -235,7 +235,7 @@ class HtmlView extends BaseHtmlView
 				$toolbar->divider();
 				$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER_EDIT');
 
-				// cancel button
+				// Cancel button
 				$toolbar->cancel('article.cancel', 'JTOOLBAR_CLOSE');
 
 				// Preview button
@@ -244,10 +244,10 @@ class HtmlView extends BaseHtmlView
 					\ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid, $this->item->language),
 					true
 				);
-				
-				$toolbar->preview($url, 'JGLOBAL_PREVIEW')	
-							->bodyHeight(80)	
-							->modalWidth(90);
+
+				$toolbar->preview($url, 'JGLOBAL_PREVIEW')
+					->bodyHeight(80)
+					->modalWidth(90);
 
 				// Version
 				if (ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $itemEditable)
@@ -255,7 +255,7 @@ class HtmlView extends BaseHtmlView
 					$toolbar->versions('com_content.article', $this->item->id);
 				}
 
-				// Save item group 
+				// Save item group
 				$saveGroup = $toolbar->dropdownButton('save-group');
 				$saveGroup->configure(
 					function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)
@@ -284,7 +284,6 @@ class HtmlView extends BaseHtmlView
 						}
 					}
 				);
-
 			}
 		}
 

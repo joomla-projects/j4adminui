@@ -81,7 +81,7 @@ class HtmlView extends BaseHtmlView
 		$this->activeFilters = $this->get('ActiveFilters');
 		$this->transitions   = $this->get('Transitions');
 		$this->vote          = PluginHelper::isEnabled('content', 'vote');
-		
+
 		// Check for errors.
 		if ((count($errors = $this->get('Errors'))) || $this->transitions === false)
 		{
@@ -249,14 +249,13 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		
 		$toolbar->help('JHELP_CONTENT_ARTICLE_MANAGER');
-		
+
 		if ($user->authorise('core.admin', 'com_content') || $user->authorise('core.options', 'com_content'))
 		{
 			$toolbar->preferences('com_content');
 		}
-		
+
 		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
 		{
 			$toolbar->addNew('article.add');

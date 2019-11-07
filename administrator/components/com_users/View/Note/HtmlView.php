@@ -120,7 +120,7 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::cancel('note.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		// Save item group 
+		// Save item group
 		$saveGroup = $toolbar->dropdownButton('save-group');
 
 		$saveGroup->configure(

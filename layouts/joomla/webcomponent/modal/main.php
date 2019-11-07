@@ -5,7 +5,7 @@
  *
  * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
- * 
+ *
  * @since  4.0.0
  */
 
@@ -33,36 +33,37 @@ extract($displayData);
  *
  */
 
- /**
-  * @var    array   $modalAttributes
-  * Set all params as element attributes without some specific attributes
-  */
-$modalAttributes = $params; 
+/**
+ * @var    array   $modalAttributes
+* Set all params as element attributes without some specific attributes
+*/
+$modalAttributes = $params;
 
 // Remove specific attributes
 if (isset($modalAttributes['footer'])) {
-    unset($modalAttributes['footer']);
+unset($modalAttributes['footer']);
 }
 
 /**
  * Change url to iframe url for load iframe into modal body
  * Hack from default bootstrap.renderModal attributes
  */
-if (isset($params['url']) && !isset($params['iframe'])) {
-    $modalAttributes['iframe'] = $params['url'];
-    unset($modalAttributes['url']);
+if (isset($params['url']) && !isset($params['iframe']))
+{
+	$modalAttributes['iframe'] = $params['url'];
+	unset($modalAttributes['url']);
 }
 
 ?>
 <joomla-modal role="dialog" id="<?php echo $selector; ?>" <?php echo ArrayHelper::toString($modalAttributes); ?> >
-    <?php 
-        // Main body
-        echo LayoutHelper::render('joomla.webcomponent.modal.body', $displayData);
+	<?php
+		// Main body
+		echo LayoutHelper::render('joomla.webcomponent.modal.body', $displayData);
 
-        // Footer
-        if (isset($params['footer']))
-        {
-            echo LayoutHelper::render('joomla.webcomponent.modal.footer', $displayData);
-        }
-    ?>
+		// Footer
+		if (isset($params['footer']))
+		{
+			echo LayoutHelper::render('joomla.webcomponent.modal.footer', $displayData);
+		}
+	?>
 </joomla-modal>

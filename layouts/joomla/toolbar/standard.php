@@ -85,9 +85,9 @@ switch($class)
 	<?php echo $htmlAttributes ?? ''; ?>
 	>
 	<?php if(!empty($iconClass)) : ?>
-    	<span class="<?php echo trim($iconClass ?? ''); ?> icon-md" aria-hidden="true"></span>
+		<span class="<?php echo trim($iconClass ?? ''); ?> icon-md" aria-hidden="true"></span>
 	<?php endif; ?>
-    <?php echo $text ?? ''; ?>
+	<?php echo $text ?? ''; ?>
 </<?php echo $tagName; ?>>
 <?php endif; ?>
 </joomla-toolbar-button>

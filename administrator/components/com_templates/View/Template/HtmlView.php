@@ -235,7 +235,7 @@ class HtmlView extends BaseHtmlView
 
 		// set title
 		ToolbarHelper::title(Text::sprintf('COM_TEMPLATES_MANAGER_VIEW_TEMPLATE', ucfirst($this->template->name)), 'brush thememanager');
-		
+
 		// Add a Template preview button
 		if ($this->preview->client_id == 0)
 		{
@@ -250,7 +250,7 @@ class HtmlView extends BaseHtmlView
 		// Only show file manage buttons for global SuperUser
 		if ($isSuperUser)
 		{
-			// Add a new file button 
+			// Add a new file button
 			if ($this->type != 'home')
 			{
 				ToolbarHelper::modal('fileModal', 'icon-file', 'COM_TEMPLATES_BUTTON_FILE', 'secondary');
@@ -270,7 +270,7 @@ class HtmlView extends BaseHtmlView
 		{
 			ToolbarHelper::custom('template.deleteOverrideHistory', 'delete', 'move', 'COM_TEMPLATES_BUTTON_DELETE_LIST_ENTRY', true, 'updateForm');
 		}
-		
+
 		ToolbarHelper::divider();
 		// help button
 		ToolbarHelper::help('JHELP_EXTENSIONS_TEMPLATE_MANAGER_TEMPLATES_EDIT');

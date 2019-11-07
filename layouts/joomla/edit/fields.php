@@ -12,8 +12,8 @@ defined('JPATH_BASE') or die;
 use Joomla\CMS\Factory;
 
 $form			= $displayData['data']->getForm();
-$form_style		= isset($displayData['form_style']) && $displayData['form_style'] ? $displayData['form_style'] : 'form-no-margin'; 
-$group			= isset($displayData['group']) && $displayData['group'] ? $displayData['group'] : ''; 
+$form_style		= isset($displayData['form_style']) && $displayData['form_style'] ? $displayData['form_style'] : 'form-no-margin';
+$group			= isset($displayData['group']) && $displayData['group'] ? $displayData['group'] : '';
 
 $fields 		= ( isset($displayData['fields']) && $displayData['fields'] ) ? $displayData['fields'] : array();
 

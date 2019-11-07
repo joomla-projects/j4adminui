@@ -119,7 +119,7 @@ class HtmlView extends BaseHtmlView
 
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_COMPONENTS_TAGS_MANAGER_EDIT');
-		
+
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{

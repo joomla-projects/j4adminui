@@ -67,7 +67,7 @@ class DisplayController extends BaseController
 					'link',
 					'#',
 					Text::_('COM_REDIRECT_SYSTEM_PLUGIN'),
-					'class="alert-link" data-href="#plugin '. $redirectPluginId .'Modal" data-toggle="modal" id="title-' . $redirectPluginId . '"'
+					'class="alert-link" data-href="#plugin ' . $redirectPluginId . 'Modal" data-toggle="modal" id="title-' . $redirectPluginId . '"'
 				);
 
 				if ($pluginEnabled && !$collectUrlsEnabled)

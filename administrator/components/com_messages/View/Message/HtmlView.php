@@ -91,7 +91,7 @@ class HtmlView extends BaseHtmlView
 		else
 		{
 			ToolbarHelper::title(Text::_('COM_MESSAGES_VIEW_PRIVATE_MESSAGE'), 'envelope inbox');
-			
+
 			ToolbarHelper::help('JHELP_COMPONENTS_MESSAGING_READ');
 
 			$sender = User::getInstance($this->item->user_id_from);

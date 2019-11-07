@@ -1157,36 +1157,42 @@ class BaseController implements ControllerInterface
 
 	/**
 	 * Shorten long number to K/M/B/T
-	 * 
+	 *
 	 * @param	int		$number		valid number
 	 * @param	int 	$percision	Get the numbers after point
 	 * @param	int 	$devisors	Devisors by
-	 * 
+	 *
 	 * @since	4.0.0
 	 */
-	public function numberShorten($number, $precision = 1, $divisors = null) {
-
-		if (!isset($divisors)) {
+	public function numberShorten($number, $precision = 1, $divisors = null)
+	{
+		if (!isset($divisors))
+		{
 			$divisors = array(
-				pow(1000, 0) => '', // 1000^0 == 1
-				pow(1000, 1) => 'K', // Thousand
-				pow(1000, 2) => 'M', // Million
-				pow(1000, 3) => 'B', // Billion
-				pow(1000, 4) => 'T', // Trillion
-				pow(1000, 5) => 'Qa', // Quadrillion
-				pow(1000, 6) => 'Qi', // Quintillion
-			);    
+				pow(1000, 0) => '',
+				pow(1000, 1) => 'K',
+				pow(1000, 2) => 'M',
+				pow(1000, 3) => 'B',
+				pow(1000, 4) => 'T',
+				pow(1000, 5) => 'Qa',
+				pow(1000, 6) => 'Qi',
+			);
 		}
 
-		foreach ($divisors as $divisor => $shorthand) {
-			if (abs($number) < ($divisor * 1000)) {
-				break; // We found a match!
+		foreach ($divisors as $divisor => $shorthand)
+		{
+			if (abs($number) < ($divisor * 1000))
+			{
+				break;
 			}
 		}
-	
-		if($number % $divisor > 0) {
+
+		if ($number % $divisor > 0)
+		{
 			return number_format($number / $divisor, $precision) . $shorthand;
-		} else {
+		}
+		else
+		{
 			return round($number / $divisor) . $shorthand;
 		}
 	}

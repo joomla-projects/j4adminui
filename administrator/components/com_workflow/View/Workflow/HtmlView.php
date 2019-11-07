@@ -109,7 +109,7 @@ class HtmlView extends BaseHtmlView
 
 		$canDo = WorkflowHelper::getActions($this->extension, 'workflow', $this->item->id);
 
-		// set title
+		// Set title
 		ToolbarHelper::title(empty($this->item->id) ? Text::_('COM_WORKFLOW_WORKFLOWS_ADD') : Text::_('COM_WORKFLOW_WORKFLOWS_EDIT'), 'address');
 
 		// Help Button
@@ -140,7 +140,7 @@ class HtmlView extends BaseHtmlView
 
 			if ($itemEditable && !$this->item->core)
 			{
-				//ToolbarHelper::apply('workflow.apply');
+				// ToolbarHelper::apply('workflow.apply');
 				$toolbarButtons = [['apply', 'workflow.apply'], ['save', 'workflow.save']];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.

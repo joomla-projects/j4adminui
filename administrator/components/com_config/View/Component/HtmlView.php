@@ -106,6 +106,6 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::help('JHELP_COMPONENTS_' . $this->currentComponent . '_OPTIONS');
 		ToolbarHelper::cancel('component.cancel', 'JTOOLBAR_CLOSE');
 		ToolbarHelper::save('component.save');
-		ToolbarHelper::apply('component.apply');	
+		ToolbarHelper::apply('component.apply');
 	}
 }

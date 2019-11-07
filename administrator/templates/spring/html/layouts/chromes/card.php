@@ -75,7 +75,7 @@ if ($module->content) :
 								</joomla-dropdown>
 							</div>
 						<?php endif; ?>
-                    </div>
+					</div>
 				</div>
 			<?php endif; ?>
 			<div class="j-module-content" id="module-<?php echo $id; ?>">

@@ -17,26 +17,36 @@ use Joomla\CMS\Factory;
 
 /**
  * mod_checkins_helper - helper class for the module
- * 
+ *
+ * @since 4.0.0
  */
-class CheckinsHelper 
+
+class CheckinsHelper
 {
-    public static function extractCheckinContent() : int
-    {
-        $checkinModel = Factory::getApplication()->bootComponent('com_checkin')
-            ->getMVCFactory()->createModel('Checkin', 'Administrator', ['ignore_request' => true]);
-        $checkins = $checkinModel->getItems();
-        
-        $totalCheckins = 0;
+	/**
+	 * Extract and calculate total number of checkin
+	 *
+	 * @return int total number of checkins
+	 */
 
-        if (!empty($checkins))
-        {
-            foreach ($checkins as $checkin)
-            {
-                $totalCheckins += (int)$checkin;
-            }
-        }
+	public static function extractCheckinContent() : int
+	{
+		$checkinModel = Factory::getApplication()->bootComponent('com_checkin')
+			->getMVCFactory()->createModel('Checkin', 'Administrator', ['ignore_request' => true]);
 
-        return $totalCheckins;
-    }
+		$checkins = $checkinModel->getItems();
+
+		$totalCheckins = 0;
+
+		if (!empty($checkins))
+		{
+			foreach ($checkins as $checkin)
+			{
+				$totalCheckins += (int) $checkin;
+			}
+		}
+
+		return $totalCheckins;
+	}
 }
+

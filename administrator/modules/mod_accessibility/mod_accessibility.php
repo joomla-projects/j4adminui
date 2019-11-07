@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Helper\ModuleHelper;
 
-//include js
+// Include js
 HTMLHelper::_('script', 'mod_accessibility/accessibility.min.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('stylesheet', 'mod_accessibility/style.css', ['relative' => true]);
 

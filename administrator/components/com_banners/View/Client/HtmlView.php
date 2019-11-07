@@ -123,11 +123,11 @@ class HtmlView extends BaseHtmlView
 
 		$toolbarButtons = [];
 
-		// help button
+		// Help button
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_COMPONENTS_BANNERS_CLIENTS_EDIT');
 
-		// close/cancel button
+		// Close/cancel button
 		if (empty($this->item->id))
 		{
 			ToolbarHelper::cancel('client.cancel');
@@ -139,7 +139,7 @@ class HtmlView extends BaseHtmlView
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || $canDo->get('core.create')))
-		{	
+		{
 			$toolbarButtons[] = ['apply', 'client.apply'];
 			$toolbarButtons[] = ['save', 'client.save'];
 		}

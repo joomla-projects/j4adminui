@@ -210,9 +210,9 @@ class HtmlView extends BaseHtmlView
 	{
 		$user = Factory::getUser();
 
-		// help button
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_ASSOCIATIONS');
-		
+
 		if (isset($this->typeName) && isset($this->extensionName))
 		{
 			$helper = AssociationsHelper::getExtensionHelper($this->extensionName);
@@ -224,7 +224,8 @@ class HtmlView extends BaseHtmlView
 			{
 				$languageKey = strtoupper($this->extensionName) . '_CATEGORIES';
 			}
-			// toolbar title
+
+			// Toolbar title
 			ToolbarHelper::title(
 				Text::sprintf(
 					'COM_ASSOCIATIONS_TITLE_LIST', Text::_($this->extensionName), Text::_($languageKey)

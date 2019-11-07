@@ -140,7 +140,7 @@ class HtmlView extends BaseHtmlView
 			($isNew ? 'add' : 'edit')
 		);
 
-		// help button
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FIELDS_FIELD_GROUPS_EDIT');
 
 		$toolbarButtons = [];
@@ -148,10 +148,10 @@ class HtmlView extends BaseHtmlView
 		// For new records, check the create permission.
 		if ($isNew)
 		{
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('group.cancel');
 
-			// save button's group
+			// Save button's group
 			ToolbarHelper::saveGroup(
 				[
 					['apply', 'group.apply'],
@@ -166,14 +166,15 @@ class HtmlView extends BaseHtmlView
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('group.cancel', 'JTOOLBAR_CLOSE');
 
 			$toolbarButtons = [];
+
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{
-				// save button's group
+				// Save button's group
 				$toolbarButtons[] = ['apply', 'group.apply'];
 				$toolbarButtons[] = ['save', 'group.save'];
 

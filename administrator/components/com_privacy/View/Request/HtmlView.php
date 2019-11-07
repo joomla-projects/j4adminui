@@ -135,9 +135,10 @@ class HtmlView extends BaseHtmlView
 
 			$bar = Toolbar::getInstance('toolbar');
 
-			// help button
+			// Help button
 			ToolbarHelper::help('JHELP_COMPONENTS_PRIVACY_REQUEST');
-			// cancel button
+
+			// Cancel button
 			ToolbarHelper::cancel('request.cancel', 'JTOOLBAR_CLOSE');
 
 			// Add transition and action buttons based on item status

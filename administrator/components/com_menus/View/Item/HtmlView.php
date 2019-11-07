@@ -138,7 +138,7 @@ class HtmlView extends BaseHtmlView
 
 		$toolbar = Toolbar::getInstance();
 
-		// language association
+		// Language association
 		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations') && $clientId != 1)
 		{
 			$toolbar->standardButton('multilingual')
@@ -169,7 +169,7 @@ class HtmlView extends BaseHtmlView
 		{
 			// Cancel button
 			$toolbar->cancel('item.cancel');
-			
+
 			// Save item group
 			$saveGroup = $toolbar->dropdownButton('save-group');
 			$saveGroup->configure(
@@ -183,14 +183,13 @@ class HtmlView extends BaseHtmlView
 		}
 		else
 		{
-
 			// Cancel button
 			$toolbar->cancel('item.cancel', 'JTOOLBAR_CLOSE');
 
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $user->get('id'));
-			
-			// Save item group 
+
+			// Save item group
 			$saveGroup = $toolbar->dropdownButton('save-group');
 			$saveGroup->configure(
 				function (Toolbar $childBar) use ($checkedOut, $itemEditable, $canDo)

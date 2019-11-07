@@ -155,7 +155,7 @@ class StylesController extends AdminController
 
 	/**
 	 * Install template from upload file
-	 * 
+	 *
 	 * @since 	4.0.0
 	 */
 	public function install() {
@@ -164,7 +164,7 @@ class StylesController extends AdminController
 
 		/** @var \Joomla\Component\Installer\Administrator\Model\InstallModel $model */
 		$model = Factory::getApplication()->bootComponent('com_installer')
-		->getMVCFactory()->createModel('install', 'Administrator', ['ignore_request' => true]);
+			->getMVCFactory()->createModel('install', 'Administrator', ['ignore_request' => true]);
 
 		// TODO: Reset the users acl here as well to kill off any missing bits.
 		$result = $model->install();
@@ -214,21 +214,20 @@ class StylesController extends AdminController
 
 			// Do install
 			$result = $this->install();
-	
+
 			// Get redirect URL
 			$redirect = Route::_('index.php?option=com_templates&view=styles', false);
-	
+
 			// // Push message queue to session because we will redirect page by \Javascript, not $app->redirect().
 			// // The "application.queue" is only set in redirect() method, so we must manually store it.
 			$this->app->getSession()->set('application.queue', $this->app->getMessageQueue());
-	
+
 			header('Content-Type: application/json');
-	
+
 			echo new JsonResponse(array('redirect' => $redirect), $message, !$result);
 			$this->app->close();
 		} catch (Exception $e) {
 			echo new JsonResponse(array('message' => $e->getMessage(),'success'=>false));
 		}
-		
 	}
 }

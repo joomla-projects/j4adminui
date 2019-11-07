@@ -93,20 +93,20 @@ HTMLHelper::_('searchtools.form', $data['options']['formSelector'], $data['optio
 	<div class="js-stools-container-bar">
 		<div class="btn-toolbar">
 			<?php // echo $this->sublayout('bar', $data); ?>
-            <?php // echo $this->sublayout('list', $data); ?>
-            <?php echo LayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
-            <?php echo LayoutHelper::render('joomla.searchtools.default.list', $data); ?>
+			<?php // echo $this->sublayout('list', $data); ?>
+			<?php echo LayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
+			<?php echo LayoutHelper::render('joomla.searchtools.default.list', $data); ?>
 		</div>
 	</div>
 	<!-- Filters div -->
 	<div class="js-stools-container-filters clearfix<?php echo $filtersActiveClass; ?>">
 		<?php if ($data['options']['filterButton']) : ?>
-        <?php //echo $this->sublayout('filters', $data); ?>
-        <?php  echo LayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
+		<?php //echo $this->sublayout('filters', $data); ?>
+		<?php  echo LayoutHelper::render('joomla.searchtools.default.filters', $data); ?>
 		<?php endif; ?>
 	</div>
 </div>
 <?php if ($data['options']['showNoResults']) : ?>
-    <?php //echo $this->sublayout('noitems', $data); ?>
-    <?php echo LayoutHelper::render('joomla.searchtools.default.noitems', $data); ?>
+	<?php //echo $this->sublayout('noitems', $data); ?>
+	<?php echo LayoutHelper::render('joomla.searchtools.default.noitems', $data); ?>
 <?php endif; ?>

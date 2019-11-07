@@ -48,7 +48,7 @@ class PasswordField extends FormField
 
 	/**
 	 * The minimum length of password
-	 * 
+	 *
 	 * @var integer
 	 * @since 4.0.0
 	 */
@@ -56,7 +56,7 @@ class PasswordField extends FormField
 
 	/**
 	 * The minimum integer required to validate the password
-	 * 
+	 *
 	 * @var integer
 	 * @since 4.0.0
 	 */
@@ -64,7 +64,7 @@ class PasswordField extends FormField
 
 	/**
 	 * The minimum number of sysmbols are needed to validate the password
-	 * 
+	 *
 	 * @var integer
 	 * @since 4.0.0
 	 */
@@ -72,7 +72,7 @@ class PasswordField extends FormField
 
 	/**
 	 * The minimum number of uppercase characters are needed to validate the password
-	 * 
+	 *
 	 * @var integer
 	 * @since 4.0.0
 	 */
@@ -80,17 +80,16 @@ class PasswordField extends FormField
 
 	/**
 	 * The minimum number of lowercase characters are needed to validate the password
-	 * 
+	 *
 	 * @var integer
 	 * @since 4.0.0
 	 */
 	protected $minLowercase;
 
-
 	/**
 	 * Whether to attach a password strength meter or not.
 	 *
-	 * @var    boolean
+	 * @var boolean
 	 * @since  3.2
 	 */
 	protected $meter = false;

@@ -17,9 +17,10 @@ use Joomla\CMS\Factory;
 
 /**
  * mod_resources_helper - helper class for the module
- * 
+ *
+ * @since 4.0.0
  */
-class ResourcesHelper 
+class ResourcesHelper
 {
-    
+
 }
