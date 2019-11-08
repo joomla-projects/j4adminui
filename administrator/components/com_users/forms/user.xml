@@ -26,9 +26,6 @@
 			filter="raw"
 			validate="password"
 			strengthmeter="true"
-			minLength="8"
-			minIntegers="1"
-			minSymbols="1"
 			force="on"
 			size="30"
 		/>
