@@ -23,6 +23,14 @@ use Joomla\CMS\Extension\ExtensionHelper;
  */
 abstract class ExtensionUpdatesHelper
 {
+	/**
+	 * Extract all the extensions contents i.e. Total number of extensions,
+	 * Total updatable extensions, Joomla! core update status
+	 *
+	 * @return	array	Extensions contents
+	 *
+	 * @since 4.0.0
+	 */
 	public static function extractExtensionsContent() : array
 	{
 		$totalExtensions = static::getTotalInstalledExtensions();
@@ -38,6 +46,15 @@ abstract class ExtensionUpdatesHelper
 		return $content;
 	}
 
+	/**
+	 * Group extensions by it's types
+	 *
+	 * @param	array	$extensions		Updatable extensions
+	 *
+	 * @return	array	Grouped updatable extensions
+	 *
+	 * @since 4.0.0
+	 */
 	private static function groupExtensions($extensions) : array
 	{
 		$result = array(
@@ -62,6 +79,18 @@ abstract class ExtensionUpdatesHelper
 		return $result;
 	}
 
+	/**
+	 * Calculation of updated extensions percentage.
+	 * This is assuming that the Joomla! alone takes 50% of the total extensions,
+	 * That means if Joomla! is outdated then the 50% of the system is outdated
+	 *
+	 * @param	int	$total		Total number of extensions
+	 * @param	int	$updatable	Total number of updatable extensions
+	 *
+	 * @return	float	Percentage of system update status
+	 *
+	 * @since	4.0.0
+	 */
 	private static function calculatePercentage($total, $updatable) : float
 	{
 		$updateJoomla = static::checkJoomlaUpdate();
@@ -76,6 +105,13 @@ abstract class ExtensionUpdatesHelper
 		return floor($updatePercentage);
 	}
 
+	/**
+	 * Check Joomla! core update status
+	 *
+	 * @return	boolean	Joomla! is updated or not
+	 *
+	 * @since 4.0.0
+	 */
 	private static function checkJoomlaUpdate()
 	{
 		$updateModel = Factory::getApplication()->bootComponent('com_installer')
@@ -88,6 +124,14 @@ abstract class ExtensionUpdatesHelper
 		return !empty($extensions) ? $extensions[0]->version : false;
 	}
 
+
+	/**
+	 * Get updatable extensions
+	 *
+	 * @return	array	Updatable extensions
+	 *
+	 * @since 4.0.0
+	 */
 	private static function getUpdatableExtensions() : array
 	{
 		$updateModel = Factory::getApplication()->bootComponent('com_installer')
@@ -98,6 +142,14 @@ abstract class ExtensionUpdatesHelper
 		return $extensions;
 	}
 
+
+	/**
+	 * Get total installed extensions
+	 *
+	 * @return	array	Total installed extensions
+	 *
+	 * @since	4.0.0
+	 */
 	private static function getTotalInstalledExtensions() : int
 	{
 		$db = Factory::getDbo();

@@ -140,7 +140,6 @@ class HtmlView extends BaseHtmlView
 
 			if ($itemEditable && !$this->item->core)
 			{
-				// ToolbarHelper::apply('workflow.apply');
 				$toolbarButtons = [['apply', 'workflow.apply'], ['save', 'workflow.save']];
 
 				// We can save this record, but check the create permission to see if we can return to make a new one.

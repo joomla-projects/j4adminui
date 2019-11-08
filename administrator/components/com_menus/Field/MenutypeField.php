@@ -192,12 +192,12 @@ class MenutypeField extends ListField
 	/**
 	 * Method to add system link types to the link types array
 	 *
-	 * @param   array  $types  	The list of link types
-	 * @param	object $state 	Load joomla current state
+	 * @param   array	$types	The list of link types
+	 * @param	object	$state	Load joomla current state
 	 *
-	 * @return  void
+	 * @return	void
 	 *
-	 * @since   4.0.0
+	 * @since	4.0.0
 	 */
 	private function addCustomTypes(&$types, $state)
 	{

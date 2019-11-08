@@ -369,7 +369,7 @@ class HtmlView extends BaseHtmlView
 			'language assoc'
 		);
 
-		// Copy refference button
+		// Copy reference button
 		if ($this->typeName === 'category' || $this->extensionName === 'com_menus' || $this->save2copy === true)
 		{
 			ToolbarHelper::custom('copy', 'copy.png', '', 'COM_ASSOCIATIONS_COPY_REFERENCE', false);
@@ -381,7 +381,7 @@ class HtmlView extends BaseHtmlView
 		// Close button
 		ToolbarHelper::cancel('association.cancel', 'JTOOLBAR_CLOSE');
 
-		// Save refference button
+		// Save reference button
 		$bar->appendButton(
 			'Custom', '<button onclick="Joomla.submitbutton(\'reference\')" '
 			. 'class="btn btn-sm btn-primary"><span class="icon-apply" aria-hidden="true"></span>'

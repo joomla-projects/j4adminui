@@ -15,7 +15,7 @@ use Joomla\CMS\Router\Route;
 
 ?>
 <div class="mod-checkins text-center text-xl-left mod-checkins-<?php echo $params->get('moduleclass_sfx', ''); ?>" id="mod-checkins-<?php echo $module->id; ?>">
-    <div class="j-card-body">
+	<div class="j-card-body">
 		<div class="row align-items-center">
 			<div class="col-12 col-xl-auto mb-4 mb-xl-0">
 				<?php if($checkins > 0) : ?>

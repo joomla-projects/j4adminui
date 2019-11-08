@@ -693,13 +693,13 @@ abstract class ToolbarHelper
 	/**
 	 * Displays a modal button
 	 *
-	 * @param   string  $targetModalId  ID of the target modal box
-	 * @param   string  $icon           Icon class to show on modal button
-	 * @param   string  $alt            Title for the modal button
-	 * @param 	string	$btnType 		Modal button type
-	 * @return  void
+	 * @param   string  $targetModalId	ID of the target modal box
+	 * @param   string  $icon			Icon class to show on modal button
+	 * @param   string  $alt			Title for the modal button
+	 * @param	string	$btnType		Modal button type
+	 * @return	void
 	 *
-	 * @since   3.2
+	 * @since	3.2
 	 */
 	public static function modal($targetModalId, $icon, $alt, $btnType = '')
 	{

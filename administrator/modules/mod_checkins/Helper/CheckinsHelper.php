@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 
 /**
- * mod_checkins_helper - helper class for the module
+ * mod_checkins_helper, The helper class for the module
  *
  * @since 4.0.0
  */
@@ -26,9 +26,10 @@ class CheckinsHelper
 	/**
 	 * Extract and calculate total number of checkin
 	 *
-	 * @return int total number of checkins
+	 * @return	int	Total number of checkins
+	 *
+	 * @since 4.0.0
 	 */
-
 	public static function extractCheckinContent() : int
 	{
 		$checkinModel = Factory::getApplication()->bootComponent('com_checkin')
