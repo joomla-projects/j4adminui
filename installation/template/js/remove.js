@@ -38,13 +38,28 @@ if (document.getElementById('removeInstallationFolder')) {
 					token: true,
 					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 					onSuccess: function () {
-						const customInstallation = document.getElementById('customInstallation');
-						customInstallation.parentNode.removeChild(customInstallation);
-						const removeInstallationTab = document.getElementById('removeInstallationTab');
-						removeInstallationTab.parentNode.removeChild(removeInstallationTab);
+						const removeFolder = document.getElementById('removeInstallationFolder');
+						const afterRemoveMsg = document.getElementById('removeFolderMsg');
+						const customiseInstall = document.getElementById('customize-installation');
+
+						// Remove the Remove Installation Folder button
+						if (removeFolder) {
+							removeFolder.parentNode.removeChild(removeFolder);
+						}
+
+						// Remove the customize installation button
+						if (customiseInstall) {
+							customiseInstall.parentNode.removeChild(customiseInstall);
+						}
+
+						// Display Installation Folder Removed message
+						if (afterRemoveMsg) {
+							afterRemoveMsg.classList.remove('d-none');
+						}
+
 					},
 					onError: function (xhr) {
-            Joomla.renderMessages({ error: [xhr] }, '#system-message-container');
+						Joomla.renderMessages({ error: [xhr] }, '#system-message-container');
 					}
 					}
 				);

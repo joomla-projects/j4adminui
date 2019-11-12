@@ -52,10 +52,14 @@
     const contChildrenLength = contentChildren.length;
 
     for (let i = 0; i < sideChildrenLength; i += 1) {
-      sidebarChildren[i].classList.add(`load-fade${fadeAction}`);
+      if (sidebarChildren[i]) {
+        sidebarChildren[i].classList.add(`load-fade${fadeAction}`);
+      }
     }
     for (let i = 0; i < contChildrenLength; i += 1) {
-      contentChildren[i].classList.add(`load-fade${fadeAction}`);
+      if (contentChildren[i]) {
+        contentChildren[i].classList.add(`load-fade${fadeAction}`);
+      }
     }
     if (sidebar) {
       if (transitAction) {
@@ -237,7 +241,7 @@
       }
     }
     const state = Joomla.Cookies.get('main-sidebar');
-    if (state === 'closed' || menu.classList.contains('disabled')) {
+    if (state === 'closed' || (menu && menu.classList.contains('disabled'))) {
       wrapper.classList.add('main-sidebar-collapsed');
     } else {
       wrapper.classList.remove('main-sidebar-collapsed');

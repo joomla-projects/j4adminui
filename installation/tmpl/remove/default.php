@@ -47,7 +47,7 @@ use Joomla\CMS\Uri\Uri;
 
 				<div class="j-install-step-form j-install-step-body pt-4">
 					<h4><?php echo Text::_('INSTL_COMPLETE_TITLE'); ?></h4>
-					<p><?php echo Text::sprintf('INSTL_COMPLETE_DESC', "<a href='javascript:' id='installAddFeatures'>". Text::_('INSTL_COMPLETE_ADD_PRECONFIG') . "</a>") ?></p>
+					<p id="customize-installation"><?php echo Text::sprintf('INSTL_COMPLETE_DESC', "<a href='javascript:' id='installAddFeatures'>". Text::_('INSTL_COMPLETE_ADD_PRECONFIG') . "</a>") ?></p>
 				</div>
 
 				<div id="installRecommended" class="j-install-step active">
@@ -96,15 +96,14 @@ use Joomla\CMS\Uri\Uri;
 								<?php endforeach; ?>
 								</tbody>
 							</table>
-
 						<?php endif; ?>
 						<?php if ($this->development) : ?>
 							<div class="j-install-remove-check">
 								<div class="j-checkbox-group">
-									<label><input type="checkbox" checked> <?php echo Text::_('INSTL_SITE_DEVMODE_DESC'); ?></label>
+									<a href="javascript:" id="removeInstallationFolder"><?php echo Text::_('INSTL_COMPLETE_REMOVE_FOLDER'); ?></a>
+									<p class="d-none" id="removeFolderMsg"><?php echo Text::_('INSTL_COMPLETE_FOLDER_REMOVED'); ?></p>
 								</div>
 							</div>
-							<!-- <input type="button" class="btn btn-warning" name="instDefault" onclick="Install.removeFolder(this);" value="<?php echo Text::_('INSTL_COMPLETE_REMOVE_FOLDER'); ?>"> -->
 						<?php endif; ?>
 						<?php echo HTMLHelper::_('form.token'); ?>
 
