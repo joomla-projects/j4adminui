@@ -33,6 +33,7 @@ modules:
             language: 'English (United Kingdom)'   # Language in which you want the Application to be Installed
             timeout: 90                            # or 90000 the same result
             log_js_errors: true
+            backend_template: 'spring'
         Helper\JoomlaDb:
             dsn: 'mysql:host=mysql;dbname=test_joomla'
             user: 'root'
