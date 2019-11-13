@@ -55,7 +55,7 @@ Formalities / requirements
 --------------------------
 Thank you for your design proposals!, We, the Production Team welcome every initiative of Joomlers, our user base, to contribute. In this case in the form of an alternative Back End (BE) template. Any alternative will be held to the same standards and requirements as the current template, no more, no less.
 
-initial top level requirements. The template shall:
+### initial top level requirements. The template shall:
 * be responsive, meaning it has to work on all screen sizes and supported browsers
 * ensure AA, WCAG 2.1 compliant accessibility ( color schemes, keyboard navigation)
 * ensure b/c for 3party extensions
@@ -79,7 +79,8 @@ The moment of inclusion will be dependant on the speed of development. The relea
 
 Thank you for all your commitment to make Joomla 4 great!
 
-
+### additions / modifications to top level requirements
+* Support for Left to Right (LTR) languages 
 
 Joomla! CMS v4.0 in general
 =========================
