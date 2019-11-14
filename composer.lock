@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "850a90a4b12fd564225cb6f74993eefd",
+    "content-hash": "28793ff3ab22460b8ca4bf1c973c4be0",
     "packages": [
         {
             "name": "algo26-matthias/idna-convert",
@@ -4726,16 +4726,16 @@
         },
         {
             "name": "joomla-projects/joomla-browser",
-            "version": "v4.0.0.x-dev",
+            "version": "dev-khonsu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-projects/joomla-browser.git",
-                "reference": "cba1beaf31316bc39fe826df202d5dcc5f59868c"
+                "reference": "d4c7f5f14047b74240cdaf0aaff5c78172c9c428"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/cba1beaf31316bc39fe826df202d5dcc5f59868c",
-                "reference": "cba1beaf31316bc39fe826df202d5dcc5f59868c",
+                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/d4c7f5f14047b74240cdaf0aaff5c78172c9c428",
+                "reference": "d4c7f5f14047b74240cdaf0aaff5c78172c9c428",
                 "shasum": ""
             },
             "require": {
@@ -4773,7 +4773,7 @@
                 "acceptance testing",
                 "joomla"
             ],
-            "time": "2019-10-13T08:59:39+00:00"
+            "time": "2019-11-14T08:14:23+00:00"
         },
         {
             "name": "joomla/cms-coding-standards",
