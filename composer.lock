@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28793ff3ab22460b8ca4bf1c973c4be0",
+    "content-hash": "850a90a4b12fd564225cb6f74993eefd",
     "packages": [
         {
             "name": "algo26-matthias/idna-convert",
@@ -4773,7 +4773,7 @@
                 "acceptance testing",
                 "joomla"
             ],
-            "time": "2019-11-14T08:14:23+00:00"
+            "time": "2019-10-13T08:59:39+00:00"
         },
         {
             "name": "joomla/cms-coding-standards",
