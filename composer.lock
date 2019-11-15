@@ -4726,16 +4726,16 @@
         },
         {
             "name": "joomla-projects/joomla-browser",
-            "version": "dev-khonsu",
+            "version": "v4.0.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-projects/joomla-browser.git",
-                "reference": "d4c7f5f14047b74240cdaf0aaff5c78172c9c428"
+                "reference": "cba1beaf31316bc39fe826df202d5dcc5f59868c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/d4c7f5f14047b74240cdaf0aaff5c78172c9c428",
-                "reference": "d4c7f5f14047b74240cdaf0aaff5c78172c9c428",
+                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/cba1beaf31316bc39fe826df202d5dcc5f59868c",
+                "reference": "cba1beaf31316bc39fe826df202d5dcc5f59868c",
                 "shasum": ""
             },
             "require": {
