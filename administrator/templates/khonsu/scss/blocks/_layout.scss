@@ -1,0 +1,33 @@
+.page-link {
+
+  &.active {
+    padding: 0;
+
+    &.current {
+      padding: .5rem .75rem;
+      color: var(--khonsu-text-light);
+      background-color: var(--khonsu-bg-dark);
+    }
+
+    a {
+      padding: .58rem .75rem;
+      line-height: 2.5;
+      text-decoration: none;
+    }
+  }
+
+  &.disabled {
+    color: var(--khonsu-text-dark);
+
+    &:hover {
+      background: transparent;
+    }
+  }
+  a{
+    &:hover{
+      color: var(--khonsu-text-light);
+      background-color: var(--khonsu-bg-dark);
+    }
+  }
+}
+

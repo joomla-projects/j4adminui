@@ -1,0 +1,132 @@
+// Tree select
+.treeselect {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    display: block;
+    list-style: none;
+
+    &::before {
+      position: absolute;
+      top: 14px;
+      left: ($treeselect-indent - 15px);
+      width: 10px;
+      height: 1px;
+      margin: auto;
+      content: "";
+      background-color: #c8ced1;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: ($treeselect-indent - 15px);
+      width: 1px;
+      height: 100%;
+      content: "";
+      background-color: #c8ced1;
+    }
+
+    &:last-child {
+      &::after {
+        height: 14px;
+      }
+    }
+
+    .treeselect-sub {
+      list-style: none;
+      padding: 0;
+      margin: 0.625rem 0 0;
+      li {
+        padding-left: $treeselect-indent;
+        padding-top: 0.625rem;
+      }
+    }
+  }
+
+  .treeselect-item {
+    @extend .d-inline-flex;
+    @extend .j-card;
+    @extend .align-items-center;
+
+    .treeselect-item-content {
+      padding: 0.625rem 1rem;
+    }
+
+    .treeselect-toggle,
+    .treeselect-options-toggle {
+      color: var(--secondary-text-color);
+      padding: 0.625rem 1rem;
+      cursor: pointer;
+      &:focus {
+        outline: 1;
+      }
+    }
+
+    .treeselect-toggle {
+      border-right: 1px solid var(--border-color);
+    }
+
+    .j-checkbox {
+      margin-right: 0.625rem;
+    }
+
+    label {
+      margin: 0;
+    }
+  }
+}
+
+/* Style for directory tree of template files and folders*/
+.directory-tree {
+  li {
+    position: relative;
+    display: block;
+    list-style: none;
+
+   &::before {
+      position: absolute;
+      top: 14px;
+      left: ($treeselect-indent - 40px);
+      width: 10px;
+      height: 1px;
+      margin: auto;
+      content: "";
+      background-color: #c8ced1;
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: ($treeselect-indent - 40px);
+      width: 1px;
+      height: 100%;
+      content: "";
+      background-color: #c8ced1;
+    }
+
+    &:first-child {
+      &::after {
+        top: 15px;
+      }
+    }
+  }
+  .has-subtree {
+    .directory-tree {
+      margin-left: ($treeselect-indent - 15px);
+      margin-top: -5px;
+      li {
+        &:first-child {
+          &::after {
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}

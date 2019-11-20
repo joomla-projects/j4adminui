@@ -1,0 +1,12 @@
+//com_installer
+.com_installer {
+    .subhead {
+        .btn-toolbar {
+            #toolbar-options {
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

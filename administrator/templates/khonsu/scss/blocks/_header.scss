@@ -1,0 +1,277 @@
+// Header
+.header {
+  background: $white;
+  z-index: $zindex-header;
+  color: var(--khonsu-special-color);
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  height: $header-height;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 4px 0 rgba(209,213,223,.5);
+  @include media-breakpoint-down(xs){
+    padding-left: 0;
+    max-width: 100%;
+  }
+  .header-title {
+    flex-grow: 1;
+    @include media-breakpoint-down(xs) {
+      display: flex;
+      justify-content: center;
+    }
+    .d-flex {
+      padding-left: 30px;
+      padding-right: 30px;
+      @include media-breakpoint-down(xs) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    .container-title {
+      width: 100%;
+    }
+    @include media-breakpoint-down(xs) {
+      padding-left: 0;
+    }
+  }
+
+  // Sidebar toggle
+  .logo-header{
+    padding: 0.536rem 2.071rem 0.321rem 1.643rem;
+    position: relative;
+    color: var(--secondary-text-color);
+    font-size: 0.857rem;
+    height: $header-height;
+    transition: 300ms;
+    width: $sidebar-width + 0.050;
+    @include media-breakpoint-down(xs) {
+      padding: 0;
+      min-width: 1rem;
+      width: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .menu-toggle-icon {
+    width: $header-height;
+    font-size: 1.7rem;
+  }
+
+  .sidebar-toggle{
+    position: absolute;
+    width: 2.071rem;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-left: 1px solid var(--bg-color);
+    border-right: 1px solid var(--bg-color);
+    background: $white;
+    a{
+      height: 100%;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.143rem;
+      transition: 300ms;
+    }
+  }
+  .joomla-version{
+    color: var(--secondary-text-color);
+    max-width: 60px;
+  }
+
+  // Logo
+  .main-logo {
+    height: 100%;
+  }
+
+  .logo-main {
+    display: block;
+    @include media-breakpoint-down(xs) {
+      display: none;
+    }
+  }
+  .logo-small {
+    display: none;
+    @include media-breakpoint-down(xs) {
+      display: block;
+    }
+  }
+  
+  .page-title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: $header-height;
+    color: var(--khonsu-special-color);
+    @include media-breakpoint-down(xs) {
+      white-space: normal;
+      line-height: 1.2;
+    }
+    
+    [class*=" icon-"],
+    [class^=icon-] {
+      margin-right: 0.625rem;
+      font-size: 1.6rem;
+      color: var(--icon-color);
+    }
+  }
+  
+  .header-items {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .header-item {
+    position: relative;
+    min-height: 60px;
+    @extend .d-flex;
+    @extend .align-items-center;
+    &:not(:last-child){
+      border-right: 1px solid var(--bg-color);
+      @include media-breakpoint-down(xs) {
+        display: none !important;
+      }
+    }
+    @include media-breakpoint-down(lg) {
+      &.header-mod-messages,
+      &.header-mod-multilangstatus {
+        display: none !important;
+      }
+    }
+  }
+  
+  .header-item-content{
+    line-height: $header-height;
+    joomla-dropdown,
+    joomla-callout {
+      line-height: 1;
+    }
+    .joomlaversion {
+      line-height: 1;
+      .align-items-end {
+        margin-right: .5rem;
+      }
+      margin-right: 1rem;
+    }
+    .btn {
+      &.btn-link {
+        &:focus,
+        &:focus:active,
+        &:not(:disabled):not(.disabled):active:focus{
+          box-shadow: none;
+        }
+      }
+    }
+    .header-item-link,
+    .header-dropdown-button{
+      display: flex;
+      border: none;
+      padding: 0 2.107rem;
+      align-items: center;
+      line-height: 1;
+      background-color: $white;
+      @include media-breakpoint-down(lg) {
+        padding: 0 1.4rem;
+      }
+      @include media-breakpoint-down(xs) {
+        padding: 0 1.107rem;
+      }
+      img{
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        margin-right: 0.714rem;
+        display: inline-block;
+      }
+      span.header-user-name{
+        display: inline-block;
+        margin-right: 0.871rem;
+      }
+      
+      span.header-user-icon{
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 6px;
+      }
+    }
+    
+    .header-item-link{
+      font-size: 1.143rem;
+      color: var(--primary-text-color);
+      transition: .2s ease-in;
+      span.header-item-icon{
+        color: var(--primary-color);
+        display: inline-block;
+      }
+      
+      span + span{
+        padding-left: 0.714rem;
+      }
+      
+      &:hover{
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+    }
+    
+  }
+  
+  .fa, .fab {
+    vertical-align: middle;
+    transition: all .2s ease-in-out;
+  }
+  
+  joomla-dropdown[expanded] {
+    z-index: $zindex-popover;
+  }
+  @include media-breakpoint-down(lg){
+    .header-user-name,
+    .joomlaversion,
+    .header-user-name,
+    .fa-angle-right,
+    .header-item-text {
+      display: none !important;
+    }
+  }
+}
+
+// Sidebar collapsed
+.main-sidebar-collapsed {
+  .logo-header {
+    min-width: 73px;
+    max-width: 73px;
+    box-shadow: 0 10px 30px 0 rgba(209,213,223,.5);
+  }
+  .sidebar-toggle {
+    right: -2.071rem;
+  }
+
+  .logo-main,
+  .joomla-version {
+    display: none !important;
+  }
+  .logo-small {
+    display: block;
+  }
+
+  // Add gap when the sidebar is collapsed
+  &:not(.hide-sidebar-toggler) {
+    .header {
+      .header-title {
+        padding: 0 1rem;
+      }
+    }
+  }
+}

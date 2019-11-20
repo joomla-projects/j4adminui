@@ -1,0 +1,319 @@
+// Login page
+
+.view-login {
+  position: relative;
+  background-color: var(--primary-color);
+  &:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    z-index: -1;
+  }
+  .container-main {
+    z-index: 10;
+    &:before, &:after{
+      background-color: transparent;
+    }
+    @include media-breakpoint-down(sm) {
+      min-height: calc(100vh - 35vh);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    #content {
+
+      @include media-breakpoint-down(sm) {
+        padding: 0;
+        max-width: 98%;
+      }
+    }
+    a[target=_blank]:before{
+      display: none;
+    }
+  }
+  .main-wrap{
+    display: flex;
+    border-radius: 3px;
+    box-shadow: 20px 30px 60px -10px rgba(0,28,73,.3);
+    max-width: 500px;
+    width: 100%;
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+    
+    .main-greetings{
+      margin-top: 1.7rem;
+      margin-bottom: 3.5rem;
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 1rem;
+      }
+      h3{
+        font-weight: 500;
+      }
+    }
+    .main-informations{
+      text-align: left;
+      opacity: 0.8;
+      >ul{
+        padding: 0;
+        >li{
+          display: flex;
+          align-items: baseline;
+          &:not(:last-child){
+            margin-bottom: 1.2rem;
+            @include media-breakpoint-down(sm) {
+              margin-bottom: .3rem;
+            }
+          }
+          &:before {
+            content: "\f058";
+            font: normal normal normal 14px/1 Font Awesome\ 5 Free;
+            margin-right: 10px;
+            opacity: 0.3;
+          }
+        }
+      }
+    }
+    .main-informations+.module-wrapper{
+      margin-top: auto;
+      flex: initial;
+      padding: 0;
+    }
+    .main-brand-logo{
+      min-width: 50px;
+    }
+    .login{
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 3rem 4rem;
+      border-radius: 0 0 3px 3px;
+      .main-brand>h3{
+        font-size: 1.72rem;
+        text-align: center;
+        font-weight: normal;
+        margin-bottom: 4rem;
+        color: var(--primary-text-color);
+        @include media-breakpoint-down(sm) {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+      }
+      a{
+        color: var(--icon-color);
+        &:hover, &:focus{
+          color: var(--primary-color);
+          text-decoration: none;
+        }
+      }
+    }
+    .module-wrapper{
+      >.card{
+        background: transparent;
+        box-shadow: initial;
+      }
+    }
+  }
+
+  .login {
+    background: #fff;
+    padding: 15px;
+    color: var(--khonsu-text-dark);
+
+    img {
+      height: 4.4rem;
+      padding: 15px;
+    }
+
+    #form-login {
+
+      .form-group {
+        position: relative;
+        margin-bottom: 1.85rem;
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 1rem;
+        }
+
+        .form-control-feedback {
+          text-align: right;
+          position: absolute;
+          bottom: -1.1rem;
+          right: 0;
+          font-size: 0.75rem;
+        }
+      }
+
+    }
+  }
+
+  .input-password-toggle {
+    border: none;
+    padding: 0;
+    line-height: 1;
+  }
+
+
+  .form-group {
+
+    label {
+      span {
+        font-size: .9rem;
+
+        @include media-breakpoint-down(xs) {
+          width: 100%;
+        }
+
+        &.text-right {
+          color: var(--khonsu-special-color);
+          font-size: .75rem;
+        }
+      }
+    }
+  }
+  .input-group{
+    background-color: var(--bg-light-color);
+  }
+	.login-password-toggle-icon{
+		position: absolute;
+		width: 25px;
+		height: 100%;
+		right: 0;
+		top: 0;
+		z-index: 9;
+	}
+  h1 {
+    margin: 0;
+    text-align: center;
+    color: var(--khonsu-special-color);
+    font-weight: bold;
+    padding-bottom: 1rem;
+  }
+
+  .btn {
+
+    @include media-breakpoint-only(xs) {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+  }
+
+  .form-control,
+  .custom-select {
+    max-width: none;
+  }
+
+  #sidebar-wrapper {
+
+    @include media-breakpoint-down(sm) {
+      order: 2;
+    }
+
+    #main-brand {
+
+      a {
+        font-size: .875rem;
+      }
+    }
+
+    .card-header {
+      font-size: 1.125rem;
+    }
+  }
+
+  #sidebar {
+    color: var(--khonsu-text-light);
+    width: 100%;
+    text-align: center;
+    align-self: flex-end;
+    font-size: 0.875rem;
+
+    .card {
+      background: var(--khonsu-bg-dark);
+      box-shadow: none;
+
+      .module-body {
+        padding: .75rem 1.25rem;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      bottom: 0;
+    }
+  }
+
+  .container-main,
+  .sidebar-wrapper {
+
+    @include media-breakpoint-down(sm) {
+      max-width: 100% !important;
+      flex: 1 0 100% !important;
+    }
+  }
+
+  .d-flex {
+
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+      display:flex !important;
+    }
+  }
+
+  .header{
+    .logo{
+      &.small{
+        line-height: 2.5rem;
+      }
+    }
+  }
+}
+
+label {
+  color: var(--secondary-text-color);
+}
+
+.com_login .sidebar-wrapper .main-brand {
+  margin-top: 100px;
+  color: var(--khonsu-text-light);
+  text-align: center;
+  flex: 1;
+  flex-basis: auto;
+
+  @include media-breakpoint-down(sm) {
+    margin-top: 10px;
+  }
+}
+
+.com_login .sidebar-wrapper #sidebar p {
+  margin-bottom: 0.2rem;
+}
+
+.com_login .sidebar-wrapper .main-brand h1,
+.com_login .sidebar-wrapper .main-brand a,
+.com_login .sidebar-wrapper #sidebar,
+.com_login .sidebar-wrapper #sidebar a {
+  color: var(--khonsu-text-light);
+}
+
+.view-login{
+  #wrapper.d-flex{
+      @include media-breakpoint-down(sm) {
+        display:flex !important;
+     }
+  }
+
+  #sidebar-wrapper:not(.show):not(.collapse){
+    @include media-breakpoint-down(sm) {
+      display:block;
+    }
+  }
+
+ .invalid .form-control-feedback {
+    color: theme-color("danger");
+  }
+}
