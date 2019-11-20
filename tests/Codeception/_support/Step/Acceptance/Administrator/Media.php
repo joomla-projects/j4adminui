@@ -74,8 +74,27 @@ class Media extends Admin
 
 		foreach ($contents as $content)
 		{
+			// Wait for the element
+			$I->waitForElement(MediaListPage::item($content), $I->getConfig('timeout'));
 			$I->seeElement(MediaListPage::item($content));
 		}
+	}
+
+	/**
+	 * Method to test that you see the upload's success message
+	 *
+	 * @param	string	$message	Upload message
+	 *
+	 * @return 	void
+	 *
+	 * @since 	4.0.0
+	 */
+	public function seeUploadMessage($message)
+	{
+		$I = $this;
+		$I->waitForElement(['xpath' => "//div[@class='joomla-docker-panel-title']/span"], $I->getConfig('timeout'));
+		$I->waitForElementVisible(['xpath' => "//div[@class='joomla-upload-complete']"], $I->getConfig('timeout'));
+		$I->see($message, ['xpath' => "//div[@class='joomla-docker-panel-title']/span"]);
 	}
 
 	/**

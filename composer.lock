@@ -4735,12 +4735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/joomla-projects/joomla-browser.git",
-                "reference": "190b04e4406f5c908a192ad3fe5068b6efd204c7"
+                "reference": "2559e1d3d28c5b1fc94917bb40ee36cbb660d63c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/190b04e4406f5c908a192ad3fe5068b6efd204c7",
-                "reference": "190b04e4406f5c908a192ad3fe5068b6efd204c7",
+                "url": "https://api.github.com/repos/joomla-projects/joomla-browser/zipball/2559e1d3d28c5b1fc94917bb40ee36cbb660d63c",
+                "reference": "2559e1d3d28c5b1fc94917bb40ee36cbb660d63c",
                 "shasum": ""
             },
             "require": {

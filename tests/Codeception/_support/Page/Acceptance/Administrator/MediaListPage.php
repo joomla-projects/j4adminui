@@ -48,7 +48,7 @@ class MediaListPage extends AdminListPage
 	 * @var    array
 	 * @since  4.0.0
 	 */
-	public static $infoBar = ['class' => 'media-infobar'];
+	public static $infoBar = ['class' => 'media-infobar-popup'];
 
 	/**
 	 * The media browser items.
@@ -219,6 +219,14 @@ class MediaListPage extends AdminListPage
 	public static $toggleListViewButton = ['class' => 'media-toolbar-list-view'];
 
 	/**
+	 * Grid view button Locator.
+	 *
+	 * @var		array
+	 * @since	4.0.0
+	 */
+	public static $toggleGridViewButton = ['class' => 'media-toolbar-grid-view'];
+
+	/**
 	 * The item actions.
 	 *
 	 * @var    string
@@ -353,6 +361,21 @@ class MediaListPage extends AdminListPage
 	}
 
 	/**
+	 * Xpath for select single folder
+	 *
+	 * @param 	string 	$name	Name
+	 *
+	 * @return	string			Xpath
+	 *
+	 * @since	4.0.0
+	 */
+	public static function itemXpathForSelection($name)
+	{
+		return '//div[contains(@class, \'media-browser-item-info\') and normalize-space(text()) = \'' .
+			$name . '\']/following-sibling::a[@class=\'media-browser-select\']';
+	}
+
+	/**
 	 * Dynamic locator for media item action.
 	 *
 	 * @param   string  $itemName  Item name
@@ -379,6 +402,11 @@ class MediaListPage extends AdminListPage
 	public static function itemAction($itemName, $actionName)
 	{
 		return self::itemXpath($itemName) . '//button[@class= \'' . $actionName . '\']';
+	}
+
+	public static function itemActionForSelector($itemName, $actionName)
+	{
+		return "//div[@class='media-infobar-popup']//a[@class='" . $actionName . "']";
 	}
 
 	/**

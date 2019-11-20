@@ -37,8 +37,11 @@ class Field extends Admin
 		$I = $this;
 		$I->amOnPage(FieldListPage::$url);
 		$I->clickToolbarButton('New');
+		$I->waitForElement(FieldListPage::$titleField, $I->getConfig('timeout'));
+		$I->wait(2);
 		$I->fillField(FieldListPage::$titleField, $title);
 		$I->selectOption(FieldListPage::$fieldType, $type);
+		$I->click(FieldListPage::$dropDownToggle);
 		$I->clickToolbarButton('Save & Close');
 		$I->assertSuccessMessage(FieldListPage::$successMessage);
 	}
@@ -57,7 +60,10 @@ class Field extends Admin
 	public function assertSuccessMessage($message)
 	{
 		$I = $this;
-		$I->waitForText($message, $I->getConfig('timeout'), FieldListPage::$systemMessageContainer);
+		$xpath = FieldListPage::$systemMessageContainer['xpath'] . "[text()='" . $message . "']";
+
+		$I->waitForElementVisible(FieldListPage::$systemMessageContainer, $I->getConfig('timeout'));
+		$I->waitForText($message, $I->getConfig('timeout'), ['xpath' => $xpath]);
 		$I->see($message, FieldListPage::$systemMessageContainer);
 	}
 
@@ -79,7 +85,7 @@ class Field extends Admin
 		$I->amOnPage(FieldListPage::$url);
 		$I->waitForElement(FieldListPage::$searchField, $I->getConfig('timeout'));
 		$I->fillField(FieldListPage::$searchField, $title);
-		$I->Click(FieldListPage::$filterSearch);
+		$I->click(FieldListPage::$filterSearch);
 		$I->checkAllResults();
 		$I->clickToolbarButton('Action');
 		$I->wait(2);
@@ -104,7 +110,7 @@ class Field extends Admin
 		$I = $this;
 		$I->amOnPage(FieldListPage::$url);
 		$I->waitForElement(FieldListPage::$searchField, $I->getConfig('timeout'));
-		$I->click("//div[@class='js-stools-container-bar']//button[contains(text(), 'Filter')]");
+		$I->click("//div[@class='js-stools-container-bar']//button//span[contains(text(), 'Filter')]");
 		$I->wait(2);
 		$I->selectOptionInChosenByIdUsingJs('filter_state', "Trashed");
 		$I->fillField(FieldListPage::$searchField, $title);
