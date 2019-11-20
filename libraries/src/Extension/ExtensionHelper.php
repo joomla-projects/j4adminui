@@ -311,7 +311,8 @@ class ExtensionHelper
 
 
 		// Core template extensions - administrator
-		array('template', 'spring', '', 1),
+		array('template', 'atum', '', 1),
+		array('template', 'khonsu', '', 1),
 
 		// Core template extensions - site
 		array('template', 'cassiopeia', '', 0),

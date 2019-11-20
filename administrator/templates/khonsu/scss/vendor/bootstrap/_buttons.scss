@@ -1,0 +1,27 @@
+// Buttons
+
+.btn-primary {
+  background-color: var(--khonsu-bg-dark);
+  color: var(--khonsu-text-light);
+  border-color: var(--khonsu-bg-dark-80);
+
+  @include hover-focus-active {
+    background-color: var(--khonsu-bg-dark-70);
+    border-color: var(--khonsu-bg-dark-90);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    background-color: var(--khonsu-bg-dark);
+    border-color: var(--khonsu-bg-dark);
+  }
+}
+.btn-secondary {
+	background-color: var(--khonsu-bg-dark-50);
+}
+
+.input-group-text {
+  background-color: var(--khonsu-bg-dark);
+  border-color: var(--khonsu-bg-dark);
+}

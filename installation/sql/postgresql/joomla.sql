@@ -729,7 +729,7 @@ INSERT INTO "#__extensions" ("package_id", "name", "type", "element", "folder", 
 (0, 'plg_media-action_resize', 'plugin', 'resize', 'media-action', 0, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
 (0, 'plg_media-action_rotate', 'plugin', 'rotate', 'media-action', 0, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
 (0, 'atum', 'template', 'atum', '', 1, 1, 1, 0, '', '', 0, NULL, 0, 0),
-(0, 'spring', 'template', 'spring', '', 1, 1, 1, 0, '', '', 0, NULL, 0, 0),
+(0, 'khonsu', 'template', 'khonsu', '', 1, 1, 1, 0, '', '', 0, NULL, 0, 0),
 (0, 'cassiopeia', 'template', 'cassiopeia', '', 0, 1, 1, 0, '', '{"logoFile":"","fluidContainer":"0","sidebarLeftWidth":"3","sidebarRightWidth":"3"}', 0, NULL, 0, 0),
 (0, 'plg_fields_subfields', 'plugin', 'subfields', 'fields', 0, 1, 1, 0, '', '', 0, NULL, 0, 0),
 (0, 'files_joomla', 'file', 'joomla', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0),
@@ -1829,7 +1829,7 @@ CREATE INDEX "#__template_styles_idx_client_id_home" ON "#__template_styles" ("c
 
 INSERT INTO "#__template_styles" ("id", "template", "client_id", "home", "title", "params") VALUES
 (9, 'atum', 1, '0', 'atum', ''),
-(10, 'spring', 1, '1', 'spring - Default', ''),
+(10, 'khonsu', 1, '1', 'khonsu - Default', ''),
 (11, 'cassiopeia', 0, '1', 'cassiopeia - Default', '{"logoFile":"","fluidContainer":"0","sidebarLeftWidth":"3","sidebarRightWidth":"3"}');
 
 SELECT setval('#__template_styles_id_seq', 12, false);

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "khonsu",
+  "version": "4.0.0",
+  "description": "Khonsu is a Joomla 4 administrator template",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "template.khonsu.base",
+      "dependencies": [
+        "core",
+		"bootstrap.js.bundle",
+        "css-vars-ponyfill",
+		"focus-visible"
+      ]
+    },
+    {
+      "name": "template.khonsu.ltr",
+      "dependencies": ["template.khonsu.base"],
+      "css": [
+        "template.css",
+        "user.css"
+      ]
+    },
+    {
+      "name": "template.khonsu.rtl",
+      "dependencies": ["template.khonsu.base"],
+      "css": [
+        "template-rtl.min.css",
+        "user.css"
+      ]
+    },
+    {
+      "name": "bootstrap.css",
+      "css": [
+        "bootstrap.min.css"
+      ]
+    },
+    {
+      "name": "fontawesome",
+      "css": [
+        "fontawesome.min.css"
+      ]
+    }
+  ]
+}
