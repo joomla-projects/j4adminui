@@ -14,6 +14,18 @@
   const tablet = window.matchMedia('(min-width: 576px) and (max-width:991.98px)');
 
   /**
+   * Toggle Class
+   * @param {Object}  element       Any valid html element
+   * @param {String}  removeClass   element class that need to remove
+   * @param {String}  addClass      element class that need to add
+   */
+  function toggleClass(element, removeClass, addClass) {
+    if (!element) return;
+    element.classList.remove(removeClass);
+    element.classList.add(addClass);
+  }
+
+  /**
    * Shrink or extend the logo, depending on sidebar
    *
    * @param {string} [change] is the sidebar 'open' or 'closed'
@@ -182,7 +194,7 @@
     const wrapper = doc.querySelector('.wrapper');
     const header = doc.querySelector('#header');
     const toggleBtn = header.querySelector('.toggler-burger');
-
+    const menuToggleIcon = header.querySelector('#menu-collapse-icon');
     changeLogo('closed');
 
     if (small.matches) {
@@ -202,6 +214,9 @@
     }
     if (tablet.matches && menu) {
       wrapper.classList.add('main-sidebar-collapsed');
+      if (menuToggleIcon && menuToggleIcon.classList.contains('icon-angle-double-left')) {
+        toggleClass(menuToggleIcon, 'icon-angle-double-left', 'icon-angle-double-right');
+      }
     }
 
     if (smallLandscape.matches) {
@@ -227,6 +242,8 @@
     const sidebarWrapper = doc.querySelector('.sidebar-wrapper');
     const wrapper = doc.querySelector('#wrapper');
     const menu = doc.querySelector('#menu');
+    const menuToggleIcon = wrapper.querySelector('#menu-collapse-icon');
+
     if (!sidebarWrapper) {
       changeLogo('closed');
     } else {
@@ -243,8 +260,14 @@
     const state = Joomla.Cookies.get('main-sidebar');
     if (state === 'closed' || (menu && menu.classList.contains('disabled'))) {
       wrapper.classList.add('main-sidebar-collapsed');
+      if (menuToggleIcon && menuToggleIcon.classList.contains('icon-angle-double-left')) {
+        toggleClass(menuToggleIcon, 'icon-angle-double-left', 'icon-angle-double-right');
+      }
     } else {
       wrapper.classList.remove('main-sidebar-collapsed');
+      if (menuToggleIcon && menuToggleIcon.classList.contains('icon-angle-double-right')) {
+        toggleClass(menuToggleIcon, 'icon-angle-double-right', 'icon-angle-double-left');
+      }
     }
     toggleArrowIcon('top');
   }

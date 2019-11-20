@@ -13,6 +13,7 @@
    * @param boolean toggle      Hide|Show Toollbar
    */
   const toggleTinymceToolbars = (toxToolbar, n = 10, toggle = true) => {
+    if (!toxToolbar) return;
     let toolbars = toxToolbar.querySelectorAll('.tox-toolbar__group');
     if (toolbars.length > 0) {
       toolbars = [].slice.call(toolbars, 0).reverse();
