@@ -46,7 +46,7 @@ class MenutypeField extends ListField
 	{
 		HTMLHelper::_('webcomponent', 'system/joomla-dropdown.min.js', array('version' => 'auto', 'relative' => true));
 		HTMLHelper::_('script', 'com_menus/admin-item-modal.js', ['version' => 'auto', 'relative' => true]);
-		
+
 		$html     = array();
 		$recordId = (int) $this->form->getValue('id');
 		$size     = (string) ($v = $this->element['size']) ? ' size="' . $v . '"' : '';
@@ -55,7 +55,7 @@ class MenutypeField extends ListField
 		$clientId = (int) $this->element['clientid'] ?: 0;
 
 		$input = Factory::getApplication()->input;
-		
+
 		// Checking if loaded via index.php or component.php
 		$tmpl = ($input->getCmd('tmpl', 'component') != '') ? '1' : '';
 		$tmpl = "'" . json_encode($tmpl, JSON_NUMERIC_CHECK) . "'";
@@ -94,7 +94,6 @@ class MenutypeField extends ListField
 
 				$rlu   = $model->getReverseLookup();
 
-				
 				// Clean the link back to the option, view and layout
 				$value = Text::_(ArrayHelper::getValue($rlu, MenusHelper::getLinkKey($link)));
 				break;
@@ -109,7 +108,7 @@ class MenutypeField extends ListField
 
 		$html[] = '<a href="javascript:" class="btn btn-secondary text-left j-has-dropdown" data-target="menuTypeDropdown">' . $dropdownText . '</a>';
 		$html[] = '<joomla-dropdown for="menuTypeDropdown">';
-		
+
 		if (!empty($menuTypes))
 		{
 			foreach ($menuTypes as $name => $children)
@@ -119,7 +118,7 @@ class MenutypeField extends ListField
 					$html[] = '<li class="has-submenu" data-action="hover">';
 					$html[] = '<a class="dropdown-item">' . $name . '</a>';
 					$html[] = '<ul class="submenu">';
-					
+
 					foreach ($children as $child)
 					{
 						$menutype = array('id' => $recordId, 'title' => $child->type ?? $child->title, 'request' => $child->request);
@@ -129,13 +128,13 @@ class MenutypeField extends ListField
 						$html[] = '<span class="text-mute">' . Text::_($child->description) . '</span>';
 						$html[] = '</a></li>';
 					}
-					
+
 					$html[] = '</ul>';
 					$html[] = '</li>';
 				}
 				else
 				{
-					$html[] = '<li><a class="dropdown-item" href="javascript:">'. $name .'</a></li>';
+					$html[] = '<li><a class="dropdown-item" href="javascript:">' . $name . '</a></li>';
 				}
 			}
 		}
@@ -152,18 +151,18 @@ class MenutypeField extends ListField
 
 	/**
 	 * Get all menu types
-	 * 
+	 *
 	 * @param 	int		$clientId	Current clientId
-	 * 
+	 *
 	 * @return 	array
-	 * 
+	 *
 	 * @since 	4.0.0
 	 */
-	private function getMenuTypes($clientId) 
+	private function getMenuTypes($clientId)
 	{
 		$model = Factory::getApplication()->bootComponent('com_menus')
-		->getMVCFactory()->createModel('Menutypes', 'Administrator', array('ignore_request' => true));
-		
+			->getMVCFactory()->createModel('Menutypes', 'Administrator', array('ignore_request' => true));
+
 		$state = $model->getState();
 		$model->setState('client_id', $clientId);
 
@@ -189,16 +188,16 @@ class MenutypeField extends ListField
 
 		return $sortedTypes;
 	}
-	
-	/**	
-	 * Method to add system link types to the link types array	
-	 *	
-	 * @param   array  $types  	The list of link types	
-	 * @param	object $state 	Load joomla current state	
+
+	/**
+	 * Method to add system link types to the link types array
 	 *
-	 * @return  void	
-	 *	
-	 * @since   4.0.0
+	 * @param   array	$types	The list of link types
+	 * @param	object	$state	Load joomla current state
+	 *
+	 * @return	void
+	 *
+	 * @since	4.0.0
 	 */
 	private function addCustomTypes(&$types, $state)
 	{

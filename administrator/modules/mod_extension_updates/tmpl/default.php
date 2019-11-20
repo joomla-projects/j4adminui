@@ -94,5 +94,4 @@ if (!empty($extensionContents['updatableInfo']['package']))
 			</div>
 		</div>
 	</div>
-
 </div>

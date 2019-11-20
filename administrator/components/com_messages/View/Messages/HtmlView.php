@@ -104,7 +104,7 @@ class HtmlView extends BaseHtmlView
 		ToolbarHelper::title(Text::_('COM_MESSAGES_MANAGER_MESSAGES'), 'envelope inbox');
 
 		$bar = Toolbar::getInstance('toolbar');
-		
+
 		if ($canDo->get('core.edit.state'))
 		{
 			$dropdown = $bar->dropdownButton('status-group')
@@ -119,18 +119,16 @@ class HtmlView extends BaseHtmlView
 			$childbar->publish('messages.publish')
 				->text('COM_MESSAGES_TOOLBAR_MARK_AS_READ')
 				->listCheck(true);
-		
+
 			$childbar->unpublish('messages.unpublish')
 				->text('COM_MESSAGES_TOOLBAR_MARK_AS_UNREAD')
 				->listCheck(true);
-			
-			
+
 			if ($state->get('filter.state') != -2)
 			{
 				$childbar->trash('messages.trash')
 					->listCheck(true);
 			}
-			
 		}
 
 		$bar->appendButton(
@@ -159,10 +157,9 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::deleteList('JGLOBAL_CONFIRM_DELETE', 'messages.delete', 'JTOOLBAR_EMPTY_TRASH');
 		}
 
-		
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_COMPONENTS_MESSAGING_INBOX');
-		
+
 		if ($canDo->get('core.admin'))
 		{
 			ToolbarHelper::preferences('com_messages');

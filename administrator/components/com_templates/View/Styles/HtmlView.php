@@ -113,7 +113,7 @@ class HtmlView extends BaseHtmlView
 
 		// Get the toolbar object instance
 		$toolbar = Toolbar::getInstance('toolbar');
-		
+
 		// Set the title.
 		if ((int) $this->get('State')->get('client_id') === 1)
 		{

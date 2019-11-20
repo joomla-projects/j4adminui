@@ -107,7 +107,7 @@
         "joomla/mediawiki": "dev-master",
         "friendsofphp/php-cs-fixer": "~2.12",
         "squizlabs/php_codesniffer": "~3.0",
-        "joomla-projects/joomla-browser": "~4.0@dev",
+        "joomla-projects/joomla-browser": "dev-khonsu",
         "codeception/codeception": "~3.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
     }

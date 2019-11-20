@@ -404,7 +404,7 @@ caption {
 }
 
 .j-install-step-table{
-	margin-bottom: 3.071rem;
+	margin-bottom: 2.071rem;
 	margin-top: 0.714rem;
 }
 
@@ -460,9 +460,9 @@ caption {
 }
 
 .j-install-remove-check{
-	position: absolute;
-	bottom: -46px;
 	text-align: center;
-	width: 100%;
-	z-index: 9;
+	margin-bottom: 2.071rem;
+	#removeInstallationFolder {
+		font-weight: 500;
+	}
 }

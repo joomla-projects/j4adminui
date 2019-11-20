@@ -207,7 +207,7 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		// add new module
+		// Add new module
 		if ($canDo->get('core.create'))
 		{
 			$toolbar->linkButton('link', 'JTOOLBAR_INSTALL_MODULE')
@@ -222,7 +222,7 @@ class HtmlView extends BaseHtmlView
 			$toolbar->preferences('com_modules');
 		}
 
-		// create new module
+		// Create new module
 		if ($canDo->get('core.create'))
 		{
 			$toolbar->standardButton('new', 'JTOOLBAR_NEW')

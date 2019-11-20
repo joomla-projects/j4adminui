@@ -349,7 +349,8 @@ class HtmlView extends BaseHtmlView
 
 		$helper = AssociationsHelper::getExtensionHelper($this->extensionName);
 		$title  = $helper->getTypeTitle($this->typeName);
-		// toolbar instance
+
+		// Toolbar instance
 		$bar = Toolbar::getInstance('toolbar');
 
 		$languageKey = strtoupper($this->extensionName . '_' . $title . 'S');
@@ -368,25 +369,26 @@ class HtmlView extends BaseHtmlView
 			'language assoc'
 		);
 
-		// copy refference button
+		// Copy reference button
 		if ($this->typeName === 'category' || $this->extensionName === 'com_menus' || $this->save2copy === true)
 		{
 			ToolbarHelper::custom('copy', 'copy.png', '', 'COM_ASSOCIATIONS_COPY_REFERENCE', false);
 		}
-		// help button
+
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_ASSOCIATIONS_EDIT');
 
-		// close button
+		// Close button
 		ToolbarHelper::cancel('association.cancel', 'JTOOLBAR_CLOSE');
 
-		// save refference button
+		// Save reference button
 		$bar->appendButton(
 			'Custom', '<button onclick="Joomla.submitbutton(\'reference\')" '
 			. 'class="btn btn-sm btn-primary"><span class="icon-apply" aria-hidden="true"></span>'
 			. Text::_('COM_ASSOCIATIONS_SAVE_REFERENCE') . '</button>', 'reference'
 		);
 
-		// save target button
+		// Save target button
 		$bar->appendButton(
 			'Custom', '<button onclick="Joomla.submitbutton(\'target\')" '
 			. 'class="btn btn-sm btn-primary"><span class="icon-apply" aria-hidden="true"></span>'

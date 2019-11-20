@@ -151,10 +151,10 @@ class UserListCest
 		$I->comment('I wait for error reporting dropdown');
 		$I->click(['xpath' => "//input[@type='radio' and @value=0 and @name='jform[mailonline]']"]);
 		$I->comment('I click on save');
-		$I->clickToolbarButton("Save");
+		$I->clickToolbarButton("Apply");
 		$I->comment('I wait for global configuration being saved');
 		$I->waitForText('Global Configuration', $I->getConfig('timeout'), ['css' => '.page-title']);
-		$I->waitForElementVisible(['id' => 'system-message-container'], $I->getConfig('timeout'));
-		$I->see('Configuration saved.', ['id' => 'system-message-container']);
+		$I->waitForElementVisible(['xpath' => '//div[@id="system-message-container"]//div[@class="joomla-alert-content"]//p[text()="Configuration saved."]'], $I->getConfig('timeout'));
+		$I->see('Configuration saved.', ['xpath' => '//div[@id="system-message-container"]//div[@class="joomla-alert-content"]//p']);
 	}
 }

@@ -115,16 +115,16 @@ class HtmlView extends BaseHtmlView
 			($isNew ? 'add' : 'edit')
 		);
 
-		// help button
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FIELDS_FIELDS_EDIT');
 
 		// For new records, check the create permission.
 		if ($isNew)
 		{
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('field.cancel');
 
-			// save button's group
+			// Save button's group
 			ToolbarHelper::saveGroup(
 				[
 					['apply', 'field.apply'],
@@ -139,11 +139,12 @@ class HtmlView extends BaseHtmlView
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('field.cancel', 'JTOOLBAR_CLOSE');
 
-			// save button's group
+			// Save button's group
 			$toolbarButtons = [];
+
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{

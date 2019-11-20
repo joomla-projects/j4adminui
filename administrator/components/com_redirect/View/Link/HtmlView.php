@@ -93,7 +93,7 @@ class HtmlView extends BaseHtmlView
 		$toolbar = Toolbar::getInstance();
 
 		// Cancel Button
-		if($isNew)
+		if ($isNew)
 		{
 			$toolbar->cancel('link.cancel', 'JTOOLBAR_CLOSE');
 		}

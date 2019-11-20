@@ -693,20 +693,22 @@ abstract class ToolbarHelper
 	/**
 	 * Displays a modal button
 	 *
-	 * @param   string  $targetModalId  ID of the target modal box
-	 * @param   string  $icon           Icon class to show on modal button
-	 * @param   string  $alt            Title for the modal button
+	 * @param   string  $targetModalId	ID of the target modal box
+	 * @param   string  $icon			Icon class to show on modal button
+	 * @param   string  $alt			Title for the modal button
+	 * @param	string	$btnType		Modal button type
+	 * @return	void
 	 *
-	 * @return  void
-	 *
-	 * @since   3.2
+	 * @since	3.2
 	 */
 	public static function modal($targetModalId, $icon, $alt, $btnType = '')
 	{
 		$title = Text::_($alt);
-		// if no button type get then set button type as primary
+
+		// If no button type get then set button type as primary
 		$btnType = ($btnType) ? $btnType : 'secondary';
-		$dhtml = '<joomla-toolbar-button><button data-href="#' . $targetModalId . '" class="btn btn-'. $btnType .'">
+
+		$dhtml = '<joomla-toolbar-button><button data-href="#' . $targetModalId . '" class="btn btn-' . $btnType . '">
 			<span class="' . $icon . ' icon-md" title="' . $title . '"></span> ' . $title . '</button></joomla-toolbar-button>';
 
 		$bar = Toolbar::getInstance('toolbar');

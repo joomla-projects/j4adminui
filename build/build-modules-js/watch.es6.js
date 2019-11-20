@@ -2,6 +2,7 @@ const watch = require('watch');
 const Path = require('path');
 const HandleJsFile = require('./javascript/handle-file.es6.js');
 const CompileScss = require('./stylesheets/scss-transform.es6.js');
+
 const RootPath = process.cwd();
 
 /**

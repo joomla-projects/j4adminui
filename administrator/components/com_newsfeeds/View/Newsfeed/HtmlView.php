@@ -118,12 +118,12 @@ class HtmlView extends BaseHtmlView
 				ToolbarHelper::versions('com_newsfeeds.newsfeed', $this->item->id);
 			}
 		}
-		
+
 		if (!$isNew && Associations::isEnabled() && ComponentHelper::isEnabled('com_associations'))
 		{
 			ToolbarHelper::custom('newsfeed.editAssociations', 'multilingual', 'multilingual', 'JTOOLBAR_ASSOCIATIONS', false, false);
 		}
-		
+
 		ToolbarHelper::divider();
 		ToolbarHelper::help('JHELP_COMPONENTS_NEWSFEEDS_FEEDS_EDIT');
 

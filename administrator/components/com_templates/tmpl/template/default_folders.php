@@ -14,7 +14,7 @@ ksort($this->files, SORT_STRING);
 <ul class="directory-tree treeselect">
 	<?php foreach($this->files as $key => $value) : ?>
 		<?php if (is_array($value)) : ?>
-			<li class="folder-select">
+			<li class="folder-select has-subtree">
 				<a class="folder-url" data-id="<?php echo base64_encode($key); ?>" href="">
 					<span class="icon-folder-2" aria-hidden="true"></span>
 					<?php $explodeArray = explode('/', $key); echo $this->escape(end($explodeArray)); ?>

@@ -26,7 +26,7 @@ class AdminPage extends AcceptanceTester
 	 * @var    array
 	 * @since  3.7.3
 	 */
-	public static $systemMessageContainer = ['id' => 'system-message-container'];
+	public static $systemMessageContainer = ['xpath' => '//div[@id="system-message-container"]//div[@class="joomla-alert-content"]//p'];
 
 	/**
 	 * The element id which contains page title in administrator header.

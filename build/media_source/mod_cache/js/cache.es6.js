@@ -17,7 +17,7 @@
   };
   const theClearBtn = document.querySelector(selectors.clearBtn);
   const theCacheAnimationBtn = document.querySelector(selectors.cacheAnimationBtn);
-  
+
   if (theClearBtn !== null) {
     theClearBtn.addEventListener('click', (event) => {
       event.preventDefault();

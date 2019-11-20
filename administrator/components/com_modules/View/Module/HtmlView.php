@@ -116,10 +116,10 @@ class HtmlView extends BaseHtmlView
 
 		// For new records, check the create permission.
 		if ($isNew && $canDo->get('core.create'))
-		{	
+		{
 			// Cancel button
 			ToolbarHelper::cancel('module.cancel');
-			
+
 			// Save group
 			ToolbarHelper::saveGroup(
 				[

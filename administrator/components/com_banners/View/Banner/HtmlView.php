@@ -103,21 +103,21 @@ class HtmlView extends BaseHtmlView
 
 		// Since we don't track these assets at the item level, use the category id.
 		$canDo = ContentHelper::getActions('com_banners', 'category', $this->item->catid);
-		
-		// toolbar
+
+		// Toolbar
 		$toolbar = Toolbar::getInstance();
-		
+
 		ToolbarHelper::title($isNew ? Text::_('COM_BANNERS_MANAGER_BANNER_NEW') : Text::_('COM_BANNERS_MANAGER_BANNER_EDIT'), 'bookmark banners');
 
 		if (!empty($this->item->id) && ComponentHelper::isEnabled('com_contenthistory') && $this->state->params->get('save_history', 0) && $canDo->get('core.edit'))
 		{
 			ToolbarHelper::versions('com_banners.banner', $this->item->id);
 		}
-		
-		// help button
+
+		// Help button
 		$toolbar->help('JHELP_COMPONENTS_BANNERS_BANNERS_EDIT');
 
-		// cancel / close button
+		// Cancel / close button
 		if (empty($this->item->id))
 		{
 			$toolbar->cancel('banner.cancel', 'JTOOLBAR_CANCEL');
@@ -133,7 +133,8 @@ class HtmlView extends BaseHtmlView
 			// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 			$itemEditable = $canDo->get('core.edit') || ($canDo->get('core.edit.own') && $this->item->created_by == $userId);
 
-			if($isNew) {
+			if ($isNew)
+			{
 				$saveGroup = $toolbar->dropdownButton('save-group');
 				$saveGroup->configure(
 					function (Toolbar $childBar) use ($canDo)
@@ -143,7 +144,9 @@ class HtmlView extends BaseHtmlView
 						$childBar->save2new('banner.save2new');
 					}
 				);
-			} else {
+			}
+			else
+			{
 				$saveGroup = $toolbar->dropdownButton('save-group');
 				$saveGroup->configure(
 					function (Toolbar $childBar) use ($itemEditable, $canDo)
@@ -173,7 +176,7 @@ class HtmlView extends BaseHtmlView
 				{
 					$childBar->save2copy('banner.save2copy');
 				}
-			);	
+			);
 		}
 
 	}

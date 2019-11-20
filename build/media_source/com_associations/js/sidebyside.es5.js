@@ -177,6 +177,7 @@ jQuery(document).ready(function($) {
 
     // Iframe load finished, hide Joomla loading layer.
     var spinner = document.querySelector('joomla-core-loader');
+    if (spinner)
     spinner.parentNode.removeChild(spinner);
   });
 
@@ -288,6 +289,7 @@ jQuery(document).ready(function($) {
 
       // Iframe load finished, hide Joomla loading layer.
       var spinner = document.querySelector('joomla-core-loader');
+      if (spinner)
       spinner.parentNode.removeChild(spinner);
     }
   });

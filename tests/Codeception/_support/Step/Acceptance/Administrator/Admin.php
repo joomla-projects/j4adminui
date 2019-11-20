@@ -42,7 +42,10 @@ class Admin extends AcceptanceTester
 			$timeout = $I->getConfig('timeout');
 		}
 
-		$I->waitForText($text, $timeout, AdminPage::$systemMessageContainer);
+		$xpath = AdminPage::$systemMessageContainer['xpath'] . "[text()='" . $text . "']";
+
+		$I->waitForElementVisible(AdminPage::$systemMessageContainer, $timeout);
+		$I->waitForText($text, $timeout, ['xpath' => $xpath]);
 		$I->see($text, AdminPage::$systemMessageContainer);
 	}
 }

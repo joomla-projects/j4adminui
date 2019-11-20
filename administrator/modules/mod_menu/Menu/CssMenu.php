@@ -147,6 +147,7 @@ class CssMenu
 				return $this->root;
 			}
 		}
+
 		$this->preprocess($this->root);
 
 		return $this->root;
@@ -505,7 +506,7 @@ class CssMenu
 	public function getIconClass($node)
 	{
 		// Check for direct icon
-		if(isset($node->icon) && $node->icon)
+		if (isset($node->icon) && $node->icon)
 		{
 			return $node->icon;
 		}

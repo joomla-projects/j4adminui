@@ -41,6 +41,7 @@ class Content extends Admin
 		$I->waitForElement(ContentListPage::$articleTitleField, 30);
 		$I->fillField(ContentListPage::$articleTitleField, $articleDetails['title']);
 		$I->fillField(ContentListPage::$articleAliasField, $articleDetails['alias']);
+		$I->click(ContentListPage::$dropDownToggle);
 		$I->clickToolbarButton('Save & Close');
 		$I->waitForElement(ContentListPage::$articleSearchField, $I->getConfig('timeout'));
 		$I->click(ContentListPage::$systemMessageAlertClose);
@@ -208,7 +209,7 @@ class Content extends Admin
 	public function filterByCondition($title, $condition)
 	{
 		$I = $this;
-		$I->click("//div[@class='js-stools-container-bar']//button[contains(text(), 'Filter')]");
+		$I->click("//div[@class='js-stools-container-bar']//button//span[@class='js-stools-filter-btn-text']");
 		$I->wait(2);
 		$I->selectOptionInChosenByIdUsingJs('filter_condition', $condition);
 		$I->see($title);

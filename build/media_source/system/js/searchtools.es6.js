@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 Joomla = window.Joomla || {};
 
 ((Joomla) => {
@@ -179,7 +180,7 @@ Joomla = window.Joomla || {};
           self.toggleFilterButtonText();
           self.toggleClass(document.querySelector('.js-stools-right'), 'icon-plus-circle', 'icon-minus-circle');
           e.stopPropagation();
-          e.preventDefault(); 
+          e.preventDefault();
         });
       }
 
@@ -420,13 +421,13 @@ Joomla = window.Joomla || {};
 
     /**
      * Toggle classes of an element
-     * 
+     *
      * @param HTMLElement elem  The element in which the toggle will be performed
      * @param string  cls1 The first class
      * @param string cls2 The second class
-     * 
+     *
      * @return void
-     * 
+     *
      * @since 4.0.0
      */
     toggleClass(elem, cls1, cls2) {
@@ -442,7 +443,7 @@ Joomla = window.Joomla || {};
     toggleFilterButtonText() {
       const filterBtnText = document.querySelector('.js-stools-filter-btn-text');
       if (filterBtnText) {
-        if (filterBtnText.dataset.status == '1') {
+        if (filterBtnText.dataset.status === '1') {
           filterBtnText.innerHTML = Joomla.Text._('JFILTER_HIDE_FILTER');
           filterBtnText.dataset.status = '0';
         } else {

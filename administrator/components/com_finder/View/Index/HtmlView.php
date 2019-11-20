@@ -195,32 +195,32 @@ class HtmlView extends BaseHtmlView
 			$childBar->unpublish('index.unpublish')->listCheck(true);
 		}
 
-		// delete button
+		// Delete button
 		if ($canDo->get('core.delete'))
 		{
 			ToolbarHelper::deleteList('', 'index.delete');
 			ToolbarHelper::divider();
 		}
 
-		// help button
+		// Help button
 		ToolbarHelper::help('JHELP_COMPONENTS_FINDER_MANAGE_INDEXED_CONTENT');
-		
-		// option button
+
+		// Option button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			ToolbarHelper::preferences('com_finder');
 		}
 
-		// statistics button
+		// Statistics button
 		$toolbar->appendButton('Popup', 'bar', 'COM_FINDER_STATISTICS', 'index.php?option=com_finder&view=statistics&tmpl=component', 550, 350);
 
-		// clear index button
+		// Clear index button
 		if ($canDo->get('core.edit.state'))
 		{
 			ToolbarHelper::trash('index.purge', 'COM_FINDER_INDEX_TOOLBAR_PURGE', false);
 		}
 
-		// index button
+		// Index button
 		$toolbar->appendButton(
 			'Popup', 'briefcase', 'COM_FINDER_INDEX', 'index.php?option=com_finder&view=indexer&tmpl=component', 500, 210, 0, 0,
 			'window.parent.location.reload()', 'COM_FINDER_HEADING_INDEXER'

@@ -36,13 +36,14 @@
       batchCopyMove.style.display = 'none';
     }
 
-    if (batchCopyMove) {
+    if (batchCopyMove && batchSelector) {
       batchSelector.addEventListener('change', onChange);
     }
 
     // Cleanup
     document.removeEventListener('DOMContentLoaded', onSelect, true);
   };
+
 
   // Document loaded
   document.addEventListener('DOMContentLoaded', onSelect, true);

@@ -187,7 +187,7 @@ abstract class ModuleHelper
 		$module->module = preg_replace('/[^A-Z0-9_\.-]/i', '', $module->module);
 
 		$dispatcher = $app->bootModule($module->module, $app->getName())->getDispatcher($module, $app);
-	
+
 		// Check if we have a dispatcher
 		if ($dispatcher)
 		{
@@ -195,7 +195,7 @@ abstract class ModuleHelper
 			$dispatcher->dispatch();
 			$module->content = ob_get_clean();
 		}
-		
+
 		// Check if the current module has a style param to override template module style
 		$paramsChromeStyle = $params->get('style');
 		$basePath          = '';
@@ -226,21 +226,21 @@ abstract class ModuleHelper
 		}
 
 		$module->style = $attribs['style'];
-	
+
 		// If the $module is nulled it will return an empty content, otherwise it will render the module normally.
 		$app->triggerEvent('onRenderModule', array(&$module, &$attribs));
-		
+
 		if ($module === null || !isset($module->content))
 		{
 			return '';
 		}
-		
+
 		$displayData = array(
 			'module'  => $module,
 			'params'  => $params,
 			'attribs' => $attribs,
 		);
-	
+
 		foreach (explode(' ', $attribs['style']) as $style)
 		{
 			if ($moduleContent = LayoutHelper::render('chromes.' . $style, $displayData, $basePath))

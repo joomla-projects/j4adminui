@@ -26,12 +26,12 @@ class ContentListPage extends AdminListPage
 	public static $url = "/administrator/index.php?option=com_content&view=articles";
 
 	/**
-	 * Drop Down Toggle Element.
+	 * Locator for dropdown.
 	 *
 	 * @var    array
 	 * @since  4.0.0
 	 */
-	public static $dropDownToggle = ['xpath' => "//button[contains(@class, 'dropdown-toggle')]"];
+	public static $dropDownToggle = ['xpath' => "//div[@id='toolbar-dropdown-save-group']//button[contains(@class, 'dropdown-toggle')]"];
 
 	/**
 	 * Page object for content body editor field.
@@ -90,4 +90,5 @@ class ContentListPage extends AdminListPage
 	public static $searchButton = [ 'xpath' => "//button[@aria-label='Search']" ];
 
 	public static $systemMessageAlertClose = ['class' => "joomla-alert--close"];
+
 }

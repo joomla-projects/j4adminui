@@ -34,9 +34,9 @@ extract($displayData);
 		?>
 		<p><?php echo Text::_('PLG_SYSTEM_STATS_MSG_ALLOW_SENDING_DATA'); ?></p>
 		<div class="actions text-right">
-			<button type="button" class="btn btn-link js-pstats-btn-allow-always pr-4"><?php echo Text::_('PLG_SYSTEM_STATS_BTN_NEVER_SEND'); ?></button>
+			<button type="button" class="btn btn-link js-pstats-btn-allow-never pr-4"><?php echo Text::_('PLG_SYSTEM_STATS_BTN_NEVER_SEND'); ?></button>
 			<button type="button" class="btn btn-link text-primary js-pstats-btn-allow-once pr-4"><?php echo Text::_('PLG_SYSTEM_STATS_BTN_SEND_NOW'); ?></button>
-			<button type="button" class="btn btn-default js-pstats-btn-allow-never"><?php echo Text::_('PLG_SYSTEM_STATS_BTN_SEND_ALWAYS'); ?></button>
+			<button type="button" class="btn btn-default js-pstats-btn-allow-always"><?php echo Text::_('PLG_SYSTEM_STATS_BTN_SEND_ALWAYS'); ?></button>
 		</div>
 	</div>
 </joomla-alert>

@@ -71,7 +71,7 @@ class HtmlView extends BaseHtmlView
 		{
 			ToolbarHelper::custom('message.hideAll', 'unpublish.png', 'unpublish_f2.png', 'COM_POSTINSTALL_HIDE_ALL_MESSAGES', false);
 		}
-		
+
 		// Options button.
 		if (Factory::getUser()->authorise('core.admin', 'com_postinstall'))
 		{

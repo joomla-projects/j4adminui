@@ -143,10 +143,11 @@ class HtmlView extends BaseHtmlView
 		);
 
 		ToolbarHelper::divider();
-		// help button
+
+		// Help button
 		ToolbarHelper::help('JHELP_USERS_USER_MANAGER_EDIT');
 
-		// close/cancel button
+		// Close/cancel button
 		if (empty($this->item->id))
 		{
 			ToolbarHelper::cancel('user.cancel');
@@ -156,8 +157,9 @@ class HtmlView extends BaseHtmlView
 			ToolbarHelper::cancel('user.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		// button group
+		// Button group
 		$toolbarButtons = [];
+
 		if ($canDo->get('core.edit') || $canDo->get('core.create'))
 		{
 			$toolbarButtons[] = ['apply', 'user.apply'];

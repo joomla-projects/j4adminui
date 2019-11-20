@@ -100,16 +100,16 @@ class HtmlView extends BaseHtmlView
 			$url = null;
 		}
 
-		// set page title
+		// Set page title
 		ToolbarHelper::title(Text::sprintf('COM_PLUGINS_MANAGER_PLUGIN', Text::_($this->item->name)), 'plugins plugin');
 
-		// help button
+		// Help button
 		ToolbarHelper::help($help->key, false, $url);
-		
-		// cancel button
+
+		// Cancel button
 		ToolbarHelper::cancel('plugin.cancel', 'JTOOLBAR_CLOSE');
 
-		// Save item group 
+		// Save item group
 		$saveGroup = $toolbar->dropdownButton('save-group');
 
 		$saveGroup->configure(

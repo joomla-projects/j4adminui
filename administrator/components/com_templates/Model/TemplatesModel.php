@@ -85,7 +85,7 @@ class TemplatesModel extends ListModel
 			$baseUrl = ($item->client_id == 0) ? Uri::root(true) : Uri::root(true) . '/administrator';
 			$thumb = $basePath . '/template_thumbnail.png';
 			$preview = $basePath . '/template_preview.png';
-			
+
 			if (file_exists($thumb) || file_exists($preview))
 			{
 

@@ -21,46 +21,44 @@ use Joomla\CMS\Layout\LayoutHelper;
  */
 abstract class JHtmlWebcomponent
 {
-
-
-    /**
+	/**
 	 * @var    array  Array containing information for loaded files
 	 * @since  4.0.0
 	 */
 	protected static $loaded = array();
 
-    /**
-     * Method to render modal web-component
-     * 
-     * @component   joomla-modal
-     * 
-     * @param   string  $selector  The ID selector for the modal.
-     * 
-     * @since  4.0.0
-     */
-    public static function renderModal($selector = 'modal', $params = array(), $body = '') 
-    {
-        // Only load once
+	/**
+	 * Method to render modal web-component
+	 *
+	 * @component   joomla-modal
+	 *
+	 * @param   string  $selector  The ID selector for the modal.
+	 *
+	 * @since  4.0.0
+	 */
+	public static function renderModal($selector = 'modal', $params = array(), $body = '')
+	{
+		// Only load once
 		if (!empty(static::$loaded[__METHOD__][$selector]))
 		{
 			return;
-        }
-        // Include joomla-modal webcomponent assets (js)
-        HTMLHelper::_('webcomponent.assets','joomla-modal');
+		}
 
-        $layoutData = array(
+		// Include joomla-modal webcomponent assets (js)
+		HTMLHelper::_('webcomponent.assets', 'joomla-modal');
+
+		$layoutData = array(
 			'selector' => $selector,
 			'params'   => $params,
 			'body'     => $body,
-        );
-        
-        static::$loaded[__METHOD__][$selector] = true;
+		);
+
+		static::$loaded[__METHOD__][$selector] = true;
 
 		return LayoutHelper::render('joomla.webcomponent.modal.main', $layoutData);
-        
-    }
+	}
 
-    /**
+	/**
 	 * Method to load the webcomponent JavaScript library into the document head
 	 *
 	 * If debugging mode is on an uncompressed version of Bootstrap is included for easier debugging.
@@ -82,9 +80,8 @@ abstract class JHtmlWebcomponent
 		$debug = (isset($debug) && $debug != JDEBUG) ? $debug : JDEBUG;
 
 		// Load the needed scripts
-		HTMLHelper::_('webcomponent', 'system/'.$filename.'.min.js', array('version' => 'auto', 'relative' => true, 'detectDebug' => $debug));
+		HTMLHelper::_('webcomponent', 'system/' . $filename . '.min.js', array('version' => 'auto', 'relative' => true, 'detectDebug' => $debug));
 
 		static::$loaded[__METHOD__][$filename] = true;
-    }
-    
+	}
 }

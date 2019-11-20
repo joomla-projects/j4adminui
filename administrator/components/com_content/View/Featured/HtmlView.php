@@ -211,14 +211,16 @@ class HtmlView extends BaseHtmlView
 				->listCheck(true);
 		}
 
-		// helper button
+		// Helper button
 		ToolbarHelper::help('JHELP_CONTENT_FEATURED_ARTICLES');
-		// option button
+
+		// Option button
 		if ($user->authorise('core.admin', 'com_content') || $user->authorise('core.options', 'com_content'))
 		{
 			$toolbar->preferences('com_content');
 		}
-		// create new article button
+
+		// Create new article button
 		if ($canDo->get('core.create') || count($user->getAuthorisedCategories('com_content', 'core.create')) > 0)
 		{
 			$toolbar->addNew('article.add');

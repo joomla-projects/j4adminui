@@ -111,11 +111,11 @@ class HtmlView extends BaseHtmlView
 		// Build the actions for new and existing records.
 		if ($isNew)
 		{
-			// help button
+			// Help button
 			ToolbarHelper::divider();
 			ToolbarHelper::help('JHELP_COMPONENTS_CONTACTS_CONTACTS_EDIT');
 
-			// cancel button
+			// Cancel button
 			ToolbarHelper::cancel('contact.cancel');
 
 			// For new records, check the create permission.
@@ -145,15 +145,16 @@ class HtmlView extends BaseHtmlView
 			{
 				ToolbarHelper::custom('contact.editAssociations', 'multilingual', 'multilingual', 'JTOOLBAR_ASSOCIATIONS', false, false);
 			}
-			
-			// help button
+
+			// Help button
 			ToolbarHelper::divider();
 			ToolbarHelper::help('JHELP_COMPONENTS_CONTACTS_CONTACTS_EDIT');
 
-			// close button
+			// Close button
 			ToolbarHelper::cancel('contact.cancel', 'JTOOLBAR_CLOSE');
-			
+
 			$toolbarButtons = [];
+
 			// Can't save the record if it's checked out and editable
 			if (!$checkedOut && $itemEditable)
 			{

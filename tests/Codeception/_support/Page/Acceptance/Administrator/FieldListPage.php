@@ -33,11 +33,37 @@ class FieldListPage extends AdminListPage
 	 */
 	public static $seePublished = ['xpath' => "//table[@id='fieldList']//*//span[@class='icon-publish']"];
 
+	/**
+	 * Locator for field title
+	 *
+	 * @var 	string
+	 * @since 	4.0.0
+	 */
 	public static $titleField = "#jform_title";
 
+	/**
+	 * Locator for field type
+	 *
+	 * @var 	string
+	 * @since	4.0.0
+	 */
 	public static $fieldType = '#jform_type';
 
+	/**
+	 * Locator for success message
+	 *
+	 * @var		string
+	 * @since 	4.0.0
+	 */
 	public static $successMessage = 'Field saved';
+
+	/**
+	 * Locator for dropdown.
+	 *
+	 * @var    array
+	 * @since  4.0.0
+	 */
+	public static $dropDownToggle = ['xpath' => "//div[@id='toolbar-dropdown-save-group']//button[contains(@class, 'dropdown-toggle')]"];
 
 	/**
 	 * Locator for Search field.

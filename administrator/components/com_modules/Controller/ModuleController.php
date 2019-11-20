@@ -358,21 +358,28 @@ class ModuleController extends FormController
 
 	/**
 	 * Set the module ordering params from dashboard with ajax call
-	 * 
+	 *
 	 * @return 	String 	Return success true or false with data
 	 * @since  	4.0.0
 	 */
-	public function saveParamsOrderAjax(){
-		try{
+	public function saveParamsOrderAjax()
+	{
+		try
+		{
 			$app = $this->app;
+
 			// Check if user token is valid.
 			$this->checkToken();
-			
+
 			$id = $this->input->getInt('module_id');
-			if( !$id )
+
+			if (!$id)
+			{
 				throw new Exception("Module id required!");
+			}
+
 			// Create the instance from Module Model
-			$model = new ModuleModel();
+			$model = new ModuleModel;
 			$item = $model->getItem($id);
 
 			$order = $this->input->post->get('sub_module_name', array(), 'array');
@@ -380,15 +387,17 @@ class ModuleController extends FormController
 			$params = new Registry($item->params);
 			$params->set('module_ordering', json_encode($order));
 
-			$data = ['id'=>$item->id, 'params'=>$params->toString('JSON')];
+			$data = ['id' => $item->id, 'params' => $params->toString('JSON')];
 			$result['success'] = $model->save($data);
 
 			echo new JsonResponse($result);
 			$app->close();
-		}catch( Exception $e){
-			echo new JsonResponse(['success'=>false, 'message'=>$e->getMessage()]);
+		}
+		catch (Exception $e)
+		{
+			echo new JsonResponse(['success' => false, 'message' => $e->getMessage()]);
 			$app->close();
 		}
-		
 	}
 }
+

@@ -50,7 +50,7 @@
     const saveurl = Joomla.getOptions('saveurl');
     const editurl = Joomla.getOptions('editurl');
     const data = serialiseForm(theForm);
-    
+
     Joomla.request({
       url: saveurl,
       method: 'POST',

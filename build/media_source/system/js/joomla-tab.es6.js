@@ -264,7 +264,7 @@
       if (this.hasAttribute('pills') && this.getAttribute('pills') === 'true') {
         nav.setAttribute('class', 'nav-pills');
       }
-      if(this.hasAttribute('pills') && this.hasAttribute('justified') && this.getAttribute('justified') === 'true'){
+      if (this.hasAttribute('pills') && this.hasAttribute('justified') && this.getAttribute('justified') === 'true') {
         nav.classList.add('nav-justified');
       }
 

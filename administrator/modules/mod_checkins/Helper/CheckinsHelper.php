@@ -16,27 +16,38 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 
 /**
- * mod_checkins_helper - helper class for the module
- * 
+ * mod_checkins_helper, The helper class for the module
+ *
+ * @since 4.0.0
  */
-class CheckinsHelper 
+
+class CheckinsHelper
 {
-    public static function extractCheckinContent() : int
-    {
-        $checkinModel = Factory::getApplication()->bootComponent('com_checkin')
-            ->getMVCFactory()->createModel('Checkin', 'Administrator', ['ignore_request' => true]);
-        $checkins = $checkinModel->getItems();
-        
-        $totalCheckins = 0;
+	/**
+	 * Extract and calculate total number of checkin
+	 *
+	 * @return	int	Total number of checkins
+	 *
+	 * @since 4.0.0
+	 */
+	public static function extractCheckinContent() : int
+	{
+		$checkinModel = Factory::getApplication()->bootComponent('com_checkin')
+			->getMVCFactory()->createModel('Checkin', 'Administrator', ['ignore_request' => true]);
 
-        if (!empty($checkins))
-        {
-            foreach ($checkins as $checkin)
-            {
-                $totalCheckins += (int)$checkin;
-            }
-        }
+		$checkins = $checkinModel->getItems();
 
-        return $totalCheckins;
-    }
+		$totalCheckins = 0;
+
+		if (!empty($checkins))
+		{
+			foreach ($checkins as $checkin)
+			{
+				$totalCheckins += (int) $checkin;
+			}
+		}
+
+		return $totalCheckins;
+	}
 }
+

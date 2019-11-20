@@ -256,7 +256,7 @@ class HtmlView extends BaseHtmlView
 		// Help button
 		$toolbar->help($ref_key, ComponentHelper::getParams($component)->exists('helpURL'), $url);
 
-		// category global settings (option) button
+		// Category global settings (option) button
 		if ($canDo->get('core.admin') || $canDo->get('core.options'))
 		{
 			$toolbar->preferences($component);
@@ -269,7 +269,7 @@ class HtmlView extends BaseHtmlView
 				->task('categories.rebuild');
 		}
 
-		// create new category button
+		// Create new category button
 		if ($canDo->get('core.create') || count($user->getAuthorisedCategories($component, 'core.create')) > 0)
 		{
 			$toolbar->addNew('category.add');
