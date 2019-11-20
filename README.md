@@ -9,7 +9,7 @@ Build Status
 
 What is this?
 ---------------------
-* This is the source of Joomla! 4.x. "spring" alternate template development
+* This is the source of Joomla! 4.x. "khonsu" alternate template development
 * Styleguide(https://delowar.gitbook.io/joomla-elements/)
 * Detailed changes are in the [changelog](https://github.com/joomla-projects/j4adminui/commits).
 

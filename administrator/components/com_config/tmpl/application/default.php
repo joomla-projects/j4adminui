@@ -31,9 +31,9 @@ Text::script('MESSAGE');
 <form action="<?php echo Route::_('index.php?option=com_config'); ?>" id="application-form" method="post" name="adminForm" class="d-flex form-validate" data-cancel-task="config.cancel.component">
 	<!-- Begin Sidebar -->
 	<div id="sidebar" class="com-config-sidebar">
-		<button class="btn btn-sm btn-secondary my-2 options-menu d-md-none" type="button" data-toggle="collapse" data-target=".sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="<?php echo Text::_('TPL_SPRING_TOGGLE_SIDEBAR'); ?>">
+		<button class="btn btn-sm btn-secondary my-2 options-menu d-md-none" type="button" data-toggle="collapse" data-target=".sidebar-nav" aria-controls="sidebar-nav" aria-expanded="false" aria-label="<?php echo Text::_('TPL_KHONSU_TOGGLE_SIDEBAR'); ?>">
 			<span class="icon-menu-3 duotone" aria-hidden="true"></span>
-			<?php echo Text::_('TPL_SPRING_TOGGLE_SIDEBAR'); ?>
+			<?php echo Text::_('TPL_KHONSU_TOGGLE_SIDEBAR'); ?>
 		</button>
 		<div class="sidebar-nav my-2">
 			<?php echo $this->loadTemplate('navigation'); ?>
