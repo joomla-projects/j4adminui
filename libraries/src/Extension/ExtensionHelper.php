@@ -311,6 +311,7 @@ class ExtensionHelper
 
 
 		// Core template extensions - administrator
+		array('template', 'atum', '', 1),
 		array('template', 'khonsu', '', 1),
 
 		// Core template extensions - site
