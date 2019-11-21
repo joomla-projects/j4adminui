@@ -90,6 +90,7 @@
 	bottom: 0;
 	width: $sidebar-width;
 	background-color: $white;
+	overflow-y: auto;
 	@include media-breakpoint-down(xs) {
 		width: 100%;
 		position: static;

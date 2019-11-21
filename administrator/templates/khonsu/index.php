@@ -118,7 +118,7 @@ HTMLHelper::_('khonsu.rootcolors', $this->params);
 			<?php if (!$hiddenMenu): ?>
 				<div class="sidebar-toggle d-none d-sm-block">
 					<a id="menu-collapse" href="#" title="<?php echo Text::_('JTOGGLE_SIDEBAR_MENU'); ?>">
-						<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'angle-double-left' : 'angle-double-right' ?> duotone" aria-hidden="true"></span>
+						<span id="menu-collapse-icon" class="icon-<?php echo $hiddenMenuClass === 'closed' ? 'angle-double-right' : 'angle-double-left' ?> duotone" aria-hidden="true"></span>
 					</a>
 				</div>
 			<?php endif; ?>
