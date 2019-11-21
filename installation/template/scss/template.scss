@@ -372,8 +372,8 @@ caption {
 		line-height: .929rem;
 		width: 1rem;
 		height: 1rem;
-		border: 1px solid var(--secondary-icon-color);
-		color: #5E727C;
+		border: 1px solid var(--icon-color);
+		color: var(--icon-color);
 		border-radius: 50%;
 		text-align: center;
 		font-size: .571rem;
@@ -384,7 +384,7 @@ caption {
 }
 
 .form-text {
-	color: #5E727C;
+	color: var(--icon-color);
 }
 
 .j-install-step-iconic-header {
