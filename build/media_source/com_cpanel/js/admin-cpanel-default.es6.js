@@ -63,7 +63,7 @@
       const { currentTarget: el } = event;
 
       if (el) {
-        // Toggle aria-expanded arrtibute
+        // Toggle aria-expanded attribute
         if (el.hasAttribute('aria-expanded')) {
           if (el.getAttribute('aria-expanded') === 'true') {
             el.setAttribute('aria-expanded', 'false');
