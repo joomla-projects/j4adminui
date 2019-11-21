@@ -98,7 +98,7 @@ Text::script('MESSAGE');
 			</div>
 		<?php endif; ?>
 		<div class="form-group">
-			<button class="btn btn-solid-primary btn-block btn-md"
+			<button class="btn btn-primary btn-block btn-md"
 				id="btn-login-submit"><?php echo Text::_('JLOGIN'); ?></button>
 		</div>
 		<input type="hidden" name="option" value="com_login">
