@@ -91,13 +91,13 @@
     .login{
       flex: 0 0 100%;
       max-width: 100%;
-      padding: 3rem 4rem;
+      padding: 4rem;
       border-radius: 0 0 3px 3px;
       .main-brand>h3{
         font-size: 1.72rem;
         text-align: center;
         font-weight: normal;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
         color: var(--primary-text-color);
         @include media-breakpoint-down(sm) {
           font-size: 1.2rem;
@@ -127,7 +127,7 @@
 
     img {
       height: 4.4rem;
-      padding: 15px;
+      margin-bottom: 15px;
     }
 
     #form-login {

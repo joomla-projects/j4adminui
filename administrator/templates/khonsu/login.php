@@ -35,7 +35,7 @@ $siteLogo  = $this->params->get('siteLogo')
 	: $this->baseurl . '/templates/' . $this->template . '/images/logo-joomla.svg';
 $loginLogo = $this->params->get('loginLogo')
 	? JUri::root() . $this->params->get('loginLogo')
-	: $this->baseurl . '/templates/' . $this->template . '/images/logo-glossy.svg';
+	: $this->baseurl . '/templates/' . $this->template . '/images/logo-colored.svg';
 $smallLogo = $this->params->get('smallLogo')
 	? JUri::root() . $this->params->get('smallLogo')
 	: $this->baseurl . '/templates/' . $this->template . '/images/logo.svg';
