@@ -63,7 +63,7 @@ body .container-main {
 	width: 100%;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
 	background-color: #ffffff;
-  list-style: none;
+  	list-style: none;
 
 	button {
 		display: block;
@@ -75,7 +75,7 @@ body .container-main {
 		position: relative;
 		border-left: 3px solid transparent;
 		color: var(--secondary-text-color);
-    font-size: 1.143rem;
+    	font-size: 1.143rem;
 
 		&::before {
 			content: '';
@@ -88,24 +88,24 @@ body .container-main {
 			left: 1rem;
 			top: 50%;
 			transform: translateY(-50%);
-    }
+    	}
 
 		&:active,
 		&:focus {
 			outline: 1px dotted rgba(var(--primary-rgb), .5);
 			outline-offset: -1px;
-    }
+    	}
 
 		&.active {
 			border-left-color: var(--primary-color);
 			background: rgba(var(--primary-rgb), .1);
-      color: var(--primary-text-color);
+			color: var(--primary-text-color);
 
 			&::before {
 				background: var(--primary-color);
 				border-color: var(--primary-color);
 			}
-    }
+		}
 
 		&.completed {
 			&::before {
@@ -150,15 +150,15 @@ body .container-main {
 	box-shadow: 0 30px 60px -10px rgba(0, 28, 73, 0.15);
 	border: solid 1px #eaeef5;
 	background: #fff;
-  position: relative;
+  	position: relative;
 
 	&:not(.no-padding) {
 		padding: 2.143rem 2.143rem 7.5rem;
-  }
+  	}
 
 	&.no-padding {
 		padding-bottom: 3.571rem;
-  }
+  	}
 
 	&.only-pb {
 		padding: 0 0 7.5rem;
@@ -172,7 +172,7 @@ body .container-main {
 	text-align: right;
 	padding: 0 2.143rem;
 	box-sizing: border-box;
-  right: 0;
+  	right: 0;
 
 	&.no-padding {
 		bottom: 0;
@@ -183,20 +183,20 @@ body .container-main {
 
 .j-install-step {
 	display: none;
-  min-height: 100%;
+  	min-height: 100%;
 
 	&.active {
 		display: block;
-  }
+  	}
 
 	select {
 		width: 100%;
 		margin-left: 0 !important;
-  }
+  	}
 
 	.btn-block {
 		margin-top: 40px;
-  }
+  	}
 
 	.btn-wrapper .btn + .btn {
 		margin-left: 0.429rem;
@@ -220,7 +220,7 @@ body .container-main {
 	margin: 0 0 20px;
 	background: #fafafa;
 	border: 1px solid rgba(0,0,0,.1);
-  box-shadow: 0 0 10px rgba(0,0,0,.05);
+  	box-shadow: 0 0 10px rgba(0,0,0,.05);
 
 	p {
 		margin-bottom: 0;
@@ -233,7 +233,7 @@ body .container-main {
 	width: 25%;
 	margin-bottom: 0;
 	font-size: 3rem;
-  opacity: .6;
+  	opacity: .6;
 
 	.fa {
 		width: 100%;
@@ -331,23 +331,22 @@ caption {
 
 .j-install-completing-list {
   margin-top: 30px;
-
 	ul {
 		list-style: none;
-    padding: 0;
+		padding: 0;
 
 		li {
 			display: flex;
 			align-items: center;
-      padding: 10px 0;
+			padding: 10px 0;
 
 			&:not(:first-child) {
 				border-top: 1px solid #eaeef5;
-      }
+			}
 
 			&:not(.active) {
 				opacity: .4;
-      }
+			}
 
 			span.j-spinner {
 				margin: 0 10px 0 0;
@@ -390,12 +389,12 @@ caption {
 .j-install-step-iconic-header {
 	padding: 23px 30px;
 	border-bottom: 1px solid var(--bg-color);
-  overflow: hidden;
+  	overflow: hidden;
 
 	span {
 		line-height: 23px;
 		color: var(--success-color)
-  }
+  	}
 
 	.icon {
 		height: 23px;
@@ -443,7 +442,7 @@ caption {
 			font-weight: 400;
 			color: var(--secondary-text-color);
 		}
-  }
+  	}
 
 	th,
 	td {
@@ -453,24 +452,24 @@ caption {
 			text-align: center;
 			padding-left: 15px;
 			padding-right: 15px;
-    }
+    	}
 
 		&:first-child {
 			padding-right: 15px;
-    }
+    	}
 
 		&:last-child {
 			padding-left: 15px;
-    }
+    	}
 
 		.success {
 			color: var(--success-color);
-    }
+    	}
 
 		.danger {
 			color: var(--danger-color);
 		}
-  }
+  	}
 
 	tr:nth-child(even) {
 		th,
@@ -493,7 +492,7 @@ caption {
 
 .j-install-remove-check {
 	text-align: center;
-  margin-bottom: 2.071rem;
+  	margin-bottom: 2.071rem;
 
 	#removeInstallationFolder {
 		font-weight: 500;
