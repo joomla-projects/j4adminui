@@ -47,7 +47,7 @@
 
 		<field
 			name="published"
-			type="radio"
+			type="list"
 			label="JSTATUS"
 			class="custom-select-color-state module-publish"
 			default="1"
