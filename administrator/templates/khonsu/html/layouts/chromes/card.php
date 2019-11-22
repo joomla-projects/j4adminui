@@ -55,7 +55,9 @@ if ($module->content) :
 					</h3>
 
 					<div class="j-card-header-right">
-						<button class="j-card-header-icon icon-chevron-down joomla-collapse-card-body" data-target="module-<?php echo $id; ?>"></button>
+						<button type="button" class="j-card-header-icon joomla-collapse-card-body" aria-expanded="true" aria-label="<?php echo Text::_('JTOGGLE_CARD_MSG');?>" data-target="module-<?php echo $id; ?>">
+							<span class="toggle-icon icon-chevron-up"></span>	
+						</button>
 						<?php if ($canEdit || $canChange) : ?>
 							<?php $dropdownPosition = Factory::getLanguage()->isRTL() ? 'left' : 'right'; ?>
 							<div class="joomla-dropdown-container">
