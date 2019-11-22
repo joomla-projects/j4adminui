@@ -43,7 +43,6 @@ if (isset($list['list_fullordering'])) {
 							title="<?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?>"
 							aria-label="<?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?>"
 						>
-							<span class="sr-only"><?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? Text::_('JGLOBAL_ORDER_DESCENDING_DIRN') : Text::_('JGLOBAL_ORDER_ASCENDING_DIRN'); ?></span>
 							<span class="duotone icon-lg <?php echo !empty($orderDirn) && strtoupper($orderDirn) === 'ASC' ? 'icon-descending' : 'icon-ascending'; ?>"></span>
 						</button>
 					<?php endif; ?>
