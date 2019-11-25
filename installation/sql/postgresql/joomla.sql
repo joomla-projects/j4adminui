@@ -112,7 +112,22 @@ INSERT INTO "#__assets" ("id", "parent_id", "lft", "rgt", "level", "name", "titl
 (79, 18, 108, 109, 2, 'com_modules.module.101', 'Post Install Messages', '{}'),
 (80, 18, 110, 111, 2, 'com_modules.module.102', 'User Status', '{}'),
 (82, 18, 114, 115, 2, 'com_modules.module.105', '3rd Party', '{}'),
-(83, 18, 116, 117, 2, 'com_modules.module.106', 'Help Dashboard', '{}');
+(83, 18, 116, 117, 2, 'com_modules.module.106', 'Help Dashboard', '{}'),
+
+-- new data
+(84, 18, 112, 113, 2, 'com_modules.module.109', 'Quick Overview', '{}'),
+(85, 18, 114, 115, 2, 'com_modules.module.110', 'Mobile Menu', '{}'),
+(86, 18, 116, 117, 2, 'com_modules.module.111', 'Available Updates', '{}'),
+(87, 18, 118, 119, 2, 'com_modules.module.112', 'Global Check-in', '{}'),
+(88, 18, 120, 121, 2, 'com_modules.module.113', 'Cache', '{}'),
+(89, 18, 122, 123, 2, 'com_modules.module.114', 'Create an Article', '{}'),
+(90, 18, 124, 125, 2, 'com_modules.module.115', 'Help Links', '{}'),
+(91, 18, 126, 127, 2, 'com_modules.module.116', 'Recent Activities', '{}'),
+(92, 18, 128, 129, 2, 'com_modules.module.117', 'Article', '{}'),
+(93, 18, 130, 131, 2, 'com_modules.module.118', 'Joomla News & Events', '{}'),
+(94, 18, 132, 133, 2, 'com_modules.module.119', 'Privacy Status', '{}'),
+(95, 18, 134, 135, 2, 'com_modules.module.120', 'Site Info', '{}'),
+(96, 18, 136, 137, 2, 'com_modules.module.121', 'Accessibility', '{}');
 
 SELECT setval('#__assets_id_seq', 84, false);
 
@@ -733,7 +748,16 @@ INSERT INTO "#__extensions" ("package_id", "name", "type", "element", "folder", 
 (0, 'cassiopeia', 'template', 'cassiopeia', '', 0, 1, 1, 0, '', '{"logoFile":"","fluidContainer":"0","sidebarLeftWidth":"3","sidebarRightWidth":"3"}', 0, NULL, 0, 0),
 (0, 'plg_fields_subfields', 'plugin', 'subfields', 'fields', 0, 1, 1, 0, '', '', 0, NULL, 0, 0),
 (0, 'files_joomla', 'file', 'joomla', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0),
-(0, 'English (en-GB) Language Pack', 'package', 'pkg_en-GB', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0);
+(0, 'English (en-GB) Language Pack', 'package', 'pkg_en-GB', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0),
+
+-- new data
+(0, 'mod_accessibility', 'module', 'mod_accessibility', '', 1, 1, 1, 0, '', '[]', 0, NULL, 0, 0),
+(0, 'mod_cache', 'module', 'mod_cache', '', 1, 1, 1, 0, '', '{"size_unit":"mb","module_group":"system","cache":"1","cache_time":"900"}', 0, NULL, 0, 0),
+(0, 'mod_checkins', 'module', 'mod_checkins', '', 1, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
+(0, 'mod_content', 'module', 'mod_content', '', 1, 1, 1, 0, '', '{"count":"5","ordering":"c_dsc","catid":"","user_id":"0"}', 0, NULL, 0, 0),
+(0, 'mod_extension_updates', 'module', 'mod_extension_updates', '', 1, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
+(0, 'mod_quick_article', 'module', 'mod_quick_article', '', 1, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
+(0, 'mod_resources', 'module', 'mod_resources', '', 1, 1, 1, 0, '', '{"show_resources":"both","automatic_title":"0"}', 0, NULL, 0, 0);
 
 INSERT INTO "#__extensions" ("package_id", "name", "type", "element", "folder", "client_id", "enabled", "access", "protected", "manifest_cache", "params", "checked_out", "checked_out_time", "ordering", "state")
 SELECT "extension_id", 'English (en-GB)', 'language', 'en-GB', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0 FROM "#__extensions" WHERE "name" = 'English (en-GB) Language Pack';
@@ -1478,8 +1502,6 @@ INSERT INTO "#__modules" ("id", "asset_id", "title", "note", "content", "orderin
 (93, 74, 'Menus Dashboard', '', '', 1, 'cpanel-menus', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"menus","layout":"_:default","moduleclass_sfx":"","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":"","style":"System-none"}', 1, '*'),
 (94, 75, 'Components Dashboard', '', '', 1, 'cpanel-components', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"components","layout":"_:default","moduleclass_sfx":"","module_tag":"div","bootstrap_size":"12","header_tag":"h3","header_class":"","style":"System-none"}', 1, '*'),
 (95, 76, 'Users Dashboard', '', '', 1, 'cpanel-users', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"users","layout":"_:default","moduleclass_sfx":"","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":"","style":"System-none"}', 1, '*'),
-(96, 41, 'Popular Articles', '', '', 3, 'cpanel-content', 0, NULL, NULL, NULL, 1, 'mod_popular', 3, 1, '{"count":"5","catid":"","user_id":"0","layout":"_:default","moduleclass_sfx":"","cache":"0", "bootstrap_size": "6"}', 1, '*'),
-(97, 42, 'Recently Added Articles', '', '', 4, 'cpanel-content', 0, NULL, NULL, NULL, 1, 'mod_latest', 3, 1, '{"count":"5","ordering":"c_dsc","catid":"","user_id":"0","layout":"_:default","moduleclass_sfx":"","cache":"0", "bootstrap_size": "6"}', 1, '*'),
 (98, 45, 'Logged-in Users', '', '', 2, 'cpanel-users', 0, NULL, NULL, NULL, 1, 'mod_logged', 3, 1, '{"count":"5","name":"1","layout":"_:default","moduleclass_sfx":"","cache":"0", "bootstrap_size": "6"}', 1, '*'),
 (99, 77, 'Frontend Link', '', '', 5, 'status', 0, NULL, NULL, NULL, 1, 'mod_frontend', 1, 1, '', 1, '*'),
 (100, 78, 'Messages', '', '', 4, 'status', 0, NULL, NULL, NULL, 1, 'mod_messages', 3, 1, '', 1, '*'),
@@ -1490,7 +1512,22 @@ INSERT INTO "#__modules" ("id", "asset_id", "title", "note", "content", "orderin
 (105, 82, '3rd Party', '', '', 4, 'icon', 0, NULL, NULL, NULL, 1, 'mod_quickicon', 1, 1, '{"context":"mod_quickicon","header_icon":"fa fa-boxes","load_plugins":"1","layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":""}', 1, '*'),
 (106, 83, 'Help Dashboard', '', '', 1, 'cpanel-help', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"help","layout":"_:default","moduleclass_sfx":"","style":"System-none","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (107, 84, 'Privacy Requests', '', '', 1, 'cpanel-privacy', 0, NULL, NULL, NULL, 1, 'mod_privacy_dashboard', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
-(108, 85, 'Privacy Status', '', '', 1, 'cpanel-privacy', 0, NULL, NULL, NULL, 1, 'mod_privacy_status', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*');
+(108, 85, 'Privacy Status', '', '', 1, 'cpanel-privacy', 0, NULL, NULL, NULL, 1, 'mod_privacy_status', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+
+-- new data
+(109, 84, 'Quick Overview', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_quickicon', 1, 1, '{"context":"mod_quickicon","show_users":"2","show_articles":"2","show_modules":"2","show_categories":"0","show_media":"0","show_menuitems":"2","show_plugins":"0","show_templates":"0","module_ordering":"","layout":"_:default","moduleclass_sfx":"","cache":0,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(110, 85, 'Mobile Menu', '', '', 1, 'quickmenu', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"quickmenu","layout":"_:quickmenu","moduleclass_sfx":"","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(111, 86, 'Available Updates', '', '', 2, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_extension_updates', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(112, 87, 'Global Check-in', '', '', 9, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_checkins', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(113, 88, 'Cache', '', '', 8, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_cache', 1, 1, '{"size_unit":"MB","layout":"_:default","module_group":"system","moduleclass_sfx":"","cache":1,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(114, 89, 'Create an Article', '', '', 4, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_quick_article', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(115, 90, 'Help Links', '', '', 5, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_resources', 1, 1, '{"show_resources":"help","layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(116, 91, 'Recent Activities', '', '', 15, 'cpanel', 0, NULL, NULL, NULL, 0, 'mod_latestactions', 1, 1, '{"count":5,"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(117, 92, 'Article', '', '', 11, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_content', 1, 1, '{"count":5,"ordering":"c_dsc","catid":"","user_id":"0","layout":"_:default","moduleclass_sfx":"","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(118, 93, 'Joomla News & Events', '', '', 12, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_feed', 1, 1, '{"rssurl":"http:\/\/feeds.joomla.org\/JoomlaAnnouncements?format=xml","rssrtl":0,"rssdate":"0","rssdesc":1,"rssimage":1,"rssitems":5,"rssitemdesc":1,"rssitemdate":1,"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(119, 94, 'Privacy Status', '', '', 7, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_privacy_status', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(120, 95, 'Site Info', '', '', 10, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_stats_admin', 1, 1, '{"serverinfo":1,"siteinfo":1,"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
+(121, 96, 'Accessibility', '', '', 1, 'status', 0, NULL, NULL, NULL, 1, 'mod_accessibility', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*');
 
 SELECT setval('#__modules_id_seq', 109, false);
 
@@ -1513,18 +1550,14 @@ INSERT INTO "#__modules_menu" ("moduleid", "menuid") VALUES
 (2, 0),
 (3, 0),
 (4, 0),
-(6, 0),
-(7, 0),
 (8, 0),
 (9, 0),
 (10, 0),
 (12, 0),
-(14, 0),
 (15, 0),
 (16, 0),
 (17, 0),
 (79, 0),
-(86, 0),
 (87, 0),
 (88, 0),
 (89, 0),
@@ -1534,19 +1567,30 @@ INSERT INTO "#__modules_menu" ("moduleid", "menuid") VALUES
 (93, 0),
 (94, 0),
 (95, 0),
-(96, 0),
-(97, 0),
 (98, 0),
 (99, 0),
-(100, 0),
-(101, 0),
 (102, 0),
 (103, 0),
 (104, 0),
 (105, 0),
 (106, 0),
 (107, 0),
-(108, 0);
+(108, 0),
+
+-- new data
+(109, 0),
+(110, 0),
+(111, 0),
+(112, 0),
+(113, 0),
+(114, 0),
+(115, 0),
+(116, 0),
+(117, 0),
+(118, 0),
+(119, 0),
+(120, 0),
+(121, 0);
 
 --
 -- Table structure for table `#__newsfeeds`
