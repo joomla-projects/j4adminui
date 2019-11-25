@@ -38,28 +38,43 @@ HTMLHelper::_('script', 'mod_quickicon/quickicon-draggble.min.js', ['version' =>
 HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
 
 $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
+
+$modules = array();
+foreach($this->modules as $module)
+{
+	if ($module->module !== 'mod_quickicon')
+	{
+		$modules[] = $module;
+	}
+}
+
+$perColumn 	= ceil(count($modules) / 2);
+$modules 	= array_chunk($modules, $perColumn);
 ?>
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>">
 		<?php
+			$quickicons = 0;
 			foreach ($this->modules as $module)
 			{
 				if( $module->module == 'mod_quickicon' )
 				{
 					echo ModuleHelper::renderModule($module, array('style' => 'simple'));
+					$quickicons++;
 				}
 			}
 		?>
-		<div class="j-card-columns js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
-			<?php
-				foreach ($this->modules as $module)
-				{
-					if( $module->module != 'mod_quickicon' )
-					{
-						echo ModuleHelper::renderModule($module, array('style' => 'card'));
-					}
-				}
-			?>
+		<div class="row js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+			<?php foreach($modules as $key => $columns): ?>
+				<div class="col-6" id="<?php echo $key === 0 ? 'left-col': 'right-col'; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+					<?php
+						foreach($columns as $module)
+						{
+							echo ModuleHelper::renderModule($module, array('style' => 'card'));
+						}
+					?>
+				</div>
+			<?php endforeach ?>
 		</div>
 
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>

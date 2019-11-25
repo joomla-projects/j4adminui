@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dragula([container], {
       direction: 'vertical', // Y axis is considered when determining where an element would be dropped
       copy: false, // elements are moved by default, not copied
+      removeOnSpill: true,
     })
       .on('drop', () => {
         if (url) {

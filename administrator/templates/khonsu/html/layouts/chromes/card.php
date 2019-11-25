@@ -43,7 +43,7 @@ if ($module->content) :
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
 	?>
-	<div class="module-wrapper" data-dragable-group="dashboard_module">
+	<div class="module-wrapper mb-4" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header handle">
