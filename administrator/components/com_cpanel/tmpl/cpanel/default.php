@@ -35,7 +35,7 @@ HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 
 HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
 HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
 HTMLHelper::_('script', 'mod_quickicon/quickicon-draggble.min.js', ['version' => 'auto', 'relative' => true]);
-HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
+// HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
 
 $saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 
@@ -64,9 +64,9 @@ $modules 	= array_chunk($modules, $perColumn);
 				}
 			}
 		?>
-		<div class="row js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+		<div class="row" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
 			<?php foreach($modules as $key => $columns): ?>
-				<div class="col-6" id="<?php echo $key === 0 ? 'left-col': 'right-col'; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
+				<div class="col-6 js-draggable-container" id="<?php echo $key === 0 ? 'left-col': 'right-col'; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
 					<?php
 						foreach($columns as $module)
 						{

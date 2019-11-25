@@ -83,6 +83,6 @@ if ($module->content) :
 			</div>
 		</<?php echo $moduleTag; ?>>
 		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
-		<input type="hidden" value="<?php echo $module->ordering; ?>" name="order[]">
+		<input type="hidden" value="<?php echo isset($module->ordering) ? $module->ordering: 0; ?>" name="order[]">
 	</div>
 <?php endif; ?>
