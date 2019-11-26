@@ -20,8 +20,8 @@ $saveOrderingUrl = 'index.php?option=com_modules&task=Module.saveParamsOrderAjax
 $html = HTMLHelper::_('icons.buttons', $buttons);
 ?>
 <?php if (!empty($html)) : ?>
-	<nav class="quick-icons js-enable-dragula" aria-label="<?php echo Text::_('MOD_QUICKICON_NAV_LABEL') . ' ' . $module->title; ?>" data-containers=".js-draggable-container" data-fields="sub_module_name[],module_id" data-url="<?php echo $saveOrderingUrl; ?>">
-		<div class="row js-draggable-container">
+	<nav class="quick-icons js-enable-dragula" aria-label="<?php echo Text::_('MOD_QUICKICON_NAV_LABEL') . ' ' . $module->title; ?>" data-containers=".quickicon-draggable-container" data-fields="sub_module_name[],module_id" data-url-quickicon="<?php echo $saveOrderingUrl; ?>">
+		<div class="row quickicon-draggable-container">
 			<?php echo $html; ?>
 			<input type="hidden" value="<?php echo $module->id ?>" name="module_id">
 		</div>

@@ -21,6 +21,7 @@ $module  = $displayData['module'];
 $params  = $displayData['params'];
 $attribs = $displayData['attribs'];
 
+
 if ($module->content) :
 	$id = $module->id;
 
@@ -84,5 +85,6 @@ if ($module->content) :
 		</<?php echo $moduleTag; ?>>
 		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
 		<input type="hidden" value="<?php echo isset($module->ordering) ? $module->ordering: 0; ?>" name="order[]">
+		<input type="hidden" value="<?php echo $params->get('column_position', 0); ?>" name="position[]">
 	</div>
 <?php endif; ?>

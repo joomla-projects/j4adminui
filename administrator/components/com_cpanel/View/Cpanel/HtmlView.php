@@ -149,6 +149,59 @@ class HtmlView extends BaseHtmlView
 		$this->position = $position ? 'cpanel-' . $position : 'cpanel';
 		$this->modules = ModuleHelper::getModules($this->position);
 
+		// Grouping the dashboard modules by quickicons, left column, right columns
+		$modules = array(
+			'quickicon' => array(),
+			'left_column' => array(),
+			'right_column' => array()
+		);
+
+		foreach ($this->modules as $module)
+		{
+			if ($module->module === 'mod_quickicon')
+			{
+				$modules['quickicon'][] = $module;
+			}
+			else
+			{
+				$params = json_decode($module->params);
+
+				if (!empty($params->column_position))
+				{
+					if ($params->column_position === 0)
+					{
+						$modules['left_column'][] = $module;
+					}
+					else
+					{
+						$modules['right_column'][] = $module;
+					}
+				}
+				else
+				{
+					$modules['left_column'][] = $module;
+				}
+			}
+		}
+
+		// Sort left column by ordering key.
+		\usort($modules['left_column'],
+			function ($a, $b)
+			{
+				return $a->ordering <=> $b->ordering;
+			}
+		);
+
+		// Sort rigth column by ordering key
+		\usort($modules['right_column'],
+			function ($a, $b)
+			{
+				return $a->ordering <=> $b->ordering;
+			}
+		);
+
+		$this->modules = $modules;
+
 		parent::display($tpl);
 	}
 }
