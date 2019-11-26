@@ -64,9 +64,9 @@ $modules 	= array_chunk($modules, $perColumn);
 				}
 			}
 		?>
-		<div class="row" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
+		<div class="row js-enable-dragula" data-fields="order[],cid[]" data-containers="#cpanel-left-col,#cpanel-right-col" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
 			<?php foreach($modules as $key => $columns): ?>
-				<div class="col-6 js-draggable-container" id="<?php echo $key === 0 ? 'left-col': 'right-col'; ?>" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
+				<div class="col-6" id="cpanel-<?php echo $key === 0 ? 'left-col': 'right-col'; ?>">
 					<?php
 						foreach($columns as $module)
 						{
