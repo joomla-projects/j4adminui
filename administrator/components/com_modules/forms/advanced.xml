@@ -38,6 +38,13 @@
 				type="text"
 				label="COM_MODULES_FIELD_HEADER_CLASS_LABEL"
 			/>
+
+			<field
+				name="column_position"
+				type="hidden"
+				default="0"
+			/>
+
 		</fieldset>
 	</fields>
 </form>
