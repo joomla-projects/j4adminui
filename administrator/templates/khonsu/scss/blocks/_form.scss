@@ -30,13 +30,16 @@ joomla-field-fancy-select {
 		outline: 0;
 		border-color: var(--primary-color);
 	}
-	&:read-only, &:disabled {
+	&:read-only {
+		color: rgba($black, 0.35);
+	}
+	&:disabled {
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;     
 		background-color: var(--bg-light-color);
-		color: rgba($black, 0.15);
+		color: rgba($black, 0.35);
 		border-color: var(--border-color);
 	}
 }
