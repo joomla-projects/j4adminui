@@ -109,10 +109,6 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (80, 18, 110, 111, 2, 'com_modules.module.102', 'User Status', '{}'),
 (82, 18, 114, 115, 2, 'com_modules.module.105', '3rd Party', '{}'),
 (83, 18, 116, 117, 2, 'com_modules.module.106', 'Help Dashboard', '{}'),
-
--- --------------------------------------------------------
-
--- new data
 (84, 18, 112, 113, 2, 'com_modules.module.109', 'Quick Overview', '{}'),
 (85, 18, 114, 115, 2, 'com_modules.module.110', 'Mobile Menu', '{}'),
 (86, 18, 116, 117, 2, 'com_modules.module.111', 'Available Updates', '{}'),
@@ -127,6 +123,7 @@ INSERT INTO `#__assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (95, 18, 134, 135, 2, 'com_modules.module.120', 'Site Info', '{}'),
 (96, 18, 136, 137, 2, 'com_modules.module.121', 'Accessibility', '{}');
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `#__associations`
@@ -739,8 +736,6 @@ INSERT INTO `#__extensions` (`package_id`, `name`, `type`, `element`, `folder`, 
 (0, 'plg_fields_subfields', 'plugin', 'subfields', 'fields', 0, 1, 1, 0, '', '', 0, NULL, 0, 0),
 (0, 'files_joomla', 'file', 'joomla', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0),
 (0, 'English (en-GB) Language Pack', 'package', 'pkg_en-GB', '', 0, 1, 1, 1, '', '', 0, NULL, 0, 0),
-
--- new data
 (0, 'mod_accessibility', 'module', 'mod_accessibility', '', 1, 1, 1, 0, '', '[]', 0, NULL, 0, 0),
 (0, 'mod_cache', 'module', 'mod_cache', '', 1, 1, 1, 0, '', '{"size_unit":"mb","module_group":"system","cache":"1","cache_time":"900"}', 0, NULL, 0, 0),
 (0, 'mod_checkins', 'module', 'mod_checkins', '', 1, 1, 1, 0, '', '{}', 0, NULL, 0, 0),
@@ -1514,9 +1509,6 @@ INSERT INTO `#__modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 (106, 83, 'Help Dashboard', '', '', 1, 'cpanel-help', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"help","layout":"_:default","moduleclass_sfx":"","style":"System-none","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (107, 84, 'Privacy Requests', '', '', 1, 'cpanel-privacy', 0, NULL, NULL, NULL, 1, 'mod_privacy_dashboard', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (108, 85, 'Privacy Status', '', '', 1, 'cpanel-privacy', 0, NULL, NULL, NULL, 1, 'mod_privacy_status', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
--- --------------------------------------------------------
-
--- new data
 (109, 84, 'Quick Overview', '', '', 3, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_quickicon', 1, 1, '{"context":"mod_quickicon","show_users":"2","show_articles":"2","show_modules":"2","show_categories":"0","show_media":"0","show_menuitems":"2","show_plugins":"0","show_templates":"0","module_ordering":"","layout":"_:default","moduleclass_sfx":"","cache":0,"cache_time":900,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (110, 85, 'Mobile Menu', '', '', 1, 'quickmenu', 0, NULL, NULL, NULL, 1, 'mod_submenu', 1, 0, '{"menutype":"*","preset":"quickmenu","layout":"_:quickmenu","moduleclass_sfx":"","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*'),
 (111, 86, 'Available Updates', '', '', 1, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_extension_updates', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","automatic_title":0,"style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","column_position":0}', 1, '*'),
@@ -1531,6 +1523,7 @@ INSERT INTO `#__modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 (120, 95, 'Site Info', '', '', 11, 'cpanel', 0, NULL, NULL, NULL, 1, 'mod_stats_admin', 1, 1, '{"serverinfo":1,"siteinfo":1,"layout":"_:default","moduleclass_sfx":"","cache":1,"cache_time":900,"cachemode":"static","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","column_position":1}', 1, '*'),
 (121, 96, 'Accessibility', '', '', 1, 'status', 0, NULL, NULL, NULL, 1, 'mod_accessibility', 1, 1, '{"layout":"_:default","moduleclass_sfx":"","style":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":""}', 1, '*');
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `#__modules_menu`
@@ -1574,8 +1567,6 @@ INSERT INTO `#__modules_menu` (`moduleid`, `menuid`) VALUES
 (106, 0),
 (107, 0),
 (108, 0),
-
--- new data
 (109, 0),
 (110, 0),
 (111, 0),
