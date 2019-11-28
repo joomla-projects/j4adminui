@@ -127,7 +127,7 @@ INSERT INTO "#__assets" ("id", "parent_id", "lft", "rgt", "level", "name", "titl
 (95, 18, 134, 135, 2, 'com_modules.module.120', 'Site Info', '{}'),
 (96, 18, 136, 137, 2, 'com_modules.module.121', 'Accessibility', '{}');
 
-SELECT setval('#__assets_id_seq', 84, false);
+SELECT setval('#__assets_id_seq', 97, false);
 
 --
 -- Table structure for table `#__associations`
@@ -1519,7 +1519,7 @@ INSERT INTO "#__modules" ("id", "asset_id", "title", "note", "content", "orderin
 
 -- --------------------------------------------------------
 
-SELECT setval('#__modules_id_seq', 109, false);
+SELECT setval('#__modules_id_seq', 122, false);
 
 --
 -- Table structure for table `#__modules_menu`
