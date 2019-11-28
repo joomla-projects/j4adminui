@@ -1161,8 +1161,7 @@ class ModuleModel extends AdminModel
 	 * Save Dashboard module's position
 	 *
 	 * @param	array	$pks		Primary key of the modules.
-	 * @param	array	$position	Position array which indicates that
-	 * 								the module on the left column or right column.
+	 * @param	array	$position	Position array which indicates that the module on the left column or right column.
 	 * @return 	bool				Is the position is saved on the params or not.
 	 *
 	 * @since	4.0.0
