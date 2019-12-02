@@ -371,7 +371,7 @@ abstract class ModuleHelper
 		$query   = $db->getQuery(true);
 		$nowDate = Factory::getDate()->toSql();
 
-		$query->select($db->quoteName(['m.id', 'm.title', 'm.module', 'm.position', 'm.content', 'm.showtitle', 'm.params', 'mm.menuid']))
+		$query->select($db->quoteName(['m.id', 'm.title', 'm.module', 'm.position', 'm.content', 'm.showtitle', 'm.params', 'm.ordering', 'mm.menuid']))
 			->from($db->quoteName('#__modules', 'm'))
 			->join(
 				'LEFT',
@@ -430,7 +430,7 @@ abstract class ModuleHelper
 			$cacheId .= $language . '*';
 		}
 
-		$query->order($db->quoteName(['m.position', 'm.ordering']));
+		$query->order($db->quoteName('m.ordering') . ' ASC');
 
 		// Set the query
 		$db->setQuery($query);

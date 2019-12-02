@@ -21,6 +21,7 @@ $module  = $displayData['module'];
 $params  = $displayData['params'];
 $attribs = $displayData['attribs'];
 
+
 if ($module->content) :
 	$id = $module->id;
 
@@ -43,7 +44,7 @@ if ($module->content) :
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
 	?>
-	<div class="module-wrapper" data-dragable-group="dashboard_module">
+	<div class="module-wrapper mb-4" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>
 				<div class="j-card-header handle">
@@ -83,6 +84,7 @@ if ($module->content) :
 			</div>
 		</<?php echo $moduleTag; ?>>
 		<input type="hidden" value="<?php echo $id; ?>" name="cid[]">
-		<input type="hidden" value="<?php echo $module->ordering; ?>" name="order[]">
+		<input type="hidden" value="<?php echo isset($module->ordering) ? $module->ordering: 0; ?>" name="order[]">
+		<input type="hidden" value="<?php echo $params->get('column_position', 0); ?>" name="position[]">
 	</div>
 <?php endif; ?>
