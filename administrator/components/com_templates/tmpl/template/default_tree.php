@@ -50,7 +50,7 @@ ksort($this->files, SORT_NATURAL);
 
 			?>
 			<li class="<?php echo $class; ?> has-subtree">
-				<a class="folder-url" href="">
+				<a class="folder-url" href="javascript:void(0);">
 					<span class="icon-folder-2" aria-hidden="true"></span>
 					<span class="folder-name">&nbsp;<?php $explodeArray = explode('/', $key); echo $this->escape(end($explodeArray)); ?></span>
 				</a>
