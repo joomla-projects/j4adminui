@@ -33,10 +33,10 @@ HTMLHelper::_('script', 'com_modules/admin-select-modal.js', ['version' => 'auto
 ?>
 
 <div class="j-search-module-container mb-4">
-	<h2 class="mb-3"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
+	<h2 class="mb-3" id="j-search-module-label"><?php echo Text::_('COM_MODULES_TYPE_CHOOSE'); ?></h2>
 	<div class="input-group">
 		<span class="icon-search" aria-hidden="true" aria-label="Search"></span>
-		<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" placeholder="<?php echo Text::_('JSEARCH_MODULES'); ?>">
+		<input type="text" class="form-control" id="j-search-cpanel-module" autocomplete="off" aria-labelledby="j-search-module-label" placeholder="<?php echo Text::_('JSEARCH_MODULES'); ?>">
 	</div>
 </div>
 
@@ -62,7 +62,7 @@ HTMLHelper::_('script', 'com_modules/admin-select-modal.js', ['version' => 'auto
 
 					<div class="j-card-footer">
 						<div class="j-card-footer-item">
-							<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>">
+							<a href="<?php echo Route::_($link); ?>" class="<?php echo $function ? ' select-link" data-function="' . $this->escape($function) : ''; ?>" aria-label="<?php echo Text::sprintf('COM_MODULES_SELECT_MODULE', $item->name); ?>">
 								<?php echo Text::_('COM_MODULES_SELECT'); ?>
 							</a>
 						</div>
