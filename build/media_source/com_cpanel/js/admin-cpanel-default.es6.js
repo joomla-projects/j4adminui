@@ -49,6 +49,53 @@
     });
   };
 
+  /**
+   * Expand/collapse card body
+   *
+   * @param   {HTMLElement}   card  Card element
+   *
+   * @since   4.0.0
+   */
+  const toggleCard = (card) => {
+    card.addEventListener('click', (event) => {
+      event.preventDefault();
+      const targetBody = document.getElementById(card.getAttribute('data-target'));
+      const { currentTarget: el } = event;
+
+      if (el) {
+        // Toggle aria-expanded attribute
+        if (el.hasAttribute('aria-expanded')) {
+          if (el.getAttribute('aria-expanded') === 'true') {
+            el.setAttribute('aria-expanded', 'false');
+          } else {
+            el.setAttribute('aria-expanded', 'true');
+          }
+        }
+
+        // Toggle collapse icon
+        const icon = el.querySelector('span.toggle-icon');
+        if (icon) {
+          if (icon.classList.contains('icon-chevron-down')) {
+            icon.classList.remove('icon-chevron-down');
+            icon.classList.add('icon-chevron-up');
+          } else {
+            icon.classList.remove('icon-chevron-up');
+            icon.classList.add('icon-chevron-down');
+          }
+        }
+      }
+
+      if (targetBody) {
+        if (targetBody.classList.contains('collapse-in')) {
+          targetBody.classList.remove('collapse-in');
+        } else {
+          targetBody.classList.add('collapse-in');
+        }
+      }
+    });
+  };
+
+
   const onBoot = () => {
     // Find matchesFn with vendor prefix
     ['matches', 'msMatchesSelector'].some((fn) => {
@@ -58,6 +105,14 @@
       }
       return false;
     });
+
+    // Get the dashboard's card elements
+    const cpanelCards = document.querySelectorAll('.joomla-collapse-card-body');
+    if (cpanelCards) {
+      cpanelCards.forEach((card) => {
+        toggleCard(card);
+      });
+    }
 
     const cpanelModules = document.getElementById('cpanel-modules');
     if (cpanelModules) {

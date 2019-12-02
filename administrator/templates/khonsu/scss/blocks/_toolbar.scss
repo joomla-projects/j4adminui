@@ -89,6 +89,12 @@
 .input-group {
   position: relative;
   flex-wrap: wrap;
+  .input-group-prepend {
+   .input-group-text {
+    background: transparent;
+    color: var(--icon-color);
+   } 
+  }
   .input-group-append {
     .btn{
       border-top-left-radius: 0;

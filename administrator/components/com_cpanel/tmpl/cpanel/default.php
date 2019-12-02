@@ -34,32 +34,43 @@ $user = Factory::getUser();
 HTMLHelper::_('script', 'com_cpanel/admin-add_module.js', ['version' => 'auto', 'relative' => true]);
 HTMLHelper::_('script', 'vendor/dragula/dragula.min.js', ['framework' => false, 'relative' => true]);
 HTMLHelper::_('stylesheet', 'vendor/dragula/dragula.min.css', ['framework' => false, 'relative' => true, 'pathOnly' => false]);
-HTMLHelper::_('script', 'mod_quickicon/quickicon-draggble.min.js', ['version' => 'auto', 'relative' => true]);
-HTMLHelper::_('script', 'system/draggable.min.js', ['framework' => false, 'relative' => true]);
+HTMLHelper::_('script', 'mod_quickicon/cpanel-draggble.min.js', ['version' => 'auto', 'relative' => true]);
 
-$saveOrderingUrl = 'index.php?option=com_modules&task=modules.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
+$saveOrderingUrl = 'index.php?option=com_modules&task=module.saveModuleOrderDashboard&format=json&tmpl=component&' . Session::getFormToken() . '=1';
+
 ?>
 <div id="cpanel-modules">
 	<div class="cpanel-modules <?php echo $this->position; ?>">
 		<?php
-			foreach ($this->modules as $module)
+			if (!empty($this->modules['quickicon']))
 			{
-				if( $module->module == 'mod_quickicon' )
+				foreach ($this->modules['quickicon'] as $quickicon)
 				{
-					echo ModuleHelper::renderModule($module, array('style' => 'simple'));
+					echo ModuleHelper::renderModule($quickicon, array('style' => 'simple'));
 				}
 			}
 		?>
-		<div class="j-card-columns js-draggable" data-fields="order[],cid[]" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="false" data-drag_handler="handle">
-			<?php
-				foreach ($this->modules as $module)
-				{
-					if( $module->module != 'mod_quickicon' )
-					{
-						echo ModuleHelper::renderModule($module, array('style' => 'card'));
-					}
-				}
-			?>
+		<div class="row js-enable-dragula" data-fields="order[],cid[],position[]" data-containers="#cpanel-left-col,#cpanel-right-col" data-url-card="<?php echo $saveOrderingUrl; ?>" data-direction="asc" data-nested="true" data-drag_handler="handle">
+			<div class="col-12 col-md-6" id="cpanel-left-col" data-position="left">
+				<?php if (!empty($this->modules['left_column'])): ?>
+						<?php
+							foreach($this->modules['left_column'] as $module)
+							{
+								echo ModuleHelper::renderModule($module, array('style' => 'card'));
+							}
+						?>
+				<?php endif; ?>
+			</div>
+			<div class="col-12 col-md-6" id="cpanel-right-col" data-position="right">
+				<?php if (!empty($this->modules['right_column'])): ?>
+						<?php
+							foreach($this->modules['right_column'] as $module)
+							{
+								echo ModuleHelper::renderModule($module, array('style' => 'card'));
+							}
+						?>
+				<?php endif; ?>
+			</div>
 		</div>
 
 		<?php if ($user->authorise('core.create', 'com_modules')) : ?>

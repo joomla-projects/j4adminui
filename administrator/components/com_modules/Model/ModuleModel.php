@@ -1156,4 +1156,41 @@ class ModuleModel extends AdminModel
 	{
 		parent::cleanCache('com_modules', $this->getClient());
 	}
+
+	/**
+	 * Save Dashboard module's position
+	 *
+	 * @param	array	$pks		Primary key of the modules.
+	 * @param	array	$position	Position array which indicates that the module on the left column or right column.
+	 * @return 	bool			If the position is saved on the params or not.
+	 *
+	 * @since	4.0.0
+	 */
+	public function saveDashboardModulePosition($pks, $position)
+	{
+		try
+		{
+			if (is_array($pks) && is_array($position) && !empty($pks) && !empty($position))
+			{
+				foreach ($pks as $i => $pk)
+				{
+					$item 	= $this->getItem($pk);
+					$params = new Registry($item->params);
+					$pos 	= isset($position[$i]) ? $position[$i] : 0;
+					$params->set('column_position', $pos);
+
+					$data = array('id' => $pk, 'params' => $params->toString('JSON'));
+					$this->save($data);
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
 }

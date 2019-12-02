@@ -20,10 +20,10 @@ $list = $data['view']->filterForm->getGroup('list');
 <?php if(!empty($list) && isset($list['list_limit'])) : ?>
 	<div class="ordering-select d-none d-sm-block">
 		<div class="j-list-limit">
-			<div class="j-list-limit-label">
+			<div class="j-list-limit-label" id="list_limit_lbl">
 				<?php echo Text::_('JGLOBAL_ITEM_PER_PAGE'); ?>
 			</div>
-			<div class="j-list-limit-input">
+			<div class="j-list-limit-input" aria-labelledby="list_limit_lbl">
 				<?php echo $list['list_limit']->input; ?>
 			</div>
 		</div>

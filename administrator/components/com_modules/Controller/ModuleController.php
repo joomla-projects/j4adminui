@@ -19,9 +19,10 @@ use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
-use Joomla\Registry\Registry;
 use Joomla\Component\Modules\Administrator\Model\ModuleModel;
 use Joomla\Database\ParameterType;
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Module controller class.
@@ -397,6 +398,53 @@ class ModuleController extends FormController
 		{
 			echo new JsonResponse(['success' => false, 'message' => $e->getMessage()]);
 			$app->close();
+		}
+	}
+
+	/**
+	 * Save dashboard modules ordering
+	 *
+	 * @return	json	JsonResponse	http request response
+	 *
+	 * @since	4.0.0
+	 */
+	public function saveModuleOrderDashboard()
+	{
+		try
+		{
+			// Check for request forgeries.
+			$this->checkToken();
+
+			// Get the input
+			$pks = $this->input->post->get('cid', array(), 'array');
+			$order = $this->input->post->get('order', array(), 'array');
+			$position = $this->input->post->get('position', array(), 'array');
+
+			// Sanitize the input
+			$pks = ArrayHelper::toInteger($pks);
+			$order = ArrayHelper::toInteger($order);
+			$position = ArrayHelper::toInteger($position);
+
+			// Get the model
+			$model = $this->getModel();
+
+			// Save the ordering
+			$saveorder 	= $model->saveorder($pks, $order);
+			$saveposition = $model->saveDashboardModulePosition($pks, $position);
+			$return = $saveorder && $saveposition;
+
+			if ($return)
+			{
+				echo '1';
+			}
+
+			// Close the application
+			$this->app->close();
+		}
+		catch (Exception $e)
+		{
+			echo new JsonResponse(['result' => $e->getMessage()]);
+			$this->app->close();
 		}
 	}
 }

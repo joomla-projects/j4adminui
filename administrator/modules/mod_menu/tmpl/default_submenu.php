@@ -89,15 +89,17 @@ $icon      = $this->getIconClass($current);
 $iconClass = ($icon != '' && $current->level == 1) ? '<span class="' . $icon . '" aria-hidden="true"></span>' : '';
 $ajax      = $current->ajaxbadge ? '<span class="menu-badge"><span class="icon-spin icon-spinner mt-1 system-counter" data-url="' . $current->ajaxbadge . '"></span></span>' : '';
 
+$anchorLink = $this->enabled ? ' href="' . $link . '"' : '';
+
 if ($link != '' && $current->target != '')
 {
-	echo "<a" . $linkClass . $dataToggle . " href=\"" . $link . "\" target=\"" . $current->target . "\">"
+	echo "<a" . $linkClass . $dataToggle . $anchorLink . " target=\"" . $current->target . "\">"
 		. $iconClass
 		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . $toggleIcon . '</a>';
 }
 elseif ($link != '')
 {
-	echo "<a" . $linkClass . $dataToggle . " href=\"" . $link . "\">"
+	echo "<a" . $linkClass . $dataToggle . $anchorLink . ">"
 		. $iconClass
 		. '<span class="sidebar-item-title">' . Text::_($current->title) . '</span>' . $ajax . $toggleIcon . '</a>';
 }
@@ -124,7 +126,7 @@ if ($current->getParams()->get('menu-quicktask', false))
 
 	if (!$permission || $user->authorise($permission, $scope))
 	{
-		echo '<span class="menu-quicktask"><a href="' . $link . '">';
+		echo '<span class="menu-quicktask"><a ' . $anchorLink . '>';
 		echo '<span class="icon-' . $icon . '" title="' . htmlentities(Text::_($title)) . '" aria-hidden="true"></span>';
 		echo '<span class="sr-only">' . Text::_($title) . '</span>';
 		echo '</a></span>';
