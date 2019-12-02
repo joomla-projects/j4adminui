@@ -13,22 +13,8 @@
    * The class pulse gets 'warning', 'success' or 'error', depending on the retrieved data.
    */
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.joomla-collapse-card-body').forEach((card) => {
-      card.addEventListener('click', (event) => {
-        event.preventDefault();
-        const targetBody = document.getElementById(card.getAttribute('data-target'));
-        if (targetBody) {
-          if (targetBody.classList.contains('collapse-in')) {
-            targetBody.classList.remove('collapse-in');
-          } else {
-            targetBody.classList.add('collapse-in');
-          }
-        }
-      });
-    });
     document.querySelectorAll('.j-quickicon').forEach((quickicon) => {
       const pulse = quickicon.querySelector('.pulse');
-      // quickicon.classList.add('j-quickicon-skeleton');
       const counterAnimate = quickicon.querySelector('.j-counter-animation');
       if (quickicon.dataset.url) {
         Joomla.request({
