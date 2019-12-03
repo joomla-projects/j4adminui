@@ -19,7 +19,7 @@ $selected = '';
 $id = '';
 
 if ($data->order === $data->selected) :
-	$icon = $data->orderIcon;
+	$icon = $data->direction === 'asc' ? 'icon-caret-up' : 'icon-caret-down';
 	$sort = $data->direction === 'asc' ? 'ascending' : 'descending';
 	$caption = !empty($data->title) ? Text::_($data->title) . ' - ' . $sort : Text::_('JGRID_HEADING_ID');
 	$selected = ' selected';
@@ -40,11 +40,7 @@ endif;
 			<?php echo Text::_($data->title); ?>
 		</span>
 	<?php endif; ?>
-	<?php if($data->order === 'a.ordering') : ?>
-		<span class="<?php echo $data->icon; ?>" aria-hidden="true"></span>
-	<?php else : ?>
-		<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
-	<?php endif; ?>
+	<span class="<?php echo $icon; ?>" aria-hidden="true"></span>
 	<span class="sr-only">
 		<?php echo Text::_('JGLOBAL_SORT_BY'); ?>
 		<?php echo (!empty($data->title)) ? Text::_($data->title) : Text::_('JGRID_HEADING_ORDERING'); ?>
