@@ -56,7 +56,7 @@ if ($module->content) :
 					</h3>
 
 					<div class="j-card-header-right">
-						<button type="button" class="j-card-header-icon joomla-collapse-card-body" aria-expanded="true" aria-label="<?php echo Text::_('JTOGGLE_CARD_MSG');?>" data-target="module-<?php echo $id; ?>">
+						<button type="button" class="j-card-header-icon joomla-collapse-card-body" aria-expanded="true" aria-label="<?php echo Text::sprintf('JTOGGLE_CARD_MSG', $module->title);?>" data-target="module-<?php echo $id; ?>">
 							<span class="toggle-icon icon-chevron-up"></span>	
 						</button>
 						<?php if ($canEdit || $canChange) : ?>
