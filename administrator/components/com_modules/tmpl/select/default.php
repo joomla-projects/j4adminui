@@ -62,7 +62,7 @@ HTMLHelper::_('script', 'com_modules/admin-select-modal.js', ['version' => 'auto
 
 					<div class="j-card-footer">
 						<div class="j-card-footer-item">
-							<a href="<?php echo Route::_($link); ?>" <?php echo $function ? 'class=" select-link" data-function="' . $this->escape($function) : ''; ?> aria-label="<?php echo Text::sprintf('COM_MODULES_SELECT_MODULE', $item->name); ?>">
+							<a href="<?php echo Route::_($link); ?>" <?php echo $function ? 'class=" select-link" data-function="' . $this->escape($function) . '"' : ''; ?> aria-label="<?php echo Text::sprintf('COM_MODULES_SELECT_MODULE', $item->name); ?>">
 								<?php echo Text::_('COM_MODULES_SELECT'); ?>
 							</a>
 						</div>
