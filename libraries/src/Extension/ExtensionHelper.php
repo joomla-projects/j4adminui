@@ -97,7 +97,12 @@ class ExtensionHelper
 		array('library', 'phpass', '', 0),
 
 		// Core module extensions - administrator
+		array('module', 'mod_accessibility', '', 1),
+		array('module', 'mod_cache', '', 1),
+		array('module', 'mod_checkins', '', 1),
+		array('module', 'mod_content', '', 1),
 		array('module', 'mod_custom', '', 1),
+		array('module', 'mod_extension_updates', '', 1),
 		array('module', 'mod_feed', '', 1),
 		array('module', 'mod_frontend', '', 1),
 		array('module', 'mod_latest', '', 1),
@@ -112,7 +117,9 @@ class ExtensionHelper
 		array('module', 'mod_post_installation_messages', '', 1),
 		array('module', 'mod_privacy_dashboard', '', 1),
 		array('module', 'mod_privacy_status', '', 1),
+		array('module', 'mod_quick_article', '', 1),
 		array('module', 'mod_quickicon', '', 1),
+		array('module', 'mod_resources', '', 1),
 		array('module', 'mod_sampledata', '', 1),
 		array('module', 'mod_stats_admin', '', 1),
 		array('module', 'mod_submenu', '', 1),
