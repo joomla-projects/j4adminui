@@ -132,6 +132,7 @@
           }
           const newIframe = document.createElement('iframe');
           newIframe.width = '100%';
+          newIframe.title = this.getAttribute('title');
           newIframe.src = this.iframe;
           newIframe.setAttribute('frameborder', 0);
           newIframe.style.height = this.height;
