@@ -10,8 +10,9 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
 
 // cache ajax URL
 Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrator/index.php?option=com_ajax&module=cache&method=clearCache&format=json');
@@ -22,7 +23,7 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 	<div class="j-card-body">
 		<div class="row align-items-center">
 			<div class="col-12 col-xl-auto mb-4 mb-xl-0">
-				<img src="<?php echo JURI::base().'modules/'.$module->module . '/assets/images/speedup.jpg'?>" alt="clear cache">
+				<?php echo HTMLHelper::_('image', 'mod_cache/cache-cleaning.svg', Text::_('MOD_CACHE_CACHE_CLEANING_ALT_TEXT'), array('class' => "mod-cache-image", 'width' => "100%"), true); ?>
 			</div>
 			<div class="col">
 				<div class="j-card-vertical-content pl-xl-4">
@@ -30,7 +31,7 @@ Factory::getDocument()->addScriptOptions('cacheurl', Uri::root() . 'administrato
 						<span class="j-count-number j-cache-animation">&lrm;<?php echo $cacheInfo['size']; ?></span>
 						<?php echo Text::sprintf('MOD_CACHE_QUICKICON_TOTAL_CACHE', $cacheInfo['unit']); ?>
 					</div>
-					<p>This tool will delete all Cache files from the cache folders - including current ones - from your web server.</p>
+					<p><?php echo Text::_('MOD_CACHE_MSG'); ?></p>
 					<div class="j-card-vertical-btn-group">
 						<?php if($cacheInfo['raw']): ?>
 							<button id="jclear-cache-btn" class="btn btn-primary" data-size="<?php echo $cacheInfo['size']; ?>" type="button">

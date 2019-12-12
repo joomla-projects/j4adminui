@@ -19,9 +19,9 @@ use Joomla\CMS\Router\Route;
 		<div class="row align-items-center">
 			<div class="col-12 col-xl-auto mb-4 mb-xl-0">
 				<?php if($checkins > 0) : ?>
-					<?php echo HTMLHelper::_('image', 'mod_checkins/sad-checkin.jpg', 'Sad Global Checkin', array('class' => "mod-checkins-image"), true); ?>
+					<?php echo HTMLHelper::_('image', 'mod_checkins/checkins.svg', Text::_('MOD_CHECKINS_ALT_TEXT'), array('class' => "mod-checkins-image", 'width' => "100%"), true); ?>
 				<?php else : ?>
-					<?php echo HTMLHelper::_('image', 'mod_checkins/happy-checkin.jpg', 'Happy Global Checkin', array('class' => "mod-checkins-image"), true); ?>
+					<?php echo HTMLHelper::_('image', 'mod_checkins/no-checkins.svg', Text::_('MOD_CHECKINS_NO_CHECKINS_ALT_TEXT'), array('class' => "mod-checkins-image", 'width' => "100%"), true); ?>
 				<?php endif; ?>
 			</div>
 			<div class="col">
