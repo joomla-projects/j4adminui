@@ -65,7 +65,44 @@ $css = '
 		opacity: 0;
 	}
 ';
-// $this->addStyleDeclaration($css);
+$scroll ='
+	::-webkit-scrollbar {
+		width: 7px;
+		background-color: #f5f5f5;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+		background-color: #f5f5f5;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		background-color: #0184ff;
+	}
+
+	::-moz-scrollbar {
+		width: 7px;
+		background-color: #edf0f5;
+	}
+
+	/* Track */
+	::-moz-scrollbar-track {
+		-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+		background-color: #edf0f5;
+	}
+
+	/* Handle */
+	::-moz-scrollbar-thumb {
+		-moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		background-color: #edf0f5;
+	}
+';
+$this->addStyleDeclaration($scroll);
 $this->addStyleDeclaration("
     :root {
         --skeleton-bg: url(". Uri::root() . 'media/system/images/skeleton.gif' .");
@@ -100,8 +137,9 @@ HTMLHelper::_('khonsu.rootcolors', $this->params);
 				<?php // No home link in edit mode (so users can not jump out) and control panel (for a11y reasons) ?>
 				<?php if ($hiddenMenu || $cpanel) : ?>
 					<div class="logo">
+						<a class="no-dropdown active" href="index.php">
 						<img class="logo-main" src="<?php echo $siteLogo; ?>" alt="<?php echo $logoAlt; ?>">
-						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>">
+						<img class="logo-small" src="<?php echo $smallLogo; ?>" alt="<?php echo $logoSmallAlt; ?>"></a>
 					</div>
 				<?php else : ?>
 					<a class="logo" href="<?php echo Route::_('index.php'); ?>"

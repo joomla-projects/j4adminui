@@ -44,6 +44,7 @@ if ($module->content) :
 
 	$margin = Factory::getLanguage()->isRtl() ? ' ml-2' : ' mr-2';
 	?>
+	<?php //this module shows data on homepage in the cards.  ?>
 	<div class="module-wrapper mb-4" data-dragable-group="dashboard_module">
 		<<?php echo $moduleTag; ?> class="j-card <?php echo $moduleClassSfx; ?>">
 			<?php if ($canEdit || $canChange || $headerIcon || $module->showtitle) : ?>

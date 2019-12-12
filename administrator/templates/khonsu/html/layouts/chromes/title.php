@@ -12,7 +12,7 @@
 defined('_JEXEC') or die;
 
 $module  = $displayData['module'];
-
+//module for card header
 if ($module->content) : ?>
 	<div class="j-card-header"><h6><?php echo $module->title; ?></h6></div>
 	<?php echo $module->content; ?>
