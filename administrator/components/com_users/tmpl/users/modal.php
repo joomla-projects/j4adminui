@@ -44,7 +44,7 @@ $onClick         = "window.parent.jSelectUser(this);window.parent.Joomla.Modal.g
 				<div class="j-alert-info-wrap"><?php echo Text::_('JGLOBAL_NO_MATCHING_RESULTS'); ?></div>
 			</div>
 		<?php else : ?>
-		<table class="table j-striped-table">
+		<table class="table j-striped-table mt-4">
 			<caption id="captionTable" class="sr-only">
 				<?php echo Text::_('COM_USERS_USERS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 			</caption>
