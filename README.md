@@ -13,12 +13,26 @@ What is this?
 * Styleguide(https://delowar.gitbook.io/joomla-elements/)
 * Detailed changes are in the [changelog](https://github.com/joomla-projects/j4adminui/commits).
 
+What is Joomla?
+---------------------
+* [Joomla!](https://www.joomla.org/about-joomla.html) is a **Content Management System** (CMS) which enables you to build websites and powerful online applications.
+* It is a simple and powerful web server application which requires a server with PHP and either MySQL or PostgreSQL to run. You can find [full technical requirements here](https://downloads.joomla.org/technical-requirements).
+* Joomla! is **free and Open Source software** distributed under the GNU General Public License version 2 or later.
+
 How to get a working installation from the source
 ---------------------
 For detailed instructions please visit https://docs.joomla.org/J4.x:Setting_Up_Your_Local_Environment
 
 You will need:
 - PHP - basically the same as you need for running a Joomla Site, but you need the cli (command line interface) Version (see https://docs.joomla.org/Configuring_a_LAMPP_server_for_PHP_development)
+	PHP LDAP should be active for composer
+		For activating LDAP in windows Follow given steps-
+		1. To istall LDAP in windows open xampp/wampp or any local host's apache configuration.
+		2. Open PHP.ini file.
+		3. remove the comment which contain extension=ldap now try composer install.
+		For activating LDAP in LINUX Follow given steps-
+		1. Do sudo apt-get install php5-ldap.
+		2.Reboot apache.
 - Composer - for managing Joomla's PHP Dependencies. For help installing composer please read the documentation at https://getcomposer.org/doc/00-intro.md
 - Node.js - for compiling Joomla's Javascript and SASS files. For help installing Node.js please follow the instructions available on https://nodejs.org/en/
 - Git - for version management. Download from here https://git-scm.com/downloads (MacOS users can also use Brew and Linux users can use the built-in package manager, eg apt, yum, etc). 
