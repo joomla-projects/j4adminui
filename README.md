@@ -38,14 +38,6 @@ git clone git@github.com:joomla-projects/j4adminui.git
 ```bash
 cd j4adminui
 ```
- ##### PHP LDAP should be active for composer
-	For activating LDAP in windows Follow given steps-
-		1. To istall LDAP in windows open xampp/wampp or any local host's apache configuration.
-		2. Open PHP.ini file.
-		3. remove the comment which contain extension=ldap now try composer install.
-	For activating LDAP in LINUX Follow given steps-
-		1. Do sudo apt-get install php5-ldap.
-		2.Reboot apache.
 - Install all the needed composer packages:
 ```bash
 composer install
