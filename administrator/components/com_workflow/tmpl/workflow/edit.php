@@ -31,7 +31,7 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
 <form action="<?php echo Route::_('index.php?option=com_workflow&extension=' . $input->getCmd('extension') . '&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="workflow-form" class="form-validate">
 
 	<div class="form-no-margin">
-		<?php echo LayoutHelper::render('joomla.edit.title', $this); ?>
+		<?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
 	</div>
 			
 
