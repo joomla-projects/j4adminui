@@ -25,7 +25,7 @@ For detailed instructions please visit https://docs.joomla.org/J4.x:Setting_Up_Y
 
 You will need:
 - PHP - basically the same as you need for running a Joomla Site, but you need the cli (command line interface) Version (see https://docs.joomla.org/Configuring_a_LAMPP_server_for_PHP_development)
- PHP LDAP should be active for composer
+ ##### PHP LDAP should be active for composer
 	For activating LDAP in windows Follow given steps-
 		1. To istall LDAP in windows open xampp/wampp or any local host's apache configuration.
 		2. Open PHP.ini file.
