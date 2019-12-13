@@ -71,7 +71,7 @@ $resourceStatus = $params->get('show_resources', 'both');
                 <div class="j-card-body">
                     <div class="row align-items-center justify-content-center justify-content-xl-start">
                         <div class="col-12 col-xl-auto mb-5 mb-xl-0 text-center text-xl-left">
-                            <?php echo HTMLHelper::_('image', 'mod_resources/resource-pay.png', 'Resources pay', array('class' => "mod-resources-image"), true); ?>
+                            <?php echo HTMLHelper::_('image', 'mod_resources/resources.svg', Text::_('MOD_RESOURCES_ALT_TEXT'), array('class' => "mod-resources-image", 'width' => '100%'), true); ?>
                         </div>
                         <div class="col">
                             <div class="row mt-n3">
