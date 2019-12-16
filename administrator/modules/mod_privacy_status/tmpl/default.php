@@ -23,17 +23,17 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($privacyPolicyInfo['published'] && $privacyPolicyInfo['articlePublished']) : ?>
-					<small class="text-success">
-						<span class="icon-checkbox" aria-hidden="true"></span>
+					<small class="badge badge-success">
+						<span class="icon-check" aria-hidden="true"></span>
 						<?php echo Text::_('JPUBLISHED'); ?>
 					</small>
 				<?php elseif ($privacyPolicyInfo['published'] && !$privacyPolicyInfo['articlePublished']) : ?>
-					<small class="text-warning">
+					<small class="badge badge-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JUNPUBLISHED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="text-warning">
+					<small class="badge badge-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
 					</small>
@@ -52,17 +52,17 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<small class="text-success">
-						<span class="icon-checkbox" aria-hidden="true"></span>
+					<small class="badge badge-success">
+						<span class="icon-check" aria-hidden="true"></span>
 						<?php echo Text::_('JPUBLISHED'); ?>
 					</small>
 				<?php elseif (!$requestFormPublished['published'] && $requestFormPublished['exists']) : ?>
-					<small class="text-warning">
+					<small class="badge badge-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JUNPUBLISHED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="text-warning">
+					<small class="badge badge-warning">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('COM_PRIVACY_STATUS_CHECK_NOT_AVAILABLE'); ?>
 					</small>
@@ -78,12 +78,12 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($numberOfUrgentRequests === 0) : ?>
-					<small class="text-success">
-						<span class="icon-checkbox" aria-hidden="true"></span>
+					<small class="badge badge-success">
+						<span class="icon-check" aria-hidden="true"></span>
 						<?php echo Text::_('JNONE'); ?>
 					</small>
 				<?php else : ?>
-					<small class="text-danger">
+					<small class="badge badge-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('WARNING'); ?>
 					</small>
@@ -100,12 +100,12 @@ use Joomla\CMS\Router\Route;
 		<tr>
 			<td>
 				<?php if ($sendMailEnabled) : ?>
-					<small class="text-success">
-						<span class="icon-checkbox" aria-hidden="true"></span>
+					<small class="badge badge-success">
+						<span class="icon-check" aria-hidden="true"></span>
 						<?php echo Text::_('JENABLED'); ?>
 					</small>
 				<?php else : ?>
-					<small class="text-danger">
+					<small class="badge badge-danger">
 						<span class="icon-warning" aria-hidden="true"></span>
 						<?php echo Text::_('JDISABLED'); ?>
 					</small>
@@ -124,7 +124,7 @@ use Joomla\CMS\Router\Route;
 			<td>
 				<?php if ($databaseConnectionEncryption !== '') : ?>
 					<span class="badge badge-success">
-						<span class="icon-checkbox" aria-hidden="true"></span>
+						<span class="icon-check" aria-hidden="true"></span>
 						<?php echo Text::_('JENABLED'); ?>
 					</span>
 				<?php else : ?>
