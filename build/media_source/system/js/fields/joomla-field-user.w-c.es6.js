@@ -44,7 +44,6 @@
     connectedCallback() {
       // Set up elements
       this.modal = this.querySelector(this.modalClass);
-      this.modalBody = this.querySelector('section');
       this.input = this.querySelector(this.inputId);
       this.inputName = this.querySelector(this.inputNameClass);
       this.buttonSelect = this.querySelector(this.buttonSelectClass);
@@ -100,6 +99,7 @@
       // Reconstruct the iframe
 
       this.modal.open();
+      this.modalBody = this.querySelector(`${this.modalClass} section`);
 
       this.iframeEl = this.modalBody.querySelector('iframe');
 
