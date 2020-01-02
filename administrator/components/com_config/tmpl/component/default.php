@@ -77,9 +77,9 @@ $xml = $this->form->getXml();
 					<?php $label = empty($fieldSet->label) ? 'COM_CONFIG_' . $name . '_FIELDSET_LABEL' : $fieldSet->label; ?>
 
 					<?php if (!$isGrandchild && $hasParent) : ?>
-						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_($fieldSet->label); ?></legend>
-							<div>
+						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="j-card options-grid-form options-grid-form-full">
+							<div class="j-card-header"><?php echo Text::_($fieldSet->label); ?></div>
+							<div class="j-card-body">
 					<?php elseif (!$hasParent) : ?>
 						<?php if ($opentab) : ?>
 							<?php if ($opentab > 1) : ?>
@@ -91,15 +91,15 @@ $xml = $this->form->getXml();
 						<?php endif; ?>
 
 						<section orientation="vertical" id="<?php echo $name; ?>" class="<?php echo $dataShowOn; ?>" name="<?php echo Text::_($label); ?>">
-							<div class="<?php echo ($name != 'permissions') ? 'j-card p-4' : ''; ?>">
+							<div class="<?php echo ($name != 'permissions') ? '' : ''; ?>">
 
 						<?php $opentab = 1; ?>
 
 						<?php if (!$hasChildren) : ?>
 
-						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="options-grid-form options-grid-form-full">
-							<legend><?php echo Text::_($fieldSet->label); ?></legend>
-							<div>
+						<fieldset id="fieldset-<?php echo $this->escape($name); ?>" class="j-card options-grid-form options-grid-form-full">
+							<div class="j-card-header"><?php echo Text::_($fieldSet->label); ?></div>
+							<div class="j-card-body">
 						<?php $opentab = 2; ?>
 						<?php endif; ?>
 					<?php endif; ?>
