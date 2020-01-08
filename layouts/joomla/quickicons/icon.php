@@ -82,7 +82,7 @@ $class = !empty($tmp) ? ' class="' . implode(' ', array_unique($tmp)) . '"' : ''
 			<div class="j-card-footer-item">
 				<a href="<?php echo $displayData['link']; ?>">
 					<span class="icon-eye-open j-card-icon j-icon-lg duotone" aria-hidden="true"></span>
-					<span class="sr-only"><?php echo Text::_($displayData['name'] . '_ADD_SRONLY'); ?></span>
+					<span class="sr-only"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span>
 					<span aria-hidden="true"><?php echo Text::sprintf('MOD_QUICKICON_VIEW_ALL', Text::_($displayData['name'])); ?></span>
 				</a>
 			</div>
