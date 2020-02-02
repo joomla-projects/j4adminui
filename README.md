@@ -80,7 +80,7 @@ The moment of inclusion will be dependant on the speed of development. The relea
 Thank you for all your commitment to make Joomla 4 great!
 
 ### additions / modifications to top level requirements
-* Support for Left to Right (LTR) languages 
+* Support for Right to Left (RTL) languages 
 
 Joomla! CMS v4.0 in general
 =========================
