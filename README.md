@@ -13,6 +13,14 @@ What is this?
 * Styleguide(https://delowar.gitbook.io/joomla-elements/)
 * Detailed changes are in the [changelog](https://github.com/joomla-projects/j4adminui/commits).
 
+Nightly builds
+---------------------
+Nightly builds are availabe from https://developer.joomla.org/backend-template/
+
+Launch.joomla.org
+---------------------
+Nightly builds will be made available from lauch.joomla.org by choosing the "khonsu" option to install through the advanced settings when launching a site
+
 How to get a working installation from the source
 ---------------------
 For detailed instructions please visit https://docs.joomla.org/J4.x:Setting_Up_Your_Local_Environment
