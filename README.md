@@ -15,7 +15,7 @@ What is this?
 
 Nightly builds
 ---------------------
-Nightly builds are availabe from https://developer.joomla.org/backend-template/
+Nightly builds are available from https://developer.joomla.org/backend-template/
 
 Launch.joomla.org
 ---------------------
