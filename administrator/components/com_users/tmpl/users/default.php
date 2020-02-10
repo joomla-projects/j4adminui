@@ -106,7 +106,7 @@ $tfa        = PluginHelper::isEnabled('twofactorauth');
 										<?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
 									<?php endif; ?>
 								</td>
-								<th scope="row">
+								<th class="text-nowrap" scope="row">
 									<div class="name break-word">
 									<?php if ($canEdit) : ?>
 										<a href="<?php echo Route::_('index.php?option=com_users&task=user.edit&id=' . (int) $item->id); ?>" title="<?php echo Text::sprintf('COM_USERS_EDIT_USER', $this->escape($item->name)); ?>">
