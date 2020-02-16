@@ -9,8 +9,7 @@
     const folders = [].slice.call(document.querySelectorAll('.folder-url, .component-folder-url, .plugin-folder-url, .layout-folder-url'));
     const innerLists = [].slice.call(document.querySelectorAll('.folder ul, .component-folder ul, .plugin-folder ul, .layout-folder ul'));
     const openLists = [].slice.call(document.querySelectorAll('.show > ul'));
-    const fileModalFolders = [].slice.call(document.querySelectorAll('#fileModal .folder-url'));
-    const folderModalFolders = [].slice.call(document.querySelectorAll('#folderModal .folder-url'));
+
     // Hide all the folders when the page loads
     innerLists.forEach((innerList) => {
       innerList.style.display = 'none';
@@ -37,38 +36,65 @@
     });
 
     // File modal tree selector
-    fileModalFolders.forEach((fileModalFolder) => {
-      fileModalFolder.addEventListener('click', (event) => {
-        event.preventDefault();
+    document.getElementById('fileModal').addEventListener('joomla.modal.show', () => {
+      const fileModalFolders = [].slice.call(document.querySelectorAll('#fileModal .folder-url'));
 
-        fileModalFolders.forEach((fileModalFold) => {
-          fileModalFold.classList.remove('selected');
-        });
+      fileModalFolders.forEach((fileModalFolder) => {
+        fileModalFolder.addEventListener('click', (event) => {
+          event.preventDefault();
 
-        event.target.classList.add('selected');
+          fileModalFolders.forEach((fileModalFold) => {
+            fileModalFold.classList.remove('selected');
+          });
 
-        const listElsAddressToAdd = [].slice.call(document.querySelectorAll('#fileModal input.address'));
+          event.target.classList.add('selected');
 
-        listElsAddressToAdd.forEach((element) => {
-          element.value = event.target.getAttribute('data-id');
+          const listElsAddressToAdd = [].slice.call(document.querySelectorAll('#fileModal input.address'));
+
+          listElsAddressToAdd.forEach((element) => {
+            element.value = event.target.getAttribute('data-id');
+          });
+
+          // Expand/collapse folder
+          const children = fileModalFolder.nextElementSibling;
+          if (typeof children.style.display !== 'undefined') {
+            if (children.style.display === '' || children.style.display === 'block') {
+              children.style.display = 'none';
+            } else {
+              children.style.display = 'block';
+            }
+          }
         });
       });
     });
 
     // Folder modal tree selector
-    folderModalFolders.forEach((folderModalFolder) => {
-      folderModalFolder.addEventListener('click', (event) => {
-        event.preventDefault();
+    document.getElementById('folderModal').addEventListener('joomla.modal.show', () => {
+      const folderModalFolders = [].slice.call(document.querySelectorAll('#folderModal .folder-url'));
+      folderModalFolders.forEach((folderModalFolder) => {
+        folderModalFolder.addEventListener('click', (event) => {
+          event.preventDefault();
 
-        folderModalFolders.forEach((folderModalFldr) => {
-          folderModalFldr.classList.remove('selected');
-        });
+          folderModalFolders.forEach((folderModalFldr) => {
+            folderModalFldr.classList.remove('selected');
+          });
 
-        event.target.classList.add('selected');
-        const listElsAddressToAdd = [].slice.call(document.querySelectorAll('#folderModal input.address'));
+          event.target.classList.add('selected');
+          const listElsAddressToAdd = [].slice.call(document.querySelectorAll('#folderModal input.address'));
 
-        listElsAddressToAdd.forEach((element) => {
-          element.value = event.target.getAttribute('data-id');
+          listElsAddressToAdd.forEach((element) => {
+            element.value = event.target.getAttribute('data-id');
+          });
+
+          // Expand/collapse folder
+          const children = folderModalFolder.nextElementSibling;
+          if (typeof children.style.display !== 'undefined') {
+            if (children.style.display === '' || children.style.display === 'block') {
+              children.style.display = 'none';
+            } else {
+              children.style.display = 'block';
+            }
+          }
         });
       });
     });

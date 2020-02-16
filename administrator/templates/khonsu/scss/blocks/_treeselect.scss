@@ -87,6 +87,13 @@
     position: relative;
     display: block;
     list-style: none;
+    line-height: 25px;
+
+    a {
+      &.folder-url {
+        padding-left: 5px;
+      }
+    }
 
    &::before {
       position: absolute;
@@ -117,8 +124,9 @@
     }
   }
   .has-subtree {
+
     .directory-tree {
-      margin-left: ($treeselect-indent - 15px);
+      margin-left: ($treeselect-indent - 10px);
       margin-top: -5px;
       li {
         &:first-child {
