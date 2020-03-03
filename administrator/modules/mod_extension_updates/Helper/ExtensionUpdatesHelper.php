@@ -17,43 +17,108 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Extension\ExtensionHelper;
 
 /**
- * mod_extension_updates_helper helper class for the module
+ * Helper class for the module mod_extension_updates
  *
  * @since 4.0.0
  */
 abstract class ExtensionUpdatesHelper
 {
 	/**
+	 * Installed extensions except core extensions
+	 *
+	 * @var	array
+	 *
+	 * @since 4.0.0
+	 */
+	private static $extensions = [];
+
+	/**
+	 * Get all the installed extensions except the core extensions
+	 *
+	 * @return	void
+	 * @since 	4.0.0
+	 */
+	private static function getInstalledExtensionsExceptCore() : void
+	{
+		$db = Factory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select('type, element, client_id, folder')
+			->from($db->quoteName('#__extensions'));
+		$db->setQuery($query);
+
+		$extensions = $db->loadObjectList();
+
+		// Purge the core extensions form the calcuation
+		if (!empty($extensions) && is_array($extensions))
+		{
+			foreach ($extensions as $index => $ext)
+			{
+				// Check if the extension is a core extension, then remove it from the array
+				if (ExtensionHelper::checkIfCoreExtension($ext->type, $ext->element, $ext->client_id, $ext->folder))
+				{
+					unset($extensions[$index]);
+				}
+			}
+		}
+
+		self::$extensions = array_values($extensions);
+	}
+
+	/**
+	 * Get all the extensions
+	 *
+	 * @return	array	The extensions
+	 *
+	 * @since 4.0.0
+	 */
+	public function getExtensions() : array
+	{
+		return self::$extensions;
+	}
+
+	/**
+	 * Count the total extensions except core extensions
+	 *
+	 * @return	int	The total number of extensions
+	 *
+	 * @since 	4.0.0
+	 */
+	private function getTotalExtensions() : int
+	{
+		return \count(self::$extensions);
+	}
+
+	/**
 	 * Extract all the extensions contents i.e. Total number of extensions,
 	 * Total updatable extensions, Joomla! core update status
 	 *
 	 * @return	array	Extensions contents
 	 *
-	 * @since 4.0.0
+	 * @since	4.0.0
 	 */
 	public static function extractExtensionsContent() : array
 	{
-		$totalExtensions = static::getTotalInstalledExtensions();
-		$updatableExtensions = static::getUpdatableExtensions();
+		self::getInstalledExtensionsExceptCore();
 
-		$content = array();
+		$totalNoncoreExtensions = self::getTotalExtensions();
+		$outdatedExtensions 	= self::getOutdatedExtensions();
 
-		$content['percentage'] = static::calculatePercentage($totalExtensions, $updatableExtensions);
-		$content['updatableCount'] = count($updatableExtensions);
-		$content['updatableInfo'] = static::groupExtensions($updatableExtensions);
-		$content['updateJoomla'] = static::checkJoomlaUpdate();
-
-		return $content;
+		return array(
+			'percentage' => self::calculatePercentage($totalNoncoreExtensions, $outdatedExtensions),
+			'updatableCount' => \count($outdatedExtensions),
+			'updatableInfo' => self::groupExtensions($outdatedExtensions),
+			'updateJoomla' => self::checkJoomlaUpdate()
+		);
 	}
 
 	/**
-	 * Group extensions by it's types
+	 * Group outdated extensions by it's types
 	 *
-	 * @param	array	$extensions		Updatable extensions
+	 * @param	array	$extensions		Outdated extensions
 	 *
-	 * @return	array	Grouped updatable extensions
+	 * @return	array	Grouped updatable/outdated extensions
 	 *
-	 * @since 4.0.0
+	 * @since 	4.0.0
 	 */
 	private static function groupExtensions($extensions) : array
 	{
@@ -81,41 +146,45 @@ abstract class ExtensionUpdatesHelper
 
 	/**
 	 * Calculation of updated extensions percentage.
-	 * This is assuming that the Joomla! alone takes 50% of the total extensions,
+	 * This is assuming that the Joomla! along with core extensions takes 50% of the total extensions,
 	 * That means if Joomla! is outdated then the 50% of the system is outdated
 	 *
-	 * @param	int	$total		Total number of extensions
-	 * @param	int	$updatable	Total number of updatable extensions
+	 * @param	int		$total		Total number of extensions
+	 * @param	int		$outdated	Total number of updatable extensions
 	 *
-	 * @return	float	Percentage of system update status
+	 * @return	int		Percentage of system update status
 	 *
 	 * @since	4.0.0
 	 */
-	private static function calculatePercentage($total, $updatable) : float
+	private static function calculatePercentage($total, $outdated) : int
 	{
-		$updateJoomla = static::checkJoomlaUpdate();
-		$updatedExtensions = $total - count($updatable);
-		$updatePercentage = (float) ($updatedExtensions * .5 * 100) / $total;
+		$isJoomlaOutdated	= self::checkJoomlaUpdate();
+		$updatedExtensions 	= $total - \count($outdated);
 
-		if (!$updateJoomla)
+		$percentage = (float) ($updatedExtensions * 0.5 * 100) / $total;
+
+		// If Joomla! is not outdated then add the 50% with the percentage.
+		if (!$isJoomlaOutdated)
 		{
-			$updatePercentage = $updatePercentage + 50;
+			$percentage = $percentage + 50;
 		}
 
-		return floor($updatePercentage);
+		return floor($percentage);
 	}
 
 	/**
 	 * Check Joomla! core update status
 	 *
-	 * @return	boolean	Joomla! is updated or not
+	 * @return	mixed	Latest Joomla! version or false
 	 *
 	 * @since 4.0.0
 	 */
 	private static function checkJoomlaUpdate()
 	{
-		$updateModel = Factory::getApplication()->bootComponent('com_installer')
-			->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
+		$updateModel = Factory::getApplication()
+			->bootComponent('com_installer')
+			->getMVCFactory()
+			->createModel('Update', 'Administrator', ['ignore_request' => true]);
 
 		$eid = ExtensionHelper::getExtensionRecord('files_joomla')->extension_id;
 		$updateModel->setState('filter.extension_id', $eid);
@@ -126,39 +195,32 @@ abstract class ExtensionUpdatesHelper
 
 
 	/**
-	 * Get updatable extensions
+	 * Get outdated extensions except core extensions
 	 *
-	 * @return	array	Updatable extensions
+	 * @return	array	Outdated extensions
 	 *
 	 * @since 4.0.0
 	 */
-	private static function getUpdatableExtensions() : array
+	private static function getOutdatedExtensions() : array
 	{
-		$updateModel = Factory::getApplication()->bootComponent('com_installer')
-			->getMVCFactory()->createModel('Update', 'Administrator', ['ignore_request' => true]);
+		$updateModel = Factory::getApplication()
+			->bootComponent('com_installer')
+			->getMVCFactory()
+			->createModel('Update', 'Administrator', ['ignore_request' => true]);
 
 		$extensions = $updateModel->getItems();
 
-		return $extensions;
-	}
+		if (!empty($extensions))
+		{
+			foreach ($extensions as $index => $ext)
+			{
+				if (ExtensionHelper::checkIfCoreExtension($ext->type, $ext->element, $ext->client_id, $ext->folder))
+				{
+					unset($extensions[$index]);
+				}
+			}
+		}
 
-
-	/**
-	 * Get total installed extensions
-	 *
-	 * @return	array	Total installed extensions
-	 *
-	 * @since	4.0.0
-	 */
-	private static function getTotalInstalledExtensions() : int
-	{
-		$db = Factory::getDbo();
-		$query = $db->getQuery(true);
-		$query->select('COUNT(extension_id)')
-			->from($db->quoteName('#__extensions'))
-			->where($db->quoteName('name') . ' <> ' . $db->quote('files_joomla'));
-		$db->setQuery($query);
-
-		return $db->loadResult();
+		return array_values($extensions);
 	}
 }
