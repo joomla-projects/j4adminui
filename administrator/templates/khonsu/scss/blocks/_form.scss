@@ -30,6 +30,19 @@ joomla-field-fancy-select {
 		outline: 0;
 		border-color: var(--primary-color);
 	}
+	&:read-only {
+		color: rgba($black, 0.35);
+		background-color: var(--bg-color);
+	}
+	&:disabled {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;     
+		background-color: var(--bg-color);
+		color: rgba($black, 0.35);
+		border-color: var(--border-color);
+	}
 }
 
 .form-group {
